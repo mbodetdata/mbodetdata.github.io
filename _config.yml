@@ -14,7 +14,7 @@ timezone: Europe/Paris
 # ------------------------ 2) URL & déploiement -----------------------
 # ⚠️ Remplace par ton domaine final. Si tu restes sur GitHub Pages user, mets:
 # url: "https://marssouss.github.io"
-url: "https://marssouss.github.io"                          # domaine canonique (ABSOLU)
+url: "https://bmdata.fr"                          # domaine canonique (ABSOLU)
 baseurl: ""                                               # vide pour site user (username.github.io)
 # Si tu utilises un domaine custom: url: "https://ton-domaine.fr" et baseurl: ""
 
@@ -36,19 +36,17 @@ plugins:
 author:
   name: "BODET Martial"
   prenom_nom: "Martial BODET"         # alias si tu l’utilises dans les includes
-  enterprise: "ABM"
+  enterprise: "BM-data"
   job_title: "Consultant Freelance Talend & Power BI"
   email: "contact@tondomaine.fr"      # ⚠️ remplace
   phone: "+33 6 00 00 00 00"          # ⚠️ remplace
-  url: "https://marssouss.github.io"  # ou ton domaine custom
+  url: "https://bmdata.fr"  # ou ton domaine custom
   linkedin: "https://www.linkedin.com/in/martial-bodet/"
   sameAs:
     - "https://www.linkedin.com/in/martial-bodet/"
-    - "https://github.com/marssouss"
+    - "https://github.com/mbodetdata"
   # Liens pris dans le HTML (contact & Calendly)
-  calendly_url: "https://calendly.com/bodetmartial/30min"
-  calendly_30:  "https://calendly.com/bodetmartial/30min"
-  calendly_15:  "https://calendly.com/bodetmartial/15min"
+  calendly_url: "https://calendly.com/bmdata/30min"
   # Optionnel (si tu veux la meta twitter:creator)
   # twitter: "ton_handle_sans@"
 
