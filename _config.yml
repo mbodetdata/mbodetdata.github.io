@@ -19,7 +19,7 @@ baseurl: ""                                               # vide pour site user 
 # Si tu utilises un domaine custom: url: "https://ton-domaine.fr" et baseurl: ""
 
 # Image par défaut pour Open Graph/Twitter (fichier existant dans /assets/img)
-og_image: "/assets/img/logo_256.webp"
+og_image: "/assets/img/logo_512.webp"
 
 # ------------------------ 3) Plugins supportés GH Pages --------------
 # (Tous sont compatibles avec GitHub Pages)
