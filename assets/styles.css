@@ -432,3 +432,4 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; }
   text-decoration-color: color-mix(in oklab, var(--brand) 55%, transparent);
   text-shadow:0 0 4px color-mix(in oklab, var(--brand-2) 30%, transparent);
 }
+ 

@@ -209,30 +209,27 @@ const Modal = (() => {
   });
 })();
 
-/* ====== 6) Carousel certifications (mobile : dots + centrage + fix doublons) ====== */
+/* ====== 6) Carousel certifications (toutes certifs = autant de puces) ====== */
 (() => {
-  const rail     = $('#certs-rail');
-  const dotsWrap = $('.certs-dots');
+  const rail     = document.getElementById('certs-rail');
+  const dotsWrap = document.querySelector('.certs-dots');
   if (!rail || !dotsWrap) return;
 
-  const slides = Array.from(rail.children);
+  // Empêche toute double initialisation (changement de page/reload partiel)
+  if (rail.dataset.certsCarouselReady === '1') return;
+  rail.dataset.certsCarouselReady = '1';
+
+  // Ne prendre que les <li> DIRECTS (évite éléments parasites)
+  const slides = Array.from(rail.querySelectorAll(':scope > li'));
   if (!slides.length) return;
 
-  // Idempotence : évite toute double init si le bloc est ré-inséré (SSR/partial reload)
-  if (rail.dataset.carouselInited === '1') {
-    dotsWrap.replaceChildren(); // purge dots potentiellement doublés
-  }
-  rail.dataset.carouselInited = '1';
-
-  // A11y de base
+  // Accessibilité de la zone
   rail.setAttribute('tabindex', '0');
   rail.setAttribute('role', 'region');
   rail.setAttribute('aria-label', 'Certifications (carousel)');
 
-  // Toujours PURGER avant de (re)créer les dots (résout le bug mobile “doublés”)
+  // Purge systématique des anciennes puces puis recréation 1:1 avec les slides
   dotsWrap.replaceChildren();
-
-  // Création des dots
   const dots = slides.map((_, i) => {
     const b = document.createElement('button');
     b.type = 'button';
@@ -242,26 +239,25 @@ const Modal = (() => {
     return b;
   });
 
-  // Scroll centré
+  const PREFERS_REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const centerOffsetFor = (el) => el.offsetLeft - (rail.clientWidth - el.clientWidth) / 2;
-  const scrollToSlide = (i) => {
+  const scrollToSlide   = (i) => {
     const el = slides[i];
     rail.scrollTo({ left: centerOffsetFor(el), behavior: PREFERS_REDUCED ? 'auto' : 'smooth' });
   };
-
-  // État actif
   const setActive = (i) => dots.forEach((d, idx) => d.classList.toggle('is-active', idx === i));
 
-  // Bind des dots après création (évite empilement de handlers)
-  dots.forEach((b, i) => on(b, 'click', () => scrollToSlide(i), { passive:true }));
+  // Clic sur puces
+  dots.forEach((b, i) => b.addEventListener('click', () => scrollToSlide(i), { passive: true }));
 
-  // Observation de visibilité (précision de l’actif)
+  // Détermination du slide “le plus au centre”
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       let bestI = null, bestRatio = 0;
       for (const e of entries) {
+        if (!e.isIntersecting) continue;
         const i = slides.indexOf(e.target);
-        if (e.isIntersecting && e.intersectionRatio > bestRatio) { bestRatio = e.intersectionRatio; bestI = i; }
+        if (i > -1 && e.intersectionRatio > bestRatio) { bestRatio = e.intersectionRatio; bestI = i; }
       }
       if (bestI !== null) setActive(bestI);
     }, { root: rail, threshold: [0.5, 0.6, 0.7, 0.8] });
@@ -271,31 +267,31 @@ const Modal = (() => {
       const deltas = slides.map(el => Math.abs(centerOffsetFor(el) - rail.scrollLeft));
       setActive(deltas.indexOf(Math.min(...deltas)));
     };
-    on(rail, 'scroll', onScroll, { passive:true });
+    rail.addEventListener('scroll', onScroll, { passive: true });
   }
 
   // État initial
   setActive(0);
 
-  // Clavier (← →)
-  on(rail, 'keydown', (e) => {
+  // Navigation clavier
+  rail.addEventListener('keydown', (e) => {
     if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
     e.preventDefault();
-    const cur = dots.findIndex(d => d.classList.contains('is-active'));
+    const cur  = dots.findIndex(d => d.classList.contains('is-active'));
     const next = e.key === 'ArrowRight' ? Math.min(cur + 1, slides.length - 1)
                                         : Math.max(cur - 1, 0);
     scrollToSlide(next);
   });
 
-  // Recentrage au resize (évite “perte” d’alignement)
-  let resizeRaf;
-  on(window, 'resize', () => {
-    cancelAnimationFrame?.(resizeRaf);
-    resizeRaf = raf(() => {
-      const current = dots.findIndex(d => d.classList.contains('is-active')) || 0;
-      scrollToSlide(current);
+  // Recentrage au resize
+  let rid = 0;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame?.(rid);
+    rid = requestAnimationFrame(() => {
+      const current = dots.findIndex(d => d.classList.contains('is-active'));
+      scrollToSlide(current < 0 ? 0 : current);
     });
-  }, { passive:true });
+  }, { passive: true });
 })();
 
 /* ================== 7) Calendly (inline + popup unifiés) ================== */
