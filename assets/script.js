@@ -1,22 +1,45 @@
 /* ===========================================================================
-   ABM — JS unifié (premium, moderne & épuré)
-   1) Utils (qs/qsa, on/off, mq, rAF, store, flags)
+   ABM — JS unifié (premium, moderne & épuré) — VERSION SEO/PERF
+   Objectifs :
+   - Conserver toutes les features existantes (AUCUNE suppression)
+   - Réduire les risques de doublons & ré-initialisations
+   - Améliorer SEO technique (stabilité, a11y, micro-optimisations)
+   - Améliorer performances (lazy/idle init, écouteurs passifs, preconnect)
+
+   Structure :
+   0) Strict mode & helpers de timing
+   1) Utils (qs/qsa, on/off, mq, rAF, store sûr)
    2) Navigation mobile (burger, ARIA, breakpoint)
    3) Thème (persist + préférence système, label/ARIA, Alt+clic reset)
    4) Modals (focus-trap, esc, overlay)
    5) Formulaire (Formspree AJAX + feedback + “merci” en modal)
-   6) Certifications (carousel mobile + dots + centrage)
-   7) Calendly (inline desktop + popup mobile/desktop, assets lazy, loader 3 pts, fallbacks)
+   6) Certifications (carousel mobile + dots + centrage + idempotence)
+   7) Calendly (inline desktop + popup mobile/desktop, lazy assets, loader 3 pts, fallbacks)
+   8) Contacts (copy to clipboard)
+   9) Fallback images (logos certifications)
    =========================================================================== */
 
+'use strict';
+
+/* ========================= 0) Timing helpers ========================= */
+/** Exécute une tâche quand le thread est libre (meilleur pour LCP/INP). */
+const runIdle = (fn) => {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(fn, { timeout: 1800 });
+  } else {
+    setTimeout(fn, 1);
+  }
+};
+/** Exécute une tâche au prochain frame. */
+const raf = (fn) => (window.requestAnimationFrame || ((f)=>setTimeout(f,16)))(fn);
+
 /* ========================= 1) Utils légers ========================= */
-const $  = (sel, scope=document) => scope.querySelector(sel);
-const $$ = (sel, scope=document) => Array.from(scope.querySelectorAll(sel));
+const $   = (sel, scope=document) => scope.querySelector(sel);
+const $$  = (sel, scope=document) => Array.from(scope.querySelectorAll(sel));
 const on  = (el, ev, fn, opts) => el && el.addEventListener(ev, fn, opts);
 const off = (el, ev, fn, opts) => el && el.removeEventListener(ev, fn, opts);
 const mq  = (q) => window.matchMedia ? window.matchMedia(q) : { matches:false, addEventListener(){}, removeEventListener(){} };
-const raf = (fn) => (window.requestAnimationFrame || ((f)=>setTimeout(f,16)))(fn);
-const noop = () => {};
+
 const PREFERS_REDUCED = mq('(prefers-reduced-motion: reduce)').matches;
 
 /* Storage safe (évite erreurs navigation privée) */
@@ -41,13 +64,14 @@ const store = {
   toggle.setAttribute('aria-expanded', 'false');
   toggle.setAttribute('aria-controls', 'nav-collapsible');
 
-  on(toggle, 'click', () => setState(!panel.classList.contains('open')));
-  on(panel, 'click', (e) => { if (e.target.closest('a,button')) setState(false); });
+  // Écouteurs (passifs où pertinent)
+  on(toggle, 'click', () => setState(!panel.classList.contains('open')), { passive:true });
+  on(panel, 'click', (e) => { if (e.target.closest('a,button')) setState(false); }, { passive:true });
 
-  // Ferme lors du passage en desktop
+  // Ferme lors du passage en desktop (évite états “ouverts” persistants)
   const bp = mq('(min-width: 992px)');
   const onChange = () => { if (bp.matches) setState(false); };
-  bp.addEventListener('change', onChange);
+  bp.addEventListener?.('change', onChange);
 })();
 
 /* ==================== 3) Thème (persist + système + label) ==================== */
@@ -58,6 +82,7 @@ const store = {
 
   const getSystem  = () => (mq('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   const getStored  = () => store.get('theme');
+
   const setLabelAria = (mode) => {
     if (!btn) return;
     const isDark = mode === 'dark';
@@ -65,23 +90,24 @@ const store = {
     btn.setAttribute('aria-label', isDark ? 'Basculer en mode clair' : 'Basculer en mode sombre');
     if (label) label.textContent = isDark ? 'Dark' : 'Light';
   };
+
   const apply = (mode) => { root.setAttribute('data-theme', mode); setLabelAria(mode); };
 
-  // Init : storage sinon système
+  // Init : storage sinon système (limite CLS car appliqué très tôt)
   apply(getStored() || getSystem());
 
   // Sync système si pas de choix explicite
   const sys = mq('(prefers-color-scheme: light)');
   const syncSystem = () => { if (!getStored()) apply(getSystem()); };
-  sys.addEventListener('change', syncSystem);
+  sys.addEventListener?.('change', syncSystem);
 
   // Toggle + persist
-  on(btn, 'click', (e) => {
+  on(btn, 'click', () => {
     const cur = root.getAttribute('data-theme');
     const next = (cur === 'light') ? 'dark' : 'light';
     apply(next);
     store.set('theme', next);
-  });
+  }, { passive:true });
 
   // Alt + clic → reset (revient au thème système)
   on(btn, 'click', (e) => {
@@ -101,7 +127,7 @@ const Modal = (() => {
 
   const trap = (modal) => {
     const nodes = $$(FOCUSABLE, modal);
-    if (!nodes.length) return noop;
+    if (!nodes.length) return () => {};
     const first = nodes[0], last = nodes[nodes.length - 1];
 
     const onKey = (e) => {
@@ -131,7 +157,7 @@ const Modal = (() => {
   const bind  = (modal) => {
     if (!modal) return;
     on(modal, 'click', (e) => { if (e.target === modal) close(modal); }, { passive:true });
-    $$('.modal__close,[data-close]', modal).forEach(btn => on(btn, 'click', () => close(modal)));
+    $$('.modal__close,[data-close]', modal).forEach(btn => on(btn, 'click', () => close(modal), { passive:true }));
     on(document, 'keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close(modal); });
   };
 
@@ -183,7 +209,7 @@ const Modal = (() => {
   });
 })();
 
-/* ====== 6) Carousel certifications (mobile : dots + centrage) ====== */
+/* ====== 6) Carousel certifications (mobile : dots + centrage + fix doublons) ====== */
 (() => {
   const rail     = $('#certs-rail');
   const dotsWrap = $('.certs-dots');
@@ -192,28 +218,44 @@ const Modal = (() => {
   const slides = Array.from(rail.children);
   if (!slides.length) return;
 
+  // Idempotence : évite toute double init si le bloc est ré-inséré (SSR/partial reload)
+  if (rail.dataset.carouselInited === '1') {
+    dotsWrap.replaceChildren(); // purge dots potentiellement doublés
+  }
+  rail.dataset.carouselInited = '1';
+
+  // A11y de base
   rail.setAttribute('tabindex', '0');
   rail.setAttribute('role', 'region');
   rail.setAttribute('aria-label', 'Certifications (carousel)');
 
+  // Toujours PURGER avant de (re)créer les dots (résout le bug mobile “doublés”)
+  dotsWrap.replaceChildren();
+
+  // Création des dots
   const dots = slides.map((_, i) => {
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'certs-dot';
     b.setAttribute('aria-label', `Aller à la certification ${i + 1}`);
-    on(b, 'click', () => scrollToSlide(i));
     dotsWrap.appendChild(b);
     return b;
   });
 
+  // Scroll centré
   const centerOffsetFor = (el) => el.offsetLeft - (rail.clientWidth - el.clientWidth) / 2;
   const scrollToSlide = (i) => {
     const el = slides[i];
     rail.scrollTo({ left: centerOffsetFor(el), behavior: PREFERS_REDUCED ? 'auto' : 'smooth' });
   };
 
+  // État actif
   const setActive = (i) => dots.forEach((d, idx) => d.classList.toggle('is-active', idx === i));
 
+  // Bind des dots après création (évite empilement de handlers)
+  dots.forEach((b, i) => on(b, 'click', () => scrollToSlide(i), { passive:true }));
+
+  // Observation de visibilité (précision de l’actif)
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       let bestI = null, bestRatio = 0;
@@ -232,8 +274,10 @@ const Modal = (() => {
     on(rail, 'scroll', onScroll, { passive:true });
   }
 
+  // État initial
   setActive(0);
 
+  // Clavier (← →)
   on(rail, 'keydown', (e) => {
     if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
     e.preventDefault();
@@ -243,6 +287,7 @@ const Modal = (() => {
     scrollToSlide(next);
   });
 
+  // Recentrage au resize (évite “perte” d’alignement)
   let resizeRaf;
   on(window, 'resize', () => {
     cancelAnimationFrame?.(resizeRaf);
@@ -255,10 +300,10 @@ const Modal = (() => {
 
 /* ================== 7) Calendly (inline + popup unifiés) ================== */
 (() => {
-  const modal    = $('#calendly-modal');            // popup (mobile/desktop)
-  const parentM  = $('#calendly-inline');           // conteneur popup
-  const parentD  = $('#calendly-inline-embed');     // conteneur inline desktop
-  const triggers = $$('[data-calendly]');           // tous les boutons
+  const modal    = $('#calendly-modal');        // popup (mobile/desktop)
+  const parentM  = $('#calendly-inline');       // conteneur popup
+  const parentD  = $('#calendly-inline-embed'); // conteneur inline desktop
+  const triggers = $$('[data-calendly]');       // tous les boutons
   const mqDesk   = mq('(min-width: 992px)');
 
   // URL (priorité: inline desktop > inline modal > bouton)
@@ -269,7 +314,22 @@ const Modal = (() => {
   if (!url) { console.warn('[Calendly] URL absente (data-calendly-url)'); return; }
   if (!/^https:\/\/calendly\.com\//i.test(url)) { console.warn('[Calendly] URL non valide:', url); return; }
 
+  // A11y popup
   if (modal) Modal.bind(modal);
+
+  // --- SEO/perf: preconnect (limite latence DNS/SSL) ---
+  runIdle(() => {
+    const domains = ['https://assets.calendly.com'];
+    domains.forEach(href => {
+      if (!document.querySelector(`link[rel="preconnect"][href="${href}"]`)) {
+        const l = document.createElement('link');
+        l.rel = 'preconnect';
+        l.href = href;
+        l.crossOrigin = '';
+        document.head.appendChild(l);
+      }
+    });
+  });
 
   // ----- Assets loader (idempotent) -----
   const ensureLink = (href) => new Promise(res => {
@@ -287,7 +347,7 @@ const Modal = (() => {
     ensureScript('https://assets.calendly.com/assets/external/widget.js'),
   ]);
 
-  // ----- Loader 3 points -----
+  // ----- Loader 3 points (A11y friendly) -----
   const addDotsLoader = (host) => {
     if (!host || host.querySelector('.dots-loader')) return;
     const wrap = document.createElement('div');
@@ -300,7 +360,7 @@ const Modal = (() => {
   };
   const removeDotsLoader = (host) => host?.querySelector('.dots-loader')?.remove();
 
-  // ----- Forcer le plein format (sécurité contre styles inline Calendly) -----
+  // ----- Forcer le plein format (évite CLS + styles inline Calendly) -----
   const forceFullSize = (host) => {
     if (!host) return;
     const wr = host.querySelector('.calendly-inline-widget');
@@ -314,7 +374,7 @@ const Modal = (() => {
     if (!host) return;
     addDotsLoader(host);
     await loadAssets();
-    host.innerHTML = ''; // nettoyage
+    host.innerHTML = ''; // nettoyage dur = idempotence
     window.Calendly?.initInlineWidget({ url, parentElement: host });
 
     // Retirer le loader dès qu’un iframe apparaît
@@ -327,7 +387,7 @@ const Modal = (() => {
     });
     obs.observe(host, { childList: true, subtree: true });
 
-    // Fallback : retente une fois si vide après 5s
+    // Fallback : retente une fois si vide après 5s (réseaux capricieux)
     setTimeout(() => {
       if (!host.querySelector('iframe')) {
         host.innerHTML = '';
@@ -341,8 +401,25 @@ const Modal = (() => {
     }, 5000);
   };
 
-  // ----- Mode inline (desktop) -----
-  const bootInlineDesktop = () => { if (parentD) { parentD.style.display = 'block'; initInline(parentD); } };
+  // ----- Mode inline (desktop) — lazy via viewport pour SEO/perf -----
+  const bootInlineDesktop = () => {
+    if (!parentD) return;
+    const doInit = () => { parentD.style.display = 'block'; initInline(parentD); };
+
+    // Lazy : n’initialise que quand visible ~50% (réduit JS/CSS tiers inutiles)
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some(e => e.isIntersecting)) {
+          io.disconnect();
+          doInit();
+        }
+      }, { threshold: 0.35 });
+      io.observe(parentD);
+    } else {
+      // Fallback
+      runIdle(doInit);
+    }
+  };
 
   // ----- Mode popup (mobile… et desktop si clic) -----
   const openPopup = async () => {
@@ -353,7 +430,7 @@ const Modal = (() => {
 
   // ----- Bootstrap -----
   const boot = () => {
-    if (mqDesk.matches) bootInlineDesktop();          // inline direct sur desktop
+    if (mqDesk.matches) bootInlineDesktop();                // inline direct (lazy-in-view) sur desktop
     triggers.forEach(btn => on(btn, 'click', openPopup, { passive:true })); // popup sur action (mobile/desktop)
   };
 
@@ -366,8 +443,6 @@ const Modal = (() => {
   // Resize : s’assure que l’iframe garde le plein format
   on(window, 'resize', () => { forceFullSize(parentD); forceFullSize(parentM); }, { passive:true });
 })();
-
-
 
 /* ================== 8) Copy to clipboard (contacts) ================== */
 (() => {
@@ -459,8 +534,7 @@ const Modal = (() => {
   });
 })();
 
-
-// Fallback si un logo casse
+/* ================== 9) Fallback si un logo casse (certifications) ================== */
 (() => {
   document.querySelectorAll('.cert-logo').forEach(img => {
     img.addEventListener('error', () => {
