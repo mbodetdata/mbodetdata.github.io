@@ -1,21 +1,46 @@
 <!-- _includes/footer.html -->
 <footer class="site-footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
+  <!-- Métadonnées SEO -->
+  <meta itemprop="copyrightYear" content="{{ site.time | date: '%Y' }}">
+  {% assign site_url = site.url | default: site.github.url %}
+  {% if site_url %}<meta itemprop="url" content="{{ site_url | absolute_url }}">{% endif %}
+
   <p>
     © {{ site.time | date: "%Y" }}
     <span itemprop="copyrightHolder">{{ site.author.name }}</span>
-    — <span itemprop="description">Consultant Freelance spécialisé Talend &amp; Power BI</span>
+    — <span itemprop="description">Consultant Freelance spécialisé
+      <abbr title="Extract – Transform – Load">ETL</abbr> Talend &amp; Power&nbsp;BI
+    </span>
   </p>
 
-  <nav aria-label="Liens utiles du site">
+  <hr class="soft-sep" aria-hidden="true">
+
+  <nav class="footer-nav" aria-label="Liens utiles du site" itemscope itemtype="https://schema.org/SiteNavigationElement">
     <ul class="footer-links" role="list">
-      <li><a href="/sitemap.xml">Sitemap</a></li>
-      <li><a href="/robots.txt">Robots</a></li>
       <li>
-        <a href="mailto:{{ site.author.email }}" itemprop="email">Email</a>
+        <a href="/sitemap.xml" rel="sitemap">Sitemap</a>
       </li>
       <li>
-        <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener" itemprop="sameAs">LinkedIn</a>
+        <a href="/robots.txt" rel="robots">Robots</a>
       </li>
+      <li>
+        <a href="mailto:{{ site.author.email }}" itemprop="email" rel="me">Email</a>
+      </li>
+      <li>
+        <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener me" itemprop="sameAs">
+          LinkedIn
+        </a>
+      </li>
+      {% if site.legal_url %}
+      <li>
+        <a href="{{ site.legal_url | relative_url }}">Mentions légales</a>
+      </li>
+      {% endif %}
+      {% if site.privacy_url %}
+      <li>
+        <a href="{{ site.privacy_url | relative_url }}">Confidentialité</a>
+      </li>
+      {% endif %}
     </ul>
   </nav>
 </footer>
@@ -27,3 +52,16 @@
     <div id="calendly-inline"></div>
   </div>
 </div>
+
+<!-- JSON-LD complémentaire (Organization/Person minimal) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ site.author.name | jsonify }},
+  {% if site.author.email %}"email": {{ site.author.email | prepend: "mailto:" | jsonify }},{% endif %}
+  {% if site.author.linkedin %}"sameAs": [ {{ site.author.linkedin | jsonify }} ],{% endif %}
+  {% if site_url %}"url": {{ site_url | absolute_url | jsonify }},{% endif %}
+  "description": "Consultant Freelance spécialisé ETL Talend & Power BI"
+}
+</script>

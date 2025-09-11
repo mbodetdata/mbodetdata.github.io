@@ -6,7 +6,7 @@
 
   <div class="certs-viewport" role="region" aria-labelledby="certs-title" aria-describedby="certs-desc">
     {%- comment -%}
-      Tri principal par "ordre" (1,2,3,...). 
+      Tri principal par "ordre" (1,2,3,...).
       Conseil : mets "ordre" sur TOUTES les entrées (sinon Liquid place les nil au début).
     {%- endcomment -%}
     {%- assign items = site.data.certifications | sort: "ordre" -%}
@@ -23,17 +23,88 @@
       <meta itemprop="name" content="Certifications de {{ site.author.prenom_nom | default: site.author.name }}">
       <meta itemprop="numberOfItems" content="{{ total_count }}">
       <meta itemprop="itemListOrder" content="http://schema.org/ItemListOrderAscending">
+      {%- if page.url or site.url -%}
+        <meta itemprop="url" content="{{ page.url | absolute_url }}">
+      {%- endif -%}
 
-      {%- for c in certifiees %}
+      {%- for c in certifiees -%}
         {% include cert-item.html item=c i=forloop.index %}
-      {%- endfor %}
+      {%- endfor -%}
 
-      {%- for c in en_prepa %}
+      {%- for c in en_prepa -%}
         {% include cert-item.html item=c i=forloop.index %}
-      {%- endfor %}
+      {%- endfor -%}
     </ul>
 
     <!-- Indicateurs du carousel (affichés uniquement sur mobile) -->
     <nav class="certs-dots" aria-label="Pagination des certifications"></nav>
+
+    {%- comment -%}
+      JSON-LD complémentaire : ItemList + EducationalOccupationalCredential
+      - Ne change pas le DOM (juste un script pour les robots).
+      - Améliore l’éligibilité aux rich results.
+    {%- endcomment -%}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Certifications de {{ site.author.prenom_nom | default: site.author.name | escape }}",
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "numberOfItems": {{ total_count | default: 0 }},
+      "itemListElement": [
+        {%- assign pos = 0 -%}
+        {%- for c in certifiees -%}
+          {%- assign pos = forloop.index -%}
+          {
+            "@type": "ListItem",
+            "position": {{ pos }},
+            "item": {
+              "@type": "EducationalOccupationalCredential",
+              "name": {{ c.title | jsonify }},
+              {%- if c.date -%}"dateCreated": "{{ c.date | date: "%Y-%m-%d" }}",{%- endif -%}
+              {%- if c.planned_date and c.status == "pending" -%}"datePublished": "{{ c.planned_date | date: "%Y-%m-%d" }}",{%- endif -%}
+              {%- if c.expiry -%}"expires": "{{ c.expiry | date: "%Y-%m-%d" }}",{%- endif -%}
+              {%- if c.credential_id -%}"identifier": {{ c.credential_id | jsonify }},{%- endif -%}
+              {%- if c.level -%}"educationalLevel": {{ c.level | jsonify }},{%- endif -%}
+              {%- if c.verify_url -%}"sameAs": {{ c.verify_url | jsonify }},{%- endif -%}
+              {%- if c.logo -%}"image": {{ c.logo | absolute_url | jsonify }},{%- elsif c.badge_url -%}"thumbnailUrl": {{ c.badge_url | jsonify }},{%- endif -%}
+              {%- if c.issuer -%}
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": {{ c.issuer | jsonify }}
+                {%- if c.issuer_url -%}, "url": {{ c.issuer_url | jsonify }}{%- endif -%}
+                {%- if c.issuer_logo -%}, "logo": {{ c.issuer_logo | jsonify }}{%- endif -%}
+              }
+              {%- endif -%}
+            }
+          }{%- if forloop.last and en_prepa.size == 0 -%}{%- else -%},{%- endif -%}
+        {%- endfor -%}
+        {%- for c in en_prepa -%}
+          {%- assign pos = certifiees.size | plus: forloop.index -%}
+          {
+            "@type": "ListItem",
+            "position": {{ pos }},
+            "item": {
+              "@type": "EducationalOccupationalCredential",
+              "name": {{ c.title | jsonify }},
+              {%- if c.planned_date -%}"datePublished": "{{ c.planned_date | date: "%Y-%m-%d" }}",{%- endif -%}
+              {%- if c.credential_id -%}"identifier": {{ c.credential_id | jsonify }},{%- endif -%}
+              {%- if c.level -%}"educationalLevel": {{ c.level | jsonify }},{%- endif -%}
+              {%- if c.verify_url -%}"sameAs": {{ c.verify_url | jsonify }},{%- endif -%}
+              {%- if c.logo -%}"image": {{ c.logo | absolute_url | jsonify }},{%- elsif c.badge_url -%}"thumbnailUrl": {{ c.badge_url | jsonify }},{%- endif -%}
+              {%- if c.issuer -%}
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": {{ c.issuer | jsonify }}
+                {%- if c.issuer_url -%}, "url": {{ c.issuer_url | jsonify }}{%- endif -%}
+                {%- if c.issuer_logo -%}, "logo": {{ c.issuer_logo | jsonify }}{%- endif -%}
+              }
+              {%- endif -%}
+            }
+          }{%- if forloop.last -%}{%- else -%},{%- endif -%}
+        {%- endfor -%}
+      ]
+    }
+    </script>
   </div>
 </section>

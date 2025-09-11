@@ -8,14 +8,19 @@
     <!-- Marque -->
     <a class="brand" href="{{ '/' | relative_url }}" rel="home"
        itemprop="publisher" itemscope itemtype="https://schema.org/Organization"
-       aria-label="Aller à l’accueil">
+       aria-label="Aller à l’accueil"
+       {% if page.url == "/" or page.url == site.baseurl %}aria-current="page"{% endif %}>
       <img src="{{ '/assets/img/logo_256.webp' | relative_url }}"
            alt="Logo {{ site.author.enterprise }}"
            class="brand-logo"
-           width="256" height="256" loading="eager" decoding="async"
+           width="256" height="256" loading="eager" decoding="async" fetchpriority="high"
            itemprop="logo">
       <meta itemprop="name" content="{{ site.author.enterprise | default: site.title }}">
-      <meta itemprop="url"  content="{{ site.url | default: site.github.url }}">
+      <meta itemprop="url"  content="{{ site.url | default: site.github.url | absolute_url }}">
+      {% if site.author.linkedin %}<link itemprop="sameAs" href="{{ site.author.linkedin }}">{% endif %}
+      {% if site.author.sameAs %}
+        {% for p in site.author.sameAs %}<link itemprop="sameAs" href="{{ p }}">{% endfor %}
+      {% endif %}
     </a>
 
     <!-- Nav desktop -->
@@ -23,20 +28,20 @@
          itemscope itemtype="https://schema.org/SiteNavigationElement">
       <ul class="nav-inline" role="list">
         <li>
-          <a class="chip" href="{{ '/#services' | relative_url }}"
+          <a class="chip" href="{{ '/#services' | relative_url }}" itemprop="url"
              aria-label="Aller à la section Services">Services</a>
         </li>
         <li>
-          <a class="chip" href="{{ '/#realisation' | relative_url }}"
+          <a class="chip" href="{{ '/#realisation' | relative_url }}" itemprop="url"
              aria-label="Aller à la section Réalisations">Réalisations</a>
         </li>
         <li>
-          <a class="chip" href="{{ '/blog/' | relative_url }}"
+          <a class="chip" href="{{ '/blog/' | relative_url }}" itemprop="url"
              {% if page.url contains '/blog/' %}aria-current="page"{% endif %}
              aria-label="Aller au blog">Blog</a>
         </li>
         <li>
-          <a class="chip" href="{{ '/#contact' | relative_url }}"
+          <a class="chip" href="{{ '/#contact' | relative_url }}" itemprop="url"
              aria-label="Aller à la section Contact">Contact</a>
         </li>
         <li>
@@ -83,12 +88,12 @@
   <nav id="nav-collapsible" class="nav-collapsible" aria-label="Navigation mobile"
        itemscope itemtype="https://schema.org/SiteNavigationElement">
     <ul class="nav-list" role="list">
-      <li><a href="{{ '/#services' | relative_url }}" aria-label="Aller à la section Services">Services</a></li>
-      <li><a href="{{ '/#realisation' | relative_url }}" aria-label="Aller à la section Réalisations">Réalisations</a></li>
-      <li><a href="{{ '/blog/' | relative_url }}"
+      <li><a href="{{ '/#services' | relative_url }}" itemprop="url" aria-label="Aller à la section Services">Services</a></li>
+      <li><a href="{{ '/#realisation' | relative_url }}" itemprop="url" aria-label="Aller à la section Réalisations">Réalisations</a></li>
+      <li><a href="{{ '/blog/' | relative_url }}" itemprop="url"
              {% if page.url contains '/blog/' %}aria-current="page"{% endif %}
              aria-label="Aller au blog">Blog</a></li>
-      <li><a href="{{ '/#contact' | relative_url }}" aria-label="Aller à la section Contact">Contact</a></li>
+      <li><a href="{{ '/#contact' | relative_url }}" itemprop="url" aria-label="Aller à la section Contact">Contact</a></li>
       <li><button class="btn cta block" data-calendly
                   aria-label="Réserver un créneau avec Calendly">Réserver un créneau</button></li>
     </ul>

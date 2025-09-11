@@ -36,10 +36,10 @@ plugins:
 author:
   name: "BODET Martial"
   prenom_nom: "Martial BODET"         # alias si tu l’utilises dans les includes
-  enterprise: "BM-data"
+  enterprise: "BMData"
   job_title: "Consultant Freelance Talend & Power BI"
-  email: "contact@tondomaine.fr"      # ⚠️ remplace
-  phone: "+33 6 00 00 00 00"          # ⚠️ remplace
+  email: "contact@bmdata.fr"      # ⚠️ remplace
+  phone: "+33 6 70 21 09 28"          # ⚠️ remplace
   url: "https://bmdata.fr"  # ou ton domaine custom
   linkedin: "https://www.linkedin.com/in/martial-bodet/"
   sameAs:
