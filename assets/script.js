@@ -342,18 +342,8 @@ const Modal = (() => {
       };
     })(window, 'https://app.cal.com/embed/embed.js', 'init');
 
-    // ---- Bouton flottant (brand gradient + texte FR) ----
+    // Thème / brand de l'UI Cal
     Cal('init', 'booking', { origin: 'https://app.cal.com' });
-    Cal.ns['booking']('floatingButton', {
-      calLink: calSlug,
-      buttonText: 'Prendre rendez-vous',
-      buttonColor: 'transparent', // on laisse passer notre gradient CSS
-      textColor: '#fff',
-      hideButtonIcon: false,
-      config: { layout: 'month_view' }
-    });
-
-    // UI interne (couleur principale des éléments Cal : garde ta teinte)
     Cal.ns['booking']('ui', {
       cssVarsPerTheme: {
         light: { 'cal-brand': 'var(--brand)' },
@@ -363,27 +353,67 @@ const Modal = (() => {
       layout: 'month_view'
     });
 
-    // ---- Skin CSS du bouton flottant (une seule fois) ----
-    const styleId = 'cal-floating-custom';
+    // ----- Bouton flottant maison (gradient + FR) -----
+    if (!document.querySelector('.cal-float-cta')) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cal-float-cta';
+      btn.setAttribute('aria-label', 'Prendre rendez-vous');
+      // Liaison auto par l’embed Cal.com
+      btn.setAttribute('data-cal-namespace', 'booking');
+      btn.setAttribute('data-cal-link', calSlug);
+      btn.innerHTML = `
+        <span class="cal-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="cal-label">Prendre rendez-vous</span>
+      `;
+      document.body.appendChild(btn);
+    }
+
+    // Style (gradient & position) injecté une seule fois
+    const styleId = 'cal-float-cta-style';
     if (!document.getElementById(styleId)) {
       const st = document.createElement('style');
       st.id = styleId;
       st.textContent = `
-        /* Élément injecté par Cal.com */
-        [data-cal-floating-button]{
-          background-image: var(--g-brand) !important; /* ton dégradé bleu -> vert */
-          border: 0 !important;
-          color: #fff !important;
-          box-shadow: 0 12px 26px color-mix(in oklab, var(--brand) 30%, transparent) !important;
-          font-weight: 800 !important;
+        .cal-float-cta{
+          position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+          display: inline-flex; align-items: center; gap: .55rem;
+          padding: .85rem 1.1rem; border-radius: 999px; border: 0;
+          background-image: var(--g-brand); color: #fff; font-weight: 800;
+          box-shadow: 0 12px 26px color-mix(in oklab, var(--brand) 30%, transparent);
+          cursor: pointer; -webkit-tap-highlight-color: transparent;
         }
-        [data-cal-floating-button]:hover{
-          transform: translateY(-1px);
-          box-shadow: 0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent) !important;
+        .cal-float-cta:hover{ transform: translateY(-1px);
+          box-shadow: 0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent); }
+        .cal-float-cta:focus-visible{ outline: none;
+          box-shadow: 0 0 0 3px color-mix(in oklab, #fff 80%, transparent),
+                      0 0 0 6px color-mix(in oklab, var(--brand) 50%, transparent); }
+        .cal-float-cta .cal-ico{ display:grid; place-items:center; }
+        @media (max-width: 480px){
+          .cal-float-cta{ right: 12px; bottom: 12px; padding: .75rem .95rem; }
+          .cal-float-cta .cal-label{ font-size: .95rem; }
         }
       `;
       document.head.appendChild(st);
     }
+
+    // Fallback explicite si l’auto-binding ne se fait pas
+    const customBtn = document.querySelector('.cal-float-cta');
+    customBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      try {
+        // Cal.com détecte data-cal-link automatiquement,
+        // mais on force l’ouverture pour être sûr :
+        if (typeof Cal?.ns?.booking === 'function') {
+          Cal.ns['booking']('open', { calLink: calSlug });
+        }
+      } catch {}
+    }, { passive: true });
   };
 
   // ⚠️ Attend que la meta (dans le body) soit parsée
