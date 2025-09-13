@@ -294,150 +294,87 @@ const Modal = (() => {
   }, { passive: true });
 })();
 
-/* ================== 7) Calendly (inline + popup unifiés) ================== */
+/* ================== 7) Cal.com (bouton flottant unifié) ================== */
 (() => {
-  const modal    = $('#calendly-modal');        // popup (mobile/desktop)
-  const parentM  = $('#calendly-inline');       // conteneur popup
-  const parentD  = $('#calendly-inline-embed'); // conteneur inline desktop
-  const triggers = $$('[data-calendly]');       // tous les boutons
-  const mqDesk   = mq('(min-width: 992px)');
+  // 1) Récupère la conf (depuis la balise meta)
+  const meta = document.querySelector('meta[name="cal:link"]');
+  const rawUrl = (meta?.getAttribute('content') || '').trim();
+  if (!rawUrl) return; // rien à faire si pas de lien configuré
 
-  // URL (priorité: inline desktop > inline modal > bouton)
-  const url = (parentD?.dataset.calendlyUrl
-            || parentM?.dataset.calendlyUrl
-            || triggers[0]?.dataset.calendlyUrl
-            || '').trim();
-  if (!url) { console.warn('[Calendly] URL absente (data-calendly-url)'); return; }
-  if (!/^https:\/\/calendly\.com\//i.test(url)) { console.warn('[Calendly] URL non valide:', url); return; }
+  // 2) Convertit n'importe quelle forme en slug "user/event"
+  function toCalSlug(input) {
+    if (!input) return '';
+    const trimmed = input.trim().replace(/(^\/+|\/+$)/g, '');
 
-  // A11y popup
-  if (modal) Modal.bind(modal);
+    // Si on a déjà "user/event"
+    if (/^[^\/]+\/[^\/]+$/.test(trimmed)) return trimmed;
 
-  // --- SEO/perf: preconnect (limite latence DNS/SSL) ---
-  runIdle(() => {
-    const domains = ['https://assets.calendly.com'];
-    domains.forEach(href => {
-      if (!document.querySelector(`link[rel="preconnect"][href="${href}"]`)) {
-        const l = document.createElement('link');
-        l.rel = 'preconnect';
-        l.href = href;
-        l.crossOrigin = '';
-        document.head.appendChild(l);
-      }
-    });
-  });
-
-  // ----- Assets loader (idempotent) -----
-  const ensureLink = (href) => new Promise(res => {
-    if (document.querySelector(`link[href="${href}"]`)) return res();
-    const l = document.createElement('link'); l.rel='stylesheet'; l.href=href;
-    l.onload = res; l.onerror = res; document.head.appendChild(l);
-  });
-  const ensureScript = (src) => new Promise(res => {
-    if (document.querySelector(`script[src="${src}"]`)) return res();
-    const s = document.createElement('script'); s.src = src; s.defer = true;
-    s.onload = res; s.onerror = res; document.body.appendChild(s);
-  });
-  const loadAssets = () => Promise.all([
-    ensureLink('https://assets.calendly.com/assets/external/widget.css'),
-    ensureScript('https://assets.calendly.com/assets/external/widget.js'),
-  ]);
-
-  // ----- Loader 3 points (A11y friendly) -----
-  const addDotsLoader = (host) => {
-    if (!host || host.querySelector('.dots-loader')) return;
-    const wrap = document.createElement('div');
-    wrap.className = 'dots-loader';
-    wrap.innerHTML = `
-      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-      <span class="sr-only">Chargement…</span>
-    `;
-    host.appendChild(wrap);
-  };
-  const removeDotsLoader = (host) => host?.querySelector('.dots-loader')?.remove();
-
-  // ----- Forcer le plein format (évite CLS + styles inline Calendly) -----
-  const forceFullSize = (host) => {
-    if (!host) return;
-    const wr = host.querySelector('.calendly-inline-widget');
-    const ifr = host.querySelector('iframe');
-    if (wr) Object.assign(wr.style, { position:'absolute', inset:'0', width:'100%', height:'100%', border:0 });
-    if (ifr) Object.assign(ifr.style, { position:'absolute', inset:'0', width:'100%', height:'100%', border:0 });
-  };
-
-  // ----- Initialiser un conteneur (inline widget) -----
-  const initInline = async (host) => {
-    if (!host) return;
-    addDotsLoader(host);
-    await loadAssets();
-    host.innerHTML = ''; // nettoyage dur = idempotence
-    window.Calendly?.initInlineWidget({ url, parentElement: host });
-
-    // Retirer le loader dès qu’un iframe apparaît
-    const obs = new MutationObserver(() => {
-      if (host.querySelector('iframe')) {
-        removeDotsLoader(host);
-        forceFullSize(host);
-        obs.disconnect();
-      }
-    });
-    obs.observe(host, { childList: true, subtree: true });
-
-    // Fallback : retente une fois si vide après 5s (réseaux capricieux)
-    setTimeout(() => {
-      if (!host.querySelector('iframe')) {
-        host.innerHTML = '';
-        addDotsLoader(host);
-        window.Calendly?.initInlineWidget({ url, parentElement: host });
-        const obs2 = new MutationObserver(() => {
-          if (host.querySelector('iframe')) { removeDotsLoader(host); forceFullSize(host); obs2.disconnect(); }
-        });
-        obs2.observe(host, { childList: true, subtree: true });
-      }
-    }, 5000);
-  };
-
-  // ----- Mode inline (desktop) — lazy via viewport pour SEO/perf -----
-  const bootInlineDesktop = () => {
-    if (!parentD) return;
-    const doInit = () => { parentD.style.display = 'block'; initInline(parentD); };
-
-    // Lazy : n’initialise que quand visible ~50% (réduit JS/CSS tiers inutiles)
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        if (entries.some(e => e.isIntersecting)) {
-          io.disconnect();
-          doInit();
-        }
-      }, { threshold: 0.35 });
-      io.observe(parentD);
-    } else {
-      // Fallback
-      runIdle(doInit);
+    // URL absolue (cal.com OU calendly.com)
+    try {
+      const u = new URL(trimmed);
+      const parts = u.pathname.split('/').filter(Boolean);
+      if (parts.length >= 2) return parts.slice(0, 2).join('/');
+    } catch {
+      // URL non absolue — tente d'extraire après un domaine connu
+      return trimmed
+        .replace(/^.*?(calendly\.com|cal\.com)\//i, '')
+        .split('/')
+        .slice(0, 2)
+        .join('/');
     }
-  };
-
-  // ----- Mode popup (mobile… et desktop si clic) -----
-  const openPopup = async () => {
-    if (!modal || !parentM) return;
-    Modal.open(modal);
-    initInline(parentM);
-  };
-
-  // ----- Bootstrap -----
-  const boot = () => {
-    if (mqDesk.matches) bootInlineDesktop();                // inline direct (lazy-in-view) sur desktop
-    triggers.forEach(btn => on(btn, 'click', openPopup, { passive:true })); // popup sur action (mobile/desktop)
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot, { once:true });
-  } else {
-    boot();
+    return '';
   }
 
-  // Resize : s’assure que l’iframe garde le plein format
-  on(window, 'resize', () => { forceFullSize(parentD); forceFullSize(parentM); }, { passive:true });
+  const calSlug = toCalSlug(rawUrl);
+  if (!calSlug) return;
+
+  // 3) Charge le script d'embed Cal.com UNE SEULE FOIS (idempotent)
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal; let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {}; cal.q = cal.q || [];
+        const s = d.createElement('script');
+        s.src = A; s.async = true; s.defer = true;
+        d.head.appendChild(s);
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === 'string') {
+          cal.ns[namespace] = cal.ns[namespace] || api;
+          p(cal.ns[namespace], ar);
+          p(cal, ['initNamespace', namespace]);
+        } else {
+          p(cal, ar);
+        }
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+  // 4) Namespace & bouton flottant
+  Cal('init', 'booking', { origin: 'https://app.cal.com' });
+
+  Cal.ns['booking']('floatingButton', {
+    calLink: calSlug,
+    config: { layout: 'month_view' }
+  });
+
+  // 5) Thèmes / UI (tu peux ajuster les couleurs)
+  Cal.ns['booking']('ui', {
+    cssVarsPerTheme: {
+      light: { 'cal-brand': '#22c55e' },
+      dark:  { 'cal-brand': '#5865f2' }
+    },
+    hideEventTypeDetails: false,
+    layout: 'month_view'
+  });
 })();
 
 /* ================== 8) Copy to clipboard (contacts) ================== */

@@ -46,7 +46,9 @@ author:
     - "https://www.linkedin.com/in/martial-bodet/"
     - "https://github.com/mbodetdata"
   # Liens pris dans le HTML (contact & Calendly)
-  calendly_url: "https://calendly.com/bmdata/30min"
+#  calendly_url: "https://calendly.com/bmdata/30min"
+  cal_url: "https://cal.com/bmdata/30min"
+
   # Optionnel (si tu veux la meta twitter:creator)
   # twitter: "ton_handle_sans@"
 

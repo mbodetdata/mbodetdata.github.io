@@ -44,10 +44,7 @@
           <a class="chip" href="{{ '/#contact' | relative_url }}" itemprop="url"
              aria-label="Aller à la section Contact">Contact</a>
         </li>
-        <li>
-          <button class="btn cta" data-calendly
-                  aria-label="Réserver un créneau avec Calendly">Réserver un créneau</button>
-        </li>
+        <!-- CTA supprimé : remplacé par le bouton flottant Cal.com -->
       </ul>
     </nav>
 
@@ -94,8 +91,19 @@
              {% if page.url contains '/blog/' %}aria-current="page"{% endif %}
              aria-label="Aller au blog">Blog</a></li>
       <li><a href="{{ '/#contact' | relative_url }}" itemprop="url" aria-label="Aller à la section Contact">Contact</a></li>
-      <li><button class="btn cta block" data-calendly
-                  aria-label="Réserver un créneau avec Calendly">Réserver un créneau</button></li>
+      <!-- CTA mobile supprimé : bouton flottant Cal.com -->
     </ul>
   </nav>
+
+  <!-- Expose le lien RDV au JS (Cal.com prioritaire, fallback Calendly) -->
+  <meta name="cal:link" content="{{ site.author.cal_url | default: site.author.calendly_url }}">
 </header>
+
+<!-- Fallback si JS désactivé -->
+<noscript>
+  {% if site.author.cal_url %}
+    <p class="container"><a class="btn cta" href="{{ site.author.cal_url }}" rel="noopener">Réserver un créneau</a></p>
+  {% elsif site.author.calendly_url %}
+    <p class="container"><a class="btn cta" href="{{ site.author.calendly_url }}" rel="noopener">Réserver un créneau</a></p>
+  {% endif %}
+</noscript>
