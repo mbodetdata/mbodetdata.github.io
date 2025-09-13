@@ -21,6 +21,8 @@
       {% if site.author.sameAs %}
         {% for p in site.author.sameAs %}<link itemprop="sameAs" href="{{ p }}">{% endfor %}
       {% endif %}
+      <meta name="cal:link" content="{{ site.author.cal_url | default: site.author.calendly_url }}">
+
     </a>
 
     <!-- Nav desktop -->

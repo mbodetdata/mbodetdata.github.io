@@ -296,26 +296,24 @@ const Modal = (() => {
 
 /* ================== 7) Cal.com (bouton flottant unifié) ================== */
 (() => {
-  // 1) Récupère la conf (depuis la balise meta)
   const meta = document.querySelector('meta[name="cal:link"]');
   const rawUrl = (meta?.getAttribute('content') || '').trim();
-  if (!rawUrl) return; // rien à faire si pas de lien configuré
 
-  // 2) Convertit n'importe quelle forme en slug "user/event"
+  if (!rawUrl) {
+    console.warn('[Cal.com] Meta "cal:link" absente ou vide. Ajoute <meta name="cal:link" content="{{ site.author.cal_url | default: site.author.calendly_url }}"> dans header.html');
+    return;
+  }
+
   function toCalSlug(input) {
     if (!input) return '';
     const trimmed = input.trim().replace(/(^\/+|\/+$)/g, '');
+    if (/^[^\/]+\/[^\/]+$/.test(trimmed)) return trimmed; // déjà "user/event"
 
-    // Si on a déjà "user/event"
-    if (/^[^\/]+\/[^\/]+$/.test(trimmed)) return trimmed;
-
-    // URL absolue (cal.com OU calendly.com)
     try {
       const u = new URL(trimmed);
       const parts = u.pathname.split('/').filter(Boolean);
       if (parts.length >= 2) return parts.slice(0, 2).join('/');
     } catch {
-      // URL non absolue — tente d'extraire après un domaine connu
       return trimmed
         .replace(/^.*?(calendly\.com|cal\.com)\//i, '')
         .split('/')
@@ -326,9 +324,13 @@ const Modal = (() => {
   }
 
   const calSlug = toCalSlug(rawUrl);
-  if (!calSlug) return;
+  if (!calSlug) {
+    console.warn('[Cal.com] Impossible de déduire le slug à partir de:', rawUrl);
+    return;
+  }
+  console.debug('[Cal.com] Slug détecté =', calSlug);
 
-  // 3) Charge le script d'embed Cal.com UNE SEULE FOIS (idempotent)
+  // Charge l'embed Cal une seule fois
   (function (C, A, L) {
     let p = function (a, ar) { a.q.push(ar); };
     let d = C.document;
@@ -340,6 +342,7 @@ const Modal = (() => {
         s.src = A; s.async = true; s.defer = true;
         d.head.appendChild(s);
         cal.loaded = true;
+        console.debug('[Cal.com] Script embed chargé');
       }
       if (ar[0] === L) {
         const api = function () { p(api, arguments); };
@@ -358,7 +361,7 @@ const Modal = (() => {
     };
   })(window, 'https://app.cal.com/embed/embed.js', 'init');
 
-  // 4) Namespace & bouton flottant
+  // Namespace + bouton flottant
   Cal('init', 'booking', { origin: 'https://app.cal.com' });
 
   Cal.ns['booking']('floatingButton', {
@@ -366,7 +369,6 @@ const Modal = (() => {
     config: { layout: 'month_view' }
   });
 
-  // 5) Thèmes / UI (tu peux ajuster les couleurs)
   Cal.ns['booking']('ui', {
     cssVarsPerTheme: {
       light: { 'cal-brand': '#22c55e' },
@@ -376,6 +378,7 @@ const Modal = (() => {
     layout: 'month_view'
   });
 })();
+
 
 /* ================== 8) Copy to clipboard (contacts) ================== */
 (() => {
