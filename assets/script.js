@@ -424,6 +424,58 @@ const Modal = (() => {
   }
 })();
 
+
+
+    // ---- INLINE (desktop) : lazy init quand visible ----
+    const parentD = document.getElementById('calendly-inline-embed');
+    const mqDesk  = window.matchMedia ? window.matchMedia('(min-width: 992px)') : { matches: true };
+
+    const initInline = () => {
+      if (!parentD) return;
+      // Nettoie le squelette
+      const cleanSkeleton = () => parentD.querySelector('.calendly-skeleton')?.remove();
+
+      // Cal inline
+      Cal.ns['booking']('inline', {
+        elementOrSelector: '#calendly-inline-embed',
+        calLink: calSlug,
+        config: { layout: 'month_view', theme: 'auto' }
+      });
+
+      // Retire le skeleton quand l’iframe/Shadow est en place
+      const obs = new MutationObserver(() => {
+        if (parentD.querySelector('iframe') || parentD.shadowRoot) {
+          cleanSkeleton(); obs.disconnect();
+        }
+      });
+      obs.observe(parentD, { childList: true, subtree: true });
+
+      // Sécurité : force le retrait après 3s si déjà chargé
+      setTimeout(cleanSkeleton, 3000);
+    };
+
+    const bootInlineDesktop = () => {
+      if (!parentD || !mqDesk.matches) return;
+      // Lazy : init quand le bloc devient visible ~35%
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          if (entries.some(e => e.isIntersecting)) {
+            io.disconnect();
+            initInline();
+          }
+        }, { threshold: 0.35 });
+        io.observe(parentD);
+      } else {
+        initInline();
+      }
+    };
+
+    // lance l'inline si on est en desktop
+    bootInlineDesktop();
+
+    // Si on passe mobile -> desktop en live, initialise au besoin
+    mqDesk.addEventListener?.('change', (e) => { if (e.matches) bootInlineDesktop(); });
+
 /* ================== 8) Copy to clipboard (contacts) ================== */
 (() => {
   const rows = $$('.contact-row');
