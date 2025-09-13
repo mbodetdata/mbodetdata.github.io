@@ -88,17 +88,17 @@
 <link rel="alternate" type="application/atom+xml" title="{{ site.title }} — Flux" href="{{ '/atom.xml' | absolute_url }}">
 
 {%- comment -%} =================== JSON-LD : WebSite + SearchAction ===== {%- endcomment -%}
-{%- assign site_url_abs = site.url | default: site.github.url | absolute_url -%}
+{%- assign site_url_abs = site.url | default: site.github.url -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": {{ site.title | jsonify }},
-  "url": {{ site_url_abs | jsonify }},
+  "url": {{ site_url_abs | absolute_url | jsonify }},
   "inLanguage": {{ site.locale | default: "fr-FR" | jsonify }},
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "{{ site_url_abs }}/search?q={query}",
+    "target": "{{ site_url_abs | absolute_url }}/search?q={query}",
     "query-input": "required name=query"
   }
 }
@@ -106,10 +106,11 @@
 
 {%- comment -%} =================== JSON-LD : WebPage / Article ========= {%- endcomment -%}
 {%- assign is_post = false -%}{% if page.layout == 'post' %}{% assign is_post = true %}{% endif -%}
+{%- assign page_type = 'WebPage' -%}{% if is_post %}{% assign page_type = 'Article' %}{% endif -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": {{ is_post | default: false | if: true, '"Article"', '"WebPage"' }},
+  "@type": {{ page_type | jsonify }},
   "name": {{ meta_title | jsonify }},
   "url": {{ page.url | replace:'index.html','' | absolute_url | jsonify }},
   "inLanguage": {{ site.locale | default: "fr-FR" | jsonify }},
@@ -117,14 +118,10 @@
   "isPartOf": {
     "@type": "WebSite",
     "name": {{ site.title | jsonify }},
-    "url": {{ site_url_abs | jsonify }}
-  }
-  {%- if is_post -%}
-  , "datePublished": "{{ page.date | date_to_xmlschema }}"
-  {%- endif -%}
-  {%- if page.last_modified_at -%}
-  , "dateModified": "{{ page.last_modified_at | date_to_xmlschema }}"
-  {%- endif -%}
+    "url": {{ site_url_abs | absolute_url | jsonify }}
+  }{% if is_post %},
+  "datePublished": "{{ page.date | date_to_xmlschema }}"{% endif %}{% if page.last_modified_at %},
+  "dateModified": "{{ page.last_modified_at | date_to_xmlschema }}"{% endif %}
 }
 </script>
 
@@ -137,15 +134,15 @@
       "@type": "Person",
       "name": {{ site.author.name | jsonify }},
       "jobTitle": {{ site.author.job_title | default: "Consultant freelance ETL Talend & Power BI" | jsonify }},
-      "url": {{ site.author.url | default: site.url | default: site.github.url | absolute_url | jsonify }}
-      {%- if site.author.email %}, "email": {{ site.author.email | prepend: "mailto:" | jsonify }}{% endif -%}
-      {%- if site.author.sameAs %}, "sameAs": {{ site.author.sameAs | jsonify }}{% endif -%}
+      "url": {{ site.author.url | default: site.url | default: site.github.url | absolute_url | jsonify }}{% if site.author.email %},
+      "email": {{ site.author.email | prepend: "mailto:" | jsonify }}{% endif %}{% if site.author.sameAs %},
+      "sameAs": {{ site.author.sameAs | jsonify }}{% endif %}
     },
     {
       "@type": "ProfessionalService",
       "name": {{ site.title | jsonify }},
       "description": {{ site.description | jsonify }},
-      "url": {{ site_url_abs | jsonify }},
+      "url": {{ site_url_abs | absolute_url | jsonify }},
       "areaServed": "FR",
       "provider": { "@type": "Person", "name": {{ site.author.name | jsonify }} }
     }
@@ -183,8 +180,8 @@
   "headline": {{ page.title | jsonify }},
   "description": {{ (page.description | default: site.description) | jsonify }},
   "image":[ {{ article_image | absolute_url | jsonify }} ],
-  "datePublished":"{{ page.date | date_to_xmlschema }}",
-  {%- if page.last_modified_at %}"dateModified":"{{ page.last_modified_at | date_to_xmlschema }}",{% endif -%}
+  "datePublished":"{{ page.date | date_to_xmlschema }}"{% if page.last_modified_at %},
+  "dateModified":"{{ page.last_modified_at | date_to_xmlschema }}"{% endif %},
   "author":{"@type":"Person","name": {{ site.author.name | jsonify }}},
   "publisher":{"@type":"Organization","name": {{ site.title | jsonify }}},
   "mainEntityOfPage":{"@type":"WebPage","@id": {{ page.url | replace:'index.html','' | absolute_url | jsonify }} }
