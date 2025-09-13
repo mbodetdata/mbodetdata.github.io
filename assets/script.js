@@ -342,13 +342,48 @@ const Modal = (() => {
       };
     })(window, 'https://app.cal.com/embed/embed.js', 'init');
 
+    // ---- Bouton flottant (brand gradient + texte FR) ----
     Cal('init', 'booking', { origin: 'https://app.cal.com' });
-    Cal.ns['booking']('floatingButton', { calLink: calSlug, config: { layout: 'month_view' } });
+    Cal.ns['booking']('floatingButton', {
+      calLink: calSlug,
+      buttonText: 'Prendre rendez-vous',
+      buttonColor: 'transparent', // on laisse passer notre gradient CSS
+      textColor: '#fff',
+      hideButtonIcon: false,
+      config: { layout: 'month_view' }
+    });
+
+    // UI interne (couleur principale des éléments Cal : garde ta teinte)
     Cal.ns['booking']('ui', {
-      cssVarsPerTheme: { light: { 'cal-brand': '#22c55e' }, dark: { 'cal-brand': '#5865f2' } },
+      cssVarsPerTheme: {
+        light: { 'cal-brand': 'var(--brand)' },
+        dark:  { 'cal-brand': 'var(--brand)' }
+      },
       hideEventTypeDetails: false,
       layout: 'month_view'
     });
+
+    // ---- Skin CSS du bouton flottant (une seule fois) ----
+    const styleId = 'cal-floating-custom';
+    if (!document.getElementById(styleId)) {
+      const st = document.createElement('style');
+      st.id = styleId;
+      st.textContent = `
+        /* Élément injecté par Cal.com */
+        [data-cal-floating-button]{
+          background-image: var(--g-brand) !important; /* ton dégradé bleu -> vert */
+          border: 0 !important;
+          color: #fff !important;
+          box-shadow: 0 12px 26px color-mix(in oklab, var(--brand) 30%, transparent) !important;
+          font-weight: 800 !important;
+        }
+        [data-cal-floating-button]:hover{
+          transform: translateY(-1px);
+          box-shadow: 0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent) !important;
+        }
+      `;
+      document.head.appendChild(st);
+    }
   };
 
   // ⚠️ Attend que la meta (dans le body) soit parsée
@@ -358,7 +393,6 @@ const Modal = (() => {
     boot();
   }
 })();
-
 
 /* ================== 8) Copy to clipboard (contacts) ================== */
 (() => {
