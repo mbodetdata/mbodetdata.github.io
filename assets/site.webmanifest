@@ -1,0 +1,7 @@
+{
+  "name": "BM Data",
+  "short_name": "BM Data",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": []
+}

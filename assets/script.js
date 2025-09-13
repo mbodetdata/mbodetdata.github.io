@@ -296,87 +296,67 @@ const Modal = (() => {
 
 /* ================== 7) Cal.com (bouton flottant unifié) ================== */
 (() => {
-  const meta = document.querySelector('meta[name="cal:link"]');
-  const rawUrl = (meta?.getAttribute('content') || '').trim();
+  const boot = () => {
+    const meta = document.querySelector('meta[name="cal:link"]');
+    const rawUrl = (meta?.getAttribute('content') || '').trim();
+    if (!rawUrl) { console.warn('[Cal.com] Meta cal:link absente ou vide'); return; }
 
-  if (!rawUrl) {
-    console.warn('[Cal.com] Meta "cal:link" absente ou vide. Ajoute <meta name="cal:link" content="{{ site.author.cal_url | default: site.author.calendly_url }}"> dans header.html');
-    return;
-  }
-
-  function toCalSlug(input) {
-    if (!input) return '';
-    const trimmed = input.trim().replace(/(^\/+|\/+$)/g, '');
-    if (/^[^\/]+\/[^\/]+$/.test(trimmed)) return trimmed; // déjà "user/event"
-
-    try {
-      const u = new URL(trimmed);
-      const parts = u.pathname.split('/').filter(Boolean);
-      if (parts.length >= 2) return parts.slice(0, 2).join('/');
-    } catch {
-      return trimmed
-        .replace(/^.*?(calendly\.com|cal\.com)\//i, '')
-        .split('/')
-        .slice(0, 2)
-        .join('/');
-    }
-    return '';
-  }
-
-  const calSlug = toCalSlug(rawUrl);
-  if (!calSlug) {
-    console.warn('[Cal.com] Impossible de déduire le slug à partir de:', rawUrl);
-    return;
-  }
-  console.debug('[Cal.com] Slug détecté =', calSlug);
-
-  // Charge l'embed Cal une seule fois
-  (function (C, A, L) {
-    let p = function (a, ar) { a.q.push(ar); };
-    let d = C.document;
-    C.Cal = C.Cal || function () {
-      let cal = C.Cal; let ar = arguments;
-      if (!cal.loaded) {
-        cal.ns = {}; cal.q = cal.q || [];
-        const s = d.createElement('script');
-        s.src = A; s.async = true; s.defer = true;
-        d.head.appendChild(s);
-        cal.loaded = true;
-        console.debug('[Cal.com] Script embed chargé');
+    const toCalSlug = (input) => {
+      if (!input) return '';
+      const t = input.trim().replace(/(^\/+|\/+$)/g, '');
+      if (/^[^/]+\/[^/]+$/.test(t)) return t; // déjà "user/event"
+      try {
+        const u = new URL(t);
+        const parts = u.pathname.split('/').filter(Boolean);
+        if (parts.length >= 2) return parts.slice(0, 2).join('/');
+      } catch {
+        return t.replace(/^.*?(calendly\.com|cal\.com)\//i, '')
+                .split('/').slice(0, 2).join('/');
       }
-      if (ar[0] === L) {
-        const api = function () { p(api, arguments); };
-        const namespace = ar[1];
-        api.q = api.q || [];
-        if (typeof namespace === 'string') {
-          cal.ns[namespace] = cal.ns[namespace] || api;
-          p(cal.ns[namespace], ar);
-          p(cal, ['initNamespace', namespace]);
-        } else {
-          p(cal, ar);
-        }
-        return;
-      }
-      p(cal, ar);
+      return '';
     };
-  })(window, 'https://app.cal.com/embed/embed.js', 'init');
 
-  // Namespace + bouton flottant
-  Cal('init', 'booking', { origin: 'https://app.cal.com' });
+    const calSlug = toCalSlug(rawUrl);
+    if (!calSlug) { console.warn('[Cal.com] Slug introuvable pour', rawUrl); return; }
+    console.debug('[Cal.com] Slug =', calSlug);
 
-  Cal.ns['booking']('floatingButton', {
-    calLink: calSlug,
-    config: { layout: 'month_view' }
-  });
+    // Charge l'embed Cal une seule fois
+    (function (C, A, L) {
+      let p = (a, ar) => { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal; let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {}; cal.q = cal.q || [];
+          const s = d.createElement('script'); s.src = A; s.async = true; s.defer = true;
+          d.head.appendChild(s); cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const ns = ar[1]; api.q = api.q || [];
+          if (typeof ns === 'string') { cal.ns[ns] = cal.ns[ns] || api; p(cal.ns[ns], ar); p(cal, ['initNamespace', ns]); }
+          else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, 'https://app.cal.com/embed/embed.js', 'init');
 
-  Cal.ns['booking']('ui', {
-    cssVarsPerTheme: {
-      light: { 'cal-brand': '#22c55e' },
-      dark:  { 'cal-brand': '#5865f2' }
-    },
-    hideEventTypeDetails: false,
-    layout: 'month_view'
-  });
+    Cal('init', 'booking', { origin: 'https://app.cal.com' });
+    Cal.ns['booking']('floatingButton', { calLink: calSlug, config: { layout: 'month_view' } });
+    Cal.ns['booking']('ui', {
+      cssVarsPerTheme: { light: { 'cal-brand': '#22c55e' }, dark: { 'cal-brand': '#5865f2' } },
+      hideEventTypeDetails: false,
+      layout: 'month_view'
+    });
+  };
+
+  // ⚠️ Attend que la meta (dans le body) soit parsée
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
+  } else {
+    boot();
+  }
 })();
 
 
