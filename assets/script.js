@@ -295,6 +295,7 @@ const Modal = (() => {
 })();
 
 /* ================== 7) Cal.com (bouton flottant unifié) ================== */
+/* ================== 7) Cal.com (inline + bouton flottant + boutons de page) ================== */
 (() => {
   const boot = () => {
     const meta = document.querySelector('meta[name="cal:link"]');
@@ -304,14 +305,16 @@ const Modal = (() => {
     const toCalSlug = (input) => {
       if (!input) return '';
       const t = input.trim().replace(/(^\/+|\/+$)/g, '');
-      if (/^[^/]+\/[^/]+$/.test(t)) return t; // déjà "user/event"
+      if (/^[^/]+\/[^/]+$/.test(t)) return t.toLowerCase(); // "user/event"
       try {
         const u = new URL(t);
         const parts = u.pathname.split('/').filter(Boolean);
-        if (parts.length >= 2) return parts.slice(0, 2).join('/');
+        if (parts.length >= 2) return (parts[0] + '/' + parts[1]).toLowerCase();
       } catch {
-        return t.replace(/^.*?(calendly\.com|cal\.com)\//i, '')
-                .split('/').slice(0, 2).join('/');
+        // extrait après cal.com|calendly.com/
+        const bits = t.replace(/^.*?(calendly\.com|cal\.com)\//i, '')
+                      .split('/').filter(Boolean);
+        if (bits.length >= 2) return (bits[0] + '/' + bits[1]).toLowerCase();
       }
       return '';
     };
@@ -342,24 +345,20 @@ const Modal = (() => {
       };
     })(window, 'https://app.cal.com/embed/embed.js', 'init');
 
-    // Thème / brand de l'UI Cal
+    // Thème / brand
     Cal('init', 'booking', { origin: 'https://app.cal.com' });
     Cal.ns['booking']('ui', {
-      cssVarsPerTheme: {
-        light: { 'cal-brand': 'var(--brand)' },
-        dark:  { 'cal-brand': 'var(--brand)' }
-      },
+      cssVarsPerTheme: { light: { 'cal-brand': 'var(--brand)' }, dark: { 'cal-brand': 'var(--brand)' } },
       hideEventTypeDetails: false,
       layout: 'month_view'
     });
 
-    // ----- Bouton flottant maison (gradient + FR) -----
+    // ---------- Bouton flottant maison (gradient) ----------
     if (!document.querySelector('.cal-float-cta')) {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'cal-float-cta';
       btn.setAttribute('aria-label', 'Prendre rendez-vous');
-      // Liaison auto par l’embed Cal.com
       btn.setAttribute('data-cal-namespace', 'booking');
       btn.setAttribute('data-cal-link', calSlug);
       btn.innerHTML = `
@@ -373,96 +372,70 @@ const Modal = (() => {
       `;
       document.body.appendChild(btn);
     }
-
-    // Style (gradient & position) injecté une seule fois
-    const styleId = 'cal-float-cta-style';
-    if (!document.getElementById(styleId)) {
+    if (!document.getElementById('cal-float-cta-style')) {
       const st = document.createElement('style');
-      st.id = styleId;
+      st.id = 'cal-float-cta-style';
       st.textContent = `
-        .cal-float-cta{
-          position: fixed; right: 18px; bottom: 18px; z-index: 9999;
-          display: inline-flex; align-items: center; gap: .55rem;
-          padding: .85rem 1.1rem; border-radius: 999px; border: 0;
-          background-image: var(--g-brand); color: #fff; font-weight: 800;
-          box-shadow: 0 12px 26px color-mix(in oklab, var(--brand) 30%, transparent);
-          cursor: pointer; -webkit-tap-highlight-color: transparent;
-        }
-        .cal-float-cta:hover{ transform: translateY(-1px);
-          box-shadow: 0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent); }
-        .cal-float-cta:focus-visible{ outline: none;
-          box-shadow: 0 0 0 3px color-mix(in oklab, #fff 80%, transparent),
-                      0 0 0 6px color-mix(in oklab, var(--brand) 50%, transparent); }
+        .cal-float-cta{ position:fixed; right:18px; bottom:18px; z-index:9999;
+          display:inline-flex; align-items:center; gap:.55rem; padding:.85rem 1.1rem;
+          border-radius:999px; border:0; background-image:var(--g-brand); color:#fff; font-weight:800;
+          box-shadow:0 12px 26px color-mix(in oklab, var(--brand) 30%, transparent); cursor:pointer; }
+        .cal-float-cta:hover{ transform:translateY(-1px);
+          box-shadow:0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent); }
+        .cal-float-cta:focus-visible{ outline:none;
+          box-shadow:0 0 0 3px color-mix(in oklab, #fff 80%, transparent), 0 0 0 6px color-mix(in oklab, var(--brand) 50%, transparent); }
         .cal-float-cta .cal-ico{ display:grid; place-items:center; }
-        @media (max-width: 480px){
-          .cal-float-cta{ right: 12px; bottom: 12px; padding: .75rem .95rem; }
-          .cal-float-cta .cal-label{ font-size: .95rem; }
-        }
+        @media (max-width:480px){ .cal-float-cta{ right:12px; bottom:12px; padding:.75rem .95rem; } }
       `;
       document.head.appendChild(st);
     }
 
-    // Fallback explicite si l’auto-binding ne se fait pas
-    const customBtn = document.querySelector('.cal-float-cta');
-    customBtn?.addEventListener('click', (e) => {
+    // ---------- BOUTONS DE PAGE (contact) ----------
+    // 1) Injecte le slug correct dans tous les boutons marqués booking
+    document.querySelectorAll('[data-cal-namespace="booking"]').forEach(el => {
+      el.setAttribute('data-cal-link', calSlug);
+    });
+    // 2) Fallback clic explicite (si l’auto-binding tarde)
+    const openCal = (e) => {
       e.preventDefault();
       try {
-        // Cal.com détecte data-cal-link automatiquement,
-        // mais on force l’ouverture pour être sûr :
         if (typeof Cal?.ns?.booking === 'function') {
           Cal.ns['booking']('open', { calLink: calSlug });
         }
-      } catch {}
-    }, { passive: true });
-  };
+      } catch (err) {
+        console.warn('[Cal.com] open fallback error', err);
+      }
+    };
+    document.querySelectorAll('[data-cal-namespace="booking"]').forEach(el => {
+      el.addEventListener('click', openCal, { passive: true });
+    });
 
-  // ⚠️ Attend que la meta (dans le body) soit parsée
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot, { once: true });
-  } else {
-    boot();
-  }
-})();
-
-
-
-    // ---- INLINE (desktop) : lazy init quand visible ----
+    // ---------- INLINE (desktop) ----------
     const parentD = document.getElementById('calendly-inline-embed');
     const mqDesk  = window.matchMedia ? window.matchMedia('(min-width: 992px)') : { matches: true };
 
     const initInline = () => {
       if (!parentD) return;
-      // Nettoie le squelette
       const cleanSkeleton = () => parentD.querySelector('.calendly-skeleton')?.remove();
 
-      // Cal inline
       Cal.ns['booking']('inline', {
         elementOrSelector: '#calendly-inline-embed',
         calLink: calSlug,
         config: { layout: 'month_view', theme: 'auto' }
       });
 
-      // Retire le skeleton quand l’iframe/Shadow est en place
       const obs = new MutationObserver(() => {
-        if (parentD.querySelector('iframe') || parentD.shadowRoot) {
-          cleanSkeleton(); obs.disconnect();
-        }
+        if (parentD.querySelector('iframe') || parentD.shadowRoot) { cleanSkeleton(); obs.disconnect(); }
       });
       obs.observe(parentD, { childList: true, subtree: true });
-
-      // Sécurité : force le retrait après 3s si déjà chargé
       setTimeout(cleanSkeleton, 3000);
     };
 
     const bootInlineDesktop = () => {
       if (!parentD || !mqDesk.matches) return;
-      // Lazy : init quand le bloc devient visible ~35%
       if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
-          if (entries.some(e => e.isIntersecting)) {
-            io.disconnect();
-            initInline();
-          }
+          if (entries.some(e => e.isIntersecting)) { io.disconnect(); initInline(); }
         }, { threshold: 0.35 });
         io.observe(parentD);
       } else {
@@ -470,11 +443,16 @@ const Modal = (() => {
       }
     };
 
-    // lance l'inline si on est en desktop
     bootInlineDesktop();
-
-    // Si on passe mobile -> desktop en live, initialise au besoin
     mqDesk.addEventListener?.('change', (e) => { if (e.matches) bootInlineDesktop(); });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
+  } else {
+    boot();
+  }
+})();
 
 /* ================== 8) Copy to clipboard (contacts) ================== */
 (() => {
