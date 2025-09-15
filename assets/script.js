@@ -118,7 +118,6 @@ const Modal = (() => {
   };
   const bind  = (modal) => {
     if (!modal) return;
-    // clic overlay ET clic en dehors (sur le conteneur .modal)
     on(modal, 'click', (e) => {
       if (e.target === modal || e.target.classList?.contains('modal__overlay') || e.target.dataset.close === 'true') close(modal);
     });
@@ -454,17 +453,43 @@ const Modal = (() => {
   const stackEl    = document.getElementById('project-stack');
   const linkEl     = document.getElementById('project-link');
 
-  const safeParse = (str, fallback=[]) => { try { return JSON.parse(str); } catch { return fallback; } };
-  const renderList = (ul, arr) => { ul.innerHTML = ''; arr.forEach(t => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); }); };
+  // --- conversions robustes ---
+  const toArray = (value) => {
+    if (Array.isArray(value)) return value;
+    if (value == null) return [];
+    if (typeof value === 'string') {
+      const s = value.trim();
+      if (!s || s.toLowerCase() === 'null' || s.toLowerCase() === 'undefined') return [];
+      if (s.startsWith('[') || s.startsWith('{')) {
+        try {
+          const parsed = JSON.parse(s);
+          if (Array.isArray(parsed)) return parsed;
+          if (parsed && typeof parsed === 'object') return Object.values(parsed);
+        } catch {}
+      }
+      const SEP = ['•', '|', ';'].find(sep => s.includes(sep));
+      if (SEP) return s.split(SEP).map(t => t.trim()).filter(Boolean);
+      return [s];
+    }
+    try { return JSON.parse(String(value)); } catch { return []; }
+  };
+  const renderList = (ul, data) => {
+    ul.innerHTML = '';
+    toArray(data).forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      ul.appendChild(li);
+    });
+  };
 
   function fill(card){
     titleEl.textContent    = card.dataset.title || '';
     clientEl.textContent   = card.dataset.client ? `Client : ${card.dataset.client}` : '';
     abstractEl.textContent = card.dataset.abstract || '';
     ctxEl.textContent      = card.dataset.contexte || '';
-    renderList(missionsEl, safeParse(card.dataset.missions));
-    renderList(benefEl,    safeParse(card.dataset.benefices));
-    renderList(stackEl,    safeParse(card.dataset.stack));
+    renderList(missionsEl,  card.dataset.missions);
+    renderList(benefEl,     card.dataset.benefices);
+    renderList(stackEl,     card.dataset.stack);
     if (card.dataset.link) { linkEl.href = card.dataset.link; linkEl.setAttribute('aria-label', `Ouvrir ${card.dataset.title}`); }
     else { linkEl.removeAttribute('href'); }
   }

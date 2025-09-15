@@ -20,12 +20,12 @@
                data-index="{{ idx }}"
                data-title="{{ projet.title | escape }}"
                data-client="{{ projet.client | escape }}"
-               data-abstract="{{ projet['text-short'] | escape }}"
-               data-link="{{ projet.link | escape }}"
+               data-abstract="{{ projet['text-short'] | default: projet.text | escape }}"
+               data-link="{{ projet.link | relative_url }}"
                data-contexte="{{ projet.details.contexte | escape }}"
-               data-missions='{{ projet.details.missions | jsonify | escape }}'
-               data-benefices='{{ projet.details.benefices | jsonify | escape }}'
-               data-stack='{{ projet.stack | jsonify | escape }}'>
+               data-missions='{{ projet.details.missions | jsonify }}'
+               data-benefices='{{ projet.details.benefices | jsonify }}'
+               data-stack='{{ projet.details.stack | jsonify }}'>
 
         <h3 class="card-title">{{ projet.title }}</h3>
         <p class="lead" id="proj-desc-{{ idx }}">{{ projet["text-short"] }}</p>
@@ -35,7 +35,7 @@
                   aria-label="Voir les détails du projet {{ projet.title | escape }}">
             Détails rapides
           </button>
-          <a class="btn" href="{{ projet.link }}">Voir le projet</a>
+          <a class="btn" href="{{ projet.link | relative_url }}">Voir le projet</a>
         </div>
       </article>
       {% endfor %}
