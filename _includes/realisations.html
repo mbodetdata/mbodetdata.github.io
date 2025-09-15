@@ -1,0 +1,45 @@
+<!-- REALISATIONS -->
+<section id="realisation" class="section" aria-labelledby="work-title">
+  <h2 id="work-title">Réalisations récentes</h2>
+
+  <!-- ItemList de projets (CreativeWork) -->
+  <div class="grid cols-2"
+       role="list"
+       itemscope itemtype="https://schema.org/ItemList"
+       aria-label="Sélection de réalisations">
+    <meta itemprop="name" content="Réalisations {{ site.author.name }}">
+    <meta itemprop="itemListOrder" content="https://schema.org/ItemListOrderAscending">
+
+    {% for projet in site.data.projets %}
+      {% assign idx = forloop.index %}
+      <article class="card project-card"
+               role="listitem"
+               tabindex="0"
+               aria-describedby="proj-desc-{{ idx }}"
+               itemscope itemtype="https://schema.org/CreativeWork"
+               itemprop="itemListElement"
+               data-title="{{ projet.title | escape }}"
+               data-client="{{ projet.client | escape }}"
+               data-abstract="{{ projet['text-short'] | escape }}"
+               data-link="{{ projet.link | escape }}"
+               data-contexte="{{ projet.details.contexte | escape }}"
+               data-missions='{{ projet.details.missions | jsonify | escape }}'
+               data-benefices='{{ projet.details.benefices | jsonify | escape }}'
+               data-stack='{{ projet.stack | jsonify | escape }}'>
+        <meta itemprop="position" content="{{ idx }}">
+        <h3 class="card-title" itemprop="name">{{ projet.title }}</h3>
+        <p class="lead" id="proj-desc-{{ idx }}" itemprop="abstract">{{ projet["text-short"] }}</p>
+
+        <div class="card-actions">
+          <button class="btn btn--ghost open-project"
+                  type="button"
+                  aria-label="Voir les détails du projet {{ projet.title | escape }}">
+            Détails rapides
+          </button>
+          <a class="btn" href="{{ projet.link }}" itemprop="url">Voir le projet</a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+<!-- END REALISATIONS -->

@@ -1,15 +1,15 @@
 - title: "Automatisation & Orchestration"
-  text: "Évitez les tâches manuelles chronophages. Je conçois des orchestrations fiables : planification des traitements, enchaînement des jobs, gestion des dépendances et notifications en cas d’incident."
-  badges: ["CI/CD", "Scheduling", "Monitoring", "Alerte & suivi"]
+  text: "Libérez vos équipes des tâches répétitives. J’automatise et orchestre vos processus pour garantir fluidité, fiabilité et réactivité, avec alertes en temps réel en cas d’incident."
+  badges: ["CI/CD", "Scheduling", "Monitoring"]
 
-- title: "Migration de systèmes"
-  text: "Vous souhaitez changer d’ERP, de site web ou de solution métier ? Une migration réussie, c’est préserver l’historique, sécuriser vos données et mettre en valeur ce qui a du sens pour votre entreprise, sans perdre la moindre information."
-  badges: ["Migration", "Historique", "ETL/ESB", "Mise en conformité"]
+- title: "Migration & Modernisation"
+  text: "Sécurisez vos transitions. J’assure la continuité de vos données et la conformité de vos systèmes lors de changements d’ERP, d’outils métiers ou de plateformes."
+  badges: ["Migration", "Sécurité", "Conformité"]
 
-- title: "Interconnexion d’applications"
-  text: "Marre d’avoir des doublons de données dans trois logiciels différents ? Faites-les communiquer entre eux ! Une donnée unique répercutée sur l’ensemble de votre système, c’est l’assurance d’un référentiel propre et sans erreur."
-  badges: ["Interconnexion", "Valorisation", "API/Connecteurs", "Interopérabilité"]
+- title: "Intégration & Interopérabilité"
+  text: "Un seul système, une vérité unique. J’unifie vos applications pour éliminer les doublons, fiabiliser vos référentiels et valoriser vos données à travers toute l’organisation."
+  badges: ["API", "Connecteurs", "Interopérabilité"]
 
-- title: "Qualité & Performance des données"
-  text: "Vos dashboards mettent trop de temps à se charger ? Vos équipes doutent parfois de la fiabilité des chiffres ? Un suivi de la qualité et des performances assure des données justes, exploitables et disponibles au bon moment."
-  badges: ["Observabilité", "Tests automatisés", "SLAs", "Optimisation"]
+- title: "Data Quality & Performance"
+  text: "Des données fiables, des décisions rapides. J’améliore la qualité et la performance de vos flux et dashboards pour garantir confiance et efficacité opérationnelle."
+  badges: ["Qualité", "Observabilité", "Optimisation"]

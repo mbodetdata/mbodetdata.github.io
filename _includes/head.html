@@ -189,6 +189,61 @@
 </script>
 {%- endif -%}
 
+{%- comment -%} ======= JSON-LD : ItemList Services + Réalisations (HOME uniquement) ======= {%- endcomment -%}
+{% if page.url == "/" or page.permalink == "/" %}
+{%- assign total_services = site.data.services | size -%}
+{%- assign total_projets  = site.data.projets  | size -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      "name": "Services de {{ site.author.name }}",
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "numberOfItems": {{ total_services | default: 0 }},
+      "itemListElement": [
+        {% for s in site.data.services %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.index }},
+          "item": {
+            "@type": "Service",
+            "name": {{ s.title | jsonify }},
+            "description": {{ s.text  | jsonify }}{% if s.badges %},
+            "keywords": {{ s.badges | jsonify }}{% endif %}
+          }
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Réalisations de {{ site.author.name }}",
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "numberOfItems": {{ total_projets | default: 0 }},
+      "itemListElement": [
+        {% for p in site.data.projets %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.index }},
+          "item": {
+            "@type": "CreativeWork",
+            "name": {{ p.title | jsonify }},
+            "abstract": {{ p["text-short"] | jsonify }}{% if p.details and p.details.contexte %},
+            "about": {{ p.details.contexte | jsonify }}{% endif %}{% if p.stack %},
+            "keywords": {{ p.stack | jsonify }}{% endif %}{% if p.link %},
+            "url": {{ p.link | jsonify }}{% endif %}
+          }
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+  ]
+}
+</script>
+{% endif %}
+
 {%- comment -%} =================== ANALYTICS (GoatCounter) =============== {%- endcomment -%}
 <!-- GoatCounter Analytics -->
 <script data-goatcounter="https://bmdata.goatcounter.com/count"
