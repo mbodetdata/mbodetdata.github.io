@@ -586,29 +586,25 @@ const Modal = (() => {
   const focusable = () => modal.querySelectorAll('a,button,[tabindex]:not([tabindex="-1"])');
   let lastActive = null;
 
+  function safeParse(str, fallback) { try { return JSON.parse(str); } catch { return fallback; } }
+  function renderList(ul, arr) {
+    ul.innerHTML = '';
+    arr.forEach(item => { const li = document.createElement('li'); li.textContent = item; ul.appendChild(li); });
+  }
+
   function openModal(card) {
-    // Remplissage
     titleEl.textContent = card.dataset.title || '';
     clientEl.textContent = card.dataset.client ? `Client : ${card.dataset.client}` : '';
     abstractEl.textContent = card.dataset.abstract || '';
     ctxEl.textContent = card.dataset.contexte || '';
-
-    const missions = safeParse(card.dataset.missions, []);
-    const benefices = safeParse(card.dataset.benefices, []);
-    const stack = safeParse(card.dataset.stack, []);
-
-    renderList(missionsEl, missions);
-    renderList(beneficesEl, benefices);
-    renderList(stackEl, stack);
-
+    renderList(missionsEl, safeParse(card.dataset.missions, []));
+    renderList(beneficesEl, safeParse(card.dataset.benefices, []));
+    renderList(stackEl, safeParse(card.dataset.stack, []));
     if (card.dataset.link) {
       linkEl.href = card.dataset.link;
       linkEl.setAttribute('aria-label', `Ouvrir la page ${card.dataset.title}`);
-    } else {
-      linkEl.removeAttribute('href');
-    }
+    } else { linkEl.removeAttribute('href'); }
 
-    // Affichage + focus
     lastActive = document.activeElement;
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
@@ -621,59 +617,25 @@ const Modal = (() => {
     if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
   }
 
-  function renderList(ul, arr) {
-    ul.innerHTML = '';
-    arr.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      ul.appendChild(li);
-    });
-  }
-
-  function safeParse(str, fallback) {
-    try { return JSON.parse(str); } catch { return fallback; }
-  }
-
-  // Ouverture : clic sur bouton ou sur carte (Enter/Space inclus)
+  // Ouverture depuis les cartes
   document.querySelectorAll('.project-card').forEach(card => {
-    const openBtn = card.querySelector('.open-project');
     const open = () => openModal(card);
-    if (openBtn) openBtn.addEventListener('click', open);
-
-    card.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        open();
-      }
-    });
-    // Option : clic sur la carte (hors bouton et lien)
-    card.addEventListener('click', e => {
-      const t = e.target;
-      if (t.closest('.open-project')) return;
-      if (t.closest('a')) return;
-      open();
-    });
+    card.querySelector('.open-project')?.addEventListener('click', open);
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }});
+    card.addEventListener('click', e => { if (!e.target.closest('a, .open-project')) open(); });
   });
 
   // Fermeture
   closeEls.forEach(el => el.addEventListener('click', closeModal));
-  modal.addEventListener('click', e => {
-    if (e.target.dataset.close === 'true') closeModal();
-  });
-  document.addEventListener('keydown', e => {
-    if (!modal.hidden && e.key === 'Escape') closeModal();
-  });
+  modal.addEventListener('click', e => { if (e.target.dataset.close === 'true') closeModal(); });
+  document.addEventListener('keydown', e => { if (!modal.hidden && e.key === 'Escape') closeModal(); });
 
-  // Focus trap simple
+  // Focus trap
   modal.addEventListener('keydown', e => {
     if (e.key !== 'Tab') return;
-    const f = Array.from(focusable());
-    if (!f.length) return;
+    const f = Array.from(focusable()); if (!f.length) return;
     const first = f[0], last = f[f.length - 1];
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault(); last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault(); first.focus();
-    }
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 })();

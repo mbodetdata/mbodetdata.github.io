@@ -63,7 +63,6 @@ permalink: /
 
 
 <!-- Modal Calendly -->
-<!-->
 <div id="calendly-modal" class="modal" hidden>
   <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="calendlyTitle">
     <button class="modal__close" aria-label="Fermer">×</button>
@@ -80,7 +79,6 @@ permalink: /
     </div>
   </div>
 </div>
--->
 
 <!-- JSON-LD : ItemList Services + Réalisations (dynamique depuis _data) -->
 {%- assign total_services = site.data.services | size -%}

@@ -480,3 +480,35 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; }
 }
 
 @keyframes pop { from { transform: translateY(8px) scale(.98); opacity:0 } to { transform:none; opacity:1 } }
+
+
+/* Grille cartes */
+.grid.cols-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(12px, 2vw, 20px);
+}
+
+/* Cartes */
+.card {
+  border-radius: 16px;
+  background: var(--surface, #0f1424);
+  border: 1px solid var(--border, rgba(255,255,255,.06));
+  padding: clamp(16px, 2vw, 24px);
+}
+
+/* Modal (si pas déjà présent) */
+.modal[hidden]{display:none;}
+.modal{position:fixed; inset:0; z-index:1000;}
+.modal__overlay{position:absolute; inset:0; background:rgba(0,0,0,.5); backdrop-filter:blur(2px);}
+.modal__dialog{
+  position:relative; margin:5vh auto; width:min(92vw, 720px);
+  background:var(--surface, #111); color:var(--text, #f2f2f2);
+  border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.25);
+  padding:clamp(16px, 2.5vw, 28px); animation:pop .18s ease-out;
+}
+.modal__close{position:absolute; top:8px; right:8px; width:40px; height:40px;
+  border:none; background:transparent; font-size:24px; cursor:pointer;}
+.stack-list{display:flex; flex-wrap:wrap; gap:.5rem; list-style:none; padding:0;}
+.stack-list li{padding:.25rem .5rem; border-radius:999px; background:#222; font-size:.9rem;}
+@keyframes pop{from{transform:translateY(8px) scale(.98); opacity:0} to{transform:none; opacity:1}}
