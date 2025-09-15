@@ -264,6 +264,8 @@ const Modal = (() => {
     const calSlug = toCalSlug(rawUrl);
     if (!calSlug) return;
 
+    // ------------------------------------------------------------------
+    // Chargement Cal.com (inchangé)
     (function (C, A, L) {
       let p = (a, ar) => { a.q.push(ar); };
       let d = C.document;
@@ -292,6 +294,8 @@ const Modal = (() => {
       layout: 'month_view'
     });
 
+    // ------------------------------------------------------------------
+    // Bouton flottant (conservé)
     if (!document.querySelector('.cal-float-cta')) {
       const btn = document.createElement('button');
       btn.type = 'button';
@@ -325,17 +329,32 @@ const Modal = (() => {
       document.head.appendChild(st);
     }
 
+    // ------------------------------------------------------------------
+    // Clics sur les éléments marqués data-cal-namespace="booking"
     document.querySelectorAll('[data-cal-namespace="booking"]').forEach(el => {
       el.setAttribute('data-cal-link', calSlug);
       el.addEventListener('click', (e) => {
         e.preventDefault();
-        try { if (typeof Cal?.ns?.booking === 'function') Cal.ns['booking']('open', { calLink: calSlug }); }
-        catch {}
+        try { if (typeof Cal?.ns?.booking === 'function') Cal.ns['booking']('open', { calLink: calSlug }); } catch {}
       }, { passive: true });
     });
 
+    // ------------------------------------------------------------------
+    // Inline embed (desktop only) + MASQUER le gros bouton sous le calendrier sur desktop
     const parentD = document.getElementById('calendly-inline-embed');
     const mqDesk  = window.matchMedia ? window.matchMedia('(min-width: 992px)') : { matches: true };
+
+    // masque/affiche la rangée CTA centrée selon la largeur
+    const actionsRow = document.querySelector('.contact-v2 .actions--center');
+    const toggleInlineCTAVisibility = () => {
+      if (!actionsRow) return;
+      // sur desktop : on cache la rangée CTA (le “gros” bouton sous le calendrier)
+      actionsRow.style.display = mqDesk.matches ? 'none' : '';
+      actionsRow.setAttribute('aria-hidden', mqDesk.matches ? 'true' : 'false');
+    };
+    toggleInlineCTAVisibility();
+    mqDesk.addEventListener?.('change', toggleInlineCTAVisibility);
+
     const initInline = () => {
       if (!parentD) return;
       const cleanSkeleton = () => parentD.querySelector('.calendly-skeleton')?.remove();
@@ -346,13 +365,17 @@ const Modal = (() => {
       obs.observe(parentD, { childList: true, subtree: true });
       setTimeout(cleanSkeleton, 3000);
     };
+
     const bootInlineDesktop = () => {
       if (!parentD || !mqDesk.matches) return;
       if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries) => { if (entries.some(e => e.isIntersecting)) { io.disconnect(); initInline(); } }, { threshold: 0.35 });
+        const io = new IntersectionObserver((entries) => {
+          if (entries.some(e => e.isIntersecting)) { io.disconnect(); initInline(); }
+        }, { threshold: 0.35 });
         io.observe(parentD);
       } else initInline();
     };
+
     bootInlineDesktop();
     mqDesk.addEventListener?.('change', (e) => { if (e.matches) bootInlineDesktop(); });
   };
@@ -360,6 +383,7 @@ const Modal = (() => {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
   else boot();
 })();
+
 
 /* ================== 8) Copy to clipboard (contacts) ================== */
 (() => {
