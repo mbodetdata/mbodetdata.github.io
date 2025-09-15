@@ -589,3 +589,31 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; }
     box-shadow: 0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent);
   }
 }
+
+
+/* Centrage & respiration du bouton CTA dans la section contact */
+.contact-v2 .actions--center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 1rem; /* un peu plus d’air autour */
+}
+
+.contact-v2 .btn.cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.9rem 1.6rem; /* plus large = meilleur équilibre visuel */
+  min-width: clamp(200px, 60%, 320px); /* largeur responsive */
+  border-radius: 999px;
+  background: var(--g-brand) !important; /* forcer le dégradé bleu→vert */
+  color: #fff !important;
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.contact-v2 .btn.cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent);
+}
