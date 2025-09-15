@@ -1,23 +1,23 @@
-<!-- REALISATIONS -->
+<!-- REALISATIONS (Carousel) -->
 <section id="realisation" class="section" aria-labelledby="work-title">
   <h2 id="work-title">Réalisations récentes</h2>
 
-  <!-- ItemList de projets (CreativeWork) -->
-  <div class="grid cols-2"
-       role="list"
-       itemscope itemtype="https://schema.org/ItemList"
-       aria-label="Sélection de réalisations">
-    <meta itemprop="name" content="Réalisations {{ site.author.name }}">
-    <meta itemprop="itemListOrder" content="https://schema.org/ItemListOrderAscending">
+  {%- comment -%} Tri par date si présent {%- endcomment -%}
+  {% assign has_dates = false %}
+  {% for p in site.data.projets %}{% if p.date %}{% assign has_dates = true %}{% break %}{% endif %}{% endfor %}
+  {% if has_dates %}{% assign projets_sorted = site.data.projets | sort: "date" | reverse %}{% else %}{% assign projets_sorted = site.data.projets %}{% endif %}
 
-    {% for projet in site.data.projets %}
-      {% assign idx = forloop.index %}
-      <article class="card project-card"
-               role="listitem"
+  <div class="carousel" data-carousel="realisations" aria-roledescription="carousel">
+    <button class="carousel__btn prev" type="button" aria-label="Défiler vers la gauche" disabled>‹</button>
+
+    <div class="carousel__track" role="listbox" aria-label="Liste de réalisations">
+      {% for projet in projets_sorted %}
+      {% assign idx = forloop.index0 %}
+      <article class="card project-card carousel__slide"
+               role="option"
                tabindex="0"
                aria-describedby="proj-desc-{{ idx }}"
-               itemscope itemtype="https://schema.org/CreativeWork"
-               itemprop="itemListElement"
+               data-index="{{ idx }}"
                data-title="{{ projet.title | escape }}"
                data-client="{{ projet.client | escape }}"
                data-abstract="{{ projet['text-short'] | escape }}"
@@ -26,20 +26,24 @@
                data-missions='{{ projet.details.missions | jsonify | escape }}'
                data-benefices='{{ projet.details.benefices | jsonify | escape }}'
                data-stack='{{ projet.stack | jsonify | escape }}'>
-        <meta itemprop="position" content="{{ idx }}">
-        <h3 class="card-title" itemprop="name">{{ projet.title }}</h3>
-        <p class="lead" id="proj-desc-{{ idx }}" itemprop="abstract">{{ projet["text-short"] }}</p>
+
+        <h3 class="card-title">{{ projet.title }}</h3>
+        <p class="lead" id="proj-desc-{{ idx }}">{{ projet["text-short"] }}</p>
 
         <div class="card-actions">
-          <button class="btn btn--ghost open-project"
-                  type="button"
+          <button class="btn btn--ghost open-project" type="button"
                   aria-label="Voir les détails du projet {{ projet.title | escape }}">
             Détails rapides
           </button>
-          <a class="btn" href="{{ projet.link }}" itemprop="url">Voir le projet</a>
+          <a class="btn" href="{{ projet.link }}">Voir le projet</a>
         </div>
       </article>
-    {% endfor %}
+      {% endfor %}
+    </div>
+
+    <button class="carousel__btn next" type="button" aria-label="Défiler vers la droite">›</button>
+
+    <!-- Puces -->
+    <div class="carousel__dots" aria-label="Sélecteur de slides"></div>
   </div>
 </section>
-<!-- END REALISATIONS -->

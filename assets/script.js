@@ -639,3 +639,148 @@ const Modal = (() => {
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 })();
+
+
+// ==== Carousel basique (scroll-snap + flèches) ====
+(function () {
+  const carousels = document.querySelectorAll('[data-carousel]');
+  if (!carousels.length) return;
+
+  carousels.forEach(root => {
+    const track = root.querySelector('.carousel__track');
+    const prev  = root.querySelector('.carousel__btn.prev');
+    const next  = root.querySelector('.carousel__btn.next');
+
+    // calcule la largeur d’une "slide" (première carte)
+    const slide = track.querySelector('.carousel__slide');
+    if (!slide) return;
+
+    function getStep() {
+      // On scroll d’un "viewport" de cartes
+      return track.clientWidth * 0.95; // léger chevauchement pour confort
+    }
+
+    function updateArrows() {
+      const maxScroll = track.scrollWidth - track.clientWidth - 1;
+      prev.disabled = track.scrollLeft <= 0;
+      next.disabled = track.scrollLeft >= maxScroll;
+    }
+
+    function scrollByDir(dir) {
+      track.scrollBy({ left: dir * getStep(), behavior: 'smooth' });
+      // mise à jour après l’anim
+      setTimeout(updateArrows, 350);
+    }
+
+    prev.addEventListener('click', () => scrollByDir(-1));
+    next.addEventListener('click', () => scrollByDir(1));
+    track.addEventListener('scroll', updateArrows);
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
+
+    // Accessibilité clavier (flèches)
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); scrollByDir(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); scrollByDir(-1); }
+    });
+  });
+})();
+
+
+// ==== Carousel (scroll-snap + flèches + puces + autoplay) ====
+(function () {
+  const carousels = document.querySelectorAll('[data-carousel]');
+  if (!carousels.length) return;
+
+  carousels.forEach(root => {
+    const track = root.querySelector('.carousel__track');
+    const slides = Array.from(track.querySelectorAll('.carousel__slide'));
+    const prev  = root.querySelector('.carousel__btn.prev');
+    const next  = root.querySelector('.carousel__btn.next');
+    const dotsWrap = root.querySelector('.carousel__dots');
+    if (!slides.length) return;
+
+    // ===== Helpers dimensions / offsets
+    let offsets = [];
+    function computeOffsets() {
+      // position x de chaque carte par rapport au track
+      offsets = slides.map(s => s.offsetLeft);
+    }
+
+    function closestIndex() {
+      const x = track.scrollLeft;
+      let best = 0, bestDist = Infinity;
+      offsets.forEach((off, i) => {
+        const d = Math.abs(off - x);
+        if (d < bestDist) { best = i; bestDist = d; }
+      });
+      return best;
+    }
+
+    function scrollToIndex(i, smooth = true) {
+      const clamped = Math.max(0, Math.min(i, slides.length - 1));
+      track.scrollTo({ left: offsets[clamped], behavior: smooth ? 'smooth' : 'auto' });
+      setTimeout(updateUI, smooth ? 350 : 0);
+      restartAutoplay();
+    }
+
+    function updateArrows(i = closestIndex()) {
+      const atStart = i === 0;
+      const atEnd   = i >= slides.length - 1;
+      prev.disabled = atStart;
+      next.disabled = atEnd;
+    }
+
+    // ===== Dots
+    const dots = slides.map((_, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'carousel__dot';
+      b.setAttribute('aria-label', `Aller à la réalisation ${i + 1}`);
+      b.addEventListener('click', () => scrollToIndex(i));
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    function updateDots(i = closestIndex()) {
+      dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+    }
+
+    function updateUI() {
+      const i = closestIndex();
+      updateArrows(i);
+      updateDots(i);
+    }
+
+    // ===== Autoplay
+    const AUTOPLAY_MS = 5000;   // 5s
+    let timer = null;
+    function startAutoplay() {
+      if (timer) return;
+      timer = setInterval(() => {
+        let i = closestIndex() + 1;
+        if (i >= slides.length) i = 0; // boucle
+        scrollToIndex(i);
+      }, AUTOPLAY_MS);
+    }
+    function stopAutoplay() { clearInterval(timer); timer = null; }
+    function restartAutoplay() { stopAutoplay(); startAutoplay(); }
+
+    // Pause sur hover/focus (accessibilité)
+    root.addEventListener('pointerenter', stopAutoplay);
+    root.addEventListener('pointerleave', startAutoplay);
+    root.addEventListener('focusin', stopAutoplay);
+    root.addEventListener('focusout', startAutoplay);
+
+    // ===== Events
+    prev.addEventListener('click', () => scrollToIndex(closestIndex() - 1));
+    next.addEventListener('click', () => scrollToIndex(closestIndex() + 1));
+    track.addEventListener('scroll', () => { window.requestAnimationFrame(updateUI); });
+    window.addEventListener('resize', () => { computeOffsets(); updateUI(); });
+
+    // ===== Init
+    computeOffsets();
+    updateUI();
+    startAutoplay();
+  });
+})();
