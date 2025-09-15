@@ -1,6 +1,175 @@
-- title: "Migration ETL Talend → Cloud"
-  text: "–30% coûts infra, +40% débit. Orchestrations, alertes et reprise sur incident."
-  link: "/portfolio.html"
-- title: "Power BI • Finance Ops"
-  text: "Modèle DAX gouverné, RLS multi-pays, temps de chargement < 3s, refresh incrémental."
-  link: "/portfolio.html"
+- title: "UBA • Data & Automatisation (Azure)"
+  client: "UBA"
+  text-short: "Base Azure centralisée • Automatisations financières • Dashboard KPI"
+  link: "/portfolio/uba-data-automation.html"
+  details:
+    contexte: "Centralisation des données et automatisation des processus financiers."
+    missions:
+      - "DB Azure interconnectée aux apps internes"
+      - "Talend pour répartitions, suivi de caisse, virements"
+      - "Dashboard temps réel des indicateurs clés"
+    benefices:
+      - "Moins de tâches manuelles et d’erreurs"
+      - "Gain de temps sur les processus"
+      - "Pilotage fiabilisé des opérations"
+    stack: ["Talend", "Microsoft Azure", "Power BI"]
+
+- title: "EDI • WMS Reflex"
+  client: "ACSEP"
+  text-short: "Maintenance & optimisation EDI • Réduction des incidents"
+  link: "/portfolio/edi-wms-reflex.html"
+  details:
+    contexte: "Flux EDI entre Reflex et SI clients (WMS ↔ ERP)."
+    missions:
+      - "Debug & résolution d’anomalies"
+      - "Évolutions fonctionnelles/techniques"
+      - "Amélioration continue des performances"
+    benefices:
+      - "Stabilité accrue des échanges"
+      - "Moins d’interruptions de service"
+      - "Adaptation rapide aux besoins métier"
+    stack: ["Talend", "EDI", "Reflex WMS"]
+
+- title: "EDI • TMS OneWorld"
+  client: "ACSEP / OneWorld"
+  text-short: "Mappings EDI • Intégration & envoi automatisé"
+  link: "/portfolio/edi-tms-oneworld.html"
+  details:
+    contexte: "Connexion des SI clients au TMS OneWorld (ACSEP)."
+    missions:
+      - "Développement de mappings selon specs"
+      - "Intégration/transformations avec Talend"
+      - "Génération & envoi automatisé des fichiers"
+    benefices:
+      - "Échanges transport automatisés"
+      - "Moins de saisies manuelles"
+      - "Process logistiques fiabilisés"
+    stack: ["Talend", "API REST", "MariaDB"]
+
+- title: "EDI • WMS IzyPro (multi-clients)"
+  client: "ACSEP"
+  text-short: "Interconnexions EDI • Logs, archivage, alertes"
+  link: "/portfolio/edi-wms-izypro.html"
+  details:
+    contexte: "Mise en place de flux EDI entre IzyPro et SI clients."
+    missions:
+      - "Ateliers de mapping & recueil des besoins"
+      - "Intégration fichiers in/out & traçabilité"
+      - "Alertes automatiques & supervision"
+    benefices:
+      - "Diminution des erreurs manuelles"
+      - "Réactivité opérationnelle renforcée"
+      - "Interopérabilité multi-clients (Samsung, Saveurs & Vie, Moulin Roty, SNEF, Sogeval, Lustucru)"
+    stack: ["Talend", "IzyPro", "API REST", "MariaDB", "Robotask"]
+
+- title: "Reporting Change • iTop (interne)"
+  client: "ACSEP"
+  text-short: "Pilotage SLA & backlog • Rapport Power BI"
+  link: "/portfolio/reporting-change-itop.html"
+  details:
+    contexte: "Suivi global des changes à partir d’iTop."
+    missions:
+      - "Modèle & visuels Power BI"
+      - "Analyses par temps, agent, type"
+      - "KPI de retards & SLA"
+    benefices:
+      - "Visibilité managériale améliorée"
+      - "Identification rapide des blocages"
+      - "Performance d’équipe optimisée"
+    stack: ["Power BI", "iTop"]
+
+- title: "Étude & migration • Talend OSS → Talaxie (interne)"
+  client: "ACSEP"
+  text-short: "Cadrage outillage • Architecture cible • Continuité des traitements"
+  link: "/portfolio/migration-talend-oss-talaxie.html"
+  details:
+    contexte: "Fin de support Talend Open Source : choix de remplacement."
+    missions:
+      - "Étude de marché & comparatif solutions"
+      - "Analyse des flux existants"
+      - "Reco migration vers Talaxie + archi cible"
+    benefices:
+      - "Risque d’obsolescence réduit"
+      - "Transition maîtrisée sans rupture"
+      - "Durabilité de la plateforme d’intégration"
+    stack: ["Talend", "Talaxie", "Tests de non-régression"]
+
+- title: "DashboardTV • Opérations temps réel (interne)"
+  client: "ACSEP"
+  text-short: "iTop • ServiceNow • Avaya • Diffusion OptiSign"
+  link: "/portfolio/dashboardtv-operations.html"
+  details:
+    contexte: "Vision temps réel des tickets et appels manqués."
+    missions:
+      - "Collecte multi-sources & historisation"
+      - "Croisement via Talend"
+      - "Reporting Power BI + affichage écrans"
+    benefices:
+      - "Réactivité des équipes accrue"
+      - "Transparence opérationnelle"
+      - "Suivi consolidé et temps réel"
+    stack: ["Talend", "MariaDB", "iTop", "ServiceNow", "Avaya", "Power BI", "OptiSign"]
+
+- title: "Frère-Loup • Migration e-commerce"
+  client: "Frère-Loup"
+  text-short: "Extraction/Transformation • API PrestaShop • Transition fluide"
+  link: "/portfolio/frele-loup-migration-prestashop.html"
+  details:
+    contexte: "Passage vers un nouveau site PrestaShop."
+    missions:
+      - "Audit & sélection des données (produits, clients, commandes)"
+      - "ETL pour cohérence & intégrité"
+      - "Alimentation via API PrestaShop"
+    benefices:
+      - "Aucune perte de données stratégiques"
+      - "Mise en production accélérée"
+      - "Continuité de l’activité e-commerce"
+    stack: ["Talend", "Microsoft SQL Server", "PrestaShop"]
+
+- title: "Eiffage • Migration données médicales"
+  client: "Eiffage"
+  text-short: "Oracle → MongoDB • Intégrité & performance"
+  link: "/portfolio/eiffage-migration-medicale.html"
+  details:
+    contexte: "Migration de questionnaires médicaux vers MongoDB."
+    missions:
+      - "Mapping Oracle → modèle NoSQL"
+      - "ETL Talend & exécution sous Linux"
+      - "Contrôles qualité renforcés"
+    benefices:
+      - "Migration sécurisée sans perte"
+      - "Flexibilité accrue (NoSQL)"
+      - "Système plus performant & maintenable"
+    stack: ["Talend", "Oracle DB", "MongoDB", "JSON", "Linux"]
+
+- title: "Media Participations • Migration applicative"
+  client: "Media Participations"
+  text-short: "ETL Talend • Contrôles qualité • Historique conservé"
+  link: "/portfolio/media-participations-migration.html"
+  details:
+    contexte: "Changement d’application avec conservation intégrale de l’historique."
+    missions:
+      - "Analyse des structures & écarts"
+      - "Automatisation ETL (extraction/transform/chargement)"
+      - "Mécanismes de contrôle & réconciliation"
+    benefices:
+      - "Transition fluide"
+      - "Historique complet préservé"
+      - "Moins d’erreurs grâce à l’automatisation"
+    stack: ["Talend", "CSV", "Microsoft Excel"]
+
+- title: "SOFIPEL • Interconnexion KeplerVo"
+  client: "SOFIPEL"
+  text-short: "API KeplerVo • MySQL • Vue consolidée multi-garages"
+  link: "/portfolio/sofipel-interconnexion-keplervo.html"
+  details:
+    contexte: "Centralisation et valorisation des données de ~15 garages."
+    missions:
+      - "Collecte via API KeplerVo"
+      - "Transformation & intégration MySQL"
+      - "Croisement multi-sources & modélisation"
+    benefices:
+      - "Vision globale du parc automobile"
+      - "Suivi fin des coûts par véhicule"
+      - "Pistes d’optimisation des dépenses"
+    stack: ["Talend", "API KeplerVo", "MySQL", "phpMyAdmin"]
