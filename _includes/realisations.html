@@ -1,11 +1,6 @@
-<!-- RÉALISATIONS (inspiré des certifications) -->
-<section id="realisations" class="section works" aria-labelledby="works-title">
-  <div class="works-head">
-    <h2 id="works-title" class="h2">Réalisations récentes</h2>
-    <p id="works-desc" class="muted">Sélection de missions menées (architecture, intégrations, dashboards).</p>
-  </div>
+<section id="realisation" class="section" aria-labelledby="work-title">
+  <h2 id="work-title">Réalisations récentes</h2>
 
-  {%- comment -%} Tri par date si présent {%- endcomment -%}
   {% assign has_dates = false %}
   {% for p in site.data.projets %}{% if p.date %}{% assign has_dates = true %}{% break %}{% endif %}{% endfor %}
   {% if has_dates %}
@@ -14,39 +9,28 @@
     {% assign projets_sorted = site.data.projets %}
   {% endif %}
 
-  <div class="works-viewport" role="region" aria-labelledby="works-title" aria-describedby="works-desc">
-    <ul id="works-rail"
-        class="works-rail"
-        role="list"
-        itemscope
-        itemtype="https://schema.org/ItemList"
-        aria-label="Liste des réalisations">
-      <meta itemprop="name" content="Réalisations de {{ site.author.prenom_nom | default: site.author.name }}">
-      <meta itemprop="itemListOrder" content="http://schema.org/ItemListOrderDescending">
-      {%- if page.url or site.url -%}
-        <meta itemprop="url" content="{{ page.url | absolute_url }}">
-      {%- endif -%}
+  <div class="carousel" data-carousel="realisations" aria-roledescription="carousel">
+    <button class="carousel__btn prev" type="button" aria-label="Défiler vers la gauche" disabled>‹</button>
 
+    <!-- UL = piste, comme pour les certifications -->
+    <ul class="carousel__track" role="listbox" aria-label="Liste de réalisations">
       {% for projet in projets_sorted %}
       {% assign idx = forloop.index0 %}
-      <li class="works-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <meta itemprop="position" content="{{ forloop.index }}">
+      <li class="carousel__slide" role="option" aria-describedby="proj-desc-{{ idx }}">
         <article class="card project-card"
-                 role="article"
                  tabindex="0"
-                 aria-describedby="work-desc-{{ idx }}"
                  data-index="{{ idx }}"
                  data-title="{{ projet.title | escape }}"
                  data-client="{{ projet.client | escape }}"
                  data-abstract="{{ projet['text-short'] | default: projet.text | escape }}"
                  data-link="{{ projet.link | relative_url }}"
                  data-contexte="{{ projet.details.contexte | escape }}"
-                 data-missions='{{ projet.details.missions | jsonify | default: "[]" }}'
-                 data-benefices='{{ projet.details.benefices | jsonify | default: "[]" }}'
-                 data-stack='{{ projet.details.stack | jsonify | default: "[]" }}'>
+                 data-missions='{{ projet.details.missions | jsonify }}'
+                 data-benefices='{{ projet.details.benefices | jsonify }}'
+                 data-stack='{{ projet.details.stack | jsonify }}'>
 
-          <h3 class="card-title" itemprop="name">{{ projet.title }}</h3>
-          <p class="lead" id="work-desc-{{ idx }}" itemprop="description">{{ projet["text-short"] }}</p>
+          <h3 class="card-title">{{ projet.title }}</h3>
+          <p class="lead" id="proj-desc-{{ idx }}">{{ projet["text-short"] }}</p>
 
           <div class="card-actions">
             <button class="btn btn--ghost open-project" type="button"
@@ -60,31 +44,8 @@
       {% endfor %}
     </ul>
 
-    <!-- Dots (mobiles uniquement) -->
-    <nav class="works-dots" aria-label="Pagination des réalisations"></nav>
+    <button class="carousel__btn next" type="button" aria-label="Défiler vers la droite">›</button>
 
-    <!-- JSON-LD ItemList light -->
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"ItemList",
-      "name":"Réalisations de {{ site.author.prenom_nom | default: site.author.name | escape }}",
-      "itemListOrder":"https://schema.org/ItemListOrderDescending",
-      "itemListElement":[
-        {% for p in projets_sorted %}
-        {
-          "@type":"ListItem",
-          "position": {{ forloop.index }},
-          "item":{
-            "@type":"CreativeWork",
-            "name": {{ p.title | jsonify }},
-            {% if p.link %}"url": {{ p.link | absolute_url | jsonify }},{% endif %}
-            "description": {{ p["text-short"] | default: p.text | jsonify }}
-          }
-        }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
-    }
-    </script>
+    <div class="carousel__dots" aria-label="Sélecteur de slides"></div>
   </div>
 </section>

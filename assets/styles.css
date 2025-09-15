@@ -665,3 +665,42 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; }
 @media (max-width: 899px){
   .works-rail{ padding-inline: 8px; }
 }
+
+
+/* Piste horizontale (UL) */
+.carousel__track{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(100%, 34rem);
+  gap: clamp(12px, 2vw, 20px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  list-style: none;     /* pas de puces */
+  margin: 0;
+  padding: .25rem 14px; /* petit gutter latéral sur mobile */
+}
+
+/* Chaque LI = un slide */
+.carousel__slide{
+  scroll-snap-align: start;
+}
+
+/* Piste horizontale (UL) */
+.carousel__track{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(100%, 34rem);
+  gap: clamp(12px, 2vw, 20px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  list-style: none;     /* pas de puces */
+  margin: 0;
+  padding: .25rem 14px; /* petit gutter latéral sur mobile */
+}
+
+/* Chaque LI = un slide */
+.carousel__slide{
+  scroll-snap-align: start;
+}
