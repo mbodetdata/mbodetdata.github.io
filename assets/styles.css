@@ -704,3 +704,51 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; }
 .carousel__slide{
   scroll-snap-align: start;
 }
+
+
+/* --- Réalisations : 1 carte par slide, centrée ----- */
+.carousel__track{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(100%, 56rem);  /* 1 carte à la fois, largeur max confortable */
+  justify-content: center;              /* centre la colonne (desktop) */
+  gap: 1rem;
+  padding-inline: 14px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+
+  /* pas de masque sur mobile pour ne pas rogner la carte */
+  -webkit-mask-image: none;
+          mask-image: none;
+
+  /* on cache la barre de scroll mais on garde le swipe */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.carousel__track::-webkit-scrollbar{ display:none; }
+
+.carousel__slide{ scroll-snap-align: center; }  /* <— clé pour centrer la carte visible */
+
+/* Flèches cachées sur mobile, layout simplifié */
+@media (max-width: 899px){
+  .carousel{ grid-template-columns: 1fr; }
+  .carousel__btn{ display:none !important; }
+}
+
+/* Bonus : sur les très grands écrans, garde une carte centrée et “posée” */
+@media (min-width: 900px){
+  .carousel{ grid-template-columns: auto 1fr auto; }  /* flèches ré-apparaissent */
+  .carousel__track{
+    padding-inline: 0;
+    /* léger masque premium aux bords si tu veux (facultatif)
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+    */
+  }
+}
+
+/* Ombres allégées sur mobile pour éviter de masquer les bords */
+@media (max-width: 599px){
+  .card{ box-shadow: 0 4px 12px rgba(0,0,0,.18); }
+}

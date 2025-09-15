@@ -67,7 +67,7 @@ const store = {
 
   apply(getStored() || getSystem());
 
-  const sys = mq('(prefers-color-scheme: light)');
+  const sys = mq('(prefers-color-scheme: light)'));
   const syncSystem = () => { if (!getStored()) apply(getSystem()); };
   sys.addEventListener?.('change', syncSystem);
 
@@ -438,7 +438,7 @@ const Modal = (() => {
   });
 })();
 
-/* ================== 10) Modal Projet (home) ================== */
+/* ================== 10) Modal Projet (robuste) ================== */
 (() => {
   const modal = document.getElementById('project-modal');
   if (!modal) return;
@@ -453,13 +453,13 @@ const Modal = (() => {
   const stackEl    = document.getElementById('project-stack');
   const linkEl     = document.getElementById('project-link');
 
-  // --- conversions robustes ---
+  // conversions robustes (string JSON | liste séparée | array)
   const toArray = (value) => {
     if (Array.isArray(value)) return value;
     if (value == null) return [];
     if (typeof value === 'string') {
       const s = value.trim();
-      if (!s || s.toLowerCase() === 'null' || s.toLowerCase() === 'undefined') return [];
+      if (!s || s === 'null' || s === 'undefined') return [];
       if (s.startsWith('[') || s.startsWith('{')) {
         try {
           const parsed = JSON.parse(s);
@@ -468,8 +468,7 @@ const Modal = (() => {
         } catch {}
       }
       const SEP = ['•', '|', ';'].find(sep => s.includes(sep));
-      if (SEP) return s.split(SEP).map(t => t.trim()).filter(Boolean);
-      return [s];
+      return SEP ? s.split(SEP).map(t => t.trim()).filter(Boolean) : [s];
     }
     try { return JSON.parse(String(value)); } catch { return []; }
   };
@@ -494,7 +493,6 @@ const Modal = (() => {
     else { linkEl.removeAttribute('href'); }
   }
 
-  // Ouverture depuis les cartes
   document.querySelectorAll('.project-card').forEach(card => {
     const open = (e) => { e?.preventDefault?.(); fill(card); Modal.open(modal); };
     card.querySelector('.open-project')?.addEventListener('click', open);
@@ -506,184 +504,84 @@ const Modal = (() => {
   });
 })();
 
-/* ================== 11) Carousel (réalisations) — dots + autoplay ================== */
+/* ================== 11) Carousel Réalisations (1 carte, dots, flèches desktop) ================== */
 (() => {
-  const carousels = document.querySelectorAll('[data-carousel]');
-  if (!carousels.length) return;
+  const root = document.querySelector('[data-carousel="realisations"]') || document.querySelector('[data-carousel]');
+  if (!root) return;
 
-  carousels.forEach(root => {
-    const track = root.querySelector('.carousel__track');
-    const slides = Array.from(track.querySelectorAll('.carousel__slide'));
-    const prev  = root.querySelector('.carousel__btn.prev');
-    const next  = root.querySelector('.carousel__btn.next');
-    const dotsWrap = root.querySelector('.carousel__dots');
-    if (!slides.length) return;
+  const track   = root.querySelector('.carousel__track');
+  const slides  = Array.from(track?.querySelectorAll('.carousel__slide') || []);
+  const prevBtn = root.querySelector('.carousel__btn.prev');
+  const nextBtn = root.querySelector('.carousel__btn.next');
+  const dotsNav = root.querySelector('.carousel__dots');
+  if (!track || !slides.length || !dotsNav) return;
 
-    let offsets = [];
-    const computeOffsets = () => { offsets = slides.map(s => s.offsetLeft); };
-    const closestIndex = () => {
-      const x = track.scrollLeft; let best = 0, bestDist = 1e9;
-      offsets.forEach((off, i) => { const d = Math.abs(off - x); if (d < bestDist){ best = i; bestDist = d; } });
-      return best;
-    };
-    const scrollToIndex = (i, smooth=true) => {
-      const clamped = Math.max(0, Math.min(i, slides.length - 1));
-      track.scrollTo({ left: offsets[clamped], behavior: smooth && !PREFERS_REDUCED ? 'smooth' : 'auto' });
-      setTimeout(updateUI, smooth ? 300 : 0); restartAutoplay();
-    };
-    const updateArrows = (i=closestIndex()) => {
-      prev.disabled = (i === 0);
-      next.disabled = (i >= slides.length - 1);
-    };
+  // Idempotence
+  if (track.dataset.worksReady === '1') return;
+  track.dataset.worksReady = '1';
 
-    const dots = slides.map((_, i) => {
-      const b = document.createElement('button');
-      b.type='button'; b.className='carousel__dot';
-      b.setAttribute('aria-label', `Aller à la réalisation ${i+1}`);
-      b.addEventListener('click', () => scrollToIndex(i));
-      dotsWrap.appendChild(b); return b;
-    });
-    const updateDots = (i=closestIndex()) => dots.forEach((d,k)=>d.classList.toggle('is-active', k===i));
-    const updateUI = () => { const i = closestIndex(); updateArrows(i); updateDots(i); };
+  // Flèches masquées sur mobile
+  const mqMobile = mq('(max-width: 700px)');
+  const toggleArrows = () => {
+    const hide = mqMobile.matches;
+    if (prevBtn) prevBtn.style.display = hide ? 'none' : '';
+    if (nextBtn) nextBtn.style.display = hide ? 'none' : '';
+  };
+  toggleArrows();
+  mqMobile.addEventListener?.('change', toggleArrows);
 
-    const AUTOPLAY_MS = 5000; let timer=null;
-    const startAutoplay = () => { if (!timer) timer = setInterval(() => { let i = closestIndex()+1; if (i>=slides.length) i=0; scrollToIndex(i); }, AUTOPLAY_MS); };
-    const stopAutoplay  = () => { clearInterval(timer); timer=null; };
-    const restartAutoplay = () => { stopAutoplay(); startAutoplay(); };
-
-    root.addEventListener('pointerenter', stopAutoplay);
-    root.addEventListener('pointerleave', startAutoplay);
-    root.addEventListener('focusin', stopAutoplay);
-    root.addEventListener('focusout', startAutoplay);
-
-    prev.addEventListener('click', () => scrollToIndex(closestIndex()-1));
-    next.addEventListener('click', () => scrollToIndex(closestIndex()+1));
-    track.addEventListener('scroll', () => { raf(updateUI); });
-    window.addEventListener('resize', () => { computeOffsets(); updateUI(); });
-
-    computeOffsets(); updateUI(); startAutoplay();
-  });
-})();
-
-
-// ===== Réalisations (rail + dots) — copie adaptée des certifications =====
-(() => {
-  const rail     = document.getElementById('works-rail');
-  const dotsWrap = document.querySelector('.works-dots');
-  if (!rail || !dotsWrap) return;
-
-  // idempotence
-  if (rail.dataset.worksCarouselReady === '1') return;
-  rail.dataset.worksCarouselReady = '1';
-
-  // slides = <li> directs
-  const slides = Array.from(rail.querySelectorAll(':scope > li'));
-  if (!slides.length) return;
-
-  // a11y zone
-  rail.setAttribute('tabindex', '0');
-  rail.setAttribute('role', 'region');
-  rail.setAttribute('aria-label', 'Réalisations (carousel)');
-
-  // dots = 1:1
-  dotsWrap.replaceChildren();
+  // Dots 1:1
+  dotsNav.replaceChildren();
   const dots = slides.map((_, i) => {
     const b = document.createElement('button');
     b.type = 'button';
-    b.className = 'works-dot';
-    b.setAttribute('aria-label', `Aller à la réalisation ${i + 1}`);
-    dotsWrap.appendChild(b);
+    b.className = 'carousel__dot';
+    b.setAttribute('aria-label', `Aller à la réalisation ${i+1}`);
+    b.addEventListener('click', () => goTo(i));
+    dotsNav.appendChild(b);
     return b;
   });
 
-  const PREFERS_REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const centerOffsetFor = (el) => el.offsetLeft - (rail.clientWidth - el.clientWidth) / 2;
-  const scrollToSlide   = (i) => {
-    const el = slides[i];
-    rail.scrollTo({ left: centerOffsetFor(el), behavior: PREFERS_REDUCED ? 'auto' : 'smooth' });
+  let offsets = [];
+  const measure = () => { offsets = slides.map(s => s.offsetLeft); };
+  const nearest = () => {
+    const x = track.scrollLeft; let best = 0, bestDist = Infinity;
+    offsets.forEach((off, i) => { const d = Math.abs(off - x); if (d < bestDist){ best=i; bestDist=d; } });
+    return best;
   };
-  const setActive = (i) => dots.forEach((d, idx) => d.classList.toggle('is-active', idx === i));
-
-  dots.forEach((b, i) => b.addEventListener('click', () => scrollToSlide(i), { passive: true }));
-
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      let bestI = null, bestRatio = 0;
-      for (const e of entries) {
-        if (!e.isIntersecting) continue;
-        const i = slides.indexOf(e.target);
-        if (i > -1 && e.intersectionRatio > bestRatio) { bestRatio = e.intersectionRatio; bestI = i; }
-      }
-      if (bestI !== null) setActive(bestI);
-    }, { root: rail, threshold: [0.5, 0.6, 0.7, 0.8] });
-    slides.forEach(el => io.observe(el));
-  } else {
-    const onScroll = () => {
-      const deltas = slides.map(el => Math.abs(centerOffsetFor(el) - rail.scrollLeft));
-      setActive(deltas.indexOf(Math.min(...deltas)));
-    };
-    rail.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  setActive(0);
-
-  rail.addEventListener('keydown', (e) => {
-    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-    e.preventDefault();
-    const cur  = dots.findIndex(d => d.classList.contains('is-active'));
-    const next = e.key === 'ArrowRight' ? Math.min(cur + 1, slides.length - 1) : Math.max(cur - 1, 0);
-    scrollToSlide(next);
-  });
-
-  let rid = 0;
-  window.addEventListener('resize', () => {
-    cancelAnimationFrame?.(rid);
-    rid = requestAnimationFrame(() => {
-      const current = dots.findIndex(d => d.classList.contains('is-active'));
-      scrollToSlide(current < 0 ? 0 : current);
-    });
-  }, { passive: true });
-})();
-
-// ===== Patch robustesse pour le modal projet (évite "forEach of null") =====
-(() => {
-  const modal = document.getElementById('project-modal');
-  if (!modal) return;
-
-  const titleEl    = document.getElementById('project-title');
-  const clientEl   = document.getElementById('project-client');
-  const abstractEl = document.getElementById('project-abstract');
-  const ctxEl      = document.getElementById('project-contexte');
-  const missionsEl = document.getElementById('project-missions');
-  const benefEl    = document.getElementById('project-benefices');
-  const stackEl    = document.getElementById('project-stack');
-  const linkEl     = document.getElementById('project-link');
-
-  // remplace la version précédente : si ce n’est pas un array -> []
-  const safeParse = (str, fallback = []) => {
-    try {
-      const v = JSON.parse(str);
-      return Array.isArray(v) ? v : fallback;
-    } catch { return fallback; }
+  const setUI = (i = nearest()) => {
+    if (prevBtn) prevBtn.disabled = (i === 0);
+    if (nextBtn) nextBtn.disabled = (i >= slides.length - 1);
+    dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
   };
-  const renderList = (ul, arr) => { ul.innerHTML = ''; arr.forEach(t => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); }); };
+  const goTo = (i, smooth = true) => {
+    const clamped = Math.max(0, Math.min(i, slides.length - 1));
+    track.scrollTo({ left: offsets[clamped], behavior: smooth && !PREFERS_REDUCED ? 'smooth' : 'auto' });
+    setTimeout(setUI, smooth ? 280 : 0);
+    restart();
+  };
 
-  function fill(card){
-    titleEl.textContent    = card.dataset.title || '';
-    clientEl.textContent   = card.dataset.client ? `Client : ${card.dataset.client}` : '';
-    abstractEl.textContent = card.dataset.abstract || '';
-    ctxEl.textContent      = card.dataset.contexte || '';
-    renderList(missionsEl, safeParse(card.dataset.missions));
-    renderList(benefEl,    safeParse(card.dataset.benefices));
-    renderList(stackEl,    safeParse(card.dataset.stack));
-    if (card.dataset.link) { linkEl.href = card.dataset.link; linkEl.setAttribute('aria-label', `Ouvrir ${card.dataset.title}`); }
-    else { linkEl.removeAttribute('href'); }
-  }
+  // Autoplay (soft)
+  const AUTOPLAY = 6000;
+  let timer = null;
+  const start   = () => { if (!timer) timer = setInterval(() => goTo((nearest()+1) % slides.length), AUTOPLAY); };
+  const stop    = () => { clearInterval(timer); timer = null; };
+  const restart = () => { stop(); start(); };
 
-  document.querySelectorAll('.project-card').forEach(card => {
-    const open = (e) => { e?.preventDefault?.(); fill(card); Modal.open(modal); };
-    card.querySelector('.open-project')?.addEventListener('click', open);
-    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { open(e); } });
-    card.addEventListener('click', e => { if (!e.target.closest('a, .open-project')) open(e); });
-  });
+  // Events
+  prevBtn?.addEventListener('click', () => goTo(nearest() - 1));
+  nextBtn?.addEventListener('click', () => goTo(nearest() + 1));
+
+  track.addEventListener('scroll', () => raf(setUI), { passive:true });
+  window.addEventListener('resize', () => { measure(); setUI(); }, { passive:true });
+  root.addEventListener('pointerenter', stop, { passive:true });
+  root.addEventListener('pointerleave', start, { passive:true });
+  root.addEventListener('focusin', stop);
+  root.addEventListener('focusout', start);
+
+  // Init
+  measure(); setUI(0); start();
+
+  // Après chargement images (offsets justes)
+  window.addEventListener('load', () => { measure(); setUI(); }, { once:true });
 })();
