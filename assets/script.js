@@ -1,36 +1,13 @@
 /* ===========================================================================
    ABM — JS unifié (premium, moderne & épuré) — VERSION SEO/PERF
-   Objectifs :
-   - Conserver toutes les features existantes (AUCUNE suppression)
-   - Réduire les risques de doublons & ré-initialisations
-   - Améliorer SEO technique (stabilité, a11y, micro-optimisations)
-   - Améliorer performances (lazy/idle init, écouteurs passifs, preconnect)
-
-   Structure :
-   0) Strict mode & helpers de timing
-   1) Utils (qs/qsa, on/off, mq, rAF, store sûr)
-   2) Navigation mobile (burger, ARIA, breakpoint)
-   3) Thème (persist + préférence système, label/ARIA, Alt+clic reset)
-   4) Modals (focus-trap, esc, overlay)
-   5) Formulaire (Formspree AJAX + feedback + “merci” en modal)
-   6) Certifications (carousel mobile + dots + centrage + idempotence)
-   7) Calendly (inline desktop + popup mobile/desktop, lazy assets, loader 3 pts, fallbacks)
-   8) Contacts (copy to clipboard)
-   9) Fallback images (logos certifications)
    =========================================================================== */
-
 'use strict';
 
 /* ========================= 0) Timing helpers ========================= */
-/** Exécute une tâche quand le thread est libre (meilleur pour LCP/INP). */
 const runIdle = (fn) => {
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(fn, { timeout: 1800 });
-  } else {
-    setTimeout(fn, 1);
-  }
+  if ('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: 1800 });
+  else setTimeout(fn, 1);
 };
-/** Exécute une tâche au prochain frame. */
 const raf = (fn) => (window.requestAnimationFrame || ((f)=>setTimeout(f,16)))(fn);
 
 /* ========================= 1) Utils légers ========================= */
@@ -42,7 +19,7 @@ const mq  = (q) => window.matchMedia ? window.matchMedia(q) : { matches:false, a
 
 const PREFERS_REDUCED = mq('(prefers-reduced-motion: reduce)').matches;
 
-/* Storage safe (évite erreurs navigation privée) */
+/* Storage safe */
 const store = {
   get(k){ try { return localStorage.getItem(k); } catch { return null; } },
   set(k,v){ try { localStorage.setItem(k,v); } catch {} },
@@ -60,15 +37,12 @@ const store = {
     toggle.setAttribute('aria-expanded', String(open));
   };
 
-  // Init ARIA
   toggle.setAttribute('aria-expanded', 'false');
   toggle.setAttribute('aria-controls', 'nav-collapsible');
 
-  // Écouteurs (passifs où pertinent)
   on(toggle, 'click', () => setState(!panel.classList.contains('open')), { passive:true });
   on(panel, 'click', (e) => { if (e.target.closest('a,button')) setState(false); }, { passive:true });
 
-  // Ferme lors du passage en desktop (évite états “ouverts” persistants)
   const bp = mq('(min-width: 992px)');
   const onChange = () => { if (bp.matches) setState(false); };
   bp.addEventListener?.('change', onChange);
@@ -80,9 +54,8 @@ const store = {
   const root  = document.documentElement;
   const label = btn?.querySelector('.tt-label');
 
-  const getSystem  = () => (mq('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-  const getStored  = () => store.get('theme');
-
+  const getSystem = () => (mq('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  const getStored = () => store.get('theme');
   const setLabelAria = (mode) => {
     if (!btn) return;
     const isDark = mode === 'dark';
@@ -90,30 +63,23 @@ const store = {
     btn.setAttribute('aria-label', isDark ? 'Basculer en mode clair' : 'Basculer en mode sombre');
     if (label) label.textContent = isDark ? 'Dark' : 'Light';
   };
-
   const apply = (mode) => { root.setAttribute('data-theme', mode); setLabelAria(mode); };
 
-  // Init : storage sinon système (limite CLS car appliqué très tôt)
   apply(getStored() || getSystem());
 
-  // Sync système si pas de choix explicite
   const sys = mq('(prefers-color-scheme: light)');
   const syncSystem = () => { if (!getStored()) apply(getSystem()); };
   sys.addEventListener?.('change', syncSystem);
 
-  // Toggle + persist
   on(btn, 'click', () => {
     const cur = root.getAttribute('data-theme');
     const next = (cur === 'light') ? 'dark' : 'light';
-    apply(next);
-    store.set('theme', next);
+    apply(next); store.set('theme', next);
   }, { passive:true });
 
-  // Alt + clic → reset (revient au thème système)
   on(btn, 'click', (e) => {
     if (!e.altKey) return;
-    store.rm('theme');
-    apply(getSystem());
+    store.rm('theme'); apply(getSystem());
   }, { capture:true });
 })();
 
@@ -129,7 +95,6 @@ const Modal = (() => {
     const nodes = $$(FOCUSABLE, modal);
     if (!nodes.length) return () => {};
     const first = nodes[0], last = nodes[nodes.length - 1];
-
     const onKey = (e) => {
       if (e.key !== 'Tab') return;
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
@@ -142,21 +107,21 @@ const Modal = (() => {
   const open  = (el) => {
     if (!el) return;
     el.hidden = false;
-    const untrap = trap(el);
-    el._untrap = untrap;
+    el._untrap = trap(el);
     const f = el.querySelector(FOCUSABLE);
     (f || el).focus?.();
   };
-
   const close = (el) => {
     if (!el) return;
     el.hidden = true;
     el._untrap?.();
   };
-
   const bind  = (modal) => {
     if (!modal) return;
-    on(modal, 'click', (e) => { if (e.target === modal) close(modal); }, { passive:true });
+    // clic overlay ET clic en dehors (sur le conteneur .modal)
+    on(modal, 'click', (e) => {
+      if (e.target === modal || e.target.classList?.contains('modal__overlay') || e.target.dataset.close === 'true') close(modal);
+    });
     $$('.modal__close,[data-close]', modal).forEach(btn => on(btn, 'click', () => close(modal), { passive:true }));
     on(document, 'keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close(modal); });
   };
@@ -187,13 +152,10 @@ const Modal = (() => {
   on(form, 'submit', async (e) => {
     e.preventDefault();
     if (!endpoint) { console.error('Formspree endpoint manquant'); return; }
-
     if (statusEl) statusEl.style.display = 'none';
 
     const fd = new FormData(form);
-    if (!fd.get('_subject')) {
-      fd.set('_subject', `[Site] ${fd.get('subject') || 'Nouveau message'}`);
-    }
+    if (!fd.get('_subject')) fd.set('_subject', `[Site] ${fd.get('subject') || 'Nouveau message'}`);
 
     if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Envoi…'; }
 
@@ -209,26 +171,21 @@ const Modal = (() => {
   });
 })();
 
-/* ====== 6) Carousel certifications (toutes certifs = autant de puces) ====== */
+/* ====== 6) Carousel certifications (dots + centre) ====== */
 (() => {
   const rail     = document.getElementById('certs-rail');
   const dotsWrap = document.querySelector('.certs-dots');
   if (!rail || !dotsWrap) return;
-
-  // Empêche toute double initialisation (changement de page/reload partiel)
   if (rail.dataset.certsCarouselReady === '1') return;
   rail.dataset.certsCarouselReady = '1';
 
-  // Ne prendre que les <li> DIRECTS (évite éléments parasites)
   const slides = Array.from(rail.querySelectorAll(':scope > li'));
   if (!slides.length) return;
 
-  // Accessibilité de la zone
   rail.setAttribute('tabindex', '0');
   rail.setAttribute('role', 'region');
   rail.setAttribute('aria-label', 'Certifications (carousel)');
 
-  // Purge systématique des anciennes puces puis recréation 1:1 avec les slides
   dotsWrap.replaceChildren();
   const dots = slides.map((_, i) => {
     const b = document.createElement('button');
@@ -239,18 +196,12 @@ const Modal = (() => {
     return b;
   });
 
-  const PREFERS_REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const centerOffsetFor = (el) => el.offsetLeft - (rail.clientWidth - el.clientWidth) / 2;
-  const scrollToSlide   = (i) => {
-    const el = slides[i];
-    rail.scrollTo({ left: centerOffsetFor(el), behavior: PREFERS_REDUCED ? 'auto' : 'smooth' });
-  };
+  const scrollToSlide = (i) => rail.scrollTo({ left: centerOffsetFor(slides[i]), behavior: PREFERS_REDUCED ? 'auto' : 'smooth' });
   const setActive = (i) => dots.forEach((d, idx) => d.classList.toggle('is-active', idx === i));
 
-  // Clic sur puces
   dots.forEach((b, i) => b.addEventListener('click', () => scrollToSlide(i), { passive: true }));
 
-  // Détermination du slide “le plus au centre”
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       let bestI = null, bestRatio = 0;
@@ -270,20 +221,16 @@ const Modal = (() => {
     rail.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // État initial
   setActive(0);
 
-  // Navigation clavier
   rail.addEventListener('keydown', (e) => {
     if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
     e.preventDefault();
     const cur  = dots.findIndex(d => d.classList.contains('is-active'));
-    const next = e.key === 'ArrowRight' ? Math.min(cur + 1, slides.length - 1)
-                                        : Math.max(cur - 1, 0);
+    const next = e.key === 'ArrowRight' ? Math.min(cur + 1, slides.length - 1) : Math.max(cur - 1, 0);
     scrollToSlide(next);
   });
 
-  // Recentrage au resize
   let rid = 0;
   window.addEventListener('resize', () => {
     cancelAnimationFrame?.(rid);
@@ -294,36 +241,30 @@ const Modal = (() => {
   }, { passive: true });
 })();
 
-/* ================== 7) Cal.com (bouton flottant unifié) ================== */
-/* ================== 7) Cal.com (inline + bouton flottant + boutons de page) ================== */
+/* ================== 7) Cal.com (inline + bouton flottant + boutons) ================== */
 (() => {
   const boot = () => {
     const meta = document.querySelector('meta[name="cal:link"]');
     const rawUrl = (meta?.getAttribute('content') || '').trim();
-    if (!rawUrl) { console.warn('[Cal.com] Meta cal:link absente ou vide'); return; }
+    if (!rawUrl) return;
 
     const toCalSlug = (input) => {
       if (!input) return '';
       const t = input.trim().replace(/(^\/+|\/+$)/g, '');
-      if (/^[^/]+\/[^/]+$/.test(t)) return t.toLowerCase(); // "user/event"
+      if (/^[^/]+\/[^/]+$/.test(t)) return t.toLowerCase();
       try {
         const u = new URL(t);
         const parts = u.pathname.split('/').filter(Boolean);
         if (parts.length >= 2) return (parts[0] + '/' + parts[1]).toLowerCase();
       } catch {
-        // extrait après cal.com|calendly.com/
-        const bits = t.replace(/^.*?(calendly\.com|cal\.com)\//i, '')
-                      .split('/').filter(Boolean);
+        const bits = t.replace(/^.*?(calendly\.com|cal\.com)\//i, '').split('/').filter(Boolean);
         if (bits.length >= 2) return (bits[0] + '/' + bits[1]).toLowerCase();
       }
       return '';
     };
-
     const calSlug = toCalSlug(rawUrl);
-    if (!calSlug) { console.warn('[Cal.com] Slug introuvable pour', rawUrl); return; }
-    console.debug('[Cal.com] Slug =', calSlug);
+    if (!calSlug) return;
 
-    // Charge l'embed Cal une seule fois
     (function (C, A, L) {
       let p = (a, ar) => { a.q.push(ar); };
       let d = C.document;
@@ -345,7 +286,6 @@ const Modal = (() => {
       };
     })(window, 'https://app.cal.com/embed/embed.js', 'init');
 
-    // Thème / brand
     Cal('init', 'booking', { origin: 'https://app.cal.com' });
     Cal.ns['booking']('ui', {
       cssVarsPerTheme: { light: { 'cal-brand': 'var(--brand)' }, dark: { 'cal-brand': 'var(--brand)' } },
@@ -353,7 +293,6 @@ const Modal = (() => {
       layout: 'month_view'
     });
 
-    // ---------- Bouton flottant maison (gradient) ----------
     if (!document.querySelector('.cal-float-cta')) {
       const btn = document.createElement('button');
       btn.type = 'button';
@@ -368,8 +307,7 @@ const Modal = (() => {
             <path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </span>
-        <span class="cal-label">Prendre rendez-vous</span>
-      `;
+        <span class="cal-label">Prendre rendez-vous</span>`;
       document.body.appendChild(btn);
     }
     if (!document.getElementById('cal-float-cta-style')) {
@@ -380,78 +318,48 @@ const Modal = (() => {
           display:inline-flex; align-items:center; gap:.55rem; padding:.85rem 1.1rem;
           border-radius:999px; border:0; background-image:var(--g-brand); color:#fff; font-weight:800;
           box-shadow:0 12px 26px color-mix(in oklab, var(--brand) 30%, transparent); cursor:pointer; }
-        .cal-float-cta:hover{ transform:translateY(-1px);
-          box-shadow:0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent); }
+        .cal-float-cta:hover{ transform:translateY(-1px); box-shadow:0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent); }
         .cal-float-cta:focus-visible{ outline:none;
           box-shadow:0 0 0 3px color-mix(in oklab, #fff 80%, transparent), 0 0 0 6px color-mix(in oklab, var(--brand) 50%, transparent); }
         .cal-float-cta .cal-ico{ display:grid; place-items:center; }
-        @media (max-width:480px){ .cal-float-cta{ right:12px; bottom:12px; padding:.75rem .95rem; } }
-      `;
+        @media (max-width:480px){ .cal-float-cta{ right:12px; bottom:12px; padding:.75rem .95rem; } }`;
       document.head.appendChild(st);
     }
 
-    // ---------- BOUTONS DE PAGE (contact) ----------
-    // 1) Injecte le slug correct dans tous les boutons marqués booking
     document.querySelectorAll('[data-cal-namespace="booking"]').forEach(el => {
       el.setAttribute('data-cal-link', calSlug);
-    });
-    // 2) Fallback clic explicite (si l’auto-binding tarde)
-    const openCal = (e) => {
-      e.preventDefault();
-      try {
-        if (typeof Cal?.ns?.booking === 'function') {
-          Cal.ns['booking']('open', { calLink: calSlug });
-        }
-      } catch (err) {
-        console.warn('[Cal.com] open fallback error', err);
-      }
-    };
-    document.querySelectorAll('[data-cal-namespace="booking"]').forEach(el => {
-      el.addEventListener('click', openCal, { passive: true });
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        try { if (typeof Cal?.ns?.booking === 'function') Cal.ns['booking']('open', { calLink: calSlug }); }
+        catch {}
+      }, { passive: true });
     });
 
-    // ---------- INLINE (desktop) ----------
     const parentD = document.getElementById('calendly-inline-embed');
     const mqDesk  = window.matchMedia ? window.matchMedia('(min-width: 992px)') : { matches: true };
-
     const initInline = () => {
       if (!parentD) return;
       const cleanSkeleton = () => parentD.querySelector('.calendly-skeleton')?.remove();
-
-      Cal.ns['booking']('inline', {
-        elementOrSelector: '#calendly-inline-embed',
-        calLink: calSlug,
-        config: { layout: 'month_view', theme: 'auto' }
-      });
-
+      Cal.ns['booking']('inline', { elementOrSelector: '#calendly-inline-embed', calLink: calSlug, config:{ layout:'month_view', theme:'auto' } });
       const obs = new MutationObserver(() => {
         if (parentD.querySelector('iframe') || parentD.shadowRoot) { cleanSkeleton(); obs.disconnect(); }
       });
       obs.observe(parentD, { childList: true, subtree: true });
       setTimeout(cleanSkeleton, 3000);
     };
-
     const bootInlineDesktop = () => {
       if (!parentD || !mqDesk.matches) return;
       if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries) => {
-          if (entries.some(e => e.isIntersecting)) { io.disconnect(); initInline(); }
-        }, { threshold: 0.35 });
+        const io = new IntersectionObserver((entries) => { if (entries.some(e => e.isIntersecting)) { io.disconnect(); initInline(); } }, { threshold: 0.35 });
         io.observe(parentD);
-      } else {
-        initInline();
-      }
+      } else initInline();
     };
-
     bootInlineDesktop();
     mqDesk.addEventListener?.('change', (e) => { if (e.matches) bootInlineDesktop(); });
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot, { once: true });
-  } else {
-    boot();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
+  else boot();
 })();
 
 /* ================== 8) Copy to clipboard (contacts) ================== */
@@ -462,233 +370,119 @@ const Modal = (() => {
   const resolveText = (row) => {
     const btn  = row.querySelector('.ci-copy-btn');
     if (!btn) return null;
-
-    // 1) Valeur explicite
     const explicit = btn.getAttribute('data-copy');
     if (explicit && explicit.trim()) return explicit.trim();
-
-    // 2) Sinon, déduire du lien voisin
     const link = row.querySelector('.contact-item[href]');
     if (link) {
       const href = (link.getAttribute('href') || '').trim();
       if (/^mailto:/i.test(href)) return decodeURIComponent(href.replace(/^mailto:/i,'')).replace(/\?.*$/,'');
       if (/^tel:/i.test(href))    return href.replace(/^tel:/i,'');
     }
-
-    // 3) Sinon, le texte fort
     const strong = row.querySelector('.ci-body strong');
     return strong?.textContent?.trim() || null;
   };
 
   const copyText = async (txt) => {
     if (!txt) throw new Error('Nothing to copy');
-    try {
-      await navigator.clipboard.writeText(txt);
-      return true;
-    } catch {
-      // Fallback (HTTP / permissions)
+    try { await navigator.clipboard.writeText(txt); return true; }
+    catch {
       const ta = document.createElement('textarea');
-      ta.value = txt;
-      ta.setAttribute('readonly','');
-      ta.style.position='fixed';
-      ta.style.opacity='0';
-      document.body.appendChild(ta);
-      ta.select();
-      let ok = false;
-      try { ok = document.execCommand('copy'); } catch {}
-      document.body.removeChild(ta);
-      return ok;
+      ta.value = txt; ta.setAttribute('readonly','');
+      ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
+      ta.select(); let ok = false; try { ok = document.execCommand('copy'); } catch {}
+      document.body.removeChild(ta); return ok;
     }
   };
 
   rows.forEach(row => {
-    const btn = row.querySelector('.ci-copy-btn');
-    if (!btn) return;
-
-    // Région a11y pour annoncer le statut
+    const btn = row.querySelector('.ci-copy-btn'); if (!btn) return;
     const announcer = (() => {
       let live = row.querySelector('.sr-only[role="status"]');
-      if (!live) {
-        live = document.createElement('span');
-        live.className = 'sr-only';
-        live.setAttribute('role','status');
-        live.setAttribute('aria-live','polite');
-        row.appendChild(live);
-      }
+      if (!live) { live = document.createElement('span'); live.className='sr-only'; live.setAttribute('role','status'); live.setAttribute('aria-live','polite'); row.appendChild(live); }
       return (msg) => { live.textContent = msg; };
     })();
 
     on(btn, 'click', async (e) => {
-      e.preventDefault();       // évite un submit accidentel
-      e.stopPropagation();      // évite le clic sur le <a> voisin
-
+      e.preventDefault(); e.stopPropagation();
       const value = btn.getAttribute('data-copy')?.trim() || resolveText(row);
       if (!value) return;
-
       const prev = btn.innerHTML;
       try {
         const ok = await copyText(value);
-        // Feedback visuel + a11y
         btn.classList.add('is-copied');
         btn.setAttribute('aria-label', ok ? 'Copié !' : 'Échec de la copie');
         btn.innerHTML = ok ? '✓' : '!';
         announcer(ok ? 'Copié dans le presse-papier' : 'La copie a échoué');
       } finally {
         setTimeout(() => {
-          btn.classList.remove('is-copied');
-          btn.innerHTML = prev;
-          btn.setAttribute('aria-label', 'Copier');
+          btn.classList.remove('is-copied'); btn.innerHTML = prev; btn.setAttribute('aria-label', 'Copier');
         }, 1200);
       }
     }, { passive:false });
   });
 })();
 
-/* ================== 9) Fallback si un logo casse (certifications) ================== */
+/* ================== 9) Fallback logos certifications ================== */
 (() => {
   document.querySelectorAll('.cert-logo').forEach(img => {
     img.addEventListener('error', () => {
-      const wrap = img.closest('.cert-badge');
-      if (!wrap) return;
+      const wrap = img.closest('.cert-badge'); if (!wrap) return;
       wrap.innerHTML = `
         <svg class="cert-ph" width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
-          <defs>
-            <linearGradient id="gradABM" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="currentColor" stop-opacity=".25"/>
-              <stop offset="1" stop-color="currentColor" stop-opacity=".55"/>
-            </linearGradient>
-          </defs>
+          <defs><linearGradient id="gradABM" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="currentColor" stop-opacity=".25"/><stop offset="1" stop-color="currentColor" stop-opacity=".55"/>
+          </linearGradient></defs>
           <rect x="0.5" y="0.5" width="55" height="55" rx="12" fill="url(#gradABM)" stroke="currentColor" opacity=".5"/>
-          <g transform="translate(0,1)">
-            <path d="M20 28h16M28 20v16" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".9"/>
-          </g>
+          <g transform="translate(0,1)"><path d="M20 28h16M28 20v16" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".9"/></g>
         </svg>`;
     }, { once: true });
   });
 })();
 
-// ==== Modal Projet (index) ====
-(function () {
+/* ================== 10) Modal Projet (home) ================== */
+(() => {
   const modal = document.getElementById('project-modal');
   if (!modal) return;
+  Modal.bind(modal);
 
-  const dialog = modal.querySelector('.modal__dialog');
-  const closeEls = modal.querySelectorAll('[data-close]');
-  const titleEl = document.getElementById('project-title');
-  const clientEl = document.getElementById('project-client');
+  const titleEl    = document.getElementById('project-title');
+  const clientEl   = document.getElementById('project-client');
   const abstractEl = document.getElementById('project-abstract');
-  const ctxEl = document.getElementById('project-contexte');
+  const ctxEl      = document.getElementById('project-contexte');
   const missionsEl = document.getElementById('project-missions');
-  const beneficesEl = document.getElementById('project-benefices');
-  const stackEl = document.getElementById('project-stack');
-  const linkEl = document.getElementById('project-link');
+  const benefEl    = document.getElementById('project-benefices');
+  const stackEl    = document.getElementById('project-stack');
+  const linkEl     = document.getElementById('project-link');
 
-  const focusable = () => modal.querySelectorAll('a,button,[tabindex]:not([tabindex="-1"])');
-  let lastActive = null;
+  const safeParse = (str, fallback=[]) => { try { return JSON.parse(str); } catch { return fallback; } };
+  const renderList = (ul, arr) => { ul.innerHTML = ''; arr.forEach(t => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); }); };
 
-  function safeParse(str, fallback) { try { return JSON.parse(str); } catch { return fallback; } }
-  function renderList(ul, arr) {
-    ul.innerHTML = '';
-    arr.forEach(item => { const li = document.createElement('li'); li.textContent = item; ul.appendChild(li); });
-  }
-
-  function openModal(card) {
-    titleEl.textContent = card.dataset.title || '';
-    clientEl.textContent = card.dataset.client ? `Client : ${card.dataset.client}` : '';
+  function fill(card){
+    titleEl.textContent    = card.dataset.title || '';
+    clientEl.textContent   = card.dataset.client ? `Client : ${card.dataset.client}` : '';
     abstractEl.textContent = card.dataset.abstract || '';
-    ctxEl.textContent = card.dataset.contexte || '';
-    renderList(missionsEl, safeParse(card.dataset.missions, []));
-    renderList(beneficesEl, safeParse(card.dataset.benefices, []));
-    renderList(stackEl, safeParse(card.dataset.stack, []));
-    if (card.dataset.link) {
-      linkEl.href = card.dataset.link;
-      linkEl.setAttribute('aria-label', `Ouvrir la page ${card.dataset.title}`);
-    } else { linkEl.removeAttribute('href'); }
-
-    lastActive = document.activeElement;
-    modal.hidden = false;
-    document.body.style.overflow = 'hidden';
-    (focusable()[0] || dialog).focus();
-  }
-
-  function closeModal() {
-    modal.hidden = true;
-    document.body.style.overflow = '';
-    if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
+    ctxEl.textContent      = card.dataset.contexte || '';
+    renderList(missionsEl, safeParse(card.dataset.missions));
+    renderList(benefEl,    safeParse(card.dataset.benefices));
+    renderList(stackEl,    safeParse(card.dataset.stack));
+    if (card.dataset.link) { linkEl.href = card.dataset.link; linkEl.setAttribute('aria-label', `Ouvrir ${card.dataset.title}`); }
+    else { linkEl.removeAttribute('href'); }
   }
 
   // Ouverture depuis les cartes
   document.querySelectorAll('.project-card').forEach(card => {
-    const open = () => openModal(card);
+    const open = (e) => { e?.preventDefault?.(); fill(card); Modal.open(modal); };
     card.querySelector('.open-project')?.addEventListener('click', open);
-    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }});
-    card.addEventListener('click', e => { if (!e.target.closest('a, .open-project')) open(); });
-  });
-
-  // Fermeture
-  closeEls.forEach(el => el.addEventListener('click', closeModal));
-  modal.addEventListener('click', e => { if (e.target.dataset.close === 'true') closeModal(); });
-  document.addEventListener('keydown', e => { if (!modal.hidden && e.key === 'Escape') closeModal(); });
-
-  // Focus trap
-  modal.addEventListener('keydown', e => {
-    if (e.key !== 'Tab') return;
-    const f = Array.from(focusable()); if (!f.length) return;
-    const first = f[0], last = f[f.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  });
-})();
-
-
-// ==== Carousel basique (scroll-snap + flèches) ====
-(function () {
-  const carousels = document.querySelectorAll('[data-carousel]');
-  if (!carousels.length) return;
-
-  carousels.forEach(root => {
-    const track = root.querySelector('.carousel__track');
-    const prev  = root.querySelector('.carousel__btn.prev');
-    const next  = root.querySelector('.carousel__btn.next');
-
-    // calcule la largeur d’une "slide" (première carte)
-    const slide = track.querySelector('.carousel__slide');
-    if (!slide) return;
-
-    function getStep() {
-      // On scroll d’un "viewport" de cartes
-      return track.clientWidth * 0.95; // léger chevauchement pour confort
-    }
-
-    function updateArrows() {
-      const maxScroll = track.scrollWidth - track.clientWidth - 1;
-      prev.disabled = track.scrollLeft <= 0;
-      next.disabled = track.scrollLeft >= maxScroll;
-    }
-
-    function scrollByDir(dir) {
-      track.scrollBy({ left: dir * getStep(), behavior: 'smooth' });
-      // mise à jour après l’anim
-      setTimeout(updateArrows, 350);
-    }
-
-    prev.addEventListener('click', () => scrollByDir(-1));
-    next.addEventListener('click', () => scrollByDir(1));
-    track.addEventListener('scroll', updateArrows);
-    window.addEventListener('resize', updateArrows);
-    updateArrows();
-
-    // Accessibilité clavier (flèches)
-    root.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') { e.preventDefault(); scrollByDir(1); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); scrollByDir(-1); }
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { open(e); } });
+    card.addEventListener('click', e => {
+      if (e.target.closest('a, .open-project')) return;
+      open(e);
     });
   });
 })();
 
-
-// ==== Carousel (scroll-snap + flèches + puces + autoplay) ====
-(function () {
+/* ================== 11) Carousel (réalisations) — dots + autoplay ================== */
+(() => {
   const carousels = document.querySelectorAll('[data-carousel]');
   if (!carousels.length) return;
 
@@ -700,87 +494,48 @@ const Modal = (() => {
     const dotsWrap = root.querySelector('.carousel__dots');
     if (!slides.length) return;
 
-    // ===== Helpers dimensions / offsets
     let offsets = [];
-    function computeOffsets() {
-      // position x de chaque carte par rapport au track
-      offsets = slides.map(s => s.offsetLeft);
-    }
-
-    function closestIndex() {
-      const x = track.scrollLeft;
-      let best = 0, bestDist = Infinity;
-      offsets.forEach((off, i) => {
-        const d = Math.abs(off - x);
-        if (d < bestDist) { best = i; bestDist = d; }
-      });
+    const computeOffsets = () => { offsets = slides.map(s => s.offsetLeft); };
+    const closestIndex = () => {
+      const x = track.scrollLeft; let best = 0, bestDist = 1e9;
+      offsets.forEach((off, i) => { const d = Math.abs(off - x); if (d < bestDist){ best = i; bestDist = d; } });
       return best;
-    }
-
-    function scrollToIndex(i, smooth = true) {
+    };
+    const scrollToIndex = (i, smooth=true) => {
       const clamped = Math.max(0, Math.min(i, slides.length - 1));
-      track.scrollTo({ left: offsets[clamped], behavior: smooth ? 'smooth' : 'auto' });
-      setTimeout(updateUI, smooth ? 350 : 0);
-      restartAutoplay();
-    }
+      track.scrollTo({ left: offsets[clamped], behavior: smooth && !PREFERS_REDUCED ? 'smooth' : 'auto' });
+      setTimeout(updateUI, smooth ? 300 : 0); restartAutoplay();
+    };
+    const updateArrows = (i=closestIndex()) => {
+      prev.disabled = (i === 0);
+      next.disabled = (i >= slides.length - 1);
+    };
 
-    function updateArrows(i = closestIndex()) {
-      const atStart = i === 0;
-      const atEnd   = i >= slides.length - 1;
-      prev.disabled = atStart;
-      next.disabled = atEnd;
-    }
-
-    // ===== Dots
     const dots = slides.map((_, i) => {
       const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'carousel__dot';
-      b.setAttribute('aria-label', `Aller à la réalisation ${i + 1}`);
+      b.type='button'; b.className='carousel__dot';
+      b.setAttribute('aria-label', `Aller à la réalisation ${i+1}`);
       b.addEventListener('click', () => scrollToIndex(i));
-      dotsWrap.appendChild(b);
-      return b;
+      dotsWrap.appendChild(b); return b;
     });
+    const updateDots = (i=closestIndex()) => dots.forEach((d,k)=>d.classList.toggle('is-active', k===i));
+    const updateUI = () => { const i = closestIndex(); updateArrows(i); updateDots(i); };
 
-    function updateDots(i = closestIndex()) {
-      dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
-    }
+    const AUTOPLAY_MS = 5000; let timer=null;
+    const startAutoplay = () => { if (!timer) timer = setInterval(() => { let i = closestIndex()+1; if (i>=slides.length) i=0; scrollToIndex(i); }, AUTOPLAY_MS); };
+    const stopAutoplay  = () => { clearInterval(timer); timer=null; };
+    const restartAutoplay = () => { stopAutoplay(); startAutoplay(); };
 
-    function updateUI() {
-      const i = closestIndex();
-      updateArrows(i);
-      updateDots(i);
-    }
-
-    // ===== Autoplay
-    const AUTOPLAY_MS = 5000;   // 5s
-    let timer = null;
-    function startAutoplay() {
-      if (timer) return;
-      timer = setInterval(() => {
-        let i = closestIndex() + 1;
-        if (i >= slides.length) i = 0; // boucle
-        scrollToIndex(i);
-      }, AUTOPLAY_MS);
-    }
-    function stopAutoplay() { clearInterval(timer); timer = null; }
-    function restartAutoplay() { stopAutoplay(); startAutoplay(); }
-
-    // Pause sur hover/focus (accessibilité)
     root.addEventListener('pointerenter', stopAutoplay);
     root.addEventListener('pointerleave', startAutoplay);
     root.addEventListener('focusin', stopAutoplay);
     root.addEventListener('focusout', startAutoplay);
 
-    // ===== Events
-    prev.addEventListener('click', () => scrollToIndex(closestIndex() - 1));
-    next.addEventListener('click', () => scrollToIndex(closestIndex() + 1));
-    track.addEventListener('scroll', () => { window.requestAnimationFrame(updateUI); });
+    prev.addEventListener('click', () => scrollToIndex(closestIndex()-1));
+    next.addEventListener('click', () => scrollToIndex(closestIndex()+1));
+    track.addEventListener('scroll', () => { raf(updateUI); });
     window.addEventListener('resize', () => { computeOffsets(); updateUI(); });
 
-    // ===== Init
-    computeOffsets();
-    updateUI();
-    startAutoplay();
+    computeOffsets(); updateUI(); startAutoplay();
   });
 })();

@@ -1,16 +1,17 @@
-<!-- Modal Projet -->
-<div id="project-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="project-title" aria-describedby="project-content" hidden>
+<!-- Modal projet : DOIT exister dans le DOM (id + IDs internes) -->
+<div id="project-modal" class="modal" hidden>
   <div class="modal__overlay" data-close="true"></div>
-  <div class="modal__dialog" role="document">
-    <button class="modal__close" type="button" aria-label="Fermer" data-close="true">×</button>
+
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="project-title">
+    <button class="modal__close" type="button" data-close="true" aria-label="Fermer">×</button>
 
     <header class="modal__header">
       <h3 id="project-title"></h3>
-      <p class="modal__client" id="project-client"></p>
-      <p class="modal__abstract" id="project-abstract"></p>
+      <p id="project-client" class="modal__client muted"></p>
+      <p id="project-abstract" class="modal__abstract"></p>
     </header>
 
-    <div class="modal__body" id="project-content">
+    <div class="modal__body">
       <section>
         <h4>Contexte</h4>
         <p id="project-contexte"></p>
@@ -33,7 +34,8 @@
     </div>
 
     <footer class="modal__footer">
-      <a id="project-link" class="btn">Voir la page projet</a>
+      <a id="project-link" class="btn btn--primary" href="#" target="_blank" rel="noopener">Voir le projet</a>
+      <button class="btn" type="button" data-close="true">Fermer</button>
     </footer>
   </div>
 </div>
