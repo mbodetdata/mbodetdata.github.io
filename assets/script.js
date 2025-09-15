@@ -564,3 +564,126 @@ const Modal = (() => {
     computeOffsets(); updateUI(); startAutoplay();
   });
 })();
+
+
+// ===== Réalisations (rail + dots) — copie adaptée des certifications =====
+(() => {
+  const rail     = document.getElementById('works-rail');
+  const dotsWrap = document.querySelector('.works-dots');
+  if (!rail || !dotsWrap) return;
+
+  // idempotence
+  if (rail.dataset.worksCarouselReady === '1') return;
+  rail.dataset.worksCarouselReady = '1';
+
+  // slides = <li> directs
+  const slides = Array.from(rail.querySelectorAll(':scope > li'));
+  if (!slides.length) return;
+
+  // a11y zone
+  rail.setAttribute('tabindex', '0');
+  rail.setAttribute('role', 'region');
+  rail.setAttribute('aria-label', 'Réalisations (carousel)');
+
+  // dots = 1:1
+  dotsWrap.replaceChildren();
+  const dots = slides.map((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'works-dot';
+    b.setAttribute('aria-label', `Aller à la réalisation ${i + 1}`);
+    dotsWrap.appendChild(b);
+    return b;
+  });
+
+  const PREFERS_REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const centerOffsetFor = (el) => el.offsetLeft - (rail.clientWidth - el.clientWidth) / 2;
+  const scrollToSlide   = (i) => {
+    const el = slides[i];
+    rail.scrollTo({ left: centerOffsetFor(el), behavior: PREFERS_REDUCED ? 'auto' : 'smooth' });
+  };
+  const setActive = (i) => dots.forEach((d, idx) => d.classList.toggle('is-active', idx === i));
+
+  dots.forEach((b, i) => b.addEventListener('click', () => scrollToSlide(i), { passive: true }));
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      let bestI = null, bestRatio = 0;
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        const i = slides.indexOf(e.target);
+        if (i > -1 && e.intersectionRatio > bestRatio) { bestRatio = e.intersectionRatio; bestI = i; }
+      }
+      if (bestI !== null) setActive(bestI);
+    }, { root: rail, threshold: [0.5, 0.6, 0.7, 0.8] });
+    slides.forEach(el => io.observe(el));
+  } else {
+    const onScroll = () => {
+      const deltas = slides.map(el => Math.abs(centerOffsetFor(el) - rail.scrollLeft));
+      setActive(deltas.indexOf(Math.min(...deltas)));
+    };
+    rail.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  setActive(0);
+
+  rail.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    e.preventDefault();
+    const cur  = dots.findIndex(d => d.classList.contains('is-active'));
+    const next = e.key === 'ArrowRight' ? Math.min(cur + 1, slides.length - 1) : Math.max(cur - 1, 0);
+    scrollToSlide(next);
+  });
+
+  let rid = 0;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame?.(rid);
+    rid = requestAnimationFrame(() => {
+      const current = dots.findIndex(d => d.classList.contains('is-active'));
+      scrollToSlide(current < 0 ? 0 : current);
+    });
+  }, { passive: true });
+})();
+
+// ===== Patch robustesse pour le modal projet (évite "forEach of null") =====
+(() => {
+  const modal = document.getElementById('project-modal');
+  if (!modal) return;
+
+  const titleEl    = document.getElementById('project-title');
+  const clientEl   = document.getElementById('project-client');
+  const abstractEl = document.getElementById('project-abstract');
+  const ctxEl      = document.getElementById('project-contexte');
+  const missionsEl = document.getElementById('project-missions');
+  const benefEl    = document.getElementById('project-benefices');
+  const stackEl    = document.getElementById('project-stack');
+  const linkEl     = document.getElementById('project-link');
+
+  // remplace la version précédente : si ce n’est pas un array -> []
+  const safeParse = (str, fallback = []) => {
+    try {
+      const v = JSON.parse(str);
+      return Array.isArray(v) ? v : fallback;
+    } catch { return fallback; }
+  };
+  const renderList = (ul, arr) => { ul.innerHTML = ''; arr.forEach(t => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); }); };
+
+  function fill(card){
+    titleEl.textContent    = card.dataset.title || '';
+    clientEl.textContent   = card.dataset.client ? `Client : ${card.dataset.client}` : '';
+    abstractEl.textContent = card.dataset.abstract || '';
+    ctxEl.textContent      = card.dataset.contexte || '';
+    renderList(missionsEl, safeParse(card.dataset.missions));
+    renderList(benefEl,    safeParse(card.dataset.benefices));
+    renderList(stackEl,    safeParse(card.dataset.stack));
+    if (card.dataset.link) { linkEl.href = card.dataset.link; linkEl.setAttribute('aria-label', `Ouvrir ${card.dataset.title}`); }
+    else { linkEl.removeAttribute('href'); }
+  }
+
+  document.querySelectorAll('.project-card').forEach(card => {
+    const open = (e) => { e?.preventDefault?.(); fill(card); Modal.open(modal); };
+    card.querySelector('.open-project')?.addEventListener('click', open);
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { open(e); } });
+    card.addEventListener('click', e => { if (!e.target.closest('a, .open-project')) open(e); });
+  });
+})();
