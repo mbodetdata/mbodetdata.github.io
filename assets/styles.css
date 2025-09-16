@@ -293,9 +293,9 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .cert-badge::after{
   content:""; position:absolute; inset:-3px; border-radius:inherit;
   background: conic-gradient(from 0turn,
-              color-mix(in oklab, var(--brand) 80%, transparent) 0turn .4turn,
-              color-mix(in oklab, var(--brand-2) 80%, transparent) .4turn .8turn,
-              transparent .8turn 1turn);
+              color-mix(in oklab, var(--brand) 100%, transparent) 0 150deg,
+              color-mix(in oklab, var(--brand-2) 100%, transparent) 150deg 300deg,
+              transparent 300deg 360deg);
   -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0); 
           mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude; padding:2px;
@@ -306,17 +306,12 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 @keyframes ring-rotate{ from{ transform: rotate(0deg); } to{ transform: rotate(180deg); } }
 
 /* Horloge grande (badge) pour pending */
-.cert-card.is-pending .cert-badge::after{ animation: ring-spin 8s linear infinite; }
-@keyframes ring-spin{ to{ transform: rotate(360deg); } }
-.cb-hand{ position:absolute; left:50%; top:50%; transform-origin: 50% 100%; background: currentColor; border-radius:2px; opacity:.95; }
-.cb-hand--h{ width:2px; height:14px; transform: translate(-50%, -100%) rotate(0deg); }
-.cb-hand--m{ width:2px; height:20px; transform: translate(-50%, -100%) rotate(90deg); }
-.cb-pivot{ position:absolute; left:50%; top:50%; width:5px; height:5px; border-radius:999px; transform:translate(-50%,-50%); background: currentColor; }
-.cert-card.is-pending .cb-hand--h{ animation: cbh 12s linear infinite; }
-.cert-card.is-pending .cb-hand--m{ animation: cbm 2s linear infinite; }
-@keyframes cbh{ from{ transform: translate(-50%, -100%) rotate(0deg); } to{ transform: translate(-50%, -100%) rotate(360deg); } }
-@keyframes cbm{ from{ transform: translate(-50%, -100%) rotate(0deg); } to{ transform: translate(-50%, -100%) rotate(360deg); } }
-.cert-card.is-active .cb-hand, .cert-card.is-active .cb-pivot{ display:none; }
+/* Animer les aiguilles du SVG pending existant (cert-ph--clock) */
+.cert-ph--clock .clock-h, .cert-ph--clock .clock-m{ transform-origin: 28px 28px; transform-box: fill-box; }
+.cert-ph--clock .clock-h{ animation: clkH 12s linear infinite; }
+.cert-ph--clock .clock-m{ animation: clkM 2s linear infinite; }
+@keyframes clkH{ from{ transform: rotate(0deg); } to{ transform: rotate(360deg); } }
+@keyframes clkM{ from{ transform: rotate(0deg); } to{ transform: rotate(360deg); } }
 .cert-logo{ width:100%; height:100%; object-fit:contain; }
 .cert-body{ grid-column:1 / -1; display:grid; gap:.55rem; }
 .cert-title{ margin:0; font-size:var(--step-1); font-weight:800; line-height:1.3; }

@@ -66,10 +66,7 @@
         </text>
       </svg>
     {% endif %}
-    <!-- Aiguilles d'horloge (affichées et animées seulement pour les pending) -->
-    <span class="cb-hand cb-hand--h" aria-hidden="true"></span>
-    <span class="cb-hand cb-hand--m" aria-hidden="true"></span>
-    <span class="cb-pivot" aria-hidden="true"></span>
+    {# aiguilles animées gérées via le SVG interne en mode pending #}
   </div>
 
   <!-- Statut + date (balises time + microdonnées) -->
@@ -77,12 +74,6 @@
     <span class="cert-chip {% if c.status == 'pending' %}chip-pending{% else %}chip-ok{% endif %}"
           aria-label="Statut de la certification">
       {% if c.status == 'pending' %}
-        <svg class="ci-ico clock" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
-          <!-- Aiguilles animées -->
-          <path class="clk-h" d="M12 12 V8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path class="clk-m" d="M12 12 L16 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
         En cours
       {% else %}
         <svg class="ci-ico" viewBox="0 0 24 24" aria-hidden="true">
