@@ -119,7 +119,7 @@ permalink: /
           "item": {
             "@type": "CreativeWork",
             "name": {{ p.title | jsonify }},
-            "abstract": {{ p.text  | jsonify }},
+            "abstract": {{ p['text-short'] | default: p.text | jsonify }},
             {% if p.link %}"url": {{ p.link | jsonify }}{% endif %}
           }
         }{% unless forloop.last %},{% endunless %}

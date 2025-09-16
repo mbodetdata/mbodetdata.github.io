@@ -61,7 +61,7 @@
 <meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}" />
 <meta property="og:image" content="{{ og_image | absolute_url }}" />
 <meta property="og:image:secure_url" content="{{ og_image | absolute_url }}" />
-<meta property="og:image:alt" content="{{ og_title }} â€” {{ site.title }}" />
+<meta property="og:image:alt" content="{{ og_title }} – {{ site.title }}" />
 {%- if page.last_modified_at -%}
 <meta property="og:updated_time" content="{{ page.last_modified_at | date_to_xmlschema }}" />
 {%- endif -%}
@@ -251,3 +251,4 @@
 <noscript>
   <img src="https://bmdata.goatcounter.com/count?p={{ page.url | replace:'index.html','' }}" alt="" />
 </noscript>
+

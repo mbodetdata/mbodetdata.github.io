@@ -552,15 +552,14 @@ const Modal = (() => {
       return best;
     };
     const scrollToIndex = (i, smooth=true) => {
-      const clamped = Math.max(0, Math.min(i, slides.length - 1));
-      const left = offsets[clamped] ?? 0;
+      let target = i;
+      if (i < 0) target = slides.length - 1;
+      else if (i >= slides.length) target = 0;
+      const left = offsets[target] ?? 0;
       track.scrollTo({ left, behavior: smooth && !PREFERS_REDUCED ? 'smooth' : 'auto' });
       setTimeout(updateUI, smooth ? 300 : 0); restartAutoplay();
     };
-    const updateArrows = (i=closestIndex()) => {
-      prev.disabled = (i === 0);
-      next.disabled = (i >= slides.length - 1);
-    };
+    const updateArrows = () => { prev.disabled = false; next.disabled = false; };
 
     const dots = slides.map((_, i) => {
       const b = document.createElement('button');
@@ -593,6 +592,7 @@ const Modal = (() => {
     scrollToIndex(0, false);
     updateUI();
     startAutoplay();
+    document.addEventListener('visibilitychange', () => { if (document.hidden) stopAutoplay(); else startAutoplay(); });
   });
 })();
 
@@ -718,3 +718,4 @@ const Modal = (() => {
     card.addEventListener('click', e => { if (!e.target.closest('a, .open-project')) open(e); });
   });
 })();
+

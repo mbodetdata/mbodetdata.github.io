@@ -563,6 +563,31 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; }
   .card{ box-shadow: 0 4px 12px rgba(0,0,0,.18); }
 }
 
+/* ===== Relief pack (subtil, dark & light) ===== */
+/* Texture douce d'arrière-plan (désactivable en retirant ce bloc) */
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+  background:
+    radial-gradient(900px 420px at 12% -8%, color-mix(in oklab, var(--brand) 5%, transparent), transparent 60%),
+    radial-gradient(720px 360px at 110% 8%, color-mix(in oklab, var(--brand-2) 5%, transparent), transparent 55%);
+  opacity:.35; mix-blend-mode:soft-light;
+}
+
+/* Titres de section avec dégradé de marque + légère lueur */
+.section h2{
+  background: var(--g-brand);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow: 0 0 8px color-mix(in oklab, var(--brand) 18%, transparent);
+}
+
+/* Cartes et boutons: hover/focus plus posé et premium */
+@media (hover:hover){
+  .card:hover{ transform:translateY(-2px); box-shadow:0 14px 36px rgba(0,0,0,.36); }
+}
+.card:focus-within{ outline:0; box-shadow:0 0 0 3px color-mix(in oklab, var(--brand) 28%, transparent), var(--shadow-md); }
+.btn, .chip{ transition-timing-function:cubic-bezier(.22,.8,.2,1); }
+
 /* ==== Carousel (final rules) ==== */
 /* Aligner les slides au début pour garantir l'accès aux extrémités */
 .carousel__slide{ scroll-snap-align: start !important; }
