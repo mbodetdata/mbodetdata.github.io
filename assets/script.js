@@ -543,16 +543,9 @@ const Modal = (() => {
     const dotsWrap = root.querySelector('.carousel__dots');
     if (!slides.length) return;
 
-    // Offsets centrés: position scrollLeft pour avoir la slide centrée dans la piste
+    // Offsets simples (alignement au début) pour robustesse et atteinte des extrémités
     let offsets = [];
-    const computeOffsets = () => {
-      const viewport = track.clientWidth;
-      const maxScroll = Math.max(0, track.scrollWidth - viewport);
-      offsets = slides.map(s => {
-        const center = s.offsetLeft - Math.max(0, (viewport - s.clientWidth) / 2);
-        return Math.min(maxScroll, Math.max(0, center));
-      });
-    };
+    const computeOffsets = () => { offsets = slides.map(s => s.offsetLeft); };
     const closestIndex = () => {
       const x = track.scrollLeft; let best = 0, bestDist = 1e9;
       offsets.forEach((off, i) => { const d = Math.abs(off - x); if (d < bestDist){ best = i; bestDist = d; } });

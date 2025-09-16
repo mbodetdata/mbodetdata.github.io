@@ -537,6 +537,11 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; }
   .card{ box-shadow: 0 4px 12px rgba(0,0,0,.18); }
 }
 
+/* ==== Carousel (final rules) ==== */
+/* Aligner les slides au début pour garantir l'accès aux extrémités */
+.carousel__slide{ scroll-snap-align: start !important; }
+.carousel__track{ justify-content: flex-start !important; }
+
 /* --- À partir de 720px : on réactive le masque progressif premium ------- */
 @media (min-width: 720px){
   .carousel__track{
