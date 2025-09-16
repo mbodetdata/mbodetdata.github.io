@@ -19,40 +19,7 @@ permalink: /
 
 
 <!-- SERVICES -->
-<section id="services" class="section" aria-labelledby="services-title">
-  <h2 id="services-title">Services</h2>
-
-  <!-- ItemList de Services (SEO) -->
-  <div class="grid cols-2"
-       role="list"
-       itemscope itemtype="https://schema.org/ItemList"
-       aria-label="Catalogue de services">
-    <meta itemprop="name" content="Services {{ site.author.name }}">
-    <meta itemprop="itemListOrder" content="https://schema.org/ItemListOrderAscending">
-
-    {% for service in site.data.services %}
-      <article class="card"
-               role="listitem"
-               itemscope itemtype="https://schema.org/Service"
-               itemprop="itemListElement">
-        <meta itemprop="position" content="{{ forloop.index }}">
-        <h3 itemprop="name">{{ service.title }}</h3>
-        <p itemprop="description">{{ service.text }}</p>
-
-        {% if service.badges %}
-          <p aria-label="Compétences associées">
-            {% for badge in service.badges %}
-              <!-- Les badges servent de mots-clés / DefinedTerm -->
-              <span class="badge"
-                    itemprop="keywords">{{ badge }}</span>
-            {% endfor %}
-          </p>
-        {% endif %}
-      </article>
-    {% endfor %}
-  </div>
-</section>
-<!-- END SERVICES -->
+{% include services.html %}
 
 
 <!-- REALISATIONS -->

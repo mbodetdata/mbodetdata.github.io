@@ -288,6 +288,25 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .m-note{ grid-column:1 / -1; margin-top:.7rem; display:flex; align-items:flex-start; gap:.5rem; color:var(--muted); font-size:var(--step--1); }
 .m-note-ico{ width:16px; height:16px; opacity:.9; color:var(--brand-2); flex:0 0 16px; margin-top:.15rem; }
 
+/* ========================== 7) SERVICES ========================== */
+.services-grid{ align-items:stretch; }
+.service-card{
+  background: linear-gradient(180deg, color-mix(in oklab, var(--surface-1) 96%, transparent), color-mix(in oklab, var(--surface-0) 98%, transparent));
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 12%);
+  -webkit-backdrop-filter: blur(4px) saturate(1.02);
+  backdrop-filter: blur(4px) saturate(1.02);
+  display:grid; gap:.6rem;
+}
+.svc-head{ display:grid; grid-template-columns:2.6rem 1fr; align-items:center; gap:.8rem; }
+.svc-ico{ width:2.6rem; height:2.6rem; display:grid; place-items:center; border-radius:.9rem; font-weight:800; }
+.svc-title{ margin:0; font-size:var(--step-1); font-weight:800; line-height:1.2; background:var(--g-brand); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.svc-desc{ color:var(--muted); margin:.25rem 0 .35rem; }
+.svc-badges{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.2rem; }
+.svc-badge{ padding:.28rem .55rem; border-radius:999px; font-size:calc(var(--step--1) - .02rem);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 28%);
+  background: color-mix(in oklab, var(--surface-1) 96%, transparent); color:var(--fg);
+}
+
 /* ========================== 7) CERTIFICATIONS ========================== */
 .certs{ padding-block:clamp(2rem,3vw,3.5rem); }
 .certs-head{ text-align:left; margin-bottom:1.25rem; }
