@@ -29,28 +29,46 @@
       <ul class="nav-inline" role="list">
         <li>
           <a class="chip" href="{{ '/#certifications' | relative_url }}" itemprop="url"
-             aria-label="Aller à la section certifications">Certifications</a>
+             aria-label="Aller à la section certifications">
+            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 15.9 6.8 18l1-5.8-4.2-4.1 5.8-.8L12 2z" fill="currentColor"/></svg>
+            Certifications
+          </a>
         </li>
         <li>
           <a class="chip" href="{{ '/#methodes' | relative_url }}" itemprop="url"
-             aria-label="Aller à la section Méthodes">Méthodes</a>
+             aria-label="Aller à la section Méthodes">
+            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6l-2 2M5 18l-2 2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm8 12-3-3M7 7 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Méthodes
+          </a>
         </li>
         <li>
           <a class="chip" href="{{ '/#services' | relative_url }}" itemprop="url"
-             aria-label="Aller à la section Services">Services</a>
+             aria-label="Aller à la section Services">
+            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Services
+          </a>
         </li>
         <li>
           <a class="chip" href="{{ '/#realisation' | relative_url }}" itemprop="url"
-             aria-label="Aller à la section Réalisations">Réalisations</a>
+             aria-label="Aller à la section Réalisations">
+            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h6v6H4zM14 6h6v6h-6zM4 16h6v6H4zM14 16h6v6h-6z" fill="currentColor"/></svg>
+            Réalisations
+          </a>
         </li>
         <li>
           <a class="chip" href="{{ '/blog/' | relative_url }}" itemprop="url"
              {% if page.url contains '/blog/' %}aria-current="page"{% endif %}
-             aria-label="Aller au blog">Blog</a>
+             aria-label="Aller au blog">
+            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Blog
+          </a>
         </li>
         <li>
           <a class="chip" href="{{ '/#contact' | relative_url }}" itemprop="url"
-             aria-label="Aller à la section Contact">Contact</a>
+             aria-label="Aller à la section Contact">
+            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 4V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            Contact
+          </a>
         </li>
         <!-- CTA supprimé : remplacé par le bouton flottant Cal.com -->
       </ul>
@@ -93,6 +111,8 @@
   <nav id="nav-collapsible" class="nav-collapsible" aria-label="Navigation mobile"
        itemscope itemtype="https://schema.org/SiteNavigationElement">
     <ul class="nav-list" role="list">
+      <li><a href="{{ '/#certifications' | relative_url }}" itemprop="url" aria-label="Aller à la section Certifications">Certifications</a></li>
+      <li><a href="{{ '/#methodes' | relative_url }}" itemprop="url" aria-label="Aller à la section Méthodes">Méthodes</a></li>
       <li><a href="{{ '/#services' | relative_url }}" itemprop="url" aria-label="Aller à la section Services">Services</a></li>
       <li><a href="{{ '/#realisation' | relative_url }}" itemprop="url" aria-label="Aller à la section Réalisations">Réalisations</a></li>
       <li><a href="{{ '/blog/' | relative_url }}" itemprop="url"

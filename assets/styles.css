@@ -113,11 +113,13 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   -webkit-backdrop-filter:saturate(1.05) blur(10px);
   backdrop-filter:saturate(1.05) blur(10px);
 }
+.site-header.is-scrolled{background:color-mix(in oklab, var(--surface-0) 96%, transparent);box-shadow:0 10px 30px rgba(0,0,0,.25);border-bottom-color: color-mix(in oklab, var(--border), var(--brand) 16%);}
 .navbar{
   max-width:var(--container); margin-inline:auto;
   display:flex; align-items:center; justify-content:space-between; gap:.75rem;
   padding:.55rem 1rem;
 }
+.site-header.is-scrolled .navbar{ padding:.4rem 1rem; }
 .brand{ display:flex; align-items:center; gap:.6rem; font-weight:800; font-size:var(--step-0); color:var(--fg); text-decoration:none; letter-spacing:.02em; }
 .brand .dot{ width:.8rem; height:.8rem; border-radius:999px; background:var(--g-brand); box-shadow:0 0 0 3px color-mix(in oklab, var(--brand) 22%, transparent); }
 .nav-actions{ display:inline-flex; align-items:center; gap:.5rem; }
@@ -168,6 +170,10 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 
 .nav-desktop{ display:none; flex:1 1 auto; min-width:0; }
 .nav-inline{ display:flex; align-items:center; gap:.6rem; white-space:nowrap; list-style:none; margin:0; padding:0 .5rem; }
+.nav-inline .chip{position:relative;display:inline-flex;align-items:center;gap:.4rem;padding:.55rem .8rem;border:1px solid var(--border);border-radius:999px;background:var(--surface-1);text-decoration:none;font-weight:700;}
+.nav-inline .chip::after{content:"";position:absolute;left:12px;right:12px;bottom:6px;height:2px;background:linear-gradient(90deg, transparent, var(--brand), transparent);transform:scaleX(0);transform-origin:50% 50%;transition:transform .2s ease;}
+.nav-inline .chip:hover::after{transform:scaleX(1);}
+.nav-inline .chip.is-active{border-color:color-mix(in oklab, var(--border), var(--brand) 40%);box-shadow:0 6px 16px color-mix(in oklab, var(--brand) 24%, transparent);}
 @media (min-width:992px){
   .nav-toggle{ display:none; }
   .nav-desktop{ display:block; }
@@ -291,12 +297,12 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 @media (min-width:900px){ .certs-dots{ display:none; } }
 
 /* ===== Brand logo (header) ===== */
-.brand-logo{ height:40px; width:auto; object-fit:contain; transition: transform .25s ease, filter .25s ease; }
-@media (min-width:600px){ .brand-logo{ height:44px; } }
-@media (min-width:992px){ .brand-logo{ height:56px; } }
-.brand:hover .brand-logo{ transform: scale(1.08); filter: drop-shadow(0 0 6px color-mix(in oklab, var(--brand) 60%, transparent)); }
+.brand-logo{ height:40px; width:auto; object-fit:contain; transition: transform .25s ease, filter .25s ease; ; transition: transform .25s ease, filter .25s ease, height .2s ease; }
+@media (min-width:600px){ .brand-logo{ height:44px; ; transition: transform .25s ease, filter .25s ease, height .2s ease; } }
+@media (min-width:992px){ .brand-logo{ height:56px; ; transition: transform .25s ease, filter .25s ease, height .2s ease; } }
+.brand:hover .brand-logo{ transform: scale(1.08); filter: drop-shadow(0 0 6px color-mix(in oklab, var(--brand) 60%, transparent)); ; transition: transform .25s ease, filter .25s ease, height .2s ease; }
 @keyframes logo-pulse{ 0%,100%{ transform:scale(1); filter:drop-shadow(0 0 0 color-mix(in oklab,var(--brand) 0%, transparent)); } 50%{ transform:scale(1.05); filter:drop-shadow(0 0 10px color-mix(in oklab,var(--brand) 60%, transparent)); } }
-body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; }
+body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transition: transform .25s ease, filter .25s ease, height .2s ease; }
 
 /* ========================== 8) CONTACT v2 ========================== */
 .contact-v2 .section-head{ margin-bottom:.8rem; }
@@ -455,8 +461,9 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; }
 }
 @media (max-width:599px){
   .site-header, .navbar{ overflow:clip; max-width:100vw; }
+.site-header.is-scrolled .navbar{ padding:.4rem 1rem; }
   .brand{ flex:1 1 auto; min-width:0; }
-  .brand-logo{ height:36px; max-width:48vw; }
+  .brand-logo{ height:36px; max-width:48vw; ; transition: transform .25s ease, filter .25s ease, height .2s ease; }
   .nav-actions{ flex:0 0 auto; }
   .theme-toggle, .nav-toggle{ max-width:44vw; }
 }
@@ -577,6 +584,22 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; }
 @media (max-width: 599px){
   .card{ box-shadow: 0 4px 12px rgba(0,0,0,.18); }
 }
+
+/* Header accent + chips icons */
+.site-header{ animation: header-in .24s ease-out both; }
+.site-header::after{ content:""; position:absolute; inset:auto 0 0 0; height:2px; background:linear-gradient(90deg, transparent, var(--brand), var(--brand-2), transparent); opacity:.7; }
+.site-header.is-scrolled{ -webkit-backdrop-filter:saturate(1.06) blur(14px); backdrop-filter:saturate(1.06) blur(14px); box-shadow:0 10px 30px rgba(0,0,0,.28); }
+.nav-inline .chip{ position:relative; display:inline-flex; align-items:center; gap:.4rem; padding:.55rem .8rem; border:1px solid var(--border); border-radius:999px; background:var(--surface-1); text-decoration:none; font-weight:700; }
+.nav-inline .chip::after{ content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg, transparent, var(--brand), transparent); transform:scaleX(0); transform-origin:50% 50%; transition:transform .2s ease; }
+.nav-inline .chip:hover::after{ transform:scaleX(1); }
+.nav-inline .chip.is-active{ border-color: color-mix(in oklab, var(--border), var(--brand) 40%); box-shadow: 0 6px 16px color-mix(in oklab, var(--brand) 24%, transparent); }
+.nav-inline .chip .ni{ width:16px; height:16px; opacity:.9; }
+
+@keyframes header-in{ from{ transform:translateY(-8px); opacity:0 } to{ transform:none; opacity:1 } }
+
+/* Neon bounce logo on home */
+@keyframes neon-bounce{ 0%{ transform:translateY(0) scale(1); filter:drop-shadow(0 0 0 color-mix(in oklab,var(--brand) 0%, transparent)); } 30%{ transform:translateY(-2px) scale(1.03); filter:drop-shadow(0 0 10px color-mix(in oklab,var(--brand) 55%, transparent)); } 60%{ transform:translateY(0) scale(1.01); filter:drop-shadow(0 0 6px color-mix(in oklab,var(--brand-2) 45%, transparent)); } 100%{ transform:translateY(0) scale(1); filter:drop-shadow(0 0 0 color-mix(in oklab,var(--brand) 0%, transparent)); } }
+body.home .brand-logo{ animation: neon-bounce 3.2s ease-in-out infinite; }
 
 /* ===== Relief pack (subtil, dark & light) ===== */
 /* Texture douce d'arrière-plan (désactivable en retirant ce bloc) */
@@ -826,3 +849,5 @@ body::before{
 @media (max-width: 599px){
   .card{ box-shadow: 0 4px 12px rgba(0,0,0,.18); }
 }
+
+

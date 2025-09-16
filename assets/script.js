@@ -48,6 +48,48 @@ const store = {
   bp.addEventListener?.('change', onChange);
 })();
 
+/* ==================== 2.1) Header UX (shrink + active link) ==================== */
+(() => {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+
+  // Shrink on scroll
+  const onScroll = () => {
+    const sc = window.scrollY || document.documentElement.scrollTop;
+    header.classList.toggle('is-scrolled', sc > 8);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Active link highlight by section in view
+  const ids = ['certifications','methodes','services','realisation','contact'];
+  const sections = ids
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+  if (!sections.length) return;
+
+  const navLinks = Array.from(document.querySelectorAll('.nav-desktop .nav-inline a'));
+  const byId = (id) => navLinks.find(a => a.getAttribute('href')?.includes('#'+id));
+
+  const setActive = (id) => {
+    navLinks.forEach(a => { a.classList.remove('is-active'); a.removeAttribute('aria-current'); });
+    const link = byId(id);
+    if (link) { link.classList.add('is-active'); link.setAttribute('aria-current','true'); }
+  };
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      let best = null; let bestRatio = 0;
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        if (e.intersectionRatio > bestRatio) { best = e.target; bestRatio = e.intersectionRatio; }
+      }
+      if (best) setActive(best.id);
+    }, { root: null, threshold: [0.35, 0.5, 0.65], rootMargin: '-10% 0px -50% 0px' });
+    sections.forEach(s => io.observe(s));
+  }
+})();
+
 /* ==================== 3) Thème (persist + système + label) ==================== */
 (() => {
   const btn   = $('.theme-toggle');
