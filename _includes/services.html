@@ -47,7 +47,22 @@
               </svg>
             {% endif %}
           </div>
-          <h3 class="svc-title" itemprop="name">{% include utils/abbrify.html text=service.title %}</h3>
+          {%- assign _st = service.title -%}
+          {%- assign _st = _st
+            | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+            | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+            | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+            | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+            | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+            | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+            | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+            | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+            | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+            | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+            | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+            | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+          -%}
+          <h3 class="svc-title" itemprop="name">{{ _st }}</h3>
         </div>
 
         <ul class="m-list" itemprop="itemOffered">
@@ -56,9 +71,39 @@
               <li class="m-item">
                 <span class="m-bullet" aria-hidden="true"></span>
                 {% if it.text %}
-              <span class="m-text">{% include utils/abbrify.html text=it.text %}</span>
+              {%- assign _sit = it.text | default: it -%}
+              {%- assign _sit = _sit
+                | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+                | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+                | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+                | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+                | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+                | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+                | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+                | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+                | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+                | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+                | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+                | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+              -%}
+              <span class="m-text">{{ _sit }}</span>
                 {% else %}
-                  <span class="m-text">{% include utils/abbrify.html text=it %}</span>
+                  {%- assign _sit2 = it -%}
+                  {%- assign _sit2 = _sit2
+                    | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+                    | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+                    | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+                    | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+                    | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+                    | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+                    | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+                    | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+                    | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+                    | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+                    | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+                    | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+                  -%}
+                  <span class="m-text">{{ _sit2 }}</span>
                 {% endif %}
                 {% if it.tech %}<span class="m-tech">{{ it.tech }}</span>{% endif %}
               </li>
@@ -67,7 +112,22 @@
             {% assign badges_lc = service.badges | jsonify | downcase %}
             <li class="m-item">
               <span class="m-bullet" aria-hidden="true"></span>
-              <span class="m-text">{% include utils/abbrify.html text=service.text %}</span>
+              {%- assign _sdesc = service.text -%}
+              {%- assign _sdesc = _sdesc
+                | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+                | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+                | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+                | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+                | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+                | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+                | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+                | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+                | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+                | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+                | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+                | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+              -%}
+              <span class="m-text">{{ _sdesc }}</span>
               {% if badges_lc contains 'talend' %}<span class="m-tech">Talend</span>{% endif %}
               {% if badges_lc contains 'power bi' or badges_lc contains 'powerbi' %}<span class="m-tech">Power BI</span>{% endif %}
             </li>

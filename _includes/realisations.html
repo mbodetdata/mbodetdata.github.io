@@ -29,8 +29,38 @@
                  data-benefices='{{ projet.details.benefices | jsonify }}'
                  data-stack='{{ projet.details.stack | jsonify }}'>
 
-          <h3 class="card-title">{% include utils/abbrify.html text=projet.title %}</h3>
-          <p class="lead" id="proj-desc-{{ idx }}">{% include utils/abbrify.html text=projet["text-short"] %}</p>
+          {%- assign _pt = projet.title -%}
+          {%- assign _pt = _pt
+            | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+            | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+            | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+            | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+            | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+            | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+            | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+            | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+            | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+            | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+            | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+            | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+          -%}
+          <h3 class="card-title">{{ _pt }}</h3>
+          {%- assign _ps = projet['text-short'] -%}
+          {%- assign _ps = _ps
+            | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+            | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+            | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+            | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+            | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+            | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+            | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+            | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+            | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+            | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+            | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+            | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+          -%}
+          <p class="lead" id="proj-desc-{{ idx }}">{{ _ps }}</p>
 
           <div class="card-actions">
             <button class="btn btn--details open-project" type="button"

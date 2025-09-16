@@ -18,7 +18,22 @@
       <article class="methode" itemscope itemtype="https://schema.org/HowToStep" itemprop="step">
         <div class="methode-head">
           <div class="methode__icon badge-glass" aria-hidden="true">{{ methode.icon }}</div>
-          <h3 class="methode__title" itemprop="name">{% include utils/abbrify.html text=methode.title %}</h3>
+          {%- assign _mt = methode.title -%}
+          {%- assign _mt = _mt
+            | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+            | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+            | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+            | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+            | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+            | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+            | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+            | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+            | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+            | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+            | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+            | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+          -%}
+          <h3 class="methode__title" itemprop="name">{{ _mt }}</h3>
         </div>
 
         <ul class="m-list" itemprop="step">
@@ -29,7 +44,22 @@
                 <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
-            <span class="m-text" itemprop="text">{% include utils/abbrify.html text=methode.talend %}</span>
+            {%- assign _mtal = methode.talend -%}
+            {%- assign _mtal = _mtal
+              | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+              | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+              | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+              | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+              | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+              | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+              | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+              | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+              | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+              | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+              | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+              | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+            -%}
+            <span class="m-text" itemprop="text">{{ _mtal }}</span>
             <span class="m-tech" title="ETL (Extract-Transform-Load)">Talend</span>
           </li>
           {% endif %}
@@ -40,7 +70,22 @@
                 <path d="M4 17h16M6 13h12M8 9h8M10 5h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
               </svg>
             </span>
-            <span class="m-text" itemprop="text">{% include utils/abbrify.html text=methode.powerbi %}</span>
+            {%- assign _mpbi = methode.powerbi -%}
+            {%- assign _mpbi = _mpbi
+              | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+              | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+              | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+              | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+              | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+              | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+              | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+              | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+              | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+              | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+              | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+              | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+            -%}
+            <span class="m-text" itemprop="text">{{ _mpbi }}</span>
             <span class="m-tech" title="Business Intelligence et reporting">Power&nbsp;BI</span>
           </li>
           {% endif %}
@@ -49,7 +94,22 @@
         {% if methode.note %}
           <p class="m-note" itemprop="tip">
             <svg class="m-note-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-6h2Zm0-8h-2V7h2Z" fill="currentColor"/></svg>
-            <span>{% include utils/abbrify.html text=methode.note %}</span>
+            {%- assign _mnote = methode.note -%}
+            {%- assign _mnote = _mnote
+              | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+              | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+              | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+              | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+              | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+              | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+              | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+              | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+              | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+              | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+              | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+              | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+            -%}
+            <span>{{ _mnote }}</span>
           </p>
         {% endif %}
       </article>
