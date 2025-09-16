@@ -585,7 +585,12 @@ const Modal = (() => {
     track.addEventListener('scroll', () => { raf(updateUI); });
     window.addEventListener('resize', () => { computeOffsets(); updateUI(); });
 
-    computeOffsets(); updateUI(); startAutoplay();
+    // Calcul initial des positions puis forcer l'ancrage au premier slide
+    computeOffsets();
+    // S'assure que le carrousel démarre sur la première réalisation
+    scrollToIndex(0, false);
+    updateUI();
+    startAutoplay();
   });
 })();
 
