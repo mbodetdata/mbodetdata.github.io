@@ -248,13 +248,33 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 @media (min-width:700px){  .methodes.methodes--modern{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (min-width:1100px){ .methodes.methodes--modern{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
 
+/* Badge glass reutilisable (bleu->vert, léger et transparent) */
+.badge-glass{
+  position:relative; overflow:hidden;
+  background: linear-gradient(135deg,
+              color-mix(in oklab, var(--brand) 22%, transparent),
+              color-mix(in oklab, var(--brand-2) 28%, transparent));
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 24%);
+}
+.badge-glass::after{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+  background: radial-gradient(120% 120% at -10% -10%, rgba(255,255,255,.18), transparent 50%),
+              radial-gradient(120% 120% at 110% 110%, rgba(255,255,255,.12), transparent 40%);
+  pointer-events:none;
+}
+
 .methode{
   display:grid; grid-template-columns:2.6rem 1fr; align-items:start; column-gap:1rem; row-gap:.7rem;
-  padding:clamp(1.2rem,2.2vw,1.6rem); background:var(--surface-1); border:1px solid var(--border); border-radius:var(--radius-2); box-shadow:var(--shadow-md);
+  padding:clamp(1.2rem,2.2vw,1.6rem);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--surface-1) 96%, transparent), color-mix(in oklab, var(--surface-0) 98%, transparent));
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 12%);
+  border-radius:var(--radius-2); box-shadow:var(--shadow-md);
+  -webkit-backdrop-filter: blur(4px) saturate(1.02);
+  backdrop-filter: blur(4px) saturate(1.02);
 }
 @media (hover:hover){ .methode:hover{ transform:translateY(-6px); border-color:color-mix(in oklab,var(--brand) 35%,var(--border)); box-shadow:var(--shadow-lg); } }
 .methode-head{ display:contents; }
-.methode__icon{ grid-column:1; grid-row:1; width:2.6rem; height:2.6rem; display:grid; place-items:center; border-radius:.9rem; background:var(--g-brand); color:#fff; font-size:1.2rem; box-shadow:0 2px 6px rgba(0,0,0,.25); }
+.methode__icon{ grid-column:1; grid-row:1; width:2.6rem; height:2.6rem; display:grid; place-items:center; border-radius:.9rem; color:#fff; font-size:1.2rem; box-shadow:0 2px 6px rgba(0,0,0,.25); }
 .methode__title{ grid-column:2; grid-row:1; margin:0; align-self:center; font-size:var(--step-1); font-weight:800; color:var(--fg); line-height:1.3; }
 .methode__line{ grid-column:1 / -1; display:flex; align-items:center; gap:.45rem; font-size:var(--step--1); color:var(--muted); flex-wrap:wrap; }
 .methode__note{ grid-column:1 / -1; margin-top:.6rem; display:flex; align-items:center; gap:.5rem; font-size:var(--step--1); color:var(--muted); }
