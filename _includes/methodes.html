@@ -18,7 +18,7 @@
       <article class="methode" itemscope itemtype="https://schema.org/HowToStep" itemprop="step">
         <div class="methode-head">
           <div class="methode__icon badge-glass" aria-hidden="true">{{ methode.icon }}</div>
-          <h3 class="methode__title" itemprop="name">{{ methode.title }}</h3>
+          <h3 class="methode__title" itemprop="name">{% include utils/abbrify.html text=methode.title %}</h3>
         </div>
 
         <ul class="m-list" itemprop="step">
@@ -29,7 +29,7 @@
                 <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
-            <span class="m-text" itemprop="text">{{ methode.talend }}</span>
+            <span class="m-text" itemprop="text">{% include utils/abbrify.html text=methode.talend %}</span>
             <span class="m-tech" title="ETL (Extract-Transform-Load)">Talend</span>
           </li>
           {% endif %}
@@ -40,7 +40,7 @@
                 <path d="M4 17h16M6 13h12M8 9h8M10 5h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
               </svg>
             </span>
-            <span class="m-text" itemprop="text">{{ methode.powerbi }}</span>
+            <span class="m-text" itemprop="text">{% include utils/abbrify.html text=methode.powerbi %}</span>
             <span class="m-tech" title="Business Intelligence et reporting">Power&nbsp;BI</span>
           </li>
           {% endif %}
@@ -49,7 +49,7 @@
         {% if methode.note %}
           <p class="m-note" itemprop="tip">
             <svg class="m-note-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-6h2Zm0-8h-2V7h2Z" fill="currentColor"/></svg>
-            <span>{{ methode.note }}</span>
+            <span>{% include utils/abbrify.html text=methode.note %}</span>
           </p>
         {% endif %}
       </article>

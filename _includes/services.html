@@ -47,7 +47,7 @@
               </svg>
             {% endif %}
           </div>
-          <h3 class="svc-title" itemprop="name">{{ service.title }}</h3>
+          <h3 class="svc-title" itemprop="name">{% include utils/abbrify.html text=service.title %}</h3>
         </div>
 
         <ul class="m-list" itemprop="itemOffered">
@@ -56,9 +56,9 @@
               <li class="m-item">
                 <span class="m-bullet" aria-hidden="true"></span>
                 {% if it.text %}
-                  <span class="m-text">{{ it.text }}</span>
+              <span class="m-text">{% include utils/abbrify.html text=it.text %}</span>
                 {% else %}
-                  <span class="m-text">{{ it }}</span>
+                  <span class="m-text">{% include utils/abbrify.html text=it %}</span>
                 {% endif %}
                 {% if it.tech %}<span class="m-tech">{{ it.tech }}</span>{% endif %}
               </li>
@@ -67,7 +67,7 @@
             {% assign badges_lc = service.badges | jsonify | downcase %}
             <li class="m-item">
               <span class="m-bullet" aria-hidden="true"></span>
-              <span class="m-text">{{ service.text }}</span>
+              <span class="m-text">{% include utils/abbrify.html text=service.text %}</span>
               {% if badges_lc contains 'talend' %}<span class="m-tech">Talend</span>{% endif %}
               {% if badges_lc contains 'power bi' or badges_lc contains 'powerbi' %}<span class="m-tech">Power BI</span>{% endif %}
             </li>

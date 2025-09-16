@@ -1,0 +1,20 @@
+{%- assign _t = include.text | to_s -%}
+{%- comment -%}
+  Abbrify common technical terms for better UX/SEO.
+  Usage: {% include utils/abbrify.html text=some_variable %}
+{%- endcomment -%}
+{%- assign _t = _t
+  | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+  | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+  | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+  | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+  | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+  | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+  | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+  | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+  | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+  | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+  | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+-%}
+{{ _t }}
+

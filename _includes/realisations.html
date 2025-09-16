@@ -29,8 +29,8 @@
                  data-benefices='{{ projet.details.benefices | jsonify }}'
                  data-stack='{{ projet.details.stack | jsonify }}'>
 
-          <h3 class="card-title">{{ projet.title }}</h3>
-          <p class="lead" id="proj-desc-{{ idx }}">{{ projet["text-short"] }}</p>
+          <h3 class="card-title">{% include utils/abbrify.html text=projet.title %}</h3>
+          <p class="lead" id="proj-desc-{{ idx }}">{% include utils/abbrify.html text=projet["text-short"] %}</p>
 
           <div class="card-actions">
             <button class="btn btn--details open-project" type="button"
