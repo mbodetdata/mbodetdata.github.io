@@ -18,7 +18,35 @@
         <meta itemprop="position" content="{{ forloop.index }}">
 
         <div class="svc-head">
-          <div class="svc-ico badge-glass" aria-hidden="true">{{ service.icon | default: service.title | slice: 0, 1 }}</div>
+          <div class="svc-ico badge-glass" aria-hidden="true">
+            {% assign t = service.title | downcase %}
+            {% if t contains 'automatisation' or t contains 'orchestration' %}
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="4" fill="currentColor"/>
+              </svg>
+            {% elsif t contains 'migration' or t contains 'modernisation' %}
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path d="M7 7h10M7 12h10M7 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M15 5l2 2-2 2M9 15l-2 2 2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            {% elsif t contains 'intégration' or t contains 'integration' or t contains 'interop' %}
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path d="M7 12a5 5 0 0 1 5-5h1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M17 12a5 5 0 0 1-5 5h-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            {% elsif t contains 'quality' or t contains 'qualité' or t contains 'performance' %}
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M8 12l2.5 2.5L16 9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% else %}
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            {% endif %}
+          </div>
           <h3 class="svc-title" itemprop="name">{{ service.title }}</h3>
         </div>
 
@@ -37,4 +65,3 @@
   </div>
 </section>
 <!-- END SERVICES -->
-

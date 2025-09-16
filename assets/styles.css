@@ -299,7 +299,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 }
 .svc-head{ display:grid; grid-template-columns:2.6rem 1fr; align-items:center; gap:.8rem; }
 .svc-ico{ width:2.6rem; height:2.6rem; display:grid; place-items:center; border-radius:.9rem; font-weight:800; }
-.svc-title{ margin:0; font-size:var(--step-1); font-weight:800; line-height:1.2; background:var(--g-brand); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.svc-title{ margin:0; font-size:var(--step-1); font-weight:800; line-height:1.2; color:var(--fg); }
 .svc-desc{ color:var(--muted); margin:.25rem 0 .35rem; }
 .svc-badges{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.2rem; }
 .svc-badge{ padding:.28rem .55rem; border-radius:999px; font-size:calc(var(--step--1) - .02rem);
