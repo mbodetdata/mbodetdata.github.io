@@ -167,6 +167,14 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   padding:1rem 1.1rem; border-radius:14px; text-decoration:none;
   color:var(--fg); background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-sm);
 }
+/* Mobile-only tweaks for menu icons spacing */
+@media (max-width: 991px){
+  .nav-list a{ gap:.45rem; padding:.85rem 1rem; }
+  .nav-list .ni{ width:14px; height:14px; flex:0 0 14px; opacity:.9; }
+}
+@media (max-width: 360px){
+  .nav-list .ni{ display:none; }
+}
 .nav-list a:hover{ border-color:color-mix(in oklab,var(--border),var(--brand) 30%); box-shadow:var(--shadow-md); }
 
 .nav-desktop{ display:none; flex:1 1 auto; min-width:0; }
