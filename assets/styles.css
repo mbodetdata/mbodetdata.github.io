@@ -170,7 +170,8 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 /* Mobile-only tweaks for menu icons spacing */
 @media (max-width: 991px){
   .nav-list a{ gap:.45rem; padding:.85rem 1rem; }
-  .nav-list .ni{ width:14px; height:14px; flex:0 0 14px; opacity:.9; }
+  /* Icônes masquées sur mobile pour éviter l'encombrement */
+  .nav-list .ni{ display:none !important; }
 }
 @media (max-width: 360px){
   .nav-list .ni{ display:none; }
