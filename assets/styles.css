@@ -484,9 +484,14 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   max-height:90vh; overflow:auto; animation: pop .18s ease-out;
 }
 .btn.btn--details{
-  border:0; color:#fff; background: var(--g-brand);
+  color:#fff; font-weight:800;
+  background: linear-gradient(135deg,
+               color-mix(in oklab, var(--brand) 22%, transparent),
+               color-mix(in oklab, var(--brand-2) 28%, transparent));
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 26%);
+  -webkit-backdrop-filter: blur(2px) saturate(1.02);
+  backdrop-filter: blur(2px) saturate(1.02);
   box-shadow:0 10px 24px color-mix(in oklab, var(--brand) 30%, transparent);
-  font-weight:800;
 }
 .btn.btn--details:hover{ transform:translateY(-1px); box-shadow:0 14px 30px color-mix(in oklab, var(--brand) 36%, transparent); }
 
@@ -767,6 +772,14 @@ body::before{
 .carousel__track{
   justify-content: flex-start !important;
   grid-auto-columns: 100% !important; /* 1 carte = 100% viewport */
+}
+
+/* Desktop: plusieurs cartes visibles (dots gardent 1:1) */
+@media (min-width: 900px){
+  .carousel__track{ grid-auto-columns: calc(50% - 12px) !important; }
+}
+@media (min-width: 1200px){
+  .carousel__track{ grid-auto-columns: calc(33.333% - 14px) !important; }
 }
 
 /* --- À partir de 720px : on réactive le masque progressif premium ------- */
