@@ -1,67 +1,106 @@
 <!-- _includes/footer.html -->
 <footer class="site-footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
-  <!-- Métadonnées SEO -->
-  <meta itemprop="copyrightYear" content="{{ site.time | date: '%Y' }}">
   {% assign site_url = site.url | default: site.github.url %}
+  <meta itemprop="copyrightYear" content="{{ site.time | date: '%Y' }}">
   {% if site_url %}<meta itemprop="url" content="{{ site_url | absolute_url }}">{% endif %}
 
-  <p>
-    © {{ site.time | date: "%Y" }}
-    <span itemprop="copyrightHolder">{{ site.author.name }}</span>
-    — <span itemprop="description">Consultant Freelance spécialisé
-      <abbr title="Extract – Transform – Load">ETL</abbr> Talend &amp; Power&nbsp;BI
-    </span>
-  </p>
-
-  <hr class="soft-sep" aria-hidden="true">
-
-  <nav class="footer-nav" aria-label="Liens utiles du site" itemscope itemtype="https://schema.org/SiteNavigationElement">
-    <ul class="footer-links" role="list">
-      <li>
-        <a href="/sitemap.xml" rel="sitemap">Sitemap</a>
-      </li>
-      <li>
-        <a href="/robots.txt" rel="robots">Robots</a>
-      </li>
-      <li>
-        <a href="mailto:{{ site.author.email }}" itemprop="email" rel="me">Email</a>
-      </li>
-      <li>
-        <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener me" itemprop="sameAs">
-          LinkedIn
+  <div class="footer container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="{{ '/' | relative_url }}" rel="home" aria-label="Retour à l’accueil">
+          <img src="{{ '/assets/img/logo_256.webp' | relative_url }}" alt="Logo {{ site.author.enterprise | default: site.title }}" class="footer-logo" width="64" height="64" loading="lazy" decoding="async">
+          <div class="footer-brand-text">
+            <strong class="footer-title">{{ site.title }}</strong>
+            <small class="muted">Consultant freelance ETL Talend &amp; Power&nbsp;BI</small>
+          </div>
         </a>
-      </li>
-      {% if site.legal_url %}
-      <li>
-        <a href="{{ site.legal_url | relative_url }}">Mentions légales</a>
-      </li>
-      {% endif %}
-      {% if site.privacy_url %}
-      <li>
-        <a href="{{ site.privacy_url | relative_url }}">Confidentialité</a>
-      </li>
-      {% endif %}
-    </ul>
-  </nav>
-</footer>
+      </div>
 
-<!-- Calendly inline widget wrapper (chargé à la demande via script.js) -->
-<div id="calendly-modal" class="modal" hidden>
-  <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Prendre rendez-vous">
-    <button class="modal__close" aria-label="Fermer">×</button>
-    <div id="calendly-inline"></div>
+      <nav class="footer-col" aria-label="Navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <h3 class="footer-col-title">Navigation</h3>
+        <ul class="footer-list" role="list">
+          <li><a href="{{ '/#services' | relative_url }}" itemprop="url">
+            <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Services
+          </a></li>
+          <li><a href="{{ '/#realisation' | relative_url }}" itemprop="url">
+            <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h6v6H4zM14 6h6v6h-6zM4 16h6v6H4zM14 16h6v6h-6z" fill="currentColor"/></svg>
+            Réalisations
+          </a></li>
+          <li><a href="{{ '/blog/' | relative_url }}" itemprop="url">
+            <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Blog
+          </a></li>
+          <li><a href="{{ '/#contact' | relative_url }}" itemprop="url">
+            <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 4V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            Contact
+          </a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col" aria-label="Contacts">
+        <h3 class="footer-col-title">Contacts</h3>
+        <ul class="footer-list" role="list">
+          <li><a href="mailto:{{ site.author.email }}" rel="me" itemprop="email">
+            <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            {{ site.author.email }}
+          </a></li>
+          {% if site.author.linkedin %}
+          <li><a href="{{ site.author.linkedin }}" target="_blank" rel="noopener nofollow" itemprop="sameAs">
+            <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2.05h.05c.53-1 1.82-2.05 3.75-2.05 4.01 0 4.75 2.64 4.75 6.08V23h-4v-5.28c0-1.26-.02-2.89-1.76-2.89-1.76 0-2.03 1.37-2.03 2.79V23h-4V8z" fill="currentColor"/></svg>
+            LinkedIn
+          </a></li>
+          {% endif %}
+          {% if site.author.cal_url or site.author.calendly_url %}
+          <li><a href="{{ site.author.cal_url | default: site.author.calendly_url }}" target="_blank" rel="noopener">
+            <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Prendre rendez-vous
+          </a></li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <nav class="footer-col" aria-label="Légal" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <h3 class="footer-col-title">Légal</h3>
+        <ul class="footer-list" role="list">
+          {% if site.legal_url %}<li><a href="{{ site.legal_url | relative_url }}">
+            <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16v18H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 7h8M8 11h8M8 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Mentions légales
+          </a></li>{% endif %}
+          {% if site.privacy_url %}<li><a href="{{ site.privacy_url | relative_url }}">
+            <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            Confidentialité
+          </a></li>{% endif %}
+          <li><a href="/sitemap.xml" rel="sitemap">
+            <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM9 20h6v-6H9zM7 10v4h10v-4" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            Sitemap
+          </a></li>
+          <li><a href="/robots.txt" rel="robots">
+            <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="10" r="1.5" fill="currentColor"/><circle cx="16" cy="10" r="1.5" fill="currentColor"/><rect x="4" y="4" width="16" height="14" rx="3" ry="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Robots
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <hr class="soft-sep" aria-hidden="true">
+
+    <div class="footer-meta">
+      <p class="footer-copy">© {{ site.time | date: '%Y' }} <span itemprop="copyrightHolder">{{ site.author.name }}</span> • {{ site.title }}</p>
+      <p class="footer-note muted">Réponse sous 24–48&nbsp;h ouvrées.</p>
+    </div>
   </div>
-</div>
 
-<!-- JSON-LD complémentaire (Organization/Person minimal) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": {{ site.author.name | jsonify }},
-  {% if site.author.email %}"email": {{ site.author.email | prepend: "mailto:" | jsonify }},{% endif %}
-  {% if site.author.linkedin %}"sameAs": [ {{ site.author.linkedin | jsonify }} ],{% endif %}
-  {% if site_url %}"url": {{ site_url | absolute_url | jsonify }},{% endif %}
-  "description": "Consultant Freelance spécialisé ETL Talend & Power BI"
-}
-</script>
+  <!-- JSON-LD complémentaire (Person minimal) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": {{ site.author.name | jsonify }},
+    {% if site.author.email %}"email": {{ site.author.email | prepend: "mailto:" | jsonify }},{% endif %}
+    {% if site.author.linkedin %}"sameAs": [ {{ site.author.linkedin | jsonify }} ],{% endif %}
+    {% if site_url %}"url": {{ site_url | absolute_url | jsonify }},{% endif %}
+    "description": "Consultant Freelance spécialisé ETL Talend & Power BI"
+  }
+  </script>
+</footer>
