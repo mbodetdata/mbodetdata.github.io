@@ -547,9 +547,10 @@ const Modal = (() => {
     let offsets = [];
     const computeOffsets = () => {
       const viewport = track.clientWidth;
+      const maxScroll = Math.max(0, track.scrollWidth - viewport);
       offsets = slides.map(s => {
         const center = s.offsetLeft - Math.max(0, (viewport - s.clientWidth) / 2);
-        return Math.max(0, center);
+        return Math.min(maxScroll, Math.max(0, center));
       });
     };
     const closestIndex = () => {
