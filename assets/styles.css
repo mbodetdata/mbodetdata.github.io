@@ -163,7 +163,8 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .nav-collapsible.open{ max-height:60svh; border-color:var(--border); box-shadow: var(--shadow-md); }
 .nav-list{ list-style:none; margin:0; padding:.5rem .75rem 1rem; display:grid; gap:.6rem; }
 .nav-list a,.nav-list .btn{
-  display:block; padding:1rem 1.1rem; border-radius:14px; text-decoration:none;
+  display:flex; align-items:center; gap:.55rem;
+  padding:1rem 1.1rem; border-radius:14px; text-decoration:none;
   color:var(--fg); background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-sm);
 }
 .nav-list a:hover{ border-color:color-mix(in oklab,var(--border),var(--brand) 30%); box-shadow:var(--shadow-md); }
@@ -587,7 +588,12 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 
 /* Header accent + chips icons */
 .site-header{ animation: header-in .24s ease-out both; }
-.site-header::after{ content:""; position:absolute; inset:auto 0 0 0; height:2px; background:linear-gradient(90deg, transparent, var(--brand), var(--brand-2), transparent); opacity:.7; }
+.site-header{ --accent-a: var(--brand); --accent-b: var(--brand-2); }
+.site-header::after{
+  content:""; position:absolute; inset:auto 0 0 0; height:2px;
+  background:linear-gradient(90deg, transparent, var(--accent-a), var(--accent-b), transparent);
+  opacity:.7; transition: background .35s ease, opacity .25s ease;
+}
 .site-header.is-scrolled{ -webkit-backdrop-filter:saturate(1.06) blur(14px); backdrop-filter:saturate(1.06) blur(14px); box-shadow:0 10px 30px rgba(0,0,0,.28); }
 .nav-inline .chip{ position:relative; display:inline-flex; align-items:center; gap:.4rem; padding:.55rem .8rem; border:1px solid var(--border); border-radius:999px; background:var(--surface-1); text-decoration:none; font-weight:700; }
 .nav-inline .chip::after{ content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg, transparent, var(--brand), transparent); transform:scaleX(0); transform-origin:50% 50%; transition:transform .2s ease; }

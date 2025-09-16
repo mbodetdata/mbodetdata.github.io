@@ -61,32 +61,68 @@ const store = {
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // Active link highlight by section in view
+  // Active link highlight by section in view (robuste)
   const ids = ['certifications','methodes','services','realisation','contact'];
-  const sections = ids
-    .map(id => document.getElementById(id))
-    .filter(Boolean);
+  const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
   if (!sections.length) return;
 
   const navLinks = Array.from(document.querySelectorAll('.nav-desktop .nav-inline a'));
-  const byId = (id) => navLinks.find(a => a.getAttribute('href')?.includes('#'+id));
-
+  const byId = (id) => navLinks.find(a => (a.getAttribute('href') || '').includes('#'+id));
   const setActive = (id) => {
     navLinks.forEach(a => { a.classList.remove('is-active'); a.removeAttribute('aria-current'); });
     const link = byId(id);
     if (link) { link.classList.add('is-active'); link.setAttribute('aria-current','true'); }
   };
 
+  // Accent bar color shift on nav hover/focus
+  const applyAccent = (hot) => {
+    const a = hot ? 'color-mix(in oklab, var(--brand) 75%, #fff 25%)' : 'var(--brand)';
+    const b = hot ? 'color-mix(in oklab, var(--brand-2) 75%, #fff 25%)' : 'var(--brand-2)';
+    header.style.setProperty('--accent-a', a);
+    header.style.setProperty('--accent-b', b);
+  };
+  navLinks.forEach(a => {
+    a.addEventListener('mouseenter', () => applyAccent(true), { passive: true });
+    a.addEventListener('mouseleave', () => applyAccent(false), { passive: true });
+    a.addEventListener('focus', () => applyAccent(true), { passive: true });
+    a.addEventListener('blur', () => applyAccent(false), { passive: true });
+  });
+
+  // Maintient un score par section pour éviter le "collant" sur la première
+  const ratios = new Map(sections.map(s => [s.id, 0]));
+
+  const pickBest = () => {
+    let bestId = null, best = -1;
+    for (const s of sections) {
+      const r = ratios.get(s.id) || 0;
+      if (r > best) { best = r; bestId = s.id; }
+    }
+    if (bestId) setActive(bestId);
+  };
+
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
-      let best = null; let bestRatio = 0;
       for (const e of entries) {
-        if (!e.isIntersecting) continue;
-        if (e.intersectionRatio > bestRatio) { best = e.target; bestRatio = e.intersectionRatio; }
+        ratios.set(e.target.id, e.isIntersecting ? e.intersectionRatio : 0);
       }
-      if (best) setActive(best.id);
-    }, { root: null, threshold: [0.35, 0.5, 0.65], rootMargin: '-10% 0px -50% 0px' });
+      pickBest();
+    }, { root: null, threshold: [0, 0.2, 0.35, 0.5, 0.65, 0.8, 1], rootMargin: '-10% 0px -35% 0px' });
     sections.forEach(s => io.observe(s));
+  } else {
+    // Fallback: calcule le ratio visible à chaque scroll
+    const calc = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      for (const s of sections) {
+        const r = s.getBoundingClientRect();
+        const visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+        const ratio = Math.min(1, visible / Math.max(1, r.height));
+        ratios.set(s.id, ratio);
+      }
+      pickBest();
+    };
+    window.addEventListener('scroll', () => raf(calc), { passive: true });
+    window.addEventListener('resize', () => raf(calc));
+    calc();
   }
 })();
 
