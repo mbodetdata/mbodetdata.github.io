@@ -574,6 +574,31 @@ const Modal = (() => {
   const stackEl    = document.getElementById('project-stack');
   const linkEl     = document.getElementById('project-link');
 
+  // Abbrify helper: inject <abbr> for common technical terms
+  const abbrs = [
+    { re: /\bPower\s?BI\b/gi, html: '<abbr title="Business Intelligence">Power BI</abbr>' },
+    { re: /\bCI\s*\/\s*CD\b/gi, html: '<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>' },
+    { re: /\bETL\b/gi, html: '<abbr title="Extract-Transform-Load">ETL</abbr>' },
+    { re: /\bAPI\b/gi, html: '<abbr title="Application Programming Interface">API</abbr>' },
+    { re: /\bNoSQL\b/gi, html: '<abbr title="Not Only SQL">NoSQL</abbr>' },
+    { re: /\bSQL\b/gi, html: '<abbr title="Structured Query Language">SQL</abbr>' },
+    { re: /\bDAX\b/gi, html: '<abbr title="Data Analysis Expressions">DAX</abbr>' },
+    { re: /\bKPI\b/gi, html: '<abbr title="Key Performance Indicator">KPI</abbr>' },
+    { re: /\bSLA\b/gi, html: '<abbr title="Service Level Agreement">SLA</abbr>' },
+    { re: /\bWMS\b/gi, html: '<abbr title="Warehouse Management System">WMS</abbr>' },
+    { re: /\bTMS\b/gi, html: '<abbr title="Transport Management System">TMS</abbr>' },
+    { re: /\bSSO\b/gi, html: '<abbr title="Single Sign-On">SSO</abbr>' },
+    { re: /\bRLS\b/gi, html: '<abbr title="Row-Level Security">RLS</abbr>' },
+    { re: /\bSaaS\b/gi, html: '<abbr title="Software as a Service">SaaS</abbr>' }
+  ];
+  const abbrify = (s) => {
+    if (!s) return '';
+    let out = String(s);
+    // Ensure longer terms first to avoid partial overlaps
+    abbrs.forEach(({ re, html }) => { out = out.replace(re, html); });
+    return out;
+  };
+
   // --- conversions robustes ---
   const toArray = (value) => {
     if (Array.isArray(value)) return value;
@@ -598,16 +623,16 @@ const Modal = (() => {
     ul.innerHTML = '';
     toArray(data).forEach(item => {
       const li = document.createElement('li');
-      li.textContent = item;
+      li.innerHTML = abbrify(item);
       ul.appendChild(li);
     });
   };
 
   function fill(card){
-    titleEl.textContent    = card.dataset.title || '';
+    titleEl.innerHTML      = abbrify(card.dataset.title || '');
     clientEl.textContent   = card.dataset.client ? `Client : ${card.dataset.client}` : '';
-    abstractEl.textContent = card.dataset.abstract || '';
-    ctxEl.textContent      = card.dataset.contexte || '';
+    abstractEl.innerHTML   = abbrify(card.dataset.abstract || '');
+    ctxEl.innerHTML        = abbrify(card.dataset.contexte || '');
     renderList(missionsEl,  card.dataset.missions);
     renderList(benefEl,     card.dataset.benefices);
     renderList(stackEl,     card.dataset.stack);
