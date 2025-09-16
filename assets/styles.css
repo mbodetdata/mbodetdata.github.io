@@ -307,7 +307,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 
 /* Horloge grande (badge) pour pending */
 /* Animer les aiguilles du SVG pending existant (cert-ph--clock) */
-.cert-ph--clock .clock-h, .cert-ph--clock .clock-m{ transform-origin: 28px 28px; transform-box: fill-box; }
+.cert-ph--clock .clock-h, .cert-ph--clock .clock-m{ transform-origin: 28px 28px; transform-box: view-box; }
 .cert-ph--clock .clock-h{ animation: clkH 12s linear infinite; }
 .cert-ph--clock .clock-m{ animation: clkM 2s linear infinite; }
 @keyframes clkH{ from{ transform: rotate(0deg); } to{ transform: rotate(360deg); } }
