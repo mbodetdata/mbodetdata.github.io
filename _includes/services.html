@@ -50,12 +50,37 @@
           <h3 class="svc-title" itemprop="name">{{ service.title }}</h3>
         </div>
 
-        <p class="svc-desc" itemprop="description">{{ service.text }}</p>
+        <ul class="m-list" itemprop="itemOffered">
+          {% if service.items %}
+            {% for it in service.items %}
+              <li class="m-item">
+                <span class="m-bullet" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                {% if it.text %}
+                  <span class="m-text">{{ it.text }}</span>
+                {% else %}
+                  <span class="m-text">{{ it }}</span>
+                {% endif %}
+                {% if it.tech %}<span class="m-tech">{{ it.tech }}</span>{% endif %}
+              </li>
+            {% endfor %}
+          {% else %}
+            {% assign badges_lc = service.badges | jsonify | downcase %}
+            <li class="m-item">
+              <span class="m-bullet" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="m-text">{{ service.text }}</span>
+              {% if badges_lc contains 'talend' %}<span class="m-tech">Talend</span>{% endif %}
+              {% if badges_lc contains 'power bi' or badges_lc contains 'powerbi' %}<span class="m-tech">Power BI</span>{% endif %}
+            </li>
+          {% endif %}
+        </ul>
 
         {% if service.badges %}
           <div class="svc-badges" aria-label="Compétences associées">
             {% for badge in service.badges %}
-              <!-- Les badges servent de mots‑clés / DefinedTerm -->
               <span class="svc-badge" itemprop="keywords">{{ badge }}</span>
             {% endfor %}
           </div>
