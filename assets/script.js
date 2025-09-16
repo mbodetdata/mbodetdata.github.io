@@ -684,7 +684,10 @@ const Modal = (() => {
     root.addEventListener('focusout', startAutoplay);
 
     const atStart = () => track.scrollLeft <= 3;
-    const atEnd   = () => Math.abs(track.scrollLeft + track.clientWidth - track.scrollWidth) < 4;
+    const atEnd   = () => {
+      const last = offsets[offsets.length - 1] ?? 0;
+      return track.scrollLeft >= last - 3; // proche du dernier offset
+    };
 
     prev.addEventListener('click', () => {
       if (atStart()) scrollToIndex(-1); // force wrap -> dernier
