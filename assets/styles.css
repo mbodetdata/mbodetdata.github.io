@@ -281,23 +281,47 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .cert-card{
   display:grid; grid-template-columns:56px 1fr; align-items:start; column-gap:1.4rem; row-gap:.7rem;
   padding:clamp(1.5rem,2.6vw,2.1rem) clamp(1.6rem,3vw,2.4rem);
-  background:var(--surface-1); border:1px solid var(--border);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--surface-1) 94%, transparent), color-mix(in oklab, var(--surface-0) 98%, transparent));
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 12%);
   border-radius:var(--radius-2); box-shadow:var(--shadow-md);
+  -webkit-backdrop-filter: blur(6px) saturate(1.02);
+  backdrop-filter: blur(6px) saturate(1.02);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
-@media (hover:hover){ .cert-card:hover{ transform:translateY(-6px); border-color:color-mix(in oklab,var(--brand) 35%,var(--border)); box-shadow:var(--shadow-lg); } }
-.cert-badge{ grid-column:1; grid-row:1; display:grid; place-items:center; width:56px; height:56px; border-radius:.9rem; background:var(--g-brand); color:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.25); }
+@media (hover:hover){ .cert-card:hover{ transform:translateY(-4px); border-color:color-mix(in oklab,var(--brand) 40%,var(--border)); box-shadow:0 18px 40px rgba(0,0,0,.42); } }
+.cert-badge{ position:relative; grid-column:1; grid-row:1; display:grid; place-items:center; width:56px; height:56px; border-radius:.9rem; background:var(--surface-1); color:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.25); }
+.cert-badge::after{
+  content:""; position:absolute; inset:-3px; border-radius:inherit;
+  background: conic-gradient(from 0deg, var(--brand), var(--brand-2), var(--brand));
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0); 
+          mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding:2px;
+  transform-origin:50% 50%;
+}
+.cert-card:hover .cert-badge{ box-shadow:0 6px 18px rgba(0,0,0,.28); }
+.cert-card:hover .cert-badge::after{ filter: drop-shadow(0 0 10px color-mix(in oklab, var(--brand) 55%, transparent)); animation: ring-rotate 1.1s ease-out 1; }
+@keyframes ring-rotate{ from{ transform: rotate(0deg); } to{ transform: rotate(180deg); } }
 .cert-logo{ width:100%; height:100%; object-fit:contain; }
 .cert-body{ grid-column:1 / -1; display:grid; gap:.55rem; }
 .cert-title{ margin:0; font-size:var(--step-1); font-weight:800; line-height:1.3; }
 .cert-issuer{ margin:.1rem 0 0; font-size:var(--step--1); color:var(--muted); }
 .cert-statusline{ grid-column:2; grid-row:1; display:flex; align-items:center; gap:.6rem; font-size:var(--step-0); font-weight:700; }
-.cert-chip{ display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .7rem; line-height:1; border-radius:999px; font-size:var(--step--1); border:1px solid var(--border); background:var(--surface-1); }
+.cert-chip{ display:inline-flex; align-items:center; gap:.45rem; padding:.35rem .7rem; line-height:1; border-radius:999px; font-size:var(--step--1); border:1px solid var(--border); background:color-mix(in oklab, var(--surface-1) 96%, transparent); font-weight:800; letter-spacing:.01em; }
+.cert-chip::before{ display:none !important; content:none; }
+.cert-chip .ci-ico{ width:14px; height:14px; flex:0 0 14px; }
 .cert-chip.chip-ok{ color:var(--brand-2); border-color:color-mix(in oklab,var(--brand-2) 40%,var(--border)); }
+.cert-chip.chip-ok .ci-ico{ color: var(--brand-2); }
 .cert-chip.chip-pending{ color:var(--muted); }
+.cert-chip.chip-pending .ci-ico{ color: var(--muted); }
 .cert-date{ opacity:.9; font-size:var(--step--1); }
 .cert-tags{ display:flex; flex-wrap:wrap; gap:.5rem; list-style:none; margin:.55rem 0 0; padding:0; }
 .cert-tags .tag{ padding:.35rem .6rem; border-radius:999px; background:color-mix(in oklab, #94a3b8 14%, transparent); border:1px solid color-mix(in oklab, #94a3b8 28%, transparent); font-size:calc(var(--step--1) - .02rem); line-height:1; white-space:nowrap; }
 :root[data-theme="light"] .cert-tags .tag{ background:color-mix(in oklab, #94a3b8 10%, #fff 92%); border:1px solid color-mix(in oklab, #94a3b8 22%, #fff 0%); color:color-mix(in oklab, var(--fg) 88%, #000 0%); }
+
+/* UI/UX: limiter à 5 tags visibles avec toggle */
+.cert-tags.is-collapsed .tag:nth-child(n+6){ display:none; }
+.cert-tags + .tags-toggle{ margin-top:.4rem; background:none; border:0; color:var(--muted); cursor:pointer; padding:0; font:inherit; text-decoration:underline; text-underline-offset:2px; }
+.cert-tags + .tags-toggle:hover{ color:var(--fg); }
 
 /* Dots (certs) */
 .certs-dots{ display:flex; justify-content:center; align-items:center; gap:.5rem; margin-top:.75rem; padding-bottom:.25rem; }

@@ -72,7 +72,18 @@
   <div class="cert-statusline" aria-live="polite">
     <span class="cert-chip {% if c.status == 'pending' %}chip-pending{% else %}chip-ok{% endif %}"
           aria-label="Statut de la certification">
-      {% if c.status == 'pending' %}En cours{% else %}Certifié{% endif %}
+      {% if c.status == 'pending' %}
+        <svg class="ci-ico" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        En cours
+      {% else %}
+        <svg class="ci-ico" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Certifié
+      {% endif %}
     </span>
 
     {% if c.status == 'pending' and c.planned_date %}

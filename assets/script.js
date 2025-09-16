@@ -318,6 +318,25 @@ const Modal = (() => {
   }, { passive: true });
 })();
 
+/* ===== Certifications: limiter les tags + toggle "Afficher plus" ===== */
+(() => {
+  const lists = document.querySelectorAll('.cert-card .cert-tags');
+  lists.forEach(ul => {
+    const items = ul.querySelectorAll('.tag');
+    if (items.length <= 5) return;
+    ul.classList.add('is-collapsed');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'tags-toggle';
+    btn.textContent = 'Afficher plus';
+    btn.addEventListener('click', () => {
+      const collapsed = ul.classList.toggle('is-collapsed');
+      btn.textContent = collapsed ? 'Afficher plus' : 'Afficher moins';
+    });
+    ul.after(btn);
+  });
+})();
+
 /* ================== 7) Cal.com (inline + bouton flottant + boutons) ================== */
 (() => {
   const boot = () => {
