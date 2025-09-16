@@ -322,6 +322,32 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; }
 @media (max-width: 991px){ #calendly-inline-embed{ display:none; } .contact-v2 .actions--center{ display:flex; } }
 @media (min-width: 992px){ .contact-v2 .actions--center{ display:none; } .contact-sticky{ position: sticky; top: 88px; } }
 
+/* ===== Desktop-only layout for contact (rearranged, smaller calendar) ===== */
+@media (min-width: 992px){
+  /* Two-column layout inside the contact card */
+  .contact-v2 .calendly-card{
+    max-width: 1100px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(420px, 1fr) 420px;
+    grid-template-areas:
+      "head head"
+      "cal  contacts"
+      "note contacts";
+    align-items: start;
+    gap: .25rem 1rem;
+  }
+  .contact-v2 .calendly-head{ grid-area: head; }
+  #calendly-inline-embed{ grid-area: cal; margin: 0; }
+  .contact-v2 .contact-inline{ grid-area: contacts; padding: 1rem; }
+  .contact-v2 .soft-sep{ display: none; }
+  .contact-v2 .note{ grid-area: note; margin: .5rem 0 0 0; padding: 0 0 .75rem 0; }
+
+  /* Reduce calendar height on desktop */
+  .calendly-inline{ min-height: clamp(420px, 56vh, 720px); }
+  #calendly-inline-embed{ min-height: clamp(460px, 58vh, 760px); }
+}
+
 /* Liste contacts + copy */
 .contact-inline{ text-align:left; display:grid; gap:1rem; padding: 1rem 1.25rem 1.25rem; }
 .contact-list{ list-style:none; margin:0; padding:0; display:grid; gap:.8rem; }
