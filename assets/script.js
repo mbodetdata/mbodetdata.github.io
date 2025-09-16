@@ -683,8 +683,17 @@ const Modal = (() => {
     root.addEventListener('focusin', stopAutoplay);
     root.addEventListener('focusout', startAutoplay);
 
-    prev.addEventListener('click', () => scrollToIndex(closestIndex()-1));
-    next.addEventListener('click', () => scrollToIndex(closestIndex()+1));
+    const atStart = () => track.scrollLeft <= 3;
+    const atEnd   = () => Math.abs(track.scrollLeft + track.clientWidth - track.scrollWidth) < 4;
+
+    prev.addEventListener('click', () => {
+      if (atStart()) scrollToIndex(-1); // force wrap -> dernier
+      else scrollToIndex(closestIndex()-1);
+    });
+    next.addEventListener('click', () => {
+      if (atEnd()) scrollToIndex(slides.length); // force wrap -> premier
+      else scrollToIndex(closestIndex()+1);
+    });
     track.addEventListener('scroll', () => { raf(updateUI); });
     window.addEventListener('resize', () => { computeOffsets(); updateUI(); });
 
