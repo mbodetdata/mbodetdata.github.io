@@ -772,6 +772,7 @@ body::before{
 .carousel__track{
   justify-content: flex-start !important;
   grid-auto-columns: 100% !important; /* 1 carte = 100% viewport */
+  align-items: stretch; /* toutes les slides pleine hauteur */
 }
 
 /* Desktop: plusieurs cartes visibles (dots gardent 1:1) */
@@ -781,6 +782,10 @@ body::before{
 @media (min-width: 1200px){
   .carousel__track{ grid-auto-columns: calc(33.333% - 14px) !important; }
 }
+
+/* Harmoniser la hauteur des cards dans le carousel */
+.carousel__slide{ display:grid; }
+.carousel__slide .project-card{ height:100%; display:grid; grid-template-rows:auto 1fr auto; }
 
 /* --- À partir de 720px : on réactive le masque progressif premium ------- */
 @media (min-width: 720px){
