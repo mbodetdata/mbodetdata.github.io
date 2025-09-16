@@ -384,6 +384,36 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   box-shadow:var(--shadow-lg); padding:clamp(16px, 2.5vw, 28px);
   max-height:90vh; overflow:auto; animation: pop .18s ease-out;
 }
+.btn.btn--details{
+  border:0; color:#fff; background: var(--g-brand);
+  box-shadow:0 10px 24px color-mix(in oklab, var(--brand) 30%, transparent);
+  font-weight:800;
+}
+.btn.btn--details:hover{ transform:translateY(-1px); box-shadow:0 14px 30px color-mix(in oklab, var(--brand) 36%, transparent); }
+
+/* Modal projet — style premium */
+#project-modal .modal__dialog{
+  width:min(94vw, 860px);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--surface-0) 94%, transparent), color-mix(in oklab, var(--surface-1) 96%, transparent));
+  border-radius:20px; border:1px solid color-mix(in oklab, var(--border), var(--brand) 16%);
+}
+#project-modal .modal__header{ padding-bottom:.5rem; border-bottom:1px solid var(--border); }
+#project-modal .modal__header h3{ font-size: clamp(1.2rem, 1.4vw, 1.6rem); }
+#project-modal .modal__abstract{ font-size: 1.05rem; color: var(--muted); }
+#project-modal .modal__body{ padding-top:.5rem; }
+#project-modal .modal__body h4{
+  margin:.25rem 0 .35rem; font-size:.95rem; letter-spacing:.02em; text-transform:uppercase; color: color-mix(in oklab, var(--fg) 92%, #fff 0%);
+}
+#project-modal .modal__body ul{ list-style:none; padding-left:0; margin:.25rem 0 0; display:grid; gap:.35rem; }
+#project-modal .modal__body li::before{ content:""; display:inline-block; width:.46rem; height:.46rem; border-radius:999px; margin-right:.5rem; background: var(--g-brand); vertical-align:middle; }
+#project-modal .modal__footer{ border-top:1px solid var(--border); padding-top:.75rem; }
+#project-modal .modal__close{ color: var(--muted); }
+
+@media (min-width: 900px){
+  #project-modal .modal__body{ display:grid; grid-template-columns: 1fr 1fr; gap:1rem 1.25rem; }
+  #project-modal .modal__body section:nth-child(1),
+  #project-modal .modal__body section:last-child{ grid-column: 1 / -1; }
+}
 .modal__header h3{ margin: 0 0 .25rem; line-height: 1.2; }
 .modal__client{ opacity:.85; margin:0 0 .5rem; }
 .modal__abstract{ margin:0 0 1rem; font-size: 1.05rem; }

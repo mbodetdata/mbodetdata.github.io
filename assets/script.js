@@ -592,8 +592,10 @@ const Modal = (() => {
     renderList(missionsEl,  card.dataset.missions);
     renderList(benefEl,     card.dataset.benefices);
     renderList(stackEl,     card.dataset.stack);
-    if (card.dataset.link) { linkEl.href = card.dataset.link; linkEl.setAttribute('aria-label', `Ouvrir ${card.dataset.title}`); }
-    else { linkEl.removeAttribute('href'); }
+    if (linkEl) {
+      if (card.dataset.link) { linkEl.href = card.dataset.link; linkEl.setAttribute('aria-label', `Ouvrir ${card.dataset.title}`); }
+      else { linkEl.removeAttribute('href'); }
+    }
   }
 
   // Ouverture depuis les cartes
@@ -785,8 +787,10 @@ const Modal = (() => {
     renderList(missionsEl, safeParse(card.dataset.missions));
     renderList(benefEl,    safeParse(card.dataset.benefices));
     renderList(stackEl,    safeParse(card.dataset.stack));
-    if (card.dataset.link) { linkEl.href = card.dataset.link; linkEl.setAttribute('aria-label', `Ouvrir ${card.dataset.title}`); }
-    else { linkEl.removeAttribute('href'); }
+    if (linkEl) {
+      if (card.dataset.link) { linkEl.href = card.dataset.link; linkEl.setAttribute('aria-label', `Ouvrir ${card.dataset.title}`); }
+      else { linkEl.removeAttribute('href'); }
+    }
   }
 
   document.querySelectorAll('.project-card').forEach(card => {

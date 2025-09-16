@@ -33,11 +33,10 @@
           <p class="lead" id="proj-desc-{{ idx }}">{{ projet["text-short"] }}</p>
 
           <div class="card-actions">
-            <button class="btn btn--ghost open-project" type="button"
+            <button class="btn btn--details open-project" type="button"
                     aria-label="Voir les détails du projet {{ projet.title | escape }}">
-              Détails rapides
+              Détails
             </button>
-            <a class="btn" href="{{ projet.link | relative_url }}">Voir le projet</a>
           </div>
         </article>
       </li>
