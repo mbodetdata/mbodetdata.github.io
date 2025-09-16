@@ -64,20 +64,40 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
 
 /* LIGHT — doux, premium, non éblouissant */
 :root[data-theme="light"]{
-  --bg:#eef2f7;                            /* gris bleuté doux */
-  --fg:#0b1324;
-  --muted:#5f6c84;
-  --surface-0: color-mix(in oklab, #ffffff 86%, #e6edf6 14%);
-  --surface-1: color-mix(in oklab, #ffffff 95%, #e6edf6  5%);
-  --surface-2: color-mix(in oklab, #ffffff 92%, var(--brand) 8%);
-  --border:    color-mix(in oklab, #405178 14%, #ffffff 86%);
-  --shadow-sm: 0 6px 16px rgba(15,23,42,.08);
-  --shadow-md: 0 12px 26px rgba(15,23,42,.12);
-  --shadow-lg: 0 18px 40px rgba(15,23,42,.16);
+  /* Fond plus doux (cassé) + contraste accru */
+  --bg:#f3f6fa;                            /* blanc cassé bleuté */
+  --fg:#0a1222;                            /* texte plus foncé */
+  --muted:#44506a;                         /* secondaire plus lisible */
+  --surface-0: color-mix(in oklab, #ffffff 78%, #e6edf6 22%);
+  --surface-1: color-mix(in oklab, #ffffff 88%, #e6edf6 12%);
+  --surface-2: color-mix(in oklab, #ffffff 82%, var(--brand) 18%);
+  --border:    color-mix(in oklab, #2e3b57 28%, #ffffff 72%); /* bordures plus nettes */
+  --shadow-sm: 0 6px 16px rgba(15,23,42,.12);
+  --shadow-md: 0 12px 26px rgba(15,23,42,.18);
+  --shadow-lg: 0 18px 40px rgba(15,23,42,.24);
 }
 @media (prefers-color-scheme: light){
   :root:not([data-theme]){ color-scheme: light; }
 }
+
+/* Améliorations de lisibilité (mode clair uniquement) */
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .service-card,
+:root[data-theme="light"] .methode,
+:root[data-theme="light"] .chip,
+:root[data-theme="light"] .btn{
+  background: var(--surface-1);
+  border-color: var(--border);
+  color: var(--fg);
+  box-shadow: var(--shadow-sm);
+}
+
+:root[data-theme="light"] .badge-glass{
+  border-color: color-mix(in oklab, #405178 34%, #ffffff 66%);
+}
+
+/* Section titles restent lisibles en clair */
+:root[data-theme="light"] .section h2{ text-shadow: none; }
 
 /* ========================= 2) TYPO / STRUCTURE ========================= */
 body{
