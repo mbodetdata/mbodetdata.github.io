@@ -276,9 +276,17 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .methode-head{ display:contents; }
 .methode__icon{ grid-column:1; grid-row:1; width:2.6rem; height:2.6rem; display:grid; place-items:center; border-radius:.9rem; color:#fff; font-size:1.2rem; box-shadow:0 2px 6px rgba(0,0,0,.25); }
 .methode__title{ grid-column:2; grid-row:1; margin:0; align-self:center; font-size:var(--step-1); font-weight:800; color:var(--fg); line-height:1.3; }
-.methode__line{ grid-column:1 / -1; display:flex; align-items:center; gap:.45rem; font-size:var(--step--1); color:var(--muted); flex-wrap:wrap; }
-.methode__note{ grid-column:1 / -1; margin-top:.6rem; display:flex; align-items:center; gap:.5rem; font-size:var(--step--1); color:var(--muted); }
-.methode__note-icon{ font-size:1rem; line-height:1; color:var(--brand-2); }
+.m-list{ grid-column:1 / -1; list-style:none; margin:.25rem 0 0; padding:0; display:grid; gap:.6rem; }
+.m-item{ display:grid; grid-template-columns:auto 1fr auto; align-items:start; gap:.6rem; }
+.m-bullet{ width:28px; height:28px; display:grid; place-items:center; border-radius:.7rem; color:var(--fg);
+  background: linear-gradient(135deg, color-mix(in oklab, var(--brand) 22%, transparent), color-mix(in oklab, var(--brand-2) 28%, transparent));
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 24%);
+}
+.m-text{ color:var(--muted); font-size:var(--step--1); }
+.m-tech{ font-size:calc(var(--step--1) - .02rem); padding:.25rem .5rem; border-radius:999px; border:1px solid color-mix(in oklab, var(--border), var(--brand) 24%);
+  background: color-mix(in oklab, var(--surface-1) 95%, transparent); color:var(--fg); white-space:nowrap; }
+.m-note{ grid-column:1 / -1; margin-top:.7rem; display:flex; align-items:flex-start; gap:.5rem; color:var(--muted); font-size:var(--step--1); }
+.m-note-ico{ width:16px; height:16px; opacity:.9; color:var(--brand-2); flex:0 0 16px; margin-top:.15rem; }
 
 /* ========================== 7) CERTIFICATIONS ========================== */
 .certs{ padding-block:clamp(2rem,3vw,3.5rem); }
