@@ -307,6 +307,15 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   background: color-mix(in oklab, var(--surface-1) 96%, transparent); color:var(--fg);
 }
 
+/* Services: puces sans "V" (simple pastille) */
+.service-card .m-item{ grid-template-columns:auto 1fr auto; }
+.service-card .m-bullet{ width:18px; height:18px; border-radius:999px; display:inline-block; margin-top:.15rem;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--brand) 24%, transparent), color-mix(in oklab, var(--brand-2) 30%, transparent));
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 26%);
+  box-shadow: 0 1px 3px rgba(0,0,0,.25) inset;
+}
+.service-card .m-bullet svg{ display:none; }
+
 /* ========================== 7) CERTIFICATIONS ========================== */
 .certs{ padding-block:clamp(2rem,3vw,3.5rem); }
 .certs-head{ text-align:left; margin-bottom:1.25rem; }
