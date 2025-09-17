@@ -1037,3 +1037,9 @@ body::before{
 }
 
 
+/* =========================  Blog / Posts  ========================= */
+.post-list{ list-style:none; padding:0; margin:1rem 0; display:grid; gap:1rem; }
+.post-item .card{ padding: clamp(1rem, 1.2vw, 1.4rem); }
+.post-item h3{ font-size: var(--step-1); }
+.post-item a{ text-decoration: var(--link-underline); text-underline-offset: var(--link-offset); }
+.post-item small{ color: var(--muted); }
