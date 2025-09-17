@@ -30,20 +30,29 @@
           <a href="{{ '/' | relative_url }}">Accueil</a>
           <span aria-hidden="true">›</span>
           <a href="{{ '/blog/' | relative_url }}">Blog</a>
-          <span aria-hidden="true">›</span>
-          <span aria-current="page">{{ page.title }}</span>
         </nav>
 
         <h1 class="post-title">{{ page.title }}</h1>
-        <p class="post-meta muted" aria-label="Métadonnées de l’article">
-          Publié le {{ page.date | date: '%d %b %Y' }} · ~{{ minutes }} min de lecture
-          {%- if page.tags and page.tags.size > 0 -%}
-            ·
+
+        {%- if page.description -%}
+          <p class="post-desc muted">{{ page.description }}</p>
+        {%- endif -%}
+
+        <div class="post-meta muted" aria-label="Métadonnées de l’article">
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d %b %Y' }}</time>
+          <span class="dot" aria-hidden="true">·</span>
+          <span>~{{ minutes }} min</span>
+        </div>
+
+        {%- if page.tags and page.tags.size > 0 -%}
+          <div class="post-tags" aria-label="Tags">
             {%- for t in page.tags -%}
-              <span class="chip" style="margin-right:.25rem">{{ t }}</span>
+              <span class="chip">{{ t }}</span>
             {%- endfor -%}
-          {%- endif -%}
-        </p>
+          </div>
+        {%- endif -%}
+
+        <p class="back-blog"><a href="{{ '/blog/' | relative_url }}">← Retour au blog</a></p>
       </div>
       {%- if article_image -%}
         <div class="post-hero__media" aria-hidden="true">
