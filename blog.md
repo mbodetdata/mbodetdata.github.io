@@ -11,23 +11,34 @@ permalink: /blog/
   <hr style="border:0;border-top:1px solid var(--border);opacity:.6;margin-block:1rem;"/>
 </header>
 
-<ul class="post-list" role="list">
-  {% assign posts_sorted = site.posts | sort: 'date' | reverse %}
+{% assign posts_sorted = site.posts | sort: 'date' | reverse %}
+
+<section class="posts-grid">
   {% for post in posts_sorted %}
-    <li class="post-item">
-      <article class="card">
-        <h3 style="margin-top:0;margin-bottom:.25rem">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </h3>
-        <p class="muted" style="margin:.25rem 0 .5rem 0">{{ post.excerpt | strip_html | truncate: 180 }}</p>
-        <small class="muted">{{ post.date | date: "%d %b %Y" }}</small>
-      </article>
-    </li>
+    {% assign cover = post.image | default: site.og_image %}
+    {% assign words = post.content | strip_html | strip_newlines | replace: '  ', ' ' | split: ' ' | size %}
+    {% assign minutes = words | divided_by: 220 | plus: 1 %}
+    <article class="post-card card">
+      <div class="thumb" aria-hidden="true">
+        <img src="{{ cover | relative_url }}" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="pc-body">
+        <h3 class="pc-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p class="pc-excerpt muted">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+        <div class="pc-meta muted">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+          · ~{{ minutes }} min
+        </div>
+        {% if post.tags and post.tags.size > 0 %}
+        <div class="pc-tags">
+          {% for t in post.tags limit:3 %}<span class="chip">{{ t }}</span>{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      <a class="stretched" href="{{ post.url | relative_url }}" aria-label="Lire : {{ post.title }}"></a>
+    </article>
   {% endfor %}
   {% if posts_sorted == empty %}
-    <li class="post-item">
-      <p class="muted">Aucun article publié pour le moment.</p>
-    </li>
+    <p class="muted">Aucun article publié pour le moment.</p>
   {% endif %}
-</ul>
-
+</section>
