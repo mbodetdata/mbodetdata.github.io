@@ -1,8 +1,13 @@
-layout: default
+layout: post
 title: "Les différents Studios Talend : lequel choisir pour vos projets Data ?"
 description: "Comparatif des studios Talend (TOS DI, TOS BD, TOS ESB, Data Preparation, Data Quality) et leurs cas d’usage."
 categories: blog
 tags: [Talend, ETL, "Data Integration", "Big Data", ESB, "Data Preparation", "Data Quality"]
+image: "/assets/img/logo_1024.webp"
+breadcrumbs:
+  - { name: "Accueil", url: "/" }
+  - { name: "Blog", url: "/blog/" }
+  - { name: "Studios Talend", url: "/blog/talend-studios/" }
 ---
 
 Talend est une référence dans le monde de l’ETL et de l’intégration de données. La plateforme propose plusieurs studios spécialisés, chacun répondant à des besoins précis : intégration classique, Big Data, temps réel, préparation ou qualité des données.
