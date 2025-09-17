@@ -1,3 +1,4 @@
+---
 layout: post
 title: "Les différents Studios Talend : lequel choisir pour vos projets Data ?"
 description: "Comparatif des studios Talend (TOS DI, TOS BD, TOS ESB, Data Preparation, Data Quality) et leurs cas d’usage."

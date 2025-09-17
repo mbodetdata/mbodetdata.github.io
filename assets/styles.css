@@ -1050,10 +1050,9 @@ body::before{
   position: relative;
   display:grid; grid-template-columns: 1fr min(260px, 24%);
   gap: clamp(12px, 2.4vw, 24px);
-  background: linear-gradient(135deg, color-mix(in oklab, var(--surface-1) 85%, var(--brand) 15%), var(--surface-1));
+  background: linear-gradient(135deg, color-mix(in oklab, var(--surface-1) 92%, var(--brand) 8%), var(--surface-1));
   border-bottom:1px solid var(--border);
-  border-top:1px solid var(--border);
-  padding: clamp(1.2rem, 2vw, 2rem) 1rem;
+  padding: clamp(1rem, 1.6vw, 1.6rem) 1rem;
 }
 @media (max-width:900px){ .post-hero{ grid-template-columns: 1fr; } .post-hero__media{ order:-1; } }
 .post-hero__inner{ max-width: min(820px, 100%); margin-inline:auto; }

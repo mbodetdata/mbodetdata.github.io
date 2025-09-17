@@ -21,6 +21,9 @@
     {%- assign article_image = page.image | default: site.og_image | default: '/assets/img/logo_512.webp' -%}
     <meta itemprop="image" content="{{ article_image | absolute_url }}">
 
+    {%- assign words = content | strip_html | strip_newlines | replace: '  ', ' ' | split: ' ' | size -%}
+    {%- assign minutes = words | divided_by: 220 | plus: 1 -%}
+
     <header class="post-hero">
       <div class="post-hero__inner">
         <nav class="breadcrumbs" aria-label="Fil d’Ariane">
@@ -32,8 +35,8 @@
         </nav>
 
         <h1 class="post-title">{{ page.title }}</h1>
-        <p class="post-meta muted">
-          Publié le {{ page.date | date: '%d %b %Y' }}
+        <p class="post-meta muted" aria-label="Métadonnées de l’article">
+          Publié le {{ page.date | date: '%d %b %Y' }} · ~{{ minutes }} min de lecture
           {%- if page.tags and page.tags.size > 0 -%}
             ·
             {%- for t in page.tags -%}
@@ -42,9 +45,11 @@
           {%- endif -%}
         </p>
       </div>
-      <div class="post-hero__media" aria-hidden="true">
-        <img src="{{ article_image | relative_url }}" alt="" loading="lazy" decoding="async" />
-      </div>
+      {%- if article_image -%}
+        <div class="post-hero__media" aria-hidden="true">
+          <img src="{{ article_image | relative_url }}" alt="" loading="lazy" decoding="async" />
+        </div>
+      {%- endif -%}
     </header>
 
     <article class="post-body" itemprop="articleBody">
@@ -69,4 +74,3 @@
   {% include modal-project.html %}
 </body>
 </html>
-
