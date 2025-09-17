@@ -4,7 +4,7 @@ title: "Les différents Studios Talend : lequel choisir pour vos projets Data ?"
 description: "Comparatif des studios Talend (TOS DI, TOS BD, TOS ESB, Data Preparation, Data Quality) et leurs cas d’usage, avec une ouverture sur Talaxie."
 categories: blog
 tags: [Talend, ETL, "Data Integration", "Big Data", ESB, "Data Preparation", "Data Quality", "Talaxie"]
-image: "/assets/img/logo_1024.webp"
+image: "/assets/img/blog/blog-1.webp"
 ---
 
 Talend est l’un des acteurs majeurs du monde de l’**ETL et de l’intégration de données**.  
