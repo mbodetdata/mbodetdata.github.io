@@ -1,7 +1,7 @@
----
 layout: default
 title: Blog
 description: Articles techniques sur Talend, Power BI, ETL, DAX, performance et DataOps.
+permalink: /blog/
 ---
 
 <h1>Blog</h1>
