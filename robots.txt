@@ -2,7 +2,14 @@
 layout: null
 permalink: /robots.txt
 ---
+# Robots.txt géré côté Jekyll – compatible Google Search Console
+# Domaine: {{ site.url | default: site.github.url }}
+
 User-agent: *
 Allow: /
 
+# Pages à ne pas explorer
+Disallow: /404.html
+
+# Sitemap officiel (jekyll-sitemap)
 Sitemap: {{ '/sitemap.xml' | absolute_url }}
