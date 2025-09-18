@@ -10,12 +10,12 @@ sitemap: false
 <section class="section not-found" aria-labelledby="nf-title">
   <div class="hero">
     <div class="hero__content">
-      <p class="badge-glass" aria-hidden="true" style="display:inline-flex;align-items:center;gap:.5rem;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 15.9 6.8 18l1-5.8-4.2-4.1 5.8-.8L12 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <div class="nf-badge">
+        <svg class="nf-badge__ico" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 15.9 6.8 18l1-5.8-4.2-4.1 5.8-.8L12 2z" fill="none" stroke="currentColor" stroke-width="1.6"/>
         </svg>
-        Erreur 404
-      </p>
+        <span class="nf-badge__txt">Erreur 404</span>
+      </div>
       <h1 id="nf-title" style="margin:.5rem 0 0">Oups… cette page est introuvable</h1>
       <p class="muted" style="margin:.6rem 0 0; max-width:65ch">
         Le lien a peut‑être changé, a expiré ou n'a jamais existé.
@@ -78,6 +78,32 @@ sitemap: false
 /* 404 module – scoped styles relying on existing tokens */
 .not-found .hero{ gap:clamp(1rem,2vw,1.6rem); }
 .not-found .hero__media{ display:grid; place-items:center; }
+.not-found .nf-badge{
+  position:relative; isolation:isolate; display:inline-flex; align-items:center; gap:.55rem;
+  transform: translateZ(0);
+  padding:.65rem 1rem; border-radius:999px; font-weight:800; letter-spacing:.01em;
+  font-size: var(--step-0);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--surface-1) 92%, var(--brand) 8%), var(--surface-1));
+  color: var(--fg);
+  border:1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.not-found .nf-badge__ico{ width:1.1em; height:1.1em; color: color-mix(in oklab, var(--brand) 65%, var(--fg)); }
+.not-found .nf-badge::before{
+  content:""; position:absolute; inset:-1px; padding:1px; border-radius:inherit; pointer-events:none; z-index:-1;
+  background: conic-gradient(from 0deg, var(--brand), var(--brand-2), var(--brand));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: nf-badge-spin 6s linear infinite;
+  opacity:.9;
+}
+.not-found .nf-badge::after{
+  content:""; position:absolute; inset:-8px; border-radius:inherit; pointer-events:none; z-index:-2;
+  background: conic-gradient(from 0deg, var(--brand), var(--brand-2), var(--brand));
+  filter: blur(12px); opacity:.18; animation: nf-badge-spin 6s linear infinite;
+}
+@keyframes nf-badge-spin{ to{ transform: rotate(1turn); } }
+@media (prefers-reduced-motion: reduce){ .not-found .nf-badge::before, .not-found .nf-badge::after{ animation: none !important; } }
 .not-found .nf-panel{
   position:relative; width:min(560px, 92vw); aspect-ratio: 1.1/1;
   background: var(--surface-1);
