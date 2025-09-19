@@ -673,6 +673,7 @@ const Modal = (() => {
     const computeOffsets = () => {
       const m = maxScroll();
       offsets = slides.map(s => Math.min(s.offsetLeft, m));
+      if (offsets.length) offsets[offsets.length - 1] = m; // dernier slide = fin atteignable
     };
     const closestIndex = () => {
       const x = track.scrollLeft; let best = 0, bestDist = 1e9;
