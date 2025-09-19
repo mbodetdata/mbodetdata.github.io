@@ -669,7 +669,11 @@ const Modal = (() => {
 
     // Offsets simples (alignement au début) pour robustesse et atteinte des extrémités
     let offsets = [];
-    const computeOffsets = () => { offsets = slides.map(s => s.offsetLeft); };
+    const maxScroll = () => Math.max(0, track.scrollWidth - track.clientWidth);
+    const computeOffsets = () => {
+      const m = maxScroll();
+      offsets = slides.map(s => Math.min(s.offsetLeft, m));
+    };
     const closestIndex = () => {
       const x = track.scrollLeft; let best = 0, bestDist = 1e9;
       offsets.forEach((off, i) => { const d = Math.abs(off - x); if (d < bestDist){ best = i; bestDist = d; } });
@@ -709,10 +713,7 @@ const Modal = (() => {
     root.addEventListener('focusout', startAutoplay);
 
     const atStart = () => track.scrollLeft <= 3;
-    const atEnd   = () => {
-      const last = offsets[offsets.length - 1] ?? 0;
-      return track.scrollLeft >= last - 3; // proche du dernier offset
-    };
+    const atEnd   = () => track.scrollLeft >= maxScroll() - 3;
 
     // Navigation: toujours relative et bouclée (wrap assuré par scrollToIndex)
     prev.addEventListener('click', () => {
