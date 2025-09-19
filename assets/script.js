@@ -719,7 +719,9 @@ const Modal = (() => {
       scrollToIndex(closestIndex() - 1);
     });
     next.addEventListener('click', () => {
-      scrollToIndex(closestIndex() + 1);
+      // Si on est vraiment au bout, forcer le wrap vers le premier
+      if (atEnd()) scrollToIndex(slides.length);
+      else scrollToIndex(closestIndex() + 1);
     });
     track.addEventListener('scroll', () => { raf(updateUI); });
     window.addEventListener('resize', () => { computeOffsets(); updateUI(); });
