@@ -714,13 +714,12 @@ const Modal = (() => {
       return track.scrollLeft >= last - 3; // proche du dernier offset
     };
 
+    // Navigation: toujours relative et bouclée (wrap assuré par scrollToIndex)
     prev.addEventListener('click', () => {
-      if (atStart()) scrollToIndex(-1); // force wrap -> dernier
-      else scrollToIndex(closestIndex()-1);
+      scrollToIndex(closestIndex() - 1);
     });
     next.addEventListener('click', () => {
-      if (atEnd()) scrollToIndex(slides.length); // force wrap -> premier
-      else scrollToIndex(closestIndex()+1);
+      scrollToIndex(closestIndex() + 1);
     });
     track.addEventListener('scroll', () => { raf(updateUI); });
     window.addEventListener('resize', () => { computeOffsets(); updateUI(); });
