@@ -1,0 +1,102 @@
+<h1>Mentions légales</h1>
+
+<section>
+  <h2>Éditeur du site</h2>
+  <p>
+    <strong>{{ site.author.name }} — Entrepreneur individuel (EI)</strong><br>
+    {% if site.author.address %}Adresse : {{ site.author.address }}<br>{% endif %}
+    Email : <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a> — Tél. : {{ site.author.phone }}<br>
+    SIREN/SIRET : {% if site.author.siret and site.author.siret != 'A VENIR' %}{{ site.author.siret }}{% else %}<em>En cours d’immatriculation</em>{% endif %} — APE/NAF : {{ site.author.ape }}<br>
+    {% if site.author.rcs_rm %}RCS / RM : {{ site.author.rcs_rm }}<br>{% endif %}
+    {% if site.author.vat %}N° de TVA intracommunautaire : {{ site.author.vat }}{% else %}{{ site.author.vat_note | default: 'TVA non applicable, art. 293 B du CGI' }}{% endif %}<br>
+    Directeur de la publication : {{ site.author.name }}
+  </p>
+  <p class="muted"><small>Conformément aux obligations applicables aux entrepreneurs individuels, la mention “Entrepreneur individuel” (ou “EI”) figure à proximité du nom.</small></p>
+  {% if site.author.insurer_name or site.author.insurer_policy %}
+  <p>
+    {% if site.author.insurer_name %}Assurance RC pro : {{ site.author.insurer_name }}{% if site.author.insurer_policy %} (police n° {{ site.author.insurer_policy }}){% endif %}.{% endif %}
+  </p>
+  {% endif %}
+</section>
+
+<section>
+  <h2>Hébergement</h2>
+  <p>
+    <strong>GitHub Pages</strong><br>
+    GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États‑Unis<br>
+    Site : <a href="https://pages.github.com/" target="_blank" rel="noopener">pages.github.com</a> — Tél. : +1 415 735 4488
+  </p>
+</section>
+
+<section>
+  <h2>Activité</h2>
+  <p>
+    {{ site.author.job_title }} — prestations de services en intégration de données (Talend) et Business Intelligence (Power&nbsp;BI).
+  </p>
+</section>
+
+<section>
+  <h2>Propriété intellectuelle</h2>
+  <p>
+    Sauf mention contraire, l’ensemble des contenus (textes, visuels, code, logos) est la propriété de {{ site.author.name }}.
+    Toute reproduction ou représentation, même partielle, est interdite sans autorisation écrite préalable.
+  </p>
+</section>
+
+<section id="donnees-personnelles">
+  <h2>Données personnelles (RGPD)</h2>
+  <p>
+    <strong>Responsable de traitement :</strong> {{ site.author.name }} (contact : <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>).<br>
+    <strong>Données traitées :</strong> informations transmises via le formulaire de contact (identité, coordonnées, message).<br>
+    <strong>Finalités :</strong> répondre aux demandes et organiser des rendez-vous.<br>
+    <strong>Base légale :</strong> intérêt légitime de l’éditeur à traiter la demande (art. 6‑1 f RGPD) ou exécution de mesures précontractuelles (art. 6‑1 b).<br>
+    <strong>Destinataires :</strong> {{ site.author.name }} et ses sous‑traitants techniques (hébergement, prise de rendez‑vous).<br>
+    <strong>Durées de conservation :</strong> 12 mois après le dernier échange, sauf obligation légale contraire.<br>
+    <strong>Vos droits :</strong> accès, rectification, effacement, limitation, opposition ; pour exercer, écrivez à <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>.<br>
+    <strong>Réclamation :</strong> vous pouvez saisir la CNIL (<a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>).<br>
+    <strong>Transferts hors UE :</strong> l’intégration d’outils tiers (ex. prise de rendez‑vous) peut impliquer un transfert ; ces services sont encadrés par des mécanismes de conformité appropriés (clauses types, etc.).
+  </p>
+</section>
+
+<section id="cookies">
+  <h2>Cookies & traceurs</h2>
+  <p>
+    Aucun cookie publicitaire n’est déposé. Des cookies techniques peuvent être utilisés pour la sécurité et le fonctionnement.
+    La prise de rendez‑vous (widget tiers) ne se charge que sur action de l’utilisateur et peut déposer des cookies nécessaires à son service.
+    Aucune mesure d’audience non exemptée n’est activée sans consentement.
+  </p>
+</section>
+
+<section>
+  <h2>Liens externes & intégrations</h2>
+  <p>
+    Le site peut intégrer des services tiers (par ex. prise de rendez‑vous). Ces services peuvent déposer leurs propres cookies et collecter des données selon leurs politiques.
+    Nous vous invitons à consulter la politique de confidentialité des services concernés.
+  </p>
+</section>
+
+<section>
+  <h2>Consommateurs (si applicable)</h2>
+  <p>
+    {% if site.author.mediation_name %}
+      En cas de litige, et si vous êtes consommateur, vous pouvez recourir gratuitement à un médiateur de la consommation :
+      {{ site.author.mediation_name }} — {{ site.author.mediation_url }}.
+    {% else %}
+      {% if site.author.b2c %}
+        Informations de médiation à venir.
+      {% else %}
+        Non concerné : activité exclusivement entre professionnels (B2B).
+      {% endif %}
+    {% endif %}
+    <br>
+    Plateforme européenne de RLL : <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.
+  </p>
+</section>
+
+<section>
+  <h2>Responsabilité</h2>
+  <p>
+    Les informations sont fournies à titre indicatif et peuvent évoluer. L’éditeur ne saurait être tenu responsable d’un usage inapproprié des contenus.
+  </p>
+</section>
+

@@ -21,6 +21,10 @@ baseurl: ""                                               # vide pour site user 
 # Image par défaut pour Open Graph/Twitter (fichier existant dans /assets/img)
 og_image: "/assets/img/logo_512.webp"
 
+# Liens légaux (utilisés dans le footer)
+legal_url: "/mentions-legales/"
+privacy_url: "/mentions-legales/#donnees-personnelles"
+
 # ------------------------ 3) Plugins supportés GH Pages --------------
 # (Tous sont compatibles avec GitHub Pages)
 plugins:
@@ -49,6 +53,17 @@ author:
 #  calendly_url: "https://calendly.com/bmdata/30min"
   cal_url: "https://cal.com/bmdata/30min"
 
+  # Mentions légales (EI / Micro-entreprise)
+  address: "31 Chemin du rieumort, Brax, 47310"
+  siret: "A VENIR"
+  ape: "62.01Z"
+  rcs_rm: ""
+  vat: ""
+  vat_note: "TVA non applicable, art. 293 B du CGI"
+  mediation_name: ""
+  mediation_url: ""
+  b2c: false
+
   # Optionnel (si tu veux la meta twitter:creator)
   # twitter: "ton_handle_sans@"
 
@@ -58,6 +73,8 @@ permalink: /:categories/:title/          # URLs SEO-friendly (sans .html)
 
 # ------------------------ 6) Defaults (front-matter auto) ------------
 # Valeurs appliquées si absentes dans les pages/posts.
+
+
 defaults:
   - scope: { path: "" }
     values:
