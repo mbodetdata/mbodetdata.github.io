@@ -88,6 +88,7 @@ defaults:
       lang: "fr"
       image: "{{ site.og_image }}"
       robots: "index,follow"
+      active: true
 
 # ------------------------ 7) Markdown / Rendu ------------------------
 markdown: kramdown

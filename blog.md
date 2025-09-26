@@ -11,7 +11,8 @@ permalink: /blog/
   <hr style="border:0;border-top:1px solid var(--border);opacity:.6;margin-block:1rem;"/>
 </header>
 
-{% assign posts_sorted = site.posts | sort: 'date' | reverse %}
+{% assign posts_visible = site.posts | where_exp: "post", "post.active != false" %}
+{% assign posts_sorted = posts_visible | sort: 'date' | reverse %}
 
 <section class="posts-grid">
   {% for post in posts_sorted %}

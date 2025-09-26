@@ -1,7 +1,8 @@
-﻿<section id="blog" class="section" aria-labelledby="blog-title">
+<section id="blog" class="section" aria-labelledby="blog-title">
   <h2 id="blog-title">Articles r&eacute;cents</h2>
 
-  {% assign posts_sorted = site.posts | sort: 'date' | reverse %}
+  {% assign posts_visible = site.posts | where_exp: "post", "post.active != false" %}
+  {% assign posts_sorted = posts_visible | sort: 'date' | reverse %}
   {% if posts_sorted == empty %}
     <p class="muted">Aucun article publi&eacute; pour le moment.</p>
   {% else %}
