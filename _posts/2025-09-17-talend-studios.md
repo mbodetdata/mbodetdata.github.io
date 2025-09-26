@@ -5,7 +5,7 @@ description: "Comparatif des studios Talend (TOS DI, TOS BD, TOS ESB, Data Prepa
 categories: blog
 tags: [Talend, ETL, "Data Integration", "Big Data", ESB, "Data Preparation", "Data Quality", "Talaxie"]
 image: "/assets/img/blog/blog-1.webp"
-active: false
+active: true
 ---
 
 Talend est l’un des acteurs majeurs du monde de l’**ETL et de l’intégration de données**.  
