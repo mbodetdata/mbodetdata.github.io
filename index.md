@@ -25,6 +25,9 @@ permalink: /
 <!-- REALISATIONS -->
 {% include realisations.html %}
 
+<!-- BLOG -->
+{% include blog-latest.html %}
+
 
 <!-- CONTACTS -->
 {% include contact.html %}

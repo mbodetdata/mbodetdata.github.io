@@ -665,6 +665,7 @@ const Modal = (() => {
     const prev  = root.querySelector('.carousel__btn.prev');
     const next  = root.querySelector('.carousel__btn.next');
     const dotsWrap = root.querySelector('.carousel__dots');
+    const itemLabel = root.dataset.carouselLabel || 'la diapositive';
     if (!slides.length) return;
 
     // Offsets simples (alignement au début) pour robustesse et atteinte des extrémités
@@ -696,7 +697,7 @@ const Modal = (() => {
     const dots = slides.map((_, i) => {
       const b = document.createElement('button');
       b.type='button'; b.className='carousel__dot';
-      b.setAttribute('aria-label', `Aller à la réalisation ${i+1}`);
+      b.setAttribute('aria-label', `Aller à ${itemLabel} ${i+1}`);
       b.addEventListener('click', () => scrollToIndex(i));
       dotsWrap.appendChild(b); return b;
     });

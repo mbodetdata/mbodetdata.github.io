@@ -1,0 +1,43 @@
+﻿<section id="blog" class="section" aria-labelledby="blog-title">
+  <h2 id="blog-title">Articles r&eacute;cents</h2>
+
+  {% assign posts_sorted = site.posts | sort: 'date' | reverse %}
+  {% if posts_sorted == empty %}
+    <p class="muted">Aucun article publi&eacute; pour le moment.</p>
+  {% else %}
+    <div class="carousel" data-carousel="blog" data-carousel-label="l&apos;article" aria-roledescription="carousel">
+      <button class="carousel__btn prev" type="button" aria-label="D&eacute;filer vers la gauche" disabled>&lt;</button>
+
+      <ul class="carousel__track" role="listbox" aria-label="Derniers articles">
+        {% for post in posts_sorted limit:3 %}
+        {% assign idx = forloop.index0 %}
+        {% assign words = post.content | strip_html | strip_newlines | replace: '  ', ' ' | split: ' ' | size %}
+        {% assign minutes = words | divided_by: 220 | plus: 1 %}
+        {% assign excerpt_src = post.excerpt | default: post.content %}
+        {% assign excerpt = excerpt_src | strip_html | strip_newlines | replace: '  ', ' ' | truncate: 160 %}
+        <li class="carousel__slide" role="option" aria-describedby="post-desc-{{ idx }}">
+          <article class="card blog-card">
+            <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p class="lead" id="post-desc-{{ idx }}">{{ excerpt }}</p>
+            <div class="card-meta muted">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+              <span aria-hidden="true">&middot;</span>
+              <span>~{{ minutes }} min</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn--details" href="{{ post.url | relative_url }}" aria-label="Lire l&rsquo;article {{ post.title }}">
+                Lire l&rsquo;article
+              </a>
+            </div>
+          </article>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <button class="carousel__btn next" type="button" aria-label="D&eacute;filer vers la droite">&gt;</button>
+
+      <div class="carousel__dots" aria-label="S&eacute;lecteur d&rsquo;articles"></div>
+    </div>
+  {% endif %}
+</section>
+
