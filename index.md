@@ -11,23 +11,20 @@ permalink: /
 <!-- ABOUT ME -->
 {% include about-me.html %}
 
-<!-- CERTS -->
-{% include certs.html %}
+<!-- SERVICES -->
+{% include services.html %}
 
 <!-- METHODES -->
 {% include methodes.html %}
 
-
-<!-- SERVICES -->
-{% include services.html %}
-
+<!-- CERTS -->
+{% include certs.html %}
 
 <!-- REALISATIONS -->
 {% include realisations.html %}
 
 <!-- BLOG -->
 {% include blog-latest.html %}
-
 
 <!-- CONTACTS -->
 {% include contact.html %}
