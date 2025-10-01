@@ -39,11 +39,17 @@ permalink: /
     </div>
     <div id="calendly-inline"
          class="calendly-inline"
-         data-calendly-url="{{ site.author.calendly_url }}"
+         data-booking-url="{{ site.author.cal_url | default: site.author.calendly_url }}"
          style="position:relative; min-height:72vh;">
       <div class="calendly-skeleton" aria-hidden="true" style="display:grid;place-items:center;height:100%;">
-        <p class="muted" style="margin:0">Chargement du calendrier…</p>
+        <p class="muted" style="margin:0">Chargement du calendrier&hellip;</p>
       </div>
+      <iframe
+        src="{{ site.author.cal_url | default: site.author.calendly_url }}"
+        title="R&eacute;server un cr&eacute;neau"
+        loading="lazy"
+        allowtransparency="true"></iframe>
+    </div>
     </div>
   </div>
 </div>

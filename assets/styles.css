@@ -710,7 +710,7 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 
 /* Bouton CTA dans la section Contact */
 .contact-v2 .btn.cta,
-.contact-v2 [data-cal-namespace="booking"] {
+.contact-v2 [data-booking-open] {
   border: 0 !important;
   background-image: var(--g-brand) !important;
   color: #fff !important;
@@ -720,7 +720,7 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 }
 
 .contact-v2 .btn.cta:hover,
-.contact-v2 [data-cal-namespace="booking"]:hover {
+.contact-v2 [data-booking-open]:hover {
   transform: translateY(-1px);
   box-shadow: 0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent);
 }
@@ -848,7 +848,7 @@ body::before{
   }
 
   /* Le bouton Cal/CTA dans la section contact */
-  .contact-v2 .actions--center [data-cal-namespace="booking"],
+  .contact-v2 .actions--center [data-booking-open],
   .contact-v2 .actions--center .btn.cta{
     display:inline-flex;
     align-items:center;
@@ -866,7 +866,7 @@ body::before{
     box-shadow: 0 12px 26px color-mix(in oklab, var(--brand) 30%, transparent);
   }
 
-  .contact-v2 .actions--center [data-cal-namespace="booking"]:hover,
+  .contact-v2 .actions--center [data-booking-open]:hover,
   .contact-v2 .actions--center .btn.cta:hover{
     transform: translateY(-1px);
     box-shadow: 0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent);

@@ -337,144 +337,100 @@ const Modal = (() => {
   });
 })();
 
-/* ================== 7) Cal.com (inline + bouton flottant + boutons) ================== */
+/* ================== 7) Microsoft Booking (inline + CTA) ================== */
 (() => {
   const boot = () => {
     const meta = document.querySelector('meta[name="cal:link"]');
-    const rawUrl = (meta?.getAttribute('content') || '').trim();
-    if (!rawUrl) return;
+    const bookingUrl = (meta?.getAttribute('content') || '').trim();
+    if (!bookingUrl) return;
 
-    const toCalSlug = (input) => {
-      if (!input) return '';
-      const t = input.trim().replace(/(^\/+|\/+$)/g, '');
-      if (/^[^/]+\/[^/]+$/.test(t)) return t.toLowerCase();
-      try {
-        const u = new URL(t);
-        const parts = u.pathname.split('/').filter(Boolean);
-        if (parts.length >= 2) return (parts[0] + '/' + parts[1]).toLowerCase();
-      } catch {
-        const bits = t.replace(/^.*?(calendly\.com|cal\.com)\//i, '').split('/').filter(Boolean);
-        if (bits.length >= 2) return (bits[0] + '/' + bits[1]).toLowerCase();
-      }
-      return '';
-    };
-    const calSlug = toCalSlug(rawUrl);
-    if (!calSlug) return;
-
-    // ------------------------------------------------------------------
-    // Chargement Cal.com (inchangé)
-    (function (C, A, L) {
-      let p = (a, ar) => { a.q.push(ar); };
-      let d = C.document;
-      C.Cal = C.Cal || function () {
-        let cal = C.Cal; let ar = arguments;
-        if (!cal.loaded) {
-          cal.ns = {}; cal.q = cal.q || [];
-          const s = d.createElement('script'); s.src = A; s.async = true; s.defer = true;
-          d.head.appendChild(s); cal.loaded = true;
-        }
-        if (ar[0] === L) {
-          const api = function () { p(api, arguments); };
-          const ns = ar[1]; api.q = api.q || [];
-          if (typeof ns === 'string') { cal.ns[ns] = cal.ns[ns] || api; p(cal.ns[ns], ar); p(cal, ['initNamespace', ns]); }
-          else p(cal, ar);
-          return;
-        }
-        p(cal, ar);
+    const ensureFrame = (container) => {
+      if (!container) return null;
+      const frame = container.querySelector('iframe');
+      if (!frame) return null;
+      const finish = () => {
+        container.classList.add('is-ready');
+        container.querySelector('.calendly-skeleton')?.remove();
       };
-    })(window, 'https://app.cal.com/embed/embed.js', 'init');
+      if (!frame.dataset.bookingInit) {
+        frame.dataset.bookingInit = '1';
+        frame.addEventListener('load', finish, { once: true });
+      }
+      frame.setAttribute('src', bookingUrl);
+      setTimeout(finish, 3000);
+      return frame;
+    };
 
-    Cal('init', 'booking', { origin: 'https://app.cal.com' });
-    Cal.ns['booking']('ui', {
-      cssVarsPerTheme: { light: { 'cal-brand': 'var(--brand)' }, dark: { 'cal-brand': 'var(--brand)' } },
-      hideEventTypeDetails: false,
-      layout: 'month_view'
+    const inlineContainer = document.getElementById('calendly-inline-embed');
+    const actionsRow = document.querySelector('.contact-v2 .actions--center');
+    const mqDesk = window.matchMedia ? window.matchMedia('(min-width: 992px)') : { matches: false, addEventListener(){}, removeEventListener(){} };
+
+    const toggleActions = () => {
+      if (!actionsRow) return;
+      const hidden = !!mqDesk.matches;
+      actionsRow.style.display = hidden ? 'none' : '';
+      actionsRow.setAttribute('aria-hidden', hidden ? 'true' : 'false');
+    };
+
+    toggleActions();
+    mqDesk.addEventListener?.('change', (event) => {
+      toggleActions();
+      if (event.matches) ensureFrame(inlineContainer);
     });
 
-    // ------------------------------------------------------------------
-    // Bouton flottant (conservé)
-    if (!document.querySelector('.cal-float-cta')) {
+    if (mqDesk.matches) ensureFrame(inlineContainer);
+
+    const modal = document.getElementById('calendly-modal');
+    const modalContainer = document.getElementById('calendly-inline');
+    if (modal) Modal.bind(modal);
+
+    const openBooking = (event) => {
+      event?.preventDefault();
+      if (modal && modalContainer) {
+        ensureFrame(modalContainer);
+        Modal.open(modal);
+      } else {
+        const win = window.open(bookingUrl, '_blank');
+        if (win) win.opener = null;
+      }
+    };
+
+    document.querySelectorAll('[data-booking-open]').forEach((btn) => {
+      btn.addEventListener('click', openBooking);
+    });
+
+    if (!document.querySelector('.booking-float-cta')) {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'cal-float-cta';
+      btn.className = 'booking-float-cta';
       btn.setAttribute('aria-label', 'Prendre rendez-vous');
-      btn.setAttribute('data-cal-namespace', 'booking');
-      btn.setAttribute('data-cal-link', calSlug);
       btn.innerHTML = `
         <span class="cal-ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
-            <rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="2"/>
-            <path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="2"></rect>
+            <path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
           </svg>
         </span>
         <span class="cal-label">Prendre rendez-vous</span>`;
+      btn.addEventListener('click', openBooking);
       document.body.appendChild(btn);
     }
-    if (!document.getElementById('cal-float-cta-style')) {
+
+    if (!document.getElementById('booking-float-cta-style')) {
       const st = document.createElement('style');
-      st.id = 'cal-float-cta-style';
+      st.id = 'booking-float-cta-style';
       st.textContent = `
-        .cal-float-cta{ position:fixed; right:18px; bottom:18px; z-index:9999;
+        .booking-float-cta{ position:fixed; right:18px; bottom:18px; z-index:9999;
           display:inline-flex; align-items:center; gap:.55rem; padding:.85rem 1.1rem;
           border-radius:999px; border:0; background-image:var(--g-brand); color:#fff; font-weight:800;
           box-shadow:0 12px 26px color-mix(in oklab, var(--brand) 30%, transparent); cursor:pointer; }
-        .cal-float-cta:hover{ transform:translateY(-1px); box-shadow:0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent); }
-        .cal-float-cta:focus-visible{ outline:none;
+        .booking-float-cta:hover{ transform:translateY(-1px); box-shadow:0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent); }
+        .booking-float-cta:focus-visible{ outline:none;
           box-shadow:0 0 0 3px color-mix(in oklab, #fff 80%, transparent), 0 0 0 6px color-mix(in oklab, var(--brand) 50%, transparent); }
-        .cal-float-cta .cal-ico{ display:grid; place-items:center; }
-        @media (max-width:480px){ .cal-float-cta{ right:12px; bottom:12px; padding:.75rem .95rem; } }`;
+        .booking-float-cta .cal-ico{ display:grid; place-items:center; }
+        @media (max-width:480px){ .booking-float-cta{ right:12px; bottom:12px; padding:.75rem .95rem; } }`;
       document.head.appendChild(st);
     }
-
-    // ------------------------------------------------------------------
-    // Clics sur les éléments marqués data-cal-namespace="booking"
-    document.querySelectorAll('[data-cal-namespace="booking"]').forEach(el => {
-      el.setAttribute('data-cal-link', calSlug);
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        try { if (typeof Cal?.ns?.booking === 'function') Cal.ns['booking']('open', { calLink: calSlug }); } catch {}
-      }, { passive: true });
-    });
-
-    // ------------------------------------------------------------------
-    // Inline embed (desktop only) + MASQUER le gros bouton sous le calendrier sur desktop
-    const parentD = document.getElementById('calendly-inline-embed');
-    const mqDesk  = window.matchMedia ? window.matchMedia('(min-width: 992px)') : { matches: true };
-
-    // masque/affiche la rangée CTA centrée selon la largeur
-    const actionsRow = document.querySelector('.contact-v2 .actions--center');
-    const toggleInlineCTAVisibility = () => {
-      if (!actionsRow) return;
-      // sur desktop : on cache la rangée CTA (le “gros” bouton sous le calendrier)
-      actionsRow.style.display = mqDesk.matches ? 'none' : '';
-      actionsRow.setAttribute('aria-hidden', mqDesk.matches ? 'true' : 'false');
-    };
-    toggleInlineCTAVisibility();
-    mqDesk.addEventListener?.('change', toggleInlineCTAVisibility);
-
-    const initInline = () => {
-      if (!parentD) return;
-      const cleanSkeleton = () => parentD.querySelector('.calendly-skeleton')?.remove();
-      Cal.ns['booking']('inline', { elementOrSelector: '#calendly-inline-embed', calLink: calSlug, config:{ layout:'month_view', theme:'auto' } });
-      const obs = new MutationObserver(() => {
-        if (parentD.querySelector('iframe') || parentD.shadowRoot) { cleanSkeleton(); obs.disconnect(); }
-      });
-      obs.observe(parentD, { childList: true, subtree: true });
-      setTimeout(cleanSkeleton, 3000);
-    };
-
-    const bootInlineDesktop = () => {
-      if (!parentD || !mqDesk.matches) return;
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries) => {
-          if (entries.some(e => e.isIntersecting)) { io.disconnect(); initInline(); }
-        }, { threshold: 0.35 });
-        io.observe(parentD);
-      } else initInline();
-    };
-
-    bootInlineDesktop();
-    mqDesk.addEventListener?.('change', (e) => { if (e.matches) bootInlineDesktop(); });
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
@@ -863,4 +819,3 @@ const Modal = (() => {
     card.addEventListener('click', e => { if (!e.target.closest('a, .open-project')) open(e); });
   });
 })();
-

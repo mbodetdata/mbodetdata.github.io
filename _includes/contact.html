@@ -18,24 +18,29 @@
       </div>
     </div>
 
-    <!-- Cal.com INLINE (affiché sur desktop) -->
+    <!-- Microsoft Booking INLINE (desktop) -->
     <div id="calendly-inline-embed"
          class="calendly-inline"
-         aria-live="polite">
+         aria-live="polite"
+         data-booking-url="{{ site.author.cal_url | default: site.author.calendly_url }}">
       <div class="calendly-skeleton" aria-hidden="true">
-        <p class="muted" style="margin:0">Chargement du calendrier…</p>
+        <p class="muted" style="margin:0">Chargement du calendrier&hellip;</p>
       </div>
+      <iframe
+        src="{{ site.author.cal_url | default: site.author.calendly_url }}"
+        title="R&eacute;server un cr&eacute;neau"
+        loading="lazy"
+        allowtransparency="true"></iframe>
     </div>
 
-    <!-- CTA principal (popup – surtout utile sur mobile) -->
+    <!-- CTA principal (popup - surtout utile sur mobile) -->
     <div class="actions actions--center">
-<button class="btn cta"
-        data-cal-namespace="booking"
-        data-cal-link=""  
-        aria-label="Ouvrir le calendrier de réservation">
-  📅 Prendre rendez-vous
-</button>
-
+      <button class="btn cta"
+              type="button"
+              data-booking-open="modal"
+              aria-label="Ouvrir le calendrier de r&eacute;servation">
+        &#x1F4C5; Prendre rendez-vous
+      </button>
     </div>
 
     <hr class="soft-sep">
@@ -82,6 +87,3 @@
     <p class="note muted note--foot">Réponse sous 24–48&nbsp;h ouvrées.</p>
   </div>
 </section>
-
-
-
