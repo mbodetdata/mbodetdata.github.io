@@ -33,7 +33,7 @@ permalink: /
 <!-- Modal Calendly -->
 <div id="calendly-modal" class="modal" hidden>
   <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="calendlyTitle">
-    <button class="modal__close" aria-label="Fermer">×</button>
+    <button class="modal__close" type="button" aria-label="Fermer">&times;</button>
     <div style="padding:.75rem 1rem; border-bottom:1px solid var(--border)">
       <h3 id="calendlyTitle" style="margin:0">Réserver un créneau</h3>
     </div>
@@ -49,7 +49,6 @@ permalink: /
         title="R&eacute;server un cr&eacute;neau"
         loading="lazy"
         allowtransparency="true"></iframe>
-    </div>
     </div>
   </div>
 </div>

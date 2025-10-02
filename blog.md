@@ -28,7 +28,7 @@ permalink: /blog/
         <p class="pc-excerpt muted">{{ post.excerpt | strip_html | truncate: 160 }}</p>
         <div class="pc-meta muted">
           <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
-          · ~{{ minutes }} min
+          <span aria-hidden="true">&middot;</span> ~{{ minutes }} min
         </div>
         {% if post.tags and post.tags.size > 0 %}
         <div class="pc-tags">
@@ -36,7 +36,7 @@ permalink: /blog/
         </div>
         {% endif %}
       </div>
-      <a class="stretched" href="{{ post.url | relative_url }}" aria-label="Lire : {{ post.title }}"></a>
+      <a class="stretched" href="{{ post.url | relative_url }}" aria-label="Lire : {{ post.title }}"></a>
     </article>
   {% endfor %}
   {% if posts_sorted == empty %}

@@ -17,7 +17,7 @@
 {%- comment -%} =================== TITRE + DESCRIPTION =================== {%- endcomment -%}
 {%- assign meta_title = page.title | default: site.title -%}
 {%- if page.title -%}
-  {%- assign full_title = page.title | append: ' • ' | append: site.title -%}
+  {%- assign full_title = page.title | append: ' | ' | append: site.title -%}
 {%- else -%}
   {%- assign full_title = site.title -%}
 {%- endif -%}
@@ -54,7 +54,7 @@
 <meta property="og:type" content="{{ og_type }}" />
 <meta property="og:site_name" content="{{ site.title }}" />
 <meta property="og:locale" content="{{ site.locale | default: 'fr_FR' }}" />
-<meta property="og:title" content="{{ og_title }} • {{ site.title }}" />
+<meta property="og:title" content="{{ og_title }} | {{ site.title }}" />
 <meta property="og:description" content="{{ og_desc | escape }}" />
 <meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}" />
 <meta property="og:image" content="{{ og_image | absolute_url }}" />
@@ -77,7 +77,7 @@
 
 {%- comment -%} =================== TWITTER ======================== {%- endcomment -%}
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="{{ og_title }} • {{ site.title }}" />
+<meta name="twitter:title" content="{{ og_title }} | {{ site.title }}" />
 <meta name="twitter:description" content="{{ og_desc | escape }}" />
 <meta name="twitter:image" content="{{ og_image | absolute_url }}" />
 {%- if site.author.twitter -%}<meta name="twitter:creator" content="@{{ site.author.twitter | replace:'@','' }}" />{%- endif -%}
