@@ -1096,6 +1096,14 @@ body::before{
 .post-nav{ display:flex; justify-content:space-between; align-items:center; gap:1rem; max-width:min(820px,100%); margin:0 auto 2rem; padding:0 1rem; }
 .btn.ghost{ background: transparent; border:1px solid var(--border); }
 
+
+/* Blog carousel cards (home) */
+.blog-card .card-meta{
+  margin-bottom: clamp(.6rem, 1vw, 1rem);
+}
+.blog-card .card-actions{
+  margin-top: clamp(.65rem, 1.2vw, 1.05rem);
+}
 /* Blog index: grid of premium post cards */
 .posts-grid{ display:grid; gap: clamp(.9rem, 1.4vw, 1.2rem); grid-template-columns: 1fr; }
 @media (min-width: 880px){ .posts-grid{ grid-template-columns: 1fr 1fr; } }
