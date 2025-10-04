@@ -4,8 +4,8 @@ title: "Migration de Talend Open Studio vers Talaxie : guide complet en 8 étape
 description: "Guide complet et pratique pour migrer vos projets Talend Open Studio vers Talaxie en toute sécurité. Étapes, bonnes pratiques et conseils techniques."
 categories: blog
 tags: [Talend, Talaxie, Migration, ETL, Open Source, Data Integration]
-image: "/assets/img/blog/2-Migration_Talend_Talaxie/migration-talend-talaxie.webp"
-active: true
+image: "/assets/img/blog/2-Migration_Talend_Talaxie/migration-talend-talaxie.png"
+active: false
 ---
 
 Depuis janvier 2024, la version **open source de Talend Open Studio (TOS)** n’évolue plus.  
@@ -43,7 +43,7 @@ Avant toute migration, réalisez un inventaire complet :
 - Les **librairies personnalisées** (drivers JDBC, JARs spécifiques).  
 - Les **composants additionnels** éventuels.  
 
-![Audit Talend]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/1-job-talend.png' | relative_url }}){:alt="Audit des projets Talend avant migration" loading="lazy" decoding="async"}
+![Audit Talend]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/1-job talend.png' | relative_url }}){:alt="Audit des projets Talend avant migration" loading="lazy" decoding="async"}
 
 ---
 
