@@ -4,7 +4,7 @@ title: "Migration de Talend Open Studio vers Talaxie : guide complet en 8 étape
 description: "Tutoriel pratique pour migrer vos projets Talend Open Studio vers Talaxie en toute sécurité. Étapes, bonnes pratiques et pièges à éviter."
 categories: blog
 tags: [Talend, Talaxie, Migration, ETL, Open Source, Data Integration]
-image: "/assets/img/blog/2-Migration_Talend_Talaxie/img.png)"
+image: "/assets/img/blog/2-Migration_Talend_Talaxie/img.png"
 active: false
 ---
 
@@ -71,10 +71,10 @@ Dans Talaxie :
 3. Donnez un nom au projet.  
 4. Cliquez sur `Finish`, puis `Ouvrir`.  
 
-![Import projet Talaxie](/assets/img/blog/2-Migration_Talaxie/3-import_talaxie-1.png){:alt="Import d’un projet Talend dans Talaxie"}  
-![Import projet Talaxie](/assets/img/blog/2-Migration_Talaxie/3-import_talaxie-2.png){:alt="Nommer le projet Talaxie"}  
-![Import projet Talaxie](/assets/img/blog/2-Migration_Talaxie/3-import_talaxie-3.png){:alt="Confirmation d’import"}  
-![Import projet Talaxie](/assets/img/blog/2-Migration_Talaxie/3-import_talaxie-4.png){:alt="Ouverture du projet importé"}  
+![Import projet Talaxie](/assets/img/blog/2-Migration_Talend_Talaxie/3-import_talaxie-1.png){:alt="Import d’un projet Talend dans Talaxie"}  
+![Import projet Talaxie](/assets/img/blog/2-Migration_Talend_Talaxie/3-import_talaxie-2.png){:alt="Nommer le projet Talaxie"}  
+![Import projet Talaxie](/assets/img/blog/2-Migration_Talend_Talaxie/3-import_talaxie-3.png){:alt="Confirmation d’import"}  
+![Import projet Talaxie](/assets/img/blog/2-Migration_Talend_Talaxie/3-import_talaxie-4.png){:alt="Ouverture du projet importé"}  
 
 ---
 
@@ -82,7 +82,7 @@ Dans Talaxie :
 
 Lors de l’ouverture, Talaxie détecte que le projet provient d’une version antérieure de Talend :  
 
-![Migration projet Talaxie](/assets/img/blog/2-Migration_Talaxie/4-migration_talaxie-1.png){:alt="Avertissement de migration"}  
+![Migration projet Talaxie](/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-1.png){:alt="Avertissement de migration"}  
 
 Cliquez sur **OK** pour lancer la migration.  
 
@@ -90,8 +90,8 @@ Ensuite, activez la **compatibilité Java 17** (recommandée) :
 - Une notification apparaît en bas à droite, cliquez dessus.  
 - Choisissez Java 17 comme runtime par défaut.  
 
-![Compatibilité Java 17](/assets/img/blog/2-Migration_Talaxie/4-migration_talaxie-3.png){:alt="Popup compatibilité Java"}  
-![Compatibilité Java 17](/assets/img/blog/2-Migration_Talaxie/4-migration_talaxie-4.png){:alt="Configuration Java 17 dans Talaxie"}  
+![Compatibilité Java 17](/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-3.png){:alt="Popup compatibilité Java"}  
+![Compatibilité Java 17](/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-4.png){:alt="Configuration Java 17 dans Talaxie"}  
 
 ⚠️ Vérifiez que **Java 17 est installé sur votre poste** (variable `JAVA_HOME` ou configuration manuelle dans vos scripts de build).  
 La distribution recommandée est **Zulu JDK** : [télécharger ici](https://www.azul.com/downloads/?package=jdk#zulu).
@@ -107,7 +107,7 @@ Assurez-vous que tous les éléments ont bien été repris :
 - API REST/SOAP.  
 - Variables et contextes (souvent sources d’erreurs).  
 
-![Vérification référentiel](/assets/img/blog/2-Migration_Talaxie/4-migration_talaxie-2.png){:alt="Vérification des éléments du référentiel"}  
+![Vérification référentiel](/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-2.png){:alt="Vérification des éléments du référentiel"}  
 
 ⚠️ Les connecteurs propriétaires Talend ne sont pas inclus : privilégiez les drivers standards (JDBC, REST).  
 
