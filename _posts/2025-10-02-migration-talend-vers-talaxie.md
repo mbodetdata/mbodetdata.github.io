@@ -141,7 +141,7 @@ Talaxie fonctionne comme Talend :
 Migrer de **Talend Open Studio** vers **Talaxie** est une opération simple à condition de bien la préparer.  
 Avec ces **8 étapes**, vous sécurisez vos flux ETL tout en rejoignant une communauté open source dynamique et engagée.  
 
-![Schéma de migration Talend vers Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/migration-talend-talaxie-schema.webp' | relative_url }}){:alt="Schéma de migration de Talend vers Talaxie" loading="lazy"}
+![Schéma de migration Talend vers Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/migration-talend-talaxie-schema.png' | relative_url }}){:alt="Schéma de migration de Talend vers Talaxie" loading="lazy"}
 
 ➡️ Découvrez davantage sur [**Talaxie**](https://talaxie.deilink.fr/).
 
