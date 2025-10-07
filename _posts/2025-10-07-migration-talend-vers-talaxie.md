@@ -5,7 +5,7 @@ description: "Guide complet et pratique pour migrer vos projets Talend Open Stud
 categories: blog
 tags: [Talend, Talaxie, Migration, ETL, Open Source, Data Integration]
 image: "/assets/img/blog/2-Migration_Talend_Talaxie/migration-talend-talaxie.png"
-active: false
+active: true
 ---
 
 Depuis janvier 2024, la version **open source de Talend Open Studio (TOS)** n’évolue plus.  
@@ -25,7 +25,7 @@ Migrer vers Talaxie permet donc de conserver vos projets actuels tout en bénéf
 Si vous découvrez Talend et ses différents studios (DI, BD, ESB, Data Prep, Data Quality), je vous invite à lire d’abord [cet article de présentation](https://bmdata.fr/blog/talend-studios/).  
 
 Ce guide propose ensuite une démarche en **8 étapes claires** pour effectuer la migration en douceur et sécuriser vos projets pour l’avenir.  
-Dans ce tutoriel, nous prendrons un **cas concret** : un **job unique** utilisant un **groupe de contextes**.  
+Dans ce tutoriel, nous prendrons un **cas simple** : un **job unique** utilisant un **groupe de contextes**.  
 
 ⚠️ **Prérequis :** votre projet doit être au minimum en **Talend 7.3.1**.  
 Si vous utilisez une version antérieure, une **montée de version Talend** est nécessaire **avant** la migration vers Talaxie.
@@ -37,8 +37,8 @@ Si vous utilisez une version antérieure, une **montée de version Talend** est 
 ## 1. Auditez votre existant
 
 Avant toute migration, réalisez un inventaire complet :  
-- La **version exacte de Talend** utilisée (ex. : 7.3.1).  
-- Les **projets** et jobs actifs.  
+- La **version exacte de Talend** utilisée -> 7.3.1.  
+- Les **projets** et **jobs** actifs.  
 - Les **connexions** (bases, API, fichiers, FTP…).  
 - Les **librairies personnalisées** (drivers JDBC, JARs spécifiques).  
 - Les **composants additionnels** éventuels.  
@@ -47,11 +47,11 @@ Avant toute migration, réalisez un inventaire complet :
 
 ---
 
-## 2. Exporte(z) vos projets
+## 2. Exportez vos projets
 
 Dans Talend :  
 1. Sélectionnez votre projet.  
-2. Ouvrez `Job > Exporter`.  
+2. Ouvrez `Job > Exporter des éléments`.  
 3. Choisissez un répertoire d’archive.  
 4. Cochez **Inclure les dépendances**.  
 
@@ -106,8 +106,6 @@ Assurez-vous que tous les éléments du projet ont bien été repris :
 
 ![Vérification référentiel]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-2.png' | relative_url }}){:alt="Vérification du référentiel après import"}  
 
-⚠️ Les connecteurs propriétaires de Talend ne sont pas inclus : privilégiez les drivers standards (JDBC, REST).
-
 ---
 
 ## 6. Testez vos flux
@@ -120,16 +118,15 @@ Assurez-vous que tous les éléments du projet ont bien été repris :
 
 ## 7. Déployez et automatisez
 
-Talaxie fonctionne comme Talend :  
-- Planifiez vos jobs via **CRON** ou **tâches planifiées Windows**.  
-- Intégrez-les dans vos scripts CI/CD (Jenkins, GitHub Actions…).  
-- Si vous utilisez **Docker**, pensez à mettre à jour les images avec le **JDK 17**.
+Talaxie fonctionne comme Talend : 
+- Vous pouvez compiler votre job de la même façon. 
+- Planifiez les via **CRON** ou **tâches planifiées Windows** ou tout autre service.  
 
 ---
 
 ## 8. Bonnes pratiques & pièges à éviter
 
-- ⚠️ **Sauvegardez toujours** votre workspace Talend d’origine avant la migration.  
+- **Sauvegardez toujours** votre workspace Talend d’origine avant la migration.  
 - Documentez vos **librairies personnalisées** pour les réinstaller facilement.  
 - Vérifiez les **contextes** et **variables globales** après migration.  
 - Consultez la **communauté Talaxie** (forums, GitHub) pour suivre les évolutions.
@@ -141,7 +138,6 @@ Talaxie fonctionne comme Talend :
 Migrer de **Talend Open Studio** vers **Talaxie** est une opération simple à condition de bien la préparer.  
 Avec ces **8 étapes**, vous sécurisez vos flux ETL tout en rejoignant une communauté open source dynamique et engagée.  
 
-![Schéma de migration Talend vers Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/migration-talend-talaxie-schema.png' | relative_url }}){:alt="Schéma de migration de Talend vers Talaxie" loading="lazy"}
 
 ➡️ Découvrez davantage sur [**Talaxie**](https://talaxie.deilink.fr/).
 
@@ -158,8 +154,7 @@ Avec ces **8 étapes**, vous sécurisez vos flux ETL tout en rejoignant une comm
 | 5 | Activer Java 17 | ☐ |
 | 6 | Vérifier les éléments du référentiel | ☐ |
 | 7 | Tester et valider les flux | ☐ |
-| 8 | Mettre en place la planification / CI-CD | ☐ |
-| 9 | Documenter et sauvegarder la configuration | ☐ |
+| 8 | Construire et deployer les jobs | ☐ |
 
 ---
 
