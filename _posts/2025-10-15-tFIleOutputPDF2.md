@@ -5,7 +5,7 @@ description: "Tutoriel complet et illustré pour intégrer le composant tFileOut
 categories: blog
 tags: [Talend, PDF, ETL, Reporting, Open Source, Data Integration]
 image: "/assets/img/blog/3-tFileOutputPDF2/creation-pdf-talend.png"
-active: true
+active: false
 ---
 
 Talend Open Studio ne propose pas nativement de composant pour **générer des fichiers PDF**.  
