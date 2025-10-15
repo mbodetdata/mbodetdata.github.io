@@ -79,7 +79,7 @@ Une fois le composant reconnu, créez un **nouveau job** et ajoutez un composant
 
 👉 Nombre de lignes générées : **25**
 
-![Configuration du tRowGenerator]({{ '/assets/img/blog/3-tFileOutputPDF2/3-tRowGenerator.png' | relative_url }}){:alt="Configuration du composant tRowGenerator pour générer les données de test" loading="lazy" decoding="async"}
+![Configuration du tRowGenerator]({{ '/assets/img/blog/3_tFileOutputPDF2/3-tRowGenerator.png' | relative_url }}){:alt="Configuration du composant tRowGenerator pour générer les données de test" loading="lazy" decoding="async"}
 
 ---
 
