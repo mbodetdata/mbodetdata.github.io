@@ -98,7 +98,7 @@ Voici l'exemple de configuration effectué dans mon projet
 
 ![tFIleOutputPDF2 basic]({{ '/assets/img/blog/3-tFileOutputPDF2/4-tFileOutputPDF2_basic.png' | relative_url }}){:alt="Configuration basique du tFIleOutputPDF2" loading="lazy" decoding="async"}
 
-
+ 
 
 Dans les `Paramètres avancés` les elements de configurations concernet plutôt le **corp** du tableau
 - Largeur des colonnes
