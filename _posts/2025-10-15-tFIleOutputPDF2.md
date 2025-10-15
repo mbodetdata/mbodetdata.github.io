@@ -34,14 +34,14 @@ Avant de commencer :
 
 Dans cet exemple j'ai décidé de dezziper l'archive dans le repertoire `C:\Studios\Talend\Composants_additionnel`, bien entendu vous êtes libre de le mettre où vous souhaitez.
 Cependant il est primodial d'avoir le dossier et l'ensemble des fichier a l'interieur comme l'illustre les deux captures d'ecran ci-dessous 
-![Dossier d'extraction]({{ '/assets/img/blog/3-tFIleOutputPDF2/1-Extract_zip.png' | relative_url }}){:alt="Dossier d'extraction du zip" loading="lazy" decoding="async"}
+![Dossier d'extraction]({{ '/assets/img/blog/3-tFileOutputPDF2/1-Extract_zip.png' | relative_url }}){:alt="Dossier d'extraction du zip" loading="lazy" decoding="async"}
 
-![Contenu de l'archive]({{ '/assets/img/blog/3-tFIleOutputPDF2/1-Extract_zip_2.png' | relative_url }}){:alt="Contenu de l'archive" loading="lazy" decoding="async"}
+![Contenu de l'archive]({{ '/assets/img/blog/3-tFileOutputPDF2/1-Extract_zip_2.png' | relative_url }}){:alt="Contenu de l'archive" loading="lazy" decoding="async"}
 
 
 Une fois cela réalisez parametrez Talend pour pointer vers votre repertoire contenan votre composant additionnel.
 Pour se faire cliquez sur `Fenêtre>Préférences>Talend>Composants` et renseignez `Dossier des composants utilisateur`
-![Préférences Talend]({{ '/assets/img/blog/3-tFIleOutputPDF2/2-preferences_talend.png' | relative_url }}){:alt="Préferences Talend" loading="lazy" decoding="async"}
+![Préférences Talend]({{ '/assets/img/blog/3-tFileOutputPDF2/2-preferences_talend.png' | relative_url }}){:alt="Préferences Talend" loading="lazy" decoding="async"}
 
 ---
 
@@ -50,7 +50,7 @@ Pour se faire cliquez sur `Fenêtre>Préférences>Talend>Composants` et renseign
 Une fois installé, vous trouverez le composant dans la catégorie :  
 **Fichier → Écriture**.
 
-![Palette Talend]({{ '/assets/img/blog/3-tFIleOutputPDF2/3-palette.png' | relative_url }}){:alt="Palette Talend" loading="lazy" decoding="async"}
+![Palette Talend]({{ '/assets/img/blog/3-tFileOutputPDF2/3-palette.png' | relative_url }}){:alt="Palette Talend" loading="lazy" decoding="async"}
 
 > 💡 **Astuce :** Si votre composant ne s'affiche pas dans votre palettes, fermez et réouvrez Talend.
 
@@ -65,14 +65,14 @@ Dans cet exemple, nous allons utiliser un **tRowGenerator** permettant de genere
 
 Nous allons generer **25** lignes
 
-![tRowGenerator]({{ '/assets/img/blog/3-tFIleOutputPDF2/3-tRowGenerator.png' | relative_url }}){:alt="Configuration tRowGenerator" loading="lazy" decoding="async"}
+![tRowGenerator]({{ '/assets/img/blog/3-tFileOutputPDF2/3-tRowGenerator.png' | relative_url }}){:alt="Configuration tRowGenerator" loading="lazy" decoding="async"}
 
 
 Afin d'alimenter un peu plus notre jeux de données, nous allons ajouter un **tMap** avec l'ajout de deux colonnes : 
 - utilisateur_enregistre : Boolean -> Si "nbre_article_achete" est paire, alors `true`, sinon `false` 
 - total_panier : Integer -> nbre_article_achete*prix_article_unitaire
 
-![tMap]({{ '/assets/img/blog/3-tFIleOutputPDF2/3-tMap.png' | relative_url }}){:alt="Configuration tMap" loading="lazy" decoding="async"}
+![tMap]({{ '/assets/img/blog/3-tFileOutputPDF2/3-tMap.png' | relative_url }}){:alt="Configuration tMap" loading="lazy" decoding="async"}
 
 
 ---
@@ -96,7 +96,7 @@ Il sera necessaire de cocher certaines case (par exemple `Aspect` de la configur
 
 Voici l'exemple de configuration effectué dans mon projet 
 
-![tFIleOutputPDF2 basic]({{ '/assets/img/blog/3-tFIleOutputPDF2/4-tFileOutputPDF2_basic.png' | relative_url }}){:alt="Configuration basique du tFIleOutputPDF2" loading="lazy" decoding="async"}
+![tFIleOutputPDF2 basic]({{ '/assets/img/blog/3-tFileOutputPDF2/4-tFileOutputPDF2_basic.png' | relative_url }}){:alt="Configuration basique du tFIleOutputPDF2" loading="lazy" decoding="async"}
 
 
 
@@ -111,13 +111,13 @@ Dans les `Paramètres avancés` les elements de configurations concernet plutôt
 
 Voici l'exemple de configuration effectué dans mon projet 
 
-![tFIleOutputPDF2 advanced]({{ '/assets/img/blog/3-tFIleOutputPDF2/4-tFileOutputPDF2_advanced.png' | relative_url }}){:alt="Configuration avancèe du tFIleOutputPDF2" loading="lazy" decoding="async"}
+![tFIleOutputPDF2 advanced]({{ '/assets/img/blog/3-tFileOutputPDF2/4-tFileOutputPDF2_advanced.png' | relative_url }}){:alt="Configuration avancèe du tFIleOutputPDF2" loading="lazy" decoding="async"}
 
 
 
 En suivant ce déroulé et la configuration effectuée, vous devriez vous le résultat suivant 
 
-![resultat]({{ '/assets/img/blog/3-tFIleOutputPDF2/4-resultat.png' | relative_url }}){:alt="PDF final" loading="lazy" decoding="async"}
+![resultat]({{ '/assets/img/blog/3-tFileOutputPDF2/4-resultat.png' | relative_url }}){:alt="PDF final" loading="lazy" decoding="async"}
 
 
 
