@@ -4,7 +4,7 @@ title: "Créer un fichier PDF avec Talend (tFileOutputPDF2)"
 description: "Tutoriel complet et illustré pour intégrer le composant tFileOutputPDF2 dans Talend Open Studio ou Talaxie, et générer automatiquement un rapport PDF à partir de vos données."
 categories: blog
 tags: [Talend, PDF, ETL, Reporting, Open Source, Data Integration]
-image: "/assets/img/blog/3-tFileOutputPDF2/creation-pdf-talend.png"
+image: "/assets/img/blog/3-tFileOutputPDF2/title.png"
 active: true
 ---
 
