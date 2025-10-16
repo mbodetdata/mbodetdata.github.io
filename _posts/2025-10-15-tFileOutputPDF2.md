@@ -43,6 +43,10 @@ Avant de commencer, assurez-vous d’avoir :
 Le composant est disponible ici :  
 👉 **[tFileOutputPDF2.zip](https://github.com/TalendExchange/Components/raw/refs/heads/main/archive/patrick%20moire/components/tOutputPDF2/files/v_1.3__tFileOutputPDF2.zip?download=)**
 
+> 💡 **Astuce — Github Talend Exchange**  
+> Retrouvez bon nombres de composant sur les archives github [TalendExchange](https://github.com/TalendExchange/Components)
+
+
 Décompressez le contenu dans un dossier, par exemple :  
 `C:\Studios\Talend\Composants_additionnels`
 
