@@ -194,24 +194,11 @@ Cette approche ouvre la voie à des exports automatiques, des rapports quotidien
 > 💡 **Astuce**  
 > Combinez `tFileInputDelimited → tMap → tFileOutputPDF2` pour créer un flux “lecture / transformation / rendu PDF” complet et automatisable.
 
----
-
-## Checklist
-
-| Étape | Action | Statut |
-|:------|:--------|:------:|
-| 1 | Télécharger et décompresser le composant GitHub | ☐ |
-| 2 | Configurer le chemin dans Talend (Préférences → Composants) | ☐ |
-| 3 | Créer un job de test (`tRowGenerator` → `tMap`) | ☐ |
-| 4 | Ajouter `tFileOutputPDF2` et définir le schéma | ☐ |
-| 5 | Régler titres, couleurs, logo, totalisation | ☐ |
-| 6 | Exécuter le job et vérifier le PDF généré | ☐ |
-| 7 | Versionner le projet sur GitHub | ☐ |
 
 ---
 
 ### Ressources
 
 - Archive GitHub des composants : [TalendExchange/Components](https://github.com/TalendExchange/Components)  
-- Documentation Talend Studio : [help.talend.com](https://help.talend.com/)  
 - Migration Talend vers Talaxie : [bmdata.fr/blog/migration-talend-vers-talaxie](https://bmdata.fr/blog/migration-talend-vers-talaxie/)
+- Lien github vers le projet demo :[Projet demo](https://github.com/mbodetdata/BMDATA_Blog-tFileOutputPDF2)
