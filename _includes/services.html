@@ -9,11 +9,15 @@
     <h2 id="services-title">{{ services_data.section.title | default: 'Services' }}</h2>
     {% if services_data.section.hook or services_data.section.intro or services_data.section.bullets %}
       <div class="section-pitch">
-        {% if services_data.section.hook %}
-          <p class="section-hook" aria-label="Promesse principale">{{ services_data.section.hook }}</p>
-        {% endif %}
-        {% if services_data.section.tagline %}
-          <p class="section-tagline">{{ services_data.section.tagline }}</p>
+        {% if services_data.section.hook or services_data.section.tagline %}
+          <div class="section-hook" aria-label="Promesse principale">
+            {% if services_data.section.hook %}
+              <span class="section-hook__title">{{ services_data.section.hook }}</span>
+            {% endif %}
+            {% if services_data.section.tagline %}
+              <span class="section-hook__tagline">{{ services_data.section.tagline }}</span>
+            {% endif %}
+          </div>
         {% endif %}
         {% if services_data.section.intro or services_data.section.bullets %}
           <div class="section-intro">

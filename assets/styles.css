@@ -342,26 +342,29 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   gap:clamp(.75rem, 1.4vw, 1.2rem);
 }
 .section-hook{
-  margin:0;
-  font-size: clamp(1.4rem, 1.15rem + 1.2vw, 2.1rem);
-  font-weight:800;
-  line-height:1.25;
-  color: var(--fg);
-  display:inline-flex;
-  align-items:center;
-  padding:clamp(.6rem, 1.2vw, .95rem) clamp(1.6rem, 2.6vw, 2.3rem);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:.35rem;
+  padding:clamp(.8rem, 1.6vw, 1.2rem) clamp(1.6rem, 2.6vw, 2.4rem);
   border-radius:calc(var(--radius-2) + .2rem);
   background: linear-gradient(160deg,
-    color-mix(in oklab, var(--surface-1) 88%, var(--brand) 12%) 0%,
+    color-mix(in oklab, var(--surface-1) 86%, var(--brand) 14%) 0%,
     color-mix(in oklab, var(--surface-0) 88%, var(--brand-2) 12%) 100%);
   box-shadow:0 12px 32px rgba(8,11,20,.28);
+  color: var(--fg);
+  width:100%;
+  min-height:100%;
 }
-.section-tagline{
-  margin: clamp(.2rem, .5vw, .45rem) 0 0;
-  font-size:calc(var(--step-0) - .05rem);
+.section-hook__title{
+  font-size: clamp(1.4rem, 1.15rem + 1.2vw, 2.1rem);
+  font-weight:800;
+  line-height:1.2;
+}
+.section-hook__tagline{
+  font-size:calc(var(--step-0) - .02rem);
   font-weight:600;
-  color:color-mix(in oklab, var(--fg) 90%, #fff 10%);
-  max-width:36ch;
+  color:color-mix(in oklab, var(--fg) 92%, #fff 8%);
 }
 .section-intro{
   display:grid;
