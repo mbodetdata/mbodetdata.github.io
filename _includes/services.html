@@ -92,16 +92,22 @@
           </div>
         </header>
 
-        {% if service.tagline %}
-          <p class="svc-tagline">{{ service.tagline }}</p>
+        {% if service.problem %}
+          <p class="svc-problem">{{ service.problem }}</p>
         {% endif %}
-        {% if service.description %}
-          <p class="svc-desc" itemprop="description">{{ service.description }}</p>
+        {% if service.promise %}
+          <p class="svc-promise" itemprop="description">{{ service.promise }}</p>
         {% endif %}
-        {% if service.example %}
-          <p class="svc-example">{{ service.example }}</p>
+        {% if service.deliverables %}
+          <ul class="svc-deliverables">
+            {% for deliverable in service.deliverables %}
+              <li>{{ deliverable }}</li>
+            {% endfor %}
+          </ul>
         {% endif %}
-
+        {% if service.result %}
+          <p class="svc-result">{{ service.result }}</p>
+        {% endif %}
         {% assign svc_link = service.link | default: '/services-talend-talaxie/' %}
         <a class="svc-stretched"
            href="{{ svc_link | relative_url }}"
@@ -117,8 +123,8 @@
 
   <div class="services-cta-grid">
     <article class="card service-cta service-cta--combo" aria-labelledby="services-cta-combo" data-anim="fade-up">
-      <h3 id="services-cta-combo">Talend &amp; Power BI pour une donnee utile</h3>
-      <p>Discutons d'automatisation, de migration et de reporting pour que vos equipes disposent d'une donnee fiable chaque jour.</p>
+      <h3 id="services-cta-combo">Trouver la solution data qu'il vous faut</h3>
+      <p>Parlons automatisation, migration, exploitation ou reporting pour aligner la solution cle en main sur votre besoin.</p>
       <div class="service-cta__actions">
         <a class="btn btn--primary"
            href="{{ '/services-talend-talaxie/' | relative_url }}"

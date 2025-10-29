@@ -1,101 +1,85 @@
 {
-    "section":  {
-                    "title":  "Services Data \u0026 BI",
-                    "hook":  "Pour que vos donnees travaillent pour vous, pas l\u0027inverse.",
-                    "intro":  [
-                                  "Vos donnees se perdent entre Excel, exports Talend et outils metier et votre reporting prend des heures ?",
-                                  "Je suis ici pour ca : nous mettons en place des automatisations Talend/Talaxie et des dashboards Power BI qui repondent a vos besoins."
-                              ],
-                    "bullets":  [
-                                    "Marre de perdre du temps a ecrire plusieurs fois les memes donnees dans des sources differentes ?",
-                                    "Vous ne savez pas comment exploiter votre donnee ?",
-                                    "Vous envisagez de migrer sans perdre votre historique ?",
-                                    "Vous voulez des rapports fiables et clairs ?"
-                                ]
-                },
-    "cards":  [
-                  {
-                      "id":  "orchestration-talend",
-                      "category":  "Talend \u0026 Talaxie",
-                      "title":  "Automatisation des flux Talend \u0026 Talaxie",
-                      "tagline":  "Je transforme vos traitements Talend en automatisations fiables pour que vos equipes cessent de jongler avec des fichiers Excel.",
-                      "description":  "Conception et industrialisation de jobs Talend / Talaxie qui orchestrent vos flux de donnees de bout en bout, avec controles qualite, reprises automatiques et alertes claires pour gagner du temps chaque jour.",
-                      "example":  "Ex. : automatisation d\u0027un pipeline Talend reliant ERP, CRM et Talaxie pour livrer 200 indicateurs avant 8h sans saisies manuelles.",
-                      "keywords":  [
-                                       "Talend",
-                                       "Talaxie",
-                                       "ETL",
-                                       "automatisation",
-                                       "flux de donnees",
-                                       "integration de donnees"
-                                   ],
-                      "link":  "/services-talend-talaxie/",
-                      "icon":  "automation"
-                  },
-                  {
-                      "id":  "migration-donnees-talend",
-                      "category":  "Talend \u0026 Talaxie",
-                      "title":  "Migration de donnees sans rupture",
-                      "tagline":  "Je securise vos migrations de donnees (ERP, CRM, outils metier) avec Talend pour conserver l\u0027historique et les referentiels.",
-                      "description":  "Preparation, nettoyage, reconciliation et chargement controle de vos donnees lors d\u0027un changement d\u0027application, avec scenarii de reprise et validation metier automatisee.",
-                      "example":  "Ex. : migration de l\u0027ERP Navision vers Business Central avec concordance automatique des clients, articles et historiques de ventes.",
-                      "keywords":  [
-                                       "migration de donnees",
-                                       "Talend",
-                                       "Talaxie",
-                                       "ERP",
-                                       "flux de donnees",
-                                       "modernisation"
-                                   ],
-                      "icon":  "migration",
-                      "link":  "/services-talend-talaxie/"
-                  },
-                  {
-                      "id":  "dashboards-powerbi",
-                      "category":  "Power BI",
-                      "title":  "Tableaux de bord Power BI lisibles et automatiques",
-                      "tagline":  "Je transforme vos donnees en KPI actionnables dans Power BI pour piloter sans ressaisir dans Excel.",
-                      "description":  "Modeles de donnees robustes, mesures DAX rapides et mise en scene adaptee a vos metiers pour fiabiliser vos decisions et gagner du temps chaque semaine.",
-                      "example":  "Ex. : cockpit financier Power BI connecte a l\u0027ERP et a l\u0027outil RH avec alertes sur les marges et la tresorerie.",
-                      "keywords":  [
-                                       "Power BI",
-                                       "tableaux de bord",
-                                       "KPI",
-                                       "reporting decisionnel",
-                                       "visualisation de donnees",
-                                       "automatisation"
-                                   ],
-                      "icon":  "dashboard",
-                      "link":  "/services-powerbi/"
-                  },
-                  {
-                      "id":  "interconnexion-applications",
-                      "category":  "Talend \u0026 API",
-                      "title":  "Interconnexion d\u0027applications et API",
-                      "tagline":  "Je relie vos applications (ERP, CRM, SaaS, BDD) avec Talend et des API pour que l\u0027information circule automatiquement.",
-                      "description":  "Conception d\u0027API, orchestration de connecteurs Talend, synchronisation en temps reel ou batch pour supprimer les doubles saisies et disposer d\u0027une donnee unique.",
-                      "example":  "Ex. : synchronisation quotidienne entre un ERP industriel, un CRM commercial et un outil de support via API et flux Talend.",
-                      "keywords":  [
-                                       "Talend",
-                                       "API",
-                                       "interconnexion",
-                                       "integration",
-                                       "flux de donnees",
-                                       "automatisation"
-                                   ],
-                      "icon":  "integration",
-                      "link":  "/services-talend-talaxie/"
-                  }
-              ],
-    "schema":  {
-                   "@context":  "https://schema.org",
-                   "@type":  "Service",
-                   "serviceType":  "Data Integration \u0026 Business Intelligence",
-                   "provider":  {
-                                    "@type":  "Person",
-                                    "name":  "BM Data"
-                                },
-                   "areaServed":  "France",
-                   "brand":  "Talend / Power BI"
-               }
+  "section": {
+    "title": "Services Data & BI",
+    "hook": "Pour que vos donnees travaillent pour vous, pas l'inverse.",
+    "intro": [
+      "Marre de remplir les memes donnees dans des outils differents ?",
+      "Je vous livre des solutions data cle en main pour automatiser, migrer, exploiter et piloter vos informations."
+    ],
+    "bullets": [
+      "Automatisation de vos saisies repetitives",
+      "Migration de vos applications sans perte d'historique",
+      "Valorisation de votre donnee dormante",
+      "Dashboards et reporting operationnels"
+    ]
+  },
+  "cards": [
+    {
+      "id": "solution-automatisation",
+      "title": "Automatisation des saisies et synchronisations",
+      "problem": "Des heures a dupliquer la saisie de donnees entre vos applications ?",
+      "promise": "Workflows automatiques qui collectent, valident et propagent la donnee la ou elle doit etre.",
+      "deliverables": [
+        "Cartographie flash de vos sources et flux",
+        "Automatisation des echanges (API, fichiers, Talend/Talaxie)",
+        "Alertes et controles de fiabilite integres"
+      ],
+      "result": "Une seule saisie, des outils synchronises et des heures liberees chaque semaine.",
+      "link": "/services-talend-talaxie/",
+      "icon": "automation"
+    },
+    {
+      "id": "solution-migration",
+      "title": "Migration d'applications sans perte d'historique",
+      "problem": "Vous changez d'application et craignez de perdre votre historique ?",
+      "promise": "Pilotage complet de la migration : preparation, transferts, validation metier, bascule securisee.",
+      "deliverables": [
+        "Audit de vos donnees et referentiels",
+        "Plan de migration + jeux de tests automatise",
+        "Bascule accompagnee avec plan de reprise"
+      ],
+      "result": "Nouvel outil operationnel en quelques jours, sans rupture ni perte de patrimoine.",
+      "link": "/services-talend-talaxie/",
+      "icon": "migration"
+    },
+    {
+      "id": "solution-exploitation",
+      "title": "Valorisation et exploitation de vos donnees",
+      "problem": "Vous generez de la donnee sans savoir comment l'exploiter ?",
+      "promise": "Consolidation, nettoyage et mise a disposition de vos donnees pour decisions rapides.",
+      "deliverables": [
+        "Inventaire des sources (ERP, CRM, SaaS)",
+        "Modelisation et gouvernance pragmatique",
+        "Cas d'usage priorises avec vos equipes"
+      ],
+      "result": "Une donnee fiable, accessible et exploitable par les metiers.",
+      "link": "/services-talend-talaxie/",
+      "icon": "integration"
+    },
+    {
+      "id": "solution-reporting",
+      "title": "Reporting et tableaux de bord Power BI",
+      "problem": "Vous avez besoin d'outils de suivi ou de reporting clairs ?",
+      "promise": "Tableaux de bord Power BI cle en main, connectes a vos donnees et adoptes par les utilisateurs.",
+      "deliverables": [
+        "Atelier indicateurs + maquette rapide",
+        "Modeles de donnees optimises et mesures DAX",
+        "Livraison, formation et passage en production"
+      ],
+      "result": "Vos KPI en un clin d'oeil, mis a jour automatiquement et partages en toute securite.",
+      "link": "/services-powerbi/",
+      "icon": "dashboard"
+    }
+  ],
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Data Integration and Business Intelligence",
+    "provider": {
+      "@type": "Person",
+      "name": "BM Data"
+    },
+    "areaServed": "France",
+    "brand": "BM Data Solutions"
+  }
 }
