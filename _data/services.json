@@ -1,17 +1,7 @@
 {
     "section":  {
                     "title":  "Services Data \u0026 BI",
-                    "hook":  "Pour que vos donnees travaillent pour vous, pas l\u0027inverse.",
-                    "intro":  [
-                                  "Marre de perdre du temps a ressaisir les memes donnees partout ?",
-                                  "Je con\u00e7ois des solutions data cle en main pour automatiser, fiabiliser et valoriser vos informations."
-                              ],
-                    "bullets":  [
-                                    "Automatisation ciblee de vos taches repetitives",
-                                    "Migration fluide de vos applications sans perte d\u0027historique",
-                                    "Exploitation de votre donnee dormante pour creer de la valeur",
-                                    "Dashboards clairs et fiables pour piloter votre activite en confiance"
-                                ]
+                    "hook":  "Pour que vos donnees travaillent pour vous, pas l\u0027inverse."
                 },
     "cards":  [
                   {
