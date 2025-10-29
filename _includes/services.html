@@ -7,14 +7,25 @@
          data-section="services">
   <div class="section-header">
     <h2 id="services-title">{{ services_data.section.title | default: 'Services' }}</h2>
-    {% if services_data.section.hook %}
-      <p class="section-hook">{{ services_data.section.hook }}</p>
-    {% endif %}
-    {% if services_data.section.intro %}
-      <div class="section-intro">
-        {% for paragraph in services_data.section.intro %}
-          <p>{{ paragraph }}</p>
-        {% endfor %}
+    {% if services_data.section.hook or services_data.section.intro %}
+      <div class="section-pitch">
+        {% if services_data.section.hook %}
+          <p class="section-hook" aria-label="Promesse principale">{{ services_data.section.hook }}</p>
+        {% endif %}
+        {% if services_data.section.intro %}
+          <div class="section-intro">
+            {% for paragraph in services_data.section.intro %}
+              <p>{{ paragraph }}</p>
+            {% endfor %}
+            {% if services_data.section.bullets %}
+              <ul class="section-intro-list">
+                {% for item in services_data.section.bullets %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endif %}
       </div>
     {% endif %}
     <p class="section-links">
