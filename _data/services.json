@@ -1,85 +1,89 @@
 {
-  "section": {
-    "title": "Services Data & BI",
-    "hook": "Pour que vos donnees travaillent pour vous, pas l'inverse.",
-    "intro": [
-      "Marre de remplir les memes donnees dans des outils differents ?",
-      "Je vous livre des solutions data cle en main pour automatiser, migrer, exploiter et piloter vos informations."
-    ],
-    "bullets": [
-      "Automatisation de vos saisies repetitives",
-      "Migration de vos applications sans perte d'historique",
-      "Valorisation de votre donnee dormante",
-      "Dashboards et reporting operationnels"
-    ]
-  },
-  "cards": [
-    {
-      "id": "solution-automatisation",
-      "title": "Automatisation des saisies et synchronisations",
-      "problem": "Des heures a dupliquer la saisie de donnees entre vos applications ?",
-      "promise": "Workflows automatiques qui collectent, valident et propagent la donnee la ou elle doit etre.",
-      "deliverables": [
-        "Cartographie flash de vos sources et flux",
-        "Automatisation des echanges (API, fichiers, Talend/Talaxie)",
-        "Alertes et controles de fiabilite integres"
-      ],
-      "result": "Une seule saisie, des outils synchronises et des heures liberees chaque semaine.",
-      "link": "/services-talend-talaxie/",
-      "icon": "automation"
-    },
-    {
-      "id": "solution-migration",
-      "title": "Migration d'applications sans perte d'historique",
-      "problem": "Vous changez d'application et craignez de perdre votre historique ?",
-      "promise": "Pilotage complet de la migration : preparation, transferts, validation metier, bascule securisee.",
-      "deliverables": [
-        "Audit de vos donnees et referentiels",
-        "Plan de migration + jeux de tests automatise",
-        "Bascule accompagnee avec plan de reprise"
-      ],
-      "result": "Nouvel outil operationnel en quelques jours, sans rupture ni perte de patrimoine.",
-      "link": "/services-talend-talaxie/",
-      "icon": "migration"
-    },
-    {
-      "id": "solution-exploitation",
-      "title": "Valorisation et exploitation de vos donnees",
-      "problem": "Vous generez de la donnee sans savoir comment l'exploiter ?",
-      "promise": "Consolidation, nettoyage et mise a disposition de vos donnees pour decisions rapides.",
-      "deliverables": [
-        "Inventaire des sources (ERP, CRM, SaaS)",
-        "Modelisation et gouvernance pragmatique",
-        "Cas d'usage priorises avec vos equipes"
-      ],
-      "result": "Une donnee fiable, accessible et exploitable par les metiers.",
-      "link": "/services-talend-talaxie/",
-      "icon": "integration"
-    },
-    {
-      "id": "solution-reporting",
-      "title": "Reporting et tableaux de bord Power BI",
-      "problem": "Vous avez besoin d'outils de suivi ou de reporting clairs ?",
-      "promise": "Tableaux de bord Power BI cle en main, connectes a vos donnees et adoptes par les utilisateurs.",
-      "deliverables": [
-        "Atelier indicateurs + maquette rapide",
-        "Modeles de donnees optimises et mesures DAX",
-        "Livraison, formation et passage en production"
-      ],
-      "result": "Vos KPI en un clin d'oeil, mis a jour automatiquement et partages en toute securite.",
-      "link": "/services-powerbi/",
-      "icon": "dashboard"
-    }
-  ],
-  "schema": {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Data Integration and Business Intelligence",
-    "provider": {
-      "@type": "Person",
-      "name": "BM Data"
-    },
-    "areaServed": "France",
-    "brand": "BM Data Solutions"
-  }
+    "section":  {
+                    "title":  "Services Data \u0026 BI",
+                    "hook":  "Pour que vos donnees travaillent pour vous, pas l\u0027inverse.",
+                    "intro":  [
+                                  "Marre de perdre du temps a ressaisir les memes donnees partout ?",
+                                  "Je con\u00e7ois des solutions data cle en main pour automatiser, fiabiliser et valoriser vos informations."
+                              ],
+                    "bullets":  [
+                                    "Automatisation ciblee de vos taches repetitives",
+                                    "Migration fluide de vos applications sans perte d\u0027historique",
+                                    "Exploitation de votre donnee dormante pour creer de la valeur",
+                                    "Dashboards clairs et fiables pour piloter votre activite en confiance"
+                                ]
+                },
+    "cards":  [
+                  {
+                      "id":  "solution-automatisation",
+                      "title":  "Automatisation des saisies et synchronisations",
+                      "problem":  "Des heures a dupliquer la saisie de donnees entre vos applications ?",
+                      "promise":  "Workflows automatiques qui collectent, valident et propagent la donnee la ou elle doit etre.",
+                      "deliverables":  [
+                                           "Cartographie flash de vos sources et flux",
+                                           "Automatisation des echanges (API, fichiers, Talend/Talaxie)",
+                                           "Alertes et controles de fiabilite integres"
+                                       ],
+                      "result":  "Une seule saisie, des outils synchronises et des heures liberees chaque semaine.",
+                      "link":  "/services-talend-talaxie/",
+                      "icon":  "automation",
+                      "category":  "Solution Automatisation"
+                  },
+                  {
+                      "id":  "solution-migration",
+                      "title":  "Migration d\u0027applications sans perte d\u0027historique",
+                      "problem":  "Vous changez d\u0027application et craignez de perdre votre historique ?",
+                      "promise":  "Pilotage complet de la migration : preparation, transferts, validation metier, bascule securisee.",
+                      "deliverables":  [
+                                           "Audit de vos donnees et referentiels",
+                                           "Plan de migration + jeux de tests automatise",
+                                           "Bascule accompagnee avec plan de reprise"
+                                       ],
+                      "result":  "Nouvel outil operationnel en quelques jours, sans rupture ni perte de patrimoine.",
+                      "link":  "/services-talend-talaxie/",
+                      "icon":  "migration",
+                      "category":  "Solution Migration"
+                  },
+                  {
+                      "id":  "solution-exploitation",
+                      "title":  "Valorisation et exploitation de vos donnees",
+                      "problem":  "Vous generez de la donnee sans savoir comment l\u0027exploiter ?",
+                      "promise":  "Consolidation, nettoyage et mise a disposition de vos donnees pour decisions rapides.",
+                      "deliverables":  [
+                                           "Inventaire des sources (ERP, CRM, SaaS)",
+                                           "Modelisation et gouvernance pragmatique",
+                                           "Cas d\u0027usage priorises avec vos equipes"
+                                       ],
+                      "result":  "Une donnee fiable, accessible et exploitable par les metiers.",
+                      "link":  "/services-talend-talaxie/",
+                      "icon":  "integration",
+                      "category":  "Solution Valorisation"
+                  },
+                  {
+                      "id":  "solution-reporting",
+                      "title":  "Reporting et tableaux de bord Power BI",
+                      "problem":  "Vous avez besoin d\u0027outils de suivi ou de reporting clairs ?",
+                      "promise":  "Tableaux de bord Power BI cle en main, connectes a vos donnees et adoptes par les utilisateurs.",
+                      "deliverables":  [
+                                           "Atelier indicateurs + maquette rapide",
+                                           "Modeles de donnees optimises et mesures DAX",
+                                           "Livraison, formation et passage en production"
+                                       ],
+                      "result":  "Vos KPI en un clin d\u0027oeil, mis a jour automatiquement et partages en toute securite.",
+                      "link":  "/services-powerbi/",
+                      "icon":  "dashboard",
+                      "category":  "Solution Reporting"
+                  }
+              ],
+    "schema":  {
+                   "@context":  "https://schema.org",
+                   "@type":  "Service",
+                   "serviceType":  "Data Integration and Business Intelligence",
+                   "provider":  {
+                                    "@type":  "Person",
+                                    "name":  "BM Data"
+                                },
+                   "areaServed":  "France",
+                   "brand":  "BM Data Solutions"
+               }
 }
