@@ -616,9 +616,57 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   padding:.68rem 1.7rem;
   margin-top:.2rem;
 }
+.service-cta__btn{
+  border-radius:999px;
+  font-weight:700;
+  letter-spacing:.01em;
+  color:#f6f9ff;
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 18%);
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--surface-1) 88%, var(--brand) 12%) 0%,
+    color-mix(in oklab, var(--surface-0) 92%, var(--brand-2) 8%) 100%);
+  box-shadow:0 12px 24px rgba(8,11,20,.22);
+}
+.service-cta__btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 30px rgba(8,11,20,.28);
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--surface-1) 88%, var(--brand) 12%) 0%,
+    color-mix(in oklab, var(--surface-0) 92%, var(--brand-2) 8%) 100%);
+}
+.service-cta__btn:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px color-mix(in oklab, var(--brand) 35%, transparent), 0 12px 24px rgba(8,11,20,.28);
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--surface-1) 88%, var(--brand) 12%) 0%,
+    color-mix(in oklab, var(--surface-0) 92%, var(--brand-2) 8%) 100%);
+}
 .service-cta .btn.ghost{
   border-radius:999px;
   border:1px solid color-mix(in oklab, var(--border), var(--brand) 22%);
+}
+.service-cta__btn--data{
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--surface-1) 90%, var(--brand) 10%) 0%,
+    color-mix(in oklab, var(--surface-0) 94%, var(--brand-2) 6%) 100%);
+}
+.service-cta__btn--data:hover,
+.service-cta__btn--data:focus-visible{
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--surface-1) 88%, var(--brand) 12%) 0%,
+    color-mix(in oklab, var(--surface-0) 92%, var(--brand-2) 8%) 100%);
+}
+.service-cta__btn--bi{
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--surface-1) 90%, var(--brand-2) 10%) 0%,
+    color-mix(in oklab, var(--surface-0) 94%, var(--brand) 6%) 100%);
+  border-color:color-mix(in oklab, var(--border), var(--brand-2) 18%);
+}
+.service-cta__btn--bi:hover,
+.service-cta__btn--bi:focus-visible{
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--surface-1) 88%, var(--brand-2) 12%) 0%,
+    color-mix(in oklab, var(--surface-0) 92%, var(--brand) 8%) 100%);
 }
 .service-cta__actions{ display:none; }
 .services-footer{
