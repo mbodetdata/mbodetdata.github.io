@@ -326,7 +326,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   padding-block: clamp(2.2rem, 4vw, 3.8rem);
 }
 .services-section .section-header{
-  max-width:min(980px, 100%);
+  max-width:100%;
   margin: 0 0 clamp(1rem, 2vw, 1.9rem);
   display:grid;
   gap:clamp(.6rem, 1.4vw, 1.2rem);
@@ -340,6 +340,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .section-pitch{
   display:grid;
   gap:clamp(.75rem, 1.4vw, 1.2rem);
+  justify-items:stretch;
 }
 .section-hook{
   display:flex;
@@ -348,13 +349,14 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   gap:.35rem;
   padding:clamp(.8rem, 1.6vw, 1.2rem) clamp(1.6rem, 2.6vw, 2.4rem);
   border-radius:calc(var(--radius-2) + .2rem);
-  background: linear-gradient(160deg,
-    color-mix(in oklab, var(--surface-1) 86%, var(--brand) 14%) 0%,
-    color-mix(in oklab, var(--surface-0) 88%, var(--brand-2) 12%) 100%);
+  background: linear-gradient(110deg,
+    color-mix(in oklab, var(--brand) 26%, transparent) 0%,
+    color-mix(in oklab, var(--brand-2) 34%, transparent) 100%);
   box-shadow:0 12px 32px rgba(8,11,20,.28);
   color: var(--fg);
   width:100%;
   min-height:100%;
+  align-self:stretch;
 }
 .section-hook__title{
   font-size: clamp(1.4rem, 1.15rem + 1.2vw, 2.1rem);
@@ -362,9 +364,9 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   line-height:1.2;
 }
 .section-hook__tagline{
-  font-size:calc(var(--step-0) - .02rem);
-  font-weight:600;
-  color:color-mix(in oklab, var(--fg) 92%, #fff 8%);
+  font-size: clamp(1.05rem, .95rem + .6vw, 1.35rem);
+  font-weight:700;
+  color:#f7ea79;
 }
 .section-intro{
   display:grid;
