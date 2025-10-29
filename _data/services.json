@@ -1,100 +1,69 @@
 {
-    "section":  {
-                    "title":  "Services Data \u0026 BI",
-                    "hook":  "Pour que vos donn\u0026eacute;es travaillent pour vous, pas l’inverse.",
-                    "intro":  [
-                                  "Vos donnees se perdent entre Excel, exports Talend et outils metier ? Vous multipliez les ressaisies et votre reporting prend des heures.",
-                                  "Je remets de l\u0027automatisation et de la lisibilite dans vos flux Talend/Talaxie et vos dashboards Power BI pour que vos equipes pilotent sereinement."
-                              ],
-                    "bullets":  [
-                                    "Automatiser vos flux Talend pour livrer la donnee juste au bon moment",
-                                    "Migrer vos applications sans perdre d\u0027historique ni interrompre l\u0027exploitation",
-                                    "Visualiser vos KPI dans des tableaux de bord Power BI clairs et fiables"
-                                ]
-                },
-    "cards":  [
-                  {
-                      "id":  "orchestration-talend",
-                      "category":  "Talend \u0026 Talaxie",
-                      "title":  "Automatisation des flux Talend \u0026 Talaxie",
-                      "tagline":  "Je transforme vos traitements Talend en automatisations fiables pour que vos equipes cessent de jongler avec des fichiers Excel.",
-                      "description":  "Conception et industrialisation de jobs Talend / Talaxie qui orchestrent vos flux de donnees de bout en bout, avec controles qualite, reprises automatiques et alertes claires pour gagner du temps chaque jour.",
-                      "example":  "Ex. : automatisation d\u0027un pipeline Talend reliant ERP, CRM et Talaxie pour livrer 200 indicateurs avant 8h sans saisies manuelles.",
-                      "keywords":  [
-                                       "Talend",
-                                       "Talaxie",
-                                       "ETL",
-                                       "automatisation",
-                                       "flux de donnees",
-                                       "integration de donnees"
-                                   ],
-                      "link":  "/services-talend-talaxie/",
-                      "icon":  "automation"
-                  },
-                  {
-                      "id":  "migration-donnees-talend",
-                      "category":  "Talend \u0026 Talaxie",
-                      "title":  "Migration de donnees sans rupture",
-                      "tagline":  "Je securise vos migrations de donnees (ERP, CRM, outils metier) avec Talend pour conserver l\u0027historique et les referentiels.",
-                      "description":  "Preparation, nettoyage, reconciliation et chargement controle de vos donnees lors d\u0027un changement d\u0027application, avec scenarii de reprise et validation metier automatisee.",
-                      "example":  "Ex. : migration de l\u0027ERP Navision vers Business Central avec concordance automatique des clients, articles et historiques de ventes.",
-                      "keywords":  [
-                                       "migration de donnees",
-                                       "Talend",
-                                       "Talaxie",
-                                       "ERP",
-                                       "flux de donnees",
-                                       "modernisation"
-                                   ],
-                      "icon":  "migration",
-                      "link":  "/services-talend-talaxie/"
-                  },
-                  {
-                      "id":  "dashboards-powerbi",
-                      "category":  "Power BI",
-                      "title":  "Tableaux de bord Power BI lisibles et automatiques",
-                      "tagline":  "Je transforme vos donnees en KPI actionnables dans Power BI pour piloter sans ressaisir dans Excel.",
-                      "description":  "Modeles de donnees robustes, mesures DAX rapides et mise en scene adaptee a vos metiers pour fiabiliser vos decisions et gagner du temps chaque semaine.",
-                      "example":  "Ex. : cockpit financier Power BI connecte a l\u0027ERP et a l\u0027outil RH avec alertes sur les marges et la tresorerie.",
-                      "keywords":  [
-                                       "Power BI",
-                                       "tableaux de bord",
-                                       "KPI",
-                                       "reporting decisionnel",
-                                       "visualisation de donnees",
-                                       "automatisation"
-                                   ],
-                      "icon":  "dashboard",
-                      "link":  "/services-powerbi/"
-                  },
-                  {
-                      "id":  "interconnexion-applications",
-                      "category":  "Talend \u0026 API",
-                      "title":  "Interconnexion d\u0027applications et API",
-                      "tagline":  "Je relie vos applications (ERP, CRM, SaaS, BDD) avec Talend et des API pour que l\u0027information circule automatiquement.",
-                      "description":  "Conception d\u0027API, orchestration de connecteurs Talend, synchronisation en temps reel ou batch pour supprimer les doubles saisies et disposer d\u0027une donnee unique.",
-                      "example":  "Ex. : synchronisation quotidienne entre un ERP industriel, un CRM commercial et un outil de support via API et flux Talend.",
-                      "keywords":  [
-                                       "Talend",
-                                       "API",
-                                       "interconnexion",
-                                       "integration",
-                                       "flux de donnees",
-                                       "automatisation"
-                                   ],
-                      "icon":  "integration",
-                      "link":  "/services-talend-talaxie/"
-                  }
-              ],
-    "schema":  {
-                   "@context":  "https://schema.org",
-                   "@type":  "Service",
-                   "serviceType":  "Data Integration \u0026 Business Intelligence",
-                   "provider":  {
-                                    "@type":  "Person",
-                                    "name":  "BM Data"
-                                },
-                   "areaServed":  "France",
-                   "brand":  "Talend / Power BI"
-               }
+  "section": {
+    "title": "Services Data & BI",
+    "hook": "Pour que vos donnees travaillent pour vous, pas l'inverse.",
+    "intro": [
+      "Vos donnees se perdent entre Excel, exports Talend et outils metier ? Vous multipliez les ressaisies et votre reporting prend des heures.",
+      "Je remets de l'automatisation et de la lisibilite dans vos flux Talend/Talaxie et vos dashboards Power BI pour que vos equipes pilotent sereinement."
+    ],
+    "bullets": [
+      "Automatiser vos flux Talend pour livrer la donnee juste au bon moment",
+      "Migrer vos applications sans perdre d'historique ni interrompre l'exploitation",
+      "Visualiser vos KPI dans des tableaux de bord Power BI clairs et fiables"
+    ]
+  },
+  "cards": [
+    {
+      "id": "orchestration-talend",
+      "category": "Talend & Talaxie",
+      "title": "Automatisation des flux Talend & Talaxie",
+      "tagline": "Je transforme vos traitements Talend en automatisations fiables pour que vos equipes cessent de jongler avec des fichiers Excel.",
+      "description": "Conception et industrialisation de jobs Talend / Talaxie qui orchestrent vos flux de donnees de bout en bout, avec controles qualite, reprises automatiques et alertes claires pour gagner du temps chaque jour.",
+      "example": "Ex. : automatisation d'un pipeline Talend reliant ERP, CRM et Talaxie pour livrer 200 indicateurs avant 8h sans saisies manuelles.",
+      "keywords": ["Talend", "Talaxie", "ETL", "automatisation", "flux de donnees", "integration de donnees"],
+      "link": "/services-talend-talaxie/",
+      "icon": "automation"
+    },
+    {
+      "id": "migration-donnees-talend",
+      "category": "Talend & Talaxie",
+      "title": "Migration de donnees sans rupture",
+      "tagline": "Je securise vos migrations de donnees (ERP, CRM, outils metier) avec Talend pour conserver l'historique et les referentiels.",
+      "description": "Preparation, nettoyage, reconciliation et chargement controle de vos donnees lors d'un changement d'application, avec scenarii de reprise et validation metier automatisee.",
+      "example": "Ex. : migration de l'ERP Navision vers Business Central avec concordance automatique des clients, articles et historiques de ventes.",
+      "keywords": ["migration de donnees", "Talend", "Talaxie", "ERP", "flux de donnees", "modernisation"],
+      "icon": "migration",
+      "link": "/services-talend-talaxie/"
+    },
+    {
+      "id": "dashboards-powerbi",
+      "category": "Power BI",
+      "title": "Tableaux de bord Power BI lisibles et automatiques",
+      "tagline": "Je transforme vos donnees en KPI actionnables dans Power BI pour piloter sans ressaisir dans Excel.",
+      "description": "Modeles de donnees robustes, mesures DAX rapides et mise en scene adaptee a vos metiers pour fiabiliser vos decisions et gagner du temps chaque semaine.",
+      "example": "Ex. : cockpit financier Power BI connecte a l'ERP et a l'outil RH avec alertes sur les marges et la tresorerie.",
+      "keywords": ["Power BI", "tableaux de bord", "KPI", "reporting decisionnel", "visualisation de donnees", "automatisation"],
+      "icon": "dashboard",
+      "link": "/services-powerbi/"
+    },
+    {
+      "id": "interconnexion-applications",
+      "category": "Talend & API",
+      "title": "Interconnexion d'applications et API",
+      "tagline": "Je relie vos applications (ERP, CRM, SaaS, BDD) avec Talend et des API pour que l'information circule automatiquement.",
+      "description": "Conception d'API, orchestration de connecteurs Talend, synchronisation en temps reel ou batch pour supprimer les doubles saisies et disposer d'une donnee unique.",
+      "example": "Ex. : synchronisation quotidienne entre un ERP industriel, un CRM commercial et un outil de support via API et flux Talend.",
+      "keywords": ["Talend", "API", "interconnexion", "integration", "flux de donnees", "automatisation"],
+      "icon": "integration",
+      "link": "/services-talend-talaxie/"
+    }
+  ],
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Data Integration & Business Intelligence",
+    "provider": { "@type": "Person", "name": "BM Data" },
+    "areaServed": "France",
+    "brand": "Talend / Power BI"
+  }
 }
