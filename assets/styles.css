@@ -357,6 +357,18 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .section-links span{
   opacity:.6;
 }
+.section-intro{
+  display:grid;
+  gap:.55rem;
+  max-width:min(760px, 100%);
+  margin: clamp(.6rem, 1.6vw, 1.2rem) auto 0;
+  text-align:left;
+  color:var(--muted);
+  font-size:var(--step--1);
+}
+.section-intro p{
+  margin:0;
+}
 .services-grid{
   align-items:stretch;
   gap:clamp(1rem, 2vw, 1.6rem);
@@ -374,6 +386,10 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   backdrop-filter: blur(6px) saturate(1.02);
   transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
   cursor:pointer;
+}
+.service-card > *:not(.svc-stretched){
+  position:relative;
+  z-index:2;
 }
 @media (hover:hover){
   .service-card:hover{
@@ -434,38 +450,49 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   padding:.55rem .8rem;
   border-radius:.8rem;
 }
-.svc-actions{
-  margin-top:auto;
-  display:flex;
-  justify-content:flex-start;
-}
-.svc-cta{
-  min-width:0;
-  font-weight:700;
-  border-radius:999px;
-  padding:.55rem 1.2rem;
-  text-decoration:none;
-}
-.service-card:hover .svc-cta,
-.service-card:focus-within .svc-cta{
-  filter:brightness(1.1);
-}
-.service-card .svc-cta:focus-visible{
-  outline:3px solid color-mix(in oklab, var(--brand) 40%, transparent);
-  outline-offset:3px;
-}
 .svc-stretched{
   position:absolute;
   inset:0;
   z-index:1;
   border-radius:inherit;
 }
-.svc-actions,
-.svc-actions .svc-cta{
-  position:relative;
-  z-index:2;
-}
 .service-card svg{ width:24px; height:24px; }
+.services-cta-grid{
+  margin-top: clamp(1.4rem, 2.8vw, 2.2rem);
+  display:grid;
+  gap:clamp(1rem, 2.2vw, 1.6rem);
+}
+.service-cta{
+  display:grid;
+  gap:.55rem;
+  padding:clamp(1.4rem, 2.6vw, 2rem);
+  border-radius:var(--radius-2);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 26%);
+  background: linear-gradient(135deg, color-mix(in oklab, var(--surface-1) 88%, transparent), color-mix(in oklab, var(--brand) 16%, transparent));
+  box-shadow: var(--shadow-md);
+  text-align:center;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+@media (hover:hover){
+  .service-cta:hover{
+    transform:translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+.service-cta h3{
+  margin:0;
+  font-size: clamp(1.2rem, 1rem + .8vw, 1.55rem);
+}
+.service-cta p{
+  margin:0;
+  color:var(--fg);
+  font-size:var(--step-0);
+}
+.service-cta .btn{
+  justify-self:center;
+  padding:.65rem 1.6rem;
+  margin-top:.2rem;
+}
 .services-footer{
   margin-top: clamp(1.8rem, 3vw, 2.6rem);
   display:grid;
@@ -504,6 +531,9 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 }
 @media (max-width: 768px){
   .services-grid{
+    grid-template-columns:1fr !important;
+  }
+  .services-cta-grid{
     grid-template-columns:1fr !important;
   }
   .service-card{
@@ -661,7 +691,8 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   padding:.65rem 1.6rem;
 }
 @media (max-width: 880px){
-  .service-grid{
+  .service-grid,
+  .services-cta-grid{
     grid-template-columns:1fr !important;
   }
 }

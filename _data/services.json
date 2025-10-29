@@ -1,63 +1,52 @@
 {
   "section": {
     "title": "Services Data & BI",
-    "hook": "Pour que vos données travaillent pour vous, pas l'inverse."
+    "hook": "Pour que vos données travaillent pour vous, pas l'inverse.",
+    "intro": [
+      "Vous avez de la donnee mais elle reste dispersee entre fichiers Excel, copier-coller repetitifs ou changements d'applications qui menacent votre historique ? Je vous aide a remettre de l'automatisation et de la fiabilite dans vos flux de donnees.",
+      "Je suis Martial Bodet, consultant Talend et Power BI. J'accompagne les PME qui veulent gagner du temps, securiser leurs migrations Talend / Talaxie et piloter leurs indicateurs sur des dashboards Power BI clairs sans lancer un projet lourd.",
+      "Je travaille en solo ou avec un collectif de freelances data pour couvrir vos besoins connexes. Parlons automatisation, flux de donnees et reporting decisionnel pour simplifier votre quotidien."
+    ]
   },
   "cards": [
     {
       "id": "orchestration-talend",
       "category": "Talend & Talaxie",
-      "title": "Automatisation Talend & Talaxie",
-      "tagline": "Je vous aide à automatiser vos flux ETL Talend pour libérer vos équipes des tâches répétitives.",
-      "description": "Design et déploiement de jobs Talend/Talaxie qui tournent en continu, avec alertes et contrôles pour garantir des données fiables dès le premier chargement.",
-      "example": "Ex. : automatisation du chargement de 10 fichiers journaliers vers Talaxie avec suivi des incidents en temps réel.",
-      "cta": {
-        "label": "Découvrir les offres Talend",
-        "url": "/services-talend-talaxie"
-      },
-      "keywords": ["Talend", "Talaxie", "ETL", "automatisation", "flux de données"],
+      "title": "Automatisation des flux Talend & Talaxie",
+      "tagline": "Je transforme vos traitements Talend en automatisations fiables pour que vos equipes cessent de jongler avec des fichiers Excel.",
+      "description": "Conception et industrialisation de jobs Talend / Talaxie qui orchestrent vos flux de donnees de bout en bout, avec controles qualite, reprises automatiques et alertes claires pour gagner du temps chaque jour.",
+      "example": "Ex. : automatisation d'un pipeline Talend reliant ERP, CRM et Talaxie pour livrer 200 indicateurs avant 8h sans saisies manuelles.",
+      "keywords": ["Talend", "Talaxie", "ETL", "automatisation", "flux de donnees", "integration de donnees"],
       "icon": "automation"
     },
     {
       "id": "migration-talaxie",
       "category": "Talend & Talaxie",
-      "title": "Migration vers Talaxie sans rupture",
-      "tagline": "Je sécurise votre migration Talend vers Talaxie pour éviter toute coupure de service.",
-      "description": "Cartographie de vos jobs existants, reprise des scénarios critiques et tests de bout en bout pour une bascule fluide, documentée et réversible.",
-      "example": "Ex. : reprise en Talaxie d'un portefeuille de 120 jobs Talend avec validation automatisée des indicateurs métier.",
-      "cta": {
-        "label": "Découvrir les offres Talend",
-        "url": "/services-talend-talaxie"
-      },
-      "keywords": ["Talaxie", "migration", "ETL", "intégration", "Talend Cloud"],
+      "title": "Migration Talend vers Talaxie sans perte d'historique",
+      "tagline": "Je vous accompagne dans la migration Talend Cloud / Talaxie pour conserver vos donnees et limiter les interruptions.",
+      "description": "Cartographie de vos jobs, reprise des flux critiques, tests automatises et plan de bascule detaille pour que votre patrimoine de donnees suive sans stress votre evolution d'outils.",
+      "example": "Ex. : migration d'un portefeuille de 150 jobs Talend vers Talaxie avec verification automatique des indicateurs metier et repli securise.",
+      "keywords": ["Talaxie", "migration", "Talend Cloud", "flux de donnees", "modernisation", "continuites de service"],
       "icon": "migration"
     },
     {
       "id": "dashboards-powerbi",
       "category": "Power BI",
-      "title": "Dashboards Power BI actionnables",
-      "tagline": "Je conçois des tableaux de bord Power BI qui rendent vos KPI lisibles en un clin d'œil.",
-      "description": "Modèles de données robustes, mesures DAX optimisées et storytelling visuel pour piloter votre activité sans dépendre d'Excel.",
-      "example": "Ex. : mise en place d'un cockpit commercial connecté à ERP + CRM avec alertes hebdomadaires des écarts.",
-      "cta": {
-        "label": "Voir les services Power BI",
-        "url": "/services-powerbi"
-      },
-      "keywords": ["Power BI", "tableaux de bord", "KPI", "reporting décisionnel", "data visualization"],
+      "title": "Tableaux de bord Power BI lisibles et automatises",
+      "tagline": "Je transforme vos donnees en tableaux de bord Power BI clairs pour que vos equipes pilotent sans ressaisir dans Excel.",
+      "description": "Modeles de donnees solides, mesures DAX optimisees, storytelling visuel et rafraichissements planifies pour livrer des KPI fiables au bon moment.",
+      "example": "Ex. : cockpit commercial Power BI branche sur ERP et CRM avec alertes hebdomadaires sur les objectifs et marges.",
+      "keywords": ["Power BI", "tableaux de bord", "KPI", "reporting decisionnel", "visualisation de donnees", "automatisation"],
       "icon": "dashboard"
     },
     {
       "id": "gouvernance-powerbi",
       "category": "Power BI",
-      "title": "Gouvernance & adoption Power BI",
-      "tagline": "Je vous aide à partager vos rapports Power BI en toute sécurité et à embarquer vos équipes.",
-      "description": "Mise en place de workspaces, règles de diffusion, catalogues de données et accompagnement des utilisateurs pour une gouvernance maîtrisée.",
-      "example": "Ex. : création d'un centre de contrôle Power BI avec règles de partage par rôle et guide d'usage pour 80 utilisateurs.",
-      "cta": {
-        "label": "Voir les services Power BI",
-        "url": "/services-powerbi"
-      },
-      "keywords": ["Power BI", "gouvernance", "sécurité", "adoption", "partage sécurisé"],
+      "title": "Gouvernance Power BI pour partager sans risque",
+      "tagline": "Je securise vos partages Power BI pour que chaque collaborateur accede aux bons indicateurs en toute confiance.",
+      "description": "Organisation des workspaces, gestion des droits, catalogues de jeux de donnees et plan d'adoption pour diffuser la culture data sans complexite.",
+      "example": "Ex. : centre de competence Power BI avec politiques de securite, formation ambassadeurs et diffusion controlee a 100 utilisateurs.",
+      "keywords": ["Power BI", "gouvernance", "securite", "partage de rapports", "adoption", "qualite de donnees"],
       "icon": "governance"
     }
   ],

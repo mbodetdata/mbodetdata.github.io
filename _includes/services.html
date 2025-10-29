@@ -10,6 +10,13 @@
     {% if services_data.section.hook %}
       <p class="section-hook">{{ services_data.section.hook }}</p>
     {% endif %}
+    {% if services_data.section.intro %}
+      <div class="section-intro">
+        {% for paragraph in services_data.section.intro %}
+          <p>{{ paragraph }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
     <p class="section-links">
       <a href="{{ '/services-talend-talaxie/' | relative_url }}">En savoir plus sur Talend/Talaxie</a>
       <span aria-hidden="true">·</span>
@@ -85,19 +92,8 @@
           <p class="svc-example">{{ service.example }}</p>
         {% endif %}
 
-        <div class="svc-actions">
-          <a class="btn btn--primary svc-cta"
-             href="{{ service.cta.url | relative_url }}"
-             data-track-click="services_cta"
-             data-track-service="{{ service.id }}"
-             data-track-label="{{ service.cta.label }}"
-             aria-describedby="{{ service.id }}-title">
-            {{ service.cta.label }}
-          </a>
-        </div>
-
         <a class="svc-stretched"
-           href="{{ service.cta.url | relative_url }}"
+           href="{% if service.id contains 'talend' or service.id contains 'talaxie' %}{{ '/services-talend-talaxie/' | relative_url }}{% else %}{{ '/services-powerbi/' | relative_url }}{% endif %}"
            aria-label="En savoir plus sur {{ service.title }}"
            aria-hidden="true"
            tabindex="-1"></a>
@@ -107,6 +103,27 @@
         {% endif %}
       </article>
     {% endfor %}
+  </div>
+
+  <div class="services-cta-grid">
+    <article class="card service-cta" aria-labelledby="services-cta-talend" data-anim="fade-up">
+      <h3 id="services-cta-talend">En savoir plus sur Talend &amp; Talaxie</h3>
+      <p>Découvrez comment j'automatise vos flux Talend, migre vos jobs vers Talaxie sans perte et mets fin aux ressaisies chronophages.</p>
+      <a class="btn btn--primary"
+         href="{{ '/services-talend-talaxie/' | relative_url }}"
+         data-track-click="services_cta_talend">
+        Explorer les services Talend
+      </a>
+    </article>
+    <article class="card service-cta" aria-labelledby="services-cta-powerbi" data-anim="fade-up">
+      <h3 id="services-cta-powerbi">Découvrir Power BI en action</h3>
+      <p>Voyez comment des dashboards Power BI automatisés apportent des KPI fiables, partagés en toute sécurité et prêts à décider.</p>
+      <a class="btn btn--primary"
+         href="{{ '/services-powerbi/' | relative_url }}"
+         data-track-click="services_cta_powerbi">
+        Explorer les services Power BI
+      </a>
+    </article>
   </div>
 
   <div class="services-footer">
