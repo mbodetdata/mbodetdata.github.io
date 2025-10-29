@@ -1,16 +1,14 @@
 {
     "section":  {
                     "title":  "Services Data \u0026 BI",
-                    "hook":  "Pour que vos donn&eacute;es travaillent pour vous, pas l\u2019inverse.",
+                    "hook":  "Pour que vos donn\u0026eacute;es travaillent pour vous, pas l’inverse.",
                     "intro":  [
-                                  "Vous avez de la donnee mais vous ne savez pas toujours quoi en faire ? Vous jonglez encore entre Excel, ressaisies et controles manuels qui vous font perdre un temps fou ?",
-                                  "C\u0027est exactement la ou j\u0027interviens : je fluidifie vos flux Talend, je fiabilise vos dashboards Power BI et je vous aide a conserver votre historique de donnees sans rupture.",
-                                  "Je suis Martial Bodet, consultant specialise en Talend et Power BI. J\u0027aide les PME a gagner du temps, a securiser leurs migrations et a piloter leurs indicateurs cle dans des tableaux de bord clairs et fiables.",
-                                  "Je travaille en solo ou aux cotes d\u0027un collectif de freelances data pour couvrir vos besoins connexes. Parlons automatisation, interconnexions et reporting decisionnel pour simplifier votre quotidien."
+                                  "Vos donnees se perdent entre Excel, exports Talend et outils metier ? Vous multipliez les ressaisies et votre reporting prend des heures.",
+                                  "Je remets de l\u0027automatisation et de la lisibilite dans vos flux Talend/Talaxie et vos dashboards Power BI pour que vos equipes pilotent sereinement."
                               ],
                     "bullets":  [
-                                    "Automatiser vos flux de donnees pour arreter les doublons et les oublis",
-                                    "Migrer vos systemes sans perdre d\u0027information ni bloquer la production",
+                                    "Automatiser vos flux Talend pour livrer la donnee juste au bon moment",
+                                    "Migrer vos applications sans perdre d\u0027historique ni interrompre l\u0027exploitation",
                                     "Visualiser vos KPI dans des tableaux de bord Power BI clairs et fiables"
                                 ]
                 },
@@ -100,4 +98,3 @@
                    "brand":  "Talend / Power BI"
                }
 }
-

@@ -326,64 +326,50 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 }
 .services-section .section-header{
   max-width:min(820px, 100%);
-  margin: 0 auto clamp(1rem, 2vw, 1.9rem);
+  margin: 0 0 clamp(1rem, 2vw, 1.9rem);
   display:grid;
   gap:clamp(.6rem, 1.4vw, 1.2rem);
   text-align:left;
 }
+.services-section #services-title{
+  margin:0;
+  font-size: clamp(1.6rem, 1.25rem + 1.2vw, 2.3rem);
+  line-height:1.25;
+}
 .section-pitch{
   display:grid;
-  gap:clamp(.8rem, 1.6vw, 1.4rem);
+  gap:clamp(.75rem, 1.4vw, 1.2rem);
 }
 .section-hook{
   margin:0;
-  font-size: clamp(1.35rem, 1.1rem + 1.2vw, 2rem);
+  font-size: clamp(1.4rem, 1.15rem + 1.2vw, 2.1rem);
   font-weight:800;
   line-height:1.25;
   color: var(--fg);
-  padding:clamp(.65rem, 1.4vw, 1rem) clamp(.8rem, 1.6vw, 1.2rem);
+  padding:clamp(.6rem, 1.2vw, .95rem) clamp(.8rem, 1.6vw, 1.1rem);
   border-radius:calc(var(--radius-2) + .2rem);
-  background: linear-gradient(110deg, color-mix(in oklab, var(--brand) 22%, transparent) 0%, color-mix(in oklab, var(--brand-2) 32%, transparent) 100%);
-  box-shadow:0 14px 36px rgba(8,11,20,.28);
-}
-.section-links{
-  margin:0;
-  display:flex;
-  justify-content:flex-start;
-  gap:.45rem;
-  flex-wrap:wrap;
-  font-size:var(--step--1);
-  color:var(--muted);
-}
-.section-links a{
-  color:var(--brand-2);
-  font-weight:600;
-  text-decoration:none;
-}
-.section-links a:hover,
-.section-links a:focus-visible{
-  text-decoration:underline;
-}
-.section-links span{
-  opacity:.6;
+  background: linear-gradient(110deg, color-mix(in oklab, var(--brand) 26%, transparent) 0%, color-mix(in oklab, var(--brand-2) 34%, transparent) 100%);
+  box-shadow:0 12px 32px rgba(8,11,20,.28);
 }
 .section-intro{
   display:grid;
-  gap:.55rem;
-  max-width:min(760px, 100%);
-  margin: clamp(.6rem, 1.6vw, 1.2rem) auto 0;
+  gap:.45rem;
+  max-width:min(720px, 100%);
+  margin: clamp(.5rem, 1.2vw, .9rem) 0 0;
   text-align:left;
-  color:var(--muted);
+  color:var(--fg);
   font-size:var(--step--1);
+  line-height:1.6;
 }
 .section-intro p{
   margin:0;
+  max-width:52ch;
 }
 .section-intro-list{
-  margin:0;
-  padding-left:1.2rem;
+  margin: clamp(.4rem, 1vw, .7rem) 0 0;
+  padding-left:1.15rem;
   display:grid;
-  gap:.35rem;
+  gap:.3rem;
   font-size:var(--step--1);
   color:var(--fg);
   list-style:disc;
