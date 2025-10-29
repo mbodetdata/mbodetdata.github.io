@@ -54,7 +54,8 @@ permalink: /
 </div>
 
 <!-- JSON-LD : ItemList Services + Réalisations (dynamique depuis _data) -->
-{%- assign total_services = site.data.services | size -%}
+{%- assign services_list = site.data.services.cards | default: site.data.services -%}
+{%- assign total_services = services_list | size -%}
 {%- assign total_projets  = site.data.projets  | size -%}
 <script type="application/ld+json">
 {
@@ -66,14 +67,15 @@ permalink: /
       "itemListOrder": "https://schema.org/ItemListOrderAscending",
       "numberOfItems": {{ total_services | default: 0 }},
       "itemListElement": [
-        {% for s in site.data.services %}
+        {% for s in services_list %}
         {
           "@type": "ListItem",
           "position": {{ forloop.index }},
           "item": {
             "@type": "Service",
             "name": {{ s.title | jsonify }},
-            "description": {{ s.text  | jsonify }}
+            "description": {{ s.description | default: s.tagline | jsonify }}{% if s.keywords %}
+            ,"keywords": {{ s.keywords | jsonify }}{% endif %}
           }
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}

@@ -1,0 +1,75 @@
+{
+  "section": {
+    "title": "Services Data & BI",
+    "hook": "Pour que vos données travaillent pour vous, pas l'inverse."
+  },
+  "cards": [
+    {
+      "id": "orchestration-talend",
+      "category": "Talend & Talaxie",
+      "title": "Automatisation Talend & Talaxie",
+      "tagline": "Je vous aide à automatiser vos flux ETL Talend pour libérer vos équipes des tâches répétitives.",
+      "description": "Design et déploiement de jobs Talend/Talaxie qui tournent en continu, avec alertes et contrôles pour garantir des données fiables dès le premier chargement.",
+      "example": "Ex. : automatisation du chargement de 10 fichiers journaliers vers Talaxie avec suivi des incidents en temps réel.",
+      "cta": {
+        "label": "Découvrir les offres Talend",
+        "url": "/services-talend-talaxie"
+      },
+      "keywords": ["Talend", "Talaxie", "ETL", "automatisation", "flux de données"],
+      "icon": "automation"
+    },
+    {
+      "id": "migration-talaxie",
+      "category": "Talend & Talaxie",
+      "title": "Migration vers Talaxie sans rupture",
+      "tagline": "Je sécurise votre migration Talend vers Talaxie pour éviter toute coupure de service.",
+      "description": "Cartographie de vos jobs existants, reprise des scénarios critiques et tests de bout en bout pour une bascule fluide, documentée et réversible.",
+      "example": "Ex. : reprise en Talaxie d'un portefeuille de 120 jobs Talend avec validation automatisée des indicateurs métier.",
+      "cta": {
+        "label": "Découvrir les offres Talend",
+        "url": "/services-talend-talaxie"
+      },
+      "keywords": ["Talaxie", "migration", "ETL", "intégration", "Talend Cloud"],
+      "icon": "migration"
+    },
+    {
+      "id": "dashboards-powerbi",
+      "category": "Power BI",
+      "title": "Dashboards Power BI actionnables",
+      "tagline": "Je conçois des tableaux de bord Power BI qui rendent vos KPI lisibles en un clin d'œil.",
+      "description": "Modèles de données robustes, mesures DAX optimisées et storytelling visuel pour piloter votre activité sans dépendre d'Excel.",
+      "example": "Ex. : mise en place d'un cockpit commercial connecté à ERP + CRM avec alertes hebdomadaires des écarts.",
+      "cta": {
+        "label": "Voir les services Power BI",
+        "url": "/services-powerbi"
+      },
+      "keywords": ["Power BI", "tableaux de bord", "KPI", "reporting décisionnel", "data visualization"],
+      "icon": "dashboard"
+    },
+    {
+      "id": "gouvernance-powerbi",
+      "category": "Power BI",
+      "title": "Gouvernance & adoption Power BI",
+      "tagline": "Je vous aide à partager vos rapports Power BI en toute sécurité et à embarquer vos équipes.",
+      "description": "Mise en place de workspaces, règles de diffusion, catalogues de données et accompagnement des utilisateurs pour une gouvernance maîtrisée.",
+      "example": "Ex. : création d'un centre de contrôle Power BI avec règles de partage par rôle et guide d'usage pour 80 utilisateurs.",
+      "cta": {
+        "label": "Voir les services Power BI",
+        "url": "/services-powerbi"
+      },
+      "keywords": ["Power BI", "gouvernance", "sécurité", "adoption", "partage sécurisé"],
+      "icon": "governance"
+    }
+  ],
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Data Integration & Business Intelligence",
+    "provider": {
+      "@type": "Person",
+      "name": "BM Data"
+    },
+    "areaServed": "France",
+    "brand": "Talend / Power BI"
+  }
+}

@@ -1,148 +1,129 @@
 <!-- SERVICES -->
-<section id="services" class="section" aria-labelledby="services-title">
-  <h2 id="services-title">Services</h2>
+{% assign services_data = site.data.services %}
+{% assign services_cards = services_data.cards | default: [] %}
+<section id="services"
+         class="section services-section"
+         aria-labelledby="services-title"
+         data-section="services">
+  <div class="section-header">
+    <h2 id="services-title">{{ services_data.section.title | default: 'Services' }}</h2>
+    {% if services_data.section.hook %}
+      <p class="section-hook">{{ services_data.section.hook }}</p>
+    {% endif %}
+    <p class="section-links">
+      <a href="{{ '/services-talend-talaxie/' | relative_url }}">En savoir plus sur Talend/Talaxie</a>
+      <span aria-hidden="true">·</span>
+      <a href="{{ '/services-powerbi/' | relative_url }}">Découvrir Power BI</a>
+    </p>
+  </div>
 
-  <!-- ItemList de Services (SEO) -->
   <div class="services-grid grid cols-2"
        role="list"
        itemscope itemtype="https://schema.org/ItemList"
-       aria-label="Catalogue de services">
+       aria-label="Catalogue de services Data et Business Intelligence">
     <meta itemprop="name" content="Services {{ site.author.name }}">
     <meta itemprop="itemListOrder" content="https://schema.org/ItemListOrderAscending">
 
-    {% for service in site.data.services %}
-      <article class="card service-card"
+    {% for service in services_cards %}
+      <article id="{{ service.id }}"
+               class="card service-card service-card--{{ service.icon | default: 'generic' }}"
                role="listitem"
+               data-anim="fade-up"
+               data-service="{{ service.id }}"
                itemscope itemtype="https://schema.org/Service"
-               itemprop="itemListElement">
+               itemprop="itemListElement"
+               aria-labelledby="{{ service.id }}-title">
         <meta itemprop="position" content="{{ forloop.index }}">
 
-        <div class="svc-head">
-          <div class="svc-ico badge-glass" aria-hidden="true">
-            {% assign t = service.title | downcase %}
-            {% if t contains 'automatisation' or t contains 'orchestration' %}
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="12" cy="12" r="4" fill="currentColor"/>
-              </svg>
-            {% elsif t contains 'migration' or t contains 'modernisation' %}
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                <path d="M7 7h10M7 12h10M7 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M15 5l2 2-2 2M9 15l-2 2 2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            {% elsif t contains 'intégration' or t contains 'integration' or t contains 'interop' %}
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                <path d="M7 12a5 5 0 0 1 5-5h1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M17 12a5 5 0 0 1-5 5h-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            {% elsif t contains 'quality' or t contains 'qualité' or t contains 'performance' %}
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M8 12l2.5 2.5L16 9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            {% else %}
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
+        <header class="svc-head">
+          <span class="svc-ico badge-glass"
+                role="img"
+                aria-label="{{ service.category | default: 'Service' }}">
+            {% case service.icon %}
+              {% when 'automation' %}
+                <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" focusable="false">
+                  <path d="M12 2v2.5M12 19.5V22M4.22 4.22l1.77 1.77M18.01 18.01l1.77 1.77M2 12h2.5M19.5 12H22M4.22 19.78l1.77-1.77M18.01 6.99l1.77-1.77" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="4" fill="currentColor"/>
+                </svg>
+              {% when 'migration' %}
+                <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" focusable="false">
+                  <path d="M7 7h10M7 12h10M7 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M15 5l2 2-2 2M9 15l-2 2 2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% when 'dashboard' %}
+                <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" focusable="false">
+                  <path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <path d="M8 12h2v5H8zM12 9h2v8h-2zM16 14h2v3h-2z" fill="currentColor"/>
+                  <path d="M4 9h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              {% when 'governance' %}
+                <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" focusable="false">
+                  <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <path d="M9 12h6M9 16h6M9 8h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              {% else %}
+                <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" focusable="false">
+                  <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            {% endcase %}
+          </span>
+          <div class="svc-meta">
+            {% if service.category %}
+              <p class="svc-kicker">{{ service.category }}</p>
             {% endif %}
+            <h3 id="{{ service.id }}-title" class="svc-title" itemprop="name">{{ service.title }}</h3>
           </div>
-          {%- assign _st = service.title -%}
-          {%- assign _st = _st
-            | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
-            | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
-            | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
-            | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
-            | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
-            | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
-            | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
-            | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
-            | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
-            | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
-            | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
-            | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
-          -%}
-          <h3 class="svc-title" itemprop="name">{{ _st }}</h3>
+        </header>
+
+        {% if service.tagline %}
+          <p class="svc-tagline">{{ service.tagline }}</p>
+        {% endif %}
+        {% if service.description %}
+          <p class="svc-desc" itemprop="description">{{ service.description }}</p>
+        {% endif %}
+        {% if service.example %}
+          <p class="svc-example">{{ service.example }}</p>
+        {% endif %}
+
+        <div class="svc-actions">
+          <a class="btn btn--primary svc-cta"
+             href="{{ service.cta.url | relative_url }}"
+             data-track-click="services_cta"
+             data-track-service="{{ service.id }}"
+             data-track-label="{{ service.cta.label }}"
+             aria-describedby="{{ service.id }}-title">
+            {{ service.cta.label }}
+          </a>
         </div>
 
-        <ul class="m-list" itemprop="itemOffered">
-          {% if service.items %}
-            {% for it in service.items %}
-              <li class="m-item">
-                <span class="m-bullet" aria-hidden="true"></span>
-                {% if it.text %}
-              {%- assign _sit = it.text | default: it -%}
-              {%- assign _sit = _sit
-                | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
-                | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
-                | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
-                | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
-                | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
-                | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
-                | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
-                | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
-                | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
-                | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
-                | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
-                | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
-              -%}
-              <span class="m-text">{{ _sit }}</span>
-                {% else %}
-                  {%- assign _sit2 = it -%}
-                  {%- assign _sit2 = _sit2
-                    | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
-                    | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
-                    | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
-                    | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
-                    | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
-                    | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
-                    | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
-                    | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
-                    | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
-                    | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
-                    | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
-                    | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
-                  -%}
-                  <span class="m-text">{{ _sit2 }}</span>
-                {% endif %}
-                {% if it.tech %}<span class="m-tech">{{ it.tech }}</span>{% endif %}
-              </li>
-            {% endfor %}
-          {% else %}
-            {% assign badges_lc = service.badges | jsonify | downcase %}
-            <li class="m-item">
-              <span class="m-bullet" aria-hidden="true"></span>
-              {%- assign _sdesc = service.text -%}
-              {%- assign _sdesc = _sdesc
-                | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
-                | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
-                | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
-                | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
-                | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
-                | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
-                | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
-                | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
-                | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
-                | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
-                | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
-                | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
-              -%}
-              <span class="m-text">{{ _sdesc }}</span>
-              {% if badges_lc contains 'talend' %}<span class="m-tech">Talend</span>{% endif %}
-              {% if badges_lc contains 'power bi' or badges_lc contains 'powerbi' %}<span class="m-tech">Power BI</span>{% endif %}
-            </li>
-          {% endif %}
-        </ul>
+        <a class="svc-stretched"
+           href="{{ service.cta.url | relative_url }}"
+           aria-label="En savoir plus sur {{ service.title }}"
+           aria-hidden="true"
+           tabindex="-1"></a>
 
-        {% if service.badges %}
-          <div class="svc-badges" aria-label="Compétences associées">
-            {% for badge in service.badges %}
-              <span class="svc-badge" itemprop="keywords">{{ badge }}</span>
-            {% endfor %}
-          </div>
+        {% if service.keywords %}
+          <meta itemprop="keywords" content="{{ service.keywords | join: ', ' }}">
         {% endif %}
       </article>
     {% endfor %}
   </div>
+
+  <div class="services-footer">
+    <div class="services-tools" aria-label="Technologies maîtrisées">
+      <span class="tool-logo tool-logo--talend" aria-hidden="true">Talend</span>
+      <span class="tool-logo tool-logo--powerbi" aria-hidden="true">Power BI</span>
+      <span class="tool-logo tool-logo--azure" aria-hidden="true">Azure</span>
+    </div>
+    <p class="services-back">
+      <a class="back-to-top" href="#top" data-track-click="services_backtotop">↑ Retour haut de page</a>
+    </p>
+  </div>
+
+  {% if services_data.schema %}
+    <script type="application/ld+json">
+      {{ services_data.schema | jsonify }}
+    </script>
+  {% endif %}
 </section>
 <!-- END SERVICES -->

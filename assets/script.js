@@ -819,3 +819,93 @@ const Modal = (() => {
     card.addEventListener('click', e => { if (!e.target.closest('a, .open-project')) open(e); });
   });
 })();
+
+/* ==================== 15) Services animations & tracking ==================== */
+(() => {
+  const trackEvent = (name, detail = {}) => {
+    const payload = { event: name, ...detail };
+    if (window.dataLayer && Array.isArray(window.dataLayer)) {
+      window.dataLayer.push(payload);
+    }
+    if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+      try {
+        window.goatcounter.count({
+          path: `${location.pathname}#${name}`,
+          title: document.title,
+          event: true
+        });
+      } catch (err) {
+        console.warn('GoatCounter track failed', err);
+      }
+    }
+    document.dispatchEvent(new CustomEvent('bmdata:track', { detail: payload }));
+  };
+
+  const extractDataset = (el) => {
+    const payload = {};
+    for (const [key, value] of Object.entries(el.dataset)) {
+      if (!value || key === 'trackClick') continue;
+      payload[key] = value;
+    }
+    return payload;
+  };
+
+  $$('[data-track-click]').forEach((el) => {
+    if (el.dataset.trackBound === '1') return;
+    el.dataset.trackBound = '1';
+    const name = el.dataset.trackClick;
+    if (!name) return;
+    el.addEventListener('click', () => {
+      trackEvent(name, { type: 'click', ...extractDataset(el) });
+    }, { passive: true });
+  });
+
+  const servicesSection = document.querySelector('[data-section="services"]');
+  if (servicesSection) {
+    let viewed = false;
+    const markView = () => {
+      if (viewed) return;
+      viewed = true;
+      trackEvent('services_section_view', { type: 'scroll' });
+    };
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
+            markView();
+            observer.disconnect();
+            break;
+          }
+        }
+      }, { threshold: [0.2, 0.35, 0.6] });
+      observer.observe(servicesSection);
+    } else {
+      const onScroll = () => {
+        const rect = servicesSection.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        if (rect.top <= vh * 0.65 && rect.bottom >= vh * 0.35) {
+          markView();
+          window.removeEventListener('scroll', onScroll);
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+  }
+
+  const animated = $$('[data-anim]');
+  if (animated.length) {
+    if ('IntersectionObserver' in window && !PREFERS_REDUCED) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+      animated.forEach((el) => io.observe(el));
+    } else {
+      animated.forEach((el) => el.classList.add('is-visible'));
+    }
+  }
+})();
