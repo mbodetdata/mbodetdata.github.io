@@ -1,16 +1,11 @@
-<section id="about" class="section" aria-labelledby="about-title"
-         itemscope itemtype="https://schema.org/Person">
-  <h2 id="about-title" class="about-title">
-    <span itemprop="name">Bonjour, je suis {{ site.author.prenom_nom }}</span>
-  </h2>
-  <p class="role"><span itemprop="jobTitle">Freelance Talend &amp; Power BI</span></p>
-
-  <!-- micro-data utilitaires (non visibles) -->
+<section id="about" class="section about-hero" itemscope itemtype="https://schema.org/Person">
+  <meta itemprop="name" content="{{ site.author.prenom_nom }}">
+  <meta itemprop="jobTitle" content="Freelance Talend &amp; Power BI">
   <link itemprop="url" href="{{ site.author.url | default: site.url | default: site.github.url }}">
   {% if site.author.email %}<meta itemprop="email" content="mailto:{{ site.author.email }}">{% endif %}
   {% if site.author.phone %}<meta itemprop="telephone" content="{{ site.author.phone }}">{% endif %}
   {% if site.author.enterprise %}
-    <span itemprop="worksFor" itemscope itemtype="https://schema.org/Organization" class="sr-only">
+    <span itemprop="worksFor" itemscope itemtype="https://schema.org/Organization" hidden>
       <meta itemprop="name" content="{{ site.author.enterprise }}">
     </span>
   {% endif %}
@@ -22,19 +17,15 @@
       <link itemprop="sameAs" href="{{ p }}">
     {% endfor %}
   {% endif %}
+  {% if site.author.description %}
+    <meta itemprop="description" content="{{ site.author.description }}">
+  {% elsif site.description %}
+    <meta itemprop="description" content="{{ site.description | strip_newlines }}">
+  {% endif %}
 
-  <div class="about-text" itemprop="description">
-    <p>
-      Passionné par la donnée, j’aide les entreprises à mettre de l’ordre dans leurs systèmes d’information.  
-      Mon approche : des <strong>pipelines Talend</strong> fiables et des <strong>dashboards Power&nbsp;BI</strong> clairs,
-      où la <em>qualité</em> et la <em>fiabilité</em> passent avant tout.
-    </p>
-    <p>
-      J’investis en continu dans les bonnes pratiques 
-      <abbr title="Extract – Transform – Load">ETL</abbr>, 
-      modélisation <abbr title="Data Analysis Expressions">DAX</abbr> 
-      et gouvernance des données afin de livrer des solutions
-      <strong>durables</strong> et <strong>évolutives</strong>.
-    </p>
+  <div class="about-hero__canvas" aria-hidden="true">
+    <div class="about-hero__media">
+      <div class="about-photo-frame"></div>
+    </div>
   </div>
 </section>
