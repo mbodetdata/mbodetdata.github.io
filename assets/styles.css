@@ -1,9 +1,9 @@
 /* ===========================================================================
-   ABM — CSS unifié (premium, moderne, mobile-first)
+   ABM ??? CSS unifi?? (premium, moderne, mobile-first)
    - Mobile first & responsive
-   - Thème dark premium, light doux
-   - Ombrages/overlays uniformisés
-   - A11y: focus visibles, liens soulignés
+   - Th??me dark premium, light doux
+   - Ombrages/overlays uniformis??s
+   - A11y: focus visibles, liens soulign??s
    =========================================================================== */
 
 /* ========================= 0) RESET & BASE ========================= */
@@ -33,7 +33,7 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   --surface-2:color-mix(in oklab, var(--surface-1) 88%, #000 12%); /* relief */
   --border:color-mix(in oklab, #93a4c5 12%, #0a0f1e 88%);
 
-  /* Ombres uniformisées */
+  /* Ombres uniformis??es */
   --shadow-sm: 0 6px 16px rgba(0,0,0,.28);
   --shadow-md: 0 12px 26px rgba(0,0,0,.34);
   --shadow-lg: 0 18px 40px rgba(0,0,0,.42);
@@ -58,14 +58,14 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   --link-underline: underline;
   --link-offset: 2px;
 
-  /* Dégradé marque */
+  /* D??grad?? marque */
   --g-brand: linear-gradient(135deg, var(--brand), var(--brand-2));
 }
 
-/* LIGHT — doux, premium, non éblouissant */
+/* LIGHT ??? doux, premium, non ??blouissant */
 :root[data-theme="light"]{
-  /* Fond moins éclatant + contraste lisible */
-  --bg:#eef2f7;                            /* blanc cassé neutre */
+  /* Fond moins ??clatant + contraste lisible */
+  --bg:#eef2f7;                            /* blanc cass?? neutre */
   --fg:#0a1424;                            /* texte un peu plus sombre */
   --muted:#3b4863;                         /* secondaire plus lisible */
   --surface-0: color-mix(in oklab, #ffffff 70%, #e6edf6 30%);
@@ -80,7 +80,7 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   :root:not([data-theme]){ color-scheme: light; }
 }
 
-/* Améliorations de lisibilité (mode clair uniquement) */
+/* Am??liorations de lisibilit?? (mode clair uniquement) */
 :root[data-theme="light"] .card,
 :root[data-theme="light"] .service-card,
 :root[data-theme="light"] .methode,
@@ -89,6 +89,7 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   background: var(--surface-1);
   border-color: var(--border);
   color: var(--fg);
+  display:inline-block;
   box-shadow: var(--shadow-sm);
 }
 
@@ -99,13 +100,13 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
 /* Section titles restent lisibles en clair */
 :root[data-theme="light"] .section h2{ text-shadow: none; }
 
-/* Adoucir l'ambiance globale en clair (overlay léger) */
+/* Adoucir l'ambiance globale en clair (overlay l??ger) */
 :root[data-theme="light"] body::before{
   opacity:.22;
   mix-blend-mode:multiply;
 }
 
-/* Cartes un peu plus colorées en clair pour casser le blanc */
+/* Cartes un peu plus color??es en clair pour casser le blanc */
 :root[data-theme="light"] .service-card,
 :root[data-theme="light"] .methode{
   background: color-mix(in oklab, #ffffff 78%, #e6edf6 22%);
@@ -156,7 +157,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .brand .dot{ width:.8rem; height:.8rem; border-radius:999px; background:var(--g-brand); box-shadow:0 0 0 3px color-mix(in oklab, var(--brand) 22%, transparent); }
 .nav-actions{ display:inline-flex; align-items:center; gap:.5rem; }
 
-/* Toggle thème */
+/* Toggle th??me */
 .theme-toggle{
   position:relative; display:inline-flex; align-items:center; gap:.55rem;
   height:40px; padding:.45rem .9rem .45rem calc(.7rem + 1.2rem + .5rem);
@@ -202,7 +203,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 /* Mobile-only tweaks for menu icons spacing */
 @media (max-width: 991px){
   .nav-list a{ gap:.45rem; padding:.85rem 1rem; }
-  /* Icônes masquées sur mobile pour éviter l'encombrement */
+  /* Ic??nes masqu??es sur mobile pour ??viter l'encombrement */
   .nav-list .ni{ display:none !important; }
 }
 @media (max-width: 360px){
@@ -269,7 +270,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .pill--powerbi{ background:color-mix(in oklab, var(--brand-2) 78%, var(--bg) 22%); color:#fff; border:1px solid color-mix(in oklab, var(--brand-2) 55%, var(--border)); }
 .pill:is(:hover,:focus-visible){ filter:brightness(1.06); outline:none; box-shadow:0 0 0 3px color-mix(in oklab, currentColor 28%, transparent); }
 
-/* ========================== 6) SECTIONS / MÉTHODES ========================== */
+/* ========================== 6) SECTIONS / M??THODES ========================== */
 .hero{ display:grid; grid-template-columns:1fr; gap:clamp(1rem,2vw,1.5rem); align-items:center; }
 .hero .actions{ display:flex; gap:.7rem; margin-top:1rem; flex-wrap:wrap; }
 .hero__img{ width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:var(--radius-3); border:1px solid var(--border); }
@@ -280,7 +281,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 @media (min-width:700px){  .methodes.methodes--modern{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (min-width:1100px){ .methodes.methodes--modern{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
 
-/* Badge glass reutilisable (bleu->vert, léger et transparent) */
+/* Badge glass reutilisable (bleu->vert, l??ger et transparent) */
 .badge-glass{
   position:relative; overflow:hidden;
   background: linear-gradient(135deg,
@@ -325,7 +326,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   padding-block: clamp(2.2rem, 4vw, 3.8rem);
 }
 .services-section .section-header{
-  max-width:min(820px, 100%);
+  max-width:min(980px, 100%);
   margin: 0 0 clamp(1rem, 2vw, 1.9rem);
   display:grid;
   gap:clamp(.6rem, 1.4vw, 1.2rem);
@@ -346,7 +347,9 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   font-weight:800;
   line-height:1.25;
   color: var(--fg);
-  padding:clamp(.6rem, 1.2vw, .95rem) clamp(.8rem, 1.6vw, 1.1rem);
+  display:inline-block;
+  padding:clamp(.6rem, 1.2vw, .95rem) clamp(1.4rem, 2.4vw, 2.1rem);
+  white-space:nowrap;
   border-radius:calc(var(--radius-2) + .2rem);
   background: linear-gradient(110deg, color-mix(in oklab, var(--brand) 26%, transparent) 0%, color-mix(in oklab, var(--brand-2) 34%, transparent) 100%);
   box-shadow:0 12px 32px rgba(8,11,20,.28);
@@ -354,7 +357,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .section-intro{
   display:grid;
   gap:.45rem;
-  max-width:min(720px, 100%);
+  max-width:100%;
   margin: clamp(.5rem, 1.2vw, .9rem) 0 0;
   text-align:left;
   color:var(--fg);
@@ -365,17 +368,25 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   margin:0;
   max-width:52ch;
 }
+.section-intro p:first-child{
+  font-weight:600;
+}
+.section-intro p:last-child{
+  font-weight:700;
+  color:color-mix(in oklab, var(--fg) 96%, #fff 4%);
+}
 .section-intro-list{
   margin: clamp(.4rem, 1vw, .7rem) 0 0;
   padding-left:1.15rem;
   display:grid;
   gap:.3rem;
   font-size:var(--step--1);
-  color:var(--fg);
+  color:color-mix(in oklab, var(--fg) 92%, #fff 8%);
   list-style:disc;
 }
 .section-intro-list li{
   line-height:1.5;
+  font-weight:600;
 }
 .services-grid{
   align-items:stretch;
@@ -774,7 +785,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 
 /* Horloge grande (badge) pour pending */
 /* Animer les aiguilles du SVG pending existant (cert-ph--clock) */
-/* Aiguilles animées via SVG SMIL (pas d'animation CSS nécessaire) */
+/* Aiguilles anim??es via SVG SMIL (pas d'animation CSS n??cessaire) */
 .cert-logo{ width:100%; height:100%; object-fit:contain; }
 .cert-body{ grid-column:1 / -1; display:grid; gap:.55rem; }
 .cert-title{ margin:0; font-size:var(--step-1); font-weight:800; line-height:1.3; }
@@ -788,7 +799,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .cert-chip.chip-pending{ color:var(--muted); }
 .cert-chip.chip-pending .ci-ico{ color: var(--muted); }
 
-/* Horloge animée pour statut pending */
+/* Horloge anim??e pour statut pending */
 .cert-chip .ci-ico.clock .clk-h,
 .cert-chip .ci-ico.clock .clk-m{ transform-origin:12px 12px; transform-box: fill-box; }
 .cert-chip .ci-ico.clock .clk-h{ animation: clk-h 12s linear infinite; opacity:.95; }
@@ -800,7 +811,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .cert-tags .tag{ padding:.35rem .6rem; border-radius:999px; background:color-mix(in oklab, #94a3b8 14%, transparent); border:1px solid color-mix(in oklab, #94a3b8 28%, transparent); font-size:calc(var(--step--1) - .02rem); line-height:1; white-space:nowrap; }
 :root[data-theme="light"] .cert-tags .tag{ background:color-mix(in oklab, #94a3b8 10%, #fff 92%); border:1px solid color-mix(in oklab, #94a3b8 22%, #fff 0%); color:color-mix(in oklab, var(--fg) 88%, #000 0%); }
 
-/* UI/UX: limiter à 5 tags visibles avec toggle */
+/* UI/UX: limiter ?? 5 tags visibles avec toggle */
 .cert-tags.is-collapsed .tag:nth-child(n+6){ display:none; }
 .cert-tags + .tags-toggle{ margin-top:.4rem; background:none; border:0; color:var(--muted); cursor:pointer; padding:0; font:inherit; text-decoration:underline; text-underline-offset:2px; }
 .cert-tags + .tags-toggle:hover{ color:var(--fg); }
@@ -912,7 +923,7 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 }
 .btn.btn--details:hover{ transform:translateY(-1px); box-shadow:0 14px 30px color-mix(in oklab, var(--brand) 36%, transparent); }
 
-/* Modal projet — style premium */
+/* Modal projet ??? style premium */
 #project-modal .modal__dialog{
   width:min(94vw, 860px);
   background: linear-gradient(180deg, color-mix(in oklab, var(--surface-0) 94%, transparent), color-mix(in oklab, var(--surface-1) 96%, transparent));
@@ -949,7 +960,7 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 
 @keyframes pop{ from{ transform:translateY(8px) scale(.98); opacity:0 } to{ transform:none; opacity:1 } }
 
-/* ======================== 10) CAROUSEL (réalisations) ======================== */
+/* ======================== 10) CAROUSEL (r??alisations) ======================== */
 .carousel{
   position: relative;
   display: grid;
@@ -996,10 +1007,12 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 .footer-brand .brand{ display:flex; align-items:center; gap:.8rem; text-decoration:none; }
 .footer-logo{ width:56px; height:56px; border-radius:.8rem; border:1px solid var(--border); background:var(--surface-1); box-shadow: var(--shadow-sm); }
 .footer-title{ font-size: clamp(1.05rem, 1vw, 1.2rem); }
-.footer-col-title{ margin:.2rem 0 .5rem; font-size: var(--step-0); color: var(--fg); font-weight:800; }
+.footer-col-title{ margin:.2rem 0 .5rem; font-size: var(--step-0); color: var(--fg);
+  display:inline-block; font-weight:800; }
 .footer-list{ list-style:none; margin:0; padding:0; display:grid; gap:.45rem; }
 .footer-list a{ color: var(--muted); text-decoration: none; display:flex; align-items:center; gap:.55rem; }
-.footer-list a:hover{ color: var(--fg); text-decoration: underline; text-underline-offset: 2px; }
+.footer-list a:hover{ color: var(--fg);
+  display:inline-block; text-decoration: underline; text-underline-offset: 2px; }
 .fi{ width:18px; height:18px; flex:0 0 18px; opacity:.85; }
 .footer-list a:hover .fi{ opacity:1; }
 .footer-meta{ display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; color:var(--muted); }
@@ -1043,7 +1056,7 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 }
 :target{ scroll-margin-top: 88px; }
 
-/* Rôle (mise en avant) */
+/* R??le (mise en avant) */
 .role{
   font-size:var(--step-1); font-weight:700; line-height:1.3; margin-top:.3rem;
   background:var(--g-brand); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
@@ -1052,7 +1065,7 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   text-shadow:0 0 4px color-mix(in oklab, var(--brand-2) 30%, transparent);
 }
 
-/* A11y: réduire les animations si demandé */
+/* A11y: r??duire les animations si demand?? */
 @media (prefers-reduced-motion: reduce){
   .nav-toggle .chev, .nav-collapsible, .btn, .card, .methode, .cert-card,
   .icon-sun, .icon-moon, .theme-toggle, .certs-dot, .chip,
@@ -1078,14 +1091,14 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 }
 
 
-/* Empêche scroll horizontal sur le carousel */
+/* Emp??che scroll horizontal sur le carousel */
 .carousel__track {
   overflow-x: auto;
   overscroll-behavior-x: contain;
-  padding-bottom: .25rem; /* petit espace pour éviter que l’ombre coupe */
+  padding-bottom: .25rem; /* petit espace pour ??viter que l???ombre coupe */
 }
 
-/* Mobile : réduire l’intensité des ombres pour éviter que ça masque la card */
+/* Mobile : r??duire l???intensit?? des ombres pour ??viter que ??a masque la card */
 @media (max-width: 599px) {
   .card {
     box-shadow: 0 4px 12px rgba(0,0,0,.18); /* plus soft que var(--shadow-lg) */
@@ -1116,9 +1129,9 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 .carousel__track{
   overflow-x:auto;
   scroll-snap-type:x mandatory;
-  /* Gutter interne pour que la 1ʳᵉ/dernière card ne colle pas au bord */
+  /* Gutter interne pour que la 1?????/derni??re card ne colle pas au bord */
   padding-inline: 14px;
-  /* on enlève le masque sur mobile pour ne pas rogner la carte */
+  /* on enl??ve le masque sur mobile pour ne pas rogner la carte */
   -webkit-mask-image: none;
           mask-image: none;
 
@@ -1128,7 +1141,7 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 }
 .carousel__track::-webkit-scrollbar{ display:none; }
 
-/* Flèches : positionnées sur le même gutter */
+/* Fl??ches : positionn??es sur le m??me gutter */
 .carousel__btn.prev{ margin-left: 6px; }
 .carousel__btn.next{ margin-right: 6px; }
 
@@ -1159,7 +1172,7 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 body.home .brand-logo{ animation: neon-bounce 3.2s ease-in-out infinite; }
 
 /* ===== Relief pack (subtil, dark & light) ===== */
-/* Texture douce d'arrière-plan (désactivable en retirant ce bloc) */
+/* Texture douce d'arri??re-plan (d??sactivable en retirant ce bloc) */
 body::before{
   content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
   background:
@@ -1168,7 +1181,7 @@ body::before{
   opacity:.35; mix-blend-mode:soft-light;
 }
 
-/* Titres de section avec dégradé de marque + légère lueur */
+/* Titres de section avec d??grad?? de marque + l??g??re lueur */
 .section h2{
   background: var(--g-brand);
   -webkit-background-clip:text; background-clip:text;
@@ -1176,7 +1189,7 @@ body::before{
   text-shadow: 0 0 8px color-mix(in oklab, var(--brand) 18%, transparent);
 }
 
-/* Cartes et boutons: hover/focus plus posé et premium */
+/* Cartes et boutons: hover/focus plus pos?? et premium */
 @media (hover:hover){
   .card:hover{ transform:translateY(-2px); box-shadow:0 14px 36px rgba(0,0,0,.36); }
 }
@@ -1184,7 +1197,7 @@ body::before{
 .btn, .chip{ transition-timing-function:cubic-bezier(.22,.8,.2,1); }
 
 /* ==== Carousel (final rules) ==== */
-/* Aligner les slides au début pour garantir l'accès aux extrémités */
+/* Aligner les slides au d??but pour garantir l'acc??s aux extr??mit??s */
 .carousel__slide{ scroll-snap-align: start !important; }
 .carousel__track{
   justify-content: flex-start !important;
@@ -1204,10 +1217,10 @@ body::before{
 .carousel__slide{ display:grid; }
 .carousel__slide .project-card{ height:100%; display:grid; grid-template-rows:auto 1fr auto; }
 
-/* --- À partir de 720px : on réactive le masque progressif premium ------- */
+/* --- ?? partir de 720px : on r??active le masque progressif premium ------- */
 @media (min-width: 720px){
   .carousel__track{
-    padding-inline: 0; /* on remet à 0, plusieurs cards visibles */
+    padding-inline: 0; /* on remet ?? 0, plusieurs cards visibles */
     -webkit-mask-image: linear-gradient(
       90deg, transparent, #000 24px,
       #000 calc(100% - 24px), transparent
@@ -1222,13 +1235,13 @@ body::before{
 }
 
 
-/* CONTACT — CTA mobile centré + respiration */
+/* CONTACT ??? CTA mobile centr?? + respiration */
 @media (max-width: 991px){
-  /* La rangée qui contient le bouton */
+  /* La rang??e qui contient le bouton */
   .contact-v2 .actions--center{
     display:flex;
     justify-content:center;
-    padding: 1rem 1rem 1.25rem;   /* un peu plus d’air autour du bouton */
+    padding: 1rem 1rem 1.25rem;   /* un peu plus d???air autour du bouton */
   }
 
   /* Le bouton Cal/CTA dans la section contact */
@@ -1238,12 +1251,12 @@ body::before{
     align-items:center;
     justify-content:center;
     width: 100%;                  /* prend la ligne mais avec un max */
-    max-width: 520px;             /* “respire” sur les côtés */
+    max-width: 520px;             /* ???respire??? sur les c??t??s */
     margin: .35rem auto 0;        /* centre + espace haut */
     padding: .95rem 1.25rem;      /* hauteur confortable */
     border-radius: 999px;
 
-    /* style premium cohérent avec le bouton flottant */
+    /* style premium coh??rent avec le bouton flottant */
     background-image: var(--g-brand);
     color:#fff; font-weight:800; letter-spacing:.01em;
     border:0;
@@ -1263,17 +1276,17 @@ body::before{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem 1rem; /* un peu plus d’air autour */
+  padding: 1.5rem 1rem; /* un peu plus d???air autour */
 }
 
 .contact-v2 .btn.cta {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 0.9rem 1.6rem; /* plus large = meilleur équilibre visuel */
+  padding: 0.9rem 1.6rem; /* plus large = meilleur ??quilibre visuel */
   min-width: clamp(200px, 60%, 320px); /* largeur responsive */
   border-radius: 999px;
-  background: var(--g-brand) !important; /* forcer le dégradé bleu→vert */
+  background: var(--g-brand) !important; /* forcer le d??grad?? bleu???vert */
   color: #fff !important;
   font-weight: 800;
   text-align: center;
@@ -1286,14 +1299,14 @@ body::before{
 }
 
 
-/* ============ WORKS (Réalisations) — même UX que Certifications ============ */
+/* ============ WORKS (R??alisations) ??? m??me UX que Certifications ============ */
 .works-head{ text-align:left; margin-bottom:1.25rem; }
 .works .h2{ font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin:0; }
 .works .muted{ color:var(--muted); margin-top:.5rem; }
 
 .works-viewport{ max-width:min(100vw,1100px); margin-inline:auto; overflow:hidden; }
 
-/* Rail mobile = 1 carte par écran, scroll-snap; Desktop = grille fixe (3) */
+/* Rail mobile = 1 carte par ??cran, scroll-snap; Desktop = grille fixe (3) */
 .works-rail{
   list-style:none; margin:0; padding:0; display:grid;
   grid-auto-flow:column; grid-auto-columns:100%; gap:0;
@@ -1328,7 +1341,7 @@ body::before{
 
 @media (min-width:900px){ .works-dots{ display:none; } }
 
-/* Gouttière mobile pour éviter que l’ombre “mange” le bord gauche */
+/* Goutti??re mobile pour ??viter que l???ombre ???mange??? le bord gauche */
 @media (max-width: 899px){
   .works-rail{ padding-inline: 8px; }
 }
@@ -1345,7 +1358,7 @@ body::before{
   -webkit-overflow-scrolling: touch;
   list-style: none;     /* pas de puces */
   margin: 0;
-  padding: .25rem 14px; /* petit gutter latéral sur mobile */
+  padding: .25rem 14px; /* petit gutter lat??ral sur mobile */
 }
 
 /* Chaque LI = un slide */
@@ -1364,7 +1377,7 @@ body::before{
   -webkit-overflow-scrolling: touch;
   list-style: none;     /* pas de puces */
   margin: 0;
-  padding: .25rem 14px; /* petit gutter latéral sur mobile */
+  padding: .25rem 14px; /* petit gutter lat??ral sur mobile */
 }
 
 /* Chaque LI = un slide */
@@ -1373,11 +1386,11 @@ body::before{
 }
 
 
-/* --- Réalisations : 1 carte par slide, centrée ----- */
+/* --- R??alisations : 1 carte par slide, centr??e ----- */
 .carousel__track{
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: min(100%, 56rem);  /* 1 carte à la fois, largeur max confortable */
+  grid-auto-columns: min(100%, 56rem);  /* 1 carte ?? la fois, largeur max confortable */
   justify-content: center;              /* centre la colonne (desktop) */
   gap: 1rem;
   padding-inline: 14px;
@@ -1395,27 +1408,27 @@ body::before{
 }
 .carousel__track::-webkit-scrollbar{ display:none; }
 
-.carousel__slide{ scroll-snap-align: center; }  /* <— clé pour centrer la carte visible */
+.carousel__slide{ scroll-snap-align: center; }  /* <??? cl?? pour centrer la carte visible */
 
-/* Flèches cachées sur mobile, layout simplifié */
+/* Fl??ches cach??es sur mobile, layout simplifi?? */
 @media (max-width: 899px){
   .carousel{ grid-template-columns: 1fr; }
   .carousel__btn{ display:none !important; }
 }
 
-/* Bonus : sur les très grands écrans, garde une carte centrée et “posée” */
+/* Bonus : sur les tr??s grands ??crans, garde une carte centr??e et ???pos??e??? */
 @media (min-width: 900px){
-  .carousel{ grid-template-columns: auto 1fr auto; }  /* flèches ré-apparaissent */
+  .carousel{ grid-template-columns: auto 1fr auto; }  /* fl??ches r??-apparaissent */
   .carousel__track{
     padding-inline: 0;
-    /* léger masque premium aux bords si tu veux (facultatif)
+    /* l??ger masque premium aux bords si tu veux (facultatif)
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
             mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
     */
   }
 }
 
-/* Ombres allégées sur mobile pour éviter de masquer les bords */
+/* Ombres all??g??es sur mobile pour ??viter de masquer les bords */
 @media (max-width: 599px){
   .card{ box-shadow: 0 4px 12px rgba(0,0,0,.18); }
 }
@@ -1526,3 +1539,18 @@ body::before{
 .post-card .chip{ background: var(--surface-2); border:1px solid var(--border); }
 .post-card .stretched{ position:absolute; inset:0; border-radius: inherit; z-index:5; }
 @media (hover:hover){ .post-card:hover{ transform:translateY(-4px); box-shadow: var(--shadow-lg); } }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

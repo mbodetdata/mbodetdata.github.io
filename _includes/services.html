@@ -7,16 +7,18 @@
          data-section="services">
   <div class="section-header">
     <h2 id="services-title">{{ services_data.section.title | default: 'Services' }}</h2>
-    {% if services_data.section.hook or services_data.section.intro %}
+    {% if services_data.section.hook or services_data.section.intro or services_data.section.bullets %}
       <div class="section-pitch">
         {% if services_data.section.hook %}
           <p class="section-hook" aria-label="Promesse principale">{{ services_data.section.hook }}</p>
         {% endif %}
-        {% if services_data.section.intro %}
+        {% if services_data.section.intro or services_data.section.bullets %}
           <div class="section-intro">
-            {% for paragraph in services_data.section.intro %}
-              <p>{{ paragraph }}</p>
-            {% endfor %}
+            {% if services_data.section.intro %}
+              {% for paragraph in services_data.section.intro %}
+                <p>{{ paragraph }}</p>
+              {% endfor %}
+            {% endif %}
             {% if services_data.section.bullets %}
               <ul class="section-intro-list">
                 {% for item in services_data.section.bullets %}
@@ -28,7 +30,6 @@
         {% endif %}
       </div>
     {% endif %}
-    </p>
   </div>
 
   <div class="services-grid grid cols-2"
@@ -55,29 +56,30 @@
                 aria-label="{{ service.category | default: 'Service' }}">
             {% case service.icon %}
               {% when 'automation' %}
+                <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" focusable="false">
                   <path d="M12 2v2.5M12 19.5V22M4.22 4.22l1.77 1.77M18.01 18.01l1.77 1.77M2 12h2.5M19.5 12H22M4.22 19.78l1.77-1.77M18.01 6.99l1.77-1.77" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   <circle cx="12" cy="12" r="4" fill="currentColor"/>
                 </svg>
               {% when 'migration' %}
+                <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" focusable="false">
                   <path d="M7 7h10M7 12h10M7 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   <path d="M15 5l2 2-2 2M9 15l-2 2 2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               {% when 'integration' %}
+                <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" focusable="false">
                   <path d="M7 12a5 5 0 0 1 5-5h1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   <path d="M17 12a5 5 0 0 1-5 5h-1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   <path d="M8.5 12h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   <circle cx="12" cy="12" r="2.2" fill="currentColor"/>
                 </svg>
               {% when 'dashboard' %}
+                <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" focusable="false">
                   <path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="2"/>
                   <path d="M8 12h2v5H8zM12 9h2v8h-2zM16 14h2v3h-2z" fill="currentColor"/>
                   <path d="M4 9h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
-              {% when 'governance' %}
-                  <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" fill="none" stroke="currentColor" stroke-width="2"/>
-                  <path d="M9 12h6M9 16h6M9 8h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
               {% else %}
+                <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" focusable="false">
                   <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
             {% endcase %}
@@ -115,26 +117,31 @@
 
   <div class="services-cta-grid">
     <article class="card service-cta service-cta--combo" aria-labelledby="services-cta-combo" data-anim="fade-up">
-      <h3 id="services-cta-combo">Talend &amp; Power BI pour une donnée utile</h3>
+      <h3 id="services-cta-combo">Talend &amp; Power BI pour une donnee utile</h3>
+      <p>Discutons d'automatisation, de migration et de reporting pour que vos equipes disposent d'une donnee fiable chaque jour.</p>
       <div class="service-cta__actions">
         <a class="btn btn--primary"
            href="{{ '/services-talend-talaxie/' | relative_url }}"
            data-track-click="services_cta_talend">
-          En savoir plus côté Talend
+          En savoir plus cote Talend
         </a>
         <a class="btn ghost"
            href="{{ '/services-powerbi/' | relative_url }}"
            data-track-click="services_cta_powerbi">
+          Voir les offres Power BI
         </a>
       </div>
     </article>
   </div>
 
   <div class="services-footer">
-    <div class="services-tools" aria-label="Technologies maîtrisées">
+    <div class="services-tools" aria-label="Technologies maitrisees">
+      <span class="tool-logo tool-logo--talend" aria-hidden="true">Talend</span>
+      <span class="tool-logo tool-logo--powerbi" aria-hidden="true">Power BI</span>
+      <span class="tool-logo tool-logo--azure" aria-hidden="true">Azure</span>
     </div>
     <p class="services-back">
-      <a class="back-to-top" href="#top" data-track-click="services_backtotop">↑ Retour haut de page</a>
+      <a class="back-to-top" href="#top" data-track-click="services_backtotop">&uarr; Retour haut de page</a>
     </p>
   </div>
 
@@ -145,3 +152,4 @@
   {% endif %}
 </section>
 <!-- END SERVICES -->
+
