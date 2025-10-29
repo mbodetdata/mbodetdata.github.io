@@ -23,9 +23,19 @@
     <meta itemprop="description" content="{{ site.description | strip_newlines }}">
   {% endif %}
 
-  <div class="about-hero__canvas" aria-hidden="true">
+  {% assign about_photo = site.author.photo | default: site.author.photo_url | default: '' %}
+  <div class="about-hero__canvas"{% if about_photo == '' %} aria-hidden="true"{% endif %}>
     <div class="about-hero__media">
-      <div class="about-photo-frame"></div>
+      <div class="about-photo-frame">
+        {% if about_photo != '' %}
+          <div class="about-photo-slot has-photo">
+            <img src="{{ about_photo | relative_url }}"
+                 alt="Portrait de {{ site.author.prenom_nom }}">
+          </div>
+        {% else %}
+          <div class="about-photo-slot" role="img" aria-label="Espace r&eacute;serv&eacute; pour la photo"></div>
+        {% endif %}
+      </div>
     </div>
   </div>
 </section>

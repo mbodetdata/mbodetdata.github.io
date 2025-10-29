@@ -164,6 +164,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   mix-blend-mode: screen;
   opacity: .95;
   pointer-events: none;
+  z-index: 0;
 }
 .about-hero__canvas::after{
   content:"";
@@ -172,6 +173,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   background: linear-gradient(180deg, rgba(8,12,24,.55), transparent 45%);
   mix-blend-mode:soft-light;
   pointer-events:none;
+  z-index: 0;
 }
 .about-hero__media{
   position: relative;
@@ -182,43 +184,82 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 }
 .about-photo-frame{
   position: relative;
-  width: clamp(240px, 42vw, 430px);
+  width: clamp(260px, 44vw, 460px);
   aspect-ratio: 16 / 9;
   border-radius: clamp(1.3rem, 2.8vw, 2.6rem);
-  background:
-    linear-gradient(135deg, rgba(41,54,106,.82), rgba(119,46,148,.72)),
-    var(--about-photo, linear-gradient(140deg, rgba(86,103,255,.7), rgba(43,212,143,.65)));
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-blend-mode: overlay;
+  background: linear-gradient(135deg, rgba(41,54,106,.82), rgba(119,46,148,.72));
+  padding: clamp(1rem, 3.4vw, 2rem);
   box-shadow: var(--shadow-lg);
   border:1px solid color-mix(in oklab, rgba(255,255,255,.9) 42%, rgba(8,12,24,.9) 58%);
-  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow: visible;
 }
 .about-photo-frame::before{
   content:"";
   position:absolute;
-  inset:10%;
-  border-radius: inherit;
-  border:1px dashed color-mix(in oklab, rgba(255,255,255,.92) 80%, transparent);
-  opacity:.65;
+  inset:-12% -10% 42% -10%;
+  background: radial-gradient(ellipse at top, rgba(255,255,255,.22), transparent 60%);
+  filter: blur(18px);
+  opacity:.7;
+  pointer-events:none;
+  z-index:0;
 }
 .about-photo-frame::after{
   content:"";
   position:absolute;
   inset:auto clamp(1rem, 3vw, 2rem) clamp(1rem, 3vw, 2rem);
-  height: clamp(60px, 14vw, 92px);
+  height: clamp(56px, 12vw, 88px);
   border-radius: clamp(.8rem, 2vw, 1.6rem);
-  background: linear-gradient(135deg, rgba(12,14,40,.68), rgba(49,16,70,.82));
+  background: linear-gradient(135deg, rgba(12,14,40,.35), rgba(49,16,70,.55));
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.25),
-    0 18px 42px rgba(0,0,0,.45);
-  opacity:.85;
+    0 18px 42px rgba(0,0,0,.35);
+  pointer-events:none;
+  z-index:0;
+}
+.about-photo-slot{
+  position: relative;
+  z-index: 1;
+  width:100%;
+  height:100%;
+  border-radius: inherit;
+  overflow:hidden;
+  background: linear-gradient(135deg, rgba(70,93,210,.58), rgba(92,212,180,.62));
+  border:1px dashed color-mix(in oklab, rgba(255,255,255,.78) 68%, transparent);
+  display:block;
+}
+.about-photo-slot::before{
+  content:"";
+  position:absolute;
+  inset: clamp(.6rem, 3vw, 1.3rem);
+  border-radius: inherit;
+  border:1px dashed color-mix(in oklab, rgba(255,255,255,.7) 70%, transparent);
+  opacity:.7;
+  pointer-events:none;
+}
+.about-photo-slot.has-photo{
+  border:none;
+  background: none;
+}
+.about-photo-slot.has-photo::before{
+  display:none;
+}
+.about-photo-slot img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:saturate(.98);
+}
+@media (max-width: 960px){
+  .about-hero__canvas{
+    justify-content:center;
+  }
 }
 @media (max-width: 720px){
   .about-hero__canvas{
-    justify-content:center;
     padding: clamp(1.2rem, 6vw, 2.4rem);
   }
   .about-photo-frame{
