@@ -24,17 +24,54 @@
   {% endif %}
 
   {% assign about_photo = site.author.photo | default: site.author.photo_url | default: '' %}
-  <div class="about-hero__canvas"{% if about_photo == '' %} aria-hidden="true"{% endif %}>
-    <div class="about-hero__media">
-      <div class="about-photo-frame">
-        {% if about_photo != '' %}
-          <div class="about-photo-slot has-photo">
-            <img src="{{ about_photo | relative_url }}"
-                 alt="Portrait de {{ site.author.prenom_nom }}">
+  <div class="about-hero__canvas">
+    <div class="about-hero__inner">
+      <div class="about-hero__content">
+        <p class="about-hero__eyebrow">Consultant Talend &amp; Power BI</p>
+        <div class="about-hero__badge">Pour des pipelines impeccables</div>
+        <h2 class="about-hero__title">Illuminez vos d&eacute;cisions data sans stress</h2>
+        <p class="about-hero__text">
+          Je con&ccedil;ois et maintiens des <strong>pipelines Talend fiables</strong> et des
+          <strong>dashboards Power&nbsp;BI</strong> lisibles pour que vos &eacute;quipes
+          se concentrent sur l'essentiel&nbsp;: prendre des d&eacute;cisions rapides et s&eacute;curis&eacute;es.
+        </p>
+        <div class="about-hero__actions">
+          <a class="btn btn--primary" href="#contact" data-booking-open>
+            Planifier un appel
+          </a>
+          <a class="btn" href="#services">
+            Voir les offres
+          </a>
+          <a class="btn btn--ghost" href="#realisations">
+            Projets livr&eacute;s
+          </a>
+        </div>
+      </div>
+      <div class="about-hero__media">
+        <div class="about-photo-frame">
+          {% if about_photo != '' %}
+            <div class="about-photo-slot has-photo">
+              <img src="{{ about_photo | relative_url }}"
+                   alt="Portrait de {{ site.author.prenom_nom }}">
+            </div>
+          {% else %}
+            <div class="about-photo-slot" role="img" aria-label="Espace r&eacute;serv&eacute; pour la photo"></div>
+          {% endif %}
+          <div class="about-stats-card">
+            <div class="about-stats-card__item">
+              <span class="about-stats-card__value">25+</span>
+              <span class="about-stats-card__label">projets data livr&eacute;s</span>
+            </div>
+            <div class="about-stats-card__item">
+              <span class="about-stats-card__value">4.9/5</span>
+              <span class="about-stats-card__label">satisfaction clients</span>
+            </div>
+            <div class="about-stats-card__item">
+              <span class="about-stats-card__value">48h</span>
+              <span class="about-stats-card__label">mise en route moyenne</span>
+            </div>
           </div>
-        {% else %}
-          <div class="about-photo-slot" role="img" aria-label="Espace r&eacute;serv&eacute; pour la photo"></div>
-        {% endif %}
+        </div>
       </div>
     </div>
   </div>
