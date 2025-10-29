@@ -349,11 +349,19 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   color: var(--fg);
   display:inline-flex;
   align-items:center;
-  padding:clamp(.6rem, 1.2vw, .95rem) clamp(1.4rem, 2.4vw, 2.1rem);
-  white-space:nowrap;
+  padding:clamp(.6rem, 1.2vw, .95rem) clamp(1.6rem, 2.6vw, 2.3rem);
   border-radius:calc(var(--radius-2) + .2rem);
-  background: linear-gradient(110deg, color-mix(in oklab, var(--brand) 26%, transparent) 0%, color-mix(in oklab, var(--brand-2) 34%, transparent) 100%);
+  background: linear-gradient(160deg,
+    color-mix(in oklab, var(--surface-1) 88%, var(--brand) 12%) 0%,
+    color-mix(in oklab, var(--surface-0) 88%, var(--brand-2) 12%) 100%);
   box-shadow:0 12px 32px rgba(8,11,20,.28);
+}
+.section-tagline{
+  margin: clamp(.2rem, .5vw, .45rem) 0 0;
+  font-size:calc(var(--step-0) - .05rem);
+  font-weight:600;
+  color:color-mix(in oklab, var(--fg) 90%, #fff 10%);
+  max-width:36ch;
 }
 .section-intro{
   display:grid;

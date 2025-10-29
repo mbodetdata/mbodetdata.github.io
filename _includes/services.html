@@ -12,6 +12,9 @@
         {% if services_data.section.hook %}
           <p class="section-hook" aria-label="Promesse principale">{{ services_data.section.hook }}</p>
         {% endif %}
+        {% if services_data.section.tagline %}
+          <p class="section-tagline">{{ services_data.section.tagline }}</p>
+        {% endif %}
         {% if services_data.section.intro or services_data.section.bullets %}
           <div class="section-intro">
             {% if services_data.section.intro %}
