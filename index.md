@@ -14,9 +14,6 @@ permalink: /
 <!-- SERVICES -->
 {% include services.html %}
 
-<!-- METHODES -->
-{% include methodes.html %}
-
 <!-- CERTS -->
 {% include certs.html %}
 
