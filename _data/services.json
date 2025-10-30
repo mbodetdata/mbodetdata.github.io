@@ -20,10 +20,6 @@
                       "title":  "Migration d\u0027applications sans perte d\u0027historique",
                       "problem":  "Nouveau logiciel en vue et peur de perdre vos donnees ?",
                       "promise":  "Audit, reprises et bascule securisee : nous pilotons la migration de bout en bout.",
-                      "deliverables":  [
-                                           "Audit des donnees et plan de reprise",
-                                           "Transferts testes et bascule accompagnee"
-                                       ],
                       "result":  "Nouvel outil operationnel rapidement, sans rupture ni trou d\u0027historique.",
                       "link":  "/services-talend-talaxie/",
                       "icon":  "migration",
@@ -34,10 +30,6 @@
                       "title":  "Valorisation et exploitation de vos donnees",
                       "problem":  "Vos equipes croulent sous la donnee sans indicateurs fiables ?",
                       "promise":  "Nous consolidons, nettoyons et exposons vos donnees pr\u00eates pour l\u0027action.",
-                      "deliverables":  [
-                                           "Inventaire des sources et qualite des donnees",
-                                           "Mod\u00e8le cible pragmatique et cas d\u0027usage priorises"
-                                       ],
                       "result":  "Une base partagee, fiable et exploitable par les metiers.",
                       "link":  "/services-talend-talaxie/",
                       "icon":  "integration",
@@ -48,10 +40,6 @@
                       "title":  "Reporting et tableaux de bord Power BI",
                       "problem":  "Toujours pas de reporting clair pour suivre vos KPI ?",
                       "promise":  "Nous livrons des tableaux de bord Power BI connectes et adoptes par vos equipes.",
-                      "deliverables":  [
-                                           "Atelier d\u0027indicateurs et maquette rapide",
-                                           "Modele Power BI optimise, formation et passage en production"
-                                       ],
                       "result":  "Vos KPI a jour, accessibles et partages en toute confiance.",
                       "link":  "/services-powerbi/",
                       "icon":  "dashboard",
