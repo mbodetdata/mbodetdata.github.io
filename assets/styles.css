@@ -62,19 +62,28 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   --g-brand: linear-gradient(135deg, var(--brand), var(--brand-2));
 }
 
-/* LIGHT ??? doux, premium, non ??blouissant */
+/* LIGHT recalculé à partir du thème DARK — mêmes effets, couleurs adaptées */
 :root[data-theme="light"]{
-  /* Fond moins ??clatant + contraste lisible */
-  --bg:#eef2f7;                            /* blanc cass?? neutre */
-  --fg:#0a1424;                            /* texte un peu plus sombre */
-  --muted:#3b4863;                         /* secondaire plus lisible */
-  --surface-0: color-mix(in oklab, #ffffff 70%, #e6edf6 30%);
-  --surface-1: color-mix(in oklab, #ffffff 80%, #e6edf6 20%);
-  --surface-2: color-mix(in oklab, #ffffff 72%, var(--brand) 28%);
-  --border:    color-mix(in oklab, #27344f 36%, #ffffff 64%); /* bordures plus nettes */
-  --shadow-sm: 0 6px 16px rgba(15,23,42,.14);
-  --shadow-md: 0 12px 26px rgba(15,23,42,.2);
-  --shadow-lg: 0 18px 40px rgba(15,23,42,.26);
+  /* Base claire douce (calculée pour rester en harmonie avec les tokens dark) */
+  --bg: #f6f9fc;                              /* fond très pâle, non éblouissant */
+  --fg: #0b1324;                              /* texte principal foncé, bonne lisibilité */
+  --muted: #475569;                           /* texte secondaire/labels */
+
+  /* Surfaces : conserver le relief mais en inversant la tonalité */
+  --surface-0: color-mix(in oklab, #ffffff 96%, var(--bg) 4%); /* page */
+  --surface-1: color-mix(in oklab, #ffffff 92%, #f1f6fb 8%);   /* cartes / nav */
+  --surface-2: color-mix(in oklab, #ffffff 84%, var(--brand) 16%); /* accents sur surfaces */
+
+  /* Bordures */
+  --border: color-mix(in oklab, var(--fg) 12%, #ffffff 88%);
+
+  /* Ombres (plus légères que le dark, mêmes directions/intensités relatives) */
+  --shadow-sm: 0 6px 16px rgba(14,24,42,.08);
+  --shadow-md: 0 12px 26px rgba(14,24,42,.12);
+  --shadow-lg: 0 18px 40px rgba(14,24,42,.16);
+
+  /* Garde le même dégradé de marque (reste cohérent entre themes) */
+  --g-brand: linear-gradient(135deg, var(--brand), var(--brand-2));
 }
 @media (prefers-color-scheme: light){
   :root:not([data-theme]){ color-scheme: light; }
