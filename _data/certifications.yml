@@ -12,7 +12,6 @@
 - ordre: 2
   title: PL-300 Power BI Data Analyst Associate
   issuer: Microsoft
-  planned_date: 2025-12-01
   status: pending
   #verify_url: "https://learn.microsoft.com/xxxx"
   badge_url: "https://learn.microsoft.com/badges/xxxx"
@@ -24,6 +23,6 @@
   title: DP-600 Fabric Analytics Engineer Associate
   issuer: Microsoft
   status: pending
-  planned_date: 2025-12-01
   logo: ""
+  note: "Approche Fabric pour l'analytics, governance et pipelines de donnees."
   skills: [Microsoft Fabric,Power BI,Data Engineering,DAX]
