@@ -1,102 +1,65 @@
-<section id="blog" class="section recent-posts" aria-labelledby="recent-posts-title">
+<section id="blog" class="section" aria-labelledby="blog-title">
+  <h2 id="blog-title">Articles récents</h2>
+
   {% assign posts_visible = site.posts | where_exp: "post", "post.active != false" %}
   {% assign posts_sorted = posts_visible | sort: 'date' | reverse %}
 
   {% if posts_sorted == empty %}
-    <h2 id="recent-posts-title" class="recent-posts__title">Articles récents</h2>
     <p class="muted">Aucun article publié pour le moment.</p>
   {% else %}
-    <div class="recent-posts__inner">
-      <header class="recent-posts__head">
-        <p class="recent-posts__eyebrow">Blog &amp; veille</p>
-        <h2 id="recent-posts-title" class="recent-posts__title">Articles récents</h2>
-        <p class="recent-posts__subtitle">
-          Synthèses, retours d’expérience et guides Talend / data pour gagner du temps sur vos projets ETL,
-          BI et automatisation. Lecture rapide, impact immédiat.
-        </p>
-        <div class="recent-posts__cta">
-          <a class="btn btn--ghost" href="{{ '/blog/' | relative_url }}">Tous les articles</a>
-        </div>
-      </header>
+    <div class="carousel" data-carousel="blog" data-carousel-label="l’article" aria-roledescription="carousel">
+      <button class="carousel__btn prev" type="button" aria-label="Défiler vers la gauche" disabled>&lt;</button>
 
-      <div class="recent-posts__carousel carousel" data-carousel="blog" data-carousel-label="l’article" aria-roledescription="carousel">
-        <button class="carousel__btn prev" type="button" aria-label="Défiler vers la gauche">&lsaquo;</button>
-
-        <ul class="carousel__track" role="listbox" aria-label="Derniers articles">
-          {% for post in posts_sorted limit:3 %}
+      <ul class="carousel__track" role="listbox" aria-label="Derniers articles">
+        {% for post in posts_sorted limit:3 %}
           {% assign idx = forloop.index0 %}
+
+          {%- comment -%} Temps de lecture {%- endcomment -%}
           {% assign words = post.content | strip_html | strip_newlines | replace: '  ', ' ' | split: ' ' | size %}
           {% assign minutes = words | divided_by: 220 | plus: 1 %}
 
-          {%- assign excerpt_src = post.excerpt | default: post.content -%}
+          {%- comment -%} Base de l’extrait (excerpt si dispo, sinon contenu) {%- endcomment -%}
+          {% assign excerpt_src = post.excerpt | default: post.content %}
 
-          {# -- Nettoyage des scripts éventuels dans le contenu -- #}
-          {%- assign _clean = excerpt_src -%}
-          {%- assign _parts = _clean | split: '<script' -%}
-          {%- if _parts.size > 1 -%}
-            {%- assign _clean = _parts[0] -%}
-            {%- for p in _parts offset:1 -%}
-              {%- assign after = p | split: '</script>' | last -%}
-              {%- assign _clean = _clean | append: after -%}
-            {%- endfor -%}
-          {%- endif -%}
 
-          {%- assign excerpt = _clean 
-              | strip_html 
-              | replace: '{', ' ' | replace: '}', ' '
-              | replace: '&nbsp;', ' '
-              | strip_newlines 
-              | replace: '  ', ' ' 
-              | truncatewords: 28 
-          -%}
+          {% assign after_script = excerpt_src | split: '</script>' | last %}
+          {% if after_script != excerpt_src %}
+            {% assign excerpt_base = after_script %}
+          {% else %}
+            {% assign excerpt_base = excerpt_src %}
+          {% endif %}
+
+          {%- comment -%} Extrait final propre {%- endcomment -%}
+          {% assign excerpt = excerpt_base
+            | strip_html
+            | strip_newlines
+            | replace: '  ', ' '
+            | truncate: 160
+          %}
 
           <li class="carousel__slide" role="option" aria-describedby="post-desc-{{ idx }}">
-            <article class="recent-post-card card blog-card" itemscope itemtype="https://schema.org/BlogPosting">
-              <meta itemprop="author" content="{{ site.author | default: site.title }}">
-              <meta itemprop="headline" content="{{ post.title | escape }}">
+            <article class="card blog-card">
+              <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              <p class="lead" id="post-desc-{{ idx }}">{{ excerpt }}</p>
 
-              {% if post.image %}
-              <figure class="recent-post-card__media thumb" aria-hidden="true">
-                <img src="{{ post.image | relative_url }}" alt="" loading="lazy" decoding="async" itemprop="image">
-              </figure>
-              {% endif %}
-
-              <div class="recent-post-card__meta card-meta">
-                <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%d %b %Y" }}</time>
-                <span class="dot" aria-hidden="true">·</span>
+              <div class="card-meta muted">
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+                <span aria-hidden="true">&middot;</span>
                 <span>~{{ minutes }} min</span>
               </div>
 
-              <h3 class="recent-post-card__title">
-                <a href="{{ post.url | relative_url }}" itemprop="url">
-                  <span itemprop="name">{{ post.title }}</span>
-                </a>
-              </h3>
-
-              <p class="recent-post-card__excerpt" id="post-desc-{{ idx }}" itemprop="description">{{ excerpt }}</p>
-
-              {% assign tags = post.tags | slice: 0, 3 %}
-              {% if tags and tags.size > 0 %}
-              <ul class="recent-post-card__tags" aria-label="Thématiques abordées">
-                {% for tag in tags %}
-                <li class="chip">{{ tag }}</li>
-                {% endfor %}
-              </ul>
-              {% endif %}
-
-              <footer class="recent-post-card__footer card-actions">
-                <a class="btn btn--ghost" href="{{ post.url | relative_url }}" aria-label="Lire l’article {{ post.title }}">
+              <div class="card-actions">
+                <a class="btn btn--details" href="{{ post.url | relative_url }}" aria-label="Lire l’article {{ post.title }}">
                   Lire l’article
                 </a>
-              </footer>
+              </div>
             </article>
           </li>
-          {% endfor %}
-        </ul>
+        {% endfor %}
+      </ul>
 
-        <button class="carousel__btn next" type="button" aria-label="Défiler vers la droite">&rsaquo;</button>
-        <div class="carousel__dots" aria-label="Sélecteur d’articles"></div>
-      </div>
+      <button class="carousel__btn next" type="button" aria-label="Défiler vers la droite">&gt;</button>
+      <div class="carousel__dots" aria-label="Sélecteur d’articles"></div>
     </div>
   {% endif %}
 </section>
