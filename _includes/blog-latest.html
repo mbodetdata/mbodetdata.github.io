@@ -22,6 +22,7 @@
           {% assign excerpt_src = post.excerpt | default: post.content %}
 
 
+          
           {% assign after_script = excerpt_src | split: '</script>' | last %}
           {% if after_script != excerpt_src %}
             {% assign excerpt_base = after_script %}
