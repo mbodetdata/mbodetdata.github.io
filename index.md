@@ -20,8 +20,17 @@ bandeau:
 <!-- REALISATIONS -->
 {% include realisation_recentes.html %}
 
+
+  <div class="services-footer">
+    <div class="services-divider" role="presentation"></div>
+  </div>
+
 <!-- BLOG -->
 {% include blog-latest.html %}
+
+  <div class="services-footer">
+    <div class="services-divider" role="presentation"></div>
+  </div>
 
 <!-- CONTACTS -->
 {% include contact.html %}
