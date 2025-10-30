@@ -27,8 +27,29 @@
           {% assign idx = forloop.index0 %}
           {% assign words = post.content | strip_html | strip_newlines | replace: '  ', ' ' | split: ' ' | size %}
           {% assign minutes = words | divided_by: 220 | plus: 1 %}
-          {% assign excerpt_src = post.excerpt | default: post.content %}
-          {% assign excerpt = excerpt_src | strip_html | strip_newlines | replace: '  ', ' ' | truncate: 160 %}
+
+          {%- assign excerpt_src = post.excerpt | default: post.content -%}
+
+          {# -- Nettoyage des scripts éventuels dans le contenu -- #}
+          {%- assign _clean = excerpt_src -%}
+          {%- assign _parts = _clean | split: '<script' -%}
+          {%- if _parts.size > 1 -%}
+            {%- assign _clean = _parts[0] -%}
+            {%- for p in _parts offset:1 -%}
+              {%- assign after = p | split: '</script>' | last -%}
+              {%- assign _clean = _clean | append: after -%}
+            {%- endfor -%}
+          {%- endif -%}
+
+          {%- assign excerpt = _clean 
+              | strip_html 
+              | replace: '{', ' ' | replace: '}', ' '
+              | replace: '&nbsp;', ' '
+              | strip_newlines 
+              | replace: '  ', ' ' 
+              | truncatewords: 28 
+          -%}
+
           <li class="carousel__slide" role="option" aria-describedby="post-desc-{{ idx }}">
             <article class="recent-post-card card blog-card" itemscope itemtype="https://schema.org/BlogPosting">
               <meta itemprop="author" content="{{ site.author | default: site.title }}">
