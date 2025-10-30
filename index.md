@@ -8,8 +8,8 @@ permalink: /
 <!-- H1 accessible (améliore le SEO sans changer le design) -->
 <h1 class="sr-only">Freelance Talend &amp; Power BI — Intégration de données ETL, DAX, tableaux de bord</h1>
 
-<!-- ABOUT ME -->
-{% include about-me.html %}
+<!-- BANDEAU -->
+{% include bandeau.html %}
 
 <!-- SERVICES -->
 {% include services.html %}
