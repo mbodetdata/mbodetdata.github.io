@@ -1,60 +1,60 @@
 {
-    "section":  {
-                    "title":  "Services Data \u0026 BI",
-                    "hook":  "Pour que vos donnees travaillent pour vous, pas l\u0027inverse.",
-                    "tagline":  "Fiabilisez, Valorisez, Uniformisez, GAGNEZ DU TEMPS"
-                },
-    "cards":  [
-                  {
-                      "id":  "solution-automatisation",
-                      "title":  "Automatisation des saisies et synchronisations",
-                      "problem":  "Vous dupliquez encore vos saisies dans chaque outil ?",
-                      "promise":  "Nous captons, controlons et synchronisons vos flux Talend/Talaxie et API automatiquement.",
-                      "result":  "Une saisie unique, des donnees fiables et des heures liberees chaque semaine.",
-                      "link":  "/services-talend-talaxie/",
-                      "icon":  "automation",
-                      "category":  "Solution Automatisation"
-                  },
-                  {
-                      "id":  "solution-migration",
-                      "title":  "Migration d\u0027applications sans perte d\u0027historique",
-                      "problem":  "Nouveau logiciel en vue et peur de perdre vos donnees ?",
-                      "promise":  "Audit, reprises et bascule securisee : nous pilotons la migration de bout en bout.",
-                      "result":  "Nouvel outil operationnel rapidement, sans rupture ni trou d\u0027historique.",
-                      "link":  "/services-talend-talaxie/",
-                      "icon":  "migration",
-                      "category":  "Solution Migration"
-                  },
-                  {
-                      "id":  "solution-exploitation",
-                      "title":  "Valorisation et exploitation de vos donnees",
-                      "problem":  "Vos equipes croulent sous la donnee sans indicateurs fiables ?",
-                      "promise":  "Nous consolidons, nettoyons et exposons vos donnees pr\u00eates pour l\u0027action.",
-                      "result":  "Une base partagee, fiable et exploitable par les metiers.",
-                      "link":  "/services-talend-talaxie/",
-                      "icon":  "integration",
-                      "category":  "Solution Valorisation"
-                  },
-                  {
-                      "id":  "solution-reporting",
-                      "title":  "Reporting et tableaux de bord Power BI",
-                      "problem":  "Toujours pas de reporting clair pour suivre vos KPI ?",
-                      "promise":  "Nous livrons des tableaux de bord Power BI connectes et adoptes par vos equipes.",
-                      "result":  "Vos KPI a jour, accessibles et partages en toute confiance.",
-                      "link":  "/services-powerbi/",
-                      "icon":  "dashboard",
-                      "category":  "Solution Reporting"
-                  }
-              ],
-    "schema":  {
-                   "@context":  "https://schema.org",
-                   "@type":  "Service",
-                   "serviceType":  "Data Integration and Business Intelligence",
-                   "provider":  {
-                                    "@type":  "Person",
-                                    "name":  "BM Data"
-                                },
-                   "areaServed":  "France",
-                   "brand":  "BM Data Solutions"
-               }
+    "section": {
+        "title": "Services Data & BI",
+        "hook": "Pour que vos données deviennent un vrai levier de performance.",
+        "tagline": "Des données fiables, des process fluides, des décisions claires."
+    },
+    "cards": [
+        {
+            "id": "solution-automatisation",
+            "title": "Automatisation des saisies et synchronisations",
+            "problem": "Vous perdez du temps à ressaisir les mêmes informations dans plusieurs outils ?",
+            "promise": "J’automatise vos flux Talend/Talaxie et vos échanges d’API pour éliminer les doubles saisies.",
+            "result": "Moins d’erreurs, plus de temps pour vos équipes et une gestion des données enfin fluide.",
+            "link": "/services-talend-talaxie/",
+            "icon": "automation",
+            "category": "Solution Automatisation"
+        },
+        {
+            "id": "solution-migration",
+            "title": "Migration d’applications sans perte d’historique",
+            "problem": "Vous changez d’outil mais craignez de perdre vos données ou vos historiques ?",
+            "promise": "Je sécurise la reprise et la migration de vos données, du diagnostic jusqu’à la mise en production.",
+            "result": "Une transition fluide, sans perte d’information ni interruption d’activité.",
+            "link": "/services-talend-talaxie/",
+            "icon": "migration",
+            "category": "Solution Migration"
+        },
+        {
+            "id": "solution-exploitation",
+            "title": "Valorisation et exploitation de vos données",
+            "problem": "Vos équipes ont les données mais pas la visibilité pour agir efficacement ?",
+            "promise": "Je structure et nettoie vos données pour les rendre fiables et immédiatement exploitables.",
+            "result": "Une source unique de vérité, claire et partagée par tous vos métiers.",
+            "link": "/services-talend-talaxie/",
+            "icon": "integration",
+            "category": "Solution Valorisation"
+        },
+        {
+            "id": "solution-reporting",
+            "title": "Reporting et tableaux de bord Power BI",
+            "problem": "Vous manquez de visibilité sur vos indicateurs clés ?",
+            "promise": "Je conçois des tableaux de bord Power BI connectés et adaptés à vos besoins métiers.",
+            "result": "Des indicateurs à jour, visuels et partagés pour piloter vos décisions en toute confiance.",
+            "link": "/services-powerbi/",
+            "icon": "dashboard",
+            "category": "Solution Reporting"
+        }
+    ],
+    "schema": {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Data Integration and Business Intelligence",
+        "provider": {
+            "@type": "Person",
+            "name": "BM Data"
+        },
+        "areaServed": "France",
+        "brand": "BM Data Solutions"
+    }
 }
