@@ -3,6 +3,8 @@ layout: default
 title: Freelance Talend & Power BI (PowerBI) — ETL, DAX & Dashboards
 description: Intégrations de données, pipelines ETL Talend, modèles DAX et dashboards Power BI performants. Disponibilité rapide, résultats mesurables.
 permalink: /
+bandeau:
+  photo: "/assets/img/bm-hero.webp"
 ---
 
 <!-- H1 accessible (améliore le SEO sans changer le design) -->

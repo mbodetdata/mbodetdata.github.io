@@ -23,7 +23,13 @@
     <meta itemprop="description" content="{{ site.description | strip_newlines }}">
   {% endif %}
 
-  {% assign about_photo = site.author.photo | default: site.author.photo_url | default: '' %}
+  {% assign _bandeau_data  = page.bandeau | default: site.bandeau | default: site.author %}
+  {% assign bandeau_photo = _bandeau_data.photo
+                            | default: page.bandeau_photo
+                            | default: site.author.bandeau_photo
+                            | default: site.author.photo
+                            | default: site.author.photo_url
+                            | default: '' %}
   <div class="about-hero__canvas">
     <div class="about-hero__inner">
       <div class="about-hero__content">
@@ -37,9 +43,9 @@
       </div>
       <div class="about-hero__media">
         <div class="about-photo-frame">
-          {% if about_photo != '' %}
+          {% if bandeau_photo != '' %}
             <div class="about-photo-slot has-photo">
-              <img src="{{ about_photo | relative_url }}"
+              <img src="{{ bandeau_photo | relative_url }}"
                    alt="Portrait de {{ site.author.prenom_nom }}">
             </div>
           {% else %}
