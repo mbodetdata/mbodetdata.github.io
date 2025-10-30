@@ -1,0 +1,117 @@
+<section id="realisation" class="section recent-works" aria-labelledby="recent-works-title">
+  <div class="recent-works__inner">
+    <header class="recent-works__head">
+      <p class="recent-works__eyebrow">Portfolio</p>
+      <h2 id="recent-works-title" class="recent-works__title">R&eacute;alisations r&eacute;centes</h2>
+      <p class="recent-works__subtitle">
+        Quelques projets data &amp; automatisation livr&eacute;s derni&egrave;rement. Chaque mission combine fiabilit&eacute; technique,
+        pilotage des indicateurs et accompagnement m&eacute;tier.
+      </p>
+    </header>
+
+    {% assign has_dates = false %}
+    {% for p in site.data.projets %}{% if p.date %}{% assign has_dates = true %}{% break %}{% endif %}{% endfor %}
+    {% if has_dates %}
+      {% assign projets_sorted = site.data.projets | sort: "date" | reverse %}
+    {% else %}
+      {% assign projets_sorted = site.data.projets %}
+    {% endif %}
+
+    <div class="recent-works__body">
+      <div class="recent-works__carousel carousel" data-carousel="realisations" data-carousel-label="la r&eacute;alisation" aria-roledescription="carousel">
+        <button class="carousel__btn prev" type="button" aria-label="D&eacute;filer vers la gauche">&lsaquo;</button>
+
+        <ul class="carousel__track" role="listbox" aria-label="Liste de r&eacute;alisations">
+          {% for projet in projets_sorted %}
+          {% assign idx = forloop.index0 %}
+          {% assign _pt = projet.title
+            | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+            | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+            | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+            | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+            | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+            | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+            | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+            | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+            | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+            | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+            | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+            | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+          %}
+          {% assign _ps = projet['text-short']
+            | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+            | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+            | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+            | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+            | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+            | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+            | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+            | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+            | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+            | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+            | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+            | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+          %}
+          <li class="carousel__slide" role="option" aria-describedby="proj-desc-{{ idx }}">
+            <article class="project-card"
+                     tabindex="0"
+                     data-index="{{ idx }}"
+                     data-title="{{ projet.title | escape }}"
+                     data-client="{{ projet.client | escape }}"
+                     data-abstract="{{ projet['text-short'] | default: projet.text | escape }}"
+                     data-link="{{ projet.link | relative_url }}"
+                     data-contexte="{{ projet.details.contexte | escape }}"
+                     data-missions='{{ projet.details.missions | jsonify }}'
+                     data-benefices='{{ projet.details.benefices | jsonify }}'
+                     data-stack='{{ projet.details.stack | jsonify }}'>
+              <header class="project-card__head">
+                {% if projet.client %}
+                <p class="project-card__client" aria-label="Client">
+                  <span class="project-card__client-dot" aria-hidden="true"></span>
+                  {{ projet.client }}
+                </p>
+                {% endif %}
+                <h3 class="project-card__title">{{ _pt }}</h3>
+              </header>
+
+              <p class="project-card__excerpt" id="proj-desc-{{ idx }}">{{ _ps }}</p>
+
+              {% assign stack_full = projet.details.stack %}
+              {% if stack_full %}
+              {% assign stack_preview = stack_full | slice: 0, 4 %}
+              {% if stack_preview and stack_preview.size > 0 %}
+              <ul class="project-card__stack" aria-label="Technologies principales">
+                {% for tech in stack_preview %}
+                <li>{{ tech | escape }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+              {% endif %}
+
+              <footer class="project-card__footer">
+                {% if projet.date %}
+                <time class="project-card__date" datetime="{{ projet.date | date_to_xmlschema }}">
+                  {{ projet.date | date: "%b %Y" }}
+                </time>
+                {% endif %}
+                <button class="btn btn--ghost open-project" type="button" aria-label="Voir les d&eacute;tails du projet {{ projet.title | escape }}">
+                  D&eacute;tails
+                </button>
+              </footer>
+            </article>
+          </li>
+          {% endfor %}
+        </ul>
+
+        <button class="carousel__btn next" type="button" aria-label="D&eacute;filer vers la droite">&rsaquo;</button>
+        <div class="carousel__dots" aria-label="S&eacute;lecteur de r&eacute;alisations"></div>
+      </div>
+
+      <div class="recent-works__cta">
+        <a class="btn btn--gradient" href="{{ '/realisation/' | relative_url }}">
+          Voir toutes les r&eacute;alisations
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

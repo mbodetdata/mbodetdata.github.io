@@ -16,11 +16,9 @@ bandeau:
 <!-- SERVICES -->
 {% include services.html %}
 
-<!-- CERTS -->
-{% include certs.html %}
 
 <!-- REALISATIONS -->
-{% include realisations.html %}
+{% include realisation_recentes.html %}
 
 <!-- BLOG -->
 {% include blog-latest.html %}
