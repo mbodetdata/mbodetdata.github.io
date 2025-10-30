@@ -134,6 +134,7 @@ const store = {
 
   const getSystem = () => (mq('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   const getStored = () => store.get('theme');
+
   const setLabelAria = (mode) => {
     if (!btn) return;
     const isDark = mode === 'dark';
@@ -141,24 +142,50 @@ const store = {
     btn.setAttribute('aria-label', isDark ? 'Basculer en mode clair' : 'Basculer en mode sombre');
     if (label) label.textContent = isDark ? 'Dark' : 'Light';
   };
-  const apply = (mode) => { root.setAttribute('data-theme', mode); setLabelAria(mode); };
 
-  apply(getStored() || getSystem());
+  // --- NEW: apply avec option "smooth" ------------------------------------
+  const apply = (mode, smooth = false) => {
+    if (smooth && window.matchMedia?.('(prefers-reduced-motion: no-preference)').matches) {
+      root.classList.add('theme-xfade');
+      // Forcer un reflow pour que la transition se déclenche sur le changement de data-theme
+      void root.offsetWidth; 
+    }
+    root.setAttribute('data-theme', mode);
+    setLabelAria(mode);
+    if (smooth) {
+      // On laisse la transition se jouer puis on nettoie la classe
+      setTimeout(() => root.classList.remove('theme-xfade'), 420);
+    }
+  };
+  // ------------------------------------------------------------------------
 
+  // 🔹 Toujours dark par défaut
+  const stored = getStored();
+  if (stored) {
+    apply(stored);
+  } else {
+    apply('dark'); // par défaut, sombre
+  }
+
+  // Synchronisation si l’utilisateur supprime la préférence => rester en dark
   const sys = mq('(prefers-color-scheme: light)');
-  const syncSystem = () => { if (!getStored()) apply(getSystem()); };
+  const syncSystem = () => { if (!getStored()) apply('dark'); };
   sys.addEventListener?.('change', syncSystem);
 
+  // Toggle du thème (avec animation douce)
   on(btn, 'click', () => {
     const cur = root.getAttribute('data-theme');
     const next = (cur === 'light') ? 'dark' : 'light';
-    apply(next); store.set('theme', next);
-  }, { passive:true });
+    apply(next, true);           // 👈 smooth on toggle
+    store.set('theme', next);
+  }, { passive: true });
 
+  // Alt+Click → réinitialiser la préférence (et animation)
   on(btn, 'click', (e) => {
     if (!e.altKey) return;
-    store.rm('theme'); apply(getSystem());
-  }, { capture:true });
+    store.rm('theme');
+    apply('dark', true);         // 👈 reset en dark + smooth
+  }, { capture: true });
 })();
 
 /* =================== 4) Modals utilitaires (focus-trap & co) =================== */

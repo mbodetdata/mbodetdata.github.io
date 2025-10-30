@@ -117,6 +117,91 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   :root:not([data-theme]){ color-scheme: light; }
 }
 
+/* --- Fix global leftover white text from dark theme ---
+   Many rules in the dark theme use explicit white (color:#fff). In light mode
+   that produced invisible text on light backgrounds. We force the default
+   text color to the light theme variable, then restore intentional white on
+   brand/CTA elements (more specific selectors below).
+*/
+:root[data-theme="light"] body,
+:root[data-theme="light"] body * {
+  color: var(--fg) !important;
+}
+
+/* Exceptions: elements that must stay white (on colored backgrounds) */
+:root[data-theme="light"] .btn--primary,
+:root[data-theme="light"] .nav-desktop .btn.cta,
+:root[data-theme="light"] .nav-list .btn.cta,
+:root[data-theme="light"] .pill--talend,
+:root[data-theme="light"] .pill--powerbi,
+:root[data-theme="light"] .ci-icon,
+:root[data-theme="light"] .cert-badge,
+:root[data-theme="light"] .ci-copy-btn.is-copied,
+:root[data-theme="light"] .service-cta__btn,
+:root[data-theme="light"] .service-cta__btn--data,
+:root[data-theme="light"] .service-cta__btn--bi {
+  color: #fff !important;
+}
+
+/* Light-mode backgrounds: provide lighter equivalents for components that
+   used dark decorative gradients in the dark theme. Keep same structure/effects
+   but adapted colors so text/CTA remain readable. */
+:root[data-theme="light"] .about-stats-card{
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--surface-1) 86%, #ffffff 14%),
+    color-mix(in oklab, var(--surface-0) 92%, #ffffff 8%)
+  );
+  box-shadow: 0 12px 28px rgba(26,34,54,.12);
+  border: 1px solid var(--border);
+  color: var(--fg) !important;
+}
+
+:root[data-theme="light"] .about-photo-frame{
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--brand) 36%, #ffffff 64%),
+    color-mix(in oklab, var(--brand-2) 34%, #ffffff 66%)
+  );
+  border:1px solid color-mix(in oklab, var(--border), #ffffff 40%);
+  box-shadow: var(--shadow-md);
+}
+
+:root[data-theme="light"] .about-photo-frame::after{
+  background: linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.08));
+  box-shadow: inset 0 1px 0 rgba(0,0,0,.03), 0 10px 20px rgba(26,34,54,.06);
+}
+
+:root[data-theme="light"] .about-photo-slot{ /* reduce strong colored overlay */
+  background: linear-gradient(140deg,
+    color-mix(in oklab, var(--brand) 16%, #ffffff 84%),
+    color-mix(in oklab, var(--brand-2) 18%, #ffffff 82%)
+  );
+  border:1px dashed color-mix(in oklab, var(--border), #ffffff 60%);
+}
+
+/* Light variant for the main hero canvas (keep layered effects but lightened) */
+:root[data-theme="light"] .about-hero__canvas{
+  background: linear-gradient(125deg,
+    color-mix(in oklab, var(--brand) 34%, #ffffff 66%),
+    color-mix(in oklab, var(--brand-2) 30%, #ffffff 70%)
+  );
+}
+
+:root[data-theme="light"] .about-hero__canvas::before{
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.42), transparent 55%),
+    radial-gradient(circle at 80% 28%, rgba(94,84,255,.16), transparent 60%),
+    radial-gradient(circle at 65% 82%, rgba(0,0,0,.06), transparent 72%);
+  mix-blend-mode: screen;
+  opacity:.95;
+}
+
+:root[data-theme="light"] .about-hero__canvas::after{
+  background: linear-gradient(180deg, rgba(255,255,255,.55), transparent 45%);
+  mix-blend-mode:soft-light;
+}
+
+
+
 /* Am??liorations de lisibilit?? (mode clair uniquement) */
 :root[data-theme="light"] .card,
 :root[data-theme="light"] .service-card,
@@ -2528,5 +2613,34 @@ body::before{
   }
   .recent-post-card__media{
     grid-column:1; grid-row:1; width:100%; height:auto; aspect-ratio: 16/9;
+  }
+}
+
+
+/* Smooth theme switch (désactivé si reduced-motion) */
+@media (prefers-reduced-motion: no-preference){
+  :root.theme-xfade,
+  :root.theme-xfade body,
+  :root.theme-xfade .card,
+  :root.theme-xfade .btn,
+  :root.theme-xfade .chip,
+  :root.theme-xfade .service-card,
+  :root.theme-xfade .methode,
+  :root.theme-xfade .site-header,
+  :root.theme-xfade .navbar,
+  :root.theme-xfade .project-card,
+  :root.theme-xfade .recent-works__head,
+  :root.theme-xfade .recent-posts__head,
+  :root.theme-xfade .post-hero,
+  :root.theme-xfade .contact-item,
+  :root.theme-xfade .feature-card,
+  :root.theme-xfade .info-card,
+  :root.theme-xfade .cert-card {
+    transition:
+      background-color .35s ease,
+      color .35s ease,
+      border-color .35s ease,
+      box-shadow .35s ease,
+      filter .35s ease;
   }
 }
