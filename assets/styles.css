@@ -62,33 +62,32 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   --g-brand: linear-gradient(135deg, var(--brand), var(--brand-2));
 }
 
-/* LIGHT recalculé à partir du thème DARK — mêmes effets, couleurs adaptées */
+/* 1) Tokens LIGHT (harmonisés avec le DARK) */
 :root[data-theme="light"]{
-  /* Base claire douce (calculée pour rester en harmonie avec les tokens dark) */
-  --bg: #f6f9fc;                              /* fond très pâle, non éblouissant */
-  --fg: #0b1324;                              /* texte principal foncé, bonne lisibilité */
-  --muted: #475569;                           /* texte secondaire/labels */
+  color-scheme: light;
 
-  /* Surfaces : conserver le relief mais en inversant la tonalité */
-  --surface-0: color-mix(in oklab, #ffffff 96%, var(--bg) 4%); /* page */
-  --surface-1: color-mix(in oklab, #ffffff 92%, #f1f6fb 8%);   /* cartes / nav */
-  --surface-2: color-mix(in oklab, #ffffff 84%, var(--brand) 16%); /* accents sur surfaces */
+  /* Couleurs de base */
+  --bg: #f6f9fc;
+  --fg: #0b1324;
+  --muted: #475569;
 
-  /* Bordures */
+  /* Surfaces (mêmes reliefs/hiérarchie que le dark, tonalité inversée) */
+  --surface-0: color-mix(in oklab, #ffffff 96%, var(--bg) 4%);
+  --surface-1: color-mix(in oklab, #ffffff 92%, #f1f6fb 8%);
+  --surface-2: color-mix(in oklab, #ffffff 86%, var(--brand) 14%);
+
+  /* Bordures & ombres adoucies */
   --border: color-mix(in oklab, var(--fg) 12%, #ffffff 88%);
-
-  /* Ombres (plus légères que le dark, mêmes directions/intensités relatives) */
   --shadow-sm: 0 6px 16px rgba(14,24,42,.08);
   --shadow-md: 0 12px 26px rgba(14,24,42,.12);
   --shadow-lg: 0 18px 40px rgba(14,24,42,.16);
 
-  /* Garde le même dégradé de marque (reste cohérent entre themes) */
+  /* Dégradé de marque identique */
   --g-brand: linear-gradient(135deg, var(--brand), var(--brand-2));
 }
-/* Overrides ciblés pour corriger les couleurs codées en dur (ex: color:#fff)
-   Beaucoup d'éléments dans le thème dark utilisaient du blanc explicite.
-   Ici on remet la couleur typographique principale pour ces sélecteurs
-   afin d'éviter le texte blanc sur fond clair et préserver la structure. */
+
+
+/* 2) Remises à la bonne couleur (éviter le blanc forcé hérité du DARK) */
 :root[data-theme="light"] .about-hero__title,
 :root[data-theme="light"] .about-hero__text strong,
 :root[data-theme="light"] .about-stats-card,
@@ -107,28 +106,14 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
 :root[data-theme="light"] .cert-title,
 :root[data-theme="light"] .cert-issuer,
 :root[data-theme="light"] .about-hero__eyebrow,
-:root[data-theme="light"] .about-stats-card__label,
 :root[data-theme="light"] .section-intro p,
 :root[data-theme="light"] .section-intro p:first-child,
 :root[data-theme="light"] .section-intro p:last-child {
   color: var(--fg);
 }
-@media (prefers-color-scheme: light){
-  :root:not([data-theme]){ color-scheme: light; }
-}
 
-/* --- Fix global leftover white text from dark theme ---
-   Many rules in the dark theme use explicit white (color:#fff). In light mode
-   that produced invisible text on light backgrounds. We force the default
-   text color to the light theme variable, then restore intentional white on
-   brand/CTA elements (more specific selectors below).
-*/
-:root[data-theme="light"] body,
-:root[data-theme="light"] body * {
-  color: var(--fg) !important;
-}
 
-/* Exceptions: elements that must stay white (on colored backgrounds) */
+/* 4) Exceptions : éléments qui doivent rester blancs sur fonds colorés */
 :root[data-theme="light"] .btn--primary,
 :root[data-theme="light"] .nav-desktop .btn.cta,
 :root[data-theme="light"] .nav-list .btn.cta,
@@ -142,99 +127,6 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
 :root[data-theme="light"] .service-cta__btn--bi {
   color: #fff !important;
 }
-
-/* Light-mode backgrounds: provide lighter equivalents for components that
-   used dark decorative gradients in the dark theme. Keep same structure/effects
-   but adapted colors so text/CTA remain readable. */
-:root[data-theme="light"] .about-stats-card{
-  background: linear-gradient(135deg,
-    color-mix(in oklab, var(--surface-1) 86%, #ffffff 14%),
-    color-mix(in oklab, var(--surface-0) 92%, #ffffff 8%)
-  );
-  box-shadow: 0 12px 28px rgba(26,34,54,.12);
-  border: 1px solid var(--border);
-  color: var(--fg) !important;
-}
-
-:root[data-theme="light"] .about-photo-frame{
-  background: linear-gradient(135deg,
-    color-mix(in oklab, var(--brand) 36%, #ffffff 64%),
-    color-mix(in oklab, var(--brand-2) 34%, #ffffff 66%)
-  );
-  border:1px solid color-mix(in oklab, var(--border), #ffffff 40%);
-  box-shadow: var(--shadow-md);
-}
-
-:root[data-theme="light"] .about-photo-frame::after{
-  background: linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.08));
-  box-shadow: inset 0 1px 0 rgba(0,0,0,.03), 0 10px 20px rgba(26,34,54,.06);
-}
-
-:root[data-theme="light"] .about-photo-slot{ /* reduce strong colored overlay */
-  background: linear-gradient(140deg,
-    color-mix(in oklab, var(--brand) 16%, #ffffff 84%),
-    color-mix(in oklab, var(--brand-2) 18%, #ffffff 82%)
-  );
-  border:1px dashed color-mix(in oklab, var(--border), #ffffff 60%);
-}
-
-/* Light variant for the main hero canvas (keep layered effects but lightened) */
-:root[data-theme="light"] .about-hero__canvas{
-  background: linear-gradient(125deg,
-    color-mix(in oklab, var(--brand) 34%, #ffffff 66%),
-    color-mix(in oklab, var(--brand-2) 30%, #ffffff 70%)
-  );
-}
-
-:root[data-theme="light"] .about-hero__canvas::before{
-  background:
-    radial-gradient(circle at 15% 20%, rgba(255,255,255,.42), transparent 55%),
-    radial-gradient(circle at 80% 28%, rgba(94,84,255,.16), transparent 60%),
-    radial-gradient(circle at 65% 82%, rgba(0,0,0,.06), transparent 72%);
-  mix-blend-mode: screen;
-  opacity:.95;
-}
-
-:root[data-theme="light"] .about-hero__canvas::after{
-  background: linear-gradient(180deg, rgba(255,255,255,.55), transparent 45%);
-  mix-blend-mode:soft-light;
-}
-
-
-
-/* Am??liorations de lisibilit?? (mode clair uniquement) */
-:root[data-theme="light"] .card,
-:root[data-theme="light"] .service-card,
-:root[data-theme="light"] .methode,
-:root[data-theme="light"] .chip,
-:root[data-theme="light"] .btn{
-  background: var(--surface-1);
-  border-color: var(--border);
-  color: var(--fg);
-  display:inline-flex;
-  align-items:center;
-  box-shadow: var(--shadow-sm);
-}
-
-:root[data-theme="light"] .badge-glass{
-  border-color: color-mix(in oklab, #405178 34%, #ffffff 66%);
-}
-
-/* Section titles restent lisibles en clair */
-:root[data-theme="light"] .section h2{ text-shadow: none; }
-
-/* Adoucir l'ambiance globale en clair (overlay l??ger) */
-:root[data-theme="light"] body::before{
-  opacity:.22;
-  mix-blend-mode:multiply;
-}
-
-/* Cartes un peu plus color??es en clair pour casser le blanc */
-:root[data-theme="light"] .service-card,
-:root[data-theme="light"] .methode{
-  background: color-mix(in oklab, #ffffff 78%, #e6edf6 22%);
-}
-
 /* ========================= 2) TYPO / STRUCTURE ========================= */
 body{
   font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
@@ -1380,7 +1272,6 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .cert-date{ opacity:.9; font-size:var(--step--1); }
 .cert-tags{ display:flex; flex-wrap:wrap; gap:.5rem; list-style:none; margin:.55rem 0 0; padding:0; }
 .cert-tags .tag{ padding:.35rem .6rem; border-radius:999px; background:color-mix(in oklab, #94a3b8 14%, transparent); border:1px solid color-mix(in oklab, #94a3b8 28%, transparent); font-size:calc(var(--step--1) - .02rem); line-height:1; white-space:nowrap; }
-:root[data-theme="light"] .cert-tags .tag{ background:color-mix(in oklab, #94a3b8 10%, #fff 92%); border:1px solid color-mix(in oklab, #94a3b8 22%, #fff 0%); color:color-mix(in oklab, var(--fg) 88%, #000 0%); }
 
 /* UI/UX: limiter ?? 5 tags visibles avec toggle */
 .cert-tags.is-collapsed .tag:nth-child(n+6){ display:none; }
@@ -1914,16 +1805,8 @@ body::before{
   background: var(--g-brand);
   opacity:.62;
 }
-:root[data-theme="light"] .recent-works__head{
-  background: linear-gradient(150deg,
-              color-mix(in oklab, #ffffff 84%, var(--brand) 16%) 0%,
-              color-mix(in oklab, #ffffff 90%, var(--brand-2) 10%) 100%);
-  border-color: color-mix(in oklab, var(--border), var(--brand) 48%);
-  box-shadow:0 16px 40px rgba(26,34,54,.16);
-}
-:root[data-theme="light"] .recent-works__head::before{
-  opacity:.4;
-}
+
+
 .recent-works__eyebrow{
   margin:0;
   font-size:.92rem;
@@ -1954,11 +1837,7 @@ body::before{
   -webkit-text-fill-color:#ffffff;
   text-shadow:0 0 26px color-mix(in oklab, var(--brand) 40%, transparent);
 }
-:root[data-theme="light"] .recent-works__title{
-  color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
-  -webkit-text-fill-color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
-  text-shadow:none;
-}
+
 .recent-works__subtitle{
   margin:0;
   max-width:56ch;
@@ -1967,9 +1846,7 @@ body::before{
   line-height:1.65;
   letter-spacing:.01em;
 }
-:root[data-theme="light"] .recent-works__subtitle{
-  color: color-mix(in oklab, var(--muted) 78%, var(--brand) 22%);
-}
+
 
 .recent-works__body{
   display:grid;
@@ -1983,10 +1860,7 @@ body::before{
   box-shadow:0 28px 60px rgba(0,0,0,.38);
   overflow:hidden;
 }
-:root[data-theme="light"] .recent-works__carousel{
-  background: linear-gradient(160deg, color-mix(in oklab, var(--surface-1) 82%, #ffffff 18%), color-mix(in oklab, var(--surface-2) 66%, var(--brand) 22%));
-  box-shadow:0 22px 52px rgba(26,34,54,.18);
-}
+
 
 .recent-works .carousel__track{
   padding: clamp(.35rem, 1vw, .75rem) clamp(.6rem, 2vw, 1.1rem);
@@ -2006,10 +1880,7 @@ body::before{
   transform:translateY(-1px);
   box-shadow:0 18px 36px color-mix(in oklab, var(--brand) 55%, transparent);
 }
-:root[data-theme="light"] .recent-works .carousel__btn{
-  background: color-mix(in oklab, var(--brand) 64%, #ffffff 36%);
-  color: var(--fg);
-}
+
 .recent-works .carousel__dots{
   margin-top: clamp(.85rem, 1.2vw, 1.2rem);
   gap:.45rem;
@@ -2035,11 +1906,7 @@ body::before{
   box-shadow:0 18px 44px rgba(0,0,0,.34);
   color:inherit;
 }
-:root[data-theme="light"] .project-card{
-  background: linear-gradient(165deg, color-mix(in oklab, #ffffff 78%, var(--brand) 22%), color-mix(in oklab, #ffffff 88%, var(--brand-2) 12%));
-  border-color: color-mix(in oklab, var(--border), var(--brand) 42%);
-  box-shadow:0 16px 38px rgba(26,34,54,.18);
-}
+
 .project-card::after{
   content:"";
   position:absolute;
@@ -2075,9 +1942,7 @@ body::before{
   line-height:1.24;
   color:#ffffff;
 }
-:root[data-theme="light"] .project-card__title{
-  color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
-}
+
 .project-card__excerpt{
   margin:0;
   color: color-mix(in oklab, var(--muted) 70%, #ffffff 30%);
@@ -2100,10 +1965,7 @@ body::before{
   color: color-mix(in oklab, var(--fg) 88%, #ffffff 12%);
   border:1px solid color-mix(in oklab, var(--border), var(--brand) 35%);
 }
-:root[data-theme="light"] .project-card__stack li{
-  background: color-mix(in oklab, #ffffff 76%, var(--brand) 24%);
-  color: color-mix(in oklab, var(--fg) 92%, var(--brand) 8%);
-}
+
 .project-card__missions{
   margin:0;
   padding:0;
@@ -2128,9 +1990,7 @@ body::before{
   background: color-mix(in oklab, var(--brand) 60%, var(--brand-2) 40%);
   box-shadow:0 0 8px color-mix(in oklab, var(--brand) 45%, transparent);
 }
-:root[data-theme="light"] .project-card__missions{
-  color: color-mix(in oklab, var(--muted) 75%, var(--brand) 25%);
-}
+
 .project-card__footer{
   display:flex;
   align-items:center;
@@ -2146,9 +2006,7 @@ body::before{
   color: color-mix(in oklab, var(--muted) 52%, #ffffff 48%);
   margin:0;
 }
-:root[data-theme="light"] .project-card__date{
-  color: color-mix(in oklab, var(--muted) 70%, var(--brand) 30%);
-}
+
 .project-card__footer-actions{
   display:flex;
   flex-wrap:wrap;
@@ -2175,9 +2033,6 @@ body::before{
   background: color-mix(in oklab, var(--brand) 18%, transparent);
   color:#ffffff;
   box-shadow:0 12px 26px color-mix(in oklab, var(--brand) 45%, transparent);
-}
-:root[data-theme="light"] .recent-works .btn--ghost:hover{
-  color: color-mix(in oklab, var(--fg) 92%, var(--brand) 8%);
 }
 
 .recent-works__cta{
@@ -2217,18 +2072,14 @@ body::before{
   text-transform:uppercase;
   color: color-mix(in oklab, var(--muted) 55%, #ffffff 45%);
 }
-:root[data-theme="light"] .realisations-hero__eyebrow{
-  color: color-mix(in oklab, var(--muted) 68%, var(--brand) 32%);
-}
+
 .realisations-hero h1{
   margin:0;
   font-size: clamp(2.1rem, 1.8rem + 1.6vw, 2.9rem);
   line-height:1.15;
   color:#ffffff;
 }
-:root[data-theme="light"] .realisations-hero h1{
-  color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
-}
+
 .realisations-hero__lead{
   margin:0;
   font-size: clamp(1.05rem, 1rem + .6vw, 1.25rem);
@@ -2250,9 +2101,7 @@ body::before{
   background: color-mix(in oklab, var(--brand) 16%, transparent);
   color:#ffffff;
 }
-:root[data-theme="light"] .realisations-hero__actions .btn--ghost{
-  color: color-mix(in oklab, var(--fg) 94%, var(--brand) 6%);
-}
+
 
 .realisations-grid{
   padding-block: clamp(2.6rem, 4vw, 3.4rem);
@@ -2489,13 +2338,7 @@ body::before{
   background: var(--g-brand);
   opacity:.58;
 }
-:root[data-theme="light"] .recent-posts__head{
-  background: linear-gradient(150deg,
-              color-mix(in oklab, #ffffff 84%, var(--brand) 16%) 0%,
-              color-mix(in oklab, #ffffff 90%, var(--brand-2) 10%) 100%);
-  border-color: color-mix(in oklab, var(--border), var(--brand) 46%);
-  box-shadow:0 16px 40px rgba(26,34,54,.16);
-}
+
 .recent-posts__eyebrow{
   margin:0;
   font-size:.9rem;
@@ -2525,11 +2368,7 @@ body::before{
   background:none; -webkit-text-fill-color:#ffffff;
   text-shadow:0 0 26px color-mix(in oklab, var(--brand) 40%, transparent);
 }
-:root[data-theme="light"] .recent-posts__title{
-  color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
-  -webkit-text-fill-color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
-  text-shadow:none;
-}
+
 .recent-posts__subtitle{
   margin:0;
   max-width:56ch;
@@ -2546,10 +2385,7 @@ body::before{
   box-shadow:0 28px 60px rgba(0,0,0,.38);
   overflow:hidden;
 }
-:root[data-theme="light"] .recent-posts__carousel{
-  background: linear-gradient(160deg, color-mix(in oklab, var(--surface-1) 82%, #ffffff 18%), color-mix(in oklab, var(--surface-2) 64%, var(--brand) 20%));
-  box-shadow:0 22px 52px rgba(26,34,54,.18);
-}
+
 
 /* Cartes articles (sœurs des project-card) */
 .recent-post-card{
@@ -2643,4 +2479,175 @@ body::before{
       box-shadow .35s ease,
       filter .35s ease;
   }
+}
+
+
+/* 5) Variantes LIGHT des blocs visuels (mêmes layouts, uniquement couleurs) */
+:root[data-theme="light"] .about-stats-card{
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--surface-1) 88%, #ffffff 12%),
+    color-mix(in oklab, var(--surface-0) 92%, #ffffff 8%)
+  );
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  color: var(--fg);
+}
+
+:root[data-theme="light"] .about-photo-frame{
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--brand) 28%, #ffffff 72%),
+    color-mix(in oklab, var(--brand-2) 26%, #ffffff 74%)
+  );
+  border:1px solid color-mix(in oklab, var(--border), #ffffff 40%);
+  box-shadow: var(--shadow-md);
+}
+:root[data-theme="light"] .about-photo-frame::after{
+  background: linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.08));
+  box-shadow: inset 0 1px 0 rgba(0,0,0,.03), 0 10px 20px rgba(26,34,54,.06);
+}
+
+:root[data-theme="light"] .about-photo-slot{
+  background: linear-gradient(140deg,
+    color-mix(in oklab, var(--brand) 12%, #ffffff 88%),
+    color-mix(in oklab, var(--brand-2) 14%, #ffffff 86%)
+  );
+  border:1px dashed color-mix(in oklab, var(--border), #ffffff 60%);
+}
+
+/* Hero fond clair */
+:root[data-theme="light"] .about-hero__canvas{
+  background: linear-gradient(125deg,
+    color-mix(in oklab, var(--brand) 28%, #ffffff 72%),
+    color-mix(in oklab, var(--brand-2) 24%, #ffffff 76%)
+  );
+}
+:root[data-theme="light"] .about-hero__canvas::before{
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.42), transparent 55%),
+    radial-gradient(circle at 80% 28%, rgba(94,84,255,.16), transparent 60%),
+    radial-gradient(circle at 65% 82%, rgba(0,0,0,.06), transparent 72%);
+  mix-blend-mode: screen;
+  opacity:.95;
+}
+:root[data-theme="light"] .about-hero__canvas::after{
+  background: linear-gradient(180deg, rgba(255,255,255,.55), transparent 45%);
+  mix-blend-mode:soft-light;
+}
+
+/* 6) Améliorations de lisibilité (sans casser le layout)
+      >>> Ne pas toucher au display initial des composants */
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .service-card,
+:root[data-theme="light"] .methode,
+:root[data-theme="light"] .chip,
+:root[data-theme="light"] .btn{
+  /* pas de display/align-items ici */
+  background: var(--surface-1);
+  border-color: var(--border);
+  color: var(--fg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Badges glass — contraste doux en LIGHT */
+:root[data-theme="light"] .badge-glass{
+  border-color: color-mix(in oklab, #405178 28%, #ffffff 72%);
+}
+
+/* Titres de section : pas d’ombre en clair */
+:root[data-theme="light"] .section h2{ text-shadow: none; }
+
+/* Overlay global plus léger en clair */
+:root[data-theme="light"] body::before{
+  opacity:.18;
+  mix-blend-mode:multiply;
+}
+
+/* Petits accents de surface pour casser le « tout blanc » */
+:root[data-theme="light"] .service-card,
+:root[data-theme="light"] .methode{
+  background: color-mix(in oklab, #ffffff 82%, #e6edf6 18%);
+}
+
+/* 7) Sections « Réalisations / Blog » — variantes LIGHT déjà prévues mais renforcées */
+:root[data-theme="light"] .recent-works__head{
+  background: linear-gradient(150deg,
+              color-mix(in oklab, #ffffff 86%, var(--brand) 14%) 0%,
+              color-mix(in oklab, #ffffff 92%, var(--brand-2) 8%) 100%);
+  border-color: color-mix(in oklab, var(--border), var(--brand) 48%);
+  box-shadow:0 16px 40px rgba(26,34,54,.16);
+}
+:root[data-theme="light"] .recent-works__title{
+  color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
+  -webkit-text-fill-color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
+  text-shadow:none;
+}
+:root[data-theme="light"] .recent-works__subtitle{ color: color-mix(in oklab, var(--muted) 78%, var(--brand) 22%); }
+
+:root[data-theme="light"] .recent-works__carousel{
+  background: linear-gradient(160deg, color-mix(in oklab, var(--surface-1) 82%, #ffffff 18%),
+                                        color-mix(in oklab, var(--surface-2) 66%, var(--brand) 22%));
+  box-shadow:0 22px 52px rgba(26,34,54,.18);
+}
+:root[data-theme="light"] .project-card{
+  background: linear-gradient(165deg, color-mix(in oklab, #ffffff 78%, var(--brand) 22%),
+                                        color-mix(in oklab, #ffffff 88%, var(--brand-2) 12%));
+  border-color: color-mix(in oklab, var(--border), var(--brand) 42%);
+  box-shadow:0 16px 38px rgba(26,34,54,.18);
+}
+:root[data-theme="light"] .project-card__title{ color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%); }
+:root[data-theme="light"] .project-card__stack li{
+  background: color-mix(in oklab, #ffffff 76%, var(--brand) 24%);
+  color: color-mix(in oklab, var(--fg) 92%, var(--brand) 8%);
+}
+
+/* Blog (section équivalente) */
+:root[data-theme="light"] .recent-posts__head{
+  background: linear-gradient(150deg,
+              color-mix(in oklab, #ffffff 86%, var(--brand) 14%) 0%,
+              color-mix(in oklab, #ffffff 92%, var(--brand-2) 8%) 100%);
+  border-color: color-mix(in oklab, var(--border), var(--brand) 46%);
+  box-shadow:0 16px 40px rgba(26,34,54,.16);
+}
+:root[data-theme="light"] .recent-posts__title{
+  color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
+  -webkit-text-fill-color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
+  text-shadow:none;
+}
+:root[data-theme="light"] .recent-posts__carousel{
+  background: linear-gradient(160deg, color-mix(in oklab, var(--surface-1) 82%, #ffffff 18%),
+                                        color-mix(in oklab, var(--surface-2) 64%, var(--brand) 20%));
+  box-shadow:0 22px 52px rgba(26,34,54,.18);
+}
+
+/* 8) Boutons/CTA en clair : lisibles, sans forcer le layout */
+:root[data-theme="light"] .btn{ background: var(--surface-1); border-color: var(--border); color: var(--fg); }
+:root[data-theme="light"] .btn--primary{
+  color:#fff; border:0; background:var(--g-brand);
+  box-shadow:0 12px 26px color-mix(in oklab, var(--brand) 30%, transparent);
+}
+
+/* 9) Carousels — flèches/dots visibles en LIGHT */
+:root[data-theme="light"] .recent-works .carousel__btn,
+:root[data-theme="light"] .recent-posts .carousel__btn{
+  background: color-mix(in oklab, var(--brand) 64%, #ffffff 36%);
+  color: var(--fg);
+}
+:root[data-theme="light"] .recent-works .carousel__dot,
+:root[data-theme="light"] .recent-posts .carousel__dot{
+  background: color-mix(in oklab, var(--muted) 28%, transparent);
+}
+:root[data-theme="light"] .recent-works .carousel__dot.is-active,
+:root[data-theme="light"] .recent-posts .carousel__dot.is-active{
+  background: color-mix(in oklab, var(--brand) 80%, transparent);
+}
+
+/* 10) Petites corrections diverses */
+:root[data-theme="light"] .cert-tags .tag{
+  background:color-mix(in oklab, #94a3b8 10%, #fff 92%);
+  border:1px solid color-mix(in oklab, #94a3b8 22%, #fff 0%);
+  color:color-mix(in oklab, var(--fg) 88%, #000 0%);
+}
+:root[data-theme="light"] .recent-works__eyebrow,
+:root[data-theme="light"] .realisations-hero__eyebrow{
+  color: color-mix(in oklab, var(--muted) 68%, var(--brand) 32%);
 }
