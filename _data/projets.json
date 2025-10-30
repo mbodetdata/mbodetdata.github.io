@@ -1,0 +1,233 @@
+[
+  {
+    "title": "UBA • Data & Automatisation (Azure)",
+    "client": "UBA",
+    "date": "2022-06-01",
+    "text-short": "Base Azure centralisée • Automatisations financières • Dashboard KPI",
+    "link": "/portfolio/uba-data-automation.html",
+    "details": {
+      "contexte": "UBA souhaitait fiabiliser son pilotage financier alors que les données étaient dispersées entre plusieurs systèmes internes et largement traitées manuellement. L’objectif stratégique était de centraliser les flux dans une base moderne et de réduire la dépendance aux tâches manuelles pour sécuriser la trésorerie et accélérer la prise de décision.",
+      "missions": [
+        "Conception d’une base Azure connectée aux applications internes",
+        "Développement de jobs Talend pour répartitions, suivi de caisse, virements",
+        "Création d’un dashboard temps réel regroupant les indicateurs financiers clés"
+      ],
+      "benefices": [
+        "Réduction des tâches manuelles et diminution des erreurs",
+        "Accélération des processus financiers quotidiens",
+        "Pilotage consolidé et fiabilisé pour la direction"
+      ],
+      "stack": ["Talend", "Microsoft Azure", "Power BI"]
+    }
+  },
+  {
+    "title": "EDI • WMS Reflex",
+    "client": "ACSEP",
+    "date": "2023-07-01",
+    "text-short": "Maintenance & optimisation EDI • Réduction des incidents",
+    "link": "/portfolio/edi-wms-reflex.html",
+    "details": {
+      "contexte": "Dans le cadre de l’exploitation du WMS Reflex, les flux EDI avec les SI clients étaient source de lenteurs et d’anomalies récurrentes. L’enjeu était de fiabiliser les échanges critiques entre WMS et ERP pour assurer la continuité opérationnelle et limiter les incidents impactant la supply chain.",
+      "missions": [
+        "Analyse, debug et résolution des anomalies bloquantes",
+        "Développement d’évolutions techniques et fonctionnelles",
+        "Optimisation continue des performances et de la supervision"
+      ],
+      "benefices": [
+        "Fiabilité accrue des échanges entre WMS et SI clients",
+        "Réduction des interruptions de service et des tickets incidents",
+        "Meilleure réactivité face aux évolutions des besoins clients"
+      ],
+      "stack": ["Talend", "EDI", "Reflex WMS"]
+    }
+  },
+  {
+    "title": "EDI • TMS OneWorld",
+    "client": "ACSEP / OneWorld",
+    "date": "2024-09-01",
+    "text-short": "Mappings EDI • Intégration & envoi automatisé",
+    "link": "/portfolio/edi-tms-oneworld.html",
+    "details": {
+      "contexte": "Pour accompagner la mise en place du TMS OneWorld, ACSEP devait connecter les SI clients via des flux EDI robustes et automatisés. Le projet visait à fiabiliser les échanges transport tout en réduisant la charge manuelle pour les équipes opérationnelles.",
+      "missions": [
+        "Développement de mappings selon spécifications clients",
+        "Intégration et transformations avec Talend",
+        "Automatisation de la génération et de l’envoi des fichiers"
+      ],
+      "benefices": [
+        "Échanges transport fluides et automatisés",
+        "Réduction des saisies manuelles chronophages",
+        "Process logistiques plus fiables et traçables"
+      ],
+      "stack": ["Talend", "API REST", "MariaDB"]
+    }
+  },
+  {
+    "title": "EDI • WMS IzyPro (multi-clients)",
+    "client": "ACSEP",
+    "date": "2023-06-01",
+    "text-short": "Interconnexions EDI • Logs, archivage, alertes",
+    "link": "/portfolio/edi-wms-izypro.html",
+    "details": {
+      "contexte": "Plusieurs clients d’ACSEP (Samsung, Saveurs & Vie, Moulin Roty, SNEF, Sogeval, Lustucru…) devaient interconnecter leurs SI au WMS IzyPro. L’objectif était de mettre en place des flux EDI standardisés, supervisés et résilients pour assurer une interopérabilité fluide entre systèmes hétérogènes.",
+      "missions": [
+        "Ateliers de mapping et recueil des besoins métier",
+        "Intégration fichiers in/out avec traçabilité complète",
+        "Mise en place d’alertes automatiques et d’une supervision centralisée"
+      ],
+      "benefices": [
+        "Diminution des erreurs et anomalies manuelles",
+        "Réactivité opérationnelle renforcée",
+        "Interopérabilité multi-clients garantie"
+      ],
+      "stack": ["Talend", "IzyPro", "API REST", "MariaDB", "Robotask"]
+    }
+  },
+  {
+    "title": "Reporting Change • iTop",
+    "client": "ACSEP",
+    "date": "2025-02-01",
+    "text-short": "Pilotage SLA & backlog • Rapport Power BI",
+    "link": "/portfolio/reporting-change-itop.html",
+    "details": {
+      "contexte": "ACSEP souhaitait mieux piloter les demandes de changements et leur respect des SLA dans iTop. Le besoin était d’apporter de la visibilité managériale, d’identifier rapidement les blocages et d’améliorer la performance des équipes de support.",
+      "missions": [
+        "Création du modèle et des visuels Power BI",
+        "Analyses par temps de traitement, agent, type",
+        "Mise en place de KPI sur retards et SLA"
+      ],
+      "benefices": [
+        "Meilleure visibilité pour les managers",
+        "Identification rapide des goulets d’étranglement",
+        "Optimisation de la performance des équipes"
+      ],
+      "stack": ["Power BI", "iTop"]
+    }
+  },
+  {
+    "title": "Étude & migration • Talend OSS → Talaxie (interne)",
+    "client": "ACSEP",
+    "date": "2024-10-01",
+    "text-short": "Cadrage outillage • Architecture cible • Continuité des traitements",
+    "link": "/portfolio/migration-talend-oss-talaxie.html",
+    "details": {
+      "contexte": "Face à l’arrêt du support de Talend Open Source, ACSEP devait sécuriser son socle d’intégration pour éviter tout risque d’obsolescence. Le projet consistait à étudier les alternatives, cadrer l’architecture cible et préparer une migration progressive et maîtrisée.",
+      "missions": [
+        "Étude de marché et comparatif des solutions",
+        "Analyse des flux existants et dépendances",
+        "Recommandation de migration vers Talaxie et définition de l’architecture cible"
+      ],
+      "benefices": [
+        "Réduction du risque d’obsolescence technologique",
+        "Transition progressive et sans rupture",
+        "Durabilité et évolutivité de la plateforme d’intégration"
+      ],
+      "stack": ["Talend", "Talaxie", "Tests de non-régression"]
+    }
+  },
+  {
+    "title": "DashboardTV • Opérations temps réel (interne)",
+    "client": "ACSEP",
+    "date": "2024-01-01",
+    "text-short": "iTop • ServiceNow • Avaya • Diffusion OptiSign",
+    "link": "/portfolio/dashboardtv-operations.html",
+    "details": {
+      "contexte": "Les équipes support d’ACSEP devaient suivre en temps réel leurs flux d’incidents et d’appels. L’enjeu était de croiser plusieurs sources (iTop, ServiceNow, Avaya) et d’offrir une vision consolidée et dynamique pour améliorer la réactivité.",
+      "missions": [
+        "Collecte multi-sources et historisation via Talend",
+        "Croisement et consolidation des données",
+        "Reporting Power BI et affichage temps réel sur écrans"
+      ],
+      "benefices": [
+        "Réactivité accrue des équipes support",
+        "Transparence et suivi en continu des opérations",
+        "Consolidation des flux multi-outils"
+      ],
+      "stack": ["Talend", "MariaDB", "iTop", "ServiceNow", "Avaya", "Power BI", "OptiSign"]
+    }
+  },
+  {
+    "title": "Frère-Loup • Migration e-commerce",
+    "client": "Frère-Loup",
+    "date": "2022-11-01",
+    "text-short": "Extraction/Transformation • API PrestaShop • Transition fluide",
+    "link": "/portfolio/frele-loup-migration-prestashop.html",
+    "details": {
+      "contexte": "Frère-Loup souhaitait migrer vers un nouveau site PrestaShop sans perte de données stratégiques (produits, clients, commandes). L’objectif était de sécuriser la transition et d’assurer une continuité d’activité e-commerce sans interruption.",
+      "missions": [
+        "Audit et sélection des données critiques",
+        "Transformation et contrôle de cohérence via ETL",
+        "Alimentation automatisée via API PrestaShop"
+      ],
+      "benefices": [
+        "Migration sécurisée et sans perte d’informations",
+        "Mise en production accélérée",
+        "Continuité de l’activité e-commerce garantie"
+      ],
+      "stack": ["Talend", "Microsoft SQL Server", "PrestaShop"]
+    }
+  },
+  {
+    "title": "Eiffage • Migration données médicales",
+    "client": "Eiffage",
+    "date": "2022-06-01",
+    "text-short": "Oracle → MongoDB • Intégrité & performance",
+    "link": "/portfolio/eiffage-migration-medicale.html",
+    "details": {
+      "contexte": "Eiffage devait moderniser la gestion de ses questionnaires médicaux, initialement stockés dans Oracle, en adoptant un modèle NoSQL plus flexible. Le projet visait à assurer une migration sécurisée tout en garantissant intégrité, performance et maintenabilité.",
+      "missions": [
+        "Mapping des données Oracle vers un modèle NoSQL",
+        "Développement de flux ETL Talend et exécution sous Linux",
+        "Mise en place de contrôles qualité renforcés"
+      ],
+      "benefices": [
+        "Migration sécurisée sans perte de données",
+        "Flexibilité accrue grâce au modèle NoSQL",
+        "Système plus performant et maintenable"
+      ],
+      "stack": ["Talend", "Oracle DB", "MongoDB", "JSON", "Linux"]
+    }
+  },
+  {
+    "title": "Media Participations • Migration applicative",
+    "client": "Media Participations",
+    "date": "2021-04-01",
+    "text-short": "ETL Talend • Contrôles qualité • Historique conservé",
+    "link": "/portfolio/media-participations-migration.html",
+    "details": {
+      "contexte": "Media Participations changeait d’application tout en souhaitant conserver l’intégralité de son historique métier. Le projet visait à assurer une migration fluide et totalement fiable, sans perte d’information ni rupture dans la continuité opérationnelle.",
+      "missions": [
+        "Analyse des structures et identification des écarts",
+        "Automatisation ETL (extraction, transformation, chargement)",
+        "Mise en place de mécanismes de contrôle et de réconciliation"
+      ],
+      "benefices": [
+        "Transition fluide et maîtrisée",
+        "Historique complet préservé",
+        "Moins d’erreurs grâce à l’automatisation"
+      ],
+      "stack": ["Talend", "CSV", "Microsoft Excel"]
+    }
+  },
+  {
+    "title": "SOFIPEL • Interconnexion KeplerVo",
+    "client": "SOFIPEL",
+    "date": "2021-07-01",
+    "text-short": "API KeplerVo • MySQL • Vue consolidée multi-garages",
+    "link": "/portfolio/sofipel-interconnexion-keplervo.html",
+    "details": {
+      "contexte": "SOFIPEL, qui gère un réseau d’une quinzaine de garages, avait besoin de centraliser et valoriser ses données éparses issues de KeplerVo. Le projet visait à donner une vision consolidée du parc automobile et des coûts associés pour optimiser la gestion des dépenses.",
+      "missions": [
+        "Collecte et intégration des données via API KeplerVo",
+        "Transformation et stockage dans une base MySQL",
+        "Croisement multi-sources et modélisation analytique"
+      ],
+      "benefices": [
+        "Vision globale du parc automobile",
+        "Suivi détaillé des coûts par véhicule",
+        "Aide à la décision et pistes d’optimisation budgétaire"
+      ],
+      "stack": ["Talend", "API KeplerVo", "MySQL", "phpMyAdmin"]
+    }
+  }
+]
