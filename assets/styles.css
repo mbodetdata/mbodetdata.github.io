@@ -1772,19 +1772,61 @@ body::before{
 .recent-works__head{
   max-width: min(720px, 100%);
   display:grid;
-  gap:.75rem;
+  gap:.85rem;
+  padding: clamp(1.25rem, 2.6vw, 1.9rem);
+  border-radius: clamp(1rem, 1.9vw, 1.5rem);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 40%);
+  background: linear-gradient(150deg,
+              color-mix(in oklab, var(--surface-1) 86%, transparent) 6%,
+              color-mix(in oklab, var(--surface-2) 72%, var(--brand) 28%) 100%);
+  box-shadow:0 20px 48px rgba(0,0,0,.36);
+  position:relative;
+  overflow:hidden;
+}
+.recent-works__head::before{
+  content:"";
+  position:absolute;
+  inset:18px 18px auto;
+  height:2px;
+  border-radius:999px;
+  background: var(--g-brand);
+  opacity:.62;
+}
+:root[data-theme="light"] .recent-works__head{
+  background: linear-gradient(150deg,
+              color-mix(in oklab, #ffffff 84%, var(--brand) 16%) 0%,
+              color-mix(in oklab, #ffffff 90%, var(--brand-2) 10%) 100%);
+  border-color: color-mix(in oklab, var(--border), var(--brand) 48%);
+  box-shadow:0 16px 40px rgba(26,34,54,.16);
+}
+:root[data-theme="light"] .recent-works__head::before{
+  opacity:.4;
 }
 .recent-works__eyebrow{
   margin:0;
   font-size:.92rem;
-  letter-spacing:.32em;
+  font-weight:700;
+  letter-spacing:.26em;
   text-transform:uppercase;
-  color: color-mix(in oklab, var(--muted) 55%, #ffffff 45%);
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  color: color-mix(in oklab, var(--muted) 50%, #ffffff 50%);
+}
+.recent-works__eyebrow::after{
+  content:"";
+  flex:1 1 auto;
+  max-width:160px;
+  height:1px;
+  border-radius:999px;
+  background: color-mix(in oklab, var(--muted) 35%, var(--brand) 65%);
+  opacity:.45;
 }
 .recent-works__title{
   margin:0;
   font-size: clamp(1.9rem, 1.6rem + 1.2vw, 2.4rem);
   line-height:1.18;
+  font-weight:800;
   color:#ffffff;
   background:none;
   -webkit-text-fill-color:#ffffff;
@@ -1797,9 +1839,14 @@ body::before{
 }
 .recent-works__subtitle{
   margin:0;
-  max-width:58ch;
-  color: color-mix(in oklab, var(--muted) 82%, #ffffff 18%);
-  font-size: clamp(1rem, .96rem + .45vw, 1.2rem);
+  max-width:56ch;
+  color: color-mix(in oklab, var(--muted) 75%, #ffffff 25%);
+  font-size: clamp(1.02rem, 1rem + .5vw, 1.28rem);
+  line-height:1.65;
+  letter-spacing:.01em;
+}
+:root[data-theme="light"] .recent-works__subtitle{
+  color: color-mix(in oklab, var(--muted) 78%, var(--brand) 22%);
 }
 
 .recent-works__body{
