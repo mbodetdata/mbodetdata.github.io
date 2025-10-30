@@ -1,8 +1,8 @@
 {
     "section":  {
                     "title":  "Services Data \u0026 BI",
-                    "hook":  "Vos donnees doivent resoudre vos irritants quotidiens.",
-                    "tagline":  "Chaque offre cible un probleme client precis pour vous faire gagner du temps."
+                    "hook":  "Pour que vos donnees travaillent pour vous, pas l\u0027inverse.",
+                    "tagline":  "Fiabilisez, Valorisez, Uniformisez, GAGNEZ DU TEMPS"
                 },
     "cards":  [
                   {
@@ -10,10 +10,6 @@
                       "title":  "Automatisation des saisies et synchronisations",
                       "problem":  "Vous dupliquez encore vos saisies dans chaque outil ?",
                       "promise":  "Nous captons, controlons et synchronisons vos flux Talend/Talaxie et API automatiquement.",
-                      "deliverables":  [
-                                           "Cartographie express des flux critiques",
-                                           "Scenarii d\u0027automatisation et alertes integrees"
-                                       ],
                       "result":  "Une saisie unique, des donnees fiables et des heures liberees chaque semaine.",
                       "link":  "/services-talend-talaxie/",
                       "icon":  "automation",
