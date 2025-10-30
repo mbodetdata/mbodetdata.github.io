@@ -2317,3 +2317,179 @@ body::before{
 .post-card .chip{ background: var(--surface-2); border:1px solid var(--border); }
 .post-card .stretched{ position:absolute; inset:0; border-radius: inherit; z-index:5; }
 @media (hover:hover){ .post-card:hover{ transform:translateY(-4px); box-shadow: var(--shadow-lg); } }
+
+
+/* ====== Blog — Section "Articles récents" (même BA que Réalisations) ====== */
+.recent-posts{
+  position:relative;
+  isolation:isolate;
+  padding-block: clamp(2.4rem, 4vw, 3.8rem);
+}
+.recent-posts::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset: clamp(-1.2rem, -3vh, -2rem) clamp(-2rem, -6vw, -3.2rem);
+  border-radius: clamp(1.6rem, 3vw, 2.4rem);
+  background:
+    radial-gradient(120% 120% at 12% 0%, color-mix(in oklab, var(--brand) 22%, transparent) 0%, transparent 68%),
+    radial-gradient(120% 120% at 90% 100%, color-mix(in oklab, var(--brand-2) 18%, transparent) 0%, transparent 70%),
+    linear-gradient(150deg, color-mix(in oklab, var(--surface-1) 88%, transparent), color-mix(in oklab, var(--surface-2) 66%, var(--brand) 22%));
+  filter:saturate(1.02);
+  opacity:.9;
+}
+.recent-posts__inner{
+  max-width: var(--container);
+  margin-inline:auto;
+  display:grid;
+  gap: clamp(1.6rem, 3vw, 2.6rem);
+}
+.recent-posts__head{
+  max-width: min(720px, 100%);
+  display:grid;
+  gap:.8rem;
+  padding: clamp(1.1rem, 2.4vw, 1.8rem);
+  border-radius: clamp(1rem, 1.8vw, 1.5rem);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 40%);
+  background: linear-gradient(150deg,
+              color-mix(in oklab, var(--surface-1) 86%, transparent) 6%,
+              color-mix(in oklab, var(--surface-2) 72%, var(--brand) 24%) 100%);
+  box-shadow:0 20px 48px rgba(0,0,0,.36);
+  position:relative;
+  overflow:hidden;
+}
+.recent-posts__head::before{
+  content:"";
+  position:absolute;
+  inset:18px 18px auto;
+  height:2px;
+  border-radius:999px;
+  background: var(--g-brand);
+  opacity:.58;
+}
+:root[data-theme="light"] .recent-posts__head{
+  background: linear-gradient(150deg,
+              color-mix(in oklab, #ffffff 84%, var(--brand) 16%) 0%,
+              color-mix(in oklab, #ffffff 90%, var(--brand-2) 10%) 100%);
+  border-color: color-mix(in oklab, var(--border), var(--brand) 46%);
+  box-shadow:0 16px 40px rgba(26,34,54,.16);
+}
+.recent-posts__eyebrow{
+  margin:0;
+  font-size:.9rem;
+  font-weight:700;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  color: color-mix(in oklab, var(--muted) 52%, #ffffff 48%);
+}
+.recent-posts__eyebrow::after{
+  content:"";
+  flex:1 1 auto;
+  max-width:160px;
+  height:1px;
+  border-radius:999px;
+  background: color-mix(in oklab, var(--muted) 35%, var(--brand) 65%);
+  opacity:.45;
+}
+.recent-posts__title{
+  margin:0;
+  font-size: clamp(1.8rem, 1.5rem + 1.2vw, 2.3rem);
+  line-height:1.18;
+  font-weight:800;
+  color:#ffffff;
+  background:none; -webkit-text-fill-color:#ffffff;
+  text-shadow:0 0 26px color-mix(in oklab, var(--brand) 40%, transparent);
+}
+:root[data-theme="light"] .recent-posts__title{
+  color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
+  -webkit-text-fill-color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
+  text-shadow:none;
+}
+.recent-posts__subtitle{
+  margin:0;
+  max-width:56ch;
+  color: color-mix(in oklab, var(--muted) 76%, #ffffff 24%);
+  font-size: clamp(1.02rem, 1rem + .5vw, 1.22rem);
+  line-height:1.65;
+}
+
+/* Carousel wrapper (mêmes réglages que recent-works) */
+.recent-posts__carousel{
+  padding: clamp(1.05rem, 2vw, 1.6rem);
+  border-radius: clamp(1.2rem, 2.4vw, 2rem);
+  background: linear-gradient(160deg, color-mix(in oklab, var(--surface-1) 82%, transparent), color-mix(in oklab, var(--surface-2) 68%, var(--brand) 26%));
+  box-shadow:0 28px 60px rgba(0,0,0,.38);
+  overflow:hidden;
+}
+:root[data-theme="light"] .recent-posts__carousel{
+  background: linear-gradient(160deg, color-mix(in oklab, var(--surface-1) 82%, #ffffff 18%), color-mix(in oklab, var(--surface-2) 64%, var(--brand) 20%));
+  box-shadow:0 22px 52px rgba(26,34,54,.18);
+}
+
+/* Cartes articles (sœurs des project-card) */
+.recent-post-card{
+  position:relative;
+  display:grid;
+  grid-template-columns: 92px 1fr;
+  gap:.9rem;
+  align-items:start;
+  padding: clamp(1rem, 1.6vw, 1.4rem);
+  border-radius: clamp(1rem, 1.6vw, 1.4rem);
+  background: linear-gradient(165deg, color-mix(in oklab, var(--surface-1) 90%, transparent), color-mix(in oklab, var(--surface-2) 60%, var(--brand) 20%));
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 36%);
+  box-shadow:0 18px 40px rgba(0,0,0,.32);
+}
+.recent-post-card__media{
+  grid-column:1; grid-row:1 / span 3;
+  width:92px; height:92px; border-radius:.9rem; overflow:hidden;
+  border:1px solid var(--border); background: var(--surface-1);
+  box-shadow: var(--shadow-sm);
+}
+.recent-post-card__media img{ width:100%; height:100%; object-fit:cover; }
+
+.recent-post-card__meta{
+  grid-column:2; display:flex; gap:.45rem; align-items:center;
+  font-size:.95rem; color: var(--muted);
+}
+.recent-post-card__title{
+  grid-column:2; margin:.05rem 0 0;
+  font-size: clamp(1.05rem, .9rem + .6vw, 1.35rem);
+  line-height:1.28; font-weight:800;
+}
+.recent-post-card__excerpt{
+  grid-column:2; margin:.1rem 0 .35rem; color: var(--muted);
+}
+.recent-post-card__tags{
+  grid-column:2; display:flex; gap:.35rem; flex-wrap:wrap; margin:0 0 .25rem; padding:0; list-style:none;
+}
+.recent-post-card__footer{
+  grid-column:2;
+}
+
+/* Harmonisation des flèches/dots */
+.recent-posts .carousel__btn{
+  border:0;
+  background: color-mix(in oklab, var(--brand) 55%, var(--surface-2) 45%);
+  color:#ffffff;
+  box-shadow:0 14px 32px color-mix(in oklab, var(--brand) 45%, transparent);
+}
+.recent-posts .carousel__dot{
+  width:10px; height:10px;
+  background: color-mix(in oklab, var(--muted) 28%, transparent);
+}
+.recent-posts .carousel__dot.is-active{
+  width:28px; background: color-mix(in oklab, var(--brand) 80%, transparent);
+}
+
+/* Mobile: media optionnel => layout 1 colonne si pas d'image */
+@media (max-width: 680px){
+  .recent-post-card{
+    grid-template-columns: 1fr;
+  }
+  .recent-post-card__media{
+    grid-column:1; grid-row:1; width:100%; height:auto; aspect-ratio: 16/9;
+  }
+}
