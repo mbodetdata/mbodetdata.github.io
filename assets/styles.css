@@ -182,19 +182,6 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   font-size:clamp(.68rem, .6rem + .25vw, .85rem);
   color: color-mix(in oklab, #fff 72%, transparent);
 }
-.about-hero__badge{
-  display:inline-flex;
-  align-items:center;
-  gap:.4rem;
-  padding:.35rem .75rem;
-  border-radius:999px;
-  background:color-mix(in oklab, rgba(103,119,255,.75) 60%, rgba(13,19,43,.92) 40%);
-  color:#fff;
-  font-size:clamp(.78rem, .7rem + .3vw, .92rem);
-  font-weight:600;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.22);
-  width:fit-content;
-}
 .about-hero__title{
   font-size:clamp(2.35rem, 1.55rem + 2.8vw, 3.6rem);
   line-height:1.08;
@@ -212,28 +199,6 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 }
 .about-hero__text strong{
   color:#fff;
-}
-.about-hero__keywords{
-  display:flex;
-  flex-wrap:wrap;
-  gap: clamp(.6rem, 1vw, 1rem);
-  list-style:none;
-  margin: clamp(.4rem, .8vw, .9rem) 0 0;
-  padding:0;
-}
-.about-hero__keywords li{
-  display:flex;
-  align-items:center;
-  gap:.45rem;
-  padding:.55rem 1.05rem;
-  border-radius:999px;
-  background: color-mix(in oklab, rgba(58,86,193,.78) 60%, rgba(21,34,68,.92) 40%);
-  border:1px solid color-mix(in oklab, rgba(103,138,255,.5) 70%, transparent);
-  color:#fff;
-  font-weight:600;
-  letter-spacing:.01em;
-  font-size:clamp(.82rem, .75rem + .25vw, .96rem);
-  box-shadow: 0 10px 24px rgba(7,11,32,.42);
 }
 .about-hero__canvas::before{
   content:"";
@@ -386,12 +351,6 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   .about-hero__content{
     justify-self:center;
   }
-  .about-hero__badge{
-    justify-self:center;
-  }
-  .about-hero__keywords{
-    justify-content:center;
-  }
   .about-hero__media{
     justify-content:center;
   }
@@ -419,14 +378,6 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   }
   .about-stats-card__item{
     min-width:auto;
-  }
-  .about-hero__keywords{
-    justify-content:center;
-  }
-  .about-hero__keywords li{
-    flex:1 1 calc(50% - .6rem);
-    justify-content:center;
-    text-align:center;
   }
 }
 .lead{ font-size:var(--step-0); color:var(--muted); max-width:70ch; }
