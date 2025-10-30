@@ -17,6 +17,9 @@
             {% if services_data.section.tagline %}
               <span class="section-hook__tagline">{{ services_data.section.tagline }}</span>
             {% endif %}
+            {% if services_data.section.tagline_secondary %}
+              <span class="section-hook__tagline">{{ services_data.section.tagline_secondary }}</span>
+            {% endif %}
           </div>
         {% endif %}
         {% if services_data.section.intro or services_data.section.bullets %}
