@@ -62,32 +62,36 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   --g-brand: linear-gradient(135deg, var(--brand), var(--brand-2));
 }
 
-/* 1) Tokens LIGHT (harmonisés avec le DARK) */
+/* 1) Palette LIGHT (adoucie + contrastée AA) */
 :root[data-theme="light"]{
   color-scheme: light;
 
-  /* Couleurs de base */
-  --bg: #f6f9fc;
-  --fg: #0b1324;
-  --muted: #475569;
+  /* Neutres doux */
+  --bg: #f8fafc;              /* page */
+  --fg: #1f2937;              /* texte principal (slate-800) */
+  --muted: #64748b;           /* texte secondaire (slate-500/600) */
 
-  /* Surfaces (mêmes reliefs/hiérarchie que le dark, tonalité inversée) */
-  --surface-0: color-mix(in oklab, #ffffff 96%, var(--bg) 4%);
-  --surface-1: color-mix(in oklab, #ffffff 92%, #f1f6fb 8%);
-  --surface-2: color-mix(in oklab, #ffffff 86%, var(--brand) 14%);
+  /* Surfaces : claires, peu saturées, relief subtil */
+  --surface-0: #f9fbff;       /* toile (légèrement bleutée pour rester cohérent au brand) */
+  --surface-1: #ffffff;       /* cartes/nav */
+  --surface-2: #f2f5fa;       /* légère élévation */
 
-  /* Bordures & ombres adoucies */
-  --border: color-mix(in oklab, var(--fg) 12%, #ffffff 88%);
-  --shadow-sm: 0 6px 16px rgba(14,24,42,.08);
-  --shadow-md: 0 12px 26px rgba(14,24,42,.12);
-  --shadow-lg: 0 18px 40px rgba(14,24,42,.16);
+  /* Bordures et ombres très soft */
+  --border: #e6ebf2;          /* gris clair propre */
+  --shadow-sm: 0 6px 16px rgba(15,23,42,.06);
+  --shadow-md: 0 12px 26px rgba(15,23,42,.10);
+  --shadow-lg: 0 18px 40px rgba(15,23,42,.14);
 
-  /* Dégradé de marque identique */
-  --g-brand: linear-gradient(135deg, var(--brand), var(--brand-2));
+  /* Accents (même brand, mais dosés) */
+  --g-brand: linear-gradient(135deg,
+               color-mix(in oklab, var(--brand) 22%, #ffffff 78%),
+               color-mix(in oklab, var(--brand-2) 20%, #ffffff 80%));
+  --accent-soft: color-mix(in oklab, var(--brand) 14%, #ffffff 86%);
+  --accent-soft-2: color-mix(in oklab, var(--brand-2) 14%, #ffffff 86%);
 }
 
 
-/* 2) Remises à la bonne couleur (éviter le blanc forcé hérité du DARK) */
+/* 2) Remet la bonne couleur de texte sur les éléments qui étaient forcés en blanc (mais sans !important partout) */
 :root[data-theme="light"] .about-hero__title,
 :root[data-theme="light"] .about-hero__text strong,
 :root[data-theme="light"] .about-stats-card,
@@ -112,20 +116,17 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   color: var(--fg);
 }
 
-
-/* 4) Exceptions : éléments qui doivent rester blancs sur fonds colorés */
-:root[data-theme="light"] .btn--primary,
-:root[data-theme="light"] .nav-desktop .btn.cta,
-:root[data-theme="light"] .nav-list .btn.cta,
-:root[data-theme="light"] .pill--talend,
-:root[data-theme="light"] .pill--powerbi,
-:root[data-theme="light"] .ci-icon,
-:root[data-theme="light"] .cert-badge,
-:root[data-theme="light"] .ci-copy-btn.is-copied,
-:root[data-theme="light"] .service-cta__btn,
-:root[data-theme="light"] .service-cta__btn--data,
-:root[data-theme="light"] .service-cta__btn--bi {
-  color: #fff !important;
+/* 3) Composants : garder le layout, juste les teintes + ombres */
+:root[data-theme="light"] body{ background: var(--surface-0); color: var(--fg); }
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .service-card,
+:root[data-theme="light"] .methode,
+:root[data-theme="light"] .chip,
+:root[data-theme="light"] .btn{
+  background: var(--surface-1);
+  border-color: var(--border);
+  color: var(--fg);
+  box-shadow: var(--shadow-sm);
 }
 /* ========================= 2) TYPO / STRUCTURE ========================= */
 body{
@@ -2482,172 +2483,145 @@ body::before{
 }
 
 
-/* 5) Variantes LIGHT des blocs visuels (mêmes layouts, uniquement couleurs) */
+
+
+/* 5) Sections visuelles : fonds très pâles + bordures nettes */
+:root[data-theme="light"] .about-hero__canvas{
+  background: linear-gradient(125deg, var(--surface-1), var(--surface-1));
+}
+:root[data-theme="light"] .about-hero__canvas::before{
+  background:
+    radial-gradient(400px 260px at 12% 18%, rgba(102,119,255,.08), transparent 60%),
+    radial-gradient(420px 280px at 86% 24%, rgba(43,212,143,.08), transparent 62%);
+  opacity:.9;
+}
+:root[data-theme="light"] .about-hero__canvas::after{
+  background: linear-gradient(180deg, rgba(255,255,255,.65), transparent 45%);
+}
+
 :root[data-theme="light"] .about-stats-card{
-  background: linear-gradient(135deg,
-    color-mix(in oklab, var(--surface-1) 88%, #ffffff 12%),
-    color-mix(in oklab, var(--surface-0) 92%, #ffffff 8%)
-  );
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #ffffff, #fbfdff);
+  border:1px solid var(--border);
+  box-shadow: var(--shadow-sm);
   color: var(--fg);
 }
 
 :root[data-theme="light"] .about-photo-frame{
-  background: linear-gradient(135deg,
-    color-mix(in oklab, var(--brand) 28%, #ffffff 72%),
-    color-mix(in oklab, var(--brand-2) 26%, #ffffff 74%)
-  );
-  border:1px solid color-mix(in oklab, var(--border), #ffffff 40%);
+  background: linear-gradient(135deg, #ffffff, #f6f9ff);
+  border:1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+:root[data-theme="light"] .about-photo-slot{
+  background: linear-gradient(140deg, #ffffff, #f7fbff);
+  border:1px dashed color-mix(in oklab, var(--border) 70%, #ffffff 30%);
+}
+
+/* 6) Headers “Réalisations / Articles récents” — teinte de marque très légère */
+:root[data-theme="light"] .recent-works__head,
+:root[data-theme="light"] .recent-posts__head{
+  background: linear-gradient(150deg,
+              color-mix(in oklab, #ffffff 94%, var(--brand) 6%) 0%,
+              color-mix(in oklab, #ffffff 96%, var(--brand-2) 4%) 100%);
+  border-color: var(--border);
   box-shadow: var(--shadow-md);
 }
-:root[data-theme="light"] .about-photo-frame::after{
-  background: linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.08));
-  box-shadow: inset 0 1px 0 rgba(0,0,0,.03), 0 10px 20px rgba(26,34,54,.06);
+:root[data-theme="light"] .recent-works__title,
+:root[data-theme="light"] .recent-posts__title{
+  color: var(--fg);
+  -webkit-text-fill-color: var(--fg);
+  text-shadow:none;
+}
+:root[data-theme="light"] .recent-works__subtitle{
+  color: color-mix(in oklab, var(--muted) 85%, var(--brand) 15%);
 }
 
-:root[data-theme="light"] .about-photo-slot{
-  background: linear-gradient(140deg,
-    color-mix(in oklab, var(--brand) 12%, #ffffff 88%),
-    color-mix(in oklab, var(--brand-2) 14%, #ffffff 86%)
-  );
-  border:1px dashed color-mix(in oklab, var(--border), #ffffff 60%);
+/* 7) Carrousels : cartes et contrôles plus discrets */
+:root[data-theme="light"] .recent-works__carousel,
+:root[data-theme="light"] .recent-posts__carousel{
+  background: linear-gradient(160deg, #ffffff, var(--surface-2));
+  box-shadow: var(--shadow-md);
 }
-
-/* Hero fond clair */
-:root[data-theme="light"] .about-hero__canvas{
-  background: linear-gradient(125deg,
-    color-mix(in oklab, var(--brand) 28%, #ffffff 72%),
-    color-mix(in oklab, var(--brand-2) 24%, #ffffff 76%)
-  );
+:root[data-theme="light"] .project-card{
+  background: linear-gradient(165deg, #ffffff, #f7f9fd);
+  border:1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
-:root[data-theme="light"] .about-hero__canvas::before{
-  background:
-    radial-gradient(circle at 15% 20%, rgba(255,255,255,.42), transparent 55%),
-    radial-gradient(circle at 80% 28%, rgba(94,84,255,.16), transparent 60%),
-    radial-gradient(circle at 65% 82%, rgba(0,0,0,.06), transparent 72%);
-  mix-blend-mode: screen;
-  opacity:.95;
+:root[data-theme="light"] .project-card__title{ color: var(--fg); }
+:root[data-theme="light"] .project-card__stack li{
+  background: #f3f6fb;
+  color: color-mix(in oklab, var(--fg) 92%, var(--brand) 8%);
+  border:1px solid var(--border);
 }
-:root[data-theme="light"] .about-hero__canvas::after{
-  background: linear-gradient(180deg, rgba(255,255,255,.55), transparent 45%);
-  mix-blend-mode:soft-light;
-}
-
-/* 6) Améliorations de lisibilité (sans casser le layout)
-      >>> Ne pas toucher au display initial des composants */
-:root[data-theme="light"] .card,
-:root[data-theme="light"] .service-card,
-:root[data-theme="light"] .methode,
-:root[data-theme="light"] .chip,
-:root[data-theme="light"] .btn{
-  /* pas de display/align-items ici */
-  background: var(--surface-1);
-  border-color: var(--border);
+:root[data-theme="light"] .recent-works .carousel__btn,
+:root[data-theme="light"] .recent-posts .carousel__btn{
+  background: #ffffff;
+  border:1px solid var(--border);
   color: var(--fg);
   box-shadow: var(--shadow-sm);
 }
-
-/* Badges glass — contraste doux en LIGHT */
-:root[data-theme="light"] .badge-glass{
-  border-color: color-mix(in oklab, #405178 28%, #ffffff 72%);
-}
-
-/* Titres de section : pas d’ombre en clair */
-:root[data-theme="light"] .section h2{ text-shadow: none; }
-
-/* Overlay global plus léger en clair */
-:root[data-theme="light"] body::before{
-  opacity:.18;
-  mix-blend-mode:multiply;
-}
-
-/* Petits accents de surface pour casser le « tout blanc » */
-:root[data-theme="light"] .service-card,
-:root[data-theme="light"] .methode{
-  background: color-mix(in oklab, #ffffff 82%, #e6edf6 18%);
-}
-
-/* 7) Sections « Réalisations / Blog » — variantes LIGHT déjà prévues mais renforcées */
-:root[data-theme="light"] .recent-works__head{
-  background: linear-gradient(150deg,
-              color-mix(in oklab, #ffffff 86%, var(--brand) 14%) 0%,
-              color-mix(in oklab, #ffffff 92%, var(--brand-2) 8%) 100%);
-  border-color: color-mix(in oklab, var(--border), var(--brand) 48%);
-  box-shadow:0 16px 40px rgba(26,34,54,.16);
-}
-:root[data-theme="light"] .recent-works__title{
-  color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
-  -webkit-text-fill-color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
-  text-shadow:none;
-}
-:root[data-theme="light"] .recent-works__subtitle{ color: color-mix(in oklab, var(--muted) 78%, var(--brand) 22%); }
-
-:root[data-theme="light"] .recent-works__carousel{
-  background: linear-gradient(160deg, color-mix(in oklab, var(--surface-1) 82%, #ffffff 18%),
-                                        color-mix(in oklab, var(--surface-2) 66%, var(--brand) 22%));
-  box-shadow:0 22px 52px rgba(26,34,54,.18);
-}
-:root[data-theme="light"] .project-card{
-  background: linear-gradient(165deg, color-mix(in oklab, #ffffff 78%, var(--brand) 22%),
-                                        color-mix(in oklab, #ffffff 88%, var(--brand-2) 12%));
-  border-color: color-mix(in oklab, var(--border), var(--brand) 42%);
-  box-shadow:0 16px 38px rgba(26,34,54,.18);
-}
-:root[data-theme="light"] .project-card__title{ color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%); }
-:root[data-theme="light"] .project-card__stack li{
-  background: color-mix(in oklab, #ffffff 76%, var(--brand) 24%);
-  color: color-mix(in oklab, var(--fg) 92%, var(--brand) 8%);
-}
-
-/* Blog (section équivalente) */
-:root[data-theme="light"] .recent-posts__head{
-  background: linear-gradient(150deg,
-              color-mix(in oklab, #ffffff 86%, var(--brand) 14%) 0%,
-              color-mix(in oklab, #ffffff 92%, var(--brand-2) 8%) 100%);
-  border-color: color-mix(in oklab, var(--border), var(--brand) 46%);
-  box-shadow:0 16px 40px rgba(26,34,54,.16);
-}
-:root[data-theme="light"] .recent-posts__title{
-  color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
-  -webkit-text-fill-color: color-mix(in oklab, var(--fg) 96%, var(--brand) 4%);
-  text-shadow:none;
-}
-:root[data-theme="light"] .recent-posts__carousel{
-  background: linear-gradient(160deg, color-mix(in oklab, var(--surface-1) 82%, #ffffff 18%),
-                                        color-mix(in oklab, var(--surface-2) 64%, var(--brand) 20%));
-  box-shadow:0 22px 52px rgba(26,34,54,.18);
-}
-
-/* 8) Boutons/CTA en clair : lisibles, sans forcer le layout */
-:root[data-theme="light"] .btn{ background: var(--surface-1); border-color: var(--border); color: var(--fg); }
-:root[data-theme="light"] .btn--primary{
-  color:#fff; border:0; background:var(--g-brand);
-  box-shadow:0 12px 26px color-mix(in oklab, var(--brand) 30%, transparent);
-}
-
-/* 9) Carousels — flèches/dots visibles en LIGHT */
-:root[data-theme="light"] .recent-works .carousel__btn,
-:root[data-theme="light"] .recent-posts .carousel__btn{
-  background: color-mix(in oklab, var(--brand) 64%, #ffffff 36%);
-  color: var(--fg);
+:root[data-theme="light"] .recent-works .carousel__btn:hover,
+:root[data-theme="light"] .recent-posts .carousel__btn:hover{
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 :root[data-theme="light"] .recent-works .carousel__dot,
 :root[data-theme="light"] .recent-posts .carousel__dot{
-  background: color-mix(in oklab, var(--muted) 28%, transparent);
+  width:10px; height:10px; border-radius:999px; border:0;
+  background: color-mix(in oklab, var(--muted) 24%, transparent);
 }
 :root[data-theme="light"] .recent-works .carousel__dot.is-active,
 :root[data-theme="light"] .recent-posts .carousel__dot.is-active{
-  background: color-mix(in oklab, var(--brand) 80%, transparent);
+  width:26px;
+  background: color-mix(in oklab, var(--brand) 60%, #ffffff 40%);
 }
 
-/* 10) Petites corrections diverses */
-:root[data-theme="light"] .cert-tags .tag{
-  background:color-mix(in oklab, #94a3b8 10%, #fff 92%);
-  border:1px solid color-mix(in oklab, #94a3b8 22%, #fff 0%);
-  color:color-mix(in oklab, var(--fg) 88%, #000 0%);
+/* 8) Cartes services/info/features : surfaces neutres, lisibles */
+:root[data-theme="light"] .service-card{
+  background: linear-gradient(160deg, #ffffff, #f7f9fd);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
 }
-:root[data-theme="light"] .recent-works__eyebrow,
-:root[data-theme="light"] .realisations-hero__eyebrow{
-  color: color-mix(in oklab, var(--muted) 68%, var(--brand) 32%);
+:root[data-theme="light"] .methode{
+  background: linear-gradient(180deg, #ffffff, #f6f8fc);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 9) Chips/tags & petits éléments */
+:root[data-theme="light"] .chip{
+  background: #ffffff;
+  border:1px solid var(--border);
+}
+:root[data-theme="light"] .cert-tags .tag{
+  background:#f6f8fc;
+  border:1px solid var(--border);
+  color: var(--fg);
+}
+
+/* 10) En-tête collant et footer : sobriété */
+:root[data-theme="light"] .site-header{
+  background: color-mix(in oklab, var(--surface-0) 96%, #ffffff 4%);
+  border-bottom:1px solid var(--border);
+  box-shadow: none;
+}
+:root[data-theme="light"] .site-header.is-scrolled{
+  box-shadow: 0 8px 22px rgba(15,23,42,.08);
+}
+:root[data-theme="light"] .site-footer{
+  border-top:1px solid var(--border);
+  color: var(--muted);
+}
+
+/* 11) Alléger l’overlay de fond global en clair */
+:root[data-theme="light"] body::before{
+  opacity:.12;
+  mix-blend-mode: normal;
+}
+
+/* 12) Titres de section : on supprime l’effet “néon” en clair */
+:root[data-theme="light"] .section h2{
+  -webkit-text-fill-color: initial;
+  background: none;
+  color: var(--fg);
+  text-shadow: none;
 }
