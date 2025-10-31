@@ -1,14 +1,96 @@
-﻿<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=/about-me/">
-  <link rel="canonical" href="/about-me/">
-  <title>Redirection vers A propos</title>
-</head>
-<body>
-  <p>Redirection en cours vers la page <a href="/about-me/">A propos</a>...</p>
-</body>
-</html>
+﻿---
+layout: default
+title: "\u00c0 propos de Martial BODET \u2014 Consultant Talend \u0026 Power BI"
+description: "D\u00e9couvrez le parcours, la vision et les certifications de Martial BODET, consultant freelance Talend \u0026 Power BI, ainsi que les m\u00e9thodes appliqu\u00e9es sur chaque projet data."
+---
+
+{%- assign about_photo = site.author.photo | default: site.author.photo_url | default: '' -%}
+{%- assign about_copy = site.data.about.hero -%}
+
+<section id="about-person" class="section about-hero about-page" itemscope itemtype="https://schema.org/Person">
+  <meta itemprop="name" content="{{ site.author.prenom_nom }}">
+  <meta itemprop="jobTitle" content="{{ site.author.job_title }}">
+  <link itemprop="url" href="{{ page.url | absolute_url }}">
+  {% if site.author.email %}<meta itemprop="email" content="mailto:{{ site.author.email }}">{% endif %}
+  {% if site.author.phone %}<meta itemprop="telephone" content="{{ site.author.phone }}">{% endif %}
+  {% if site.author.enterprise %}
+    <span itemprop="worksFor" itemscope itemtype="https://schema.org/Organization" hidden>
+      <meta itemprop="name" content="{{ site.author.enterprise }}">
+    </span>
+  {% endif %}
+  {% if site.author.linkedin %}
+    <link itemprop="sameAs" href="{{ site.author.linkedin }}">
+  {% endif %}
+  {% if site.author.sameAs %}
+    {% for p in site.author.sameAs %}
+      <link itemprop="sameAs" href="{{ p }}">
+    {% endfor %}
+  {% endif %}
+  {% if site.author.description %}
+    <meta itemprop="description" content="{{ site.author.description }}">
+  {% elsif site.description %}
+    <meta itemprop="description" content="{{ site.description | strip_newlines }}">
+  {% endif %}
+
+  <div class="about-hero__canvas">
+    <div class="about-hero__inner">
+      <div class="about-hero__content">
+        {% if about_copy.eyebrow %}
+        <p class="about-hero__eyebrow">{{ about_copy.eyebrow }}</p>
+        {% endif %}
+        {% if about_copy.title %}
+        <h1 class="about-hero__title">{{ about_copy.title }}</h1>
+        {% endif %}
+        {% if about_copy.paragraphs %}
+          {% for paragraph in about_copy.paragraphs %}
+        <p class="about-hero__text">{{ paragraph }}</p>
+          {% endfor %}
+        {% endif %}
+        <div class="about-hero__actions">
+          <a class="btn btn--primary" href="/#contact">R\u00e9server un cr\u00e9neau</a>
+          <a class="btn btn--ghost" href="mailto:{{ site.author.email | default: 'contact@bmdata.fr' }}">contact@bmdata.fr</a>
+        </div>
+      </div>
+      <div class="about-hero__media">
+        <figure class="about-photo-frame">
+          {% if about_photo != '' %}
+            <div class="about-photo-slot has-photo">
+              <img src="{{ about_photo | relative_url }}"
+                   alt="Portrait de {{ site.author.prenom_nom }}">
+            </div>
+          {% else %}
+            <div class="about-photo-slot" role="img" aria-label="Espace r\u00e9serv\u00e9 pour la photo"></div>
+          {% endif %}
+          <figcaption class="sr-only">Martial BODET \u2014 consultant Talend &amp; Power BI</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include certs.html %}
+
+{% include methodes.html %}
+
+<section class="section cta-block" aria-labelledby="about-cta">
+  <div class="container">
+    <h2 id="about-cta">Envie de structurer vos donn\u00e9es ?</h2>
+    <p class="lead">
+      Parlons de vos sources, de vos enjeux de restitution ou de vos chantiers d'automatisation.
+      Je vous propose un plan d'action pragmatique et adapt\u00e9 \u00e0 votre rythme.
+    </p>
+    <div class="card cta-card">
+      <a class="btn btn--primary" href="/#contact">R\u00e9server un cr\u00e9neau</a>
+      <a class="btn btn--ghost" href="{{ site.author.linkedin | default: 'https://www.linkedin.com/in/martial-bodet/' }}">Me suivre sur LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
 
 
