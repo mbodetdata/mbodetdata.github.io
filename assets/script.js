@@ -231,7 +231,7 @@ const store = {
     scrollKey = id && sectionById.has(id) ? sectionById.get(id) : null;
     updateActive();
   }, { passive: true });
-)();
+})();
 
 /* ==================== 3) Thème (persist + système + label) ==================== */
 (() => {
