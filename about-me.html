@@ -1,11 +1,12 @@
----
+﻿---
 layout: default
-title: "À propos de Martial BODET — Consultant Talend & Power BI"
-description: "Découvrez le parcours, la vision et les certifications de Martial BODET, consultant freelance Talend & Power BI, ainsi que les méthodes appliquées sur chaque projet data."
+title: "Ã€ propos de Martial BODET â€” Consultant Talend & Power BI"
+description: "DÃ©couvrez le parcours, la vision et les certifications de Martial BODET, consultant freelance Talend & Power BI, ainsi que les mÃ©thodes appliquÃ©es sur chaque projet data."
 permalink: /about-me/
 ---
 
 {%- assign about_photo = site.author.photo | default: site.author.photo_url | default: '' -%}
+{%- assign about_copy = site.data.about.hero -%}
 
 <section id="about-person" class="section about-hero about-page" itemscope itemtype="https://schema.org/Person">
   <meta itemprop="name" content="{{ site.author.prenom_nom }}">
@@ -35,21 +36,17 @@ permalink: /about-me/
   <div class="about-hero__canvas">
     <div class="about-hero__inner">
       <div class="about-hero__content">
-        <p class="about-hero__eyebrow">Consultant Talend &amp; Power BI freelance</p>
-        <h1 class="about-hero__title">Bonjour, je suis Martial BODET</h1>
-        <p class="about-hero__text">
-          J’aide les organisations à fiabiliser leurs données, du flux Talend à la restitution Power&nbsp;BI.
-          Mon objectif : transformer vos sources hétérogènes en décisions claires, actionnables et partagées.
-        </p>
-        <p class="about-hero__text">
-          Avec une approche très terrain, je combine architecture, développement et gouvernance pour livrer
-          des pipelines automatisés, documentés et prêts à faire évoluer votre pilotage.
-        </p>
-        <ul class="about-hero__list">
-          <li>Conception de jobs Talend robustes et observables.</li>
-          <li>Modélisation Power&nbsp;BI orientée métier et gouvernance.</li>
-          <li>Accompagnement et transfert de compétences auprès des équipes.</li>
-        </ul>
+        {% if about_copy.eyebrow %}
+        <p class="about-hero__eyebrow">{{ about_copy.eyebrow }}</p>
+        {% endif %}
+        {% if about_copy.title %}
+        <h1 class="about-hero__title">{{ about_copy.title }}</h1>
+        {% endif %}
+        {% if about_copy.paragraphs %}
+          {% for paragraph in about_copy.paragraphs %}
+        <p class="about-hero__text">{{ paragraph }}</p>
+          {% endfor %}
+        {% endif %}
         <div class="about-hero__actions">
           <a class="btn btn--primary" href="/#contact">Discutons de votre projet</a>
           <a class="btn btn--ghost" href="mailto:{{ site.author.email | default: 'contact@bmdata.fr' }}">contact@bmdata.fr</a>
@@ -63,23 +60,9 @@ permalink: /about-me/
                    alt="Portrait de {{ site.author.prenom_nom }}">
             </div>
           {% else %}
-            <div class="about-photo-slot" role="img" aria-label="Espace réservé pour la photo"></div>
+            <div class="about-photo-slot" role="img" aria-label="Espace rÃ©servÃ© pour la photo"></div>
           {% endif %}
-          <figcaption class="sr-only">Martial BODET — consultant Talend &amp; Power BI</figcaption>
-          <div class="about-stats-card">
-            <div class="about-stats-card__item">
-              <span class="about-stats-card__value">Talend</span>
-              <span class="about-stats-card__label">Industrialisation ETL &amp; DataOps</span>
-            </div>
-            <div class="about-stats-card__item">
-              <span class="about-stats-card__value">Power&nbsp;BI</span>
-              <span class="about-stats-card__label">Modèles fiables &amp; storytelling</span>
-            </div>
-            <div class="about-stats-card__item">
-              <span class="about-stats-card__value">Conseil</span>
-              <span class="about-stats-card__label">Mentoring &amp; adoption métier</span>
-            </div>
-          </div>
+          <figcaption class="sr-only">Martial BODET â€” consultant Talend &amp; Power BI</figcaption>
         </figure>
       </div>
     </div>
@@ -92,14 +75,19 @@ permalink: /about-me/
 
 <section class="section cta-block" aria-labelledby="about-cta">
   <div class="container">
-    <h2 id="about-cta">Envie de structurer vos données ?</h2>
+    <h2 id="about-cta">Envie de structurer vos donnÃ©es ?</h2>
     <p class="lead">
-      Parlons de vos sources, de vos enjeux de restitution ou de vos chantiers d’automatisation.
-      Je vous propose un plan d’action pragmatique et adapté à votre rythme.
+      Parlons de vos sources, de vos enjeux de restitution ou de vos chantiers dâ€™automatisation.
+      Je vous propose un plan dâ€™action pragmatique et adaptÃ© Ã  votre rythme.
     </p>
     <div class="card cta-card">
-      <a class="btn btn--primary" href="/#contact">Réserver un créneau</a>
+      <a class="btn btn--primary" href="/#contact">RÃ©server un crÃ©neau</a>
       <a class="btn btn--ghost" href="{{ site.author.linkedin | default: 'https://www.linkedin.com/in/martial-bodet/' }}">Me suivre sur LinkedIn</a>
     </div>
   </div>
 </section>
+
+
+
+
+
