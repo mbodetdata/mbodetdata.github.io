@@ -2820,3 +2820,15 @@ body::before{
   color: var(--fg);
   text-shadow: none;
 }
+.contact-hub::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset: clamp(-1.2rem, -3vh, -2rem) clamp(-2rem, -6vw, -3.2rem);
+  border-radius: clamp(1.6rem, 3vw, 2.4rem);
+  background:
+    radial-gradient(120% 120% at 12% 0%, color-mix(in oklab, var(--brand) 22%, transparent) 0%, transparent 68%),
+    radial-gradient(120% 120% at 90% 100%, color-mix(in oklab, var(--brand-2) 18%, transparent) 0%, transparent 70%),
+    linear-gradient(150deg, color-mix(in oklab, var(--surface-1) 88%, transparent), color-mix(in oklab, var(--surface-2) 66%, var(--brand) 22%));
+  filter: saturate(1.02);
+}
