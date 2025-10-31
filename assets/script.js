@@ -81,12 +81,14 @@ const store = {
   navAllLinks.forEach((link) => {
     const key = link.dataset.nav;
     if (!key) return;
-    (navGroups[key] ||= []).push(link);
+    if (!navGroups[key]) navGroups[key] = [];
+    navGroups[key].push(link);
     try {
       const url = new URL(link.getAttribute('href'), window.location.origin);
       const path = normalizePath(url.pathname);
       const hash = url.hash ? url.hash.slice(1) : '';
-      (navMeta[key] ||= []).push({ path, hash });
+      if (!navMeta[key]) navMeta[key] = [];
+      navMeta[key].push({ path, hash });
     } catch {
       /* ignore malformed URLs */
     }
