@@ -2923,8 +2923,8 @@ body::before{
 }
 .talend-hero__metrics{
   display:grid;
-  gap: clamp(1.2rem, 2.2vw, 1.8rem);
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(1rem, 2vw, 1.6rem);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 .premium-metric{
   display:flex;
@@ -2934,10 +2934,10 @@ body::before{
   border-radius: clamp(1.1rem, 2vw, 1.6rem);
   border:1px solid color-mix(in oklab, var(--border), var(--brand) 28%);
   background: linear-gradient(170deg,
-              color-mix(in oklab, var(--surface-1) 96%, transparent) 10%,
-              color-mix(in oklab, var(--surface-2) 64%, var(--brand) 24%) 100%);
-  box-shadow: var(--shadow-md);
-  padding: clamp(1.7rem, 2.4vw, 2.3rem) clamp(1.6rem, 3vw, 2.6rem);
+              color-mix(in oklab, var(--surface-1) 96%, transparent) 6%,
+              color-mix(in oklab, var(--surface-2) 58%, var(--brand) 22%) 100%);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(1.4rem, 2vw, 1.9rem) clamp(1.5rem, 2.6vw, 2.3rem);
 }
 .premium-metric::after{
   content:none;

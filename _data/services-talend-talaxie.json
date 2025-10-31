@@ -1,139 +1,139 @@
-{
+﻿{
   "hero": {
     "eyebrow": "Talend & Talaxie",
     "title": "Talend & Talaxie : vos pipelines data sans friction",
-    "subtitle": "Je con\u00e7ois des flux fiables, observables et document\u00e9s, m\u00eame sans \u00e9quipe data d\u00e9di\u00e9e.",
+    "subtitle": "Je conçois des flux fiables, observables et documentés, même sans équipe data dédiée.",
     "bullets": [
-      "Automatisation Talend prioris\u00e9e par vos enjeux m\u00e9tier",
-      "Migration Talend vers Talaxie s\u00e9curis\u00e9e et sans rupture",
-      "Supervision et alertes compr\u00e9hensibles pour vos \u00e9quipes"
+      "Automatisation Talend priorisée par vos enjeux métier",
+      "Migration Talend vers Talaxie sécurisée et sans rupture",
+      "Supervision et alertes compréhensibles pour vos équipes"
     ],
-    "secondary": "Consultant Talend certifi\u00e9, je transforme vos jobs existants en un socle robuste et \u00e9volutif.",
+    "secondary": "Consultant Talend certifié, je transforme vos jobs existants en un socle robuste et évolutif.",
     "ctaLabel": "Planifier un diagnostic Talend",
     "ctaTracking": "talend_diagnostic",
     "ctaNote": "30 minutes pour cartographier vos flux et identifier vos quick wins.",
     "metrics": [
       {
         "value": "45+",
-        "label": "Flux critiques sous contr\u00f4le",
-        "tooltip": "Vos pipelines Talend tournent 24/7 avec alertes claires, reprises automatiques et journalisation lisible."
+        "label": "Flux critiques pilotés",
+        "tooltip": "Alertes 24/7, reprises automatiques et journalisation lisible pour vos équipes."
       },
       {
         "value": "120",
         "label": "Migration sans rupture",
-        "tooltip": "Bascule Talend \u2192 Talaxie s\u00e9curis\u00e9e par vagues, tests de non-r\u00e9gression automatis\u00e9s et plan de retour arri\u00e8re valid\u00e9."
+        "tooltip": "Bascule Talend → Talaxie par vagues, tests auto et plan de retour arrière validé."
       },
       {
         "value": "95%",
-        "label": "Incidents anticip\u00e9s",
-        "tooltip": "Vos \u00e9quipes sont pr\u00e9venues avant l'utilisateur final via des alertes SLA et des tableaux de bord compr\u00e9hensibles."
+        "label": "Incidents anticipés",
+        "tooltip": "Alertes SLA claires et dashboards métier pour prévenir l’utilisateur final."
       }
     ]
   },
   "valueProposition": {
     "eyebrow": "Ce que vous gagnez",
-    "title": "Une plateforme Talend qui sert votre op\u00e9rationnel",
-    "description": "Je combine expertise technique et p\u00e9dagogie pour rendre vos flux compr\u00e9hensibles, pilotables et pr\u00eats pour les prochaines \u00e9tapes de votre feuille de route data.",
+    "title": "Une plateforme Talend qui sert votre opérationnel",
+    "description": "Je combine expertise technique et pédagogie pour rendre vos flux compréhensibles, pilotables et prêts pour les prochaines étapes de votre feuille de route data.",
     "pillars": [
       {
         "title": "Automatisation sur-mesure",
-        "caption": "Des jobs Talend qui tournent et s'auto-documentent.",
+        "caption": "Des jobs Talend qui tournent et s’auto-documentent.",
         "bullets": [
-          "Orchestration par planning ou \u00e9v\u00e9nement avec reprise contr\u00f4l\u00e9e.",
-          "Tests qualit\u00e9 int\u00e9gr\u00e9s pour d\u00e9tecter l'anomalie avant l'utilisateur.",
-          "Tableaux de bord clairs pour suivre l'ex\u00e9cution en direct."
+          "Orchestration par planning ou événement avec reprise contrôlée.",
+          "Tests qualité intégrés pour détecter l’anomalie avant l’utilisateur.",
+          "Tableaux de bord clairs pour suivre l’exécution en direct."
         ],
-        "proof": "Exemple : industrialisation de 45 flux multi-sources avec reporting d'incidents en temps r\u00e9el."
+        "proof": "Exemple : industrialisation de 45 flux multi-sources avec reporting d’incidents en temps réel."
       },
       {
-        "title": "Migration Talaxie s\u00e9curis\u00e9e",
-        "caption": "La continuit\u00e9 de service est prioritaire.",
+        "title": "Migration Talaxie sécurisée",
+        "caption": "La continuité de service est prioritaire.",
         "bullets": [
           "Cartographie des jobs critiques et plan de migration par vagues.",
-          "Optimisation du code et automatisation des tests de non-r\u00e9gression.",
-          "Plan de bascule document\u00e9 avec points de contr\u00f4le et retour arri\u00e8re."
+          "Optimisation du code et automatisation des tests de non-régression.",
+          "Plan de bascule documenté avec points de contrôle et retour arrière."
         ],
         "proof": "Exemple : migration express de 120 jobs Talend Studio vers Talaxie en moins de 6 semaines."
       },
       {
-        "title": "Pilotage & observabilit\u00e9",
-        "caption": "Vous gardez la main, m\u00eame sans \u00e9quipe data d\u00e9di\u00e9e.",
+        "title": "Pilotage & observabilité",
+        "caption": "Vous gardez la main, même sans équipe data dédiée.",
         "bullets": [
-          "Alertes SLA traduites en langage m\u00e9tier (mail, Teams, Slack).",
-          "Dashboards Talaxie / Power BI pour suivre la sant\u00e9 des flux.",
-          "Handover et transfert de comp\u00e9tences pour vos \u00e9quipes."
+          "Alertes SLA traduites en langage métier (mail, Teams, Slack).",
+          "Dashboards Talaxie / Power BI pour suivre la santé des flux.",
+          "Handover et transfert de compétences pour vos équipes."
         ],
-        "proof": "Exemple : centre de supervision partag\u00e9 IT / m\u00e9tier avec score de sant\u00e9 consolid\u00e9."
+        "proof": "Exemple : centre de supervision partagé IT / métier avec score de santé consolidé."
       }
     ]
   },
   "journey": {
-    "title": "Votre parcours Talend & Talaxie",
-    "subtitle": "Une d\u00e9marche it\u00e9rative et p\u00e9dagogique pour avancer vite sans prendre de risques.",
+    "title": "Votre parcours Talend / Talaxie",
+    "subtitle": "Une démarche itérative et pédagogique pour avancer vite sans prendre de risques.",
     "steps": [
       {
         "label": "Phase 1",
         "title": "Audit flash & priorisation",
-        "description": "Analyse rapide de vos jobs, documentation des risques et identification des flux critiques.",
+        "description": "Analyse rapide de votre existant, documentation des risques et identification des flux critiques.",
         "deliverables": [
-          "Cartographie des flux et d\u00e9pendances",
-          "Tableau de priorisation partag\u00e9",
+          "Cartographie des données et dépendances",
+          "Tableau de priorisation partagé",
           "Feuille de route des quick wins"
         ]
       },
       {
         "label": "Phase 2",
         "title": "Delivery et industrialisation",
-        "description": "Refonte ou cr\u00e9ation de jobs, mise en place des contr\u00f4les et automatisation de la supervision.",
+        "description": "Refonte ou création de jobs, mise en place des contrôles et automatisation de la supervision.",
         "deliverables": [
-          "Jobs Talend/Talaxie pr\u00eats pour la prod",
-          "Tests et monitoring automatis\u00e9s",
-          "Dashboards et alertes configur\u00e9s"
+          "Jobs Talend/Talaxie prêts pour la prod",
+          "Tests et monitoring automatisés",
+          "Dashboards et alertes configurés"
         ]
       },
       {
         "label": "Phase 3",
-        "title": "Transmission & mont\u00e9e en autonomie",
-        "description": "Coaching, documentation et accompagnement \u00e0 chaud pour vos \u00e9quipes m\u00e9tier ou IT.",
+        "title": "Transmission & montée en autonomie",
+        "description": "Documentation et accompagnement à chaud pour vos équipes métier ou IT.",
         "deliverables": [
-          "Guides d'exploitation et checklists",
-          "Sessions de formation cibl\u00e9es",
+          "Guides d’exploitation et checklists",
+          "Sessions de formation ciblées",
           "Support post-bascule (optionnel)"
         ]
       }
     ]
   },
   "useCases": {
-    "title": "Cas clients r\u00e9cents",
+    "title": "Cas clients récents",
     "items": [
       {
         "sector": "Retail omnicanal",
         "title": "Migration Talend vers Talaxie sans interruption",
-        "context": "Bascule progressive de flux logistiques et CRM avec coordination IT/m\u00e9tier.",
+        "context": "Bascule progressive de flux logistiques et CRM avec coordination IT/métier.",
         "gains": [
           "0 interruption de service",
           "-30% de temps de supervision hebdomadaire",
-          "Alertes m\u00e9tiers d\u00e9ploy\u00e9es sur Teams"
+          "Alertes métiers déployées sur Teams"
         ]
       },
       {
         "sector": "Industrie",
-        "title": "Contr\u00f4les qualit\u00e9 automatis\u00e9s pour la production",
-        "context": "Renforcement des contr\u00f4les sur des donn\u00e9es critiques pour la conformit\u00e9.",
+        "title": "Contrôles qualité automatisés pour la production",
+        "context": "Renforcement des contrôles sur des données critiques pour la conformité.",
         "gains": [
-          "Division par 2 des anomalies signal\u00e9es",
-          "Tra\u00e7abilit\u00e9 compl\u00e8te des traitements",
-          "Restitution Power BI pour les \u00e9quipes terrain"
+          "Division par 2 des anomalies signalées",
+          "Traçabilité complète des traitements",
+          "Restitution Power BI pour les équipes terrain"
         ]
       },
       {
         "sector": "Services financiers",
         "title": "Supervision multi-cloud et SLA",
-        "context": "Orchestration Talend entre Azure Data Lake et applications m\u00e9tier sensibles.",
+        "context": "Orchestration Talend entre Azure Data Lake et applications métier sensibles.",
         "gains": [
-          "95% des incidents d\u00e9tect\u00e9s en amont",
-          "Matrice SLA partag\u00e9e IT / m\u00e9tier",
-          "Rapports consolid\u00e9s pour le COMEX"
+          "95% des incidents détectés en amont",
+          "Matrice SLA partagée IT / métier",
+          "Rapports consolidés pour le COMEX"
         ]
       }
     ]
@@ -142,19 +142,19 @@
     "title": "Pourquoi travailler ensemble ?",
     "items": [
       {
-        "title": "Approche p\u00e9dagogique",
-        "description": "J'explique chaque choix technique dans un langage orient\u00e9 m\u00e9tier, pour que vos d\u00e9cideurs puissent trancher en confiance."
+        "title": "Approche pédagogique",
+        "description": "J’explique chaque choix technique dans un langage orienté métier, pour que vos décideurs puissent trancher en confiance."
       },
       {
-        "title": "Livrables pr\u00eats \u00e0 l'emploi",
-        "description": "Dashboards, checklists et guides d'exploitation livr\u00e9s dans vos outils existants pour une adoption imm\u00e9diate."
+        "title": "Livrables prêts à l’emploi",
+        "description": "Dashboards, checklists et guides d’exploitation livrés dans vos outils existants pour une adoption immédiate."
       },
       {
-        "title": "Culture fiabilit\u00e9",
-        "description": "Monitoring, alertes, plan de reprise et suivis post-mise en production pour s\u00e9curiser vos op\u00e9rations."
+        "title": "Culture fiabilité",
+        "description": "Monitoring, alertes, plan de reprise et suivis post-mise en production pour sécuriser vos opérations."
       }
     ],
-    "stackTitle": "Stack & outils ma\u00eetris\u00e9s",
+    "stackTitle": "Stack & outils maîtrisés",
     "stack": [
       "Talend Studio & Talend Cloud",
       "Talaxie",
@@ -165,26 +165,26 @@
     ]
   },
   "cta": {
-    "title": "Pr\u00eat pour des flux Talend r\u00e9ellement pilotables ?",
+    "title": "Prêt pour des flux Talend réellement pilotables ?",
     "intro": "Je vous propose un diagnostic offert pour cartographier vos jobs, votre supervision et les gains rapides possibles.",
-    "linkText": "R\u00e9server un diagnostic Talend",
-    "footnote": "Sous 48h, vous repartez avec la feuille de route et les prochaines actions concr\u00e8tes.",
+    "linkText": "Réserver un diagnostic Talend",
+    "footnote": "Sous 48h, vous repartez avec la feuille de route et les prochaines actions concrètes.",
     "tracking": "talend_diagnostic"
   },
   "faq": {
-    "title": "Questions fr\u00e9quentes",
+    "title": "Questions fréquentes",
     "items": [
       {
         "question": "Pouvons-nous lancer une mission courte ?",
-        "answer": "Oui. Nous pouvons d\u00e9marrer par un audit flash ou la mise en production d'un flux critique afin de s\u00e9curiser un p\u00e9rim\u00e8tre r\u00e9duit avant d'\u00e9largir."
+        "answer": "Oui. Nous pouvons démarrer par un audit flash ou la mise en production d’un flux critique afin de sécuriser un périmètre réduit avant d’élargir."
       },
       {
-        "question": "Travaillez-vous avec nos \u00e9quipes internes ?",
-        "answer": "Je co-construis les solutions avec vos \u00e9quipes IT et m\u00e9tier, et j'organise des points p\u00e9dagogiques r\u00e9guliers pour garder tout le monde align\u00e9."
+        "question": "Travaillez-vous avec nos équipes internes ?",
+        "answer": "Je co-construis les solutions avec vos équipes IT et métier, et j’organise des points pédagogiques réguliers pour garder tout le monde aligné."
       },
       {
-        "question": "Quel accompagnement apr\u00e8s la mise en service ?",
-        "answer": "Je propose un support post-bascule optionnel : monitoring renforc\u00e9, coaching des \u00e9quipes et ajustements sur les alertes si n\u00e9cessaire."
+        "question": "Quel accompagnement après la mise en service ?",
+        "answer": "Je propose un support post-bascule optionnel : monitoring renforcé, coaching des équipes et ajustements sur les alertes si nécessaire."
       }
     ]
   }
