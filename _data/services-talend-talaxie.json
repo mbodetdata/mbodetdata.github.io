@@ -15,18 +15,18 @@
     "metrics": [
       {
         "value": "45+",
-        "label": "flux industrialis\u00e9s",
-        "tooltip": "Automatisations Talend / Talaxie maintenues en production 24/7."
+        "label": "Flux critiques sous contr\u00f4le",
+        "tooltip": "Vos pipelines Talend tournent 24/7 avec alertes claires, reprises automatiques et journalisation lisible."
       },
       {
         "value": "120",
-        "label": "jobs migr\u00e9s",
-        "tooltip": "Migration acc\u00e9l\u00e9r\u00e9e vers Talaxie avec plan de retour arri\u00e8re valid\u00e9."
+        "label": "Migration sans rupture",
+        "tooltip": "Bascule Talend \u2192 Talaxie s\u00e9curis\u00e9e par vagues, tests de non-r\u00e9gression automatis\u00e9s et plan de retour arri\u00e8re valid\u00e9."
       },
       {
         "value": "95%",
-        "label": "incidents anticip\u00e9s",
-        "tooltip": "Gr\u00e2ce \u00e0 des alertes SLA et des tableaux de bord clairs."
+        "label": "Incidents anticip\u00e9s",
+        "tooltip": "Vos \u00e9quipes sont pr\u00e9venues avant l'utilisateur final via des alertes SLA et des tableaux de bord compr\u00e9hensibles."
       }
     ]
   },
