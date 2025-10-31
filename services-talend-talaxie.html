@@ -1,131 +1,170 @@
 ---
 layout: default
-title: "Expert Talend / Talaxie – Automatisation, Migration ETL & Intégration de données"
-description: "Freelance Talend certifié : automatisation des flux, migration Talaxie, intégration de données fiables et observables."
+title: "Consultant Talend &amp; Talaxie &ndash; Automatisation, migration et supervision de flux"
+description: "Consultant Talend certifi&eacute; : automatisation de pipelines, migration Talaxie sans rupture, observabilit&eacute; et support m&eacute;tier."
 permalink: /services-talend-talaxie/
 ---
+{% assign talend = site.data.services-talend-talaxie %}
 
-<section class="section service-page service-hero" aria-labelledby="talend-hero-title">
-  <div class="service-container">
-    <h1 id="talend-hero-title">Services Talend &amp; Talaxie – automatiser, migrer, fiabiliser vos flux</h1>
-    <p class="lead">Je sécurise vos pipelines Talend et Talaxie pour que vos données circulent sans friction, avec des alertes claires et des indicateurs en temps réel.</p>
-    <p class="lead">Objectif : vous faire gagner du temps sur l’opérationnel, tout en assurant la traçabilité complète de chaque traitement.</p>
-  </div>
-</section>
-
-<section class="section service-page" aria-labelledby="talend-offers-title">
-  <div class="service-container">
-    <h2 id="talend-offers-title">Ce que je fais pour vous</h2>
-    <div class="grid cols-3 service-grid">
-      <article class="card feature-card" data-anim="fade-up">
-        <h3>Automatisation des flux ETL</h3>
-        <p class="feature-tagline">Je mets en production des jobs Talend qui tournent 24/7 avec contrôles qualité intégrés.</p>
-        <ul class="feature-list">
-          <li>Reprises automatiques et notifications ciblées.</li>
-          <li>Journalisation lisible pour vos équipes support.</li>
-          <li>Orchestration planifiée ou déclenchée sur événements.</li>
-        </ul>
-        <p class="feature-example">Ex. : industrialisation de 45 flux multi-sources avec reporting d’incidents en temps réel.</p>
+<section class="section service-page talend-hero" aria-labelledby="talend-hero-title">
+  <div class="service-container talend-hero__grid">
+    <div class="talend-hero__copy" data-anim="fade-up">
+      <p class="service-eyebrow">{{ talend.hero.eyebrow }}</p>
+      <h1 id="talend-hero-title">{{ talend.hero.title }}</h1>
+      <p class="lead">{{ talend.hero.subtitle }}</p>
+      <ul class="talend-hero__benefits" aria-label="B&eacute;n&eacute;fices principaux">
+        {% for item in talend.hero.bullets %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      <p class="talend-hero__note">{{ talend.hero.secondary }}</p>
+      <div class="talend-hero__cta">
+        <a class="btn btn--primary"
+           href="{{ site.author.cal_url | default: site.author.calendly_url }}"
+           data-track-click="{{ talend.hero.ctaTracking }}">
+          {{ talend.hero.ctaLabel }}
+        </a>
+        <p class="cta-caption">{{ talend.hero.ctaNote }}</p>
+      </div>
+    </div>
+    <div class="talend-hero__metrics" role="list">
+      {% for metric in talend.hero.metrics %}
+      <article class="premium-metric card" role="listitem" data-anim="fade-up">
+        <span class="metric-value">{{ metric.value }}</span>
+        <span class="metric-label">{{ metric.label }}</span>
+        {% if metric.tooltip %}<p class="metric-desc">{{ metric.tooltip }}</p>{% endif %}
       </article>
-
-      <article class="card feature-card" data-anim="fade-up">
-        <h3>Migration vers Talaxie sans rupture</h3>
-        <p class="feature-tagline">Je pilote la migration de vos jobs Talend Studio vers Talaxie en assurant la continuité de service.</p>
-        <ul class="feature-list">
-          <li>Cartographie de vos assets et priorisation des flux critiques.</li>
-          <li>Revue de code, optimisation et automatisation des tests.</li>
-          <li>Plan de bascule documenté avec points de retour arrière.</li>
-        </ul>
-        <p class="feature-example">Ex. : migration express de 120 jobs Talend avec recette métier automatisée par lots.</p>
-      </article>
-
-      <article class="card feature-card" data-anim="fade-up">
-        <h3>Observabilité &amp; supervision</h3>
-        <p class="feature-tagline">Je vous donne une vision claire de l’état de vos flux pour réagir avant l’utilisateur final.</p>
-        <ul class="feature-list">
-          <li>Tableaux de bord Talaxie, Prometheus ou Power BI.</li>
-          <li>Alertes SLA ajustées à vos enjeux métier.</li>
-          <li>Procédures d’escalade et transfert de compétences.</li>
-        </ul>
-        <p class="feature-example">Ex. : centre de supervision partagé IT / métier avec score de santé des flux.</p>
-      </article>
+      {% endfor %}
     </div>
   </div>
 </section>
 
-<section class="section service-page" aria-labelledby="talend-cases-title">
+<section class="section service-page premium-section" aria-labelledby="talend-value-title">
   <div class="service-container">
-    <h2 id="talend-cases-title">Exemples de réalisations</h2>
-    <ul class="case-list">
-      <li class="card case-card" data-anim="fade-up">
-        <h3>Migration Talend vers Talaxie pour un acteur retail</h3>
-        <p>Bascule complète des flux logistiques vers Talaxie, avec sauvegarde versionnée et monitoring centralisé.</p>
-        <p class="case-metric">Résultat : 0 interruption de service et 30 % de temps gagné sur la supervision.</p>
-      </li>
-      <li class="card case-card" data-anim="fade-up">
-        <h3>Automatisation des contrôles qualité pour un industriel</h3>
-        <p>Mise en place d’un framework de tests Talend avec restitution Power BI accessible aux équipes métiers.</p>
-        <p class="case-metric">Résultat : division par 2 des anomalies de données déclarées en comité décisionnel.</p>
-      </li>
-      <li class="card case-card" data-anim="fade-up">
-        <h3>Supervision multi-cloud</h3>
-        <p>Synchronisation entre Talend, Azure Data Lake et applications métier avec gestion des incidents par SLA.</p>
-        <p class="case-metric">Résultat : détection proactive de 95 % des incidents avant impact utilisateur.</p>
-      </li>
-    </ul>
+    <header class="premium-head" data-anim="fade-up">
+      <p class="service-eyebrow">{{ talend.valueProposition.eyebrow }}</p>
+      <h2 id="talend-value-title">{{ talend.valueProposition.title }}</h2>
+      <p>{{ talend.valueProposition.description }}</p>
+    </header>
+    <div class="premium-grid">
+      {% for pillar in talend.valueProposition.pillars %}
+      <article class="premium-card card" data-anim="fade-up">
+        <h3>{{ pillar.title }}</h3>
+        <p class="premium-card__caption">{{ pillar.caption }}</p>
+        <ul class="premium-card__list">
+          {% for bullet in pillar.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+        <p class="premium-card__proof">{{ pillar.proof }}</p>
+      </article>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
-<section class="section service-page" aria-labelledby="talend-method-title">
+<section class="section service-page journey-section" aria-labelledby="talend-journey-title">
   <div class="service-container">
-    <h2 id="talend-method-title">Ma méthode Talend / Talaxie</h2>
-    <ol class="steps-list">
-      <li data-anim="fade-up">
-        <h3>1. Audit ciblé</h3>
-        <p>Analyse de vos flux, priorisation des risques et recommandations immédiates.</p>
+    <header class="premium-head" data-anim="fade-up">
+      <h2 id="talend-journey-title">{{ talend.journey.title }}</h2>
+      <p>{{ talend.journey.subtitle }}</p>
+    </header>
+    <ol class="journey-steps">
+      {% for step in talend.journey.steps %}
+      <li class="journey-step card" data-anim="fade-up">
+        <div class="journey-step__label">{{ step.label }}</div>
+        <div class="journey-step__content">
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+          <ul class="journey-step__deliverables">
+            {% for deliverable in step.deliverables %}
+            <li>{{ deliverable }}</li>
+            {% endfor %}
+          </ul>
+        </div>
       </li>
-      <li data-anim="fade-up">
-        <h3>2. Développement &amp; optimisation</h3>
-        <p>Refonte ou création de jobs Talend, automatisation des contrôles et revue de performance.</p>
-      </li>
-      <li data-anim="fade-up">
-        <h3>3. Tests &amp; observabilité</h3>
-        <p>Mise en place de tests automatisés, tableaux de bord Talaxie et scénarios de reprise.</p>
-      </li>
-      <li data-anim="fade-up">
-        <h3>4. Handover &amp; montée en autonomie</h3>
-        <p>Transfert de compétences, documentation et accompagnement post-livraison.</p>
-      </li>
+      {% endfor %}
     </ol>
   </div>
 </section>
 
-<section class="section service-page" aria-labelledby="talend-why-title">
+<section class="section service-page usecases-section" aria-labelledby="talend-usecases-title">
   <div class="service-container">
-    <h2 id="talend-why-title">Pourquoi Talend / Talaxie ?</h2>
-    <div class="card info-card" data-anim="fade-up">
-      <p>Talend reste une référence pour orchestrer des flux complexes, tandis que Talaxie apporte la gouvernance cloud et l’observabilité en temps réel. Ensemble, ils offrent :</p>
-      <ul>
-        <li>Une intégration native avec vos applications métiers, ERP et CRM.</li>
-        <li>Des connecteurs prêts à l’emploi pour accélérer vos projets data.</li>
-        <li>Des pipelines industrialisables, traçables et scalables.</li>
-      </ul>
-      <p>Mon rôle : aligner ces briques techniques sur vos exigences opérationnelles.</p>
+    <header class="premium-head" data-anim="fade-up">
+      <h2 id="talend-usecases-title">{{ talend.useCases.title }}</h2>
+    </header>
+    <ul class="usecases-grid">
+      {% for item in talend.useCases.items %}
+      <li class="usecase-card card" data-anim="fade-up">
+        <div class="usecase-card__head">
+          <span class="usecase-card__sector">{{ item.sector }}</span>
+          <h3>{{ item.title }}</h3>
+        </div>
+        <p class="usecase-card__context">{{ item.context }}</p>
+        <ul class="usecase-card__gains">
+          {% for gain in item.gains %}
+          <li>{{ gain }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section service-page differentiators-section" aria-labelledby="talend-why-title">
+  <div class="service-container">
+    <div class="differentiators-grid">
+      <div class="differentiators-list card" data-anim="fade-up">
+        <h2 id="talend-why-title">{{ talend.differentiators.title }}</h2>
+        <ul>
+          {% for item in talend.differentiators.items %}
+          <li>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <aside class="stack-card card" data-anim="fade-up" aria-label="{{ talend.differentiators.stackTitle }}">
+        <h3>{{ talend.differentiators.stackTitle }}</h3>
+        <ul>
+          {% for tool in talend.differentiators.stack %}
+          <li>{{ tool }}</li>
+          {% endfor %}
+        </ul>
+      </aside>
     </div>
   </div>
 </section>
 
-<section class="section service-page cta-block" aria-labelledby="talend-cta-title">
+<section class="section service-page faq-section" aria-labelledby="talend-faq-title">
   <div class="service-container">
-    <h2 id="talend-cta-title" class="sr-only">Diagnostic Talend &amp; Talaxie</h2>
-    <div class="card cta-card" data-anim="fade-up">
-      <p>Vous souhaitez faire évoluer vos flux Talend ou sécuriser votre migration vers Talaxie ?</p>
-      <p>Planifions un diagnostic gratuit pour mesurer vos gains rapides.</p>
+    <header class="premium-head" data-anim="fade-up">
+      <h2 id="talend-faq-title">{{ talend.faq.title }}</h2>
+    </header>
+    <div class="faq-grid">
+      {% for item in talend.faq.items %}
+      <article class="faq-item card" data-anim="fade-up">
+        <h3>{{ item.question }}</h3>
+        <p>{{ item.answer }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section service-page cta-block premium-cta" aria-labelledby="talend-cta-title">
+  <div class="service-container">
+    <div class="premium-cta__card card" data-anim="fade-up">
+      <h2 id="talend-cta-title">{{ talend.cta.title }}</h2>
+      <p>{{ talend.cta.intro }}</p>
       <a class="btn btn--primary"
          href="{{ site.author.cal_url | default: site.author.calendly_url }}"
-         data-track-click="talend_diagnostic">
-        Planifier un diagnostic gratuit
+         data-track-click="{{ talend.cta.tracking }}">
+        {{ talend.cta.linkText }}
       </a>
+      <p class="cta-caption">{{ talend.cta.footnote }}</p>
     </div>
   </div>
 </section>
@@ -140,6 +179,6 @@ permalink: /services-talend-talaxie/
     "name": "{{ site.author.name | escape }}"
   },
   "areaServed": "France",
-  "description": "Automatisation des flux Talend, migration Talaxie et observabilité temps réel pour fiabiliser vos données."
+  "description": "Automatisation Talend, migration Talaxie et supervision temps r\u00e9el pour fiabiliser vos flux de donn\u00e9es."
 }
 </script>
