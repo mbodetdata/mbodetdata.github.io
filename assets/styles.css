@@ -131,6 +131,22 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   color: var(--fg);
   box-shadow: var(--shadow-sm);
 }
+:root[data-theme="light"] .contact-hub__card--booking,
+:root[data-theme="light"] .contact-hub__card--direct{
+  box-shadow: var(--shadow-lg);
+}
+:root[data-theme="light"] .contact-hub__card--booking{
+  border-color: color-mix(in oklab, var(--border), var(--brand) 30%);
+  background: linear-gradient(160deg,
+              color-mix(in oklab, #ffffff 92%, transparent) 8%,
+              color-mix(in oklab, var(--accent-soft) 74%, var(--brand) 26%) 100%);
+}
+:root[data-theme="light"] .contact-hub__card--direct{
+  border-color: color-mix(in oklab, var(--border), var(--brand-2) 28%);
+  background: linear-gradient(160deg,
+              color-mix(in oklab, #ffffff 92%, transparent) 8%,
+              color-mix(in oklab, var(--accent-soft-2) 72%, var(--brand-2) 28%) 100%);
+}
 /* ========================= 2) TYPO / STRUCTURE ========================= */
 body{
   font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
@@ -1437,11 +1453,50 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   gap: clamp(1.2rem, 2.6vw, 2.2rem);
 }
 .contact-hub__card{
+  position:relative;
   overflow:hidden;
+  border-radius: var(--radius-2);
+  isolation:isolate;
+  z-index:0;
+}
+.contact-hub__card > *{
+  position:relative;
+  z-index:1;
+}
+.contact-hub__card--booking,
+.contact-hub__card--direct{
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 38%);
+  box-shadow:0 22px 50px rgba(0,0,0,.45);
+  background: linear-gradient(158deg,
+              color-mix(in oklab, var(--surface-1) 86%, transparent) 5%,
+              color-mix(in oklab, var(--surface-2) 66%, var(--brand) 34%) 100%);
+}
+.contact-hub__card--booking::before,
+.contact-hub__card--direct::before{
+  content:"";
+  position:absolute;
+  inset:-48% 15% auto auto;
+  width:280px;
+  height:280px;
+  border-radius:999px;
+  background: var(--g-brand);
+  opacity:.32;
+  filter: blur(120px);
+  z-index:0;
 }
 .contact-hub__card--direct{
   display:flex;
   flex-direction:column;
+  gap:0;
+  background: linear-gradient(160deg,
+              color-mix(in oklab, var(--surface-1) 88%, transparent) 8%,
+              color-mix(in oklab, var(--surface-2) 68%, var(--brand-2) 32%) 100%);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand-2) 32%);
+}
+.contact-hub__card--direct::before{
+  inset:auto auto -52% -18%;
+  width:260px;
+  height:260px;
 }
 .contact-hub__cta{
   display:flex;
@@ -1522,6 +1577,47 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   .calendly-inline{ min-height: clamp(420px, 56vh, 720px); }
   #calendly-inline-embed{ min-height: clamp(460px, 58vh, 760px); }
 }
+
+/* ===== Contact hub specific refinements ===== */
+.contact-hub__card--booking .calendly-head{
+  padding: clamp(1rem, 1.1rem + .4vw, 1.35rem) clamp(1.1rem, 1.2rem + .6vw, 1.8rem);
+  border-bottom:1px solid color-mix(in oklab, var(--border), var(--brand) 28%);
+  background: color-mix(in oklab, var(--surface-1) 88%, transparent);
+  backdrop-filter: blur(12px);
+}
+.contact-hub__card--booking .calendly-inline{
+  margin:0;
+  background: color-mix(in oklab, var(--surface-1) 94%, transparent);
+  min-height: clamp(620px, 72vh, 960px);
+  border-radius: clamp(1rem, 1.6vw, 1.4rem);
+  overflow:hidden;
+}
+.contact-hub__card--booking #calendly-inline-embed{
+  margin:0;
+  min-height: clamp(640px, 74vh, 980px);
+  border-radius: clamp(1rem, 1.6vw, 1.4rem);
+  overflow:hidden;
+}
+.contact-hub__card--booking .calendly-inline iframe{
+  border-radius:0;
+}
+@media (min-width: 992px){
+  .contact-hub__card--booking .calendly-inline{ min-height: clamp(520px, 62vh, 840px); }
+  .contact-hub__card--booking #calendly-inline-embed{ min-height: clamp(540px, 64vh, 880px); }
+  .contact-hub__card--booking .calendly-inline iframe{
+    transform-origin: top center;
+    transform: scale(1.08);
+    width: calc(100% * 0.9259) !important;
+    height: calc(100% * 0.9259) !important;
+    margin-inline:auto;
+  }
+}
+.contact-hub__card--direct .contact-inline{
+  background: transparent;
+  padding: clamp(1.1rem, 1.2rem + .6vw, 1.8rem);
+  gap: clamp(1rem, 1.1rem + .4vw, 1.5rem);
+}
+.contact-hub__card--direct .contact-list{ gap: clamp(.9rem, 1rem + .3vw, 1.3rem); }
 
 /* Liste contacts + copy */
 .contact-inline{ text-align:left; display:grid; gap:1rem; padding: 1rem 1.25rem 1.25rem; }
