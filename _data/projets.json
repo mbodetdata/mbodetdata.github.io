@@ -2,7 +2,7 @@
   {
     "title": "UBA • Data & Automatisation (Azure)",
     "client": "UBA",
-    "date": "2022-06-01",
+    "date": "2025-10-01",
     "text-short": "Base Azure centralisée • Automatisations financières • Dashboard KPI",
     "link": "/portfolio/uba-data-automation.html",
     "details": {
@@ -23,7 +23,7 @@
   {
     "title": "EDI • WMS Reflex",
     "client": "ACSEP",
-    "date": "2023-07-01",
+    "date": "2025-07-01",
     "text-short": "Maintenance & optimisation EDI • Réduction des incidents",
     "link": "/portfolio/edi-wms-reflex.html",
     "details": {
@@ -44,7 +44,7 @@
   {
     "title": "EDI • TMS OneWorld",
     "client": "ACSEP / OneWorld",
-    "date": "2024-09-01",
+    "date": "2025-03-01",
     "text-short": "Mappings EDI • Intégration & envoi automatisé",
     "link": "/portfolio/edi-tms-oneworld.html",
     "details": {
@@ -65,7 +65,7 @@
   {
     "title": "EDI • WMS IzyPro (multi-clients)",
     "client": "ACSEP",
-    "date": "2023-06-01",
+    "date": "2025-09-01",
     "text-short": "Interconnexions EDI • Logs, archivage, alertes",
     "link": "/portfolio/edi-wms-izypro.html",
     "details": {
@@ -86,7 +86,7 @@
   {
     "title": "Reporting Change • iTop",
     "client": "ACSEP",
-    "date": "2025-02-01",
+    "date": "2025-09-01",
     "text-short": "Pilotage SLA & backlog • Rapport Power BI",
     "link": "/portfolio/reporting-change-itop.html",
     "details": {
@@ -107,7 +107,7 @@
   {
     "title": "Étude & migration • Talend OSS → Talaxie (interne)",
     "client": "ACSEP",
-    "date": "2024-10-01",
+    "date": "2025-09-01",
     "text-short": "Cadrage outillage • Architecture cible • Continuité des traitements",
     "link": "/portfolio/migration-talend-oss-talaxie.html",
     "details": {
@@ -128,7 +128,7 @@
   {
     "title": "DashboardTV • Opérations temps réel (interne)",
     "client": "ACSEP",
-    "date": "2024-01-01",
+    "date": "2025-06-01",
     "text-short": "iTop • ServiceNow • Avaya • Diffusion OptiSign",
     "link": "/portfolio/dashboardtv-operations.html",
     "details": {
