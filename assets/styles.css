@@ -1375,46 +1375,35 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 .contact-left{ min-width:0; }
 .contact-v2 .calendly-card{ max-width:760px; margin-left:0; margin-right:auto; }
 
-/* ===== Contact hub (nouvelle section alignée avec réalisations/blog) ===== */
+/* ===== Contact hub (style "Articles recents") ===== */
 .contact-hub__inner{
   max-width: var(--container);
-  margin-inline: auto;
-  display: grid;
+  margin-inline:auto;
+  display:grid;
   gap: clamp(1.6rem, 3vw, 2.6rem);
 }
 .contact-hub__head{
-  position: relative;
-  overflow: hidden;
-  max-width: min(720px, 100%);
-  display: grid;
-  gap: .85rem;
-  padding: clamp(1.2rem, 2.8vw, 2rem);
-  border-radius: clamp(1rem, 2vw, 1.6rem);
-  border: 1px solid color-mix(in oklab, var(--border), var(--brand) 42%);
+  position:relative;
+  max-width:min(720px, 100%);
+  display:grid;
+  gap:.8rem;
+  padding: clamp(1.1rem, 2.4vw, 1.8rem);
+  border-radius: clamp(1rem, 1.8vw, 1.5rem);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 40%);
   background: linear-gradient(150deg,
-              color-mix(in oklab, var(--surface-1) 88%, transparent) 6%,
-              color-mix(in oklab, var(--surface-2) 72%, var(--brand) 22%) 100%);
-  box-shadow: 0 20px 48px rgba(0,0,0,.34);
-}
-.contact-hub__head::before,
-.contact-hub__head::after{
-  content:"";
-  position:absolute;
-  border-radius:999px;
-  pointer-events:none;
-  opacity:.28;
-  background: var(--g-brand);
-  filter: blur(90px);
+              color-mix(in oklab, var(--surface-1) 86%, transparent) 6%,
+              color-mix(in oklab, var(--surface-2) 72%, var(--brand) 24%) 100%);
+  box-shadow:0 20px 48px rgba(0,0,0,.36);
+  overflow:hidden;
 }
 .contact-hub__head::before{
-  inset:auto auto -45% -30%;
-  width:260px;
-  height:260px;
-}
-.contact-hub__head::after{
-  inset:-40% -25% auto auto;
-  width:220px;
-  height:220px;
+  content:"";
+  position:absolute;
+  inset:18px 18px auto;
+  height:2px;
+  border-radius:999px;
+  background: var(--g-brand);
+  opacity:.58;
 }
 .contact-hub__eyebrow{
   margin:0;
@@ -1424,8 +1413,8 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   text-transform:uppercase;
   display:flex;
   align-items:center;
-  gap:.8rem;
-  color: color-mix(in oklab, #ffffff 86%, transparent);
+  gap:.6rem;
+  color: color-mix(in oklab, var(--muted) 52%, #ffffff 48%);
 }
 .contact-hub__eyebrow::after{
   content:"";
@@ -1433,85 +1422,62 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   max-width:160px;
   height:1px;
   border-radius:999px;
-  background: color-mix(in oklab, var(--brand) 54%, transparent);
+  background: color-mix(in oklab, var(--muted) 35%, var(--brand) 65%);
+  opacity:.45;
 }
 .contact-hub__title{
   margin:0;
-  font-size: clamp(1.85rem, 1.4rem + 1.3vw, 2.5rem);
+  font-size: clamp(1.8rem, 1.5rem + 1.2vw, 2.3rem);
   line-height:1.18;
   font-weight:800;
   color:#ffffff;
+  -webkit-text-fill-color:#ffffff;
+  text-shadow:0 0 26px color-mix(in oklab, var(--brand) 40%, transparent);
 }
 .contact-hub__subtitle{
   margin:0;
-  font-size: clamp(1rem, .96rem + .32vw, 1.18rem);
-  line-height:1.62;
-  color: color-mix(in oklab, #ffffff 82%, transparent);
+  max-width:56ch;
+  color: color-mix(in oklab, var(--muted) 76%, #ffffff 24%);
+  font-size: clamp(1.02rem, 1rem + .5vw, 1.22rem);
+  line-height:1.65;
+}
+.contact-hub__body{
+  display:grid;
+}
+.contact-hub__shell{
+  display:grid;
+  gap: clamp(1.1rem, 2.4vw, 1.8rem);
+  padding: clamp(1.05rem, 2vw, 1.6rem);
+  border-radius: clamp(1.2rem, 2.4vw, 2rem);
+  background: linear-gradient(160deg,
+              color-mix(in oklab, var(--surface-1) 82%, transparent),
+              color-mix(in oklab, var(--surface-2) 68%, var(--brand) 26%));
+  box-shadow:0 28px 60px rgba(0,0,0,.38);
+  overflow:hidden;
+}
+.contact-hub__shell-meta{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:.65rem;
+  color: color-mix(in oklab, var(--muted) 70%, #ffffff 30%);
+  font-size: clamp(.95rem, .92rem + .2vw, 1.05rem);
+}
+.contact-hub__shell-meta::before{
+  content:"";
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  background: color-mix(in oklab, var(--brand) 72%, var(--brand-2) 28%);
+  box-shadow:0 0 0 4px color-mix(in oklab, var(--brand) 18%, transparent);
+}
+.contact-hub__sla{
+  margin:0;
 }
 .contact-hub__layout{
   display:grid;
-  gap: clamp(1.2rem, 2.6vw, 2.2rem);
+  gap: clamp(1.4rem, 2.8vw, 2.4rem);
 }
-.contact-hub__card{
-  position:relative;
-  overflow:hidden;
-  border-radius: var(--radius-2);
-  isolation:isolate;
-  z-index:0;
-}
-.contact-hub__card > *{
-  position:relative;
-  z-index:1;
-}
-.contact-hub__card--booking,
-.contact-hub__card--direct{
-  border:1px solid color-mix(in oklab, var(--border), var(--brand) 38%);
-  box-shadow:0 22px 50px rgba(0,0,0,.45);
-  background: linear-gradient(158deg,
-              color-mix(in oklab, var(--surface-1) 86%, transparent) 5%,
-              color-mix(in oklab, var(--surface-2) 66%, var(--brand) 34%) 100%);
-}
-.contact-hub__card--booking::before,
-.contact-hub__card--direct::before{
-  content:"";
-  position:absolute;
-  inset:-48% 15% auto auto;
-  width:280px;
-  height:280px;
-  border-radius:999px;
-  background: var(--g-brand);
-  opacity:.32;
-  filter: blur(120px);
-  z-index:0;
-}
-.contact-hub__card--direct{
-  display:flex;
-  flex-direction:column;
-  gap:0;
-  background: linear-gradient(160deg,
-              color-mix(in oklab, var(--surface-1) 88%, transparent) 8%,
-              color-mix(in oklab, var(--surface-2) 68%, var(--brand-2) 32%) 100%);
-  border:1px solid color-mix(in oklab, var(--border), var(--brand-2) 32%);
-}
-.contact-hub__card--direct::before{
-  inset:auto auto -52% -18%;
-  width:260px;
-  height:260px;
-}
-.contact-hub__cta{
-  display:flex;
-  justify-content:center;
-  padding:1rem 1.25rem 1.5rem;
-}
-.contact-hub__note{
-  margin:0;
-  padding:0 1.25rem 1.5rem;
-  text-align:center;
-}
-.contact-hub__direct-title{
-  margin:0;
-}
-
 @media (min-width: 768px){
   .contact-hub__inner{
     gap: clamp(2rem, 2vw + 1.2rem, 2.8rem);
@@ -1520,17 +1486,12 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 @media (min-width: 992px){
   .contact-hub__layout{
     grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
-    align-items: stretch;
+    align-items:start;
   }
-  .contact-hub__card--booking{
-    align-self: stretch;
-  }
-  .contact-hub__card--direct{
-    max-width: 420px;
+  .contact-hub__shell{
+    padding: clamp(1.2rem, 1.6vw + 1rem, 2rem);
   }
 }
-
-
 .calendly-card{ padding:0; overflow:hidden; display:grid; grid-template-rows:auto 1fr auto; background:var(--surface-1); border:1px solid var(--border); border-radius:var(--radius-2); box-shadow:var(--shadow-lg); }
 .calendly-head{ display:flex; align-items:center; justify-content:space-between; gap:.8rem; padding:.9rem 1rem; border-bottom:1px solid var(--border); background: color-mix(in oklab, var(--surface-1) 95%, var(--surface-0) 5%); }
 .calendly-title{ display:flex; align-items:center; gap:.6rem; }
@@ -1574,8 +1535,55 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   .contact-v2 .note{ grid-area: note; margin: .5rem 0 0 0; padding: 0 0 .75rem 0; }
 
   /* Reduce calendar height on desktop */
-  .calendly-inline{ min-height: clamp(420px, 56vh, 720px); }
+.calendly-inline{ min-height: clamp(420px, 56vh, 720px); }
   #calendly-inline-embed{ min-height: clamp(460px, 58vh, 760px); }
+}
+
+.contact-hub__card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border-radius: clamp(1.1rem, 1.8vw, 1.6rem);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 36%);
+  background: linear-gradient(162deg,
+              color-mix(in oklab, var(--surface-1) 92%, transparent),
+              color-mix(in oklab, var(--surface-2) 64%, var(--brand) 26%));
+  box-shadow:0 22px 50px rgba(0,0,0,.38);
+}
+.contact-hub__card--booking{
+  gap:0;
+}
+.contact-hub__card--direct{
+  border-color: color-mix(in oklab, var(--border), var(--brand-2) 32%);
+  background: linear-gradient(162deg,
+              color-mix(in oklab, var(--surface-1) 92%, transparent),
+              color-mix(in oklab, var(--surface-2) 60%, var(--brand-2) 28%));
+}
+.contact-hub__cta{
+  display:flex;
+  justify-content:center;
+  padding: clamp(1rem, 1rem + .6vw, 1.5rem) clamp(1.1rem, 1.1rem + .6vw, 1.8rem) clamp(1.3rem, 1.4rem + .6vw, 1.9rem);
+}
+.contact-hub__direct-title{
+  margin:0;
+}
+
+:root[data-theme="light"] .contact-hub__card--booking,
+:root[data-theme="light"] .contact-hub__card--direct{
+  box-shadow: var(--shadow-lg);
+}
+:root[data-theme="light"] .contact-hub__card--booking{
+  border-color: color-mix(in oklab, var(--border), var(--brand) 30%);
+  background: linear-gradient(160deg,
+              color-mix(in oklab, #ffffff 92%, transparent) 8%,
+              color-mix(in oklab, var(--accent-soft) 74%, var(--brand) 26%) 100%);
+}
+:root[data-theme="light"] .contact-hub__card--direct{
+  border-color: color-mix(in oklab, var(--border), var(--brand-2) 28%);
+  background: linear-gradient(160deg,
+              color-mix(in oklab, #ffffff 92%, transparent) 8%,
+              color-mix(in oklab, var(--accent-soft-2) 72%, var(--brand-2) 28%) 100%);
 }
 
 /* ===== Contact hub specific refinements ===== */
@@ -1586,6 +1594,7 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   backdrop-filter: blur(12px);
 }
 .contact-hub__card--booking .calendly-inline{
+  flex:1 1 auto;
   margin:0;
   background: color-mix(in oklab, var(--surface-1) 94%, transparent);
   min-height: clamp(620px, 72vh, 960px);
@@ -1593,6 +1602,7 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   overflow:hidden;
 }
 .contact-hub__card--booking #calendly-inline-embed{
+  flex:1 1 auto;
   margin:0;
   min-height: clamp(640px, 74vh, 980px);
   border-radius: clamp(1rem, 1.6vw, 1.4rem);
@@ -1613,6 +1623,8 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   }
 }
 .contact-hub__card--direct .contact-inline{
+  flex:1 1 auto;
+  min-height:0;
   background: transparent;
   padding: clamp(1.1rem, 1.2rem + .6vw, 1.8rem);
   gap: clamp(1rem, 1.1rem + .4vw, 1.5rem);

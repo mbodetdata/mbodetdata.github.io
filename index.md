@@ -85,6 +85,9 @@ bandeau:
 <!-- SERVICES -->
 {% include services.html %}
 
+  <div class="services-footer">
+    <div class="services-divider" role="presentation"></div>
+  </div>
 
 <!-- REALISATIONS -->
 {% include realisation_recentes.html %}
