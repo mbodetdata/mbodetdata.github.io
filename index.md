@@ -11,6 +11,63 @@ bandeau:
 <h1 class="sr-only">Freelance Talend &amp; Power BI — Intégration de données ETL, DAX, tableaux de bord</h1>
 
 <!-- BANDEAU -->
+<style>
+  /* Ajustements specifiques au bandeau pour corriger l'image et la position des KPI */
+  #bandeau .about-hero__inner{
+    align-items:center;
+  }
+  #bandeau .about-photo-frame{
+    aspect-ratio:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    gap:clamp(1rem, 3vw, 1.8rem);
+    padding:clamp(1rem, 4vw, 1.8rem);
+  }
+  #bandeau .about-photo-frame::after{
+    display:none;
+  }
+  #bandeau .about-photo-slot{
+    flex:1 1 auto;
+    min-height:0;
+  }
+  #bandeau .about-photo-slot img{
+    height:auto;
+    width:100%;
+    object-fit:cover;
+  }
+  #bandeau .about-stats-card{
+    position:static;
+    left:auto;
+    bottom:auto;
+    transform:none;
+    margin:0;
+    width:100%;
+    gap:clamp(.8rem, 3vw, 1.2rem);
+  }
+  #bandeau .about-stats-card__item{
+    max-width:none;
+  }
+  @media (max-width: 720px){
+    #bandeau .about-hero__inner{
+      align-items:stretch;
+    }
+    #bandeau .about-photo-frame{
+      width:min(360px, 100%);
+      margin-inline:auto;
+    }
+    #bandeau .about-stats-card{
+      align-items:stretch;
+      text-align:left;
+    }
+  }
+  @media (min-width: 721px){
+    #bandeau .about-stats-card{
+      flex-direction:row;
+      justify-content:space-between;
+    }
+  }
+</style>
 {% include bandeau.html %}
 
 <!-- SERVICES -->
