@@ -1,103 +1,109 @@
-<section id="contact" class="section contact-v2" aria-labelledby="contact-title"
+<section id="contact" class="section contact-hub" aria-labelledby="contact-title"
          itemscope itemtype="https://schema.org/Person">
-  <!-- rattache ce bloc à la personne du site -->
+  <!-- rattache ce bloc &agrave; la personne du site -->
   <meta itemprop="name" content="{{ site.author.prenom_nom | default: site.author.name }}">
   <link itemprop="url" href="{{ site.author.url | default: site.url | default: site.github.url }}">
   {% if site.author.linkedin %}<link itemprop="sameAs" href="{{ site.author.linkedin }}">{% endif %}
 
-  <header class="section-head">
-    <h2 id="contact-title">Contact</h2>
-    <p class="lead">Planifions un créneau pour parler <strong>ETL Talend</strong> &amp; <strong>dashboards Power&nbsp;BI</strong>.</p>
-  </header>
+  <div class="contact-hub__inner">
+    <header class="contact-hub__head">
+      <p class="contact-hub__eyebrow">Contact</p>
+      <h2 id="contact-title" class="contact-hub__title">R&eacute;server un &eacute;change (30&nbsp;min)</h2>
+      <p class="contact-hub__subtitle">
+        Planifions un &eacute;change pour analyser vos enjeux data et explorer comment Talend et Power BI peuvent acc&eacute;l&eacute;rer vos d&eacute;cisions et simplifier votre pilotage.
+      </p>
+    </header>
 
-  <div class="card calendly-card" role="region" aria-label="Réservation &amp; contacts">
-    <div class="calendly-head">
-      <div class="calendly-title">
-        <span class="calendly-dot" aria-hidden="true"></span>
-        <h3 class="calendly-h3">Réserver un créneau (30&nbsp;min)</h3>
-      </div>
-    </div>
+    <div class="contact-hub__layout">
+      <article class="card calendly-card contact-hub__card contact-hub__card--booking"
+               role="region" aria-label="R&eacute;servation et agenda">
+        <div class="calendly-head">
+          <div class="calendly-title">
+            <span class="calendly-dot" aria-hidden="true"></span>
+            <h3 class="calendly-h3">R&eacute;server un cr&eacute;neau (30&nbsp;min)</h3>
+          </div>
+        </div>
 
-    <!-- Microsoft Booking INLINE (desktop) -->
-    <div id="calendly-inline-embed"
-         class="calendly-inline"
-         aria-live="polite"
-         data-booking-url="{{ site.author.cal_url | default: site.author.calendly_url }}">
-      <div class="calendly-skeleton" aria-hidden="true">
-        <p class="muted" style="margin:0">Chargement du calendrier&hellip;</p>
-      </div>
-      <iframe
-        src="{{ site.author.cal_url | default: site.author.calendly_url }}"
-        title="R&eacute;server un cr&eacute;neau"
-        loading="lazy"
-        allowtransparency="true"></iframe>
-    </div>
+        <div id="calendly-inline-embed"
+             class="calendly-inline"
+             aria-live="polite"
+             data-booking-url="{{ site.author.cal_url | default: site.author.calendly_url }}">
+          <div class="calendly-skeleton" aria-hidden="true">
+            <p class="muted" style="margin:0">Chargement du calendrier&hellip;</p>
+          </div>
+          <iframe
+            src="{{ site.author.cal_url | default: site.author.calendly_url }}"
+            title="R&eacute;server un cr&eacute;neau"
+            loading="lazy"
+            allowtransparency="true"></iframe>
+        </div>
 
-    <!-- CTA principal (popup - surtout utile sur mobile) -->
-    <div class="actions actions--center">
-      <button class="btn cta"
-              type="button"
-              data-booking-open="modal"
-              aria-label="Ouvrir le calendrier de r&eacute;servation">
-        &#x1F4C5; Prendre rendez-vous
-      </button>
-    </div>
-
-    <hr class="soft-sep">
-
-    <!-- Contacts secondaires -->
-    <div class="contact-inline" aria-label="Contacts directs"
-         itemprop="contactPoint" itemscope itemtype="https://schema.org/ContactPoint">
-      <meta itemprop="contactType" content="customer support">
-      <meta itemprop="areaServed" content="FR">
-      <meta itemprop="availableLanguage" content="fr-FR">
-      <link itemprop="url" href="{{ site.author.cal_url | default: site.author.calendly_url }}">
-
-      <p class="lead lead--tight">Ou contactez-moi directement :</p>
-
-      <ul class="contact-list" role="list">
-        <li class="contact-row">
-          <a class="contact-item" href="{{ site.author.linkedin }}" target="_blank" rel="noopener nofollow">
-            <span class="ci-icon badge-glass" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2.05h.05c.53-1 1.82-2.05 3.75-2.05 4.01 0 4.75 2.64 4.75 6.08V23h-4v-5.28c0-1.26-.02-2.89-1.76-2.89-1.76 0-2.03 1.37-2.03 2.79V23h-4V8z" fill="currentColor" />
-              </svg>
-            </span>
-            <span class="ci-body">
-              <strong>LinkedIn</strong>
-              <small class="muted">Profil professionnel</small>
-            </span>
-            <span class="ci-cta" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </span>
-          </a>
-        </li>
-
-        <li class="contact-row">
-          <a class="contact-item" href="mailto:{{ site.author.email }}" itemprop="email">
-            <span class="ci-icon badge-glass" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                <path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2" />
-                <path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2" />
-              </svg>
-            </span>
-            <span class="ci-body">
-              <strong>{{ site.author.email }}</strong>
-              <small class="muted">Contact direct</small>
-            </span>
-          </a>
-          <button class="ci-copy-btn" type="button"
-                  data-copy="{{ site.author.email }}"
-                  aria-label="Copier l’adresse e-mail">
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M16 1H6a2 2 0 0 0-2 2v12h2V3h10V1zm3 4H10a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H10V7h9v14z"/></svg>
+        <div class="actions actions--center contact-hub__cta">
+          <button class="btn cta"
+                  type="button"
+                  data-booking-open="modal"
+                  aria-label="Ouvrir le calendrier de r&eacute;servation">
+            &#x1F4C5; Prendre rendez-vous
           </button>
-        </li>
-      </ul>
-    </div>
+        </div>
 
-    <p class="note muted note--foot">Réponse sous 24–48&nbsp;h ouvrées.</p>
+        <p class="note muted contact-hub__note">R&eacute;ponse sous 24-48&nbsp;h ouvr&eacute;es.</p>
+      </article>
+
+      <aside class="card contact-hub__card contact-hub__card--direct contact-sticky"
+             aria-label="Contacts directs"
+             itemprop="contactPoint" itemscope itemtype="https://schema.org/ContactPoint">
+        <meta itemprop="contactType" content="customer support">
+        <meta itemprop="areaServed" content="FR">
+        <meta itemprop="availableLanguage" content="fr-FR">
+        <link itemprop="url" href="{{ site.author.cal_url | default: site.author.calendly_url }}">
+
+        <div class="contact-inline">
+          <p class="lead lead--tight contact-hub__direct-title">Ou contactez-moi directement :</p>
+
+          <ul class="contact-list" role="list">
+            <li class="contact-row">
+              <a class="contact-item" href="{{ site.author.linkedin }}" target="_blank" rel="noopener nofollow">
+                <span class="ci-icon badge-glass" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                    <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2.05h.05c.53-1 1.82-2.05 3.75-2.05 4.01 0 4.75 2.64 4.75 6.08V23h-4v-5.28c0-1.26-.02-2.89-1.76-2.89-1.76 0-2.03 1.37-2.03 2.79V23h-4V8z" fill="currentColor" />
+                  </svg>
+                </span>
+                <span class="ci-body">
+                  <strong>LinkedIn</strong>
+                  <small class="muted">Profil professionnel</small>
+                </span>
+                <span class="ci-cta" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                    <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+            </li>
+
+            <li class="contact-row">
+              <a class="contact-item" href="mailto:{{ site.author.email }}" itemprop="email">
+                <span class="ci-icon badge-glass" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                    <path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2" />
+                  </svg>
+                </span>
+                <span class="ci-body">
+                  <strong>{{ site.author.email }}</strong>
+                  <small class="muted">Contact direct</small>
+                </span>
+              </a>
+              <button class="ci-copy-btn" type="button"
+                      data-copy="{{ site.author.email }}"
+                      aria-label="Copier l'adresse e-mail">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M16 1H6a2 2 0 0 0-2 2v12h2V3h10V1zm3 4H10a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H10V7h9v14z"/></svg>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>

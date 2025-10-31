@@ -389,7 +389,7 @@ const Modal = (() => {
     };
 
     const inlineContainer = document.getElementById('calendly-inline-embed');
-    const actionsRow = document.querySelector('.contact-v2 .actions--center');
+    const actionsRow = document.querySelector('.contact-hub .actions--center');
     const mqDesk = window.matchMedia ? window.matchMedia('(min-width: 992px)') : { matches: false, addEventListener(){}, removeEventListener(){} };
 
     const toggleActions = () => {
