@@ -45,6 +45,10 @@ bandeau:
     height:auto;
     object-fit:cover;
   }
+  #bandeau .about-hero__canvas::before,
+  #bandeau .about-hero__canvas::after{
+    content:none;
+  }
   #bandeau .about-stats-card{
     width:100%;
     max-width:min(560px, 100%);
