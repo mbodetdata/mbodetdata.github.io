@@ -71,8 +71,16 @@ const store = {
   const setActive = (id) => {
     navLinks.forEach(a => { a.classList.remove('is-active'); a.removeAttribute('aria-current'); });
     const link = byId(id);
-    if (link) { link.classList.add('is-active'); link.setAttribute('aria-current','true'); }
+    if (link) { link.classList.add('is-active'); link.setAttribute('aria-current','page'); }
   };
+
+  const syncWithHash = () => {
+    const id = (window.location.hash || '').slice(1);
+    if (!id) return;
+    if (byId(id)) setActive(id);
+  };
+  syncWithHash();
+  window.addEventListener('hashchange', syncWithHash, { passive: true });
 
   // Accent bar color shift on nav hover/focus
   const applyAccent = (hot) => {

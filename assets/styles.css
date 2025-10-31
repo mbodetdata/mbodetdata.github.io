@@ -569,12 +569,19 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 }
 .nav-list .ni{ display:none; }
 .nav-list a:hover{ border-color:color-mix(in oklab,var(--border),var(--brand) 30%); box-shadow:var(--shadow-md); }
+.nav-list a[aria-current="page"]{
+  border-color:color-mix(in oklab,var(--border),var(--brand) 45%);
+  box-shadow:var(--shadow-md);
+  color:var(--accent);
+  font-weight:600;
+}
 
 .nav-desktop{ display:none; flex:1 1 auto; min-width:0; }
 .nav-inline{ display:flex; align-items:center; gap:.6rem; white-space:nowrap; list-style:none; margin:0; padding:0 .5rem; }
 .nav-inline .chip::after{content:"";position:absolute;left:12px;right:12px;bottom:6px;height:2px;background:linear-gradient(90deg, transparent, var(--brand), transparent);transform:scaleX(0);transform-origin:50% 50%;transition:transform .2s ease;}
 .nav-inline .chip:hover::after{transform:scaleX(1);}
-.nav-inline .chip.is-active{border-color:color-mix(in oklab, var(--border), var(--brand) 40%);box-shadow:0 6px 16px color-mix(in oklab, var(--brand) 24%, transparent);}
+.nav-inline .chip.is-active,
+.nav-inline .chip[aria-current="page"]{border-color:color-mix(in oklab, var(--border), var(--brand) 40%);box-shadow:0 6px 16px color-mix(in oklab, var(--brand) 24%, transparent);}
 @media (min-width:992px){
   .nav-toggle{ display:none; }
   .nav-desktop{ display:block; }
@@ -1879,7 +1886,8 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 .site-header.is-scrolled{ -webkit-backdrop-filter:saturate(1.06) blur(14px); backdrop-filter:saturate(1.06) blur(14px); box-shadow:0 10px 30px rgba(0,0,0,.28); }
 .nav-inline .chip::after{ content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg, transparent, var(--brand), transparent); transform:scaleX(0); transform-origin:50% 50%; transition:transform .2s ease; }
 .nav-inline .chip:hover::after{ transform:scaleX(1); }
-.nav-inline .chip.is-active{ border-color: color-mix(in oklab, var(--border), var(--brand) 40%); box-shadow: 0 6px 16px color-mix(in oklab, var(--brand) 24%, transparent); }
+.nav-inline .chip.is-active,
+.nav-inline .chip[aria-current="page"]{ border-color: color-mix(in oklab, var(--border), var(--brand) 40%); box-shadow: 0 6px 16px color-mix(in oklab, var(--brand) 24%, transparent); }
 .nav-inline .chip .ni{ width:16px; height:16px; opacity:.9; }
 
 @keyframes header-in{ from{ transform:translateY(-8px); opacity:0 } to{ transform:none; opacity:1 } }

@@ -53,7 +53,8 @@
         </li>
 
         <li>
-          <a class="chip" href="{{ '//#services/' | relative_url }}" itemprop="url"
+          <a class="chip" href="{{ '/#services' | relative_url }}" itemprop="url"
+             {% if page.url contains '/services-' %}aria-current="page"{% endif %}
              aria-label="Aller vers la page Services">
             <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             Services
