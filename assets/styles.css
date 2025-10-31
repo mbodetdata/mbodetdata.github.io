@@ -260,6 +260,10 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   pointer-events:none;
   z-index: 0;
 }
+.about-hero__canvas--about::before,
+.about-hero__canvas--about::after{
+  content:none;
+}
 .about-hero__media{
   position: relative;
   z-index: 1;
