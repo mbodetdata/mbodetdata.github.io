@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Freelance Talend & Power BI (PowerBI) — ETL, DAX & Dashboards
-description: Intégrations de données, pipelines ETL Talend, modèles DAX et dashboards Power BI performants. Disponibilité rapide, résultats mesurables.
+title: BMData - Consultant Talend & Power BI freelance
+description: Integrations de donnees, pipelines ETL Talend, modeles DAX et dashboards Power BI performants. Disponibilite rapide, resultats mesurables.
 permalink: /
 bandeau:
   photo: "/assets/img/bm-hero.webp"
@@ -12,9 +12,17 @@ bandeau:
 
 <!-- BANDEAU -->
 <style>
-  /* Ajustements specifiques au bandeau pour corriger l'image et la position des KPI */
   #bandeau .about-hero__inner{
-    align-items:center;
+    align-items:start;
+  }
+  #bandeau .about-hero__content{
+    width:100%;
+    max-width:min(620px, 100%);
+    justify-items:start;
+    gap:clamp(.8rem, 2.4vw, 1.4rem);
+  }
+  #bandeau .about-hero__content p{
+    text-align:left;
   }
   #bandeau .about-photo-frame{
     aspect-ratio:auto;
@@ -22,7 +30,8 @@ bandeau:
     flex-direction:column;
     justify-content:flex-start;
     gap:clamp(1rem, 3vw, 1.8rem);
-    padding:clamp(1rem, 4vw, 1.8rem);
+    padding:clamp(1rem, 4vw, 1.9rem);
+    max-width:min(480px, 100%);
   }
   #bandeau .about-photo-frame::after{
     display:none;
@@ -32,18 +41,14 @@ bandeau:
     min-height:0;
   }
   #bandeau .about-photo-slot img{
-    height:auto;
     width:100%;
+    height:auto;
     object-fit:cover;
   }
   #bandeau .about-stats-card{
-    position:static;
-    left:auto;
-    bottom:auto;
-    transform:none;
-    margin:0;
     width:100%;
-    gap:clamp(.8rem, 3vw, 1.2rem);
+    max-width:min(560px, 100%);
+    margin-top:clamp(1.2rem, 4vw, 2rem);
   }
   #bandeau .about-stats-card__item{
     max-width:none;
@@ -53,18 +58,25 @@ bandeau:
       align-items:stretch;
     }
     #bandeau .about-photo-frame{
-      width:min(360px, 100%);
       margin-inline:auto;
+      max-width:min(360px, 100%);
+    }
+    #bandeau .about-hero__content{
+      text-align:left;
+      justify-items:start;
     }
     #bandeau .about-stats-card{
+      flex-direction:column;
       align-items:stretch;
-      text-align:left;
+      gap:clamp(.9rem, 4vw, 1.4rem);
     }
   }
   @media (min-width: 721px){
+    #bandeau .about-hero__inner{
+      align-items:start;
+    }
     #bandeau .about-stats-card{
-      flex-direction:row;
-      justify-content:space-between;
+      gap:clamp(.9rem, 2vw, 1.6rem);
     }
   }
 </style>
@@ -167,3 +179,4 @@ bandeau:
   ]
 }
 </script>
+
