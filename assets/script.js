@@ -61,78 +61,175 @@ const store = {
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // Active link highlight by section in view (robuste)
-  const ids = ['certifications','methodes','services','realisation','contact'];
-  const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
-  if (!sections.length) return;
+  const navAllLinks = Array.from(header.querySelectorAll('a[data-nav]'));
+  if (!navAllLinks.length) return;
 
-  const navLinks = Array.from(document.querySelectorAll('.nav-desktop .nav-inline a'));
-  const byId = (id) => navLinks.find(a => (a.getAttribute('href') || '').includes('#'+id));
-  const setActive = (id) => {
-    navLinks.forEach(a => { a.classList.remove('is-active'); a.removeAttribute('aria-current'); });
-    const link = byId(id);
-    if (link) { link.classList.add('is-active'); link.setAttribute('aria-current','page'); }
+  const navDesktopLinks = navAllLinks.filter(link => link.closest('.nav-desktop'));
+  const navGroups = Object.create(null);
+  const navMeta = Object.create(null);
+
+  const normalizePath = (path) => {
+    if (!path) return '/';
+    const qIdx = path.indexOf('?');
+    if (qIdx !== -1) path = path.slice(0, qIdx);
+    if (!path.startsWith('/')) path = `/${path}`;
+    path = path.replace(/\/{2,}/g, '/');
+    if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
+    return path;
   };
 
-  const syncWithHash = () => {
-    const id = (window.location.hash || '').slice(1);
-    if (!id) return;
-    if (byId(id)) setActive(id);
-  };
-  syncWithHash();
-  window.addEventListener('hashchange', syncWithHash, { passive: true });
+  navAllLinks.forEach((link) => {
+    const key = link.dataset.nav;
+    if (!key) return;
+    (navGroups[key] ||= []).push(link);
+    try {
+      const url = new URL(link.getAttribute('href'), window.location.origin);
+      const path = normalizePath(url.pathname);
+      const hash = url.hash ? url.hash.slice(1) : '';
+      (navMeta[key] ||= []).push({ path, hash });
+    } catch {
+      /* ignore malformed URLs */
+    }
+  });
 
-  // Accent bar color shift on nav hover/focus
   const applyAccent = (hot) => {
     const a = hot ? 'color-mix(in oklab, var(--brand) 75%, #fff 25%)' : 'var(--brand)';
     const b = hot ? 'color-mix(in oklab, var(--brand-2) 75%, #fff 25%)' : 'var(--brand-2)';
     header.style.setProperty('--accent-a', a);
     header.style.setProperty('--accent-b', b);
   };
-  navLinks.forEach(a => {
-    a.addEventListener('mouseenter', () => applyAccent(true), { passive: true });
-    a.addEventListener('mouseleave', () => applyAccent(false), { passive: true });
-    a.addEventListener('focus', () => applyAccent(true), { passive: true });
-    a.addEventListener('blur', () => applyAccent(false), { passive: true });
+  navDesktopLinks.forEach((link) => {
+    link.addEventListener('mouseenter', () => applyAccent(true), { passive: true });
+    link.addEventListener('mouseleave', () => applyAccent(false), { passive: true });
+    link.addEventListener('focus', () => applyAccent(true), { passive: true });
+    link.addEventListener('blur', () => applyAccent(false), { passive: true });
   });
 
-  // Maintient un score par section pour éviter le "collant" sur la première
-  const ratios = new Map(sections.map(s => [s.id, 0]));
-
-  const pickBest = () => {
-    let bestId = null, best = -1;
-    for (const s of sections) {
-      const r = ratios.get(s.id) || 0;
-      if (r > best) { best = r; bestId = s.id; }
+  const clearActive = () => navAllLinks.forEach(link => link.classList.remove('is-active'));
+  let currentKey = null;
+  const setActiveNav = (key) => {
+    if (!key || !navGroups[key]) {
+      if (currentKey) {
+        currentKey = null;
+        clearActive();
+      }
+      return;
     }
-    if (bestId) setActive(bestId);
+    if (currentKey === key) return;
+    clearActive();
+    navGroups[key].forEach(link => link.classList.add('is-active'));
+    currentKey = key;
   };
 
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        ratios.set(e.target.id, e.isIntersecting ? e.intersectionRatio : 0);
-      }
-      pickBest();
-    }, { root: null, threshold: [0, 0.2, 0.35, 0.5, 0.65, 0.8, 1], rootMargin: '-10% 0px -35% 0px' });
-    sections.forEach(s => io.observe(s));
-  } else {
-    // Fallback: calcule le ratio visible à chaque scroll
-    const calc = () => {
-      const vh = window.innerHeight || document.documentElement.clientHeight;
-      for (const s of sections) {
-        const r = s.getBoundingClientRect();
-        const visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
-        const ratio = Math.min(1, visible / Math.max(1, r.height));
-        ratios.set(s.id, ratio);
-      }
-      pickBest();
-    };
-    window.addEventListener('scroll', () => raf(calc), { passive: true });
-    window.addEventListener('resize', () => raf(calc));
-    calc();
+  const currentPath = normalizePath(window.location.pathname);
+  const homeMeta = (navMeta.home || []).find(meta => !meta.hash);
+  const basePath = homeMeta ? homeMeta.path : '/';
+  const relativePath = (() => {
+    if (basePath !== '/' && currentPath.startsWith(basePath)) {
+      const trimmed = currentPath.slice(basePath.length) || '/';
+      return trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+    }
+    return currentPath;
+  })();
+  const pathKey = (() => {
+    const segments = relativePath.split('/').filter(Boolean);
+    if (navGroups.services && segments.some(seg => seg.startsWith('services-'))) return 'services';
+    if (navGroups.blog && segments[0] === 'blog') return 'blog';
+    if (navGroups.realisations && segments[0] === 'realisation') return 'realisations';
+    if (navGroups.methodes && segments[0] === 'methodes') return 'methodes';
+    if (navGroups.about && segments[0] === 'about-me') return 'about';
+
+    for (const [key, metas] of Object.entries(navMeta)) {
+      if (metas.some(meta => !meta.hash && meta.path === currentPath)) return key;
+    }
+    for (const [key, metas] of Object.entries(navMeta)) {
+      if (metas.some(meta => !meta.hash && meta.path !== '/' && currentPath.startsWith(`${meta.path}/`))) return key;
+    }
+    if ((currentPath === '/' || relativePath === '/') && navGroups.home) return 'home';
+    return null;
+  })();
+
+  let scrollKey = null;
+  const updateActive = () => setActiveNav(scrollKey || pathKey || null);
+  updateActive();
+
+  const sectionConfig = Object.entries({
+    certifications: 'certifications',
+    methodes: 'methodes',
+    services: 'services',
+    contact: 'contact'
+  }).map(([id, key]) => ({ id, key, el: document.getElementById(id) }))
+    .filter(item => item.el && navGroups[item.key]);
+
+  const sectionById = new Map(sectionConfig.map(({ id, key }) => [id, key]));
+
+  const initialHash = (window.location.hash || '').slice(1);
+  if (initialHash && sectionById.has(initialHash)) {
+    scrollKey = sectionById.get(initialHash);
+    updateActive();
   }
-})();
+
+  if (sectionConfig.length) {
+    if ('IntersectionObserver' in window) {
+      const ratios = new Map(sectionConfig.map(({ id }) => [id, 0]));
+      const pickBest = () => {
+        let bestId = null;
+        let best = 0;
+        for (const { id } of sectionConfig) {
+          const ratio = ratios.get(id) || 0;
+          if (ratio > best) {
+            best = ratio;
+            bestId = id;
+          }
+        }
+        if (best > 0.12 && bestId && sectionById.has(bestId)) {
+          scrollKey = sectionById.get(bestId);
+        } else if (bestId === null || best <= 0.12) {
+          scrollKey = null;
+        }
+        updateActive();
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          ratios.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
+        });
+        pickBest();
+      }, { root: null, threshold: [0, 0.2, 0.35, 0.5, 0.65, 0.8, 1], rootMargin: '-10% 0px -35% 0px' });
+
+      sectionConfig.forEach(({ el }) => observer.observe(el));
+    } else {
+      const compute = () => {
+        const vh = window.innerHeight || document.documentElement.clientHeight || 1;
+        let bestId = null;
+        let best = 0;
+        sectionConfig.forEach(({ el, id }) => {
+          const rect = el.getBoundingClientRect();
+          const visible = Math.max(0, Math.min(rect.bottom, vh) - Math.max(rect.top, 0));
+          const ratio = Math.min(1, visible / Math.max(rect.height, 1));
+          if (ratio > best) {
+            best = ratio;
+            bestId = id;
+          }
+        });
+        if (best > 0.2 && bestId && sectionById.has(bestId)) {
+          scrollKey = sectionById.get(bestId);
+        } else {
+          scrollKey = null;
+        }
+        updateActive();
+      };
+      compute();
+      window.addEventListener('scroll', compute, { passive: true });
+      window.addEventListener('resize', compute, { passive: true });
+    }
+  }
+
+  window.addEventListener('hashchange', () => {
+    const id = (window.location.hash || '').slice(1);
+    scrollKey = id && sectionById.has(id) ? sectionById.get(id) : null;
+    updateActive();
+  }, { passive: true });
+)();
 
 /* ==================== 3) Thème (persist + système + label) ==================== */
 (() => {
@@ -944,3 +1041,4 @@ const Modal = (() => {
     }
   }
 })();
+

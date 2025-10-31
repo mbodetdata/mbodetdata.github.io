@@ -29,7 +29,7 @@
             <ul class="nav-inline" role="list">
 
         <li>
-          <a class="chip" href="{{ '/' | relative_url }}" itemprop="url"
+          <a class="chip" data-nav="home" href="{{ '/' | relative_url }}" itemprop="url"
              {% if page.url == '/' %}aria-current="page"{% endif %}
              aria-label="Aller a la page Accueil">
             <svg class="ni" viewBox="0 0 24 24" aria-hidden="true">
@@ -41,7 +41,7 @@
         </li>
 
         <li>
-          <a class="chip" href="{{ '/about-me/' | relative_url }}" itemprop="url"
+          <a class="chip" data-nav="about" href="{{ '/about-me/' | relative_url }}" itemprop="url"
              {% if page.url == '/about-me/' %}aria-current="page"{% endif %}
              aria-label="Aller a la page A propos">
             <svg class="ni" viewBox="0 0 24 24" aria-hidden="true">
@@ -53,7 +53,7 @@
         </li>
 
         <li>
-          <a class="chip" href="{{ '/#services' | relative_url }}" itemprop="url"
+          <a class="chip" data-nav="services" href="{{ '/#services' | relative_url }}" itemprop="url"
              {% if page.url contains '/services-' %}aria-current="page"{% endif %}
              aria-label="Aller vers la page Services">
             <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -62,7 +62,7 @@
         </li>
 
         <li>
-          <a class="chip" href="{{ '/about-me/#certifications' | relative_url }}" itemprop="url"
+          <a class="chip" data-nav="certifications" href="{{ '/about-me/#certifications' | relative_url }}" itemprop="url"
              aria-label="Aller vers la section Certifications de la page A propos">
             <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 15.9 6.8 18l1-5.8-4.2-4.1 5.8-.8L12 2z" fill="currentColor"/></svg>
             Certifications
@@ -70,7 +70,7 @@
         </li>
 
         <li>
-          <a class="chip" href="{{ '/realisation/' | relative_url }}" itemprop="url"
+          <a class="chip" data-nav="realisations" href="{{ '/realisation/' | relative_url }}" itemprop="url"
              {% if page.url == '/realisation/' %}aria-current="page"{% endif %}
              aria-label="Aller a la page Realisations">
             <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h6v6H4zM14 6h6v6h-6zM4 16h6v6H4zM14 16h6v6h-6z" fill="currentColor"/></svg>
@@ -78,7 +78,7 @@
           </a>
         </li>
         <li>
-          <a class="chip" href="{{ '/blog/' | relative_url }}" itemprop="url"
+          <a class="chip" data-nav="blog" href="{{ '/blog/' | relative_url }}" itemprop="url"
              {% if page.url contains '/blog/' %}aria-current="page"{% endif %}
              aria-label="Aller au blog">
             <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -86,7 +86,7 @@
           </a>
         </li>
         <li>
-          <a class="chip" href="{{ '/#contact' | relative_url }}" itemprop="url"
+          <a class="chip" data-nav="contact" href="{{ '/#contact' | relative_url }}" itemprop="url"
              aria-label="Aller a la section Contact">
             <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 4V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
             Contact
@@ -133,7 +133,7 @@
   <nav id="nav-collapsible" class="nav-collapsible" aria-label="Navigation mobile"
        itemscope itemtype="https://schema.org/SiteNavigationElement">
         <ul class="nav-list" role="list">
-      <li><a href="{{ '/' | relative_url }}" itemprop="url"
+      <li><a data-nav="home" href="{{ '/' | relative_url }}" itemprop="url"
              {% if page.url == '/' %}aria-current="page"{% endif %}
              aria-label="Aller a la page Accueil">
         <svg class="ni" viewBox="0 0 24 24" aria-hidden="true">
@@ -142,7 +142,7 @@
         </svg>
         Accueil
       </a></li>
-      <li><a href="{{ '/about-me/' | relative_url }}" itemprop="url"
+      <li><a data-nav="about" href="{{ '/about-me/' | relative_url }}" itemprop="url"
              {% if page.url == '/about-me/' %}aria-current="page"{% endif %}
              aria-label="Aller a la page A propos">
         <svg class="ni" viewBox="0 0 24 24" aria-hidden="true">
@@ -151,35 +151,35 @@
         </svg>
         &Agrave; propos
       </a></li>
-      <li><a href="{{ '/about-me/#certifications' | relative_url }}" itemprop="url" aria-label="Aller vers la section Certifications de la page A propos">
+      <li><a data-nav="certifications" href="{{ '/about-me/#certifications' | relative_url }}" itemprop="url" aria-label="Aller vers la section Certifications de la page A propos">
         <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 15.9 6.8 18l1-5.8-4.2-4.1 5.8-.8L12 2z" fill="currentColor"/></svg>
         Certifications
       </a></li>
-      <li><a href="{{ '/methodes/' | relative_url }}" itemprop="url"
+      <li><a data-nav="methodes" href="{{ '/methodes/' | relative_url }}" itemprop="url"
              {% if page.url == '/methodes/' %}aria-current="page"{% endif %}
              aria-label="Aller a la page Methodes">
         <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6l-2 2M5 18l-2 2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm8 12-3-3M7 7 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         Methodes
       </a></li>
-      <li><a href="{{ '/services-talend-talaxie/' | relative_url }}" itemprop="url"
+      <li><a data-nav="services" href="{{ '/services-talend-talaxie/' | relative_url }}" itemprop="url"
              {% if page.url contains '/services-' %}aria-current="page"{% endif %}
              aria-label="Aller vers la page Services">
         <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         Services
       </a></li>
-      <li><a href="{{ '/realisation/' | relative_url }}" itemprop="url"
+      <li><a data-nav="realisations" href="{{ '/realisation/' | relative_url }}" itemprop="url"
              {% if page.url == '/realisation/' %}aria-current="page"{% endif %}
              aria-label="Aller a la page Realisations">
         <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h6v6H4zM14 6h6v6h-6zM4 16h6v6H4zM14 16h6v6h-6z" fill="currentColor"/></svg>
         R&eacute;alisations
       </a></li>
-      <li><a href="{{ '/blog/' | relative_url }}" itemprop="url"
+      <li><a data-nav="blog" href="{{ '/blog/' | relative_url }}" itemprop="url"
              {% if page.url contains '/blog/' %}aria-current="page"{% endif %}
              aria-label="Aller au blog">
         <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         Blog
       </a></li>
-      <li><a href="{{ '/#contact' | relative_url }}" itemprop="url" aria-label="Aller a la section Contact">
+      <li><a data-nav="contact" href="{{ '/#contact' | relative_url }}" itemprop="url" aria-label="Aller a la section Contact">
         <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 4V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         Contact
       </a></li>

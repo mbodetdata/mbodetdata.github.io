@@ -569,7 +569,8 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 }
 .nav-list .ni{ display:none; }
 .nav-list a:hover{ border-color:color-mix(in oklab,var(--border),var(--brand) 30%); box-shadow:var(--shadow-md); }
-.nav-list a[aria-current="page"]{
+.nav-list a[aria-current="page"],
+.nav-list a.is-active{
   border-color:color-mix(in oklab,var(--border),var(--brand) 45%);
   box-shadow:var(--shadow-md);
   color:var(--accent);
