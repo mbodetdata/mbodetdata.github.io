@@ -238,6 +238,17 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 .about-hero__text strong{
   color:#fff;
 }
+.about-hero__narrative{
+  display:grid;
+  gap: clamp(1rem, 2.8vw, 1.6rem);
+  width:100%;
+}
+.about-hero__text--lead{
+  font-weight:600;
+}
+.about-hero__text--card{
+  margin:0;
+}
 .about-hero__canvas::before{
   content:"";
   position: absolute;
@@ -355,6 +366,37 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   }
   .about-hero__media{
     margin-top: clamp(1.5rem, 6vw, 3rem);
+  }
+  .about-page .about-hero__canvas{
+    padding: clamp(1.8rem, 8vw, 2.8rem);
+  }
+  .about-page .about-hero__inner{
+    text-align:left;
+  }
+  .about-page .about-hero__title{
+    font-size: clamp(1.85rem, 7.5vw, 2.4rem);
+    line-height:1.12;
+  }
+  .about-page .about-hero__content{
+    justify-items:stretch;
+  }
+  .about-page .about-hero__narrative{
+    gap: clamp(1.1rem, 6vw, 1.8rem);
+  }
+  .about-page .about-hero__text{
+    font-size: clamp(1.02rem, 4vw, 1.22rem);
+    line-height:1.7;
+    max-width:100%;
+  }
+  .about-page .about-hero__text--card{
+    padding: clamp(1rem, 5vw, 1.4rem);
+    border-radius: clamp(1rem, 6vw, 1.6rem);
+    background: color-mix(in oklab, rgba(12,14,40,.92) 92%, rgba(86,103,255,.18) 8%);
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow: 0 18px 36px rgba(4,8,20,.32);
+  }
+  .about-page .about-photo-frame{
+    width: clamp(220px, 78vw, 320px);
   }
 }
 .about-stats-card{
