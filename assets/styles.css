@@ -1655,9 +1655,16 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   }
   .contact-hub__card--direct .contact-item{
     padding-inline: clamp(.85rem, 5vw, 1.15rem);
+    width:100%;
   }
   .contact-hub__card--direct .ci-cta{
     display:none;
+  }
+  .contact-hub__card--direct .contact-list{
+    justify-items: stretch;
+  }
+  .contact-hub__card--direct .contact-row{
+    width:100%;
   }
 }
 
