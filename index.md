@@ -112,29 +112,49 @@ bandeau:
 {% include contact.html %}
 
 
-<!-- Modal Calendly -->
-<div id="calendly-modal" class="modal" hidden>
-  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="calendlyTitle">
-    <button class="modal__close" type="button" aria-label="Fermer">&times;</button>
-    <div style="padding:.75rem 1rem; border-bottom:1px solid var(--border)">
-      <h3 id="calendlyTitle" style="margin:0">Réserver un créneau</h3>
-    </div>
-    <div id="calendly-inline"
-         class="calendly-inline"
-         data-booking-url="{{ site.author.cal_url | default: site.author.calendly_url }}"
-         style="position:relative; min-height:72vh;">
-      <div class="calendly-skeleton" aria-hidden="true" style="display:grid;place-items:center;height:100%;">
-        <p class="muted" style="margin:0">Chargement du calendrier&hellip;</p>
+<!-- Modal Booking -->
+<div id="calendly-modal" class="modal modal--booking" hidden>
+  <div class="modal__dialog booking-modal" role="dialog" aria-modal="true" aria-labelledby="calendlyTitle" aria-describedby="calendlySubtitle">
+    <button class="modal__close booking-modal__close" type="button" aria-label="Fermer">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="booking-modal__glow" aria-hidden="true"></div>
+    <header class="booking-modal__header">
+      <span class="booking-modal__badge">Accompagnement premium</span>
+      <h3 id="calendlyTitle">Planifiez votre rendez-vous</h3>
+      <p id="calendlySubtitle">Choisissez un cr&eacute;neau de 30&nbsp;minutes pour &eacute;changer avec un expert Power&nbsp;BI &amp; Talend.</p>
+    </header>
+    <div class="booking-modal__content">
+      <div class="booking-modal__info">
+        <ul class="booking-modal__perks" role="list">
+          <li>Diagnostic personnalis&eacute; offert sur vos besoins data</li>
+          <li>Recommandations concr&egrave;tes sous 24&nbsp;heures</li>
+          <li>Session vid&eacute;o ou t&eacute;l&eacute;phone adapt&eacute;e &agrave; votre rythme</li>
+        </ul>
+        <p class="booking-modal__note">Vous recevez une confirmation imm&eacute;diate avec les prochaines &eacute;tapes.</p>
       </div>
-      <iframe
-        src="{{ site.author.cal_url | default: site.author.calendly_url }}"
-        title="R&eacute;server un cr&eacute;neau"
-        loading="lazy"
-        allowtransparency="true"></iframe>
+      <div class="booking-modal__frame">
+        <div id="calendly-inline"
+             class="calendly-inline booking-modal__iframe"
+             data-booking-url="{{ site.author.cal_url | default: site.author.calendly_url }}">
+          <div class="calendly-skeleton booking-modal__skeleton" aria-hidden="true">
+            <div class="booking-modal__loader" role="presentation">
+              <span class="booking-modal__dot"></span>
+              <span class="booking-modal__dot"></span>
+              <span class="booking-modal__dot"></span>
+            </div>
+            <p>Chargement de votre espace de r&eacute;servation&hellip;</p>
+          </div>
+          <iframe
+            src="{{ site.author.cal_url | default: site.author.calendly_url }}"
+            title="R&eacute;server un cr&eacute;neau"
+            loading="lazy"
+            allowtransparency="true"></iframe>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
 <!-- JSON-LD : ItemList Services + Réalisations (dynamique depuis _data) -->
 {%- assign services_list = site.data.services.cards | default: site.data.services -%}
 {%- assign total_services = services_list | size -%}

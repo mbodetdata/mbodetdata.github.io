@@ -1672,19 +1672,47 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 }
 
 /* ======================== 9) MODAL (projets) ======================== */
-.modal[hidden]{ display:none; }
+.modal[hidden]{ display:none !important; }
 .modal{
-  position: fixed; inset: 0; z-index: 1000;
-  background: color-mix(in oklab, #000 58%, transparent);
-  display:grid; place-items:center; padding:1rem;
+  --modal-anim-ms: 280ms;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display:grid;
+  place-items:center;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  background: color-mix(in oklab, #040405 62%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity:0;
+  pointer-events:none;
+  transition: opacity calc(var(--modal-anim-ms)) ease;
 }
+.modal.is-visible{ pointer-events:auto; }
+.modal.is-active{ opacity:1; }
+html.is-modal-open,
+body.is-modal-open{ overflow:hidden; }
+
 .modal__dialog{
-  position: relative; width:min(92vw, 720px);
-  background:var(--surface-0); color:var(--fg);
-  border:1px solid var(--border); border-radius:16px;
-  box-shadow:var(--shadow-lg); padding:clamp(16px, 2.5vw, 28px);
-  max-height:90vh; overflow:auto; animation: pop .18s ease-out;
+  position: relative;
+  width: min(92vw, 760px);
+  background: var(--surface-0);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow-lg);
+  padding: clamp(1.2rem, 2.6vw, 2rem);
+  max-height: 90vh;
+  overflow: auto;
+  transform: translateY(18px);
+  opacity: 0;
+  transition: transform calc(var(--modal-anim-ms)) cubic-bezier(.18,.82,.35,1), opacity calc(var(--modal-anim-ms)) ease;
 }
+.modal.is-active .modal__dialog{
+  transform: translateY(0);
+  opacity: 1;
+}
+
 .btn.btn--details{
   color:#fff; font-weight:800;
   background: linear-gradient(135deg,
@@ -1697,7 +1725,249 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 }
 .btn.btn--details:hover{ transform:translateY(-1px); box-shadow:0 14px 30px color-mix(in oklab, var(--brand) 36%, transparent); }
 
-/* Modal projet ??? style premium */
+/* Modal Booking */
+.modal--booking{
+  --modal-anim-ms: 340ms;
+  background:
+    radial-gradient(120% 120% at 50% 40%, color-mix(in oklab, var(--brand) 24%, transparent), transparent 62%),
+    color-mix(in oklab, rgba(4,6,12,.92) 98%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.modal--booking .booking-modal{
+  width: min(94vw, 920px);
+  max-height: min(88vh, 960px);
+  padding: clamp(1.8rem, 2.6vw, 2.6rem);
+  border-radius: clamp(22px, 2.6vw, 28px);
+  border: 1px solid color-mix(in oklab, var(--border), var(--brand) 26%);
+  box-shadow: 0 32px 78px color-mix(in oklab, var(--brand) 32%, transparent);
+  background: linear-gradient(160deg,
+              color-mix(in oklab, var(--surface-0) 97%, transparent),
+              color-mix(in oklab, var(--surface-1) 92%, transparent));
+  display: grid;
+  gap: clamp(1.6rem, 2.8vw, 2.4rem);
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateY(32px);
+  opacity: 0;
+  transition: transform calc(var(--modal-anim-ms)) cubic-bezier(.16,.84,.36,1), opacity calc(var(--modal-anim-ms)) ease;
+}
+.modal.is-active .booking-modal{
+  transform: translateY(0);
+  opacity: 1;
+}
+.modal--booking .booking-modal::after{
+  content: '';
+  position: absolute;
+  inset: -38% -44% 55%;
+  background: radial-gradient(circle at 50% 45%, color-mix(in oklab, var(--brand) 32%, transparent) 0%, transparent 68%);
+  opacity: .55;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+.modal--booking .booking-modal > *{ position: relative; z-index: 1; }
+
+.booking-modal__header{ display: grid; gap: .6rem; }
+.booking-modal__badge{
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .25rem .9rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background: color-mix(in oklab, var(--brand) 35%, transparent);
+  color: #fff;
+  box-shadow: 0 12px 24px color-mix(in oklab, var(--brand) 30%, transparent);
+}
+.booking-modal__badge::before{
+  content: '';
+  width: .35rem;
+  height: .35rem;
+  border-radius: 50%;
+  background: #fff;
+  opacity: .9;
+}
+.booking-modal__header h3{
+  margin: 0;
+  font-size: clamp(1.65rem, 2.2vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -.01em;
+}
+.booking-modal__header p{
+  margin: 0;
+  color: color-mix(in oklab, var(--fg) 82%, #fff 0%);
+  max-width: 46ch;
+}
+
+.booking-modal__content{
+  display: grid;
+  gap: clamp(1.5rem, 2.4vw, 2rem);
+}
+@media (min-width: 960px){
+  .modal--booking .booking-modal__content{
+    grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+    align-items: stretch;
+  }
+}
+
+.booking-modal__info{
+  display: grid;
+  gap: clamp(1rem, 1.2vw, 1.4rem);
+  padding: clamp(1.35rem, 1.8vw, 1.8rem);
+  border-radius: clamp(18px, 2vw, 22px);
+  background: color-mix(in oklab, var(--surface-0) 98%, var(--brand) 8%);
+  border: 1px solid color-mix(in oklab, var(--border), var(--brand) 20%);
+  box-shadow: 0 18px 40px color-mix(in oklab, var(--brand) 22%, transparent);
+}
+.booking-modal__perks{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .75rem;
+}
+.booking-modal__perks li{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .6rem;
+  font-weight: 600;
+  color: color-mix(in oklab, var(--fg) 90%, #fff 0%);
+}
+.booking-modal__perks li::before{
+  content: '';
+  width: .65rem;
+  height: .65rem;
+  margin-top: .25rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg,
+              color-mix(in oklab, var(--brand) 65%, transparent),
+              color-mix(in oklab, var(--brand-2) 52%, transparent));
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand) 24%, transparent);
+}
+.booking-modal__note{
+  margin: 0;
+  font-size: .9rem;
+  color: color-mix(in oklab, var(--fg) 70%, #fff 0%);
+}
+.booking-modal__frame{ position: relative; }
+.booking-modal__iframe{
+  position: relative;
+  min-height: clamp(360px, 58vh, 620px);
+  border-radius: clamp(18px, 2vw, 24px);
+  background: color-mix(in oklab, var(--surface-1) 95%, var(--surface-0) 5%);
+  border: 1px solid color-mix(in oklab, var(--border), var(--brand) 18%);
+  box-shadow: 0 22px 48px color-mix(in oklab, var(--brand) 22%, transparent);
+  overflow: hidden;
+}
+.booking-modal__iframe iframe{
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+  min-height: 0 !important;
+  display: block;
+  background: #fff;
+}
+.booking-modal__skeleton{
+  position: absolute;
+  inset: 0;
+  display: grid !important;
+  place-items: center;
+  gap: .8rem;
+  padding: 2rem;
+  text-align: center;
+  background: color-mix(in oklab, var(--surface-1) 88%, var(--surface-0) 12%);
+  color: color-mix(in oklab, var(--fg) 78%, #fff 0%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: opacity .3s ease;
+  z-index: 2;
+}
+.booking-modal__skeleton p{ margin: 0; font-size: .95rem; }
+.booking-modal__loader{ display: flex; gap: .45rem; }
+.booking-modal__dot{
+  width: .6rem;
+  height: .6rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg,
+              color-mix(in oklab, var(--brand) 60%, transparent),
+              color-mix(in oklab, var(--brand-2) 48%, transparent));
+  animation: bookingDot 1s ease-in-out infinite alternate;
+  filter: drop-shadow(0 8px 18px color-mix(in oklab, var(--brand) 35%, transparent));
+}
+.booking-modal__dot:nth-child(2){ animation-delay: .12s; }
+.booking-modal__dot:nth-child(3){ animation-delay: .24s; }
+.booking-modal__iframe.is-ready .booking-modal__skeleton,
+.booking-modal__skeleton.is-hidden{
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  display: grid !important;
+}
+.booking-modal__glow{
+  position: absolute;
+  inset: auto -40% -50% -40%;
+  height: 60%;
+  background: radial-gradient(circle at 50% 20%, color-mix(in oklab, var(--brand-2) 28%, transparent) 0%, transparent 68%);
+  opacity: .55;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.booking-modal__close{
+  top: 18px;
+  right: 18px;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--surface-1) 80%, color-mix(in oklab, var(--brand) 15%, transparent));
+  color: var(--fg);
+  box-shadow: 0 18px 32px rgba(0,0,0,.18);
+  font-size: 1.4rem;
+}
+.booking-modal__close span{ line-height: 1; }
+.booking-modal__close:hover{ transform: translateY(-2px) scale(1.02); }
+.booking-modal__close:focus-visible{ outline: 2px solid color-mix(in oklab, var(--brand) 60%, transparent); outline-offset: 3px; }
+
+@media (max-width: 960px){ .modal--booking .booking-modal{ max-height: none; } }
+@media (max-width: 720px){
+  .modal--booking .booking-modal__content{ grid-template-columns: 1fr; }
+  .booking-modal__iframe{ min-height: clamp(320px, 64vh, 560px); }
+}
+@media (max-width: 560px){
+  .modal--booking .booking-modal{ padding: clamp(1.4rem, 4.5vw, 1.9rem); }
+  .booking-modal__badge{ font-size: .7rem; padding: .2rem .7rem; }
+}
+
+.modal__header h3{ margin: 0 0 .25rem; line-height: 1.2; }
+.modal__client{ opacity:.85; margin:0 0 .5rem; }
+.modal__abstract{ margin:0 0 1rem; font-size: 1.05rem; }
+.modal__body section{ margin:1rem 0; }
+.modal__footer{ display:flex; justify-content:flex-end; gap:.5rem; margin-top:1rem; }
+.modal__close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:12px;
+  background: color-mix(in oklab, var(--surface-0) 92%, var(--surface-1) 8%);
+  color: var(--fg);
+  font-size: 1.3rem;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.modal__close:hover{ transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.modal__close:focus-visible{ outline: 2px solid color-mix(in oklab, var(--brand) 55%, transparent); outline-offset: 2px; }
+
 #project-modal .modal__dialog{
   width:min(94vw, 860px);
   background: linear-gradient(180deg, color-mix(in oklab, var(--surface-0) 94%, transparent), color-mix(in oklab, var(--surface-1) 96%, transparent));
@@ -1711,24 +1981,21 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   margin:.25rem 0 .35rem; font-size:.95rem; letter-spacing:.02em; text-transform:uppercase; color: color-mix(in oklab, var(--fg) 92%, #fff 0%);
 }
 #project-modal .modal__body ul{ list-style:none; padding-left:0; margin:.25rem 0 0; display:grid; gap:.35rem; }
-#project-modal .modal__body li::before{ content:""; display:inline-block; width:.46rem; height:.46rem; border-radius:999px; margin-right:.5rem; background: var(--g-brand); vertical-align:middle; }
+#project-modal .modal__body li::before{ content:''; display:inline-block; width:.46rem; height:.46rem; border-radius:999px; margin-right:.5rem; background: var(--g-brand); vertical-align:middle; }
 #project-modal .modal__footer{ border-top:1px solid var(--border); padding-top:.75rem; }
-#project-modal .modal__close{ color: var(--muted); }
+#project-modal .modal__close{ color: var(--muted); background: transparent; box-shadow: none; }
 
 @media (min-width: 900px){
   #project-modal .modal__body{ display:grid; grid-template-columns: 1fr 1fr; gap:1rem 1.25rem; }
   #project-modal .modal__body section:nth-child(1),
   #project-modal .modal__body section:last-child{ grid-column: 1 / -1; }
 }
-.modal__header h3{ margin: 0 0 .25rem; line-height: 1.2; }
-.modal__client{ opacity:.85; margin:0 0 .5rem; }
-.modal__abstract{ margin:0 0 1rem; font-size: 1.05rem; }
-.modal__body section{ margin:1rem 0; }
-.modal__footer{ display:flex; justify-content:flex-end; gap:.5rem; margin-top:1rem; }
-.modal__close{
-  position:absolute; top:8px; right:8px; width:40px; height:40px;
-  border:none; background:transparent; font-size:24px; cursor:pointer; color:var(--fg);
+
+@keyframes bookingDot{
+  from{ transform: translateY(0); opacity:.6; }
+  to{ transform: translateY(-6px); opacity:1; }
 }
+
 .stack-list{ display:flex; flex-wrap:wrap; gap:.5rem; list-style:none; padding:0; }
 .stack-list li{ padding:.25rem .5rem; border-radius:999px; background: color-mix(in oklab, var(--fg) 10%, transparent); font-size:.9rem; }
 

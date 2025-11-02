@@ -302,6 +302,7 @@ const Modal = (() => {
     'select:not([disabled])','textarea:not([disabled])',
     '[tabindex]:not([tabindex="-1"])'
   ].join(',');
+  const root = document.documentElement;
 
   const trap = (modal) => {
     const nodes = $$(FOCUSABLE, modal);
@@ -316,24 +317,60 @@ const Modal = (() => {
     return () => off(modal, 'keydown', onKey);
   };
 
-  const open  = (el) => {
-    if (!el) return;
-    el.hidden = false;
-    el._untrap = trap(el);
-    const f = el.querySelector(FOCUSABLE);
-    (f || el).focus?.();
+  const lockScroll = () => {
+    const anyOpen = Array.from(document.querySelectorAll('.modal')).some((m) => !m.hidden);
+    root.classList.toggle('is-modal-open', anyOpen);
+    document.body?.classList.toggle('is-modal-open', anyOpen);
   };
-  const close = (el) => {
-    if (!el) return;
-    el.hidden = true;
-    el._untrap?.();
+
+  const focusFirst = (modal) => {
+    const target = modal.querySelector(FOCUSABLE) || modal;
+    try { target.focus?.({ preventScroll: true }); }
+    catch { target.focus?.(); }
   };
-  const bind  = (modal) => {
+
+  const open = (modal) => {
+    if (!modal) return;
+    clearTimeout(modal._closeTimer);
+    modal.hidden = false;
+    modal.classList.add('is-visible');
+    modal.classList.remove('is-active');
+    modal._untrap = trap(modal);
+    modal._restore = document.activeElement;
+    requestAnimationFrame(() => modal.classList.add('is-active'));
+    focusFirst(modal);
+    lockScroll();
+  };
+
+  const close = (modal) => {
+    if (!modal || modal.hidden) return;
+    modal.classList.remove('is-active');
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      modal.hidden = true;
+      modal.classList.remove('is-visible');
+      modal._untrap?.();
+      const restore = modal._restore;
+      if (restore && typeof restore.focus === 'function') {
+        try { restore.focus({ preventScroll: true }); }
+        catch { restore.focus(); }
+      }
+      modal._restore = null;
+      lockScroll();
+    };
+    clearTimeout(modal._closeTimer);
+    const anim = parseFloat(window.getComputedStyle(modal).getPropertyValue('--modal-anim-ms')) || 240;
+    modal._closeTimer = window.setTimeout(finish, anim);
+  };
+
+  const bind = (modal) => {
     if (!modal) return;
     on(modal, 'click', (e) => {
       if (e.target === modal || e.target.classList?.contains('modal__overlay') || e.target.dataset.close === 'true') close(modal);
     });
-    $$('.modal__close,[data-close]', modal).forEach(btn => on(btn, 'click', () => close(modal), { passive:true }));
+    $$('.modal__close,[data-close]', modal).forEach((btn) => on(btn, 'click', () => close(modal), { passive: true }));
     on(document, 'keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close(modal); });
   };
 
@@ -482,17 +519,90 @@ const Modal = (() => {
       if (!container) return null;
       const frame = container.querySelector('iframe');
       if (!frame) return null;
+      container.classList.add('is-loading');
+      container.classList.remove('is-ready');
+      const skeleton = container.querySelector('.calendly-skeleton');
       const finish = () => {
         container.classList.add('is-ready');
-        container.querySelector('.calendly-skeleton')?.remove();
+        container.classList.remove('is-loading');
+        skeleton?.classList.add('is-hidden');
       };
       if (!frame.dataset.bookingInit) {
         frame.dataset.bookingInit = '1';
         frame.addEventListener('load', finish, { once: true });
       }
-      frame.setAttribute('src', bookingUrl);
-      setTimeout(finish, 3000);
+      if (frame.getAttribute('src') !== bookingUrl) frame.setAttribute('src', bookingUrl);
+      window.setTimeout(finish, 3200);
       return frame;
+    };
+
+    const ensureBookingModal = () => {
+      let modal = document.getElementById('calendly-modal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'calendly-modal';
+        modal.className = 'modal modal--booking';
+        modal.hidden = true;
+        modal.classList.remove('is-visible', 'is-active');
+        modal.innerHTML = `
+  <div class="modal__dialog booking-modal" role="dialog" aria-modal="true" aria-labelledby="calendlyTitle" aria-describedby="calendlySubtitle">
+    <button class="modal__close booking-modal__close" type="button" aria-label="Fermer">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="booking-modal__glow" aria-hidden="true"></div>
+    <header class="booking-modal__header">
+      <span class="booking-modal__badge">Accompagnement premium</span>
+      <h3 id="calendlyTitle">Planifiez votre rendez-vous</h3>
+      <p id="calendlySubtitle">Choisissez un cr&eacute;neau de 30&nbsp;minutes pour &eacute;changer avec un expert Power&nbsp;BI &amp; Talend.</p>
+    </header>
+    <div class="booking-modal__content">
+      <div class="booking-modal__info">
+        <ul class="booking-modal__perks" role="list">
+          <li>Diagnostic personnalis&eacute; offert sur vos besoins data</li>
+          <li>Recommandations concr&egrave;tes sous 24&nbsp;heures</li>
+          <li>Session vid&eacute;o ou t&eacute;l&eacute;phone adapt&eacute;e &agrave; votre rythme</li>
+        </ul>
+        <p class="booking-modal__note">Vous recevez une confirmation imm&eacute;diate avec les prochaines &eacute;tapes.</p>
+      </div>
+      <div class="booking-modal__frame">
+        <div id="calendly-inline" class="calendly-inline booking-modal__iframe" data-booking-url="">
+          <div class="calendly-skeleton booking-modal__skeleton" aria-hidden="true">
+            <div class="booking-modal__loader" role="presentation">
+              <span class="booking-modal__dot"></span>
+              <span class="booking-modal__dot"></span>
+              <span class="booking-modal__dot"></span>
+            </div>
+            <p>Chargement de votre espace de r&eacute;servation&hellip;</p>
+          </div>
+          <iframe title="R&eacute;server un cr&eacute;neau" loading="lazy" allowtransparency="true"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>`;
+        document.body.appendChild(modal);
+      } else {
+        modal.classList.add('modal--booking');
+      }
+
+      const container = modal.querySelector('#calendly-inline');
+      if (container) {
+        container.classList.add('booking-modal__iframe');
+        if (bookingUrl) container.setAttribute('data-booking-url', bookingUrl);
+        container.querySelector('.calendly-skeleton')?.classList.add('booking-modal__skeleton');
+      }
+      const iframe = container?.querySelector('iframe');
+      if (iframe) {
+        if (!iframe.dataset.bookingSrc && iframe.getAttribute('src')) iframe.dataset.bookingSrc = iframe.getAttribute('src');
+        iframe.removeAttribute('src');
+        iframe.setAttribute('title', 'R&eacute;server un cr&eacute;neau');
+        iframe.setAttribute('loading', 'lazy');
+        iframe.setAttribute('allowtransparency', 'true');
+      }
+      if (modal && !modal.dataset.bound) {
+        Modal.bind(modal);
+        modal.dataset.bound = '1';
+      }
+      return { modal, container };
     };
 
     const inlineContainer = document.getElementById('calendly-inline-embed');
@@ -514,15 +624,15 @@ const Modal = (() => {
 
     if (mqDesk.matches) ensureFrame(inlineContainer);
 
-    const modal = document.getElementById('calendly-modal');
-    const modalContainer = document.getElementById('calendly-inline');
-    if (modal) Modal.bind(modal);
+    const { modal, container: modalContainer } = ensureBookingModal();
 
     const openBooking = (event) => {
       event?.preventDefault();
       if (modal && modalContainer) {
         ensureFrame(modalContainer);
+        modal.classList.add('is-opening');
         Modal.open(modal);
+        window.setTimeout(() => modal.classList.remove('is-opening'), 420);
       } else {
         const win = window.open(bookingUrl, '_blank');
         if (win) win.opener = null;
@@ -530,6 +640,10 @@ const Modal = (() => {
     };
 
     document.querySelectorAll('[data-booking-open]').forEach((btn) => {
+      if (btn.dataset.bookingBound) return;
+      btn.dataset.bookingBound = '1';
+      btn.setAttribute('aria-haspopup', 'dialog');
+      btn.setAttribute('aria-controls', 'calendly-modal');
       btn.addEventListener('click', openBooking);
     });
 
@@ -538,6 +652,7 @@ const Modal = (() => {
       btn.type = 'button';
       btn.className = 'booking-float-cta';
       btn.setAttribute('aria-label', 'Prendre rendez-vous');
+      btn.setAttribute('data-booking-open', 'floating');
       btn.innerHTML = `
         <span class="cal-ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
@@ -545,8 +660,12 @@ const Modal = (() => {
             <path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
           </svg>
         </span>
-        <span class="cal-label">Prendre rendez-vous</span>`;
+        <span class="cal-label">
+          <strong>Prendre rendez-vous</strong>
+          <small>30&nbsp;min offertes</small>
+        </span>`;
       btn.addEventListener('click', openBooking);
+      btn.dataset.bookingBound = '1';
       document.body.appendChild(btn);
     }
 
@@ -554,15 +673,26 @@ const Modal = (() => {
       const st = document.createElement('style');
       st.id = 'booking-float-cta-style';
       st.textContent = `
-        .booking-float-cta{ position:fixed; right:18px; bottom:18px; z-index:9999;
-          display:inline-flex; align-items:center; gap:.55rem; padding:.85rem 1.1rem;
-          border-radius:999px; border:0; background-image:var(--g-brand); color:#fff; font-weight:800;
-          box-shadow:0 12px 26px color-mix(in oklab, var(--brand) 30%, transparent); cursor:pointer; }
-        .booking-float-cta:hover{ transform:translateY(-1px); box-shadow:0 16px 30px color-mix(in oklab, var(--brand) 36%, transparent); }
-        .booking-float-cta:focus-visible{ outline:none;
-          box-shadow:0 0 0 3px color-mix(in oklab, #fff 80%, transparent), 0 0 0 6px color-mix(in oklab, var(--brand) 50%, transparent); }
-        .booking-float-cta .cal-ico{ display:grid; place-items:center; }
-        @media (max-width:480px){ .booking-float-cta{ right:12px; bottom:12px; padding:.75rem .95rem; } }`;
+        .booking-float-cta{ position:fixed; right:16px; bottom:16px; z-index:9999;
+          display:inline-flex; align-items:center; gap:.65rem; padding:.9rem 1.25rem;
+          border-radius:999px; border:0; background:linear-gradient(135deg,
+            color-mix(in oklab, var(--brand) 78%, transparent),
+            color-mix(in oklab, var(--brand-2) 62%, transparent));
+          color:#fff; font-weight:700; letter-spacing:.01em;
+          box-shadow:0 18px 40px color-mix(in oklab, var(--brand) 40%, transparent);
+          cursor:pointer; transition:transform .2s ease, box-shadow .2s ease; }
+        .booking-float-cta .cal-label{ display:flex; flex-direction:column; align-items:flex-start; line-height:1.1; }
+        .booking-float-cta .cal-label strong{ font-size:.95rem; font-weight:800; }
+        .booking-float-cta .cal-label small{ font-size:.72rem; opacity:.8; }
+        .booking-float-cta:hover{ transform:translateY(-2px); box-shadow:0 24px 52px color-mix(in oklab, var(--brand) 46%, transparent); }
+        .booking-float-cta:focus-visible{ outline:none; box-shadow:0 0 0 4px color-mix(in oklab, #fff 75%, transparent), 0 0 0 8px color-mix(in oklab, var(--brand) 50%, transparent); }
+        .booking-float-cta .cal-ico{ display:grid; place-items:center; width:38px; height:38px; border-radius:14px;
+          background: color-mix(in oklab, rgba(255,255,255,.85) 20%, transparent);
+          backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        @media (max-width:540px){ .booking-float-cta{ right:12px; bottom:12px; padding:.8rem 1.1rem; }
+          .booking-float-cta .cal-label strong{ font-size:.9rem; }
+          .booking-float-cta .cal-label small{ display:none; } }
+      `;
       document.head.appendChild(st);
     }
   };

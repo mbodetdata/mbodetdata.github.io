@@ -165,13 +165,14 @@
   "Suite Microsoft 365 (Excel, SharePoint, Teams)"
     ]
   },
-  "cta": {
-    "title": "Prêt pour des flux Talend réellement pilotables ?",
-    "intro": "Je vous propose un diagnostic offert pour cartographier vos jobs, votre supervision et les gains rapides possibles.",
-    "linkText": "Réserver un diagnostic Talend",
-    "footnote": "Sous 48h, vous repartez avec la feuille de route et les prochaines actions concrètes.",
-    "tracking": "talend_diagnostic"
-  },
+"cta": {
+  "title": "On planifie vos prochaines actions Talend ?",
+  "intro": "Proposons un créneau court pour comprendre votre contexte, qualifier la valeur apportée et aligner une première liste d’actions prioritaires.",
+  "linkText": "Planifier un échange",
+  "footnote": "Objectif : clarifier le besoin, valider la plus-value et établir une feuille de route priorisée. Sans engagement.",
+  "tracking": "talend_diagnostic"
+}
+,
   "faq": {
     "title": "Questions fréquentes",
     "items": [
