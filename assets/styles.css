@@ -1791,7 +1791,7 @@ body.is-modal-open{ overflow:hidden; }
 .booking-modal__content{
   display:flex;
   flex-direction:column;
-  gap: clamp(1rem, 1.6vw, 1.4rem);
+  gap: clamp(.85rem, 1.4vw, 1.2rem);
   flex: 1 1 auto;
   min-height: 0;
 }
@@ -1832,12 +1832,13 @@ body.is-modal-open{ overflow:hidden; }
   min-height: 0;
   display:flex;
   flex-direction:column;
+  flex:1 1 auto;
+  align-self:stretch;
 }
 .booking-modal__iframe{
   position: relative;
   flex:1 1 auto;
-  min-height: clamp(360px, 64vh, 720px);
-  max-height: none;
+  min-height: 0;
   height: 100%;
   border-radius: clamp(18px, 2vw, 24px);
   background: color-mix(in oklab, var(--surface-1) 95%, var(--surface-0) 5%);
@@ -1931,7 +1932,9 @@ body.is-modal-open{ overflow:hidden; }
     min-height: 0;
     display:flex;
     flex-direction:column;
+    align-self:stretch;
   }
+  .booking-modal__iframe{ min-height: clamp(360px, 58vh, 720px); }
 }
 
 @media (max-width: 960px){
