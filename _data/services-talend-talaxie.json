@@ -127,13 +127,13 @@
         ]
       },
       {
-        "sector": "Édition",
-        "title": "Media Participations - migration applicative Talend",
-        "context": "Migration ETL Talend pour conserver l'historique métier lors d'un changement d'application.",
+        "sector": "E-commerce",
+        "title": "Frère-Loup - migration PrestaShop orchestrée",
+        "context": "Extraction et alimentation automatisées via Talend pour basculer la boutique PrestaShop sans interruption.",
         "gains": [
-          "Transition sans perte d'information",
-          "Contrôles Talend automatisés pour garantir la qualité",
-          "Processus plus fiable et moins d'interventions manuelles"
+          "Données produits, clients et commandes sécurisées",
+          "Contrôles Talend garantissant la cohérence avant mise en ligne",
+          "Continuité de l'activité e-commerce assurée dès le jour J"
         ]
       }
     ]
