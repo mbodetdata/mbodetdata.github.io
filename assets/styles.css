@@ -357,10 +357,10 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
     margin-top: clamp(1.5rem, 6vw, 3rem);
   }
   .about-page .about-hero__canvas{
-    margin-inline:auto;
-    width: min(640px, 100%);
-    max-width: 100%;
-    padding: clamp(1.5rem, 6vw, 2.1rem);
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: clamp(1.6rem, 6vw, 2.2rem);
   }
   .about-page .about-hero__inner{
     text-align:left;
@@ -373,7 +373,7 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   .about-page .about-hero__content{
     justify-items:stretch;
     width:100%;
-    padding-inline: clamp(1rem, 6vw, 1.6rem);
+    padding-inline: clamp(1.2rem, 5vw, 1.6rem);
     box-sizing:border-box;
     overflow:visible;
   }
