@@ -357,10 +357,9 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
     margin-top: clamp(1.5rem, 6vw, 3rem);
   }
   .about-page .about-hero__canvas{
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    padding: clamp(1.6rem, 6vw, 2.2rem);
+    width: min(640px, 94vw);
+    margin-inline:auto;
+    padding: clamp(1.4rem, 6vw, 2.2rem);
   }
   .about-page .about-hero__inner{
     text-align:left;
