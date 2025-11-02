@@ -107,33 +107,33 @@
     "title": "Cas clients récents",
     "items": [
       {
-        "sector": "Retail omnicanal",
-        "title": "Migration Talend vers Talaxie sans interruption",
-        "context": "Bascule progressive de flux logistiques et CRM avec coordination IT/métier.",
+        "sector": "Finance",
+        "title": "UBA - pilotage financier automatisé",
+        "context": "Centralisation Azure et jobs Talend pour fiabiliser la trésorerie du groupe UBA.",
         "gains": [
-          "0 interruption de service",
-          "-30% de temps de supervision hebdomadaire",
-          "Alertes métiers déployées sur Teams"
+          "Réduction des tâches manuelles et des erreurs de saisie",
+          "Automatisations Talend sur les processus financiers quotidiens",
+          "Tableau de bord temps réel pour la direction"
         ]
       },
       {
-        "sector": "Industrie",
-        "title": "Contrôles qualité automatisés pour la production",
-        "context": "Renforcement des contrôles sur des données critiques pour la conformité.",
+        "sector": "Réseau automobile",
+        "title": "SOFIPEL - vision consolidée avec Talend",
+        "context": "Collecte API KeplerVo et modélisation MySQL via Talend pour un réseau de garages.",
         "gains": [
-          "Division par 2 des anomalies signalées",
-          "Traçabilité complète des traitements",
-          "Restitution Power BI pour les équipes terrain"
+          "Données véhicules harmonisées et centralisées",
+          "Analyse des coûts facilitée pour le siège",
+          "Mises à jour quotidiennes orchestrées automatiquement"
         ]
       },
       {
-        "sector": "Services financiers",
-        "title": "Supervision multi-cloud et SLA",
-        "context": "Orchestration Talend entre Azure Data Lake et applications métier sensibles.",
+        "sector": "Édition",
+        "title": "Media Participations - migration applicative Talend",
+        "context": "Migration ETL Talend pour conserver l'historique métier lors d'un changement d'application.",
         "gains": [
-          "95% des incidents détectés en amont",
-          "Matrice SLA partagée IT / métier",
-          "Rapports consolidés pour le COMEX"
+          "Transition sans perte d'information",
+          "Contrôles Talend automatisés pour garantir la qualité",
+          "Processus plus fiable et moins d'interventions manuelles"
         ]
       }
     ]
@@ -194,7 +194,12 @@
     {
       "question": "Pouvez-vous nous aider à documenter ou superviser nos flux ?",
       "answer": "Absolument. Je conçois des tableaux de bord clairs pour suivre l’exécution des jobs et les incidents (via Power BI ou Excel), et j’automatise la génération de rapports et d’alertes pour que vos équipes gagnent du temps au quotidien."
-    }
+    },
+    {
+  "question": "Pouvez-vous reprendre un projet déjà en difficulté ?",
+  "answer": "Oui, c’est une situation que je rencontre souvent. Je commence par un audit ciblé pour identifier les points de blocage — jobs instables, dépendances mal gérées, alertes non exploitables — puis je propose un plan de stabilisation rapide. L’objectif : remettre vos flux sous contrôle avant de reconstruire un socle plus durable."
+}
+
   ]
   }
 }
