@@ -2883,18 +2883,13 @@ body::before{
   padding-block: clamp(3.4rem, 5vw, 5.6rem);
 }
 .talend-hero__canvas{
-  background:
-    linear-gradient(135deg,
-      color-mix(in oklab, var(--brand) 82%, #1a2144 18%),
-      color-mix(in oklab, var(--brand-2) 72%, #052b1e 28%));
+  background:transparent;
   min-height: clamp(280px, 55vw, 480px);
-  box-shadow: var(--shadow-lg);
+  box-shadow:none;
 }
-.talend-hero__canvas::before{
-  opacity:.92;
-}
+.talend-hero__canvas::before,
 .talend-hero__canvas::after{
-  background: linear-gradient(200deg, rgba(8,12,24,.55), transparent 48%);
+  content:none;
 }
 .talend-hero .about-hero__inner{
   justify-items:stretch;

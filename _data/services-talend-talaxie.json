@@ -1,32 +1,32 @@
 ﻿{
   "hero": {
     "eyebrow": "Talend & Talaxie",
-    "title": "Talend & Talaxie : vos pipelines data sans friction",
-    "subtitle": "Je conçois des flux fiables, observables et documentés, même sans équipe data dédiée.",
+    "title": "Talend & Talaxie : vos flux conçus, livrés et suivis",
+    "subtitle": "Nouveau sur Talend ? Je transforme vos idées en flux prêts pour la production, sans jargon ni équipe data interne.",
     "bullets": [
-      "Automatisation Talend priorisée par vos enjeux métier",
-      "Migration Talend vers Talaxie sécurisée et sans rupture",
-      "Supervision et alertes compréhensibles pour vos équipes"
+      "Conception de jobs Talend clairs, documentés et faciles à faire évoluer",
+      "Mise en service encadrée : tests, déploiement et surveillance automatisée",
+      "Talend comme point de rencontre de vos données métier, même sans équipe technique"
     ],
-    "secondary": "Consultant Talend certifié, je transforme vos jobs existants en un socle robuste et évolutif.",
+    "secondary": "Consultant Talend certifié, je vous guide pas à pas pour dessiner, construire et opérer vos flux avec les briques natives de la plateforme.",
     "ctaLabel": "Planifier un diagnostic Talend",
     "ctaTracking": "talend_diagnostic",
     "ctaNote": "30 minutes pour cartographier vos flux et identifier vos quick wins.",
     "metrics": [
       {
-        "value": "45+",
-        "label": "Flux critiques pilotés",
-        "tooltip": "Alertes 24/7, reprises automatiques et journalisation lisible pour vos équipes."
+        "value": "Rapidité",
+        "label": "De l'idée à la production",
+        "tooltip": "Ateliers, modélisation, développement Talend et tests pour livrer un premier flux concret."
       },
       {
-        "value": "120",
-        "label": "Migration sans rupture",
-        "tooltip": "Bascule Talend → Talaxie par vagues, tests auto et plan de retour arrière validé."
+        "value": "0 script",
+        "label": "Tout reste dans Talend",
+        "tooltip": "Jobs graphiques, règles centralisées et documentation automatique : pas de code caché à maintenir."
       },
       {
-        "value": "95%",
-        "label": "Incidents anticipés",
-        "tooltip": "Alertes SLA claires et dashboards métier pour prévenir l’utilisateur final."
+        "value": "5 min",
+        "label": "Pour suivre vos flux",
+        "tooltip": "Tableaux de bord Talend et alertes pré-configurées compréhensibles par vos équipes métier."
       }
     ]
   },
@@ -37,11 +37,11 @@
     "pillars": [
       {
         "title": "Automatisation sur-mesure",
-        "caption": "Des jobs Talend qui tournent et s’auto-documentent.",
+        "caption": "Des jobs Talend qui tournent et documentés.",
         "bullets": [
           "Orchestration par planning ou événement avec reprise contrôlée.",
           "Tests qualité intégrés pour détecter l’anomalie avant l’utilisateur.",
-          "Tableaux de bord clairs pour suivre l’exécution en direct."
+          "Régles de transformation claires et traçables."
         ],
         "proof": "Exemple : industrialisation de 45 flux multi-sources avec reporting d’incidents en temps réel."
       },
@@ -68,37 +68,37 @@
     ]
   },
   "journey": {
-    "title": "Votre parcours Talend / Talaxie",
-    "subtitle": "Une démarche itérative et pédagogique pour avancer vite sans prendre de risques.",
+    "title": "Votre plan d’action data",
+    "subtitle": "Trois étapes claires pour structurer, réaliser et pérenniser vos projets data.",
     "steps": [
       {
         "label": "Phase 1",
-        "title": "Audit flash & priorisation",
-        "description": "Analyse rapide de votre existant, documentation des risques et identification des flux critiques.",
+        "title": "Audit complet du besoin",
+        "description": "Comprendre votre contexte, vos contraintes et vos objectifs pour cadrer efficacement l’intervention.",
         "deliverables": [
-          "Cartographie des données et dépendances",
-          "Tableau de priorisation partagé",
-          "Feuille de route des quick wins"
+          "Analyse des flux, sources et dépendances",
+          "Priorisation des chantiers data à forte valeur",
+          "Plan d’action synthétique et partagé"
         ]
       },
       {
         "label": "Phase 2",
-        "title": "Delivery et industrialisation",
-        "description": "Refonte ou création de jobs, mise en place des contrôles et automatisation de la supervision.",
+        "title": "Développement rapide et fiable",
+        "description": "Mise en œuvre pragmatique : automatisations, pipelines et contrôles qualité alignés avec les priorités métier.",
         "deliverables": [
-          "Jobs Talend/Talaxie prêts pour la prod",
-          "Tests et monitoring automatisés",
-          "Dashboards et alertes configurés"
+          "Jobs Talend/Talaxie développés et testés",
+          "Supervision et alertes automatisées",
+          "Livrables documentés et versionnés"
         ]
       },
       {
         "label": "Phase 3",
-        "title": "Transmission & montée en autonomie",
-        "description": "Documentation et accompagnement à chaud pour vos équipes métier ou IT.",
+        "title": "Livraison & accompagnement",
+        "description": "Validation, transfert de compétences et support post-livraison pour assurer la continuité opérationnelle.",
         "deliverables": [
-          "Guides d’exploitation et checklists",
-          "Sessions de formation ciblées",
-          "Support post-bascule (optionnel)"
+          "Recette et passage en production",
+          "Formation et documentation utilisateur",
+          "Support et ajustements post-déploiement"
         ]
       }
     ]
@@ -156,12 +156,13 @@
     ],
     "stackTitle": "Stack & outils maîtrisés",
     "stack": [
-      "Talend Studio & Talend Cloud",
+      "Talend Studio (DI,DB,ESB)",
       "Talaxie",
-      "Azure Data Factory & Data Lake",
+      "Power Automate",
       "Power BI & Fabric",
-      "Prometheus / Grafana",
-      "Snowflake & BigQuery"
+  "Bases SQL Server, PostgreSQL, Oracle",
+  "FTP / SFTP / WebServices / APIs",
+  "Suite Microsoft 365 (Excel, SharePoint, Teams)"
     ]
   },
   "cta": {
@@ -174,18 +175,26 @@
   "faq": {
     "title": "Questions fréquentes",
     "items": [
-      {
-        "question": "Pouvons-nous lancer une mission courte ?",
-        "answer": "Oui. Nous pouvons démarrer par un audit flash ou la mise en production d’un flux critique afin de sécuriser un périmètre réduit avant d’élargir."
-      },
-      {
-        "question": "Travaillez-vous avec nos équipes internes ?",
-        "answer": "Je co-construis les solutions avec vos équipes IT et métier, et j’organise des points pédagogiques réguliers pour garder tout le monde aligné."
-      },
-      {
-        "question": "Quel accompagnement après la mise en service ?",
-        "answer": "Je propose un support post-bascule optionnel : monitoring renforcé, coaching des équipes et ajustements sur les alertes si nécessaire."
-      }
-    ]
+    {
+      "question": "Pouvons-nous lancer une mission courte ?",
+      "answer": "Oui, c’est même souvent le meilleur point de départ. Nous pouvons démarrer par un audit flash, la remise en conformité d’un job Talend ou la mise en production d’un flux prioritaire. L’objectif : sécuriser rapidement un périmètre limité avant d’élargir à d’autres processus."
+    },
+    {
+      "question": "Travaillez-vous avec nos équipes internes ?",
+      "answer": "Toujours. Je m’intègre dans vos pratiques existantes (IT, métier ou exploitation) et je partage chaque avancée de manière pédagogique. L’idée n’est pas de livrer un 'boîte noire' mais de faire monter vos équipes en autonomie sur Talend, Talaxie ou Power BI."
+    },
+    {
+      "question": "Quel accompagnement après la mise en service ?",
+      "answer": "Je reste disponible après le déploiement : suivi des traitements, ajustements sur les alertes et formation à chaud. Un support post-bascule flexible permet d’assurer la stabilité des flux sans dépendance externe."
+    },
+    {
+      "question": "Intervenez-vous sur des environnements existants ?",
+      "answer": "Oui. Je reprends régulièrement des socles Talend existants pour les fiabiliser ou les migrer vers Talaxie. Cela comprend l’analyse des jobs, la remise à plat des dépendances, la normalisation du monitoring et la documentation des flux."
+    },
+    {
+      "question": "Pouvez-vous nous aider à documenter ou superviser nos flux ?",
+      "answer": "Absolument. Je conçois des tableaux de bord clairs pour suivre l’exécution des jobs et les incidents (via Power BI ou Excel), et j’automatise la génération de rapports et d’alertes pour que vos équipes gagnent du temps au quotidien."
+    }
+  ]
   }
 }
