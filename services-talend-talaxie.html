@@ -6,35 +6,39 @@ permalink: /services-talend-talaxie/
 ---
 {% assign talend = site.data.services-talend-talaxie %}
 
-<section class="section service-page talend-hero" aria-labelledby="talend-hero-title">
-  <div class="service-container talend-hero__grid">
-    <div class="talend-hero__copy" data-anim="fade-up">
-      <p class="service-eyebrow">{{ talend.hero.eyebrow }}</p>
-      <h1 id="talend-hero-title">{{ talend.hero.title }}</h1>
-      <p class="lead">{{ talend.hero.subtitle }}</p>
-      <ul class="talend-hero__benefits" aria-label="B&eacute;n&eacute;fices principaux">
-        {% for item in talend.hero.bullets %}
-        <li>{{ item }}</li>
-        {% endfor %}
-      </ul>
-      <p class="talend-hero__note">{{ talend.hero.secondary }}</p>
-      <div class="talend-hero__cta">
-        <a class="btn btn--primary"
-           href="{{ site.author.cal_url | default: site.author.calendly_url }}"
-           data-track-click="{{ talend.hero.ctaTracking }}">
-          {{ talend.hero.ctaLabel }}
-        </a>
-        <p class="cta-caption">{{ talend.hero.ctaNote }}</p>
+<section class="section service-page talend-hero about-hero" aria-labelledby="talend-hero-title">
+  <div class="about-hero__canvas talend-hero__canvas">
+    <div class="about-hero__inner">
+      <div class="about-hero__content" data-anim="fade-up">
+        <p class="about-hero__eyebrow service-eyebrow">{{ talend.hero.eyebrow }}</p>
+        <h1 class="about-hero__title" id="talend-hero-title">{{ talend.hero.title }}</h1>
+        <p class="about-hero__text lead">{{ talend.hero.subtitle }}</p>
+        <ul class="talend-hero__benefits" aria-label="B&eacute;n&eacute;fices principaux">
+          {% for item in talend.hero.bullets %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        <p class="talend-hero__note">{{ talend.hero.secondary }}</p>
+        <div class="talend-hero__cta">
+          <a class="btn btn--primary"
+             href="{{ site.author.cal_url | default: site.author.calendly_url }}"
+             data-track-click="{{ talend.hero.ctaTracking }}">
+            {{ talend.hero.ctaLabel }}
+          </a>
+          <p class="cta-caption">{{ talend.hero.ctaNote }}</p>
+        </div>
       </div>
-    </div>
-    <div class="talend-hero__metrics" role="list">
-      {% for metric in talend.hero.metrics %}
-      <article class="premium-metric card" role="listitem" data-anim="fade-up">
-        <span class="metric-value">{{ metric.value }}</span>
-        <span class="metric-label">{{ metric.label }}</span>
-        {% if metric.tooltip %}<p class="metric-desc">{{ metric.tooltip }}</p>{% endif %}
-      </article>
-      {% endfor %}
+      <div class="about-hero__media" data-anim="fade-up">
+        <div class="about-stats-card talend-hero__stats" role="list">
+          {% for metric in talend.hero.metrics %}
+          <article class="about-stats-card__item talend-hero__metric" role="listitem">
+            <span class="about-stats-card__value">{{ metric.value }}</span>
+            <span class="about-stats-card__label">{{ metric.label }}</span>
+            {% if metric.tooltip %}<p class="about-stats-card__hint">{{ metric.tooltip }}</p>{% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </div>
 </section>
