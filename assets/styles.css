@@ -356,37 +356,6 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   .about-hero__media{
     margin-top: clamp(1.5rem, 6vw, 3rem);
   }
-  .about-page .about-hero__canvas{
-    width:100%;
-    max-width:min(640px, 100%);
-    margin-inline:auto;
-    padding: clamp(1.4rem, 6vw, 2.2rem);
-  }
-  .about-page .about-hero__inner{
-    text-align:left;
-    justify-items:stretch;
-  }
-  .about-page .about-hero__title{
-    font-size: clamp(1.85rem, 7.5vw, 2.4rem);
-    line-height:1.12;
-  }
-  .about-page .about-hero__content{
-    justify-items:stretch;
-    width:100%;
-    padding-inline: clamp(1.2rem, 5vw, 1.6rem);
-    box-sizing:border-box;
-    overflow:visible;
-  }
-  .about-page .about-hero__text{
-    font-size: clamp(1.02rem, 4vw, 1.22rem);
-    line-height:1.7;
-    max-width:100%;
-    overflow-wrap:anywhere;
-    hyphens:auto;
-  }
-  .about-page .about-photo-frame{
-    width: clamp(220px, 78vw, 320px);
-  }
 }
 .about-stats-card{
   position:relative;

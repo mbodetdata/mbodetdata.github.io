@@ -8,6 +8,80 @@ permalink: /about-me/
 {%- assign about_photo = site.author.photo | default: site.author.photo_url | default: '' -%}
 {%- assign about_copy = site.data.about.hero -%}
 
+<style>
+  #about-person .about-hero__inner{
+    align-items:start;
+  }
+  #about-person .about-hero__content{
+    width:100%;
+    max-width:min(620px, 100%);
+    justify-items:start;
+    gap:clamp(.8rem, 2.4vw, 1.4rem);
+  }
+  #about-person .about-hero__content p{
+    text-align:left;
+  }
+  #about-person .about-photo-frame{
+    aspect-ratio:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    gap:clamp(1rem, 3vw, 1.8rem);
+    padding:clamp(1rem, 4vw, 1.9rem);
+    max-width:min(480px, 100%);
+  }
+  #about-person .about-photo-frame::after{
+    display:none;
+  }
+  #about-person .about-photo-slot{
+    flex:1 1 auto;
+    min-height:0;
+  }
+  #about-person .about-photo-slot img{
+    width:100%;
+    height:auto;
+    object-fit:cover;
+  }
+  #about-person .about-hero__canvas::before,
+  #about-person .about-hero__canvas::after{
+    content:none;
+  }
+  #about-person .about-stats-card{
+    width:100%;
+    max-width:min(560px, 100%);
+    margin-top:clamp(1.2rem, 4vw, 2rem);
+  }
+  #about-person .about-stats-card__item{
+    max-width:none;
+  }
+  @media (max-width: 720px){
+    #about-person .about-hero__inner{
+      align-items:stretch;
+    }
+    #about-person .about-photo-frame{
+      margin-inline:auto;
+      max-width:min(360px, 100%);
+    }
+    #about-person .about-hero__content{
+      text-align:left;
+      justify-items:start;
+    }
+    #about-person .about-stats-card{
+      flex-direction:column;
+      align-items:stretch;
+      gap:clamp(.9rem, 4vw, 1.4rem);
+    }
+  }
+  @media (min-width: 721px){
+    #about-person .about-hero__inner{
+      align-items:start;
+    }
+    #about-person .about-stats-card{
+      gap:clamp(.9rem, 2vw, 1.6rem);
+    }
+  }
+</style>
+
 <section id="about-person" class="section about-hero about-page" itemscope itemtype="https://schema.org/Person">
   <meta itemprop="name" content="{{ site.author.prenom_nom }}">
   <meta itemprop="jobTitle" content="{{ site.author.job_title }}">
