@@ -61,7 +61,7 @@
           </a></li>
           {% endif %}
           {% if site.author.cal_url or site.author.calendly_url %}
-          <li><a href="{{ site.author.cal_url | default: site.author.calendly_url }}" target="_blank" rel="noopener">
+          <li><a href="{{ site.author.cal_url | default: site.author.calendly_url }}" data-booking-open="modal" rel="noopener">
             <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             Prendre rendez-vous
           </a></li>

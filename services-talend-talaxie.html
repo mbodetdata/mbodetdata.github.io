@@ -22,6 +22,7 @@ permalink: /services-talend-talaxie/
         <div class="talend-hero__cta">
           <a class="btn btn--primary"
              href="{{ site.author.cal_url | default: site.author.calendly_url }}"
+             data-booking-open="modal"
              data-track-click="{{ talend.hero.ctaTracking }}">
             {{ talend.hero.ctaLabel }}
           </a>
@@ -165,6 +166,7 @@ permalink: /services-talend-talaxie/
       <p>{{ talend.cta.intro }}</p>
       <a class="btn btn--primary"
          href="{{ site.author.cal_url | default: site.author.calendly_url }}"
+         data-booking-open="modal"
          data-track-click="{{ talend.cta.tracking }}">
         {{ talend.cta.linkText }}
       </a>
