@@ -115,24 +115,27 @@ bandeau:
 <!-- Modal Booking -->
 <div id="calendly-modal" class="modal modal--booking" hidden>
   <div class="modal__dialog booking-modal" role="dialog" aria-modal="true" aria-labelledby="calendlyTitle" aria-describedby="calendlySubtitle">
-    <button class="modal__close booking-modal__close" type="button" aria-label="Fermer">
-      <span aria-hidden="true">&times;</span>
-    </button>
     <div class="booking-modal__glow" aria-hidden="true"></div>
     <header class="booking-modal__header">
-      <span class="booking-modal__badge">Accompagnement premium</span>
-      <h3 id="calendlyTitle">Planifiez votre rendez-vous</h3>
-      <p id="calendlySubtitle">Choisissez un cr&eacute;neau de 30&nbsp;minutes pour &eacute;changer avec un expert Power&nbsp;BI &amp; Talend.</p>
+      <div class="booking-modal__titles">
+        <h3 id="calendlyTitle">Planifiez votre rendez-vous</h3>
+        <p id="calendlySubtitle">Choisissez un cr&eacute;neau de 30&nbsp;minutes pour &eacute;changer avec un expert Power&nbsp;BI &amp; Talend.</p>
+      </div>
+      <button class="modal__close booking-modal__close" type="button" aria-label="Fermer">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </header>
     <div class="booking-modal__content">
-      <div class="booking-modal__info">
-        <ul class="booking-modal__perks" role="list">
-          <li>Diagnostic personnalis&eacute; offert sur vos besoins data</li>
-          <li>Recommandations concr&egrave;tes sous 24&nbsp;heures</li>
-          <li>Session vid&eacute;o ou t&eacute;l&eacute;phone adapt&eacute;e &agrave; votre rythme</li>
+      <section class="booking-modal__agenda" aria-labelledby="calendlyAgendaTitle">
+        <h4 id="calendlyAgendaTitle">D&eacute;roul&eacute; (30&nbsp;min)</h4>
+        <ul>
+          <li>Pr&eacute;sentation rapide de votre contexte</li>
+          <li>Identification de vos enjeux et objectifs</li>
+          <li>&Eacute;change sur les solutions possibles</li>
+          <li>Prochaines &eacute;tapes &eacute;ventuelles</li>
         </ul>
-        <p class="booking-modal__note">Vous recevez une confirmation imm&eacute;diate avec les prochaines &eacute;tapes.</p>
-      </div>
+        <p class="booking-modal__agenda-note">La r&eacute;union se fera en visio avec lien automatique dans l&rsquo;invitation (pensez &agrave; v&eacute;rifier vos spams).</p>
+      </section>
       <div class="booking-modal__frame">
         <div id="calendly-inline"
              class="calendly-inline booking-modal__iframe"
