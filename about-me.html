@@ -43,11 +43,9 @@ permalink: /about-me/
         <h1 class="about-hero__title">{{ about_copy.title }}</h1>
         {% endif %}
         {% if about_copy.paragraphs %}
-        <div class="about-hero__narrative">
           {% for paragraph in about_copy.paragraphs %}
-          <p class="about-hero__text{% if forloop.first %} about-hero__text--lead{% else %} about-hero__text--card{% endif %}">{{ paragraph }}</p>
+        <p class="about-hero__text">{{ paragraph }}</p>
           {% endfor %}
-        </div>
         {% endif %}
       </div>
       <div class="about-hero__media">
