@@ -87,84 +87,126 @@ Pour un guide complet de migration et les différences détaillées, consultez m
 
 
 ## 6. À quoi ça ressemble ? (avant / après Talend)
-
 <figure class="card" role="group" aria-labelledby="fig-talend-before-after-title">
-  <figcaption id="fig-talend-before-after-title" class="muted" style="margin-bottom:.5rem;">Simplification des échanges de données avec Talend/Talaxie</figcaption>
-  <div style="overflow:auto">
-    <svg viewBox="0 0 960 320" width="100%" height="auto" role="img" aria-label="Comparatif avant/après : silos manuels vs flux automatisés orchestrés par Talend">
-      <defs>
-        <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#6677ff" />
-          <stop offset="1" stop-color="#2bd48f" />
-        </linearGradient>
-      </defs>
+  <figcaption id="fig-talend-before-after-title" class="muted" style="margin-bottom:.6rem;">
+    Simplification des échanges de données avec Talend/Talaxie
+  </figcaption>
 
-      <!-- Titres colonnes -->
-      <text x="160" y="26" font-size="16" fill="#9aa6bf" text-anchor="middle">Avant</text>
-      <text x="800" y="26" font-size="16" fill="#9aa6bf" text-anchor="middle">Après</text>
+  <svg class="etl-diagram" viewBox="0 0 980 360" width="100%" height="auto"
+       role="img"
+       aria-label="Comparatif avant/après : à gauche, des silos non-automatisés ; à droite, un hub Talend central qui orchestre les échanges.">
+    <style>
+      .etl-diagram {
+        --c-bg: color-mix(in oklab, var(--surface-1) 96%, transparent);
+        --c-panel: color-mix(in oklab, var(--surface-1) 94%, transparent);
+        --c-stroke: color-mix(in oklab, var(--fg) 18%, transparent);
+        --c-muted: var(--muted);
+        --c-text:  var(--fg);
+        --c-bad:   #e57373;
+        --c-good:  color-mix(in oklab, var(--brand-2) 82%, #fff 18%);
+        --c-accA:  var(--brand);
+        --c-accB:  var(--brand-2);
+      }
+      text { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial, "Noto Sans"; }
+      .title { font-weight: 800; font-size: 15px; fill: var(--c-muted); }
+      .panel {
+        fill: var(--c-panel); stroke: var(--c-stroke); stroke-width: 1.2;
+        filter: drop-shadow(0 8px 18px rgba(0,0,0,.18));
+      }
+      .node {
+        fill: color-mix(in oklab, var(--surface-1) 90%, var(--brand) 10%);
+        stroke: color-mix(in oklab, var(--border), var(--brand) 28%);
+        stroke-width: 1.2; rx: 10; ry: 10;
+      }
+      .node text { fill: var(--c-text); font-weight: 700; font-size: 12px; }
+      .node--dim { fill: color-mix(in oklab, var(--surface-1) 96%, transparent); }
+      .bad-note { fill: var(--c-bad); font-size: 12px; }
+      .good-note { fill: var(--c-good); font-size: 12px; }
+      .edge { stroke: color-mix(in oklab, var(--fg) 40%, transparent); stroke-width: 1.2; fill: none; }
+      .edge--good { stroke: var(--c-good); stroke-width: 1.6; }
+      /* Hub: gradient + léger glow */
+      .hub-shadow { filter: drop-shadow(0 14px 26px rgba(0,0,0,.28)); }
+    </style>
 
-      <!-- Avant : silos -->
-      <g transform="translate(40,50)">
-        <rect x="0" y="0" width="240" height="220" rx="12" fill="none" stroke="#41506f" />
-        <rect x="20" y="18" width="80" height="42" rx="8" fill="#1a2238" stroke="#41506f"/>
-        <text x="60" y="44" font-size="12" fill="#dbe6ff" text-anchor="middle">ERP</text>
+    <defs>
+      <!-- Flèches neutres (avant) -->
+      <marker id="arrow-neutral" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z"
+              fill="color-mix(in oklab, var(--fg) 40%, transparent)"/>
+      </marker>
+      <!-- Flèches vertes (après) -->
+      <marker id="arrow-good" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="color-mix(in oklab, var(--brand-2) 82%, #fff 18%)"/>
+      </marker>
 
-        <rect x="140" y="18" width="80" height="42" rx="8" fill="#1a2238" stroke="#41506f"/>
-        <text x="180" y="44" font-size="12" fill="#dbe6ff" text-anchor="middle">CRM</text>
+      <!-- Dégradé du hub -->
+      <radialGradient id="gHub" cx="50%" cy="45%" r="58%">
+        <stop offset="0%"  stop-color="color-mix(in oklab, var(--brand) 70%, var(--brand-2) 30%)"/>
+        <stop offset="100%" stop-color="color-mix(in oklab, var(--brand-2) 75%, var(--brand) 25%)"/>
+      </radialGradient>
+      <!-- Halo doux autour du hub -->
+      <filter id="fGlow" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="10" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
 
-        <rect x="20" y="86" width="80" height="42" rx="8" fill="#1a2238" stroke="#41506f"/>
-        <text x="60" y="112" font-size="12" fill="#dbe6ff" text-anchor="middle">Excel</text>
+    <!-- Titres colonnes -->
+    <text class="title" x="210" y="26" text-anchor="middle">Avant</text>
+    <text class="title" x="770" y="26" text-anchor="middle">Après</text>
 
-        <rect x="140" y="86" width="80" height="42" rx="8" fill="#1a2238" stroke="#41506f"/>
-        <text x="180" y="112" font-size="12" fill="#dbe6ff" text-anchor="middle">FTP</text>
+    <!-- PANNEAU AVANT -->
+    <g transform="translate(60,50)">
+      <rect class="panel" x="0" y="0" width="300" height="260" rx="14" ry="14"/>
+      <!-- Silos -->
+      <g>
+        <rect class="node node--dim" x="28"  y="28"  width="92" height="40"/><text x="74"  y="53" text-anchor="middle">ERP</text>
+        <rect class="node node--dim" x="180" y="28"  width="92" height="40"/><text x="226" y="53" text-anchor="middle">CRM</text>
 
-        <rect x="80" y="154" width="80" height="42" rx="8" fill="#1a2238" stroke="#41506f"/>
-        <text x="120" y="180" font-size="12" fill="#dbe6ff" text-anchor="middle">API</text>
+        <rect class="node node--dim" x="28"  y="100" width="92" height="40"/><text x="74"  y="125" text-anchor="middle">Excel</text>
+        <rect class="node node--dim" x="180" y="100" width="92" height="40"/><text x="226" y="125" text-anchor="middle">FTP</text>
 
-        <!-- Flèches désordonnées -->
-        <path d="M60,60 C60,70 60,70 60,86" stroke="#8a94ab" fill="none" marker-end="url(#none)"/>
-        <path d="M180,60 C180,70 180,70 180,86" stroke="#8a94ab" fill="none"/>
-        <path d="M100,44 C120,44 140,44 160,44" stroke="#8a94ab" fill="none"/>
-        <path d="M60,128 C90,140 140,140 180,128" stroke="#8a94ab" fill="none"/>
-        <path d="M120,196 C120,170 60,160 60,154" stroke="#8a94ab" fill="none"/>
-        <text x="120" y="210" font-size="11" fill="#e57f7f" text-anchor="middle">Manuel, doublons, retards</text>
+        <rect class="node node--dim" x="104" y="172" width="92" height="40"/><text x="150" y="197" text-anchor="middle">API</text>
+      </g>
+      <!-- Liaisons “désordonnées” -->
+      <path class="edge" d="M120,48 C150,48 158,48 180,48" marker-end="url(#arrow-neutral)"/>
+      <path class="edge" d="M74,68 C74,84 74,90 74,100"/>
+      <path class="edge" d="M226,68 C226,84 226,90 226,100"/>
+      <path class="edge" d="M74,140 C110,154 190,154 226,140" marker-end="url(#arrow-neutral)"/>
+      <path class="edge" d="M150,212 C150,206 140,196 120,188" marker-end="url(#arrow-neutral)"/>
+      <text class="bad-note" x="150" y="230" text-anchor="middle">Manuel, doublons, retards</text>
+    </g>
+
+    <!-- PANNEAU APRÈS -->
+    <g transform="translate(520,50)">
+      <rect class="panel" x="0" y="0" width="400" height="260" rx="14" ry="14"/>
+
+      <!-- Nœuds -->
+      <rect class="node" x="24"  y="36"  width="100" height="40"/><text x="74"  y="61"  text-anchor="middle">ERP</text>
+      <rect class="node" x="276" y="36"  width="100" height="40"/><text x="326" y="61"  text-anchor="middle">CRM</text>
+      <rect class="node" x="24"  y="112" width="100" height="40"/><text x="74"  y="137" text-anchor="middle">Excel/FTP</text>
+      <rect class="node" x="276" y="112" width="100" height="40"/><text x="326" y="137" text-anchor="middle">API</text>
+      <rect class="node" x="160" y="192" width="100" height="40"/><text x="210" y="217" text-anchor="middle">Power BI</text>
+
+      <!-- Hub Talend -->
+      <g class="hub-shadow" filter="url(#fGlow)">
+        <circle cx="210" cy="120" r="44" fill="url(#gHub)" stroke="color-mix(in oklab, var(--border), var(--brand) 45%)" stroke-width="1.4"/>
+        <text x="210" y="124" text-anchor="middle" style="fill:#fff; font-weight:800;">Talend</text>
       </g>
 
-      <!-- Après : hub Talend -->
-      <g transform="translate(520,50)">
-        <rect x="0" y="0" width="380" height="220" rx="12" fill="none" stroke="#41506f" />
+      <!-- Liaisons propres -->
+      <path class="edge edge--good" d="M124,56 L166,90" marker-end="url(#arrow-good)"/>
+      <path class="edge edge--good" d="M276,56 L254,90" marker-end="url(#arrow-good)"/>
+      <path class="edge edge--good" d="M124,132 L166,126" marker-end="url(#arrow-good)"/>
+      <path class="edge edge--good" d="M276,132 L254,126" marker-end="url(#arrow-good)"/>
+      <path class="edge edge--good" d="M210,164 L210,192" marker-end="url(#arrow-good)"/>
 
-        <!-- Talend hub -->
-        <circle cx="190" cy="110" r="42" fill="url(#g1)" stroke="#2a3150"/>
-        <text x="190" y="114" font-size="12" fill="#ffffff" text-anchor="middle">Talend</text>
-
-        <!-- Sources -->
-        <rect x="12" y="18" width="88" height="36" rx="8" fill="#1a2238" stroke="#41506f"/>
-        <text x="56" y="40" font-size="12" fill="#dbe6ff" text-anchor="middle">ERP</text>
-
-        <rect x="280" y="18" width="88" height="36" rx="8" fill="#1a2238" stroke="#41506f"/>
-        <text x="324" y="40" font-size="12" fill="#dbe6ff" text-anchor="middle">CRM</text>
-
-        <rect x="12" y="86" width="88" height="36" rx="8" fill="#1a2238" stroke="#41506f"/>
-        <text x="56" y="108" font-size="12" fill="#dbe6ff" text-anchor="middle">Excel/FTP</text>
-
-        <rect x="280" y="86" width="88" height="36" rx="8" fill="#1a2238" stroke="#41506f"/>
-        <text x="324" y="108" font-size="12" fill="#dbe6ff" text-anchor="middle">API</text>
-
-        <rect x="150" y="176" width="80" height="36" rx="8" fill="#1a2238" stroke="#41506f"/>
-        <text x="190" y="198" font-size="12" fill="#dbe6ff" text-anchor="middle">Power BI</text>
-
-        <!-- Flèches propres -->
-        <path d="M100,36 L160,80" stroke="#63d6a6" fill="none"/>
-        <path d="M280,36 L220,80" stroke="#63d6a6" fill="none"/>
-        <path d="M100,104 L148,104" stroke="#63d6a6" fill="none"/>
-        <path d="M280,104 L232,104" stroke="#63d6a6" fill="none"/>
-        <path d="M190,152 L190,176" stroke="#63d6a6" fill="none"/>
-
-        <text x="190" y="226" font-size="11" fill="#63d6a6" text-anchor="middle">Automatisé, contrôlé, traçable</text>
-      </g>
-    </svg>
-  </div>
+      <text class="good-note" x="210" y="246" text-anchor="middle">Automatisé, contrôlé, traçable</text>
+    </g>
+  </svg>
 </figure>
 
 ---
