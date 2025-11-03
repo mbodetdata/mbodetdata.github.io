@@ -2902,78 +2902,162 @@ body::before{
 }
 
 /* Carousel wrapper (mêmes réglages que recent-works) */
-.recent-posts__carousel{
-  padding: clamp(1.05rem, 2vw, 1.6rem);
-  border-radius: clamp(1.2rem, 2.4vw, 2rem);
-  background: linear-gradient(160deg, color-mix(in oklab, var(--surface-1) 82%, transparent), color-mix(in oklab, var(--surface-2) 68%, var(--brand) 26%));
-  box-shadow:0 28px 60px rgba(0,0,0,.38);
-  overflow:hidden;
-}
+  .recent-posts__body{
+    display:flex;
+  }
+  .recent-posts__grid{
+    margin:0;
+    padding: clamp(.35rem, 1vw, .55rem);
+    width:100%;
+    list-style:none;
+    display:flex;
+    gap: clamp(1rem, 2vw, 1.6rem);
+    overflow-x:auto;
+    scroll-snap-type:x proximity;
+    scrollbar-width:thin;
+  }
+  .recent-posts__grid::-webkit-scrollbar{
+    height:6px;
+  }
+  .recent-posts__grid::-webkit-scrollbar-thumb{
+    background: color-mix(in oklab, var(--brand) 32%, transparent);
+    border-radius:999px;
+  }
+  .recent-posts__item{
+    flex:0 0 clamp(260px, 72vw, 340px);
+    display:flex;
+    scroll-snap-align:start;
+  }
+  @media (min-width: 720px){
+    .recent-posts__grid{
+      padding:0;
+      overflow:visible;
+      scroll-snap-type:none;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .recent-posts__item{
+      flex:auto;
+    }
+  }
 
 
 /* Cartes articles (sœurs des project-card) */
-.recent-post-card{
-  position:relative;
-  display:grid;
-  grid-template-columns: 1fr;
-  gap:.9rem;
-  align-items:start;
-  padding: clamp(1rem, 1.6vw, 1.4rem);
-  border-radius: clamp(1rem, 1.6vw, 1.4rem);
-  background: linear-gradient(165deg, color-mix(in oklab, var(--surface-1) 90%, transparent), color-mix(in oklab, var(--surface-2) 60%, var(--brand) 20%));
-  border:1px solid color-mix(in oklab, var(--border), var(--brand) 36%);
-  box-shadow:0 18px 40px rgba(0,0,0,.32);
-}
-.recent-post-card__media{
-  grid-column:1; grid-row:1; width:100%; height:auto; aspect-ratio:16/9;
-  border-radius:.9rem; overflow:hidden;
-  border:1px solid var(--border); background: var(--surface-1);
-  box-shadow: var(--shadow-sm);
-}
-.recent-post-card__media img{ width:100%; height:100%; object-fit:cover; }
-
-.recent-post-card__meta{
-  grid-column:1; display:flex; gap:.45rem; align-items:center;
-  font-size:.95rem; color: var(--muted);
-}
-.recent-post-card__title{
-  grid-column:1; margin:.05rem 0 0;
-  font-size: clamp(1.05rem, .9rem + .6vw, 1.35rem);
-  line-height:1.28; font-weight:800;
-}
-.recent-post-card__excerpt{
-  grid-column:1; margin:.1rem 0 .35rem; color: var(--muted);
-}
-.recent-post-card__tags{
-  grid-column:1; display:flex; gap:.35rem; flex-wrap:wrap; margin:0 0 .25rem; padding:0; list-style:none;
-}
-.recent-post-card__footer{
-  grid-column:1;
-}
-@media (min-width: 681px){
-  .recent-post-card{ grid-template-columns: 92px 1fr; }
-  .recent-post-card__media{ grid-column:1; grid-row:1 / span 3; width:92px; height:92px; aspect-ratio:auto; }
-  .recent-post-card__meta,
-  .recent-post-card__title,
-  .recent-post-card__excerpt,
-  .recent-post-card__tags,
-  .recent-post-card__footer{ grid-column:2; }
-}
-
-/* Harmonisation des flèches/dots */
-.recent-posts .carousel__btn{
-  border:0;
-  background: color-mix(in oklab, var(--brand) 55%, var(--surface-2) 45%);
-  color:#ffffff;
-  box-shadow:0 14px 32px color-mix(in oklab, var(--brand) 45%, transparent);
-}
-.recent-posts .carousel__dot{
-  width:10px; height:10px;
-  background: color-mix(in oklab, var(--muted) 28%, transparent);
-}
-.recent-posts .carousel__dot.is-active{
-  width:28px; background: color-mix(in oklab, var(--brand) 80%, transparent);
-}
+  .recent-post-card{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap: clamp(1rem, 2vw, 1.4rem);
+    align-items:stretch;
+    width:100%;
+    min-height:100%;
+    padding: clamp(1.3rem, 2.6vw, 1.85rem);
+    border-radius: clamp(1.1rem, 2vw, 1.6rem);
+    background: linear-gradient(160deg, color-mix(in oklab, var(--surface-1) 88%, transparent), color-mix(in oklab, var(--surface-2) 62%, transparent));
+    border:1px solid color-mix(in oklab, var(--border) 70%, var(--brand) 30%);
+    box-shadow: var(--shadow-lg);
+    overflow:hidden;
+    isolation:isolate;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  }
+  .recent-post-card::before{
+    content:"";
+    position:absolute;
+    inset:-45% -45% auto;
+    aspect-ratio:1/1;
+    background: radial-gradient(circle at top, color-mix(in oklab, var(--brand) 42%, transparent) 0%, transparent 65%);
+    opacity:.38;
+    transition: transform .4s ease, opacity .4s ease;
+    z-index:-1;
+  }
+  .recent-post-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    background: linear-gradient(140deg, color-mix(in oklab, var(--brand) 24%, transparent) 0%, transparent 62%);
+    opacity:.25;
+    pointer-events:none;
+    z-index:-1;
+  }
+  .recent-post-card:hover{
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: color-mix(in oklab, var(--border) 40%, var(--brand) 60%);
+  }
+  .recent-post-card:hover::before{
+    opacity:.6;
+    transform: translateY(-12px);
+  }
+  .recent-post-card__media{
+    position:relative;
+    border-radius: clamp(.95rem, 1.6vw, 1.2rem);
+    overflow:hidden;
+    aspect-ratio:16/9;
+    background: color-mix(in oklab, var(--surface-2) 86%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--border) 80%, transparent);
+  }
+  .recent-post-card__media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition: transform .5s ease;
+  }
+  .recent-post-card:hover .recent-post-card__media img{
+    transform: scale(1.05);
+  }
+  .recent-post-card__content{
+    display:grid;
+    gap:.75rem;
+  }
+  .recent-post-card__meta{
+    display:flex;
+    gap:.55rem;
+    align-items:center;
+    font-size:.95rem;
+    letter-spacing:.01em;
+    color: color-mix(in oklab, var(--muted) 78%, var(--brand) 22%);
+  }
+  .recent-post-card__meta span{
+    display:inline-flex;
+    align-items:center;
+  }
+  .recent-post-card__title{
+    margin:0;
+    font-size: clamp(1.1rem, .96rem + .8vw, 1.45rem);
+    line-height:1.28;
+    font-weight:800;
+  }
+  .recent-post-card__title a{
+    color:inherit;
+    text-decoration:none;
+  }
+  .recent-post-card__title a:hover,
+  .recent-post-card__title a:focus{
+    text-decoration: underline;
+    text-decoration-thickness:2px;
+  }
+  .recent-post-card__excerpt{
+    margin:0;
+    color: color-mix(in oklab, var(--muted) 78%, #ffffff 22%);
+  }
+  .recent-post-card__tags{
+    display:flex;
+    gap:.4rem;
+    flex-wrap:wrap;
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .recent-post-card__footer{
+    margin-top:auto;
+    display:flex;
+    justify-content:flex-start;
+  }
+  .recent-post-card .btn--details{
+    border-radius:999px;
+    padding-inline:1.4rem;
+  }
 
 /* Mobile: media optionnel => layout 1 colonne si pas d'image */
 
@@ -3060,8 +3144,7 @@ body::before{
 }
 
 /* 7) Carrousels : cartes et contrôles plus discrets */
-:root[data-theme="light"] .recent-works__carousel,
-:root[data-theme="light"] .recent-posts__carousel{
+  :root[data-theme="light"] .recent-works__carousel{
   background: linear-gradient(160deg, #ffffff, var(--surface-2));
   box-shadow: var(--shadow-md);
 }
@@ -3076,29 +3159,44 @@ body::before{
   color: color-mix(in oklab, var(--fg) 92%, var(--brand) 8%);
   border:1px solid var(--border);
 }
-:root[data-theme="light"] .recent-works .carousel__btn,
-:root[data-theme="light"] .recent-posts .carousel__btn{
+  :root[data-theme="light"] .recent-works .carousel__btn{
   background: #ffffff;
   border:1px solid var(--border);
   color: var(--fg);
   box-shadow: var(--shadow-sm);
 }
-:root[data-theme="light"] .recent-works .carousel__btn:hover,
-:root[data-theme="light"] .recent-posts .carousel__btn:hover{
+  :root[data-theme="light"] .recent-works .carousel__btn:hover{
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
-:root[data-theme="light"] .recent-works .carousel__dot,
-:root[data-theme="light"] .recent-posts .carousel__dot{
+  :root[data-theme="light"] .recent-works .carousel__dot{
   width:10px; height:10px; border-radius:999px; border:0;
   background: color-mix(in oklab, var(--muted) 24%, transparent);
 }
-:root[data-theme="light"] .recent-works .carousel__dot.is-active,
-:root[data-theme="light"] .recent-posts .carousel__dot.is-active{
+  :root[data-theme="light"] .recent-works .carousel__dot.is-active{
   width:26px;
   background: color-mix(in oklab, var(--brand) 60%, #ffffff 40%);
 }
 
+  /* 7b) Blog : cartes premium en thème clair */
+  :root[data-theme="light"] .recent-post-card{
+    background: linear-gradient(165deg, #ffffff 0%, #f7f9fd 55%, #eef3fb 100%);
+    border:1px solid var(--border);
+    box-shadow: var(--shadow-md);
+  }
+  :root[data-theme="light"] .recent-post-card::after{
+    opacity:.14;
+  }
+  :root[data-theme="light"] .recent-post-card__meta{
+    color: color-mix(in oklab, var(--muted) 74%, var(--brand) 26%);
+  }
+  :root[data-theme="light"] .recent-post-card__excerpt{
+    color: color-mix(in oklab, var(--muted) 70%, var(--fg) 30%);
+  }
+  :root[data-theme="light"] .recent-posts__grid::-webkit-scrollbar-thumb{
+    background: color-mix(in oklab, var(--brand) 35%, transparent);
+  }
+  
 /* 8) Cartes services/info/features : surfaces neutres, lisibles */
 :root[data-theme="light"] .service-card{
   background: linear-gradient(160deg, #ffffff, #f7f9fd);

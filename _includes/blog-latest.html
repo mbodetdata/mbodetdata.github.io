@@ -15,41 +15,39 @@
       <p class="muted">Aucun article publié pour le moment.</p>
     {% else %}
     <div class="recent-posts__body">
-      <div class="recent-posts__carousel carousel" data-carousel="blog" data-carousel-label="l’article" aria-roledescription="carousel">
-        <button class="carousel__btn prev" type="button" aria-label="Défiler vers la gauche">&lsaquo;</button>
+      <ul class="recent-posts__grid" role="list" aria-label="Les 3 derniers articles publiés">
+        {% for post in posts_sorted limit:3 %}
+          {% assign idx = forloop.index0 %}
 
-        <ul class="carousel__track" role="listbox" aria-label="Liste d’articles">
-          {% for post in posts_sorted limit:3 %}
-            {% assign idx = forloop.index0 %}
+          {%- comment -%} Temps de lecture {%- endcomment -%}
+          {% assign words = post.content | strip_html | strip_newlines | replace: '  ', ' ' | split: ' ' | size %}
+          {% assign minutes = words | divided_by: 220 | plus: 1 %}
 
-            {%- comment -%} Temps de lecture {%- endcomment -%}
-            {% assign words = post.content | strip_html | strip_newlines | replace: '  ', ' ' | split: ' ' | size %}
-            {% assign minutes = words | divided_by: 220 | plus: 1 %}
+          {%- comment -%} Base de l’extrait (excerpt si dispo, sinon contenu) {%- endcomment -%}
+          {% assign excerpt_src = post.excerpt | default: post.content %}
+          {% assign after_script = excerpt_src | split: '</script>' | last %}
+          {% if after_script != excerpt_src %}
+            {% assign excerpt_base = after_script %}
+          {% else %}
+            {% assign excerpt_base = excerpt_src %}
+          {% endif %}
 
-            {%- comment -%} Base de l’extrait (excerpt si dispo, sinon contenu) {%- endcomment -%}
-            {% assign excerpt_src = post.excerpt | default: post.content %}
-            {% assign after_script = excerpt_src | split: '</script>' | last %}
-            {% if after_script != excerpt_src %}
-              {% assign excerpt_base = after_script %}
-            {% else %}
-              {% assign excerpt_base = excerpt_src %}
-            {% endif %}
+          {% assign excerpt = excerpt_base
+            | strip_html
+            | strip_newlines
+            | replace: '  ', ' '
+            | truncate: 160
+          %}
 
-            {% assign excerpt = excerpt_base
-              | strip_html
-              | strip_newlines
-              | replace: '  ', ' '
-              | truncate: 160
-            %}
+          <li class="recent-posts__item" role="presentation">
+            <article class="recent-post-card" aria-describedby="post-desc-{{ idx }}">
+              {% if post.image %}
+                <div class="recent-post-card__media">
+                  <img src="{{ post.image | relative_url }}" alt="" loading="lazy" decoding="async">
+                </div>
+              {% endif %}
 
-            <li class="carousel__slide" role="option" aria-describedby="post-desc-{{ idx }}">
-              <article class="recent-post-card">
-                {% if post.image %}
-                  <div class="recent-post-card__media">
-                    <img src="{{ post.image | relative_url }}" alt="" loading="lazy" decoding="async">
-                  </div>
-                {% endif %}
-
+              <div class="recent-post-card__content">
                 <div class="recent-post-card__meta muted">
                   <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
                   <span aria-hidden="true">&middot;</span>
@@ -69,20 +67,17 @@
                     {% endfor %}
                   </ul>
                 {% endif %}
+              </div>
 
-                <div class="recent-post-card__footer">
-                  <a class="btn btn--details" href="{{ post.url | relative_url }}" aria-label="Lire l’article {{ post.title }}">
-                    Lire l’article
-                  </a>
-                </div>
-              </article>
-            </li>
-          {% endfor %}
-        </ul>
-
-        <button class="carousel__btn next" type="button" aria-label="Défiler vers la droite">&rsaquo;</button>
-        <div class="carousel__dots" aria-label="Sélecteur d’articles"></div>
-      </div>
+              <div class="recent-post-card__footer">
+                <a class="btn btn--details" href="{{ post.url | relative_url }}" aria-label="Lire l’article {{ post.title }}">
+                  Lire l’article
+                </a>
+              </div>
+            </article>
+          </li>
+        {% endfor %}
+      </ul>
     </div>
     {% endif %}
   </div>
