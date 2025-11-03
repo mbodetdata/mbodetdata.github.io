@@ -6,6 +6,7 @@ categories: blog
 tags: [Talend, Talaxie, ETL, Automatisation, PME, Data, Intégration]
 image: "/assets/img/blog/4-benefices_talend/logo.webp"
 active: true
+parent_category: avantages
 ---
 
 Les PME manipulent chaque jour des **volumes croissants de données** : ventes, stocks, RH, facturation, e-commerce…  

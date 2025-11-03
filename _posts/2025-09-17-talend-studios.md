@@ -6,6 +6,7 @@ categories: blog
 tags: [Talend, ETL, "Data Integration", "Big Data", ESB, "Data Preparation", "Data Quality", "Talaxie"]
 image: "/assets/img/blog/blog-1.webp"
 active: true
+parent_category: talend-talaxie
 ---
 
 Talend est l’un des acteurs majeurs du monde de l’**ETL et de l’intégration de données**.  

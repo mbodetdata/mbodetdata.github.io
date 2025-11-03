@@ -6,6 +6,7 @@ categories: blog
 tags: [Talend, Talaxie, Migration, ETL, Open Source, Data Integration]
 image: "/assets/img/blog/2-Migration_Talend_Talaxie/migration-talend-talaxie.png"
 active: true
+parent_category: talend-talaxie
 ---
 
 Depuis janvier 2024, la version **open source de Talend Open Studio (TOS)** n’évolue plus.  
