@@ -1,14 +1,18 @@
 ---
 layout: default
-title: BMData - Consultant Talend & Power BI freelance
-description: Integrations de donnees, pipelines ETL Talend, modeles DAX et dashboards Power BI performants. Disponibilite rapide, resultats mesurables.
+title: Consultant Talend & Power BI - Gains rapides
+description: Freelance Talend & Power BI pour lancer vos flux ETL et dashboards actionnables en moins de 4 semaines.
+keywords_groups:
+  - services
+  - local
+  - competences
 permalink: /
 bandeau:
   photo: "/assets/img/bm-hero.webp"
 ---
 
 <!-- H1 accessible (améliore le SEO sans changer le design) -->
-<h1 class="sr-only">Freelance Talend &amp; Power BI — Intégration de données ETL, DAX, tableaux de bord</h1>
+<h1 class="sr-only">Consultant Talend et Power BI pour demarrer vos flux et tableaux de bord sans usine a gaz</h1>
 
 <!-- BANDEAU -->
 <style>

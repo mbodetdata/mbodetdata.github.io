@@ -1,7 +1,10 @@
 ---
 layout: default
-title: Blog
-description: Articles techniques sur Talend, Power BI, ETL, DAX, performance et DataOps.
+title: "Blog Talend & Power BI pour debuter"
+description: Articles pedagogiques sur Talend, Talaxie, Power BI, ETL, DAX et DataOps pour progresser pas a pas.
+keywords_groups:
+  - competences
+  - outils
 permalink: /blog/
 ---
 
@@ -91,9 +94,12 @@ divers::Divers
         <p class="about-hero__text">
           Guides, retours d'experience et veille autour de Talend, Talaxie, Power BI et des plateformes data modernes.
         </p>
+        <p>
+          Nouveau lecteur ? Commencez par les tutoriels simples pour comprendre Talend, Talaxie et Power BI sans jargon.
+        </p>
         <div class="hero-actions">
-          <a class="btn primary" href="#articles">Derniers articles</a>
-          <a class="btn ghost" href="https://bmdata.fr/#contact">Parlons de votre projet</a>
+          <a class="btn primary" href="#articles">Guides pour debuter</a>
+          <a class="btn ghost" href="https://bmdata.fr/#contact">Parler de mon projet data</a>
         </div>
       </div>
     </div>

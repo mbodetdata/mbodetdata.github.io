@@ -1,17 +1,17 @@
-﻿{
+{
   "hero": {
     "eyebrow": "Power BI & Dashboards",
     "title": "Power BI : vos indicateurs clairs et automatisés",
-    "subtitle": "Je transforme vos données brutes en tableaux de bord Power BI lisibles, connectés et prêts à l'action.",
+    "subtitle": "Vous debutez sur Power BI ? Je transforme vos donnees brutes en tableaux de bord lisibles et decides avec vous les priorites.",
     "bullets": [
       "Modèles de données DAX documentés et prêts pour vos analyses.",
       "Données rafraîchies automatiquement et gouvernance maîtrisée.",
       "Visualisations orientées action pour les équipes métier."
     ],
-    "secondary": "Mon objectif : offrir à vos équipes métier un pilotage fiable sans dépendre d'exports Excel.",
-    "ctaLabel": "Planifier un diagnostic Power BI",
+    "secondary": "On avance pas a pas : configuration, rafraichissement et partage expliques simplement pour vos equipes.",
+    "ctaLabel": "Obtenir mon diagnostic Power BI debutant",
     "ctaTracking": "powerbi_diagnostic",
-    "ctaNote": "30 minutes pour cadrer vos enjeux et prioriser vos gains.",
+    "ctaNote": "30 minutes pour clarifier vos usages et repartir avec un plan concret.",
     "metrics": [
        {
     "value": "100 %",
@@ -69,7 +69,7 @@
   },
   "journey": {
     "title": "Votre parcours projet Power BI",
-    "subtitle": "Quatre étapes pour cadrer, livrer et ancrer vos usages décisionnels.",
+    "subtitle": "Quatre etapes pour cadrer, livrer et ancrer vos usages decisionnels.",
     "steps": [
       {
         "label": "Étape 1",

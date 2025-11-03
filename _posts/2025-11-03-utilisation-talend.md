@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Talend/Talaxie : comment les Entreprises automatisent leurs données sans infrastructure complexe"
-description: "Découvrez comment Talend Open Studio et son fork open source Talaxie permettent aux Entreprises d’automatiser leurs flux de données, connecter leurs outils et fiabiliser leurs processus quotidiens."
+description: "Comment Talend et Talaxie automatisent vos flux de donnees sans equipe IT, avec exemples concrets et astuces debutant."
 categories: blog
 tags: [Talend, Talaxie, ETL, Automatisation, Entreprises, Data, Intégration]
 image: "/assets/img/blog/4-benefices_talend/logo.webp"

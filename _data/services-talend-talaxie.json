@@ -1,17 +1,17 @@
-﻿{
+{
   "hero": {
     "eyebrow": "Talend & Talaxie",
     "title": "Talend & Talaxie : vos flux conçus, livrés et suivis",
-    "subtitle": "Nouveau sur Talend ? Je transforme vos idées en flux prêts pour la production, sans jargon ni équipe data interne.",
+    "subtitle": "Nouveau sur Talend ou Talaxie ? Je mets vos flux en production sans jargon ni equipe data interne.",
     "bullets": [
       "Conception de jobs Talend clairs, documentés et faciles à faire évoluer",
       "Mise en service encadrée : tests, déploiement et surveillance automatisée",
       "Talend comme point de rencontre de vos données métier, même sans équipe technique"
     ],
-    "secondary": "Consultant Talend certifié, je vous guide pas à pas pour dessiner, construire et opérer vos flux avec les briques natives de la plateforme.",
-    "ctaLabel": "Planifier un diagnostic Talend",
+    "secondary": "Je decortique chaque etape : cadrage, construction, migration Talaxie et supervision pour que vos equipes comprennent et pilotent.",
+    "ctaLabel": "Planifier ma migration Talend sans stress",
     "ctaTracking": "talend_diagnostic",
-    "ctaNote": "30 minutes pour cartographier vos flux et identifier vos quick wins.",
+    "ctaNote": "30 minutes pour cartographier vos flux et repartir avec des actions simples.",
     "metrics": [
       {
         "value": "Rapidité",
@@ -69,7 +69,7 @@
   },
   "journey": {
     "title": "Votre plan d’action data",
-    "subtitle": "Trois étapes claires pour structurer, réaliser et pérenniser vos projets data.",
+    "subtitle": "Trois etapes claires pour structurer, realiser et perenniser vos projets data.",
     "steps": [
       {
         "label": "Phase 1",

@@ -16,13 +16,32 @@
 
 {%- comment -%} =================== TITRE + DESCRIPTION =================== {%- endcomment -%}
 {%- assign meta_title = page.title | default: site.title -%}
-{%- if page.title -%}
-  {%- assign full_title = page.title | append: ' | ' | append: site.title -%}
-{%- else -%}
-  {%- assign full_title = site.title -%}
-{%- endif -%}
-<title>{{ full_title }}</title>
+<title>{{ meta_title }}</title>
 <meta name="description" content="{{ page.description | default: site.description | strip_newlines | escape }}" />
+{%- assign keywords_data = site.data.keywords | default: nil -%}
+{%- if keywords_data -%}
+  {%- assign keywords_all = keywords_data.global | default: [] -%}
+  {%- if page.keywords_groups -%}
+    {%- for grp in page.keywords_groups -%}
+      {%- assign grp_values = keywords_data[grp] | default: [] -%}
+      {%- assign keywords_all = keywords_all | concat: grp_values -%}
+    {%- endfor -%}
+  {%- endif -%}
+  {%- if page.keywords_group -%}
+    {%- assign grp_values = keywords_data[page.keywords_group] | default: [] -%}
+    {%- assign keywords_all = keywords_all | concat: grp_values -%}
+  {%- endif -%}
+  {%- if page.keywords -%}
+    {%- assign keywords_all = keywords_all | concat: page.keywords -%}
+  {%- endif -%}
+  {%- if page.layout == 'post' and page.tags -%}
+    {%- assign keywords_all = keywords_all | concat: page.tags -%}
+  {%- endif -%}
+  {%- assign keywords_all = keywords_all | uniq -%}
+  {%- if keywords_all and keywords_all != empty -%}
+<meta name="keywords" content="{{ keywords_all | join: ', ' | escape }}" />
+  {%- endif -%}
+{%- endif -%}
 <meta name="author" content="{{ site.author.name }}">
 
 {%- comment -%} =================== CANONICAL =================== {%- endcomment -%}
@@ -96,26 +115,10 @@
 <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}">
 <link rel="alternate" type="application/atom+xml" title="{{ site.title }} — Flux" href="{{ '/atom.xml' | absolute_url }}">
 
-{%- comment -%} =================== JSON-LD : WebSite + SearchAction ===== {%- endcomment -%}
-{%- assign site_url_abs = site.url | default: site.github.url -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": {{ site.title | jsonify }},
-  "url": {{ site_url_abs | absolute_url | jsonify }},
-  "inLanguage": {{ site.locale | default: "fr-FR" | jsonify }},
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "{{ site_url_abs | absolute_url }}/search?q={query}",
-    "query-input": "required name=query"
-  }
-}
-</script>
-
 {%- comment -%} =================== JSON-LD : WebPage / Article ========= {%- endcomment -%}
 {%- assign is_post = false -%}{% if page.layout == 'post' %}{% assign is_post = true %}{% endif -%}
 {%- assign page_type = 'WebPage' -%}{% if is_post %}{% assign page_type = 'Article' %}{% endif -%}
+{%- assign site_url_abs = site.url | default: site.github.url -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
