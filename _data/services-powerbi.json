@@ -1,6 +1,6 @@
 ﻿{
   "hero": {
-    "eyebrow": "Power BI & Dataops",
+    "eyebrow": "Power BI & Dashboards",
     "title": "Power BI : vos indicateurs clairs et automatisés",
     "subtitle": "Je transforme vos données brutes en tableaux de bord Power BI lisibles, connectés et prêts à l'action.",
     "bullets": [
@@ -13,21 +13,21 @@
     "ctaTracking": "powerbi_diagnostic",
     "ctaNote": "30 minutes pour cadrer vos enjeux et prioriser vos gains.",
     "metrics": [
-      {
-        "value": "72 h",
-        "label": "Pour un audit flash",
-        "tooltip": "Cartographie des sources, assessment DAX et plan d'amélioration priorisé."
-      },
-      {
-        "value": "5x",
-        "label": "Dashboards accélérés",
-        "tooltip": "Optimisation des requêtes, paramètres de refresh et monitoring de capacité."
-      },
-      {
-        "value": "15",
-        "label": "Ambassadeurs formés",
-        "tooltip": "Programme d'accompagnement adoption et gouvernance pour vos référents métier."
-      }
+       {
+    "value": "100 %",
+    "label": "Tableaux de bord personnalisés",
+    "tooltip": "Chaque tableau est adapté à vos données et à vos besoins réels."
+  },
+  {
+    "value": "x5",
+    "label": "Gain de clarté",
+    "tooltip": "Une vision instantanée de vos chiffres sans chercher dans les fichiers Excel."
+  },
+  {
+    "value": "0 copier-coller",
+    "label": "Mise à jour automatique",
+    "tooltip": "Vos chiffres se mettent à jour tout seuls, sans manipulation manuelle."
+  }
     ]
   },
   "valueProposition": {
@@ -171,12 +171,9 @@
       "Power BI Fabric",
       "Power Query",
       "DAX",
-      "Azure SQL Database",
-      "Azure Data Factory",
       "SharePoint",
-      "Microsoft Teams",
-      "Excel"
-    ]
+      "PowerAutomate"
+      ]
   },
   "faq": {
     "title": "Questions fréquentes",
@@ -200,7 +197,11 @@
       {
         "question": "Pouvez-vous former nos équipes métier ?",
         "answer": "Je propose des ateliers sur mesure : prise en main des dashboards, meilleures pratiques de lecture, exploitation d'Excel ou Teams pour relayer les indicateurs."
-      }
+      },
+          {
+      "question": "Faut-il déjà avoir Power BI pour commencer ?",
+      "answer": "Non. Je vous guide pour installer la version gratuite de Power BI Desktop et découvrir ensemble vos premiers tableaux de bord."
+    }
     ]
   },
   "cta": {
