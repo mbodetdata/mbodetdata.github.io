@@ -1,0 +1,219 @@
+﻿{
+  "hero": {
+    "eyebrow": "Power BI & Dataops",
+    "title": "Power BI : vos indicateurs clairs et automatisés",
+    "subtitle": "Je transforme vos données brutes en tableaux de bord Power BI lisibles, connectés et prêts à l'action.",
+    "bullets": [
+      "Modèles de données DAX documentés et prêts pour vos analyses.",
+      "Données rafraîchies automatiquement et gouvernance maîtrisée.",
+      "Visualisations orientées action pour les équipes métier."
+    ],
+    "secondary": "Mon objectif : offrir à vos équipes métier un pilotage fiable sans dépendre d'exports Excel.",
+    "ctaLabel": "Planifier un diagnostic Power BI",
+    "ctaTracking": "powerbi_diagnostic",
+    "ctaNote": "30 minutes pour cadrer vos enjeux et prioriser vos gains.",
+    "metrics": [
+      {
+        "value": "72 h",
+        "label": "Pour un audit flash",
+        "tooltip": "Cartographie des sources, assessment DAX et plan d'amélioration priorisé."
+      },
+      {
+        "value": "5x",
+        "label": "Dashboards accélérés",
+        "tooltip": "Optimisation des requêtes, paramètres de refresh et monitoring de capacité."
+      },
+      {
+        "value": "15",
+        "label": "Ambassadeurs formés",
+        "tooltip": "Programme d'accompagnement adoption et gouvernance pour vos référents métier."
+      }
+    ]
+  },
+  "valueProposition": {
+    "eyebrow": "Ce que vous gagnez",
+    "title": "Une organisation Power BI pilotable et durable",
+    "description": "Je vous aide à clarifier, industrialiser et gouverner vos usages Power BI pour un reporting fiable et actionnable.",
+    "pillars": [
+      {
+        "title": "Modèles Power BI sur-mesure",
+        "caption": "Des modèles de données évolutifs et documentés.",
+        "bullets": [
+          "Structuration des sources et normalisation des tables.",
+          "Mesures DAX performantes et commentées.",
+          "Segmentation dynamique et storytelling visuel."
+        ],
+        "proof": "Exemple : modèle finance consolidé relié à 6 ERP avec refresh incrémental."
+      },
+      {
+        "title": "Performances et fiabilité",
+        "caption": "Des rapports rapides et stables pour tous.",
+        "bullets": [
+          "Analyse des requêtes et réduction des volumes inutiles.",
+          "Paramétrage des refresh et monitoring de capacité.",
+          "Gestion des rôles et sécurité dynamique."
+        ],
+        "proof": "Exemple : division par 5 du temps de refresh d'un dataset retail de 80 Go."
+      },
+      {
+        "title": "Gouvernance et adoption",
+        "caption": "Une organisation claire du partage et des usages.",
+        "bullets": [
+          "Processus de publication et nomenclature standard.",
+          "Catalogue de rapports et datamarts certifiés.",
+          "Accompagnement à l'adoption et formation ciblée."
+        ],
+        "proof": "Exemple : centre de compétences BI avec 15 ambassadeurs métiers formés."
+      }
+    ]
+  },
+  "journey": {
+    "title": "Votre parcours projet Power BI",
+    "subtitle": "Quatre étapes pour cadrer, livrer et ancrer vos usages décisionnels.",
+    "steps": [
+      {
+        "label": "Étape 1",
+        "title": "Atelier métier",
+        "description": "Clarification des objectifs, des indicateurs clés et des sources de données.",
+        "deliverables": [
+          "Vision partagée des KPI et parties prenantes.",
+          "Cartographie des sources et contraintes techniques.",
+          "Plan de cadrage priorisé."
+        ]
+      },
+      {
+        "label": "Étape 2",
+        "title": "Modélisation & DAX",
+        "description": "Construction du modèle, mesures DAX et tests de performance.",
+        "deliverables": [
+          "Modèle relationnel Power Query structuré.",
+          "Jeu de mesures DAX validé avec les équipes métier.",
+          "Plan de tests pour sécuriser les rafraîchissements."
+        ]
+      },
+      {
+        "label": "Étape 3",
+        "title": "Design & itérations",
+        "description": "Prototypage, retours utilisateurs et mise en forme orientée action.",
+        "deliverables": [
+          "Tableaux de bord interactifs prêts à l'usage.",
+          "Itérations basées sur les retours des utilisateurs pilotes.",
+          "Guide de lecture et bonnes pratiques de navigation."
+        ]
+      },
+      {
+        "label": "Étape 4",
+        "title": "Déploiement & adoption",
+        "description": "Publication, sécurité, formation et plan d'amélioration continue.",
+        "deliverables": [
+          "Workspaces structurés et règles de gouvernance documentées.",
+          "Plan de communication et formation ciblée.",
+          "Suivi de l'adoption et feuille de route des évolutions."
+        ]
+      }
+    ]
+  },
+  "useCases": {
+    "title": "Cas d'usage clients",
+    "items": [
+      {
+        "sector": "Direction commerciale",
+        "title": "Pilotage du pipe et du chiffre d'affaires",
+        "context": "Dashboard connecté CRM + ERP avec suivi des objectifs, de la marge et des prévisions de pipe.",
+        "gains": [
+          "Réduction de 60 % des reportings manuels hebdomadaires.",
+          "Visibilité temps réel sur la performance commerciale.",
+          "Plan d'action standardisé pour les équipes terrain."
+        ]
+      },
+      {
+        "sector": "Production & qualité",
+        "title": "Supervision des incidents de production",
+        "context": "Monitoring temps réel des incidents de production avec alertes Teams et score qualité journalier.",
+        "gains": [
+          "Alertes proactives pour intervenir avant les ruptures.",
+          "Score qualité partagé avec les équipes opérationnelles.",
+          "Division par 3 du temps de résolution des incidents."
+        ]
+      },
+      {
+        "sector": "Finance & contrôle de gestion",
+        "title": "Tableau de bord multi-entités",
+        "context": "Suivi cash-flow, prévisions et scénarios budgétaires consolidés pour plusieurs entités.",
+        "gains": [
+          "Clôtures mensuelles accélérées de 2 jours.",
+          "Vision unique et fiable des indicateurs financiers.",
+          "Capacité à simuler des scénarios et arbitrer rapidement."
+        ]
+      }
+    ]
+  },
+  "differentiators": {
+    "title": "Pourquoi travailler ensemble ?",
+    "items": [
+      {
+        "title": "Approche orientée métier",
+        "description": "Je traduis chaque décision technique en impacts business pour aider vos décideurs à trancher."
+      },
+      {
+        "title": "Transparence & transfert",
+        "description": "Documentation, guides et sessions de coaching pour rendre vos équipes autonomes sur Power BI."
+      },
+      {
+        "title": "Culture gouvernance",
+        "description": "Processus, sécurité et monitoring pensés dès le départ pour éviter les dérives d'usage."
+      }
+    ],
+    "stackTitle": "Stack & outils maîtrisés",
+    "stack": [
+      "Power BI Desktop",
+      "Power BI Service",
+      "Power BI Fabric",
+      "Power Query",
+      "DAX",
+      "Azure SQL Database",
+      "Azure Data Factory",
+      "SharePoint",
+      "Microsoft Teams",
+      "Excel"
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "items": [
+      {
+        "question": "Pouvez-vous reprendre un reporting déjà en production ?",
+        "answer": "Oui. Je commence par un audit ciblé pour identifier les points de friction (modèle, rafraîchissements, gouvernance) puis je propose un plan d'amélioration priorisé."
+      },
+      {
+        "question": "Travaillez-vous avec nos équipes internes ?",
+        "answer": "Toujours. Je m'intègre à vos pratiques existantes pour co-construire un socle Power BI durable et transférer la connaissance."
+      },
+      {
+        "question": "Combien de temps dure une mission type ?",
+        "answer": "Les missions vont de l'audit flash sur deux semaines à l'accompagnement produit sur plusieurs mois selon vos enjeux et votre maturité."
+      },
+      {
+        "question": "Accompagnez-vous la mise en place de la gouvernance ?",
+        "answer": "Oui, du design des workspaces à la gestion des accès en passant par les standards de publication et la communication auprès des utilisateurs."
+      },
+      {
+        "question": "Pouvez-vous former nos équipes métier ?",
+        "answer": "Je propose des ateliers sur mesure : prise en main des dashboards, meilleures pratiques de lecture, exploitation d'Excel ou Teams pour relayer les indicateurs."
+      }
+    ]
+  },
+  "cta": {
+    "title": "On cadre votre prochain projet Power BI ?",
+    "intro": "Proposons un échange court pour comprendre vos enjeux, auditer vos dashboards et prioriser les gains rapides.",
+    "linkText": "Discuter de vos besoins Power BI",
+    "footnote": "Objectif : clarifier vos indicateurs, sécuriser le déploiement et définir la feuille de route.",
+    "tracking": "powerbi_diagnostic"
+  },
+  "schema": {
+    "serviceType": "Power BI Consulting",
+    "areaServed": "France",
+    "description": "Création, optimisation et gouvernance de tableaux de bord Power BI pour un pilotage fiable."
+  }
+}
+

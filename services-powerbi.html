@@ -1,131 +1,191 @@
----
+﻿---
 layout: default
-title: "Consultant Power BI – Dashboards, KPI et Reporting automatisé"
+title: "Consultant Power BI – Dashboards, KPI et Reporting automatisés"
 description: "Création de tableaux de bord Power BI clairs et automatisés pour piloter vos KPI en toute confiance."
 permalink: /services-powerbi/
 ---
+{% assign powerbi = site.data.services-powerbi %}
 
-<section class="section service-page service-hero" aria-labelledby="powerbi-hero-title">
-  <div class="service-container">
-    <h1 id="powerbi-hero-title">Services Power BI – vos indicateurs, clairs et automatisés</h1>
-    <p class="lead">Je transforme vos données brutes en tableaux de bord Power BI lisibles, connectés et prêts à l’action.</p>
-    <p class="lead">Le but : offrir à vos équipes métier un pilotage fiable sans passer par Excel.</p>
-  </div>
-</section>
-
-<section class="section service-page" aria-labelledby="powerbi-offers-title">
-  <div class="service-container">
-    <h2 id="powerbi-offers-title">Ce que je fais pour vous</h2>
-    <div class="grid cols-3 service-grid">
-      <article class="card feature-card" data-anim="fade-up">
-        <h3>Création de modèles Power BI</h3>
-        <p class="feature-tagline">Je conçois des modèles de données stables qui supportent vos analyses actuelles et futures.</p>
-        <ul class="feature-list">
-          <li>Structuration des sources et normalisation des tables.</li>
-          <li>Mesures DAX performantes et documentées.</li>
-          <li>Segments dynamiques et storytelling visuel.</li>
+<section class="section service-page talend-hero powerbi-hero about-hero" aria-labelledby="powerbi-hero-title">
+  <div class="about-hero__canvas talend-hero__canvas powerbi-hero__canvas">
+    <div class="about-hero__inner">
+      <div class="about-hero__content" data-anim="fade-up">
+        <p class="about-hero__eyebrow service-eyebrow">{{ powerbi.hero.eyebrow }}</p>
+        <h1 class="about-hero__title" id="powerbi-hero-title">{{ powerbi.hero.title }}</h1>
+        <p class="about-hero__text lead">{{ powerbi.hero.subtitle }}</p>
+        <ul class="talend-hero__benefits powerbi-hero__benefits" aria-label="Bénéfices principaux">
+          {% for item in powerbi.hero.bullets %}
+          <li>{{ item }}</li>
+          {% endfor %}
         </ul>
-        <p class="feature-example">Ex. : modèle finance consolidé relié à 6 ERP avec refresh incremental.</p>
-      </article>
-
-      <article class="card feature-card" data-anim="fade-up">
-        <h3>Optimisation des performances</h3>
-        <p class="feature-tagline">Je accélère vos rapports existants pour réduire les temps de chargement et les erreurs.</p>
-        <ul class="feature-list">
-          <li>Analyse des requêtes et réduction des volumes inutiles.</li>
-          <li>Paramétrage des refresh et monitoring de capacité.</li>
-          <li>Gestion des rôles et sécurité dynamique.</li>
-        </ul>
-        <p class="feature-example">Ex. : division par 5 du temps de refresh d’un dataset retail 80 Go.</p>
-      </article>
-
-      <article class="card feature-card" data-anim="fade-up">
-        <h3>Gouvernance &amp; partage sécurisé</h3>
-        <p class="feature-tagline">Je structure vos workspaces pour que chaque utilisateur accède à la bonne information.</p>
-        <ul class="feature-list">
-          <li>Processus de publication et nomenclature standard.</li>
-          <li>Catalogue de rapports et datamarts certifiés.</li>
-          <li>Accompagnement à l’adoption et formation ciblée.</li>
-        </ul>
-        <p class="feature-example">Ex. : centre de compétences BI avec 15 ambassadeurs métiers formés.</p>
-      </article>
+        <p class="talend-hero__note powerbi-hero__note">{{ powerbi.hero.secondary }}</p>
+        <div class="talend-hero__cta powerbi-hero__cta">
+          <a class="btn btn--primary"
+             href="{{ site.author.cal_url | default: site.author.calendly_url }}"
+             data-booking-open="modal"
+             data-track-click="{{ powerbi.hero.ctaTracking }}">
+            {{ powerbi.hero.ctaLabel }}
+          </a>
+          <p class="cta-caption">{{ powerbi.hero.ctaNote }}</p>
+        </div>
+      </div>
+      <div class="about-hero__media" data-anim="fade-up">
+        <div class="about-stats-card talend-hero__stats powerbi-hero__stats" role="list">
+          {% for metric in powerbi.hero.metrics %}
+          <article class="about-stats-card__item talend-hero__metric powerbi-hero__metric" role="listitem">
+            <span class="about-stats-card__value">{{ metric.value }}</span>
+            <span class="about-stats-card__label">{{ metric.label }}</span>
+            {% if metric.tooltip %}<p class="about-stats-card__hint">{{ metric.tooltip }}</p>{% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section service-page" aria-labelledby="powerbi-cases-title">
+<section class="section service-page premium-section" aria-labelledby="powerbi-value-title">
   <div class="service-container">
-    <h2 id="powerbi-cases-title">Cas d’usage clients</h2>
-    <ul class="case-list">
-      <li class="card case-card" data-anim="fade-up">
-        <h3>Direction commerciale</h3>
-        <p>Dashboard connecté CRM + ERP avec suivi des objectifs, marge et prévision de pipe.</p>
-        <p class="case-metric">Impact : réduction de 60 % des reportings manuels hebdomadaires.</p>
-      </li>
-      <li class="card case-card" data-anim="fade-up">
-        <h3>Production &amp; qualité</h3>
-        <p>Monitoring temps réel des incidents de production avec alertes Teams et score qualité journalier.</p>
-        <p class="case-metric">Impact : division par 3 du temps de résolution grâce aux alertes proactives.</p>
-      </li>
-      <li class="card case-card" data-anim="fade-up">
-        <h3>Finance &amp; contrôle de gestion</h3>
-        <p>Tableau de bord multi-entités avec prévisions, cash-flow projeté et scénarios budgétaires.</p>
-        <p class="case-metric">Impact : clôtures mensuelles accélérées de 2 jours.</p>
-      </li>
-    </ul>
+    <header class="premium-head" data-anim="fade-up">
+      <p class="service-eyebrow">{{ powerbi.valueProposition.eyebrow }}</p>
+      <h2 id="powerbi-value-title">{{ powerbi.valueProposition.title }}</h2>
+      <p>{{ powerbi.valueProposition.description }}</p>
+    </header>
+    <div class="premium-grid">
+      {% for pillar in powerbi.valueProposition.pillars %}
+      <article class="premium-card card" data-anim="fade-up">
+        <h3>{{ pillar.title }}</h3>
+        <p class="premium-card__caption">{{ pillar.caption }}</p>
+        <ul class="premium-card__list">
+          {% for bullet in pillar.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+        <p class="premium-card__proof">{{ pillar.proof }}</p>
+      </article>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
-<section class="section service-page" aria-labelledby="powerbi-method-title">
+<section class="section service-page journey-section" aria-labelledby="powerbi-journey-title">
   <div class="service-container">
-    <h2 id="powerbi-method-title">Méthode projet BI</h2>
-    <ol class="steps-list">
-      <li data-anim="fade-up">
-        <h3>1. Atelier métier</h3>
-        <p>Clarification des objectifs, des indicateurs clés et des sources de données.</p>
+    <header class="premium-head" data-anim="fade-up">
+      <h2 id="powerbi-journey-title">{{ powerbi.journey.title }}</h2>
+      <p>{{ powerbi.journey.subtitle }}</p>
+    </header>
+    <ol class="journey-steps">
+      {% for step in powerbi.journey.steps %}
+      <li class="journey-step card" data-anim="fade-up">
+        <div class="journey-step__label">{{ step.label }}</div>
+        <div class="journey-step__content">
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+          <ul class="journey-step__deliverables">
+            {% for deliverable in step.deliverables %}
+            <li>{{ deliverable }}</li>
+            {% endfor %}
+          </ul>
+        </div>
       </li>
-      <li data-anim="fade-up">
-        <h3>2. Modélisation &amp; DAX</h3>
-        <p>Construction du modèle, mesures DAX et tests de performance.</p>
-      </li>
-      <li data-anim="fade-up">
-        <h3>3. Design &amp; itérations</h3>
-        <p>Prototypage, retours utilisateurs et mise en forme orientée action.</p>
-      </li>
-      <li data-anim="fade-up">
-        <h3>4. Déploiement &amp; adoption</h3>
-        <p>Publication, sécurité, formation et plan d’amélioration continue.</p>
-      </li>
+      {% endfor %}
     </ol>
   </div>
 </section>
 
-<section class="section service-page cta-block" aria-labelledby="powerbi-cta-title">
+<section class="section service-page usecases-section" aria-labelledby="powerbi-usecases-title">
   <div class="service-container">
-    <h2 id="powerbi-cta-title" class="sr-only">Diagnostic Power BI</h2>
-    <div class="card cta-card" data-anim="fade-up">
-      <p>Vous avez besoin de tableaux de bord Power BI plus rapides ou plus clairs&nbsp;?</p>
-      <p>Échangeons 30 minutes pour cadrer vos enjeux et prioriser vos gains.</p>
-      <a class="btn btn--primary"
-         href="{{ site.author.cal_url | default: site.author.calendly_url }}"
-         data-booking-open="modal"
-         data-track-click="powerbi_diagnostic">
-        Discuter de vos besoins Power BI
-      </a>
+    <header class="premium-head" data-anim="fade-up">
+      <h2 id="powerbi-usecases-title">{{ powerbi.useCases.title }}</h2>
+    </header>
+    <ul class="usecases-grid">
+      {% for item in powerbi.useCases.items %}
+      <li class="usecase-card card" data-anim="fade-up">
+        <div class="usecase-card__head">
+          <span class="usecase-card__sector">{{ item.sector }}</span>
+          <h3>{{ item.title }}</h3>
+        </div>
+        <p class="usecase-card__context">{{ item.context }}</p>
+        <ul class="usecase-card__gains">
+          {% for gain in item.gains %}
+          <li>{{ gain }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section service-page differentiators-section" aria-labelledby="powerbi-why-title">
+  <div class="service-container">
+    <div class="differentiators-grid">
+      <div class="differentiators-list card" data-anim="fade-up">
+        <h2 id="powerbi-why-title">{{ powerbi.differentiators.title }}</h2>
+        <ul>
+          {% for item in powerbi.differentiators.items %}
+          <li>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <aside class="stack-card card" data-anim="fade-up" aria-label="{{ powerbi.differentiators.stackTitle }}">
+        <h3>{{ powerbi.differentiators.stackTitle }}</h3>
+        <ul>
+          {% for tool in powerbi.differentiators.stack %}
+          <li>{{ tool }}</li>
+          {% endfor %}
+        </ul>
+      </aside>
     </div>
   </div>
 </section>
 
+<section class="section service-page faq-section" aria-labelledby="powerbi-faq-title">
+  <div class="service-container">
+    <header class="premium-head" data-anim="fade-up">
+      <h2 id="powerbi-faq-title">{{ powerbi.faq.title }}</h2>
+    </header>
+    <div class="faq-grid">
+      {% for item in powerbi.faq.items %}
+      <article class="faq-item card" data-anim="fade-up">
+        <h3>{{ item.question }}</h3>
+        <p>{{ item.answer }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section service-page cta-block premium-cta" aria-labelledby="powerbi-cta-title">
+  <div class="service-container">
+    <div class="premium-cta__card card" data-anim="fade-up">
+      <h2 id="powerbi-cta-title">{{ powerbi.cta.title }}</h2>
+      <p>{{ powerbi.cta.intro }}</p>
+      <a class="btn btn--primary"
+         href="{{ site.author.cal_url | default: site.author.calendly_url }}"
+         data-booking-open="modal"
+         data-track-click="{{ powerbi.cta.tracking }}">
+        {{ powerbi.cta.linkText }}
+      </a>
+      <p class="cta-caption">{{ powerbi.cta.footnote }}</p>
+    </div>
+  </div>
+</section>
+
+{% assign schema = powerbi.schema %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "serviceType": "Power BI Consulting",
+  "serviceType": {{ schema.serviceType | jsonify }},
   "provider": {
     "@type": "Person",
-    "name": "{{ site.author.name | escape }}"
+    "name": {{ site.author.name | jsonify }}
   },
-  "areaServed": "France",
-  "description": "Création de tableaux de bord Power BI, optimisation des performances et gouvernance pour un reporting décisionnel fiable."
+  "areaServed": {{ schema.areaServed | jsonify }},
+  "description": {{ schema.description | jsonify }}
 }
 </script>
