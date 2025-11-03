@@ -87,124 +87,155 @@ Pour un guide complet de migration et les différences détaillées, consultez m
 
 
 ## 6. À quoi ça ressemble ? (avant / après Talend)
-<figure class="card" role="group" aria-labelledby="fig-talend-before-after-title">
-  <figcaption id="fig-talend-before-after-title" class="muted" style="margin-bottom:.6rem;">
-    Simplification des échanges de données avec Talend/Talaxie
+
+<figure class="card" role="group" aria-labelledby="etl-fig-title">
+  <figcaption id="etl-fig-title" class="muted" style="margin-bottom:.6rem;">
+    Simplifier vos échanges de données — comparaison Sans ETL vs Avec Talend/Talaxie
   </figcaption>
 
-  <svg class="etl-diagram" viewBox="0 0 980 360" width="100%" height="auto"
-       role="img"
-       aria-label="Comparatif avant/après : à gauche, des silos non-automatisés ; à droite, un hub Talend central qui orchestre les échanges.">
+  <svg class="etl-premium" viewBox="0 0 1120 520" width="100%" height="auto" role="img"
+       aria-label="À gauche, échanges fragmentés sans ETL. À droite, hub Talend/Talaxie qui ingère, nettoie, mappe et charge vers les systèmes.">
     <style>
-      .etl-diagram {
-        --c-bg: color-mix(in oklab, var(--surface-1) 96%, transparent);
-        --c-panel: color-mix(in oklab, var(--surface-1) 94%, transparent);
-        --c-stroke: color-mix(in oklab, var(--fg) 18%, transparent);
-        --c-muted: var(--muted);
-        --c-text:  var(--fg);
-        --c-bad:   #e57373;
-        --c-good:  color-mix(in oklab, var(--brand-2) 82%, #fff 18%);
-        --c-accA:  var(--brand);
-        --c-accB:  var(--brand-2);
+      .etl-premium{
+        --bg:       color-mix(in oklab, var(--surface-1) 94%, transparent);
+        --panel:    color-mix(in oklab, var(--surface-1) 96%, transparent);
+        --stroke:   color-mix(in oklab, var(--fg) 14%, transparent);
+        --soft:     color-mix(in oklab, var(--fg) 10%, transparent);
+        --text:     var(--fg);
+        --muted:    var(--muted);
+        --brandA:   var(--brand);
+        --brandB:   var(--brand-2);
+        --ok:       color-mix(in oklab, var(--brand-2) 85%, #fff 15%);
+        --bad:      #ef7272;
+
+        font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,"Noto Sans";
       }
-      text { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial, "Noto Sans"; }
-      .title { font-weight: 800; font-size: 15px; fill: var(--c-muted); }
-      .panel {
-        fill: var(--c-panel); stroke: var(--c-stroke); stroke-width: 1.2;
-        filter: drop-shadow(0 8px 18px rgba(0,0,0,.18));
-      }
-      .node {
-        fill: color-mix(in oklab, var(--surface-1) 90%, var(--brand) 10%);
-        stroke: color-mix(in oklab, var(--border), var(--brand) 28%);
-        stroke-width: 1.2; rx: 10; ry: 10;
-      }
-      .node text { fill: var(--c-text); font-weight: 700; font-size: 12px; }
-      .node--dim { fill: color-mix(in oklab, var(--surface-1) 96%, transparent); }
-      .bad-note { fill: var(--c-bad); font-size: 12px; }
-      .good-note { fill: var(--c-good); font-size: 12px; }
-      .edge { stroke: color-mix(in oklab, var(--fg) 40%, transparent); stroke-width: 1.2; fill: none; }
-      .edge--good { stroke: var(--c-good); stroke-width: 1.6; }
-      /* Hub: gradient + léger glow */
-      .hub-shadow { filter: drop-shadow(0 14px 26px rgba(0,0,0,.28)); }
+      /* Titres colonnes */
+      .h-col{ font-weight:800; fill:var(--muted); font-size:15px; letter-spacing:.02em; }
+      /* Panneaux */
+      .panel{ fill:var(--panel); stroke:var(--stroke); stroke-width:1.2; rx:18; }
+      /* Cartes capsules */
+      .cap{ fill: color-mix(in oklab, var(--surface-1) 90%, var(--brand) 10%); 
+            stroke: color-mix(in oklab, var(--border), var(--brand) 26%); stroke-width:1.1; rx:12; }
+      .cap--neutral{ fill: color-mix(in oklab, var(--surface-1) 96%, transparent); 
+                     stroke: color-mix(in oklab, var(--border), var(--brand) 12%); }
+      .cap-txt{ fill: var(--text); font-weight:700; font-size:12px; }
+      /* Hub */
+      .hub-shadow{ filter: drop-shadow(0 14px 26px rgba(0,0,0,.28)); }
+      /* Arcs / flèches */
+      .edge{ stroke: color-mix(in oklab, var(--fg) 30%, transparent); stroke-width:1.3; fill:none; }
+      .edge--good{ stroke: var(--ok); stroke-width:1.8; }
+      .step{ fill: color-mix(in oklab, var(--surface-1) 90%, var(--brand) 8%); 
+             stroke: color-mix(in oklab, var(--border), var(--brand) 26%); stroke-width:1.1; rx:12; }
+      .step-t{ fill: var(--text); font-weight:800; font-size:12px; }
+      .step-s{ fill: var(--muted); font-size:11px; }
+
+      .kpi-bad{ fill: var(--bad); font-size:12px; font-weight:700; }
+      .kpi-ok{ fill: var(--ok); font-size:12px; font-weight:700; }
+      .legend{ fill: var(--muted); font-size:12px; }
+
+      .badge{ rx:10; fill: color-mix(in oklab, var(--surface-1) 90%, transparent); stroke: var(--soft); }
+      .badge-ico{ font-size:12px; font-weight:900; }
     </style>
 
     <defs>
-      <!-- Flèches neutres (avant) -->
-      <marker id="arrow-neutral" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-        <path d="M0,0 L10,5 L0,10 Z"
-              fill="color-mix(in oklab, var(--fg) 40%, transparent)"/>
+      <!-- Flèche neutre -->
+      <marker id="arrN" markerWidth="12" markerHeight="10" refX="9" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="color-mix(in oklab, var(--fg) 30%, transparent)"/>
       </marker>
-      <!-- Flèches vertes (après) -->
-      <marker id="arrow-good" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-        <path d="M0,0 L10,5 L0,10 Z" fill="color-mix(in oklab, var(--brand-2) 82%, #fff 18%)"/>
+      <!-- Flèche verte -->
+      <marker id="arrG" markerWidth="12" markerHeight="10" refX="9" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="color-mix(in oklab, var(--brand-2) 85%, #fff 15%)"/>
       </marker>
 
-      <!-- Dégradé du hub -->
-      <radialGradient id="gHub" cx="50%" cy="45%" r="58%">
-        <stop offset="0%"  stop-color="color-mix(in oklab, var(--brand) 70%, var(--brand-2) 30%)"/>
-        <stop offset="100%" stop-color="color-mix(in oklab, var(--brand-2) 75%, var(--brand) 25%)"/>
+      <!-- Dégradé hub -->
+      <radialGradient id="gHub" cx="50%" cy="40%" r="60%">
+        <stop offset="0%"  stop-color="color-mix(in oklab, var(--brandA) 70%, var(--brandB) 30%)"/>
+        <stop offset="100%" stop-color="color-mix(in oklab, var(--brandB) 75%, var(--brandA) 25%)"/>
       </radialGradient>
-      <!-- Halo doux autour du hub -->
-      <filter id="fGlow" x="-40%" y="-40%" width="180%" height="180%">
-        <feGaussianBlur stdDeviation="10" result="blur"/>
-        <feMerge>
-          <feMergeNode in="blur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
     </defs>
 
-    <!-- Titres colonnes -->
-    <text class="title" x="210" y="26" text-anchor="middle">Avant</text>
-    <text class="title" x="770" y="26" text-anchor="middle">Après</text>
+    <!-- fond -->
+    <rect x="0" y="0" width="1120" height="520" fill="var(--bg)" rx="22"/>
 
-    <!-- PANNEAU AVANT -->
-    <g transform="translate(60,50)">
-      <rect class="panel" x="0" y="0" width="300" height="260" rx="14" ry="14"/>
+    <!-- Titres colonnes -->
+    <text class="h-col" x="260" y="42" text-anchor="middle">Sans ETL</text>
+    <text class="h-col" x="860" y="42" text-anchor="middle">Avec Talend / Talaxie</text>
+
+    <!-- Panneau gauche -->
+    <g transform="translate(60,60)">
+      <rect class="panel" x="0" y="0" width="400" height="380"/>
       <!-- Silos -->
       <g>
-        <rect class="node node--dim" x="28"  y="28"  width="92" height="40"/><text x="74"  y="53" text-anchor="middle">ERP</text>
-        <rect class="node node--dim" x="180" y="28"  width="92" height="40"/><text x="226" y="53" text-anchor="middle">CRM</text>
+        <rect class="cap cap--neutral" x="36"  y="32"  width="120" height="46"/><text class="cap-txt" x="96"  y="60" text-anchor="middle">ERP</text>
+        <rect class="cap cap--neutral" x="244" y="32"  width="120" height="46"/><text class="cap-txt" x="304" y="60" text-anchor="middle">CRM</text>
 
-        <rect class="node node--dim" x="28"  y="100" width="92" height="40"/><text x="74"  y="125" text-anchor="middle">Excel</text>
-        <rect class="node node--dim" x="180" y="100" width="92" height="40"/><text x="226" y="125" text-anchor="middle">FTP</text>
+        <rect class="cap cap--neutral" x="36"  y="118" width="120" height="46"/><text class="cap-txt" x="96"  y="146" text-anchor="middle">Excel</text>
+        <rect class="cap cap--neutral" x="244" y="118" width="120" height="46"/><text class="cap-txt" x="304" y="146" text-anchor="middle">FTP</text>
 
-        <rect class="node node--dim" x="104" y="172" width="92" height="40"/><text x="150" y="197" text-anchor="middle">API</text>
+        <rect class="cap cap--neutral" x="140" y="206" width="120" height="46"/><text class="cap-txt" x="200" y="234" text-anchor="middle">API</text>
       </g>
-      <!-- Liaisons “désordonnées” -->
-      <path class="edge" d="M120,48 C150,48 158,48 180,48" marker-end="url(#arrow-neutral)"/>
-      <path class="edge" d="M74,68 C74,84 74,90 74,100"/>
-      <path class="edge" d="M226,68 C226,84 226,90 226,100"/>
-      <path class="edge" d="M74,140 C110,154 190,154 226,140" marker-end="url(#arrow-neutral)"/>
-      <path class="edge" d="M150,212 C150,206 140,196 120,188" marker-end="url(#arrow-neutral)"/>
-      <text class="bad-note" x="150" y="230" text-anchor="middle">Manuel, doublons, retards</text>
+      <!-- Liens “frictions” -->
+      <path class="edge" d="M156,55 L244,55" marker-end="url(#arrN)"/>
+      <path class="edge" d="M96,78 L96,118"/>
+      <path class="edge" d="M304,78 L304,118"/>
+      <path class="edge" d="M96,164 C140,182 260,182 304,164" marker-end="url(#arrN)"/>
+      <path class="edge" d="M200,252 C200,242 170,228 120,214" marker-end="url(#arrN)"/>
+
+      <!-- KPI négatifs -->
+      <rect class="badge" x="28" y="300" width="344" height="40"/>
+      <text class="badge-ico" x="44" y="325" fill="var(--bad)">✖</text>
+      <text class="kpi-bad" x="70" y="325">Saisies manuelles, doublons, retards, aucune traçabilité</text>
     </g>
 
-    <!-- PANNEAU APRÈS -->
-    <g transform="translate(520,50)">
-      <rect class="panel" x="0" y="0" width="400" height="260" rx="14" ry="14"/>
+    <!-- Panneau droite -->
+    <g transform="translate(560,60)">
+      <rect class="panel" x="0" y="0" width="500" height="380"/>
 
-      <!-- Nœuds -->
-      <rect class="node" x="24"  y="36"  width="100" height="40"/><text x="74"  y="61"  text-anchor="middle">ERP</text>
-      <rect class="node" x="276" y="36"  width="100" height="40"/><text x="326" y="61"  text-anchor="middle">CRM</text>
-      <rect class="node" x="24"  y="112" width="100" height="40"/><text x="74"  y="137" text-anchor="middle">Excel/FTP</text>
-      <rect class="node" x="276" y="112" width="100" height="40"/><text x="326" y="137" text-anchor="middle">API</text>
-      <rect class="node" x="160" y="192" width="100" height="40"/><text x="210" y="217" text-anchor="middle">Power BI</text>
+      <!-- Sources / Cibles -->
+      <rect class="cap cap--neutral" x="32"  y="56"  width="128" height="46"/><text class="cap-txt" x="96"  y="84"  text-anchor="middle">ERP</text>
+      <rect class="cap cap--neutral" x="340" y="56"  width="128" height="46"/><text class="cap-txt" x="404" y="84"  text-anchor="middle">CRM</text>
+      <rect class="cap cap--neutral" x="32"  y="132" width="128" height="46"/><text class="cap-txt" x="96"  y="160" text-anchor="middle">Excel / FTP</text>
+      <rect class="cap cap--neutral" x="340" y="132" width="128" height="46"/><text class="cap-txt" x="404" y="160" text-anchor="middle">API</text>
+      <rect class="cap cap--neutral" x="186" y="300" width="128" height="46"/><text class="cap-txt" x="250" y="328" text-anchor="middle">Power BI</text>
 
-      <!-- Hub Talend -->
-      <g class="hub-shadow" filter="url(#fGlow)">
-        <circle cx="210" cy="120" r="44" fill="url(#gHub)" stroke="color-mix(in oklab, var(--border), var(--brand) 45%)" stroke-width="1.4"/>
-        <text x="210" y="124" text-anchor="middle" style="fill:#fff; font-weight:800;">Talend</text>
+      <!-- Hub -->
+      <g class="hub-shadow">
+        <circle cx="250" cy="140" r="50" fill="url(#gHub)" stroke="color-mix(in oklab, var(--border), var(--brand) 40%)" stroke-width="1.6"/>
+        <text x="250" y="144" text-anchor="middle" style="fill:#fff; font-weight:900;">Talend</text>
       </g>
 
       <!-- Liaisons propres -->
-      <path class="edge edge--good" d="M124,56 L166,90" marker-end="url(#arrow-good)"/>
-      <path class="edge edge--good" d="M276,56 L254,90" marker-end="url(#arrow-good)"/>
-      <path class="edge edge--good" d="M124,132 L166,126" marker-end="url(#arrow-good)"/>
-      <path class="edge edge--good" d="M276,132 L254,126" marker-end="url(#arrow-good)"/>
-      <path class="edge edge--good" d="M210,164 L210,192" marker-end="url(#arrow-good)"/>
+      <path class="edge edge--good" d="M160,79 L205,118" marker-end="url(#arrG)"/>
+      <path class="edge edge--good" d="M340,79 L295,118" marker-end="url(#arrG)"/>
+      <path class="edge edge--good" d="M160,155 L202,148" marker-end="url(#arrG)"/>
+      <path class="edge edge--good" d="M340,155 L298,148" marker-end="url(#arrG)"/>
+      <path class="edge edge--good" d="M250,190 L250,300" marker-end="url(#arrG)"/>
 
-      <text class="good-note" x="210" y="246" text-anchor="middle">Automatisé, contrôlé, traçable</text>
+      <!-- Pipeline étapes -->
+      <g transform="translate(86,214)">
+        <rect class="step" x="0"   y="0" width="86" height="56"/><text class="step-t" x="43" y="24" text-anchor="middle">Ingest</text><text class="step-s" x="43" y="41" text-anchor="middle">Récupérer</text>
+        <path class="edge edge--good" d="M86,28 L110,28" marker-end="url(#arrG)"/>
+        <rect class="step" x="110" y="0" width="86" height="56"/><text class="step-t" x="153" y="24" text-anchor="middle">Clean</text><text class="step-s" x="153" y="41" text-anchor="middle">Contrôler</text>
+        <path class="edge edge--good" d="M196,28 L220,28" marker-end="url(#arrG)"/>
+        <rect class="step" x="220" y="0" width="86" height="56"/><text class="step-t" x="263" y="24" text-anchor="middle">Map</text><text class="step-s" x="263" y="41" text-anchor="middle">Normaliser</text>
+        <path class="edge edge--good" d="M306,28 L330,28" marker-end="url(#arrG)"/>
+        <rect class="step" x="330" y="0" width="86" height="56"/><text class="step-t" x="373" y="24" text-anchor="middle">Load</text><text class="step-s" x="373" y="41" text-anchor="middle">Charger</text>
+      </g>
+
+      <!-- KPI positifs -->
+      <rect class="badge" x="28" y="300" width="308" height="40"/>
+      <text class="badge-ico" x="44" y="325" fill="var(--ok)">✔</text>
+      <text class="kpi-ok" x="70" y="325">Automatisé • Contrôlé • Traçable • Rejouable</text>
+    </g>
+
+    <!-- Légende -->
+    <g transform="translate(60,462)">
+      <rect class="badge" x="0" y="0" width="1000" height="38"/>
+      <text class="legend" x="18" y="25">Légende :</text>
+      <circle cx="130" cy="19" r="6" fill="url(#gHub)"/><text class="legend" x="146" y="24">Hub Talend/Talaxie</text>
+      <rect x="320" y="9" width="20" height="12" fill="var(--ok)"/><text class="legend" x="348" y="24">Flux automatisé</text>
+      <rect x="520" y="9" width="20" height="12" fill="color-mix(in oklab, var(--fg) 30%, transparent)"/><text class="legend" x="548" y="24">Échange manuel / fragile</text>
     </g>
   </svg>
 </figure>
