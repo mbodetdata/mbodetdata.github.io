@@ -4,7 +4,7 @@ title: "Talend et Talaxie : comment les PME automatisent leurs données sans inf
 description: "Découvrez comment Talend Open Studio et son fork open source Talaxie permettent aux PME d’automatiser leurs flux de données, connecter leurs outils et fiabiliser leurs processus quotidiens."
 categories: blog
 tags: [Talend, Talaxie, ETL, Automatisation, PME, Data, Intégration]
-image: "/assets/img/blog/4-benefices-talend/logo.webp"
+image: "/assets/img/blog/4-benefices_talend/logo.webp"
 active: true
 ---
 
@@ -98,7 +98,7 @@ Pour un guide complet de migration et les différences détaillées, consultez m
 Talend (et Talaxie) transforment les processus “artisanaux” en **chaînes de données robustes et pilotables**.  
 Pas besoin de plateforme cloud ou de data engineer : un seul poste, un peu de méthode, et vos flux deviennent fiables.
 
-![Bénéfices Talend]({{ '/assets/img/blog/4-benefices-talend/blog-4-img-1.webp' | relative_url }}){:alt="Illustration des bénéfices Talend" loading="lazy" decoding="async"}
+![Bénéfices Talend]({{ 'assets/img/blog/4-benefices_talend/blog-4-img-1.webp' | relative_url }}){:alt="Illustration des bénéfices Talend" loading="lazy" decoding="async"}
 
 ---
 
