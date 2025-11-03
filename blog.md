@@ -43,12 +43,10 @@ divers::Divers
   <div class="filter-toolbar card card--gradient">
     <div class="filter-toolbar__top">
       <h2>Explorer les articles</h2>
-      <p class="muted">Filtrez par thematique ou recherchez un sujet precis.</p>
+      <p class="muted">Choisissez une categorie pour filtrer les publications.</p>
     </div>
     <div class="filter-toolbar__row">
-      <label class="sr-only" for="post-search">Rechercher un article</label>
-      <input id="post-search" class="filter-search" type="search" placeholder="Rechercher un article..." autocomplete="off">
-      <div class="filter-pills" role="tablist" aria-label="Filtrer par thematique">
+      <div class="filter-pills" role="tablist" aria-label="Filtrer par categorie">
         <button type="button" class="chip is-active" data-filter-button data-filter="all">Tout</button>
         {% for entry in parent_categories %}
           {% assign parts = entry | split: "::" %}
@@ -84,15 +82,7 @@ divers::Divers
         {% assign parent_label = 'Divers' %}
       {% endif %}
       {% assign post_tags = post.tags | default: empty %}
-      {% assign search_text = post.title | append: ' ' | append: post.excerpt %}
-      {% assign search_text = search_text | append: ' ' | append: parent_label %}
-      {% if post_tags and post_tags != empty %}
-        {% assign tags_joined = post_tags | join: ' ' %}
-        {% assign search_text = search_text | append: ' ' | append: tags_joined %}
-      {% endif %}
-      {% assign search_text = search_text | strip_html | strip_newlines | replace: '"', ' ' | replace: '  ', ' ' | strip %}
-      {% assign search_attr = search_text | replace: '"', ' ' %}
-      <article class="post-card card" data-post-card data-category="{{ parent_slug }}" data-post-title="{{ post.title | escape }}" data-search-text="{{ search_attr }}">
+      <article class="post-card card" data-post-card data-category="{{ parent_slug }}">
         <div class="thumb" aria-hidden="true">
           <img src="{{ cover | relative_url }}" alt="" loading="lazy" decoding="async">
         </div>
@@ -118,7 +108,7 @@ divers::Divers
       </article>
     {% endfor %}
     <p class="muted empty-state card" data-empty-state hidden>
-      Aucun article ne correspond a votre recherche. Essayez une autre thematique ou un nouveau mot-cle.
+      Aucun article dans cette categorie pour le moment. Essayez une autre categorie.
     </p>
   </div>
 </section>
@@ -130,50 +120,24 @@ divers::Divers
 
     var cards = Array.prototype.slice.call(grid.querySelectorAll('[data-post-card]'));
     var filterButtons = Array.prototype.slice.call(document.querySelectorAll('[data-filter-button]'));
-      var searchInput = document.getElementById('post-search');
-      var emptyState = grid.querySelector('[data-empty-state]');
-      var counter = document.querySelector('[data-filter-count]');
-      var counterWord = document.querySelector('[data-filter-word]');
+    var emptyState = grid.querySelector('[data-empty-state]');
+    var counter = document.querySelector('[data-filter-count]');
+    var counterWord = document.querySelector('[data-filter-word]');
 
-      var activeFilter = 'all';
-      function normalise(value) {
-        if (!value) return '';
-        var str = value.toString();
-        if (typeof str.normalize === 'function') {
-          str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    var activeFilter = 'all';
+
+    function applyFilters() {
+      var visibleCount = 0;
+
+      cards.forEach(function (card) {
+        var matchesFilter = activeFilter === 'all';
+        if (!matchesFilter) {
+          matchesFilter = card.getAttribute('data-category') === activeFilter;
         }
-        return str.toLowerCase();
-      }
 
-      function getSearchIndex(card) {
-        var cached = card.getAttribute('data-search-index');
-        if (cached) {
-          return cached;
-        }
-        var raw = card.getAttribute('data-search-text') || card.getAttribute('data-post-title') || '';
-        var normalised = normalise(raw);
-        card.setAttribute('data-search-index', normalised);
-        return normalised;
-      }
-
-      function applyFilters() {
-        var query = (searchInput && searchInput.value ? searchInput.value : '').trim().toLowerCase();
-        var normalisedQuery = normalise(query);
-        var visibleCount = 0;
-
-        cards.forEach(function (card) {
-          var matchesFilter = activeFilter === 'all';
-          if (!matchesFilter) {
-            matchesFilter = card.getAttribute('data-category') === activeFilter;
-          }
-
-          var searchIndex = getSearchIndex(card);
-          var matchesSearch = !normalisedQuery || searchIndex.indexOf(normalisedQuery) !== -1;
-
-          var shouldShow = matchesFilter && matchesSearch;
-          card.hidden = !shouldShow;
-          if (shouldShow) visibleCount += 1;
-        });
+        card.hidden = !matchesFilter;
+        if (matchesFilter) visibleCount += 1;
+      });
 
       if (emptyState) {
         emptyState.hidden = visibleCount !== 0;
@@ -195,10 +159,6 @@ divers::Divers
         applyFilters();
       });
     });
-
-    if (searchInput) {
-      searchInput.addEventListener('input', applyFilters);
-    }
 
     applyFilters();
   });
