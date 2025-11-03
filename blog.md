@@ -84,7 +84,15 @@ divers::Divers
         {% assign parent_label = 'Divers' %}
       {% endif %}
       {% assign post_tags = post.tags | default: empty %}
-      <article class="post-card card" data-post-card data-category="{{ parent_slug }}" data-post-title="{{ post.title | escape }}">
+      {% assign search_text = post.title | append: ' ' | append: post.excerpt %}
+      {% assign search_text = search_text | append: ' ' | append: parent_label %}
+      {% if post_tags and post_tags != empty %}
+        {% assign tags_joined = post_tags | join: ' ' %}
+        {% assign search_text = search_text | append: ' ' | append: tags_joined %}
+      {% endif %}
+      {% assign search_text = search_text | strip_html | strip_newlines | replace: '"', ' ' | replace: '  ', ' ' | strip %}
+      {% assign search_attr = search_text | replace: '"', ' ' %}
+      <article class="post-card card" data-post-card data-category="{{ parent_slug }}" data-post-title="{{ post.title | escape }}" data-search-text="{{ search_attr }}">
         <div class="thumb" aria-hidden="true">
           <img src="{{ cover | relative_url }}" alt="" loading="lazy" decoding="async">
         </div>
@@ -122,30 +130,50 @@ divers::Divers
 
     var cards = Array.prototype.slice.call(grid.querySelectorAll('[data-post-card]'));
     var filterButtons = Array.prototype.slice.call(document.querySelectorAll('[data-filter-button]'));
-    var searchInput = document.getElementById('post-search');
-    var emptyState = grid.querySelector('[data-empty-state]');
-    var counter = document.querySelector('[data-filter-count]');
-    var counterWord = document.querySelector('[data-filter-word]');
+      var searchInput = document.getElementById('post-search');
+      var emptyState = grid.querySelector('[data-empty-state]');
+      var counter = document.querySelector('[data-filter-count]');
+      var counterWord = document.querySelector('[data-filter-word]');
 
-    var activeFilter = 'all';
-
-    function applyFilters() {
-      var query = (searchInput && searchInput.value ? searchInput.value : '').trim().toLowerCase();
-      var visibleCount = 0;
-
-      cards.forEach(function (card) {
-        var matchesFilter = activeFilter === 'all';
-        if (!matchesFilter) {
-          matchesFilter = card.getAttribute('data-category') === activeFilter;
+      var activeFilter = 'all';
+      function normalise(value) {
+        if (!value) return '';
+        var str = value.toString();
+        if (typeof str.normalize === 'function') {
+          str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         }
+        return str.toLowerCase();
+      }
 
-        var title = (card.getAttribute('data-post-title') || '').toLowerCase();
-        var matchesSearch = !query || title.indexOf(query) !== -1;
+      function getSearchIndex(card) {
+        var cached = card.getAttribute('data-search-index');
+        if (cached) {
+          return cached;
+        }
+        var raw = card.getAttribute('data-search-text') || card.getAttribute('data-post-title') || '';
+        var normalised = normalise(raw);
+        card.setAttribute('data-search-index', normalised);
+        return normalised;
+      }
 
-        var shouldShow = matchesFilter && matchesSearch;
-        card.hidden = !shouldShow;
-        if (shouldShow) visibleCount += 1;
-      });
+      function applyFilters() {
+        var query = (searchInput && searchInput.value ? searchInput.value : '').trim().toLowerCase();
+        var normalisedQuery = normalise(query);
+        var visibleCount = 0;
+
+        cards.forEach(function (card) {
+          var matchesFilter = activeFilter === 'all';
+          if (!matchesFilter) {
+            matchesFilter = card.getAttribute('data-category') === activeFilter;
+          }
+
+          var searchIndex = getSearchIndex(card);
+          var matchesSearch = !normalisedQuery || searchIndex.indexOf(normalisedQuery) !== -1;
+
+          var shouldShow = matchesFilter && matchesSearch;
+          card.hidden = !shouldShow;
+          if (shouldShow) visibleCount += 1;
+        });
 
       if (emptyState) {
         emptyState.hidden = visibleCount !== 0;
