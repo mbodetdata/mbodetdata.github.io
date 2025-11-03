@@ -93,17 +93,9 @@ divers::Divers
         </p>
         <div class="hero-actions">
           <a class="btn primary" href="#articles">Derniers articles</a>
-          <a class="btn ghost" href="{{ '/contact/' | relative_url }}">Parlons de votre projet</a>
+          <a class="btn ghost" href="https://bmdata.fr/#contact">Parlons de votre projet</a>
         </div>
       </div>
-      <aside class="blog-hero__stats card">
-        <p class="blog-hero__stats-title">En un clin d'oeil</p>
-        <ul class="blog-hero__stats-list">
-          <li><strong>{{ total_posts }}</strong> articles publies</li>
-          <li><strong>{{ total_categories }}</strong> categories principales</li>
-          <li><strong>10+</strong> projets accompagnes</li>
-        </ul>
-      </aside>
     </div>
   </div>
 </section>
