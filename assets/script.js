@@ -1177,3 +1177,74 @@ const Modal = (() => {
   }
 })();
 
+/* ==================== 6) Article UX helpers ==================== */
+(() => {
+  const shareBtn = document.querySelector('[data-share]');
+  const feedback = document.querySelector('[data-share-feedback]');
+  let hideTimer = null;
+
+  const showFeedback = (message) => {
+    if (!feedback) return;
+    feedback.textContent = message;
+    feedback.classList.add('is-visible');
+    if (hideTimer) clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => feedback.classList.remove('is-visible'), 2400);
+  };
+
+  if (shareBtn) {
+    const shareData = {
+      title: shareBtn.dataset.shareTitle || document.title,
+      url: shareBtn.dataset.shareUrl || window.location.href
+    };
+
+    shareBtn.addEventListener('click', async () => {
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+          showFeedback('Merci pour le partage !');
+          return;
+        }
+      } catch (err) {
+        /* fallback to clipboard */
+      }
+
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        showFeedback('Lien copié dans le presse-papier');
+      } catch (err) {
+        showFeedback(`Copiez le lien : ${shareData.url}`);
+      }
+    });
+  }
+
+  const progressBar = document.querySelector('[data-reading-progress]');
+  const article = document.querySelector('.post-body');
+  if (!progressBar || !article) return;
+
+  const container = progressBar.closest('.reading-progress');
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+  let ticking = false;
+
+  const update = () => {
+    ticking = false;
+    const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    const top = article.getBoundingClientRect().top + scrollY;
+    const height = article.offsetHeight;
+    const total = Math.max(height - window.innerHeight, 1);
+    const ratio = clamp((scrollY - top) / total, 0, 1);
+    const width = `${Math.round(ratio * 100)}%`;
+    progressBar.style.width = width;
+    progressBar.style.setProperty('--progress', width);
+    container?.classList.toggle('is-active', ratio > 0.02);
+  };
+
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    raf(update);
+  };
+
+  update();
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate, { passive: true });
+})();

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="fr">
 <head>
   {% assign is_post = true %}
@@ -9,7 +9,11 @@
 
   {% include header.html %}
 
-  <main id="main" tabindex="-1" itemscope itemtype="https://schema.org/Article">
+  <main id="main" class="post-main" tabindex="-1" itemscope itemtype="https://schema.org/Article">
+    <div class="reading-progress" aria-hidden="true">
+      <span class="reading-progress__bar" data-reading-progress></span>
+    </div>
+
     <meta itemprop="headline" content="{{ page.title }}">
     <meta itemprop="description" content="{{ page.description | default: site.description }}">
     <link itemprop="url" href="{{ page.url | replace:'index.html','' | absolute_url }}">
@@ -23,97 +27,147 @@
 
     {%- assign words = content | strip_html | strip_newlines | replace: '  ', ' ' | split: ' ' | size -%}
     {%- assign minutes = words | divided_by: 220 | plus: 1 -%}
-
-    <header class="post-hero">
-      <div class="post-hero__inner">
-        <nav class="breadcrumbs" aria-label="Fil d’Ariane">
-          <a href="{{ '/' | relative_url }}">Accueil</a>
-          <span aria-hidden="true">›</span>
-          <a href="{{ '/blog/' | relative_url }}">Blog</a>
-        </nav>
-
-        <h1 class="post-title">{{ page.title }}</h1>
-
-        {%- if page.description -%}
-          <p class="post-desc muted">{{ page.description }}</p>
-        {%- endif -%}
-
-        <div class="post-meta muted" aria-label="Métadonnées de l’article">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </span>
-          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d %b %Y' }}</time>
-          <span class="sep" aria-hidden="true">·</span>
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <span>~{{ minutes }} min</span>
-        </div>
-
-        {%- if page.tags and page.tags.size > 0 -%}
-          <div class="post-tags" aria-label="Tags">
-            {%- for t in page.tags -%}
-              <span class="chip">{{ t }}</span>
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
-
-        <p class="back-blog"><a href="{{ '/blog/' | relative_url }}" class="link-muted">← Retour au blog</a></p>
-      </div>
-      {%- if article_image -%}
-        <div class="post-hero__media" aria-hidden="true">
-          <img src="{{ article_image | relative_url }}" alt="" loading="lazy" decoding="async" />
-        </div>
+    {%- assign hero_label = page.eyebrow | default: page.category -%}
+    {%- if hero_label == nil or hero_label == '' -%}
+      {%- if page.categories and page.categories.size > 0 -%}
+        {%- assign hero_label = page.categories[0] -%}
       {%- endif -%}
+    {%- endif -%}
+    {%- if (hero_label == nil or hero_label == '') and page.tags and page.tags.size > 0 -%}
+      {%- assign hero_label = page.tags[0] -%}
+    {%- endif -%}
+    {%- assign hero_label = hero_label | default: 'Insights & Data' -%}
+
+    <header class="post-hero" data-anim="fade-up">
+      <div class="post-hero__inner">
+        <div class="post-hero__content">
+          <nav class="breadcrumbs" aria-label="Fil d’Ariane">
+            <a href="{{ '/' | relative_url }}">Accueil</a>
+            <span aria-hidden="true">›</span>
+            <a href="{{ '/blog/' | relative_url }}">Blog</a>
+          </nav>
+
+          {%- if hero_label -%}
+          <p class="post-hero__eyebrow">{{ hero_label }}</p>
+          {%- endif -%}
+
+          <h1 class="post-title">{{ page.title }}</h1>
+
+          {%- if page.description -%}
+            <p class="post-desc">{{ page.description }}</p>
+          {%- endif -%}
+
+          <div class="post-meta" aria-label="Métadonnées de l’article">
+            <div class="post-meta__item">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              <div class="post-meta__stack">
+                <span class="post-meta__label muted">Publié le</span>
+                <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d %b %Y' }}</time>
+              </div>
+            </div>
+            <div class="post-meta__item">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="post-meta__stack">
+                <span class="post-meta__label muted">Temps de lecture</span>
+                <span>~{{ minutes }} min</span>
+              </div>
+            </div>
+            {%- if page.last_modified_at -%}
+            <div class="post-meta__item">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M21 12a9 9 0 1 1-3.37-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 3v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="post-meta__stack">
+                <span class="post-meta__label muted">Mise à jour</span>
+                <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: '%d %b %Y' }}</time>
+              </div>
+            </div>
+            {%- endif -%}
+          </div>
+
+          {%- if page.tags and page.tags.size > 0 -%}
+            <div class="post-tags" aria-label="Tags">
+              {%- for t in page.tags -%}
+                <span class="chip">{{ t }}</span>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          <div class="post-hero__actions">
+            <a href="{{ '/blog/' | relative_url }}" class="btn ghost back-blog">← Retour au blog</a>
+            <button type="button"
+                    class="post-share"
+                    data-share
+                    data-share-title="{{ page.title | escape }}"
+                    data-share-url="{{ page.url | replace:'index.html','' | absolute_url }}">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M16 6 12 2 8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2v14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>Partager</span>
+            </button>
+          </div>
+          <p class="post-share__feedback muted" data-share-feedback aria-live="polite"></p>
+        </div>
+
+        {%- if article_image -%}
+        <figure class="post-hero__media" aria-hidden="true">
+          <img src="{{ article_image | relative_url }}" alt="" loading="lazy" decoding="async" />
+        </figure>
+        {%- endif -%}
+      </div>
     </header>
 
-    <article class="post-body" itemprop="articleBody">
-      {{ content }}
-    </article>
+    <div class="post-shell">
+      <article class="post-body" itemprop="articleBody">
+        {{ content }}
+      </article>
 
-    {%- assign post_tags_concat = '' -%}
-    {%- if page.tags -%}
-      {%- assign post_tags_concat = page.tags | join: '|' | downcase -%}
-    {%- endif -%}
-    {%- if post_tags_concat contains 'talend' or post_tags_concat contains 'talaxie' -%}
-      <aside class="post-service-cta card" aria-labelledby="cta-title-talend" data-anim="fade-up">
-        <h2 id="cta-title-talend">Besoin d'aller plus loin avec Talend&nbsp;?</h2>
-        <p>Je sécurise vos migrations Talaxie et vos flux ETL pour que vos données restent fiables chaque jour.</p>
-        <a class="btn btn--primary"
-           href="{{ '/services-talend-talaxie/' | relative_url }}"
-           data-track-click="blog_to_talend">
-          En savoir plus sur les services Talend
-        </a>
-      </aside>
-    {%- elsif post_tags_concat contains 'power bi' or post_tags_concat contains 'powerbi' or post_tags_concat contains 'dax' -%}
-      <aside class="post-service-cta card" aria-labelledby="cta-title-powerbi" data-anim="fade-up">
-        <h2 id="cta-title-powerbi">Vous travaillez sur Power BI&nbsp;?</h2>
-        <p>Je conçois des tableaux de bord lisibles et automatisés pour vos équipes métier.</p>
-        <a class="btn btn--primary"
-           href="{{ '/services-powerbi/' | relative_url }}"
-           data-track-click="blog_to_powerbi">
-          Découvrir les services Power BI
-        </a>
-      </aside>
-    {%- endif -%}
+      {%- assign post_tags_concat = '' -%}
+      {%- if page.tags -%}
+        {%- assign post_tags_concat = page.tags | join: '|' | downcase -%}
+      {%- endif -%}
+      {%- if post_tags_concat contains 'talend' or post_tags_concat contains 'talaxie' -%}
+        <aside class="post-service-cta card" aria-labelledby="cta-title-talend" data-anim="fade-up">
+          <h2 id="cta-title-talend">Besoin d'aller plus loin avec Talend&nbsp;?</h2>
+          <p>Je sécurise vos migrations Talaxie et vos flux ETL pour que vos données restent fiables chaque jour.</p>
+          <a class="btn btn--primary"
+             href="{{ '/services-talend-talaxie/' | relative_url }}"
+             data-track-click="blog_to_talend">
+            En savoir plus sur les services Talend
+          </a>
+        </aside>
+      {%- elsif post_tags_concat contains 'power bi' or post_tags_concat contains 'powerbi' or post_tags_concat contains 'dax' -%}
+        <aside class="post-service-cta card" aria-labelledby="cta-title-powerbi" data-anim="fade-up">
+          <h2 id="cta-title-powerbi">Vous travaillez sur Power BI&nbsp;?</h2>
+          <p>Je conçois des tableaux de bord lisibles et automatisés pour vos équipes métier.</p>
+          <a class="btn btn--primary"
+             href="{{ '/services-powerbi/' | relative_url }}"
+             data-track-click="blog_to_powerbi">
+            Découvrir les services Power BI
+          </a>
+        </aside>
+      {%- endif -%}
 
-    <nav class="post-nav" aria-label="Navigation de l’article">
-      <div>
-        {%- if page.previous -%}
-          <a class="btn ghost" rel="prev" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
-        {%- endif -%}
-      </div>
-      <div>
-        {%- if page.next -%}
-          <a class="btn" rel="next" href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
-        {%- endif -%}
-      </div>
-    </nav>
+      <nav class="post-nav" aria-label="Navigation de l’article">
+        <div>
+          {%- if page.previous -%}
+            <a class="btn ghost" rel="prev" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
+          {%- endif -%}
+        </div>
+        <div>
+          {%- if page.next -%}
+            <a class="btn" rel="next" href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
+          {%- endif -%}
+        </div>
+      </nav>
+    </div>
   </main>
 
   {% include footer.html %}
   {% include modal-project.html %}
 </body>
 </html>
-
-
