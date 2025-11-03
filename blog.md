@@ -46,54 +46,45 @@ divers::Divers
 </header>
 
 <section class="section" id="articles">
-  {% for entry in parent_categories %}
-    {% assign parts = entry | split: "::" %}
-    {% assign cat_slug = parts[0] | strip | downcase %}
-    {% assign cat_label = parts[1] | strip %}
-    {% assign posts_in_cat = posts_sorted | where: "parent_category", cat_slug %}
-    {% if cat_slug == "divers" %}
-      {% assign unassigned = posts_sorted | where_exp: "post", "post.parent_category == nil" %}
-      {% assign posts_in_cat = posts_in_cat | concat: unassigned %}
-    {% endif %}
-    {% assign posts_in_cat = posts_in_cat | uniq %}
-    {% if posts_in_cat.size > 0 %}
-      <section class="category-stack">
-        <header class="category-stack__header">
-          <h2>{{ cat_label }}</h2>
-          <p class="muted">{{ posts_in_cat.size }} article{% if posts_in_cat.size > 1 %}s{% endif %}</p>
-        </header>
-        <div class="posts-grid modern-grid">
-          {% for post in posts_in_cat %}
-            {% assign cover = post.image | default: site.og_image %}
-            {% assign words = post.content | strip_html | strip_newlines | replace: '  ', ' ' | split: ' ' | size %}
-            {% assign minutes = words | divided_by: 220 | plus: 1 %}
-            <article class="post-card card">
-              <div class="thumb" aria-hidden="true">
-                <img src="{{ cover | relative_url }}" alt="" loading="lazy" decoding="async">
-              </div>
-              <div class="pc-body">
-                <div class="pc-flags">
-                  <span class="chip chip--category">{{ cat_label }}</span>
-                </div>
-                <div class="pc-meta muted">
-                  <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
-                  <span aria-hidden="true">&middot;</span> ~{{ minutes }} min
-                </div>
-                <h3 class="pc-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-                <p class="pc-excerpt muted">{{ post.excerpt | strip_html | truncate: 160 }}</p>
-                {% if post.tags and post.tags != empty %}
-                <div class="pc-tags">
-                  {% for t in post.tags limit:3 %}
-                    <span class="chip">{{ t }}</span>
-                  {% endfor %}
-                </div>
-                {% endif %}
-              </div>
-              <a class="stretched" href="{{ post.url | relative_url }}" aria-label="Lire : {{ post.title }}"></a>
-            </article>
-          {% endfor %}
+  <div class="posts-grid modern-grid">
+    {% for post in posts_sorted %}
+      {% assign cover = post.image | default: site.og_image %}
+      {% assign words = post.content | strip_html | strip_newlines | replace: '  ', ' ' | split: ' ' | size %}
+      {% assign minutes = words | divided_by: 220 | plus: 1 %}
+      {% assign parent_slug = post.parent_category | default: 'divers' | strip | downcase %}
+      {% assign parent_label = 'Divers' %}
+      {% for entry in parent_categories %}
+        {% assign parts = entry | split: "::" %}
+        {% assign cat_slug = parts[0] | strip | downcase %}
+        {% assign cat_label = parts[1] | strip %}
+        {% if parent_slug == cat_slug %}
+          {% assign parent_label = cat_label %}
+        {% endif %}
+      {% endfor %}
+      <article class="post-card card">
+        <div class="thumb" aria-hidden="true">
+          <img src="{{ cover | relative_url }}" alt="" loading="lazy" decoding="async">
         </div>
-      </section>
-    {% endif %}
-  {% endfor %}
+        <div class="pc-body">
+          <div class="pc-flags">
+            <span class="chip chip--category">{{ parent_label }}</span>
+          </div>
+          <div class="pc-meta muted">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+            <span aria-hidden="true">&middot;</span> ~{{ minutes }} min
+          </div>
+          <h3 class="pc-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <p class="pc-excerpt muted">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+          {% if post.tags and post.tags != empty %}
+          <div class="pc-tags">
+            {% for t in post.tags limit:3 %}
+              <span class="chip">{{ t }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <a class="stretched" href="{{ post.url | relative_url }}" aria-label="Lire : {{ post.title }}"></a>
+      </article>
+    {% endfor %}
+  </div>
 </section>
