@@ -114,7 +114,7 @@ Pas besoin d’une plateforme cloud ou d’un service data dédié : un poste, u
 <div class="post-service-cta">
   <h2>Voir d’autres réalisations concrètes</h2>
   <p>Découvrez comment d’autres entreprises ont fiabilisé leurs flux, automatisé leurs échanges et modernisé leur intégration grâce à Talend ou Talaxie.</p>
-  <a href="{{ '/realisations/' | relative_url }}" class="btn btn--primary">Accéder à toutes les réalisations</a>
+  <a href="{{ '/realisation/' | relative_url }}" class="btn btn--primary">Accéder à toutes les réalisations</a>
 </div>
 
 ---
