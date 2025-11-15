@@ -20,6 +20,7 @@
       "label": "BMData",
       "url": "https://bmdata.fr",
       "icon": "bmdata",
+      "group":"site",
       "order": 1
     },
     {
@@ -40,6 +41,7 @@
       "label": "Profil Malt",
       "url": "https://www.malt.fr/profile/martialbodet1",
       "icon": "globe",
+      "group":"site",
       "order": 4
     }
   ],
