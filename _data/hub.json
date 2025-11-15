@@ -19,7 +19,8 @@
     {
       "label": "BMData.fr",
       "url": "https://bmdata.fr",
-      "icon": "bmdata"
+      "icon": "bmdata",
+      "priority": "primary"
     },
     {
       "label": "LinkedIn",
@@ -71,7 +72,7 @@
   },
   "highlights": [
     {
-      "active": true,
+      "active": false,
       "tag": "Webinaire",
       "title": "Optimiser vos pipelines Talend en 2025",
       "summary": "45 minutes de retours d'expérience sur les architectures hybrides et les bonnes pratiques de monitoring.",
@@ -80,7 +81,7 @@
       "cta_url": "https://example.com/talend-webinar"
     },
     {
-      "active": true,
+      "active": false,
       "tag": "Conférence",
       "title": "Modern BI Tour — Bordeaux",
       "summary": "Une session live pour découvrir comment mêler Power BI et automation pour accélérer vos décisions.",
