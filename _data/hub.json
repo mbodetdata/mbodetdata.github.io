@@ -1,0 +1,106 @@
+{
+  "profile": {
+    "eyebrow": "Hub BM Data",
+    "title": "Martial Bodet",
+    "role": "Consultant freelance Talend & Power BI",
+    "intro": "Je fluidifie vos pipelines Talend, consolide vos modèles Power BI et accompagne vos équipes pour transformer les données en décisions rapides et actionnables.",
+    "photo": "/assets/img/Photo_profil.webp",
+    "badges": [
+      "Talend expert",
+      "Modern BI",
+      "Automation"
+    ],
+    "cta": {
+      "label": "Découvrir mes services",
+      "url": "/#services"
+    }
+  },
+  "links_section": {
+    "eyebrow": "Accès rapide",
+    "title": "Mes points de contact",
+    "subtitle": "Choisissez le canal qui correspond le mieux à votre besoin du moment."
+  },
+  "links": [
+    {
+      "label": "Site BM Data",
+      "description": "Prestations détaillées, cas clients et méthodologie.",
+      "url": "https://bmdata.fr",
+      "icon": "globe",
+      "badge": "Site"
+    },
+    {
+      "label": "LinkedIn",
+      "description": "Analyses, retours d'expérience et offres du moment.",
+      "url": "https://www.linkedin.com/in/martial-bodet/",
+      "icon": "linkedin",
+      "badge": "Réseau"
+    },
+    {
+      "label": "Booking 30 min",
+      "description": "Agenda en ligne pour faire le point sur votre roadmap data.",
+      "url": "https://outlook.office.com/book/meeting@bmdata.fr/",
+      "icon": "calendar",
+      "badge": "Rendez-vous"
+    },
+    {
+      "label": "Réalisations",
+      "description": "Quelques dashboards et flux Talend que j'ai industrialisés.",
+      "url": "/realisation/",
+      "icon": "spark",
+      "badge": "Cas clients"
+    }
+  ],
+  "contacts_section": {
+    "eyebrow": "Coordonnées",
+    "title": "Toujours joignable",
+    "subtitle": "Une réponse sous 24h ouvrées, et la possibilité de réserver un créneau directement."
+  },
+  "contacts": [
+    {
+      "label": "Mail",
+      "value": "contact@bmdata.fr",
+      "note": "Réponse sous 24h",
+      "url": "mailto:contact@bmdata.fr",
+      "icon": "mail"
+    },
+    {
+      "label": "Téléphone",
+      "value": "+33 6 70 21 09 28",
+      "note": "09h00-19h00",
+      "url": "tel:+33670210928",
+      "icon": "phone"
+    },
+    {
+      "label": "Booking",
+      "value": "Calendrier Outlook",
+      "note": "Rendez-vous 30 min",
+      "url": "https://outlook.office.com/book/meeting@bmdata.fr/",
+      "icon": "calendar"
+    }
+  ],
+  "highlights_section": {
+    "eyebrow": "À la une",
+    "title": "Webinaires & ressources",
+    "subtitle": "Formats courts pour comprendre mes approches, ou événements live à venir."
+  },
+  "highlights": [
+    {
+      "tag": "Webinaire",
+      "title": "Automatiser votre usine Talend",
+      "description": "45 minutes pour partager un blueprint d'industrialisation, monitoring et gouvernance.",
+      "meta": "Jeudi 28 novembre · 11h00",
+      "icon": "signal",
+      "cta_label": "Réserver ma place",
+      "cta_url": "https://lu.ma/bmdata-talend"
+    },
+    {
+      "tag": "Ressource",
+      "title": "Checklist audit Power BI",
+      "description": "Une grille en 12 points pour sécuriser performances, DAX et gouvernance.",
+      "meta": "PDF interactif · 6 pages",
+      "icon": "doc",
+      "cta_label": "Télécharger",
+      "cta_url": "mailto:contact@bmdata.fr?subject=Checklist%20Power%20BI&body=Bonjour%20Martial,%0A%0AJe%20souhaite%20recevoir%20la%20checklist%20Power%20BI.%0A"
+    }
+  ]
+}
