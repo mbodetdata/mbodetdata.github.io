@@ -20,6 +20,9 @@
   <span class="hub-link-card__icon" aria-hidden="true">{{ link_icon | strip }}</span>
   <span class="hub-link-card__body">
     <span class="hub-link-card__label">{{ link.label }}</span>
+    {% if link.value %}
+    <span class="hub-link-card__value">{{ link.value }}</span>
+    {% endif %}
     {% if link.description %}
     <span class="hub-link-card__desc">{{ link.description }}</span>
     {% endif %}

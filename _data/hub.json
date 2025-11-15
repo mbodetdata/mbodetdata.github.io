@@ -5,9 +5,9 @@
     "intro": "Je transforme vos données en un outil simple qui vous fait gagner du temps et vous aide à décider plus vite.",
     "photo": "/assets/img/Photo_profil.webp",
     "badges": [
-      "Talend expert",
-      "Modern BI",
-      "Automation"
+      "Précision absolue",
+      "Clarté instantanée",
+      "Temps libéré"
     ]
   },
   "links_section": {
@@ -47,6 +47,12 @@
       "url": "/realisation/",
       "icon": "spark",
       "badge": "Cas clients"
+    },
+    {
+      "label": "Profil Malt",
+      "url": "https://www.malt.fr/profile/martialbodet1",
+      "icon": "globe",
+      "badge": "Freelance"
     }
   ],
   "contacts_section": {
@@ -56,13 +62,13 @@
   },
   "contacts": [
     {
-      "label": "Mail",
+      "label": "contact@bmdata.fr",
       "value": "contact@bmdata.fr",
       "url": "mailto:contact@bmdata.fr",
       "icon": "mail"
     },
     {
-      "label": "Téléphone",
+      "label": "06 70 21 09 28",
       "value": "+33 6 70 21 09 28",
       "url": "tel:+33670210928",
       "icon": "phone"
@@ -79,12 +85,15 @@
     "title": "Sur le blog",
     "subtitle": "Focus sur l'article le plus récent que je viens de publier."
   },
-  "highlight_manual": {
-    "enabled": false,
-    "tag": "Webinaire",
-    "title": "",
-    "meta": "",
-    "cta_label": "",
-    "cta_url": ""
-  }
+  "highlights": [
+    {
+      "active": false,
+      "tag": "Webinaire",
+      "title": "Titre de votre événement",
+      "summary": "Ajoutez ici le pitch ou l'objectif du webinaire (optionnel).",
+      "meta": "Date · Heure",
+      "cta_label": "S'inscrire",
+      "cta_url": "https://example.com/votre-lien"
+    }
+  ]
 }

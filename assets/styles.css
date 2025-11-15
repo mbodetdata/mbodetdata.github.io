@@ -270,6 +270,32 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   flex-wrap:wrap;
   gap:.8rem;
 }
+.hub-share{
+  margin-top:1.2rem;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.8rem;
+}
+.hub-share__btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  background:linear-gradient(135deg, rgba(102,119,255,.28), rgba(43,212,143,.2));
+  border:1px solid rgba(255,255,255,.15);
+  color:var(--fg);
+  padding:.55rem 1.1rem;
+  border-radius:999px;
+}
+.hub-share__btn svg{
+  width:18px;
+  height:18px;
+}
+.hub-share__feedback{
+  font-size:var(--step--1);
+  color:var(--muted);
+  min-height:1em;
+}
 
 .hub-eyebrow{
   text-transform:uppercase;
@@ -368,6 +394,11 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   font-size:var(--step--1);
   line-height:1.5;
 }
+.hub-link-card__value{
+  font-size:var(--step-1);
+  font-weight:600;
+  color:var(--fg);
+}
 .hub-link-card__meta{
   display:flex;
   align-items:center;
@@ -388,6 +419,53 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
 .hub-link-card__arrow svg{
   width:18px;
   height:18px;
+}
+.hub-share__btn:focus,
+.hub-share__btn:hover{
+  border-color:var(--brand);
+  box-shadow:0 0 0 3px rgba(102,119,255,.25);
+}
+.hub-link-card__head{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:.6rem;
+  margin-bottom:.3rem;
+}
+.hub-link-card__meta-text{
+  font-size:var(--step--1);
+  color:var(--muted);
+}
+.hub-link-card--event{
+  flex-direction:column;
+  gap:.9rem;
+}
+.hub-link-card--event .hub-link-card__body{
+  width:100%;
+}
+.hub-link-card__meta--cta{
+  width:100%;
+  justify-content:flex-end;
+}
+.hub-link-card__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.45rem 1rem;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.2);
+  text-decoration:none;
+  color:var(--fg);
+  font-size:var(--step--1);
+  background:rgba(255,255,255,.05);
+}
+.hub-link-card__cta svg{
+  width:18px;
+  height:18px;
+}
+.hub-link-card--blog .hub-link-card__arrow{
+  margin-left:auto;
 }
 .hub-links__duo .hub-link-card{
   min-height:170px;

@@ -27,6 +27,17 @@ slug: hub
       {% endfor %}
     </ul>
     {% endif %}
+    <div class="hub-share">
+      <button class="btn hub-share__btn" type="button"
+              data-share-hub="{{ page.url | replace:'index.html','' | absolute_url }}">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M18 8a3 3 0 1 0-2.83-4H13v4h2.17A3 3 0 0 0 18 8zm-6 8a3 3 0 0 0-2.83 2H7v4h2.17A3 3 0 1 0 12 16zm-6-4a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" fill="currentColor"/>
+          <path d="M8.59 10.59l6.82 3.41M15.41 9.59L8.59 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Partager mon hub
+      </button>
+      <span class="hub-share__feedback" aria-live="polite"></span>
+    </div>
   </div>
 </section>
 
@@ -62,6 +73,43 @@ slug: hub
 </section>
 {% endif %}
 
+<script>
+(function(){
+  const btn = document.querySelector('[data-share-hub]');
+  if(!btn) return;
+  const feedback = document.querySelector('.hub-share__feedback');
+  const showMsg = (msg) => {
+    if(!feedback) return;
+    feedback.textContent = msg;
+    clearTimeout(feedback._timer);
+    feedback._timer = setTimeout(() => feedback.textContent = '', 3000);
+  };
+  btn.addEventListener('click', async () => {
+    const shareData = {
+      title: document.title,
+      text: "Découvrez le hub de Martial Bodet",
+      url: btn.dataset.shareHub
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        showMsg('Lien partagé ✅');
+      } catch (err) {
+        if (err && err.name !== 'AbortError') showMsg('Partage annulé');
+      }
+    } else if (navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        showMsg('Lien copié dans le presse-papiers');
+      } catch (err) {
+        showMsg('Impossible de copier le lien');
+      }
+    } else {
+      showMsg('Partage indisponible sur cet appareil');
+    }
+  });
+})();
+</script>
 {% if hub.contacts %}
 <section class="hub-section hub-links card" aria-labelledby="hub-contact-title">
   <div class="hub-section__head">
@@ -73,20 +121,16 @@ slug: hub
   </div>
   <div class="hub-links__list">
     {% for contact in hub.contacts %}
-      {% capture contact_to_link %}
-        {% assign contact_link = contact %}
-        {% include hub-link-card.html link=contact_link %}
-      {% endcapture %}
-      {{ contact_to_link | strip }}
+      {% include hub-link-card.html link=contact %}
     {% endfor %}
   </div>
 </section>
 {% endif %}
 
-{% assign manual_highlight = hub.highlight_manual %}
-{% assign manual_enabled = manual_highlight and manual_highlight.enabled and manual_highlight.title %}
+{% assign highlight_events = hub.highlights | where: "active", true %}
+{% assign has_events = highlight_events and highlight_events.size > 0 %}
 {% assign featured_post = site.posts | first %}
-{% if manual_enabled or featured_post %}
+{% if has_events or featured_post %}
 <section class="hub-section hub-links card" aria-labelledby="hub-highlights-title">
   <div class="hub-section__head">
     {% if hub.highlights_section.eyebrow %}
@@ -100,35 +144,41 @@ slug: hub
     </div>
   </div>
   <div class="hub-links__list">
-    {% if manual_enabled %}
-      <article class="hub-link-card hub-link-card--highlight">
+    {% if has_events %}
+      {% for event in highlight_events %}
+      <article class="hub-link-card hub-link-card--event">
         <div class="hub-link-card__head">
-          {% if manual_highlight.tag %}
-          <span class="hub-chip hub-chip--soft">{{ manual_highlight.tag }}</span>
+          {% if event.tag %}
+          <span class="hub-chip hub-chip--soft">{{ event.tag }}</span>
           {% endif %}
-          {% if manual_highlight.meta %}
-          <span class="hub-highlight-card__meta">{{ manual_highlight.meta }}</span>
+          {% if event.meta %}
+          <span class="hub-link-card__meta-text">{{ event.meta }}</span>
           {% endif %}
         </div>
         <div class="hub-link-card__body">
-          <span class="hub-link-card__label">{{ manual_highlight.title }}</span>
-          {% if manual_highlight.description %}
-          <span class="hub-link-card__desc">{{ manual_highlight.description }}</span>
+          <span class="hub-link-card__label">{{ event.title }}</span>
+          {% if event.summary %}
+          <span class="hub-link-card__desc">{{ event.summary }}</span>
           {% endif %}
         </div>
-        <div class="hub-link-card__meta">
-          {% if manual_highlight.cta_url %}
-          <a class="btn ghost" href="{{ manual_highlight.cta_url }}" target="_blank" rel="noopener">
-            {{ manual_highlight.cta_label | default: "En savoir plus" }}
+        <div class="hub-link-card__meta hub-link-card__meta--cta">
+          {% if event.cta_url %}
+          <a class="hub-link-card__cta" href="{{ event.cta_url }}" target="_blank" rel="noopener">
+            {{ event.cta_label | default: "S'inscrire" }}
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </a>
           {% endif %}
         </div>
       </article>
-    {% elsif featured_post %}
-      <a class="hub-link-card hub-link-card--highlight" href="{{ featured_post.url | relative_url }}">
+      {% endfor %}
+    {% elseif featured_post %}
+      <a class="hub-link-card hub-link-card--event hub-link-card--blog" href="{{ featured_post.url | relative_url }}">
         <div class="hub-link-card__head">
           <span class="hub-chip hub-chip--soft">Blog</span>
-          <span class="hub-highlight-card__meta">{{ featured_post.date | date: "%d %B %Y" }}</span>
+          <span class="hub-link-card__meta-text">{{ featured_post.date | date: "%d %B %Y" }}</span>
         </div>
         <div class="hub-link-card__body">
           <span class="hub-link-card__label">{{ featured_post.title }}</span>
