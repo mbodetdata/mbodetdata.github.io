@@ -19,24 +19,28 @@
     {
       "label": "BMData",
       "url": "https://bmdata.fr",
-      "icon": "bmdata"
+      "icon": "bmdata",
+      "order": 1
     },
     {
       "label": "LinkedIn",
       "url": "https://www.linkedin.com/in/martial-bodet/",
       "icon": "linkedin",
-      "group": "linkedin"
+      "group": "linkedin",
+      "order": 2
     },
     {
       "label": "LinkedIn Entreprise",
       "url": "https://www.linkedin.com/company/bmdata/",
       "icon": "linkedin",
-      "group": "linkedin"
+      "group": "linkedin",
+      "order": 3
     },
     {
       "label": "Profil Malt",
       "url": "https://www.malt.fr/profile/martialbodet1",
-      "icon": "globe"
+      "icon": "globe",
+      "order": 4
     }
   ],
   "contacts_section": {

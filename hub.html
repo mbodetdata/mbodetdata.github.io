@@ -80,7 +80,9 @@ slug: hub
 
 {% if hub.links %}
 {% assign linkedin_links = hub.links | where: "group", "linkedin" %}
-{% assign other_links = hub.links | where_exp: "item", "item.group != 'linkedin'" %}
+{% assign ordered_links = hub.links | sort: "order" %}
+{% assign other_links = ordered_links | where_exp: "item", "item.group != 'linkedin'" %}
+{% assign linkedin_links = ordered_links | where: "group", "linkedin" %}
 <section class="hub-section hub-card" aria-labelledby="hub-links-title">
   <header class="hub-section__head">
     {% if hub.links_section.eyebrow %}
