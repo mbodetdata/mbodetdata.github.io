@@ -2491,7 +2491,7 @@ body.is-modal-open{ overflow:hidden; }
   .hero{ grid-template-columns: 1.1fr .9fr; gap: 2rem; }
   .card{ padding: clamp(1.2rem, 1.4vw, 1.8rem); }
 }
-}
+
 /* ===================== 13) UTILITAIRES SEO/UI ===================== */
 .muted{ color:var(--muted); }
 .soft-sep{

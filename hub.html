@@ -110,6 +110,44 @@ slug: hub
   });
 })();
 </script>
+
+<script>
+(function(){
+  const btn = document.querySelector('[data-share-hub]');
+  if(!btn) return;
+  const feedback = document.querySelector('.hub-share__feedback');
+  const showMsg = (msg) => {
+    if(!feedback) return;
+    feedback.textContent = msg;
+    clearTimeout(feedback._timer);
+    feedback._timer = setTimeout(() => feedback.textContent = '', 3000);
+  };
+  btn.addEventListener('click', async () => {
+    const shareData = {
+      title: document.title,
+      text: "Découvrez le hub de Martial Bodet",
+      url: btn.dataset.shareHub
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        showMsg('Lien partagé ✅');
+      } catch (err) {
+        if (err && err.name !== 'AbortError') showMsg('Partage annulé');
+      }
+    } else if (navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        showMsg('Lien copié dans le presse-papiers');
+      } catch (err) {
+        showMsg('Impossible de copier le lien');
+      }
+    } else {
+      showMsg('Partage indisponible sur cet appareil');
+    }
+  });
+})();
+</script>
 {% if hub.contacts %}
 <section class="hub-section hub-links card" aria-labelledby="hub-contact-title">
   <div class="hub-section__head">
