@@ -7,34 +7,37 @@ slug: hub
 ---
 {%- assign hub = site.data.hub -%}
 
-<section class="hub-profile card" itemscope itemtype="https://schema.org/Person">
-  <div class="hub-profile__media">
-    <figure class="hub-profile__photo">
+<section class="hub-hero card" itemscope itemtype="https://schema.org/Person">
+  <div class="hub-hero__media">
+    <figure class="hub-hero__photo">
       <img src="{{ hub.profile.photo | default: site.author.photo | relative_url }}"
            alt="Portrait de {{ hub.profile.title | default: site.author.prenom_nom }}">
     </figure>
   </div>
-  <div class="hub-profile__body">
-    <h1 class="hub-profile__title" itemprop="name">{{ hub.profile.title }}</h1>
+  <div class="hub-hero__body">
+    <p class="hub-hero__eyebrow">Hub personnel</p>
+    <h1 class="hub-hero__title" itemprop="name">{{ hub.profile.title }}</h1>
     {% if hub.profile.role %}
-    <p class="hub-profile__role" itemprop="jobTitle">{{ hub.profile.role }}</p>
+    <p class="hub-hero__role" itemprop="jobTitle">{{ hub.profile.role }}</p>
     {% endif %}
-    <p class="hub-profile__intro" itemprop="description">{{ hub.profile.intro }}</p>
+    {% if hub.profile.intro %}
+    <p class="hub-hero__intro" itemprop="description">{{ hub.profile.intro }}</p>
+    {% endif %}
     {% if hub.profile.badges %}
-    <ul class="hub-profile__tags" role="list">
+    <ul class="hub-hero__tags" role="list">
       {% for badge in hub.profile.badges %}
       <li class="hub-chip">{{ badge }}</li>
       {% endfor %}
     </ul>
     {% endif %}
     <div class="hub-share">
-      <button class="btn hub-share__btn" type="button"
+      <button class="hub-share__btn" type="button"
               data-share-hub="{{ page.url | replace:'index.html','' | absolute_url }}">
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
           <path d="M18 8a3 3 0 1 0-2.83-4H13v4h2.17A3 3 0 0 0 18 8zm-6 8a3 3 0 0 0-2.83 2H7v4h2.17A3 3 0 1 0 12 16zm-6-4a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" fill="currentColor"/>
           <path d="M8.59 10.59l6.82 3.41M15.41 9.59L8.59 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        Partager mon hub
+        Partager ce hub
       </button>
       <span class="hub-share__feedback" aria-live="polite"></span>
     </div>
@@ -42,8 +45,10 @@ slug: hub
 </section>
 
 {% if hub.links %}
-<section class="hub-section hub-links card" aria-labelledby="hub-links-title">
-  <div class="hub-section__head">
+{% assign linkedin_links = hub.links | where: "group", "linkedin" %}
+{% assign other_links = hub.links | where_exp: "item", "item.group != 'linkedin'" %}
+<section class="hub-section card" aria-labelledby="hub-links-title">
+  <header class="hub-section__head">
     {% if hub.links_section.eyebrow %}
     <p class="hub-eyebrow">{{ hub.links_section.eyebrow }}</p>
     {% endif %}
@@ -53,18 +58,16 @@ slug: hub
       <p class="hub-section__subtitle">{{ hub.links_section.subtitle }}</p>
       {% endif %}
     </div>
-  </div>
-  {% assign linkedin_links = hub.links | where: "group", "linkedin" %}
-  {% assign other_links = hub.links | where_exp: "item", "item.group != 'linkedin'" %}
+  </header>
   {% if linkedin_links and linkedin_links.size > 0 %}
-  <div class="hub-links__duo">
+  <div class="hub-links-grid hub-links-grid--duo">
     {% for link in linkedin_links %}
       {% include hub-link-card.html link=link %}
     {% endfor %}
   </div>
   {% endif %}
   {% if other_links and other_links.size > 0 %}
-  <div class="hub-links__list">
+  <div class="hub-links-grid">
     {% for link in other_links %}
       {% include hub-link-card.html link=link %}
     {% endfor %}
@@ -73,91 +76,16 @@ slug: hub
 </section>
 {% endif %}
 
-<script>
-(function(){
-  const btn = document.querySelector('[data-share-hub]');
-  if(!btn) return;
-  const feedback = document.querySelector('.hub-share__feedback');
-  const showMsg = (msg) => {
-    if(!feedback) return;
-    feedback.textContent = msg;
-    clearTimeout(feedback._timer);
-    feedback._timer = setTimeout(() => feedback.textContent = '', 3000);
-  };
-  btn.addEventListener('click', async () => {
-    const shareData = {
-      title: document.title,
-      text: "Découvrez le hub de Martial Bodet",
-      url: btn.dataset.shareHub
-    };
-    if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-        showMsg('Lien partagé ✅');
-      } catch (err) {
-        if (err && err.name !== 'AbortError') showMsg('Partage annulé');
-      }
-    } else if (navigator.clipboard) {
-      try {
-        await navigator.clipboard.writeText(shareData.url);
-        showMsg('Lien copié dans le presse-papiers');
-      } catch (err) {
-        showMsg('Impossible de copier le lien');
-      }
-    } else {
-      showMsg('Partage indisponible sur cet appareil');
-    }
-  });
-})();
-</script>
-
-<script>
-(function(){
-  const btn = document.querySelector('[data-share-hub]');
-  if(!btn) return;
-  const feedback = document.querySelector('.hub-share__feedback');
-  const showMsg = (msg) => {
-    if(!feedback) return;
-    feedback.textContent = msg;
-    clearTimeout(feedback._timer);
-    feedback._timer = setTimeout(() => feedback.textContent = '', 3000);
-  };
-  btn.addEventListener('click', async () => {
-    const shareData = {
-      title: document.title,
-      text: "Découvrez le hub de Martial Bodet",
-      url: btn.dataset.shareHub
-    };
-    if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-        showMsg('Lien partagé ✅');
-      } catch (err) {
-        if (err && err.name !== 'AbortError') showMsg('Partage annulé');
-      }
-    } else if (navigator.clipboard) {
-      try {
-        await navigator.clipboard.writeText(shareData.url);
-        showMsg('Lien copié dans le presse-papiers');
-      } catch (err) {
-        showMsg('Impossible de copier le lien');
-      }
-    } else {
-      showMsg('Partage indisponible sur cet appareil');
-    }
-  });
-})();
-</script>
 {% if hub.contacts %}
-<section class="hub-section hub-links card" aria-labelledby="hub-contact-title">
-  <div class="hub-section__head">
+<section class="hub-section card" aria-labelledby="hub-contacts-title">
+  <header class="hub-section__head">
     <div>
       <p class="hub-eyebrow">{{ hub.contacts_section.eyebrow }}</p>
-      <h2 id="hub-contact-title" class="hub-section__title">{{ hub.contacts_section.title }}</h2>
+      <h2 id="hub-contacts-title" class="hub-section__title">{{ hub.contacts_section.title }}</h2>
       <p class="hub-section__subtitle">{{ hub.contacts_section.subtitle }}</p>
     </div>
-  </div>
-  <div class="hub-links__list">
+  </header>
+  <div class="hub-links-grid">
     {% for contact in hub.contacts %}
       {% include hub-link-card.html link=contact %}
     {% endfor %}
@@ -169,29 +97,21 @@ slug: hub
 {% assign has_events = highlight_events and highlight_events.size > 0 %}
 {% assign featured_post = site.posts | first %}
 {% if has_events or featured_post %}
-<section class="hub-section hub-links card" aria-labelledby="hub-highlights-title">
-  <div class="hub-section__head">
-    {% if hub.highlights_section.eyebrow %}
+<section class="hub-section card" aria-labelledby="hub-highlights-title">
+  <header class="hub-section__head">
     <p class="hub-eyebrow">{{ hub.highlights_section.eyebrow }}</p>
-    {% endif %}
     <div>
       <h2 id="hub-highlights-title" class="hub-section__title">{{ hub.highlights_section.title }}</h2>
-      {% if hub.highlights_section.subtitle %}
       <p class="hub-section__subtitle">{{ hub.highlights_section.subtitle }}</p>
-      {% endif %}
     </div>
-  </div>
-  <div class="hub-links__list">
+  </header>
+  <div class="hub-links-grid">
     {% if has_events %}
       {% for event in highlight_events %}
       <article class="hub-link-card hub-link-card--event">
         <div class="hub-link-card__head">
-          {% if event.tag %}
-          <span class="hub-chip hub-chip--soft">{{ event.tag }}</span>
-          {% endif %}
-          {% if event.meta %}
-          <span class="hub-link-card__meta-text">{{ event.meta }}</span>
-          {% endif %}
+          {% if event.tag %}<span class="hub-chip hub-chip--soft">{{ event.tag }}</span>{% endif %}
+          {% if event.meta %}<span class="hub-link-card__meta-text">{{ event.meta }}</span>{% endif %}
         </div>
         <div class="hub-link-card__body">
           <span class="hub-link-card__label">{{ event.title }}</span>
@@ -199,8 +119,8 @@ slug: hub
           <span class="hub-link-card__desc">{{ event.summary }}</span>
           {% endif %}
         </div>
+        {% if event.cta_url %}
         <div class="hub-link-card__meta hub-link-card__meta--cta">
-          {% if event.cta_url %}
           <a class="hub-link-card__cta" href="{{ event.cta_url }}" target="_blank" rel="noopener">
             {{ event.cta_label | default: "S'inscrire" }}
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -208,11 +128,11 @@ slug: hub
               <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          {% endif %}
         </div>
+        {% endif %}
       </article>
       {% endfor %}
-    {% elseif featured_post %}
+    {% elsif featured_post %}
       <a class="hub-link-card hub-link-card--event hub-link-card--blog" href="{{ featured_post.url | relative_url }}">
         <div class="hub-link-card__head">
           <span class="hub-chip hub-chip--soft">Blog</span>
@@ -233,3 +153,41 @@ slug: hub
   </div>
 </section>
 {% endif %}
+
+<script>
+(function(){
+  const btn = document.querySelector('[data-share-hub]');
+  if(!btn) return;
+  const feedback = document.querySelector('.hub-share__feedback');
+  const showMsg = (msg) => {
+    if(!feedback) return;
+    feedback.textContent = msg;
+    clearTimeout(feedback._timer);
+    feedback._timer = setTimeout(() => feedback.textContent = '', 3000);
+  };
+  btn.addEventListener('click', async () => {
+    const shareData = {
+      title: document.title,
+      text: "Decouvrez le hub de Martial Bodet",
+      url: btn.dataset.shareHub
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        showMsg('Lien partage ✅');
+      } catch (err) {
+        if (err && err.name !== 'AbortError') showMsg('Partage annule');
+      }
+    } else if (navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        showMsg('Lien copie dans le presse-papiers');
+      } catch (err) {
+        showMsg('Impossible de copier le lien');
+      }
+    } else {
+      showMsg('Partage indisponible sur cet appareil');
+    }
+  });
+})();
+</script>
