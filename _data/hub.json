@@ -18,14 +18,12 @@
   "links": [
     {
       "label": "Site BM Data",
-      "description": "Prestations détaillées, cas clients et méthodologie.",
       "url": "https://bmdata.fr",
       "icon": "globe",
       "badge": "Site"
     },
     {
       "label": "LinkedIn",
-      "description": "Analyses, retours d'expérience et offres du moment.",
       "url": "https://www.linkedin.com/in/martial-bodet/",
       "icon": "linkedin",
       "badge": "Réseau",
@@ -33,7 +31,6 @@
     },
     {
       "label": "LinkedIn Entreprise",
-      "description": "Actualités BMData, culture et coulisses des missions.",
       "url": "https://www.linkedin.com/company/bmdata/",
       "icon": "linkedin",
       "badge": "Entreprise",
@@ -41,14 +38,12 @@
     },
     {
       "label": "Booking 30 min",
-      "description": "Agenda en ligne pour faire le point sur votre roadmap data.",
       "url": "https://outlook.office.com/book/meeting@bmdata.fr/",
       "icon": "calendar",
       "badge": "Rendez-vous"
     },
     {
       "label": "Réalisations",
-      "description": "Quelques dashboards et flux Talend que j'ai industrialisés.",
       "url": "/realisation/",
       "icon": "spark",
       "badge": "Cas clients"
@@ -63,21 +58,18 @@
     {
       "label": "Mail",
       "value": "contact@bmdata.fr",
-      "note": "Réponse sous 24h",
       "url": "mailto:contact@bmdata.fr",
       "icon": "mail"
     },
     {
       "label": "Téléphone",
       "value": "+33 6 70 21 09 28",
-      "note": "09h00-19h00",
       "url": "tel:+33670210928",
       "icon": "phone"
     },
     {
       "label": "Booking",
       "value": "Calendrier Outlook",
-      "note": "Rendez-vous 30 min",
       "url": "https://outlook.office.com/book/meeting@bmdata.fr/",
       "icon": "calendar"
     }
@@ -91,7 +83,6 @@
     "enabled": false,
     "tag": "Webinaire",
     "title": "",
-    "description": "",
     "meta": "",
     "cta_label": "",
     "cta_url": ""
