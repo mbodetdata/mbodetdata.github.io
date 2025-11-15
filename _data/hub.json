@@ -34,16 +34,6 @@
       "group": "linkedin"
     },
     {
-      "label": "Booking 30 min",
-      "url": "https://outlook.office.com/book/meeting@bmdata.fr/",
-      "icon": "calendar"
-    },
-    {
-      "label": "Réalisations",
-      "url": "/realisation/",
-      "icon": "spark"
-    },
-    {
       "label": "Profil Malt",
       "url": "https://www.malt.fr/profile/martialbodet1",
       "icon": "globe"

@@ -77,12 +77,6 @@ slug: hub
     {% if hub.links_section.eyebrow %}
     <p class="hub-eyebrow">{{ hub.links_section.eyebrow }}</p>
     {% endif %}
-    <div>
-      <h2 id="hub-links-title" class="hub-section__title">{{ hub.links_section.title }}</h2>
-      {% if hub.links_section.subtitle %}
-      <p class="hub-section__subtitle">{{ hub.links_section.subtitle }}</p>
-      {% endif %}
-    </div>
   </header>
   <div class="hub-links-grid hub-links-grid--duo">
     {% if linkedin_links and linkedin_links.size > 0 %}
@@ -95,27 +89,6 @@ slug: hub
         {% include hub-link-card.html link=link %}
       {% endfor %}
     {% endif %}
-  </div>
-</section>
-{% endif %}
-
-{% if hub.contacts %}
-<section class="hub-section hub-card" aria-labelledby="hub-contacts-title">
-  <header class="hub-section__head">
-    <div>
-      {% if hub.contacts_section.eyebrow %}
-      <p class="hub-eyebrow">{{ hub.contacts_section.eyebrow }}</p>
-      {% endif %}
-      <h2 id="hub-contacts-title" class="hub-section__title">{{ hub.contacts_section.title }}</h2>
-      {% if hub.contacts_section.subtitle %}
-      <p class="hub-section__subtitle">{{ hub.contacts_section.subtitle }}</p>
-      {% endif %}
-    </div>
-  </header>
-  <div class="hub-links-grid hub-links-grid--stacked">
-    {% for contact in hub.contacts %}
-      {% include hub-link-card.html link=contact %}
-    {% endfor %}
   </div>
 </section>
 {% endif %}
