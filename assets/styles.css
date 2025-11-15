@@ -352,23 +352,6 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   justify-content:center;
   width:100%;
 }
-.hub-meta-link{
-  display:inline-flex;
-  align-items:center;
-  gap:.35rem;
-  padding:.28rem .75rem;
-  border-radius:999px;
-  border:1px solid color-mix(in oklab,var(--border) 70%,transparent);
-  background:rgba(255,255,255,.04);
-  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
-}
-.hub-meta-link svg{width:16px;height:16px;}
-.hub-meta-link:hover,
-.hub-meta-link:focus-visible{
-  border-color:color-mix(in oklab,var(--brand) 45%,transparent);
-  box-shadow:0 6px 16px rgba(0,0,0,.28);
-  transform:translateY(-1px);
-}
 .hub-share__feedback{
   font-size:var(--step--1);
   color:var(--muted);
