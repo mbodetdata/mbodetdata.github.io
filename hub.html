@@ -7,7 +7,7 @@ slug: hub
 ---
 {%- assign hub = site.data.hub -%}
 
-<section class="hub-hero card" itemscope itemtype="https://schema.org/Person">
+<section class="hub-hero hub-card" itemscope itemtype="https://schema.org/Person">
   <div class="hub-hero__media">
     <figure class="hub-hero__photo">
       <img src="{{ hub.profile.photo | default: site.author.photo | relative_url }}"
@@ -15,7 +15,7 @@ slug: hub
     </figure>
   </div>
   <div class="hub-hero__body">
-    <p class="hub-hero__eyebrow">Hub personnel</p>
+    <p class="hub-hero__eyebrow">Hub BM Data</p>
     <h1 class="hub-hero__title" itemprop="name">{{ hub.profile.title }}</h1>
     {% if hub.profile.role %}
     <p class="hub-hero__role" itemprop="jobTitle">{{ hub.profile.role }}</p>
@@ -30,24 +30,44 @@ slug: hub
       {% endfor %}
     </ul>
     {% endif %}
-    <div class="hub-share">
-      <button class="hub-share__btn" type="button"
+    <div class="hub-hero__actions">
+      {% if site.author.cal_url %}
+      <a class="hub-btn hub-btn--primary" href="{{ site.author.cal_url }}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3" ry="3" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M3 9h18M8 2v4M16 2v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Réserver un créneau
+      </a>
+      {% endif %}
+      <button class="hub-btn hub-btn--ghost" type="button"
               data-share-hub="{{ page.url | replace:'index.html','' | absolute_url }}">
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
           <path d="M18 8a3 3 0 1 0-2.83-4H13v4h2.17A3 3 0 0 0 18 8zm-6 8a3 3 0 0 0-2.83 2H7v4h2.17A3 3 0 1 0 12 16zm-6-4a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" fill="currentColor"/>
           <path d="M8.59 10.59l6.82 3.41M15.41 9.59L8.59 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        Partager ce hub
+        Partager le hub
       </button>
-      <span class="hub-share__feedback" aria-live="polite"></span>
     </div>
+    <dl class="hub-hero__meta">
+      <div>
+        <dt>Entreprise</dt>
+        <dd>{{ site.author.enterprise | default: "BM Data" }}</dd>
+      </div>
+      <div>
+        <dt>Email</dt>
+        <dd><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></dd>
+      </div>
+      <div>
+        <dt>Téléphone</dt>
+        <dd><a href="tel:{{ site.author.phone | replace: ' ', '' }}">{{ site.author.phone }}</a></dd>
+      </div>
+    </dl>
+    <span class="hub-share__feedback" aria-live="polite"></span>
   </div>
 </section>
 
 {% if hub.links %}
 {% assign linkedin_links = hub.links | where: "group", "linkedin" %}
 {% assign other_links = hub.links | where_exp: "item", "item.group != 'linkedin'" %}
-<section class="hub-section card" aria-labelledby="hub-links-title">
+<section class="hub-section hub-card" aria-labelledby="hub-links-title">
   <header class="hub-section__head">
     {% if hub.links_section.eyebrow %}
     <p class="hub-eyebrow">{{ hub.links_section.eyebrow }}</p>
@@ -67,7 +87,7 @@ slug: hub
   </div>
   {% endif %}
   {% if other_links and other_links.size > 0 %}
-  <div class="hub-links-grid">
+  <div class="hub-links-grid hub-links-grid--stacked">
     {% for link in other_links %}
       {% include hub-link-card.html link=link %}
     {% endfor %}
@@ -77,7 +97,7 @@ slug: hub
 {% endif %}
 
 {% if hub.contacts %}
-<section class="hub-section card" aria-labelledby="hub-contacts-title">
+<section class="hub-section hub-card" aria-labelledby="hub-contacts-title">
   <header class="hub-section__head">
     <div>
       <p class="hub-eyebrow">{{ hub.contacts_section.eyebrow }}</p>
@@ -85,7 +105,7 @@ slug: hub
       <p class="hub-section__subtitle">{{ hub.contacts_section.subtitle }}</p>
     </div>
   </header>
-  <div class="hub-links-grid">
+  <div class="hub-links-grid hub-links-grid--stacked">
     {% for contact in hub.contacts %}
       {% include hub-link-card.html link=contact %}
     {% endfor %}
@@ -97,7 +117,7 @@ slug: hub
 {% assign has_events = highlight_events and highlight_events.size > 0 %}
 {% assign featured_post = site.posts | first %}
 {% if has_events or featured_post %}
-<section class="hub-section card" aria-labelledby="hub-highlights-title">
+<section class="hub-section hub-card" aria-labelledby="hub-highlights-title">
   <header class="hub-section__head">
     <p class="hub-eyebrow">{{ hub.highlights_section.eyebrow }}</p>
     <div>
@@ -105,48 +125,35 @@ slug: hub
       <p class="hub-section__subtitle">{{ hub.highlights_section.subtitle }}</p>
     </div>
   </header>
-  <div class="hub-links-grid">
+  <div class="hub-links-grid hub-links-grid--stacked">
     {% if has_events %}
       {% for event in highlight_events %}
-      <article class="hub-link-card hub-link-card--event">
-        <div class="hub-link-card__head">
+      <article class="hub-highlight-card">
+        <div class="hub-highlight-card__top">
           {% if event.tag %}<span class="hub-chip hub-chip--soft">{{ event.tag }}</span>{% endif %}
-          {% if event.meta %}<span class="hub-link-card__meta-text">{{ event.meta }}</span>{% endif %}
+          {% if event.meta %}<span class="hub-highlight-card__meta">{{ event.meta }}</span>{% endif %}
         </div>
-        <div class="hub-link-card__body">
-          <span class="hub-link-card__label">{{ event.title }}</span>
-          {% if event.summary %}
-          <span class="hub-link-card__desc">{{ event.summary }}</span>
-          {% endif %}
-        </div>
+        <h3 class="hub-highlight-card__title">{{ event.title }}</h3>
+        {% if event.summary %}<p class="hub-highlight-card__desc">{{ event.summary }}</p>{% endif %}
         {% if event.cta_url %}
-        <div class="hub-link-card__meta hub-link-card__meta--cta">
-          <a class="hub-link-card__cta" href="{{ event.cta_url }}" target="_blank" rel="noopener">
-            {{ event.cta_label | default: "S'inscrire" }}
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
+        <a class="hub-highlight-card__cta" href="{{ event.cta_url }}" target="_blank" rel="noopener">
+          {{ event.cta_label | default: "Participer" }}
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
         {% endif %}
       </article>
       {% endfor %}
     {% elsif featured_post %}
-      <a class="hub-link-card hub-link-card--event hub-link-card--blog" href="{{ featured_post.url | relative_url }}">
-        <div class="hub-link-card__head">
+      <a class="hub-highlight-card hub-highlight-card--blog" href="{{ featured_post.url | relative_url }}">
+        <div class="hub-highlight-card__top">
           <span class="hub-chip hub-chip--soft">Blog</span>
-          <span class="hub-link-card__meta-text">{{ featured_post.date | date: "%d %B %Y" }}</span>
+          <span class="hub-highlight-card__meta">{{ featured_post.date | date: "%d %B %Y" }}</span>
         </div>
-        <div class="hub-link-card__body">
-          <span class="hub-link-card__label">{{ featured_post.title }}</span>
-          <span class="hub-link-card__desc">{{ featured_post.excerpt | strip_html | truncate: 180 }}</span>
-        </div>
-        <span class="hub-link-card__arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-            <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        <h3 class="hub-highlight-card__title">{{ featured_post.title }}</h3>
+        <p class="hub-highlight-card__desc">{{ featured_post.excerpt | strip_html | truncate: 180 }}</p>
+        <span class="hub-highlight-card__cta">
+          Lire l'article
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
       </a>
     {% endif %}
