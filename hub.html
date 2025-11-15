@@ -13,23 +13,9 @@ slug: hub
       <img src="{{ hub.profile.photo | default: site.author.photo | relative_url }}"
            alt="Portrait de {{ hub.profile.title | default: site.author.prenom_nom }}">
     </figure>
-    {% if hub.contacts_section %}
-    <div class="hub-hero__status">
-      {% if hub.contacts_section.title %}
-      <span class="hub-pill hub-pill--signal">
-        <span class="hub-pill__dot" aria-hidden="true"></span>
-        {{ hub.contacts_section.title }}
-      </span>
-      {% endif %}
-      {% if hub.contacts_section.subtitle %}
-      <p class="hub-hero__status-text">{{ hub.contacts_section.subtitle }}</p>
-      {% endif %}
-    </div>
-    {% endif %}
   </div>
   <div class="hub-hero__body">
     <div class="hub-hero__heading">
-      <p class="hub-hero__eyebrow">Hub BM Data</p>
       <h1 class="hub-hero__title" itemprop="name">{{ hub.profile.title }}</h1>
       {% if hub.profile.role %}
       <p class="hub-hero__role" itemprop="jobTitle">{{ hub.profile.role }}</p>
@@ -37,13 +23,6 @@ slug: hub
     </div>
     {% if hub.profile.intro %}
     <p class="hub-hero__intro" itemprop="description">{{ hub.profile.intro }}</p>
-    {% endif %}
-    {% if hub.profile.badges %}
-    <ul class="hub-hero__tags" role="list">
-      {% for badge in hub.profile.badges %}
-      <li class="hub-chip">{{ badge }}</li>
-      {% endfor %}
-    </ul>
     {% endif %}
     <div class="hub-hero__actions">
       {% if site.author.cal_url %}
