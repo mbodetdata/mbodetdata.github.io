@@ -17,9 +17,9 @@
   },
   "links": [
     {
-      "label": "Site BM Data",
+      "label": "BMData.fr",
       "url": "https://bmdata.fr",
-      "icon": "globe"
+      "icon": "bmdata"
     },
     {
       "label": "LinkedIn",
@@ -66,18 +66,27 @@
   ],
   "highlights_section": {
     "eyebrow": "À la une",
-    "title": "Sur le blog",
-    "subtitle": "Focus sur l'article le plus récent que je viens de publier."
+    "title": "Agenda & publications",
+    "subtitle": "Webinaires, conférences ou articles fraîchement publiés : voici les temps forts à venir."
   },
   "highlights": [
     {
-      "active": false,
+      "active": true,
       "tag": "Webinaire",
-      "title": "Titre de votre évènement",
-      "summary": "Ajoutez ici le pitch ou l'objectif du webinaire (optionnel).",
-      "meta": "Date & Heure",
-      "cta_label": "S'inscrire",
-      "cta_url": "https://example.com/votre-lien"
+      "title": "Optimiser vos pipelines Talend en 2025",
+      "summary": "45 minutes de retours d'expérience sur les architectures hybrides et les bonnes pratiques de monitoring.",
+      "meta": "Jeudi 12 déc. · 11h00",
+      "cta_label": "Réserver sa place",
+      "cta_url": "https://example.com/talend-webinar"
+    },
+    {
+      "active": true,
+      "tag": "Conférence",
+      "title": "Modern BI Tour — Bordeaux",
+      "summary": "Une session live pour découvrir comment mêler Power BI et automation pour accélérer vos décisions.",
+      "meta": "17 janvier · 18h30",
+      "cta_label": "Demander une invitation",
+      "cta_url": "https://example.com/modern-bi-tour"
     }
   ]
 }

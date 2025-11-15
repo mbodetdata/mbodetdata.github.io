@@ -444,6 +444,7 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   z-index:1;
 }
 .hub-link-card__icon svg{width:22px;height:22px;}
+.hub-link-card__icon img{width:22px;height:22px;object-fit:contain;}
 .hub-link-card__content{
   display:flex;
   flex-direction:column;
