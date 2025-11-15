@@ -25,11 +25,20 @@ slug: hub
     </div>
   </div>
   <div class="hub-hero__body">
-    <div class="hub-hero__heading">
-      <h1 class="hub-hero__title" itemprop="name">{{ hub.profile.title }}</h1>
-      {% if hub.profile.role %}
-      <p class="hub-hero__role" itemprop="jobTitle">{{ hub.profile.role }}</p>
-      {% endif %}
+    <div class="hub-hero__header">
+      <div class="hub-hero__heading">
+        <h1 class="hub-hero__title" itemprop="name">{{ hub.profile.title }}</h1>
+        {% if hub.profile.role %}
+        <p class="hub-hero__role" itemprop="jobTitle">{{ hub.profile.role }}</p>
+        {% endif %}
+      </div>
+      <a class="hub-btn hub-btn--ghost hub-btn--about" href="{{ '/about-me/' | relative_url }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="7" r="3.2" stroke="currentColor" stroke-width="1.8" fill="none"/>
+          <path d="M6 19c0-3.314 2.239-6 5-6h2c2.761 0 5 2.686 5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        </svg>
+        Qui je suis ?
+      </a>
     </div>
     {% if hub.profile.intro %}
     <p class="hub-hero__intro" itemprop="description">{{ hub.profile.intro }}</p>
@@ -71,8 +80,7 @@ slug: hub
 
 {% if hub.links %}
 {% assign linkedin_links = hub.links | where: "group", "linkedin" %}
-{% assign featured_links = hub.links | where: "priority", "primary" %}
-{% assign other_links = hub.links | where_exp: "item", "item.group != 'linkedin' and item.priority != 'primary'" %}
+{% assign other_links = hub.links | where_exp: "item", "item.group != 'linkedin'" %}
 <section class="hub-section hub-card" aria-labelledby="hub-links-title">
   <header class="hub-section__head">
     {% if hub.links_section.eyebrow %}
@@ -80,18 +88,13 @@ slug: hub
     {% endif %}
   </header>
   <div class="hub-links-grid hub-links-grid--duo">
-    {% if featured_links and featured_links.size > 0 %}
-      {% for link in featured_links %}
+    {% if other_links and other_links.size > 0 %}
+      {% for link in other_links %}
         {% include hub-link-card.html link=link %}
       {% endfor %}
     {% endif %}
     {% if linkedin_links and linkedin_links.size > 0 %}
       {% for link in linkedin_links %}
-        {% include hub-link-card.html link=link %}
-      {% endfor %}
-    {% endif %}
-    {% if other_links and other_links.size > 0 %}
-      {% for link in other_links %}
         {% include hub-link-card.html link=link %}
       {% endfor %}
     {% endif %}

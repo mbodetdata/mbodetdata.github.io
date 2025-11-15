@@ -255,6 +255,14 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   flex-direction:column;
   gap:.65rem;
 }
+.hub-hero__header{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:clamp(.6rem,1vw,1.2rem);
+  flex-wrap:wrap;
+}
 .hub-hero__heading{display:flex;flex-direction:column;gap:.2rem;}
 .hub-hero__eyebrow{
   text-transform:uppercase;
@@ -317,6 +325,12 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
 }
 .hub-btn--ghost{
   background:rgba(255,255,255,.02);
+}
+.hub-btn--about{
+  background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(102,119,255,.15));
+  border-color:rgba(255,255,255,.2);
+  font-weight:600;
+  white-space:nowrap;
 }
 .hub-btn svg{width:18px;height:18px;}
 .hub-btn:hover,.hub-btn:focus-visible{
