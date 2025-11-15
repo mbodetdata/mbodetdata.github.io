@@ -96,9 +96,9 @@
       </ul>
     </nav>
 
-    <!-- Actions Ã  droite -->
+    <!-- Actions à droite -->
     <div class="nav-actions">
-      <!-- Acc�s direct au hub -->
+      <!-- Accès direct au hub -->
       <a class="hub-nav-btn" href="{{ '/hub/' | relative_url }}" aria-label="Ouvrir le hub">
         <svg class="hub-nav-btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="12" cy="7" r="2.5" stroke="currentColor" stroke-width="2"/>
@@ -184,12 +184,12 @@
   <meta name="cal:link" content="{{ site.author.cal_url | default: site.author.calendly_url }}">
 </header>
 
-<!-- Fallback si JS dÃ©sactivÃ© -->
+<!-- Fallback si JS désactivé -->
 <noscript>
   {% if site.author.cal_url %}
-    <p class="container"><a class="btn cta" href="{{ site.author.cal_url }}" rel="noopener">RÃ©server un crÃ©neau</a></p>
+    <p class="container"><a class="btn cta" href="{{ site.author.cal_url }}" rel="noopener">Réserver un créneau</a></p>
   {% elsif site.author.calendly_url %}
-    <p class="container"><a class="btn cta" href="{{ site.author.calendly_url }}" rel="noopener">RÃ©server un crÃ©neau</a></p>
+    <p class="container"><a class="btn cta" href="{{ site.author.calendly_url }}" rel="noopener">Réserver un créneau</a></p>
   {% endif %}
 </noscript>
 
