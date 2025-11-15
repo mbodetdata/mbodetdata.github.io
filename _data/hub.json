@@ -2,7 +2,7 @@
   "profile": {
     "title": "Martial Bodet",
     "role": "Consultant freelance Talend & Power BI",
-    "intro": "Je fluidifie vos pipelines Talend, consolide vos modèles Power BI et accompagne vos équipes pour transformer les données en décisions rapides et actionnables.",
+    "intro": "Je transforme vos données en un outil simple qui vous fait gagner du temps et vous aide à décider plus vite.",
     "photo": "/assets/img/Photo_profil.webp",
     "badges": [
       "Talend expert",
@@ -28,14 +28,16 @@
       "description": "Analyses, retours d'expérience et offres du moment.",
       "url": "https://www.linkedin.com/in/martial-bodet/",
       "icon": "linkedin",
-      "badge": "Réseau"
+      "badge": "Réseau",
+      "group": "linkedin"
     },
     {
       "label": "LinkedIn Entreprise",
       "description": "Actualités BMData, culture et coulisses des missions.",
       "url": "https://www.linkedin.com/company/bmdata/",
       "icon": "linkedin",
-      "badge": "Entreprise"
+      "badge": "Entreprise",
+      "group": "linkedin"
     },
     {
       "label": "Booking 30 min",
