@@ -1,6 +1,5 @@
 {
   "profile": {
-    "eyebrow": "Hub BM Data",
     "title": "Martial Bodet",
     "role": "Consultant freelance Talend & Power BI",
     "intro": "Je fluidifie vos pipelines Talend, consolide vos modèles Power BI et accompagne vos équipes pour transformer les données en décisions rapides et actionnables.",
@@ -9,11 +8,7 @@
       "Talend expert",
       "Modern BI",
       "Automation"
-    ],
-    "cta": {
-      "label": "Découvrir mes services",
-      "url": "/#services"
-    }
+    ]
   },
   "links_section": {
     "eyebrow": "Accès rapide",
@@ -34,6 +29,13 @@
       "url": "https://www.linkedin.com/in/martial-bodet/",
       "icon": "linkedin",
       "badge": "Réseau"
+    },
+    {
+      "label": "LinkedIn Entreprise",
+      "description": "Actualités BMData, culture et coulisses des missions.",
+      "url": "https://www.linkedin.com/company/bmdata/",
+      "icon": "linkedin",
+      "badge": "Entreprise"
     },
     {
       "label": "Booking 30 min",
@@ -80,27 +82,16 @@
   ],
   "highlights_section": {
     "eyebrow": "À la une",
-    "title": "Webinaires & ressources",
-    "subtitle": "Formats courts pour comprendre mes approches, ou événements live à venir."
+    "title": "Sur le blog",
+    "subtitle": "Focus sur l'article le plus récent que je viens de publier."
   },
-  "highlights": [
-    {
-      "tag": "Webinaire",
-      "title": "Automatiser votre usine Talend",
-      "description": "45 minutes pour partager un blueprint d'industrialisation, monitoring et gouvernance.",
-      "meta": "Jeudi 28 novembre · 11h00",
-      "icon": "signal",
-      "cta_label": "Réserver ma place",
-      "cta_url": "https://lu.ma/bmdata-talend"
-    },
-    {
-      "tag": "Ressource",
-      "title": "Checklist audit Power BI",
-      "description": "Une grille en 12 points pour sécuriser performances, DAX et gouvernance.",
-      "meta": "PDF interactif · 6 pages",
-      "icon": "doc",
-      "cta_label": "Télécharger",
-      "cta_url": "mailto:contact@bmdata.fr?subject=Checklist%20Power%20BI&body=Bonjour%20Martial,%0A%0AJe%20souhaite%20recevoir%20la%20checklist%20Power%20BI.%0A"
-    }
-  ]
+  "highlight_manual": {
+    "enabled": false,
+    "tag": "Webinaire",
+    "title": "",
+    "description": "",
+    "meta": "",
+    "cta_label": "",
+    "cta_url": ""
+  }
 }

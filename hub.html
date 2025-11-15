@@ -9,16 +9,12 @@ slug: hub
 
 <section class="hub-profile card" itemscope itemtype="https://schema.org/Person">
   <div class="hub-profile__media">
-    <div class="hub-profile__badge">Hub personnel</div>
     <figure class="hub-profile__photo">
       <img src="{{ hub.profile.photo | default: site.author.photo | relative_url }}"
            alt="Portrait de {{ hub.profile.title | default: site.author.prenom_nom }}">
     </figure>
   </div>
   <div class="hub-profile__body">
-    {% if hub.profile.eyebrow %}
-    <p class="hub-eyebrow">{{ hub.profile.eyebrow }}</p>
-    {% endif %}
     <h1 class="hub-profile__title" itemprop="name">{{ hub.profile.title }}</h1>
     {% if hub.profile.role %}
     <p class="hub-profile__role" itemprop="jobTitle">{{ hub.profile.role }}</p>
@@ -31,12 +27,6 @@ slug: hub
       {% endfor %}
     </ul>
     {% endif %}
-    <div class="hub-profile__actions">
-      {% if hub.profile.cta %}
-      <a class="btn cta" href="{{ hub.profile.cta.url | relative_url }}">{{ hub.profile.cta.label }}</a>
-      {% endif %}
-      <a class="btn ghost" href="{{ site.author.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
   </div>
 </section>
 
@@ -129,7 +119,10 @@ slug: hub
 </section>
 {% endif %}
 
-{% if hub.highlights %}
+{% assign manual_highlight = hub.highlight_manual %}
+{% assign manual_enabled = manual_highlight and manual_highlight.enabled and manual_highlight.title %}
+{% assign featured_post = site.posts | first %}
+{% if manual_enabled or featured_post %}
 <section class="hub-section hub-highlights card" aria-labelledby="hub-highlights-title">
   <div class="hub-section__head">
     {% if hub.highlights_section.eyebrow %}
@@ -142,26 +135,40 @@ slug: hub
       {% endif %}
     </div>
   </div>
-  <div class="hub-highlights__list">
-    {% for item in hub.highlights %}
-    <article class="hub-highlight-card">
+  {% if manual_enabled %}
+    <article class="hub-highlight-card hub-highlight-card--featured">
       <header class="hub-highlight-card__head">
-        {% if item.tag %}
-        <span class="hub-chip hub-chip--soft">{{ item.tag }}</span>
+        {% if manual_highlight.tag %}
+        <span class="hub-chip hub-chip--soft">{{ manual_highlight.tag }}</span>
         {% endif %}
-        {% if item.meta %}
-        <span class="hub-highlight-card__meta">{{ item.meta }}</span>
+        {% if manual_highlight.meta %}
+        <span class="hub-highlight-card__meta">{{ manual_highlight.meta }}</span>
         {% endif %}
       </header>
-      <h3 class="hub-highlight-card__title">{{ item.title }}</h3>
-      <p class="hub-highlight-card__desc">{{ item.description }}</p>
+      <h3 class="hub-highlight-card__title">{{ manual_highlight.title }}</h3>
+      {% if manual_highlight.description %}
+      <p class="hub-highlight-card__desc">{{ manual_highlight.description }}</p>
+      {% endif %}
       <div class="hub-highlight-card__actions">
-        {% if item.cta_url %}
-        <a class="btn ghost" href="{{ item.cta_url }}" target="_blank" rel="noopener">{{ item.cta_label | default: 'Découvrir' }}</a>
+        {% if manual_highlight.cta_url %}
+        <a class="btn ghost" href="{{ manual_highlight.cta_url }}" target="_blank" rel="noopener">
+          {{ manual_highlight.cta_label | default: "En savoir plus" }}
+        </a>
         {% endif %}
       </div>
     </article>
-    {% endfor %}
-  </div>
+  {% elsif featured_post %}
+    <article class="hub-highlight-card hub-highlight-card--featured">
+      <header class="hub-highlight-card__head">
+        <span class="hub-chip hub-chip--soft">Blog</span>
+        <span class="hub-highlight-card__meta">{{ featured_post.date | date: "%d %B %Y" }}</span>
+      </header>
+      <h3 class="hub-highlight-card__title">{{ featured_post.title }}</h3>
+      <p class="hub-highlight-card__desc">{{ featured_post.excerpt | strip_html | truncate: 180 }}</p>
+      <div class="hub-highlight-card__actions">
+        <a class="btn ghost" href="{{ featured_post.url | relative_url }}">Lire l'article</a>
+      </div>
+    </article>
+  {% endif %}
 </section>
 {% endif %}
