@@ -22,12 +22,7 @@
    {% if link.group %}data-link-group="{{ link.group }}"{% endif %}>
   <span class="hub-link-card__icon" aria-hidden="true">{{ link_icon | strip }}</span>
   <span class="hub-link-card__content">
-    <span class="hub-link-card__head">
-      <span class="hub-link-card__label">{{ link.label }}</span>
-      {% if link.badge %}
-      <span class="hub-chip hub-chip--ghost hub-link-card__badge">{{ link.badge }}</span>
-      {% endif %}
-    </span>
+    <span class="hub-link-card__label">{{ link.label }}</span>
     {% if link.value %}
     <span class="hub-link-card__value">{{ link.value }}</span>
     {% endif %}

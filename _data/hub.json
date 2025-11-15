@@ -1,7 +1,7 @@
 {
   "profile": {
     "title": "Martial Bodet",
-    "role": "Consultant freelance Talend & Power BI",
+    "role": "Au service de votre entreprise",
     "intro": "Je transforme vos données en un outil simple qui vous fait gagner du temps et vous aide à décider plus vite.",
     "photo": "/assets/img/Photo_profil.webp",
     "badges": [
@@ -11,48 +11,42 @@
     ]
   },
   "links_section": {
-    "eyebrow": "Accès rapide",
-    "title": "Mes points de contact",
-    "subtitle": "Choisissez le canal qui correspond le mieux à votre besoin du moment."
+    "eyebrow": "Accès direct",
+    "title": "Contactez-moi en un clic",
+    "subtitle": "LinkedIn, rendez-vous, références ou site : choisissez le canal le plus utile pour avancer."
   },
   "links": [
     {
       "label": "Site BM Data",
       "url": "https://bmdata.fr",
-      "icon": "globe",
-      "badge": "Site"
+      "icon": "globe"
     },
     {
       "label": "LinkedIn",
       "url": "https://www.linkedin.com/in/martial-bodet/",
       "icon": "linkedin",
-      "badge": "Réseau",
       "group": "linkedin"
     },
     {
       "label": "LinkedIn Entreprise",
       "url": "https://www.linkedin.com/company/bmdata/",
       "icon": "linkedin",
-      "badge": "Entreprise",
       "group": "linkedin"
     },
     {
       "label": "Booking 30 min",
       "url": "https://outlook.office.com/book/meeting@bmdata.fr/",
-      "icon": "calendar",
-      "badge": "Rendez-vous"
+      "icon": "calendar"
     },
     {
       "label": "Réalisations",
       "url": "/realisation/",
-      "icon": "spark",
-      "badge": "Cas clients"
+      "icon": "spark"
     },
     {
       "label": "Profil Malt",
       "url": "https://www.malt.fr/profile/martialbodet1",
-      "icon": "globe",
-      "badge": "Freelance"
+      "icon": "globe"
     }
   ],
   "contacts_section": {
@@ -89,9 +83,9 @@
     {
       "active": false,
       "tag": "Webinaire",
-      "title": "Titre de votre événement",
+      "title": "Titre de votre évènement",
       "summary": "Ajoutez ici le pitch ou l'objectif du webinaire (optionnel).",
-      "meta": "Date · Heure",
+      "meta": "Date & Heure",
       "cta_label": "S'inscrire",
       "cta_url": "https://example.com/votre-lien"
     }
