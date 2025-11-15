@@ -34,7 +34,7 @@ slug: hub
       {% if site.author.cal_url %}
       <a class="hub-btn hub-btn--primary" href="{{ site.author.cal_url }}" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3" ry="3" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M3 9h18M8 2v4M16 2v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        Réserver un créneau
+        Reserver un creneau
       </a>
       {% endif %}
       <button class="hub-btn hub-btn--ghost" type="button"
@@ -56,7 +56,7 @@ slug: hub
         <dd><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></dd>
       </div>
       <div>
-        <dt>Téléphone</dt>
+        <dt>Telephone</dt>
         <dd><a href="tel:{{ site.author.phone | replace: ' ', '' }}">{{ site.author.phone }}</a></dd>
       </div>
     </dl>
@@ -181,7 +181,7 @@ slug: hub
     if (navigator.share) {
       try {
         await navigator.share(shareData);
-        showMsg('Lien partage ✅');
+        showMsg('Lien partage !');
       } catch (err) {
         if (err && err.name !== 'AbortError') showMsg('Partage annule');
       }
