@@ -98,22 +98,16 @@
 
     <!-- Actions Ã  droite -->
     <div class="nav-actions">
-      <!-- ThÃ¨me -->
-      <button class="theme-toggle" type="button" aria-label="Basculer le thÃ¨me" aria-pressed="false">
-        <span class="tt-icon" aria-hidden="true">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
-            <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M12 2v2.5M12 19.5V22M4.22 4.22l1.77 1.77M18.01 18.01l1.77 1.77M2 12h2.5M19.5 12H22M4.22 19.78l1.77-1.77M18.01 6.99l1.77-1.77"/>
-            </g>
-          </svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M21 12.5A9 9 0 1 1 11.5 3a7.5 7.5 0 0 0 9.5 9.5Z"
-                  stroke="currentColor" stroke-width="2" fill="none" />
-          </svg>
-        </span>
-        <span class="tt-label">Light</span>
-      </button>
+      <!-- Acc�s direct au hub -->
+      <a class="hub-nav-btn" href="{{ '/hub/' | relative_url }}" aria-label="Ouvrir le hub">
+        <svg class="hub-nav-btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="7" r="2.5" stroke="currentColor" stroke-width="2"/>
+          <circle cx="6.5" cy="17" r="2.5" stroke="currentColor" stroke-width="2"/>
+          <circle cx="17.5" cy="17" r="2.5" stroke="currentColor" stroke-width="2"/>
+          <path d="M11 9.5 7.7 15M13 9.5l3.3 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Mon hub</span>
+      </a>
 
       <!-- Toggle mobile -->
       <button class="nav-toggle" type="button"

@@ -19,13 +19,6 @@ const mq  = (q) => window.matchMedia ? window.matchMedia(q) : { matches:false, a
 
 const PREFERS_REDUCED = mq('(prefers-reduced-motion: reduce)').matches;
 
-/* Storage safe */
-const store = {
-  get(k){ try { return localStorage.getItem(k); } catch { return null; } },
-  set(k,v){ try { localStorage.setItem(k,v); } catch {} },
-  rm(k){ try { localStorage.removeItem(k); } catch {} }
-};
-
 /* =================== 2) Navigation mobile (burger + ARIA) =================== */
 (() => {
   const toggle = $('.nav-toggle');
@@ -231,68 +224,6 @@ const store = {
     scrollKey = id && sectionById.has(id) ? sectionById.get(id) : null;
     updateActive();
   }, { passive: true });
-})();
-
-/* ==================== 3) Thème (persist + système + label) ==================== */
-(() => {
-  const btn   = $('.theme-toggle');
-  const root  = document.documentElement;
-  const label = btn?.querySelector('.tt-label');
-
-  const getSystem = () => (mq('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-  const getStored = () => store.get('theme');
-
-  const setLabelAria = (mode) => {
-    if (!btn) return;
-    const isDark = mode === 'dark';
-    btn.setAttribute('aria-pressed', String(isDark));
-    btn.setAttribute('aria-label', isDark ? 'Basculer en mode clair' : 'Basculer en mode sombre');
-    if (label) label.textContent = isDark ? 'Dark' : 'Light';
-  };
-
-  // --- NEW: apply avec option "smooth" ------------------------------------
-  const apply = (mode, smooth = false) => {
-    if (smooth && window.matchMedia?.('(prefers-reduced-motion: no-preference)').matches) {
-      root.classList.add('theme-xfade');
-      // Forcer un reflow pour que la transition se déclenche sur le changement de data-theme
-      void root.offsetWidth; 
-    }
-    root.setAttribute('data-theme', mode);
-    setLabelAria(mode);
-    if (smooth) {
-      // On laisse la transition se jouer puis on nettoie la classe
-      setTimeout(() => root.classList.remove('theme-xfade'), 420);
-    }
-  };
-  // ------------------------------------------------------------------------
-
-  // 🔹 Toujours dark par défaut
-  const stored = getStored();
-  if (stored) {
-    apply(stored);
-  } else {
-    apply('dark'); // par défaut, sombre
-  }
-
-  // Synchronisation si l’utilisateur supprime la préférence => rester en dark
-  const sys = mq('(prefers-color-scheme: light)');
-  const syncSystem = () => { if (!getStored()) apply('dark'); };
-  sys.addEventListener?.('change', syncSystem);
-
-  // Toggle du thème (avec animation douce)
-  on(btn, 'click', () => {
-    const cur = root.getAttribute('data-theme');
-    const next = (cur === 'light') ? 'dark' : 'light';
-    apply(next, true);           // 👈 smooth on toggle
-    store.set('theme', next);
-  }, { passive: true });
-
-  // Alt+Click → réinitialiser la préférence (et animation)
-  on(btn, 'click', (e) => {
-    if (!e.altKey) return;
-    store.rm('theme');
-    apply('dark', true);         // 👈 reset en dark + smooth
-  }, { capture: true });
 })();
 
 /* =================== 4) Modals utilitaires (focus-trap & co) =================== */
