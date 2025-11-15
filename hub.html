@@ -13,13 +13,28 @@ slug: hub
       <img src="{{ hub.profile.photo | default: site.author.photo | relative_url }}"
            alt="Portrait de {{ hub.profile.title | default: site.author.prenom_nom }}">
     </figure>
+    {% if hub.contacts_section %}
+    <div class="hub-hero__status">
+      {% if hub.contacts_section.title %}
+      <span class="hub-pill hub-pill--signal">
+        <span class="hub-pill__dot" aria-hidden="true"></span>
+        {{ hub.contacts_section.title }}
+      </span>
+      {% endif %}
+      {% if hub.contacts_section.subtitle %}
+      <p class="hub-hero__status-text">{{ hub.contacts_section.subtitle }}</p>
+      {% endif %}
+    </div>
+    {% endif %}
   </div>
   <div class="hub-hero__body">
-    <p class="hub-hero__eyebrow">Hub BM Data</p>
-    <h1 class="hub-hero__title" itemprop="name">{{ hub.profile.title }}</h1>
-    {% if hub.profile.role %}
-    <p class="hub-hero__role" itemprop="jobTitle">{{ hub.profile.role }}</p>
-    {% endif %}
+    <div class="hub-hero__heading">
+      <p class="hub-hero__eyebrow">Hub BM Data</p>
+      <h1 class="hub-hero__title" itemprop="name">{{ hub.profile.title }}</h1>
+      {% if hub.profile.role %}
+      <p class="hub-hero__role" itemprop="jobTitle">{{ hub.profile.role }}</p>
+      {% endif %}
+    </div>
     {% if hub.profile.intro %}
     <p class="hub-hero__intro" itemprop="description">{{ hub.profile.intro }}</p>
     {% endif %}
@@ -43,19 +58,19 @@ slug: hub
           <path d="M18 8a3 3 0 1 0-2.83-4H13v4h2.17A3 3 0 0 0 18 8zm-6 8a3 3 0 0 0-2.83 2H7v4h2.17A3 3 0 1 0 12 16zm-6-4a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" fill="currentColor"/>
           <path d="M8.59 10.59l6.82 3.41M15.41 9.59L8.59 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        Partager le hub
+        Copier / partager
       </button>
     </div>
-    <dl class="hub-hero__meta">
-      <div>
+    <dl class="hub-hero__meta hub-meta-list">
+      <div class="hub-meta-list__item">
         <dt>Entreprise</dt>
         <dd>{{ site.author.enterprise | default: "BM Data" }}</dd>
       </div>
-      <div>
+      <div class="hub-meta-list__item">
         <dt>Email</dt>
         <dd><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></dd>
       </div>
-      <div>
+      <div class="hub-meta-list__item">
         <dt>Telephone</dt>
         <dd><a href="tel:{{ site.author.phone | replace: ' ', '' }}">{{ site.author.phone }}</a></dd>
       </div>
@@ -79,20 +94,18 @@ slug: hub
       {% endif %}
     </div>
   </header>
-  {% if linkedin_links and linkedin_links.size > 0 %}
   <div class="hub-links-grid hub-links-grid--duo">
-    {% for link in linkedin_links %}
-      {% include hub-link-card.html link=link %}
-    {% endfor %}
+    {% if linkedin_links and linkedin_links.size > 0 %}
+      {% for link in linkedin_links %}
+        {% include hub-link-card.html link=link %}
+      {% endfor %}
+    {% endif %}
+    {% if other_links and other_links.size > 0 %}
+      {% for link in other_links %}
+        {% include hub-link-card.html link=link %}
+      {% endfor %}
+    {% endif %}
   </div>
-  {% endif %}
-  {% if other_links and other_links.size > 0 %}
-  <div class="hub-links-grid hub-links-grid--stacked">
-    {% for link in other_links %}
-      {% include hub-link-card.html link=link %}
-    {% endfor %}
-  </div>
-  {% endif %}
 </section>
 {% endif %}
 
@@ -100,9 +113,13 @@ slug: hub
 <section class="hub-section hub-card" aria-labelledby="hub-contacts-title">
   <header class="hub-section__head">
     <div>
+      {% if hub.contacts_section.eyebrow %}
       <p class="hub-eyebrow">{{ hub.contacts_section.eyebrow }}</p>
+      {% endif %}
       <h2 id="hub-contacts-title" class="hub-section__title">{{ hub.contacts_section.title }}</h2>
+      {% if hub.contacts_section.subtitle %}
       <p class="hub-section__subtitle">{{ hub.contacts_section.subtitle }}</p>
+      {% endif %}
     </div>
   </header>
   <div class="hub-links-grid hub-links-grid--stacked">
@@ -133,8 +150,10 @@ slug: hub
           {% if event.tag %}<span class="hub-chip hub-chip--soft">{{ event.tag }}</span>{% endif %}
           {% if event.meta %}<span class="hub-highlight-card__meta">{{ event.meta }}</span>{% endif %}
         </div>
-        <h3 class="hub-highlight-card__title">{{ event.title }}</h3>
-        {% if event.summary %}<p class="hub-highlight-card__desc">{{ event.summary }}</p>{% endif %}
+        <div class="hub-highlight-card__body">
+          <h3 class="hub-highlight-card__title">{{ event.title }}</h3>
+          {% if event.summary %}<p class="hub-highlight-card__desc">{{ event.summary }}</p>{% endif %}
+        </div>
         {% if event.cta_url %}
         <a class="hub-highlight-card__cta" href="{{ event.cta_url }}" target="_blank" rel="noopener">
           {{ event.cta_label | default: "Participer" }}
@@ -149,8 +168,10 @@ slug: hub
           <span class="hub-chip hub-chip--soft">Blog</span>
           <span class="hub-highlight-card__meta">{{ featured_post.date | date: "%d %B %Y" }}</span>
         </div>
-        <h3 class="hub-highlight-card__title">{{ featured_post.title }}</h3>
-        <p class="hub-highlight-card__desc">{{ featured_post.excerpt | strip_html | truncate: 180 }}</p>
+        <div class="hub-highlight-card__body">
+          <h3 class="hub-highlight-card__title">{{ featured_post.title }}</h3>
+          <p class="hub-highlight-card__desc">{{ featured_post.excerpt | strip_html | truncate: 180 }}</p>
+        </div>
         <span class="hub-highlight-card__cta">
           Lire l'article
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
