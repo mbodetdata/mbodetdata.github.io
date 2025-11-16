@@ -2,7 +2,7 @@
 #  ABM — Configuration Jekyll (optimisée GitHub Pages + SEO)
 #  Docs: https://jekyllrb.com/docs/configuration/
 # =====================================================================
-
+ 
 # ------------------------ 1) Métadonnées site ------------------------
 title: "BM Data - Liberez vous du temps, Maximisez vos gains"       # <title> par défaut
 tagline: "Intégration de données, pipelines Talend, dashboards Power BI"
