@@ -1,0 +1,311 @@
+---
+layout: post
+title: "Arrêtez de stocker vos mots de passe en clair : guide complet pour sécuriser Talend & Talaxie"
+description: "Pourquoi il ne faut plus jamais stocker de mots de passe en clair dans vos jobs Talend/Talaxie, et comment mettre en place un chiffrement/déchiffrement simple et robuste."
+categories: blog
+tags: [Talend, Talaxie, Sécurité, Chiffrement, ETL, Bonnes pratiques]
+image: "/assets/img/blog/security/password-chiffrement.png"
+active: true
+parent_category: talend-securite
+---
+
+Dans les projets Talend et Talaxie, je vois **trop souvent** des mots de passe écrits **en clair**, directement dans :
+
+- des métadonnées de connexions,  
+- des composants (`tDBConnection`, `tFTPConnection`…),  
+- des contextes (`context.password = "monSecret123"`),  
+- des fichiers de configuration externe,  
+- voire dans du code Java de routines.
+
+Soyons directs :  
+- **C’est une bombe à retardement.**  
+- **Et c’est totalement évitable.**
+
+Stocker un mot de passe en clair, c’est offrir à n’importe qui ayant accès au projet un accès direct à vos bases, API, serveurs ou environnements de production.  
+Une copie du workspace, un export partagé par erreur, un repository Git mal protégé… il suffit d’une seule négligence.
+
+Et il faut aussi le dire sans détour : **en tant que développeurs, nous avons la responsabilité de protéger les accès qui nous sont confiés.**  
+Les mots de passe ne nous appartiennent pas. Ils engagent nos clients, leurs données, leur sécurité.  
+Les exposer, même involontairement, est une erreur professionnelle évitable.
+
+La bonne nouvelle : Talend et Talaxie permettent très facilement de mettre en place un **mécanisme de chiffrement/déchiffrement** léger et efficace.
+
+Dans ce guide, je te montre comment :
+
+1. Comprendre pourquoi il ne faut plus jamais stocker un secret en clair  
+2. Mettre en place **une routine Java de chiffrement/déchiffrement**  
+3. L’utiliser dans tes jobs (contextes, connexions BD, API…)  
+4. Organiser proprement la gestion de tes secrets  
+
+
+<!--more-->
+
+---
+
+## 1. Pourquoi arrêter immédiatement de stocker des mots de passe en clair ?
+
+Voici les risques concrets :
+
+- **Vol de données** si le workspace ou les `.item` sont accessibles  
+- **Compromission de serveurs** via des métadonnées exportées  
+- **Fuite de credentials** lors d’un commit Git  
+- **Impact RGPD** si les mots de passe donnent accès à des données personnelles  
+- **Coût élevé** en rotation/renouvellement après incident
+
+Et surtout :  
+- Un mot de passe en clair n’est **pas un secret**. C’est un **ticket d’accès non protégé**.
+
+---
+
+## 2. Mettre en place une routine de chiffrement/déchiffrement
+
+### ⚠️ Base64 : encodage, pas chiffrement
+
+Avant d’aller plus loin, soyons très clairs : **la Base64 n’est pas un chiffrement**, juste un encodage.  
+Elle ne protège rien, elle ne repose sur aucun secret, et elle se renverse instantanément avec n’importe quel outil en ligne.
+
+👉 Ce que tu gagnes :  
+- ne plus exposer un mot de passe en clair dans un `.item`  
+- éviter les fuites bêtes (copier/coller, logs, captures d’écran)
+
+👉 Ce que tu ne gagnes PAS :  
+- une vraie sécurité  
+- une protection contre un attaquant motivé  
+- une résistance si ton workspace ou Git sont accessibles
+
+**Si ton mot de passe est sensible, cette méthode n’est pas suffisante.**
+
+La Base64 est utilisée ici **strictement dans un but pédagogique** : montrer qu’il existe des solutions simples, rapides et accessibles pour *arrêter* de mettre des secrets en clair.
+
+Pour les environnements sensibles, oriente-toi vers un vrai chiffrement (ex. AES), qui fera l’objet du second article.
+
+---
+
+L’objectif de cette routine est simple :  
+- stocker un mot de passe **chiffré/encodé** dans les contextes, fichiers, métadonnées  
+- le **déchiffrer** à la volée dans les jobs au moment de l’exécution
+
+Cette approche apporte :
+
+- un vrai cloisonnement entre configuration et secrets  
+- une protection minimale si un projet est partagé  
+- une gestion plus propre dans le temps  
+- aucune modification lourde de l’architecture
+
+Voici un exemple d'utilisation de chiffrement en base 64 (chiffrementBase64/dechiffrementBase64) :
+
+```java
+   /*
+     * Chiffrement "léger" basé sur Base64.
+     * Objectif : ne plus stocker le mot de passe en clair dans les fichiers Talend,
+     * pas de fournir un chiffrement fort.
+     */
+    public static String chiffrementBase64(String str, String key) {
+
+        if (key == null || key.length() < 2) {
+            System.err.println("Longueur de clé trop petite (2 caracteres minimum)");
+            return null;
+        }
+
+        if (Relational.ISNULL(str) || str.equals("")) {
+            System.err.println("La chaine a encrypter est vide, impossible de chiffrer");
+            return null;
+        }
+
+        // Encodage de la clé en Base64 pour l'injecter dans la chaîne
+        String encodedKey = Base64.getEncoder().withoutPadding().encodeToString(key.getBytes(StandardCharsets.UTF_8));
+
+        // Construction de la chaîne "longueur + clé encodée + mot de passe"
+        String toEncode = str.length() + encodedKey + str;
+
+        // Encodage global en Base64 pour obtenir la valeur à stocker
+        String encodedString = Base64.getEncoder().withoutPadding().encodeToString(toEncode.getBytes(StandardCharsets.UTF_8));
+
+        return encodedString;
+    }
+
+    /*
+     * Déchiffrement / décodage de la version Base64.
+     * On récupère la chaîne d'origine si la structure attendue est respectée.
+     */
+    public static String dechiffrementBase64(String encstr, String key) {
+
+        if (Relational.ISNULL(encstr) || encstr.equals("")) {
+            System.err.println("La chaine a dechiffrer est vide, impossible de poursuivre le traitement");
+            return null;
+        }
+
+        if (key == null || key.length() < 2) {
+            System.err.println("Longueur de clé trop petite (2 caracteres minimum)");
+            return null;
+        }
+
+        String encodedKey = Base64.getEncoder().withoutPadding().encodeToString(key.getBytes(StandardCharsets.UTF_8));
+
+        // Décodage Base64 de la chaîne complète
+        byte[] decodedBytes = Base64.getDecoder().decode(encstr);
+        String decoded = new String(decodedBytes, StandardCharsets.UTF_8);
+
+        // Extraction de la partie après la clé encodée
+        int keyIndex = decoded.indexOf(encodedKey);
+        if (keyIndex < 0) {
+            System.err.println("Clé introuvable dans la chaine fournie, impossible de dechiffrer");
+            return null;
+        }
+
+        String lengthPart = decoded.substring(0, keyIndex);
+        String str = decoded.substring(keyIndex).replace(encodedKey, "");
+
+        // Vérification de cohérence sur la longueur
+        try {
+            int expectedLength = Integer.parseInt(lengthPart);
+            if (decoded.contains(encodedKey) && (str.length() == expectedLength)) {
+                return str;
+            } else {
+                System.err.println("Incoherence detectee lors du dechiffrement Base64");
+                return null;
+            }
+        } catch (NumberFormatException e) {
+            System.err.println("Longueur invalide lors du dechiffrement Base64 : " + e.getMessage());
+            return null;
+        }
+    }
+```
+On remarque que dans ce contexte, une clée a été introduite afin de "complexifier" le decodage ddu mot de passe, cependant comme dit plus haut, cela ne permet pas de finement chiffrer un mot de passe
+---
+
+## 3. Comment utiliser ce mécanisme dans un job Talend/Talaxie ?
+
+### Étape 1 — Créer une routine java
+Premierement il faut créer une routine java et y inserer les deux méthodes communiquée plus haut.
+![Création de la routine]({{ '/assets/img/blog/5-chiffrement_base_64/1-creation_routine.png' | relative_url }}){:alt="Création d'une routine dans Talend/Talaxie" loading="lazy" decoding="async"}
+
+### Étape 2 — Définir la clé de déchiffrement
+Votre clé “secrète” doit être :
+
+- stockée dans un fichier externe non versionné,  
+- ou transmise en paramètre d’exécution (`--context_param`),  
+- ou fournie via votre scheduler (planificateur de jobs).
+
+Ne jamais l’inclure dans le projet Talend/Talaxie ni la versionner dans Git.
+
+Dans notre exemple, nous allons utiliser la cléf : 
+```
+F7Cjb9aQo!U$yBnoXcRPGxknctUb!7@qWzCo$?cc
+```
+---
+
+### Étape 3 — Chiffrer vos mots de passe
+Vous utilisez un petit job  pour transformer votre mot de passe, par exemple :
+
+Mot de passe : 
+```
+Ceci est un mot de passe !
+```
++
+Clé secrete
+```
+F7Cjb9aQo!U$yBnoXcRPGxknctUb!7@qWzCo$?cc
+```
+=
+```
+MjZSamREYW1JNVlWRnZJVlVrZVVKdWIxaGpVbEJIZUd0dVkzUlZZaUUzUUhGWGVrTnZKRDlqWXdDZWNpIGVzdCB1biBtb3QgZGUgcGFzc2UgIQ
+```
+
+C’est **cette chaîne chiffrée** que vous stockez ensuite dans vos variables de contexte, vos fichiers de configuration ou vos métadonnées. Le mot de passe en clair ne doit plus apparaître dans le projet.
+
+
+Pour les petits curieux, essayez de de mettre cette chaine chifrée dans un site comme [base64decode.org](https://www.base64decode.org/) 
+
+Hoooo mais que vois-je, une chaine "toute" claire ! 
+```
+26RjdDamI5YVFvIVUkeUJub1hjUlBHeGtuY3RVYiE3QHFXekNvJD9jYwCeci est un mot de passe !
+```
+![Decodage de la chaine]({{ '/assets/img/blog/5-chiffrement_base_64/2-decode.org.png' | relative_url }}){:alt="base64decode.org, decodez votre chaine" loading="lazy" decoding="async"}
+
+Biensur, ici le mot de passe est une "phrase" donc identifiable, avec une suite de caracteres aléatoire (comme la key) il aurait été plus compliqué de l'identifier ! 
+
+---
+
+### Étape 3 — Déchiffrer dans le job
+Dans n’importe quel composant utilisant un mot de passe :
+
+- vous appelez votre routine de déchiffrement,  
+- vous obtenez le mot de passe réel au moment de l’exécution,  
+- le secret n’apparaît jamais en clair dans les `.item` ou les contextes.
+
+Cette approche fonctionne parfaitement dans : `tDBConnection`, `tFTPConnection`, `tRESTClient`, `tS3Connection`, et plus globalement tout composant nécessitant un mot de passe.
+
+---
+
+## 4. Vérifier que tout fonctionne correctement
+
+Après intégration :
+
+- Exécutez un job : la connexion doit fonctionner sans erreur  
+- Vérifiez les logs : aucun mot de passe en clair  
+- Ouvrez les fichiers `.item` : aucune chaîne sensible lisible  
+- Supprimez temporairement la clé → le job doit échouer proprement
+
+
+![Decodage de la chaine via Talaxie]({{ '/assets/img/blog/5-chiffrement_base_64/3-decode_talend.png' | relative_url }}){:alt="Dechiffrement via Talend/Talaxie" loading="lazy" decoding="async"}
+
+---
+
+## 5. Organiser proprement la gestion des secrets
+
+Voici les bonnes pratiques à adopter :
+
+- Conserver uniquement les versions encodées/chiffrées des mots de passe  
+- Ne jamais versionner votre clé “secrète”, ou du moins mettez a jours TOUS les mots de passe
+- Centraliser les secrets encodés dans un fichier ou une zone dédiée  
+- Passer la clé par variable d’environnement ou paramètre d’exécution  
+- Documenter le process interne :  
+  - “Comment chiffrer/encoder un secret ?”  
+  - “Où est stockée la clé ?”  
+  - “Comment déployer un secret en recette / production ?”
+
+Cette méthode est simple et durable !
+
+---
+
+## 6. Pièges à éviter
+
+- Mettre la clé de déchiffrement dans les contextes → **erreur critique**  
+- Laisser temporairement un mot de passe en clair dans un composant “en attendant”  
+- Encoder deux fois le même secret  
+- Oublier de vérifier les logs d’exécution  
+- Stocker des secrets en clair, même dans un dépôt Git privé
+
+Votre objectif : aucune chaîne sensible en clair dans le projet. Aucun moyen de reconstituer un accès complet sans la clé.
+
+---
+
+## Conclusion
+
+Sécuriser les mots de passe dans Talend et Talaxie, ce n’est ni compliqué ni chronophage. Avec une routine de “chiffrement léger” + une clé externe :
+
+- vous éliminez les mots de passe en clair  
+- vous réduisez massivement les fuites basiques  
+- vous restez cohérent avec de bonnes pratiques professionnelles  
+- vous gardez un système simple et léger, parfaitement adapté à votre activité
+
+Ce premier niveau est une étape de sensibilisation.
+
+Un autre article sera bientôt disponnible sur une version "améliorée" du process de chiffrement ! 
+Le niveau suivant (AES) permettra d’aller vers un chiffrement réellement robuste pour les environnements sensibles.
+
+---
+
+## ✅ Checklist de sécurisation
+
+- [ ] Identifier tous les mots de passe stockés en clair  
+- [ ] Ajouter une routine de chiffrement/déchiffrement  
+- [ ] Chiffrer/encoder tous les secrets existants  
+- [ ] Stocker uniquement la version encodée dans les contextes  
+- [ ] Déplacer la clé hors du workspace  
+- [ ] Tester chaque connexion (BDD, FTP, API…)  
+- [ ] Vérifier les logs (aucune fuite)  
+- [ ] Documenter la procédure de gestion des secrets
+
+---
