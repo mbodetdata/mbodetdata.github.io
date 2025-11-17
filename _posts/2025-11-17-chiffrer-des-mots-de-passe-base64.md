@@ -4,7 +4,7 @@ title: "Arrête de stocker tes mots de passe en clair : guide complet pour sécu
 description: "Pourquoi tu ne dois plus jamais stocker de mots de passe en clair dans tes jobs Talend/Talaxie, et comment mettre en place un chiffrement/déchiffrement simple et robuste."
 categories: blog
 tags: [Talend, Talaxie, Sécurité, Chiffrement, ETL, Bonnes pratiques]
-image: "/assets/img/blog/security/password-chiffrement.png"
+image: "/assets/img/blog/5-chiffrement_base_64/logo.png"
 active: true
 parent_category: talend-securite
 ---
