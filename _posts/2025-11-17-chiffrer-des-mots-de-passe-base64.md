@@ -75,8 +75,9 @@ Ce que tu ne gagnes PAS :
 - une protection contre un attaquant motivé  
 - une résistance si ton workspace ou Git sont accessibles
 
-> ⚠️ **Si ton mot de passe est sensible, cette méthode n’est pas suffisante.** ⚠️ 
-> La Base64 est utilisée ici **strictement dans un but pédagogique** : montrer qu’il existe des solutions simples, rapides et accessibles pour *arrêter* de mettre des secrets en clair.
+> ⚠️ **Si ton mot de passe est sensible, cette méthode n’est pas suffisante.** ⚠️   
+
+> La Base64 est utilisée ici **strictement dans un but pédagogique** : montrer qu’il existe des solutions simples, rapides et accessibles pour *arrêter* de mettre des secrets en clair. 
 > Pour les environnements sensibles, oriente-toi vers un vrai chiffrement (ex. AES), qui fera l’objet du second article.
 
 
@@ -198,6 +199,9 @@ Dans cet exemple, nous allons utiliser la clé :
 ```
 F7Cjb9aQo!U$yBnoXcRPGxknctUb!7@qWzCo$?cc
 ```
+
+> Évidemment, cette clé est un exemple. Ne la réutilise jamais telle quelle en production.
+
 ---
 
 ### Étape 3 — Chiffrer tes mots de passe
@@ -212,7 +216,6 @@ Clé secrète
 ```
 F7Cjb9aQo!U$yBnoXcRPGxknctUb!7@qWzCo$?cc
 ```
-> Évidemment, cette clé est un exemple. Ne la réutilise jamais telle quelle en production.
 =
 ```
 MjZSamREYW1JNVlWRnZJVlVrZVVKdWIxaGpVbEJIZUd0dVkzUlZZaUUzUUhGWGVrTnZKRDlqWXdDZWNpIGVzdCB1biBtb3QgZGUgcGFzc2UgIQ
@@ -231,8 +234,8 @@ C’est **cette chaîne chiffrée** que tu stockes ensuite dans tes variables de
 
 > 💡 **Oui mais c'est parce que c'est une phrase !**  
 > Bien sûr, ici le mot de passe est une phrase donc identifiable !  
-> Avec une suite de caractères aléatoires (comme la clé) il serait plus compliqué de l’identifier.
-> Mais on voit bien ici la limite de notre technique ! 
+> Avec une suite de caractères aléatoires (comme la clé) il serait plus compliqué de l’identifier.  
+> Mais on voit bien ici la **limite** de notre technique ! 
 
 ---
 
@@ -267,18 +270,18 @@ Après intégration :
 
 Voici les bonnes pratiques à adopter :
 
-- Ne stocke **que** la version encodée/chiffrée des mots de passe dans Talend/Talaxie  
+- Ne stocke **que** la version encodée/chiffrée des mots de passe dans Talend/Talaxie, ou mieux dans des fichiers de configuration externe.  
 - Ne versionne **jamais** ta clé (même dans un dépôt privé)  
 - Si la clé fuite : considère **tous** les mots de passe comme compromis et rechiffre-les  
-- Regroupe les secrets (chiffrés) dans un fichier ou une zone dédiée pour éviter la dispersion  
+- Regroupe les secrets (chiffrés) dans un fichier ou une zone dédiée pour éviter la dispersion (un gestionnaire de mots de passe par exmeple)  
 - Fournis la clé au runtime : variable d’environnement, paramètre `--context_param`, scheduler…  
 - Documente le process pour éviter les erreurs :  
-  - Comment générer un secret chiffré  
-  - Où est stockée la clé  
-  - Comment déployer un secret en recette ou prod  
-  - Comment régénérer les secrets si la clé change
+  - Comment générer un secret chiffré ? 
+  - Où est stockée la clé  ?
+  - Comment déployer un secret en recette ou prod  ?
+  - Comment régénérer les secrets si la clé change ?
 
-Cette méthode est simple, pragmatique, et largement suffisante pour améliorer l’hygiène de sécurité des projets Talend/Talaxie.
+> Cette méthode est simple, pragmatique, et largement suffisante pour améliorer l’hygiène de sécurité des projets Talend/Talaxie.
 
 
 ---
@@ -291,7 +294,8 @@ Cette méthode est simple, pragmatique, et largement suffisante pour améliorer 
 - Oublier de vérifier les logs d’exécution  
 - Stocker des secrets en clair, même dans un dépôt Git privé
 
-> **Ton objectif** 
+> **Ton objectif**   
+
 > Aucune chaîne sensible en clair dans le projet. Aucun accès possible sans la clé.   
 > Si quelqu’un récupère ton workspace, il ne doit rien pouvoir exploiter. 
 
@@ -306,10 +310,10 @@ Sécuriser les mots de passe dans Talend et Talaxie, ce n’est ni compliqué ni
 - tu restes cohérent avec de bonnes pratiques professionnelles  
 - tu gardes un système simple et léger, parfaitement adapté à ton activité
 
-> Base64 ne doit jamais être vu comme une solution de sécurité, mais comme une étape pour sortir rapidement d’un projet rempli de mots de passe en clair.
-> Ce niveau 1 permet **d’assainir rapidement un projet Talend/Talaxie**.  
-> Le niveau 2 (AES) permet de **réellement sécuriser** un environnement sensible.  
-> Les deux sont *complémentaires* : on commence simple, puis on monte en robustesse.
+> Base64 ne doit jamais être vu comme une solution de sécurité, mais comme une étape pour sortir rapidement d’un projet rempli de mots de passe en clair.   
+> Ce niveau 1 permet **d’assainir rapidement un projet Talend/Talaxie**.     
+> Le niveau 2 (AES) permet de **réellement sécuriser** un environnement sensible.     
+> Les deux sont *complémentaires* : on commence simple, puis on monte en robustesse.   
 
 
 ---
