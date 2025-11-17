@@ -75,9 +75,8 @@ Ce que tu ne gagnes PAS :
 - une protection contre un attaquant motivé  
 - une résistance si ton workspace ou Git sont accessibles
 
-> ⚠️ **Si ton mot de passe est sensible, cette méthode n’est pas suffisante.** ⚠️   
-
-> La Base64 est utilisée ici **strictement dans un but pédagogique** : montrer qu’il existe des solutions simples, rapides et accessibles pour *arrêter* de mettre des secrets en clair. 
+> ⚠️ **Si ton mot de passe est sensible, cette méthode n’est pas suffisante.** ⚠️        
+> La Base64 est utilisée ici **strictement dans un but pédagogique** : montrer qu’il existe des solutions simples, rapides et accessibles pour *arrêter* de mettre des secrets en clair.      
 > Pour les environnements sensibles, oriente-toi vers un vrai chiffrement (ex. AES), qui fera l’objet du second article.
 
 
@@ -294,8 +293,7 @@ Voici les bonnes pratiques à adopter :
 - Oublier de vérifier les logs d’exécution  
 - Stocker des secrets en clair, même dans un dépôt Git privé
 
-> **Ton objectif**   
-
+> **Ton objectif**        
 > Aucune chaîne sensible en clair dans le projet. Aucun accès possible sans la clé.   
 > Si quelqu’un récupère ton workspace, il ne doit rien pouvoir exploiter. 
 
