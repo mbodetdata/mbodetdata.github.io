@@ -5,7 +5,7 @@ description: "Passer du masquage Base64 à un chiffrement réel (AES/GCM) pour s
 categories: blog
 tags: [Talend, Talaxie, Sécurité, Chiffrement, AES, ETL, Bonnes pratiques]
 image: "/assets/img/blog/6-chiffrement_AES/logo_1024.png"
-active: false
+active: true
 parent_category: talend-securite
 ---
 
