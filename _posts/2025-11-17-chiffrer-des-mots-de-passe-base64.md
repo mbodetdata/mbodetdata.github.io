@@ -35,7 +35,7 @@ La bonne nouvelle : Talend et Talaxie permettent très facilement de mettre en p
 > 2. Mettre en place **une routine Java de chiffrement/déchiffrement**  
 > 3. L’utiliser dans tes jobs (contextes, connexions BD, API…)  
 > 4. Organiser proprement la gestion de tes secrets  
-> 5. Les quelques pièges a éviter
+> 5. Les quelques pièges à éviter
 
 
 
@@ -78,6 +78,9 @@ Ce que tu ne gagnes PAS :
 > ⚠️ **Si ton mot de passe est sensible, cette méthode n’est pas suffisante.** ⚠️ 
 > La Base64 est utilisée ici **strictement dans un but pédagogique** : montrer qu’il existe des solutions simples, rapides et accessibles pour *arrêter* de mettre des secrets en clair.
 > Pour les environnements sensibles, oriente-toi vers un vrai chiffrement (ex. AES), qui fera l’objet du second article.
+
+
+Nous allons donc mettre en place une petite routine Java simple, suffisante pour illustrer le principe sans complexité inutile.
 
 ---
 
@@ -179,7 +182,7 @@ Cependant, comme dit plus haut, cela ne permet pas de réellement chiffrer un mo
 ## 3. Comment utiliser ce mécanisme dans un job Talend/Talaxie ?
 
 ### Étape 1 — Créer une routine Java
-Crée une routine Java et ajoute-y les deux méthodes communiquées plus haut.
+Crée une routine Java et ajoute les deux méthodes communiquées plus haut.
 ![Création de la routine]({{ '/assets/img/blog/5-chiffrement_base_64/1-creation_routine.png' | relative_url }}){:alt="Création d'une routine dans Talend/Talaxie" loading="lazy" decoding="async"}
 
 ### Étape 2 — Définir la clé de déchiffrement
@@ -209,6 +212,7 @@ Clé secrète
 ```
 F7Cjb9aQo!U$yBnoXcRPGxknctUb!7@qWzCo$?cc
 ```
+> Évidemment, cette clé est un exemple. Ne la réutilise jamais telle quelle en production.
 =
 ```
 MjZSamREYW1JNVlWRnZJVlVrZVVKdWIxaGpVbEJIZUd0dVkzUlZZaUUzUUhGWGVrTnZKRDlqWXdDZWNpIGVzdCB1biBtb3QgZGUgcGFzc2UgIQ
@@ -217,9 +221,9 @@ MjZSamREYW1JNVlWRnZJVlVrZVVKdWIxaGpVbEJIZUd0dVkzUlZZaUUzUUhGWGVrTnZKRDlqWXdDZWNp
 C’est **cette chaîne chiffrée** que tu stockes ensuite dans tes variables de contexte, tes fichiers de configuration ou tes métadonnées. Le mot de passe en clair ne doit plus apparaître dans le projet.
 
 
-> **Pour toi petit malin qui lit ces lignes !**  
-> essaie de mettre cette chaîne chiffrée dans un site comme [base64decode.org](https://www.base64decode.org/)  
-> Hoooo mais que vois-je, une chaîne « toute » claire ! 
+> **Je t'ai déjà dit que base64 n'etait pas un réel chiffrement ?**  
+> Pour vérifier, tu peux toi-même décoder cette chaîne sur un site comme [base64decode.org](https://www.base64decode.org/)  
+> Tu verras que le mot de passe réapparaît très clairement dans le résultat : 
 > ```
 > 26RjdDamI5YVFvIVUkeUJub1hjUlBHeGtuY3RVYiE3QHFXekNvJD9jYwCeci est un mot de passe !
 > ```
@@ -242,9 +246,10 @@ Dans n’importe quel composant utilisant un mot de passe, ou permettant d'appel
 Cette approche fonctionne parfaitement dans : `tDBConnection`, `tFTPConnection`, `tRESTClient`, `tS3Connection`, `tJava`,....
 
 ![Utilisation dans un job]({{ '/assets/img/blog/5-chiffrement_base_64/4-utilisation_job_talend.png' | relative_url }}){:alt="Utilisation des routines dans un job Talend" loading="lazy" decoding="async"}
+
 ---
 
-### 5. Vérifier que tout fonctionne correctement
+### Étape 5 — Vérifier que tout fonctionne correctement
 
 Après intégration :
 
@@ -254,7 +259,7 @@ Après intégration :
 - Supprime temporairement la clé → le job doit échouer proprement
 
 
-![Decodage de la chaine via Talaxie]({{ '/assets/img/blog/5-chiffrement_base_64/3-decode_talend.png' | relative_url }}){:alt="Dechiffrement via Talend/Talaxie" loading="lazy" decoding="async"}
+![Decodage de la chaîne via Talaxie]({{ '/assets/img/blog/5-chiffrement_base_64/3-decode_talend.png' | relative_url }}){:alt="Dechiffrement via Talend/Talaxie" loading="lazy" decoding="async"}
 
 ---
 
@@ -301,10 +306,11 @@ Sécuriser les mots de passe dans Talend et Talaxie, ce n’est ni compliqué ni
 - tu restes cohérent avec de bonnes pratiques professionnelles  
 - tu gardes un système simple et léger, parfaitement adapté à ton activité
 
-Ce premier niveau est une étape de **sensibilisation**.
+> Base64 ne doit jamais être vu comme une solution de sécurité, mais comme une étape pour sortir rapidement d’un projet rempli de mots de passe en clair.
+> Ce niveau 1 permet **d’assainir rapidement un projet Talend/Talaxie**.  
+> Le niveau 2 (AES) permet de **réellement sécuriser** un environnement sensible.  
+> Les deux sont *complémentaires* : on commence simple, puis on monte en robustesse.
 
-Un autre article sera bientôt disponible sur une version *améliorée* du process de chiffrement !  
-Le niveau suivant (AES) te permettra d’aller vers un chiffrement réellement robuste pour les environnements sensibles.
 
 ---
 
