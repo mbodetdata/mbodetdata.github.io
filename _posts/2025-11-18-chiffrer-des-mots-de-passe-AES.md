@@ -5,22 +5,22 @@ description: "Passer du masquage Base64 à un chiffrement réel (AES/GCM) pour s
 categories: blog
 tags: [Talend, Talaxie, Sécurité, Chiffrement, AES, ETL, Bonnes pratiques]
 image: "/assets/img/blog/6-chiffrement_AES/logo_1024.png"
-active: false
+active: true
 parent_category: talend-securite
 ---
 
 Dans le premier article, on a fait le ménage : on a enfin arrêté de stocker des mots de passe en clair dans un projet Talend/Talaxie grâce à un masquage “hygiène” en Base64.
 
 >Si tu l’as raté, commence ici avant d'aller plus loin :       
->➡️ https://bmdata.fr/blog/chiffrer-des-mots-de-passe-base64/
+>➡️ [Article 1/2 - Base64](https://bmdata.fr/blog/chiffrer-des-mots-de-passe-base64/)
 
 Mais soyons clairs : Base64, c’est uniquement une manière de *retirer visuellement le mot de passe du projet*.  
-C’est pédagogique, utile, minimal… mais ça ne protège rien si quelqu’un met la main sur la chaîne encodée.
+C’est pédagogique, utile, minimal… mais ça ne protège **rien** si quelqu’un met la main sur la chaîne encodée.
 
 Ici, on passe au niveau supérieur : **un vrai chiffrement** avec **AES/GCM**, robuste, moderne, et parfaitement utilisable dans Talend/Talaxie.
 
-> Pour t’aider, j’ai mis un dépôt GitHub contenant les routines Base64 + AES :  
-> ➡️ https://github.com/mbodetdata/BMDATA_Blog-securisation_des_mots_de_passes.git
+> Pour t’aider, j’ai mis un dépôt GitHub contenant les routines Base64 + AES ainsi qu'un job d'exemple:  
+> ➡️ [Github d'exemple Base64+AES](https://github.com/mbodetdata/BMDATA_Blog-securisation_des_mots_de_passes.git)
 
 <!--more-->
 
@@ -33,6 +33,7 @@ Base64 :
 - est réversible avec n’importe quel outil web,
 - ne repose sur aucun secret,
 - ne tient pas 2 secondes face à un attaquant motivé.
+- c'est de l'encodage, pas du chiffrement ! 
 
 AES/GCM :
 - est un *vrai* chiffrement symétrique,
@@ -62,8 +63,8 @@ AES = sécurité
 
 ## 3. Routine Java AES — version prête à l’emploi
 
-Voici la routine java, prête pour être copiée directement dans ta classe `Chiffrements.java`.
-Remplace la totalitée, j'ai repris les methodes de chiffrement/dechiffrement de Base64.
+Voici la routine java, prête pour être copiée directement dans ta classe `Chiffrements.java`.     
+> Remplace la totalitée, j'ai repris les methodes de chiffrement/dechiffrement de Base64.
   
 ---  
 
@@ -297,6 +298,23 @@ public class Chiffrements {
 }
 ```
 
+> **Comment marche ce chiffrement !**      
+> *Chiffrement AES/GCM*      
+> 1. Dériver une clé AES 128 bits à partir de la clé fournie.      
+> 2. Générer un IV (aléatoire, 12 octets).      
+> 3. Initialiser AES-GCM en mode chiffrement avec la clé dérivée + IV.      
+> 4. Chiffrer le texte → obtenir données chiffrées + tag d’authentification GCM.      
+> 5. Concaténer IV + données chiffrées.      
+> 6. Encoder l’ensemble en Base64 pour stockage.      
+>      
+> *Déchiffrement AES/GCM*      
+> 1. Dériver la même clé AES 128 bits.      
+> 2. Décoder le Base64 pour récupérer les octets.      
+> 3. Séparer IV et données chiffrées.      
+> 4. Initialiser AES-GCM en mode déchiffrement avec la clé dérivée + IV.      
+> 5. Déchiffrer et vérifier le tag d’authentification.      
+> 6. Retourner le texte en clair.      
+
 ---
 ## 4. Comment utiliser AES dans un job Talend/Talaxie ?
 
@@ -305,7 +323,7 @@ La mécanique reste la même que celle présentée dans l’article Base64 :
 - tu stockes uniquement la version chiffrée,  
 - tu déchiffres à la volée au runtime.  
 
-La différence : cette fois, le secret devient inexploitable sans la clé AES.
+La différence : cette fois, le secret devient **inexploitable** sans la clé AES.
 
 ### Étape 1 — Mettre à jour la routine Java
 
@@ -340,14 +358,15 @@ Chiffrements.chiffrementAES(
 
 ![Utilisation dans un tJava]({{ '/assets/img/blog/6-chiffrement_AES/2-utilisation_tjava.png' | relative_url }}){:alt="Utilisation dans un tJava" loading="lazy" decoding="async"}
 
-Chaîne AES obtenue (IV + texte chiffré + tag, encodés en Base64) :
+Chaîne AES obtenue, encodés en Base64 pour permettre sont utilisation  :
 ```
 WKiL9JWaa3DwWBs621wbADFILkKvAnIrVFMxq2s9Q6fJAHN2rjJMLeklt/9XGpfCm0ukULYE
 ```
 
 ![Utilisation dans un tJava]({{ '/assets/img/blog/6-chiffrement_AES/3-utilisation_tjava.png' | relative_url }}){:alt="Utilisation dans un tJava et affichage de la chaîne" loading="lazy" decoding="async"}
 
-Cette fois, si tu colles cette valeur dans [base64decode.org](https://www.base64decode.org/), tu obtiens des octets illisibles (`\u0000\u0011"3DUf...`) : impossible de retrouver le mot de passe sans la clé AES, contrairement au simple encodage Base64 du premier article.
+> 💡 Cette fois, si tu colles cette valeur dans [base64decode.org](https://www.base64decode.org/), tu obtiens des octets illisibles (`\u0000\u0011"3DUf...`) :  impossible de retrouver le mot de passe sans la clé AES, contrairement au simple encodage Base64 du premier article.     
+> On vient donc de *corriger* notre problématique de l'article 1, ou la chaîne etait clairement exploitable ! 
 
 ![Robustesse à base64decode.org]({{ '/assets/img/blog/6-chiffrement_AES/4-robustesse_a_base64decode.org.png' | relative_url }}){:alt="Robustesse au decodage par base64decode.org" loading="lazy" decoding="async"}
 
