@@ -8,9 +8,9 @@
 {%- comment -%} =================== FAVICONS & APP ICONS =================== {%- endcomment -%}
 {%- assign favicon_path = '/assets/img/favicon' -%}
 <link rel="icon" href="{{ (favicon_path | append: '/favicon.svg') | relative_url }}" type="image/svg+xml">
-<link rel="icon" href="{{ (favicon_path | append: '/favicon-32.png')  | relative_url }}" sizes="32x32" type="image/png">
-<link rel="icon" href="{{ (favicon_path | append: '/favicon-16.png')  | relative_url }}" sizes="16x16" type="image/png">
-<link rel="apple-touch-icon" href="{{ (favicon_path | append: '/apple-touch-icon.png') | relative_url }}">
+<link rel="icon" href="{{ (favicon_path | append: '/favicon-32.webp')  | relative_url }}" sizes="32x32" type="image/png">
+<link rel="icon" href="{{ (favicon_path | append: '/favicon-16.webp')  | relative_url }}" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="{{ (favicon_path | append: '/apple-touch-icon.webp') | relative_url }}">
 <link rel="mask-icon" href="{{ (favicon_path | append: '/safari-pinned-tab.svg') | relative_url }}" color="#5865f2">
 <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
 
@@ -65,7 +65,7 @@
 {%- comment -%} =================== OPEN GRAPH =========================== {%- endcomment -%}
 {%- assign og_title = page.og_title | default: meta_title -%}
 {%- assign og_desc  = page.description | default: site.description -%}
-{%- assign og_image = page.image | default: site.og_image | default: '/assets/img/og-image.png' -%}
+{%- assign og_image = page.image | default: site.og_image | default: '/assets/img/og-image.webp' -%}
 {%- assign og_type  = 'website' -%}
 {%- if page.layout == 'post' -%}{% assign og_type = 'article' %}{% endif -%}
 
@@ -174,6 +174,7 @@
       "position": {{ forloop.index }},
       "name": {{ b.name | jsonify }},
       "item": {{ b.url | absolute_url | jsonify }}
+    
     }{%- unless forloop.last -%},{%- endunless -%}
     {%- endfor -%}
   ]
@@ -183,7 +184,7 @@
 
 {%- comment -%} ===== JSON-LD : Article (complément si post) ============ {%- endcomment -%}
 {%- if is_post -%}
-{%- assign article_image = page.image | default: site.og_image | default: '/assets/img/og-image.png' -%}
+{%- assign article_image = page.image | default: site.og_image | default: '/assets/img/og-image.webp' -%}
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",

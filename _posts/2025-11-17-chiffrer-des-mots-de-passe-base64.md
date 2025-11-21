@@ -4,7 +4,7 @@ title: "Arrête de stocker tes mots de passe en clair : guide complet pour sécu
 description: "Pourquoi tu ne dois plus jamais stocker de mots de passe en clair dans tes jobs Talend/Talaxie, et comment mettre en place un chiffrement/déchiffrement simple et robuste."
 categories: blog
 tags: [Talend, Talaxie, Sécurité, Chiffrement, ETL, Bonnes pratiques]
-image: "/assets/img/blog/5-chiffrement_base_64/logo_1024.png"
+image: "/assets/img/blog/5-chiffrement_base_64/logo_1024.webp"
 active: true
 parent_category: talend-securite
 ---
@@ -183,7 +183,7 @@ Cependant, comme dit plus haut, cela ne permet pas de réellement chiffrer un mo
 
 ### Étape 1 — Créer une routine Java
 Crée une routine Java et ajoute les deux méthodes communiquées plus haut.
-![Création de la routine]({{ '/assets/img/blog/5-chiffrement_base_64/1-creation_routine.png' | relative_url }}){:alt="Création d'une routine dans Talend/Talaxie" loading="lazy" decoding="async"}
+![Création de la routine]({{ '/assets/img/blog/5-chiffrement_base_64/1-creation_routine.webp' | relative_url }}){:alt="Création d'une routine dans Talend/Talaxie" loading="lazy" decoding="async"}
 
 ### Étape 2 — Définir la clé de déchiffrement
 Ta clé “secrète” doit être :
@@ -229,7 +229,7 @@ C’est **cette chaîne chiffrée** que tu stockes ensuite dans tes variables de
 > ```
 > 26RjdDamI5YVFvIVUkeUJub1hjUlBHeGtuY3RVYiE3QHFXekNvJD9jYwCeci est un mot de passe !
 > ```
-![Décodage de la chaîne]({{ '/assets/img/blog/5-chiffrement_base_64/2-decode.org.png' | relative_url }}){:alt="base64decode.org, décode ta chaîne" loading="lazy" decoding="async"}
+![Décodage de la chaîne]({{ '/assets/img/blog/5-chiffrement_base_64/2-decode.org.webp' | relative_url }}){:alt="base64decode.org, décode ta chaîne" loading="lazy" decoding="async"}
 
 > 💡 **Oui mais c'est parce que c'est une phrase !**  
 > Bien sûr, ici le mot de passe est une phrase donc identifiable !  
@@ -247,7 +247,7 @@ Dans n’importe quel composant utilisant un mot de passe, ou permettant d'appel
 
 Cette approche fonctionne parfaitement dans : `tDBConnection`, `tFTPConnection`, `tRESTClient`, `tS3Connection`, `tJava`,....
 
-![Utilisation dans un job]({{ '/assets/img/blog/5-chiffrement_base_64/4-utilisation_job_talend.png' | relative_url }}){:alt="Utilisation des routines dans un job Talend" loading="lazy" decoding="async"}
+![Utilisation dans un job]({{ '/assets/img/blog/5-chiffrement_base_64/4-utilisation_job_talend.webp' | relative_url }}){:alt="Utilisation des routines dans un job Talend" loading="lazy" decoding="async"}
 
 ---
 
@@ -261,7 +261,7 @@ Après intégration :
 - Supprime temporairement la clé → le job doit échouer proprement
 
 
-![Decodage de la chaîne via Talaxie]({{ '/assets/img/blog/5-chiffrement_base_64/3-decode_talend.png' | relative_url }}){:alt="Dechiffrement via Talend/Talaxie" loading="lazy" decoding="async"}
+![Decodage de la chaîne via Talaxie]({{ '/assets/img/blog/5-chiffrement_base_64/3-decode_talend.webp' | relative_url }}){:alt="Dechiffrement via Talend/Talaxie" loading="lazy" decoding="async"}
 
 ---
 

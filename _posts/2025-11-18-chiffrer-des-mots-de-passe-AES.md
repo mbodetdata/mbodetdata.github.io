@@ -4,7 +4,7 @@ title: "Chiffre vraiment tes mots de passe Talend & Talaxie : passer à AES"
 description: "Passer du masquage Base64 à un chiffrement réel (AES/GCM) pour sécuriser sérieusement tes mots de passe dans Talend/Talaxie."
 categories: blog
 tags: [Talend, Talaxie, Sécurité, Chiffrement, AES, ETL, Bonnes pratiques]
-image: "/assets/img/blog/6-chiffrement_AES/logo_1024.png"
+image: "/assets/img/blog/6-chiffrement_AES/logo_1024.webp"
 active: true
 parent_category: talend-securite
 ---
@@ -330,7 +330,7 @@ La différence : cette fois, le secret devient **inexploitable** sans la clé AE
 - Remplace toute la routine par celle fournie dans cet article.  
 - Talend/Talaxie recompile, et ton chiffrement AES est immédiatement disponible.
 
-![Création routine AES]({{ '/assets/img/blog/6-chiffrement_AES/1-creation_routine_aes.png' | relative_url }}){:alt="Ajout AES dans la routine Talend/Talaxie" loading="lazy" decoding="async"}
+![Création routine AES]({{ '/assets/img/blog/6-chiffrement_AES/1-creation_routine_aes.webp' | relative_url }}){:alt="Ajout AES dans la routine Talend/Talaxie" loading="lazy" decoding="async"}
 
 ### Étape 2 — Définir la clé AES (la même que dans l’article Base64)
 
@@ -356,19 +356,19 @@ Chiffrements.chiffrementAES(
 )
 ```
 
-![Utilisation dans un tJava]({{ '/assets/img/blog/6-chiffrement_AES/2-utilisation_tjava.png' | relative_url }}){:alt="Utilisation dans un tJava" loading="lazy" decoding="async"}
+![Utilisation dans un tJava]({{ '/assets/img/blog/6-chiffrement_AES/2-utilisation_tjava.webp' | relative_url }}){:alt="Utilisation dans un tJava" loading="lazy" decoding="async"}
 
 Chaîne AES obtenue, encodés en Base64 pour permettre sont utilisation  :
 ```
 WKiL9JWaa3DwWBs621wbADFILkKvAnIrVFMxq2s9Q6fJAHN2rjJMLeklt/9XGpfCm0ukULYE
 ```
 
-![Utilisation dans un tJava]({{ '/assets/img/blog/6-chiffrement_AES/3-utilisation_tjava.png' | relative_url }}){:alt="Utilisation dans un tJava et affichage de la chaîne" loading="lazy" decoding="async"}
+![Utilisation dans un tJava]({{ '/assets/img/blog/6-chiffrement_AES/3-utilisation_tjava.webp' | relative_url }}){:alt="Utilisation dans un tJava et affichage de la chaîne" loading="lazy" decoding="async"}
 
 > 💡 Cette fois, si tu colles cette valeur dans [base64decode.org](https://www.base64decode.org/), tu obtiens des octets illisibles (`\u0000\u0011"3DUf...`) :  impossible de retrouver le mot de passe sans la clé AES, contrairement au simple encodage Base64 du premier article.     
 > On vient donc de *corriger* notre problématique de l'article 1, ou la chaîne etait clairement exploitable ! 
 
-![Robustesse à base64decode.org]({{ '/assets/img/blog/6-chiffrement_AES/4-robustesse_a_base64decode.org.png' | relative_url }}){:alt="Robustesse au decodage par base64decode.org" loading="lazy" decoding="async"}
+![Robustesse à base64decode.org]({{ '/assets/img/blog/6-chiffrement_AES/4-robustesse_a_base64decode.org.webp' | relative_url }}){:alt="Robustesse au decodage par base64decode.org" loading="lazy" decoding="async"}
 
 
 ### Étape 4 — Déchiffrer dans tes composants Talend/Talaxie

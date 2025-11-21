@@ -9,7 +9,15 @@
 /* ========================= 0) RESET & BASE ========================= */
 *{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
-html,body{ margin:0; overflow-x:clip; }
+html,body{
+  margin:0;
+  overflow-x:hidden;
+}
+@supports (overflow: clip){
+  html,body{
+    overflow-x:clip;
+  }
+}
 img,svg,video{ max-width:100%; height:auto; display:block; }
 .sr-only{
   position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
@@ -53,6 +61,7 @@ img,svg,video{ max-width:100%; height:auto; display:block; }
   /* Conteneurs */
   --container: min(1280px, 92vw);
   --container-tight: min(1080px, 92vw);
+  --section-glow-bleed: clamp(1rem, 4vw, 3.5rem);
 
   /* Liens */
   --link-underline: underline;
@@ -1327,6 +1336,7 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
   position:relative;
   isolation:isolate;
   padding-block: clamp(2.4rem, 4vw, 3.8rem);
+  --section-bleed: clamp(1.1rem, 4.8vw, 3.6rem);
 }
 
 .contact-hub__inner{
@@ -2232,12 +2242,17 @@ body::before{
   position:relative;
   isolation:isolate;
   padding-block: clamp(2.4rem, 4vw, 3.8rem);
+  --section-bleed: clamp(1.2rem, 5vw, 3.8rem);
 }
 .recent-works::before{
   content:"";
   position:absolute;
   z-index:-1;
-  inset: clamp(-1.4rem, -3vh, -2.4rem) clamp(-2rem, -6vw, -3.4rem);
+  left:50%;
+  transform:translateX(-50%);
+  width: calc(100% + var(--section-bleed, var(--section-glow-bleed)) * 2);
+  top: clamp(-1.4rem, -3vh, -2.4rem);
+  bottom: clamp(-1.4rem, -3vh, -2.4rem);
   border-radius: clamp(1.8rem, 3vw, 2.6rem);
   background:
     radial-gradient(120% 120% at 12% 0%, color-mix(in oklab, var(--brand) 28%, transparent) 0%, transparent 68%),
@@ -3030,12 +3045,17 @@ body::before{
   position:relative;
   isolation:isolate;
   padding-block: clamp(2.4rem, 4vw, 3.8rem);
+  --section-bleed: clamp(1rem, 4.5vw, 3.4rem);
 }
 .recent-posts::before{
   content:"";
   position:absolute;
   z-index:-1;
-  inset: clamp(-1.2rem, -3vh, -2rem) clamp(-2rem, -6vw, -3.2rem);
+  left:50%;
+  transform:translateX(-50%);
+  width: calc(100% + var(--section-bleed, var(--section-glow-bleed)) * 2);
+  top: clamp(-1.2rem, -3vh, -2rem);
+  bottom: clamp(-1.2rem, -3vh, -2rem);
   border-radius: clamp(1.6rem, 3vw, 2.4rem);
   background:
     radial-gradient(120% 120% at 12% 0%, color-mix(in oklab, var(--brand) 22%, transparent) 0%, transparent 68%),
@@ -3165,6 +3185,14 @@ body::before{
   .recent-posts .carousel__dot.is-active{
     width:26px;
     background: color-mix(in oklab, var(--brand) 80%, transparent);
+  }
+  @media (max-width: 720px){
+    .recent-posts__carousel .carousel__btn{
+      display:none;
+    }
+    .recent-posts__carousel .carousel__dots{
+      justify-content:center;
+    }
   }
 
 /* Cartes articles (sÅ“urs des project-card) */
@@ -3447,7 +3475,11 @@ body::before{
   content:"";
   position:absolute;
   z-index:-1;
-  inset: clamp(-1.2rem, -3vh, -2rem) clamp(-2rem, -6vw, -3.2rem);
+  left:50%;
+  transform:translateX(-50%);
+  width: calc(100% + var(--section-bleed, var(--section-glow-bleed)) * 2);
+  top: clamp(-1.2rem, -3vh, -2rem);
+  bottom: clamp(-1.2rem, -3vh, -2rem);
   border-radius: clamp(1.6rem, 3vw, 2.4rem);
   background:
     radial-gradient(120% 120% at 12% 0%, color-mix(in oklab, var(--brand) 22%, transparent) 0%, transparent 68%),

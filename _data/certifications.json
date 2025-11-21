@@ -6,7 +6,7 @@
     "date": "2022-06-15",
     "status": "certified",
     "badge_url": "",
-    "logo": "/assets/img/certs/badge_talend.jpg",
+    "logo": "/assets/img/certs/badge_talend.webp",
     "skills": ["ETL", "Orchestration", "Monitoring"],
     "note": "Bonnes pratiques de développements, Architecture evolutive"
   },
