@@ -3139,6 +3139,17 @@ body::before{
     display:flex;
     scroll-snap-align:start;
   }
+  @media (max-width: 720px){
+    .recent-posts__grid{
+      padding-inline: clamp(.8rem, 5vw, 1.6rem);
+      scroll-padding-inline: clamp(.8rem, 5vw, 1.6rem);
+      scroll-snap-type:x mandatory;
+      gap: clamp(.6rem, 4vw, 1.1rem);
+    }
+    .recent-posts__item{
+      flex:0 0 100%;
+    }
+  }
   @media (min-width: 720px){
     .recent-posts__grid{
       padding:0;
@@ -3700,6 +3711,5 @@ body::before{
     padding: clamp(1.4rem, 5vw, 1.8rem);
   }
 }
-
 
 
