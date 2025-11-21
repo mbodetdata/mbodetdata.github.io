@@ -3283,6 +3283,37 @@ body::before{
     border-radius:999px;
     padding-inline:1.4rem;
   }
+  .recent-posts .btn--details{
+    position:relative;
+    overflow:hidden;
+    border:0;
+    padding-inline: clamp(1.3rem, 3vw, 2.1rem);
+    background: linear-gradient(135deg,
+                color-mix(in oklab, var(--brand) 38%, transparent),
+                color-mix(in oklab, var(--brand-2) 42%, transparent));
+    box-shadow:0 18px 38px color-mix(in oklab, var(--brand) 38%, transparent);
+  }
+  .recent-posts .btn--details::after{
+    content:"";
+    position:absolute;
+    inset:2px;
+    border-radius:inherit;
+    border:1px solid color-mix(in oklab, #ffffff 60%, transparent);
+    opacity:.4;
+    pointer-events:none;
+  }
+  .recent-posts .btn--details:hover,
+  .recent-posts .btn--details:focus-visible{
+    transform:translateY(-2px);
+    box-shadow:0 22px 40px color-mix(in oklab, var(--brand) 48%, transparent);
+  }
+
+  @media (max-width: 720px){
+    .recent-post-card__excerpt,
+    .recent-post-card__tags{
+      display:none;
+    }
+  }
 
 /* Mobile: media optionnel => layout 1 colonne si pas d'image */
 
@@ -3290,6 +3321,95 @@ body::before{
 }
 
 
+
+
+/* ===== Responsive polish for very small viewports ===== */
+@media (max-width: 480px){
+  main{
+    padding-inline: clamp(.7rem, 4vw, 1.1rem);
+  }
+  .section{
+    padding-block: clamp(1.3rem, 6vw, 2rem);
+  }
+  .section h2{
+    font-size: clamp(1.4rem, 6vw, 1.9rem);
+  }
+  .about-hero{
+    padding-block: clamp(2rem, 9vw, 3.4rem);
+  }
+  .about-hero__canvas{
+    padding: clamp(.9rem, 6vw, 1.6rem);
+    border-radius: clamp(1rem, 6vw, 2.4rem);
+  }
+  .about-hero__title{
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+  }
+  .about-hero__text{
+    font-size: clamp(.95rem, 4vw, 1.05rem);
+  }
+  .services-section .section-header,
+  .recent-works__head,
+  .recent-posts__head,
+  .contact-hub__head{
+    padding: clamp(.85rem, 5vw, 1.3rem);
+  }
+  .service-card,
+  .project-card,
+  .recent-post-card,
+  .contact-hub__card{
+    padding: clamp(.9rem, 5vw, 1.35rem);
+  }
+  .services-grid{
+    gap: clamp(.75rem, 4vw, 1.1rem);
+  }
+  .service-cta,
+  .services-cta-grid{
+    gap: clamp(.75rem, 4vw, 1.1rem);
+  }
+  .recent-works__carousel,
+  .recent-posts__carousel,
+  .contact-hub__shell{
+    padding: clamp(.8rem, 4vw, 1.2rem);
+    border-radius: clamp(1rem, 5vw, 1.6rem);
+  }
+  .recent-works .carousel__btn,
+  .recent-posts .carousel__btn{
+    width:36px;
+    height:36px;
+  }
+  .contact-hub__card--booking .calendly-inline,
+  .contact-hub__card--booking #calendly-inline-embed{
+    min-height: clamp(420px, 85vh, 640px);
+    margin:0;
+  }
+  .services-tools{
+    justify-content:center;
+  }
+}
+@media (max-width: 360px){
+  body{
+    font-size:15px;
+  }
+  .about-hero__eyebrow,
+  .recent-works__eyebrow,
+  .recent-posts__eyebrow,
+  .contact-hub__eyebrow{
+    letter-spacing:.16em;
+  }
+  .btn{
+    padding:.55rem 1rem;
+    font-size:.95rem;
+  }
+  .service-card,
+  .project-card,
+  .recent-post-card,
+  .contact-hub__card{
+    padding:1rem;
+  }
+  .carousel__btn{
+    font-size:18px;
+  }
+}
 
 
 /* 5) Sections visuelles : fonds trÃ¨s pÃ¢les + bordures nettes */
@@ -3714,4 +3834,3 @@ body::before{
     padding: clamp(1.4rem, 5vw, 1.8rem);
   }
 }
-
