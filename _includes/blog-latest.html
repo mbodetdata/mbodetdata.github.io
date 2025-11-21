@@ -15,7 +15,10 @@
       <p class="muted">Aucun article publié pour le moment.</p>
     {% else %}
     <div class="recent-posts__body">
-      <ul class="recent-posts__grid" role="list" aria-label="Les 3 derniers articles publiés">
+      <div class="recent-posts__carousel carousel" data-carousel="blog" data-carousel-label="l’article">
+        <button class="carousel__btn prev" type="button" aria-label="Défiler vers la gauche">&lsaquo;</button>
+
+        <ul class="recent-posts__grid carousel__track" role="listbox" aria-label="Liste d’articles récents">
         {% for post in posts_sorted limit:3 %}
           {% assign idx = forloop.index0 %}
 
@@ -39,7 +42,7 @@
             | truncate: 160
           %}
 
-          <li class="recent-posts__item" role="presentation">
+          <li class="recent-posts__item carousel__slide" role="option" aria-describedby="post-desc-{{ idx }}">
             <article class="recent-post-card" aria-describedby="post-desc-{{ idx }}">
               {% if post.image %}
                 <div class="recent-post-card__media">
@@ -77,7 +80,11 @@
             </article>
           </li>
         {% endfor %}
-      </ul>
+        </ul>
+
+        <button class="carousel__btn next" type="button" aria-label="Défiler vers la droite">&rsaquo;</button>
+        <div class="carousel__dots" aria-label="Sélecteur d’articles récents"></div>
+      </div>
     </div>
     {% endif %}
   </div>
