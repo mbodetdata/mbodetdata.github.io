@@ -1564,10 +1564,41 @@ body.home .brand-logo{ animation: logo-pulse 3s ease-in-out infinite; ; transiti
 .contact-hub__card--direct .contact-list{ gap: clamp(.9rem, 1rem + .3vw, 1.3rem); }
 
 /* Liste contacts + copy */
-.contact-inline{ text-align:left; display:grid; gap:1rem; padding: 1rem 1.25rem 1.25rem; }
-.contact-list{ list-style:none; margin:0; padding:0; display:grid; gap:.8rem; }
-.contact-row{ display:flex; align-items:center; justify-content:flex-start; gap:.5rem; }
-.contact-item{ flex:1; display:flex; align-items:center; gap:.75rem; text-decoration:none; color:var(--fg); padding:.9rem 1rem; border:1px solid var(--border); border-radius:1rem; background: color-mix(in oklab, var(--surface-1) 98%, var(--brand) 2%); }
+.contact-inline{
+  text-align:left;
+  display:grid;
+  gap:1rem;
+  padding: 1rem 1.25rem 1.25rem;
+  width:100%;
+}
+.contact-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:.8rem;
+  width:100%;
+}
+.contact-row{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:.5rem;
+  width:100%;
+}
+.contact-item{
+  flex:1 1 auto;
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  text-decoration:none;
+  color:var(--fg);
+  padding:.9rem 1rem;
+  border:1px solid var(--border);
+  border-radius:1rem;
+  background: color-mix(in oklab, var(--surface-1) 98%, var(--brand) 2%);
+  width:100%;
+}
 .contact-item:hover{ transform: translateY(-1px); border-color: color-mix(in oklab, var(--border), var(--brand) 28%); background: color-mix(in oklab, var(--surface-1) 94%, var(--brand) 6%); box-shadow: var(--shadow-md); }
 .ci-icon{ width:40px; height:40px; border-radius:.9rem; display:grid; place-items:center; background: var(--g-brand); color:#fff; box-shadow: 0 2px 6px rgba(0,0,0,.25); font-size:1.05rem; }
 .ci-icon.badge-glass{ background: linear-gradient(135deg, color-mix(in oklab, var(--brand) 22%, transparent), color-mix(in oklab, var(--brand-2) 28%, transparent)); border:1px solid color-mix(in oklab, var(--border), var(--brand) 24%); }
