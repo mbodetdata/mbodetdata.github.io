@@ -8,7 +8,7 @@ keywords_groups:
   - competences
 permalink: /
 bandeau:
-  photo: "/assets/img/bm-hero_530.webp"
+  photo: "/assets/img/bm-hero_530_comp.webp"
 ---
 
 <!-- H1 accessible (améliore le SEO sans changer le design) -->

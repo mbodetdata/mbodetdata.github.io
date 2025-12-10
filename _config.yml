@@ -128,4 +128,4 @@ exclude:
 #     permalink: /projets/:name/
 
 bandeau.photo:
-  photo: "/assets/img/bm-hero_530.webp"
+  photo: "/assets/img/bm-hero_530_comp.webp"
