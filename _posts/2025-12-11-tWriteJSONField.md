@@ -262,6 +262,7 @@ On a deux sources :
 - **Adresses** (0..n adresses par personne via une clé de rattachement)
 
 #### Personnes structure des données
+
 | Champ         | Type Talaxie | Description                              |
 |---------------|--------------|------------------------------------------|
 | _id           | Integer      | Identifiant unique de la personne        |
