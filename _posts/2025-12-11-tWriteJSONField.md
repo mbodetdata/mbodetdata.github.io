@@ -5,7 +5,7 @@ description: "Comprendre enfin comment configurer tWriteJSONField et son JSON Tr
 categories: blog
 tags: [Talend, Talaxie, JSON, tWriteJSONField, ETL, Bonnes pratiques]
 image: "/assets/img/blog/7-twritejsonfield/logo_1024.webp"
-active: true
+active: false
 parent_category: talend-talaxie
 ---
 
