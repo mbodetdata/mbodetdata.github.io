@@ -16,7 +16,7 @@ Générer du JSON avec Talaxie, ce n’est pas toujours aussi intuitif qu’il n
 Dans cet article, je vais donc te montrer comment **générer un JSON propre et directement exploitable**, avec quelques astuces qui font gagner du temps au quotidien.
 
 > ✅ J’ai mis à disposition le workspace ici :  
-> ➡️ **[Lien du workspace]**  
+> ➡️ **[[Lien du workspace](https://github.com/mbodetdata/BMDATA_Blog-tWriteJSONField.git)]**  
 > N’hésite pas à le télécharger pour suivre pas à pas.
 
 Si tu as déjà eu à travailler avec du JSON sur Talaxie (ou Talend), tu connais sûrement le composant **tWriteJSONField**.  
@@ -33,9 +33,9 @@ Ensemble, on va voir les étapes suivantes :
    - des types non-string (`int`, `boolean`, etc.)
 
 > 📚 Sources utilisées pour la rédaction :  
-> - **[Lien doc 1]**  
-> - **[Lien doc 2]**  
-> - **[Lien doc 3]**
+> - **[[Configurer une arborescence JSON](https://help.qlik.com/talend/fr-FR/components/8.0/processing/configuring-a-json-tree)]**  
+> - **[[Configurer le tWriteJSONField](https://help.qlik.com/talend/fr-FR/components/8.0/processing/textractjsonfields-twritejsonfield-tfixedflowinput-tlogrow-setting-up-twritejsonfield-standard-component-click)]**  
+> - **[[Propriétés du tWriteJSONField Standard](https://help.qlik.com/talend/fr-FR/components/8.0/processing/twritejsonfield-standard-properties)]**
 
 ---
 
@@ -48,7 +48,7 @@ Ensemble, on va voir les étapes suivantes :
 
 Concrètement, il permet de :
 
-- **partir d’un schéma d’entrée classique** (colonnes Talend),  
+- **partir d’un schéma d’entrée classique** (colonnes Talaxie),  
 - **mapper ces colonnes dans une structure JSON** via le **JSON Tree**,  
 - **produire une chaîne JSON** stockée dans une colonne de sortie (*Output Column*).
 
@@ -192,7 +192,7 @@ Pour définir un `type` :
   - `boolean`
 
 > 💡 Bonne pratique  
-> Si le schéma d’entrée est proprement typé, laisse Talend faire.  
+> Si le schéma d’entrée est proprement typé, laisse Talaxie faire.  
 > Utilise `type` uniquement quand tu veux **reprendre le contrôle**.
 
 ---
