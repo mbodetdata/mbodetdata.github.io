@@ -220,16 +220,16 @@ divers::Divers
 
   #articles .posts-grid.modern-grid{
     display:grid;
-    gap:clamp(1.1rem, 2vw, 1.6rem);
-    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:clamp(1.2rem, 2vw, 1.8rem);
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
   }
   #articles .post-card{
     position:relative;
     display:grid;
-    grid-template-rows:auto 1fr;
-    gap:.85rem;
-    padding:clamp(.9rem, 1.6vw, 1.2rem);
-    border-radius:clamp(1rem, 1.6vw, 1.3rem);
+    grid-template-rows: minmax(190px, 220px) 1fr;
+    gap:.95rem;
+    padding:clamp(.95rem, 1.6vw, 1.35rem);
+    border-radius:clamp(1rem, 1.8vw, 1.35rem);
     background:
       radial-gradient(140% 140% at 15% 0%, color-mix(in oklab, var(--brand) 18%, transparent) 0%, transparent 60%),
       color-mix(in oklab, var(--surface-1) 88%, transparent);
@@ -244,18 +244,27 @@ divers::Divers
     overflow:hidden;
     isolation:isolate;
     border:1px solid color-mix(in oklab, var(--border), transparent 20%);
-    min-height:180px;
+    min-height:190px;
     background:var(--surface-2);
+    overflow:hidden;
   }
   #articles .post-card .pc-media img{
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
+    filter:saturate(1.06);
+  }
+  #articles .post-card .pc-media::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(5,8,18,0) 35%, rgba(5,8,18,.55) 100%);
+    z-index:1;
   }
   #articles .post-card .pc-flags{
     position:absolute;
-    inset:12px 12px auto 12px;
+    inset:auto 12px 12px 12px;
     display:flex;
     gap:.5rem;
     flex-wrap:wrap;
@@ -263,23 +272,33 @@ divers::Divers
   }
   #articles .post-card .pc-body{
     display:grid;
-    gap:.55rem;
+    gap:.6rem;
   }
   #articles .post-card .pc-meta{
     font-size:.95rem;
     display:flex;
     align-items:center;
-    gap:.5rem;
+    gap:.55rem;
     color:color-mix(in oklab, var(--muted) 78%, #fff 22%);
+    flex-wrap:wrap;
+    letter-spacing:.01em;
   }
   #articles .post-card .pc-title{
     margin:0;
     font-size: clamp(1.15rem, 1rem + .5vw, 1.4rem);
     line-height:1.2;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
   }
   #articles .post-card .pc-excerpt{
     margin:0;
     color:color-mix(in oklab, var(--muted) 85%, #fff 15%);
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
   }
   #articles .post-card .pc-tags{
     display:flex;
@@ -299,6 +318,7 @@ divers::Divers
   #articles .post-card .chip--time{
     background: color-mix(in oklab, var(--surface-2) 80%, var(--brand) 12%);
     color:color-mix(in oklab, var(--muted) 60%, #fff 40%);
+    border:1px solid color-mix(in oklab, var(--border), var(--brand) 18%);
   }
   #articles .post-card .stretched{
     position:absolute;
