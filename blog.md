@@ -48,6 +48,19 @@ divers::Divers
 {% assign latest_post = posts_sorted.first %}
 
 <style>
+  /* Palette harmonisee avec la home (index.md) */
+  :root{
+    --brand:#6677ff;
+    --brand-2:#2bd48f;
+    --accent: var(--brand);
+    --bg:#080b14;
+    --fg:#e8edf6;
+    --muted:#a6b1c7;
+    --surface-0:#0a0f1e;
+    --surface-1:#0f1426;
+    --surface-2:color-mix(in oklab, var(--surface-1) 88%, #000 12%);
+    --border:color-mix(in oklab, #93a4c5 12%, #0a0f1e 88%);
+  }
   #blog-hero.about-hero{
     padding-block:clamp(3.2rem, 8vw, 6rem);
   }
@@ -368,7 +381,7 @@ divers::Divers
           <span class="pill-dot" aria-hidden="true"></span>
           <div>
             <p class="pill-label">Approche produit</p>
-            <p class="pill-value">Talend / Talaxie &middot; Power BI &middot; DataOps</p>
+            <p class="pill-value">Talend / Talaxie &middot; Power BI</p>
           </div>
         </div>
       </div>
