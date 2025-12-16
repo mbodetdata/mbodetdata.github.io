@@ -220,16 +220,18 @@ divers::Divers
 
   #articles .posts-grid.modern-grid{
     display:grid;
-    gap:clamp(1.2rem, 2vw, 1.8rem);
-    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:clamp(1.4rem, 2vw, 1.9rem);
+    grid-template-columns:repeat(auto-fit, minmax(440px, 1fr));
+    max-width:1120px;
+    margin-inline:auto;
   }
   #articles .post-card{
     position:relative;
     display:grid;
-    grid-template-rows: minmax(190px, 220px) 1fr;
-    gap:.95rem;
-    padding:clamp(.95rem, 1.6vw, 1.35rem);
-    border-radius:clamp(1rem, 1.8vw, 1.35rem);
+    grid-template-rows: auto 1fr;
+    gap:.9rem;
+    padding:clamp(1rem, 1.8vw, 1.4rem);
+    border-radius:clamp(1rem, 2vw, 1.4rem);
     background:
       radial-gradient(140% 140% at 15% 0%, color-mix(in oklab, var(--brand) 18%, transparent) 0%, transparent 60%),
       color-mix(in oklab, var(--surface-1) 88%, transparent);
@@ -240,42 +242,29 @@ divers::Divers
   }
   #articles .post-card .pc-media{
     position:relative;
-    border-radius:clamp(.9rem, 1.4vw, 1.1rem);
+    border-radius:clamp(1rem, 1.6vw, 1.2rem);
     overflow:hidden;
     isolation:isolate;
     border:1px solid color-mix(in oklab, var(--border), transparent 20%);
-    min-height:190px;
     background:var(--surface-2);
-    overflow:hidden;
+    aspect-ratio: 16 / 9;
   }
   #articles .post-card .pc-media img{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:contain;
+    object-position:center;
     display:block;
-    filter:saturate(1.06);
-  }
-  #articles .post-card .pc-media::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(180deg, rgba(5,8,18,0) 35%, rgba(5,8,18,.55) 100%);
-    z-index:1;
-  }
-  #articles .post-card .pc-flags{
-    position:absolute;
-    inset:auto 12px 12px 12px;
-    display:flex;
-    gap:.5rem;
-    flex-wrap:wrap;
-    z-index:2;
+    filter:saturate(1.04);
+    background:var(--surface-0);
+    padding:6px;
   }
   #articles .post-card .pc-body{
     display:grid;
-    gap:.6rem;
+    gap:.65rem;
   }
   #articles .post-card .pc-meta{
-    font-size:.95rem;
+    font-size:.94rem;
     display:flex;
     align-items:center;
     gap:.55rem;
@@ -303,22 +292,29 @@ divers::Divers
   #articles .post-card .pc-tags{
     display:flex;
     flex-wrap:wrap;
-    gap:.4rem;
+    gap:.35rem;
   }
   #articles .post-card .chip{
-    background:color-mix(in oklab, var(--surface-2) 70%, transparent);
+    background:color-mix(in oklab, var(--surface-2) 78%, transparent);
     border:1px solid color-mix(in oklab, var(--border), transparent 10%);
   }
   #articles .post-card .chip--category{
-    background: color-mix(in oklab, var(--brand) 22%, var(--surface-2) 78%);
+    background: color-mix(in oklab, var(--brand) 20%, var(--surface-2) 80%);
     color:#fff;
-    border:1px solid color-mix(in oklab, var(--brand) 45%, transparent);
+    border:1px solid color-mix(in oklab, var(--brand) 38%, transparent);
     box-shadow:0 0 0 1px rgba(255,255,255,.05);
   }
   #articles .post-card .chip--time{
     background: color-mix(in oklab, var(--surface-2) 80%, var(--brand) 12%);
     color:color-mix(in oklab, var(--muted) 60%, #fff 40%);
     border:1px solid color-mix(in oklab, var(--border), var(--brand) 18%);
+  }
+  #articles .post-card .chip--pill{
+    background: color-mix(in oklab, var(--surface-2) 82%, var(--brand) 12%);
+    border:1px solid color-mix(in oklab, var(--border), var(--brand) 20%);
+    color:color-mix(in oklab, var(--muted) 40%, #fff 60%);
+    padding:.35rem .8rem;
+    border-radius:999px;
   }
   #articles .post-card .stretched{
     position:absolute;
@@ -421,16 +417,21 @@ divers::Divers
       <article class="post-card card" data-category="{{ category_slug }}">
         <div class="pc-media" aria-hidden="true">
           <img src="{{ cover | relative_url }}" alt="" loading="lazy" decoding="async">
-          <div class="pc-flags">
-            <span class="chip chip--category">{{ category_label }}</span>
-            <span class="chip chip--time">~{{ minutes }} min</span>
-          </div>
         </div>
         <div class="pc-body">
           <div class="pc-meta muted">
+            <span class="chip chip--pill">{{ category_label }}</span>
+            <span aria-hidden="true">&middot;</span>
             <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
             <span aria-hidden="true">&middot;</span>
             <span>{{ minutes }} min de lecture</span>
+          </div>
+          <div class="pc-meta muted">
+            {% if post.author %}
+              <span>{{ post.author }}</span>
+              <span aria-hidden="true">&middot;</span>
+            {% endif %}
+            <span>Talend / Power BI</span>
           </div>
           <h3 class="pc-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
           <p class="pc-excerpt muted">{{ post.excerpt | strip_html | truncate: 160 }}</p>
