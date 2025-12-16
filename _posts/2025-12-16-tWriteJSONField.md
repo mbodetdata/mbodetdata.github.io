@@ -416,7 +416,7 @@ Structure attendue : racine → `personnes` (class=array) → `personne` (loop, 
 
 #### 4.7.8 Écrire le fichier JSON
 
-Ajoute un `tFileOutputRaw` et écris uniquement `json_final` (filtre la colonne `grp_json` avant).
+Ajoute un `tFileOutputRaw` et écris uniquement `json_final` (filtre la colonne `grp_json` avant avec le composant `tFilterColumn`).
 
 ![Écriture fichier]({{ '/assets/img/blog/7-twritejsonfield/6-C8-fileoutput.webp' | relative_url }}){:alt="Écriture du JSON global dans un fichier" loading="lazy" decoding="async"}
 
@@ -428,10 +428,10 @@ Ajoute un `tFileOutputRaw` et écris uniquement `json_final` (filtre la colonne 
 
 Si tu reprends le job dans l’ordre, on a fait exactement ça :
 
-- compris le **rôle réel de `tWriteJSONField`** : composant **déclaratif** basé sur le JSON Tree, pas magique ;
-- pensé **JSON avant Talaxie** : on définit la structure cible, puis on construit le job ;
-- maîtrisé les notions clés : `loop element`, `class=array/object`, `type` quand le schéma ne suffit plus ;
-- appliqué une méthode robuste :
+- Comprendre le **rôle réel de `tWriteJSONField`** : composant **déclaratif** basé sur le JSON Tree, pas magique ;
+- Penser **JSON avant Talaxie** : on définit la structure cible, puis on construit le job ;
+- Maîtriser les notions clés : `loop element`, `class=array/object`, `type` quand le schéma ne suffit plus ;
+- Appliquer une méthode robuste :
   - **Étape A** : résoudre le `1..n` (Personne → Adresses) en amont,  
   - **Étape B** : rattacher sans dupliquer,  
   - **Étape C** : produire un JSON global unique et stable.
