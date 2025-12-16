@@ -7,6 +7,7 @@ tags: [Talend, Talaxie, ETL, Automatisation, Entreprises, Data, Intégration]
 image: "/assets/img/blog/4-benefices_talend/logo.webp"
 active: true
 parent_category: avantages
+category_label: Talend
 ---
 
 Les Entreprises manipulent chaque jour des **volumes croissants de données** : ventes, stocks, RH, facturation, e-commerce…  

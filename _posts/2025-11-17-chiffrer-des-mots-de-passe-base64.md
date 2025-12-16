@@ -7,6 +7,7 @@ tags: [Talend, Talaxie, Sécurité, Chiffrement, ETL, Bonnes pratiques]
 image: "/assets/img/blog/5-chiffrement_base_64/logo_1024.webp"
 active: true
 parent_category: talend-securite
+category_label: Sécurité
 ---
 
 Dans les projets Talend et Talaxie, je vois **trop souvent** des mots de passe écrits **en clair**, directement dans :

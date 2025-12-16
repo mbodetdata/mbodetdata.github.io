@@ -7,16 +7,17 @@ tags: [Talend, ETL, "Data Integration", "Big Data", ESB, "Data Preparation", "Da
 image: "/assets/img/blog/blog-1.webp"
 active: true
 parent_category: talend-talaxie
+category_label: Talaxie / Talend
 ---
 
-Talend est l’un des acteurs majeurs du monde de l’**ETL et de l’intégration de données**.  
+Talend/Talaxie est l’un des acteurs majeurs du monde de l’**ETL et de l’intégration de données**.  
 La plateforme propose plusieurs studios spécialisés, chacun pensé pour des besoins précis : intégration classique, Big Data, temps réel, préparation ou encore qualité des données.  
 
-Dans cet article, je vous présente les principaux studios Talend et leurs cas d’usage.  
+Dans cet article, je vous présente les principaux studios Talend / Talaxie et leurs cas d’usage.  
 
 <!--more-->
 
-## 1. Talend Open Studio for Data Integration (TOS DI)
+## 1. Talend/Talaxie Open Studio for Data Integration (TOS DI)
 
 C’est le **studio le plus utilisé** par les entreprises.  
 Il permet de créer des **jobs planifiés** (via Windows Task, CRON, Azure, etc.) qui automatisent les traitements de données : chaque jour, toutes les heures, ou à intervalles définis.  
@@ -29,7 +30,7 @@ Il permet de créer des **jobs planifiés** (via Windows Task, CRON, Azure, etc.
 
 ---
 
-## 2. Talend Open Studio for Big Data (TOS BD)
+## 2. Talend/Talaxie Open Studio for Big Data (TOS BD)
 
 Très proche de TOS DI, mais orienté vers l’univers **Big Data et NoSQL**.  
 
@@ -42,7 +43,7 @@ Très proche de TOS DI, mais orienté vers l’univers **Big Data et NoSQL**.
 
 ---
 
-## 3. Talend Open Studio for Enterprise Service Bus (TOS ESB)
+## 3. Talend/Talaxie Open Studio for Enterprise Service Bus (TOS ESB)
 
 Ce studio est pensé pour le **temps réel** et l’**interopérabilité entre applications**.  
 

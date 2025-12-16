@@ -7,6 +7,7 @@ tags: [Talend, Talaxie, JSON, tWriteJSONField, ETL, Bonnes pratiques]
 image: "/assets/img/blog/7-twritejsonfield/logo_1024.webp"
 active: true
 parent_category: talend-talaxie
+category_label: Talaxie
 ---
 
 Le JSON est partout : NoSQL, API, événements, configs. Et dès que les structures se corsent (objets imbriqués, tableaux, types non-string), `tWriteJSONField` peut vite te faire transpirer.  

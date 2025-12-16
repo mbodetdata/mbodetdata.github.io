@@ -18,69 +18,301 @@ divers::Divers
 {% endcapture %}
 {% assign parent_categories = categories_config | strip | split: "\n" %}
 {% assign total_posts = posts_sorted | size %}
-{% assign total_categories = parent_categories | size %}
+{% assign categories_unique = "" | split: "" %}
+{% for post in posts_sorted %}
+  {% assign category_input = post.category | default: post.parent_category | default: post.category_label | default: 'divers' | strip %}
+  {% if category_input == "" %}
+    {% assign category_input = 'divers' %}
+  {% endif %}
+  {% assign category_label = post.category_label | default: '' | strip %}
+  {% assign category_slug = category_input | slugify %}
+  {% if category_label == "" %}
+    {% assign category_label = category_input %}
+    {% for entry in parent_categories %}
+      {% assign parts = entry | split: "::" %}
+      {% assign cat_slug = parts[0] | strip | slugify %}
+      {% assign cat_label = parts[1] | strip %}
+      {% if category_slug == cat_slug %}
+        {% assign category_label = cat_label %}
+      {% endif %}
+    {% endfor %}
+    {% if category_label == category_input %}
+      {% assign category_label = category_input | replace: '-', ' ' | capitalize %}
+    {% endif %}
+  {% endif %}
+  {% unless categories_unique contains category_label %}
+    {% assign categories_unique = categories_unique | push: category_label %}
+  {% endunless %}
+{% endfor %}
+{% assign total_categories = categories_unique | size %}
+{% assign latest_post = posts_sorted.first %}
 
 <style>
   #blog-hero.about-hero{
-    padding-block:clamp(3rem, 10vw, 5.6rem);
+    padding-block:clamp(3.2rem, 8vw, 6rem);
   }
   #blog-hero .about-hero__canvas{
     position:relative;
-    border-radius:var(--radius-xl);
-    padding:clamp(2.4rem, 6vw, 3.4rem);
+    border-radius:clamp(1.8rem, 3vw, 2.6rem);
+    padding:clamp(2.6rem, 6vw, 3.6rem);
+    border:1px solid color-mix(in oklab, var(--border), var(--brand) 28%);
+    background:
+      radial-gradient(120% 140% at 12% 0%, color-mix(in oklab, var(--brand) 32%, transparent) 0%, transparent 70%),
+      radial-gradient(100% 100% at 82% 18%, color-mix(in oklab, var(--brand-2) 24%, transparent) 0%, transparent 60%),
+      linear-gradient(135deg, color-mix(in oklab, var(--surface-1) 82%, transparent), color-mix(in oklab, var(--surface-2) 72%, var(--brand) 16%));
+    box-shadow: var(--shadow-lg);
   }
   #blog-hero .about-hero__inner{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-    gap:clamp(2rem, 6vw, 3rem);
-    align-items:start;
+    grid-template-columns:minmax(0, 1.15fr) minmax(280px, .95fr);
+    gap:clamp(2.2rem, 6vw, 3.2rem);
+    align-items:stretch;
   }
   #blog-hero .about-hero__content{
-    max-width:min(640px, 100%);
+    max-width:min(720px, 100%);
     display:grid;
     gap:clamp(1rem, 2vw, 1.6rem);
     justify-items:start;
   }
   #blog-hero .about-hero__eyebrow{
-    letter-spacing:.08em;
+    letter-spacing:.14em;
     text-transform:uppercase;
+    color:color-mix(in oklab, #fff 78%, transparent);
+  }
+  #blog-hero .about-hero__title{
+    margin:0;
+    font-size:clamp(2.4rem, 1.6rem + 2.6vw, 3.5rem);
   }
   #blog-hero .about-hero__text{
-    color:var(--muted);
-    max-width:52ch;
+    color:color-mix(in oklab, var(--muted) 65%, #fff 35%);
+    max-width:62ch;
+    font-size:clamp(1rem, .95rem + .35vw, 1.15rem);
+  }
+  #blog-hero .hero-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.6rem;
+    padding:.25rem 0 .35rem;
   }
   #blog-hero .hero-actions{
     display:flex;
-    gap:clamp(.8rem, 2vw, 1.2rem);
+    gap:clamp(.85rem, 2vw, 1.2rem);
     flex-wrap:wrap;
   }
+  #blog-hero .hero-actions .btn{
+    padding:.7rem 1.6rem;
+  }
   #blog-hero .blog-hero__stats{
-    padding:clamp(1.8rem, 4vw, 2.4rem);
-    border-radius:var(--radius-lg);
+    padding:clamp(1.9rem, 4vw, 2.5rem);
+    border-radius:var(--radius-2);
     display:grid;
-    gap:1.2rem;
-    background:var(--surface-2, rgba(20,26,45,.65));
-    box-shadow:0 0 0 1px rgba(255,255,255,.04) inset, 0 24px 40px rgba(6,11,30,.35);
+    gap:1rem;
+    background:color-mix(in oklab, var(--surface-2) 88%, transparent);
+    border:1px solid color-mix(in oklab, var(--border), var(--brand) 35%);
+    box-shadow:0 18px 40px rgba(6,11,30,.45);
   }
   #blog-hero .blog-hero__stats-title{
     color:var(--muted);
-    font-weight:500;
+    font-weight:600;
+    margin:0;
+    letter-spacing:.02em;
   }
   #blog-hero .blog-hero__stats-list{
-    list-style:disc;
-    padding-left:1.4rem;
+    list-style:none;
+    padding:0;
+    margin:0;
     display:grid;
-    gap:.4rem;
+    gap:.45rem;
   }
   #blog-hero .blog-hero__stats-list li{
-    color:var(--muted);
+    color:color-mix(in oklab, var(--muted) 82%, #fff 18%);
+    display:flex;
+    align-items:center;
+    gap:.5rem;
   }
   #blog-hero .blog-hero__stats-list strong{
-    color:var(--text);
+    color:#fff;
+    font-weight:750;
+    letter-spacing:.01em;
+  }
+  #blog-hero .stat-pill{
+    display:flex;
+    gap:.65rem;
+    align-items:center;
+    padding:.85rem 1rem;
+    border-radius:999px;
+    background:color-mix(in oklab, var(--surface-1) 88%, var(--brand) 12%);
+    border:1px solid color-mix(in oklab, var(--border), transparent 25%);
+  }
+  #blog-hero .pill-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--brand-2);
+    box-shadow:0 0 0 6px color-mix(in oklab, var(--brand-2) 25%, transparent);
+  }
+  #blog-hero .pill-label{
+    margin:0;
+    font-size:.95rem;
+    color:var(--muted);
+  }
+  #blog-hero .pill-value{
+    margin:0;
+    color:#fff;
+    font-weight:600;
+  }
+  .chip--ghost{
+    border:1px solid color-mix(in oklab, var(--border), var(--brand) 30%);
+    background: color-mix(in oklab, var(--surface-2) 70%, transparent);
+    color:color-mix(in oklab, var(--muted) 70%, #fff 30%);
+  }
+  @media (max-width: 960px){
+    #blog-hero .about-hero__inner{
+      grid-template-columns:1fr;
+    }
   }
   @media (max-width: 720px){
     #blog-hero .about-hero__canvas{
-      padding:clamp(1.8rem, 8vw, 2.4rem);
+      padding:clamp(1.9rem, 8vw, 2.5rem);
+    }
+  }
+
+  #articles .articles-head{
+    display:grid;
+    grid-template-columns:minmax(0, 1.1fr) minmax(260px, .9fr);
+    gap:clamp(1.2rem, 2.6vw, 1.8rem);
+    align-items:center;
+    padding:clamp(1.2rem, 2vw, 1.6rem) clamp(1rem, 2vw, 1.4rem);
+    border-radius:clamp(1rem, 2vw, 1.6rem);
+    border:1px solid color-mix(in oklab, var(--border), var(--brand) 25%);
+    background:linear-gradient(125deg, color-mix(in oklab, var(--surface-1) 88%, transparent), color-mix(in oklab, var(--surface-2) 70%, var(--brand) 18%));
+    box-shadow: var(--shadow-md);
+    margin-bottom:clamp(1.2rem, 2vw, 1.6rem);
+  }
+  #articles .articles-head__copy{
+    display:grid;
+    gap:.5rem;
+  }
+  #articles .articles-head__copy h2{
+    margin:0;
+  }
+  #articles .articles-head__copy p{
+    margin:0;
+    color:color-mix(in oklab, var(--muted) 80%, #fff 20%);
+  }
+  #articles .articles-head__filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.6rem;
+    justify-content:flex-end;
+  }
+  #articles .articles-head__filters .chip{
+    background:color-mix(in oklab, var(--surface-2) 72%, transparent);
+  }
+  @media (max-width: 900px){
+    #articles .articles-head{
+      grid-template-columns:1fr;
+    }
+    #articles .articles-head__filters{
+      justify-content:flex-start;
+    }
+  }
+
+  #articles .posts-grid.modern-grid{
+    display:grid;
+    gap:clamp(1.1rem, 2vw, 1.6rem);
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  }
+  #articles .post-card{
+    position:relative;
+    display:grid;
+    grid-template-rows:auto 1fr;
+    gap:.85rem;
+    padding:clamp(.9rem, 1.6vw, 1.2rem);
+    border-radius:clamp(1rem, 1.6vw, 1.3rem);
+    background:
+      radial-gradient(140% 140% at 15% 0%, color-mix(in oklab, var(--brand) 18%, transparent) 0%, transparent 60%),
+      color-mix(in oklab, var(--surface-1) 88%, transparent);
+    border:1px solid color-mix(in oklab, var(--border), var(--brand) 28%);
+    box-shadow: var(--shadow-md);
+    transition:transform .25s ease, box-shadow .25s ease;
+    overflow:hidden;
+  }
+  #articles .post-card .pc-media{
+    position:relative;
+    border-radius:clamp(.9rem, 1.4vw, 1.1rem);
+    overflow:hidden;
+    isolation:isolate;
+    border:1px solid color-mix(in oklab, var(--border), transparent 20%);
+    min-height:180px;
+    background:var(--surface-2);
+  }
+  #articles .post-card .pc-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  #articles .post-card .pc-flags{
+    position:absolute;
+    inset:12px 12px auto 12px;
+    display:flex;
+    gap:.5rem;
+    flex-wrap:wrap;
+    z-index:2;
+  }
+  #articles .post-card .pc-body{
+    display:grid;
+    gap:.55rem;
+  }
+  #articles .post-card .pc-meta{
+    font-size:.95rem;
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    color:color-mix(in oklab, var(--muted) 78%, #fff 22%);
+  }
+  #articles .post-card .pc-title{
+    margin:0;
+    font-size: clamp(1.15rem, 1rem + .5vw, 1.4rem);
+    line-height:1.2;
+  }
+  #articles .post-card .pc-excerpt{
+    margin:0;
+    color:color-mix(in oklab, var(--muted) 85%, #fff 15%);
+  }
+  #articles .post-card .pc-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.4rem;
+  }
+  #articles .post-card .chip{
+    background:color-mix(in oklab, var(--surface-2) 70%, transparent);
+    border:1px solid color-mix(in oklab, var(--border), transparent 10%);
+  }
+  #articles .post-card .chip--category{
+    background: color-mix(in oklab, var(--brand) 22%, var(--surface-2) 78%);
+    color:#fff;
+    border:1px solid color-mix(in oklab, var(--brand) 45%, transparent);
+    box-shadow:0 0 0 1px rgba(255,255,255,.05);
+  }
+  #articles .post-card .chip--time{
+    background: color-mix(in oklab, var(--surface-2) 80%, var(--brand) 12%);
+    color:color-mix(in oklab, var(--muted) 60%, #fff 40%);
+  }
+  #articles .post-card .stretched{
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    z-index:3;
+  }
+  #articles .post-card:hover{
+    transform:translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+  @media (max-width: 520px){
+    #articles .post-card{
+      padding:.85rem;
     }
   }
 </style>
@@ -92,14 +324,36 @@ divers::Divers
         <p class="about-hero__eyebrow">Journal de bord data</p>
         <h1 class="about-hero__title">Blog</h1>
         <p class="about-hero__text">
-          Guides, retours d'experience et veille autour de Talend, Talaxie, Power BI et des plateformes data modernes.
+          Guides, retours d'experience et veille autour de Talend, Talaxie, Power BI et des plateformes data modernes. Un blog pratique pour monter vite en competence sans sacrifier l'esthetique produit.
         </p>
         <p>
           Nouveau lecteur ? Commencez par les tutoriels simples pour comprendre Talend, Talaxie et Power BI sans jargon.
         </p>
+        <div class="hero-tags" aria-label="Categories disponibles">
+          {% for category_label in categories_unique %}
+            <span class="chip chip--ghost">{{ category_label }}</span>
+          {% endfor %}
+        </div>
         <div class="hero-actions">
           <a class="btn primary" href="#articles">Guides pour debuter</a>
           <a class="btn ghost" href="https://bmdata.fr/#contact">Parler de mon projet data</a>
+        </div>
+      </div>
+      <div class="blog-hero__stats">
+        <p class="blog-hero__stats-title">Vue d'ensemble</p>
+        <ul class="blog-hero__stats-list">
+          <li><strong>{{ total_posts }}</strong> articles operationnels</li>
+          <li><strong>{{ total_categories }}</strong> thematiques couvertes</li>
+          {% if latest_post %}
+          <li>Dernier article : <strong>{{ latest_post.date | date: "%d %b %Y" }}</strong></li>
+          {% endif %}
+        </ul>
+        <div class="stat-pill">
+          <span class="pill-dot" aria-hidden="true"></span>
+          <div>
+            <p class="pill-label">Approche produit</p>
+            <p class="pill-value">Talend / Talaxie &middot; Power BI &middot; DataOps</p>
+          </div>
         </div>
       </div>
     </div>
@@ -107,32 +361,56 @@ divers::Divers
 </section>
 
 <section class="section" id="articles">
+  <div class="articles-head">
+    <div class="articles-head__copy">
+      <p class="about-hero__eyebrow">Articles</p>
+      <h2>Guides pour debuter (et progresser) sans perdre de temps</h2>
+      <p>Une selection premium : des visuels soignes, des pas-a-pas concrets et des astuces terrain pour Talend, Talaxie et Power BI.</p>
+    </div>
+    <div class="articles-head__filters" aria-label="Categories disponibles">
+      {% for category_label in categories_unique %}
+        <span class="chip chip--ghost">{{ category_label }}</span>
+      {% endfor %}
+    </div>
+  </div>
   <div class="posts-grid modern-grid">
     {% for post in posts_sorted %}
       {% assign cover = post.image | default: site.og_image %}
       {% assign words = post.content | strip_html | strip_newlines | replace: '  ', ' ' | split: ' ' | size %}
       {% assign minutes = words | divided_by: 220 | plus: 1 %}
-      {% assign parent_slug = post.parent_category | default: 'divers' | strip | downcase %}
-      {% assign parent_label = 'Divers' %}
-      {% for entry in parent_categories %}
-        {% assign parts = entry | split: "::" %}
-        {% assign cat_slug = parts[0] | strip | downcase %}
-        {% assign cat_label = parts[1] | strip %}
-        {% if parent_slug == cat_slug %}
-          {% assign parent_label = cat_label %}
+      {% assign category_input = post.category | default: post.parent_category | default: post.category_label | default: 'divers' | strip %}
+      {% if category_input == "" %}
+        {% assign category_input = 'divers' %}
+      {% endif %}
+      {% assign category_label = post.category_label | default: '' | strip %}
+      {% assign category_slug = category_input | slugify %}
+      {% if category_label == "" %}
+        {% assign category_label = category_input %}
+        {% for entry in parent_categories %}
+          {% assign parts = entry | split: "::" %}
+          {% assign cat_slug = parts[0] | strip | slugify %}
+          {% assign cat_label = parts[1] | strip %}
+          {% if category_slug == cat_slug %}
+            {% assign category_label = cat_label %}
+          {% endif %}
+        {% endfor %}
+        {% if category_label == category_input %}
+          {% assign category_label = category_input | replace: '-', ' ' | capitalize %}
         {% endif %}
-      {% endfor %}
-      <article class="post-card card">
-        <div class="thumb" aria-hidden="true">
+      {% endif %}
+      <article class="post-card card" data-category="{{ category_slug }}">
+        <div class="pc-media" aria-hidden="true">
           <img src="{{ cover | relative_url }}" alt="" loading="lazy" decoding="async">
+          <div class="pc-flags">
+            <span class="chip chip--category">{{ category_label }}</span>
+            <span class="chip chip--time">~{{ minutes }} min</span>
+          </div>
         </div>
         <div class="pc-body">
-          <div class="pc-flags">
-            <span class="chip chip--category">{{ parent_label }}</span>
-          </div>
           <div class="pc-meta muted">
             <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
-            <span aria-hidden="true">&middot;</span> ~{{ minutes }} min
+            <span aria-hidden="true">&middot;</span>
+            <span>{{ minutes }} min de lecture</span>
           </div>
           <h3 class="pc-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
           <p class="pc-excerpt muted">{{ post.excerpt | strip_html | truncate: 160 }}</p>

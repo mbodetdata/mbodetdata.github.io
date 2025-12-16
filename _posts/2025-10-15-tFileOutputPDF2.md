@@ -7,6 +7,7 @@ tags: [Talend, PDF, ETL, Reporting, Open Source, Data Integration]
 image: "/assets/img/blog/3-tFileOutputPDF2/title.webp"
 active: true
 parent_category: talend-talaxie
+category_label: Talaxie / Talend
 ---
 
 Dans beaucoup de projets Talend, on se retrouve tôt ou tard avec le même besoin :  
