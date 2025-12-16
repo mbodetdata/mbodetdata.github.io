@@ -9,8 +9,6 @@ active: true
 parent_category: talend-talaxie
 ---
 
-![Logo tWriteJSONField et JSON Tree]({{ '/assets/img/blog/7-twritejsonfield/logo_1024.webp' | relative_url }}){:alt="Talaxie tWriteJSONField et JSON Tree" loading="lazy" decoding="async"}
-
 Le JSON est partout : NoSQL, API, événements, configs. Dès que les structures se corsent (objets imbriqués, tableaux, types non-string), `tWriteJSONField` peut vite faire transpirer. Ce guide te montre comment garder la main, produire un JSON propre et exploitable, et surtout comprendre ce que fait le JSON Tree.
 
 > Workspace prêt : **[[Lien](https://github.com/mbodetdata/BMDATA_Blog-tWriteJSONField.git)]** pour suivre pas à pas.
@@ -48,11 +46,13 @@ Sources utiles :
 - dans une **colonne de la ligne** (ex. `json_document`, `serializedValue`),
 - ou vers un composant aval (`tRestClient`, MongoDB, etc.).
 
-En pratique, il permet de :
+En pratique, il sert d’atelier de montage :
 
-- partir d’un schéma d’entrée classique,  
-- mapper ces colonnes dans une structure JSON via le **JSON Tree**,  
-- produire une chaîne JSON dans une colonne de sortie (*Output Column*).
+- tu pars d’un schéma d’entrée classique,  
+- tu dessines la structure JSON dans le **JSON Tree**,  
+- tu obtiens une chaîne JSON dans une colonne de sortie (*Output Column*), prête à être envoyée.
+
+👉 Si le schéma et le JSON final ne racontent pas la même histoire, tu te heurteras à des surprises. La clé est donc de décrire précisément la cible, puis de laisser `tWriteJSONField` faire la traduction sans bricoler en sortie.
 
 ---
 
@@ -60,10 +60,12 @@ En pratique, il permet de :
 
 Dans les **Basic settings**, retiens surtout :
 
-- **Colonne de sortie** : la colonne qui contiendra le JSON (ex. `json_doc`, `serializedValue`).
-- **Configurer la structure JSON** : ouvre le **JSON Tree** pour définir la structure (objets, tableaux), les types, les éléments répétés (*loop element*).
-- **Group by** : regroupe plusieurs lignes d’entrée pour produire **un seul JSON**. Indispensable pour un tableau ou un JSON agrégé par clé.
-- **Supprimer le nœud racine** : retire le nœud racine généré, utile si la cible attend directement un tableau ou un objet.
+- **Colonne de sortie** : où sera écrite la chaîne JSON (ex. `json_doc`, `serializedValue`).  
+- **Configurer la structure JSON** : ouvre le **JSON Tree** pour dessiner la structure (objets, tableaux), déclarer les types et fixer le loop element.  
+- **Group by** : regroupe plusieurs lignes d’entrée pour produire **un seul JSON**. Indispensable pour fabriquer un tableau ou un JSON agrégé par clé.  
+- **Supprimer le nœud racine** : retire la racine générée si la cible attend directement un tableau ou un objet.
+
+👉 En clair : dis où écrire, comment structurer, si tu regroupes, et si tu gardes la racine. Le reste n’est que conséquences.
 
 ![Basic settings]({{ '/assets/img/blog/7-twritejsonfield/1-basic_param.webp' | relative_url }}){:alt="Basic settings du composant tWriteJSONField" loading="lazy" decoding="async"}
 
@@ -73,9 +75,9 @@ Dans les **Basic settings**, retiens surtout :
 
 - **Entourer de guillemets toutes les valeurs non nulles** : force tout en String.  
 - **Passer les valeurs nulles en chaîne de caractères vide** : `null` devient `""`.  
-- **Utiliser la notation scientifique pour les valeurs flottantes** : si besoin de notation scientifique.
+- **Utiliser la notation scientifique pour les valeurs flottantes** : utile si l’aval l’exige.
 
-> À manier avec précaution : ces options peuvent rendre le JSON non conforme aux attentes d’une API ou d’un outil aval.
+> Attention : ces options “forcent” le résultat. Sur une API stricte ou un index NoSQL, cela peut casser la validation. À activer seulement si tu sais pourquoi.
 
 ![Advanced settings]({{ '/assets/img/blog/7-twritejsonfield/1-advanced_param.webp' | relative_url }}){:alt="Advanced settings du composant tWriteJSONField" loading="lazy" decoding="async"}
 
@@ -106,7 +108,8 @@ Quand tu cliques sur **Configurer la structure JSON**, tu ouvres le **JSON Tree*
 
 ### Le point clé à retenir
 
-Le JSON Tree n’est **ni automatique ni intelligent**. Il suit exactement la structure et les attributs (`type`, `class`, loop) que tu poses. Il ne devine rien : tu décris précisément le JSON final.
+Le JSON Tree n’est **ni automatique ni intelligent**. Il suit exactement la structure et les attributs (`type`, `class`, loop) que tu poses. Il ne devine rien : tu décris précisément le JSON final.  
+Astuce : avant d’ouvrir l’éditeur, dessine sur papier le JSON cible. Plus ta vision est claire, plus le mapping sera rapide, et moins tu feras d’allers-retours.
 
 ---
 
@@ -123,7 +126,9 @@ Dans les cas simples, **aucun attribut** n’est nécessaire. Dès que la struct
 ### 3.1. Attribut `type` : forcer ou corriger le type
 
 Utile si : schéma trop générique (`String` partout), valeur calculée/concaténée, cible stricte (API, NoSQL, index).  
-Ajout : clic droit sur le nœud → *Ajouter un attribut* → **Name** `type` → **Fixed value** `integer` / `number` / `float` / `boolean`.
+Pour l'ajouter : 
+- Clic droit sur le nœud → *Ajouter un attribut* → **Name** `type` 
+- Clic droit sur le nœud → *Définir une valeur fixe* → **Fixed value** `integer` / `number` / `float` / `boolean`.
 
 > Si le schéma est proprement typé, laisse Talaxie gérer. Ajoute `type` seulement quand tu veux reprendre le contrôle.
 
@@ -134,13 +139,17 @@ Ajout : clic droit sur le nœud → *Ajouter un attribut* → **Name** `type` �
 
 > Un tableau sans `class=array` ou sans loop element = conception bancale.
 
+Pour l'ajouter : 
+- Clic droit sur le nœud → *Ajouter un attribut* → **Name** `class` 
+- Clic droit sur le nœud → *Définir une valeur fixe* → **Fixed value** `array` / `object`.
+
+**En résumé :** laisse les types faire leur travail quand le schéma est propre, et pose `class` dès qu’un tableau ou un objet doit être explicite. Chaque attribut est un garde-fou : ajoute-le pour lever un doute, pas pour “voir si ça passe”.
+
 ---
 
 ## 4. Construire le bon JSON : on commence par la cible
 
-Cas concret : **Personnes** et **Adresses**.
-
-> Commencer par un tMap qui aplati les données puis bricoler le JSON ensuite finit souvent en patchs. Mieux vaut **définir d’abord la structure JSON cible**, puis construire le job pour la produire.
+Cas concret de deux sources de données que l'on cherche a joindre : **Personnes** et **Adresses**.
 
 ### 4.1. Les données de départ (2 sources)
 
@@ -178,7 +187,7 @@ Cas concret : **Personnes** et **Adresses**.
 1) **Unité de sortie ?**  
 - Un document par personne ?  
 - Ou **un document global** avec tout le monde ?  
-Ici : un JSON global pour montrer les tableaux imbriqués et le rôle du Group by.
+Ici, j'ai choisi de partir sur un JSON global pour montrer les tableaux imbriqués et le rôle du Group by.
 
 2) **Cardinalité Personne → Adresse ?**  
 0, 1 ou plusieurs adresses. Donc côté JSON : un tableau `adresses`, même vide.
@@ -196,7 +205,7 @@ Décomposer :
 - un `tWriteJSONField` pour bâtir le **tableau d’adresses**,  
 - un second pour l’insérer à côté des champs **Personne**.
 
-### 4.4. Plan de construction (pas à pas)
+### 4.3. Plan de construction (pas à pas)
 
 - **Étape A** : construire le tableau d’adresses par personne.  
 - **Étape B** : rattacher ce tableau au flux Personnes sans dupliquer.  
@@ -204,7 +213,7 @@ Décomposer :
 
 ---
 
-### 4.5. Réalisation des étapes
+### 4.4. Réalisation des étapes
 
 #### Prérequis : données d’exemple (`tFixedFlowInput`)
 
@@ -231,24 +240,24 @@ Adresses :
 
 ---
 
-### 4.5.1 Étape A : Construire le tableau d’adresses (par personne)
+### 4.5 Étape A : Construire le tableau d’adresses (par personne)
 
 Objectif : à partir du flux **Adresses**, regrouper par personne pour obtenir `personnes_id` + `json_adresses` (chaîne contenant le tableau).
 
-#### 4.5.1.1 Préparer le flux “Adresses”
+#### 4.5.1 Préparer le flux “Adresses”
 
 Vérifie : présence de `personnes_id`, types corrects, au moins une personne avec plusieurs adresses.
 
 ![Données Adresses]({{ '/assets/img/blog/7-twritejsonfield/4-A1-adresses_data.webp' | relative_url }}){:alt="Exécution du job avec Adresses" loading="lazy" decoding="async"}
 
-#### 4.5.1.2 Ajouter un `tWriteJSONField` dédié
+#### 4.5.2 Ajouter un `tWriteJSONField` dédié
 
 - Schéma de sortie : ajoute `json_adresses` (String) et garde `personnes_id`.
 - **Output Column** : `json_adresses`.
 
 ![Schéma sortie tWriteJSONField]({{ '/assets/img/blog/7-twritejsonfield/4-A2-twritejsonfield_schema.webp' | relative_url }}){:alt="Schéma de sortie du tWriteJSONField" loading="lazy" decoding="async"}
 
-#### 4.5.1.3 Régler le Group by
+#### 4.5.3 Régler le Group by
 
 Dans **Basic settings** > **Group by** :
 - `Input column` = `personnes_id`
@@ -258,7 +267,9 @@ Traduction : pour chaque `personnes_id`, un seul résultat avec les lignes agré
 
 ![Group by personnes_id]({{ '/assets/img/blog/7-twritejsonfield/4-A3-twritejsonfield_groupby.webp' | relative_url }}){:alt="Group by sur personnes_id" loading="lazy" decoding="async"}
 
-#### 4.5.1.4 Configurer le JSON Tree `adresses[]`
+👉 Ce Group by est le cœur de l’étape A. Sans lui, tu ne fabriques pas un tableau d’adresses par personne mais autant de JSON qu’il y a de lignes. C’est ici que tu choisis la granularité de sortie.
+
+#### 4.5.4 Configurer le JSON Tree `adresses[]`
 
 Structure voulue : nœud racine (temporaire) → `adresses` (class=array) → `adresse` (loop, class=object) → champs.
 
@@ -269,16 +280,23 @@ Champs sous `adresse` : `_id`, `numero`, `rue`, `ville`, `latitude`, `longitude`
 
 Mappe les colonnes par drag & drop. Si besoin, ajoute `type` pour forcer un nombre ou un booléen, mais seulement si le schéma n’est pas fiable.
 
-#### 4.5.1.5 Exécuter et analyser
+#### 4.5.5 Exécuter et analyser
 
 Lance : `tFixedFlowInput (Adresses)` → `tWriteJSONField` → `tLogRow`.
 
 - Le nombre de lignes doit correspondre au nombre de `personnes_id` distincts.  
-- Si tu vois une séquence **1, 2, 1**, c’est que le flux n’est pas trié : `tWriteJSONField` regroupe les lignes consécutives seulement.
 
+![Erreur de tri]({{ '/assets/img/blog/7-twritejsonfield/4-A5-twritejsonfield_erreur.webp' | relative_url }}){:alt="Les données ne sont pas bien regroupées" loading="lazy" decoding="async"}
+
+> On voit ici un piège classique : trois lignes, séquence 1,2,1.  
+> Le `Group by` de `tWriteJSONField` (et d’autres composants) ne trie rien. Il regroupe uniquement les lignes consécutives. Si les données arrivent dans le désordre, le regroupement est faux.
+
+On corrige donc :
 Ajoute donc un `tSortRow` avant : tri ascendant sur `personnes_id`. Après relance, chaque personne a son tableau d’adresses.
 
 ![Tri préalable des données]({{ '/assets/img/blog/7-twritejsonfield/4-A5-tsortrow.webp' | relative_url }}){:alt="Tri préalable avec tSortRow" loading="lazy" decoding="async"}
+
+![Résultat d'éxécution]({{ '/assets/img/blog/7-twritejsonfield/4-A5-exec.webp' | relative_url }}){:alt="Exécution corrigée aprés tri" loading="lazy" decoding="async"}
 
 Contrôle la colonne `json_adresses` : tableau valide, bons champs, types cohérents. Pour affiner, coche **Supprimer le nœud racine** et, si besoin, mets `class=object` sur `rue` pour éviter des tableaux vides.
 
@@ -305,6 +323,8 @@ Objectif : repartir du flux **Personnes**, y rattacher `json_adresses`, et sorti
 - jointure : **LEFT OUTER** pour garder les personnes sans adresse.
 
 ![tMap - jointure LEFT]({{ '/assets/img/blog/7-twritejsonfield/5-B2-tmap-join.webp' | relative_url }}){:alt="Configuration tMap LEFT JOIN" loading="lazy" decoding="async"}
+
+👉 Ici, le LEFT JOIN est non négociable : si tu passes en INNER, tu perds les personnes sans adresse et ton JSON final ne reflète plus la réalité métier. Toujours valider la cardinalité attendue avant de mapper.
 
 #### 4.6.3 Schéma de sortie
 
@@ -342,6 +362,8 @@ Pour forcer un unique regroupement : ajoute `grp_json = "x"` dans le `tMap`, pui
 
 ![Ajout grp_json]({{ '/assets/img/blog/7-twritejsonfield/6-C2-ajout-grp.webp' | relative_url }}){:alt="Ajout de la colonne grp_json constante" loading="lazy" decoding="async"}
 
+Pourquoi une constante ? Parce que le Group by ne produit qu’une sortie par valeur. En mettant la même valeur partout, tu garantis un seul document global sans logique métier cachée.
+
 #### 4.7.3 Trier pour un résultat stable
 
 `tSortRow` sur `_id` pour un JSON ordonné et reproductible.
@@ -367,7 +389,7 @@ Résultat : un seul JSON global.
 
 Structure attendue : racine → `personnes` (class=array) → `personne` (loop, class=object) → champs + `adresses` (mappée depuis `json_adresses`).
 
-![JSON Tree structure final]({{ '/assets/img/blog/7-twritejsonfield/6-C6-jsontree-structure.webp' | relative_url }}){:alt="Structure du JSON Tree final" loading="lazy" decoding="async"}
+![JSON Tree structure final]({{ '/assets/img/blog/7-twritejsonfield/6-C6-mapping-adresses.webp' | relative_url }}){:alt="Structure du JSON Tree final" loading="lazy" decoding="async"}
 
 #### 4.7.7 Vérifier le résultat
 
