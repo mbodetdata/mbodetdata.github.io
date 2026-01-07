@@ -5,7 +5,7 @@ description: "Comment utiliser tSchemaComplianceCheck pour imposer un contrat m�
 categories: blog
 tags: [Talend, Talaxie, Qualité des données, Schéma, tSchemaComplianceCheck, ETL, Bonnes pratiques]
 image: "/assets/img/blog/8-tschemacompliancecheck/logo_1024.webp"
-active: true
+active: false
 parent_category: talend-talaxie
 category_label: Talaxie
 ---
