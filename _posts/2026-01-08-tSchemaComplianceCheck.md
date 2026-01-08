@@ -5,9 +5,16 @@ description: "Comment utiliser tSchemaComplianceCheck pour imposer un contrat m�
 categories: blog
 tags: [Talend, Talaxie, Qualité des données, Schéma, tSchemaComplianceCheck, ETL, Bonnes pratiques]
 image: "/assets/img/blog/8-tschemacompliancecheck/logo_1024.webp"
-active: false
+active: true
 parent_category: talend-talaxie
 category_label: Talaxie
+---
+
+> Pour reproduire exactement ce cas, j’ai mis à disposition sur GitHub les éléments suivants :  
+> - 📦 **Un workspace Talend prêt à l’emploi**  
+>   👉 **[[Le WOrkspace est ici](https://github.com/mbodetdata/BMDATA_Blog-tSchemaComplianceCheck.git)]** pour suivre le pas-à-pas.  
+> - 📄 **Les fichiers CSV d’exemple**, dans le même repo (dossier `FICHIERS_EXEMPLES`).
+
 ---
 
 ## Le vrai danger : la donnée “presque correcte”
@@ -36,6 +43,7 @@ C’est précisément le rôle de **`tSchemaComplianceCheck`** : reprendre le co
 `tSchemaComplianceCheck` est un composant de **contrôle de conformité**.
 
 Son rôle est clair :
+
 > **Vérifier que la donnée reçue respecte le schéma attendu (types, formats, contraintes)… puis trier.**
 
 Points clés à bien comprendre :  
@@ -52,8 +60,8 @@ Selon ta configuration, il peut valider :
 - le **format des dates**.
 
 Et surtout, il génère **deux flux distincts** :
-- **Main** → conforme : le pipeline continue
-- **Reject** → hors-contrat : tu mets de côté (et tu exploites)
+- **Main** → conforme : le pipeline continue,
+- **Reject** → hors-contrat : tu mets de côté (et tu exploites).
 
 👉 Le découplage **Main / Reject** est la vraie valeur de ce composant.
 
@@ -64,14 +72,14 @@ Et surtout, il génère **deux flux distincts** :
 Dans la vraie vie, tu reçois des fichiers “sales”.
 
 Le piège classique :
-- soit être **trop strict dès la lecture** → le job plante
-- soit être **trop permissif** → tout passe, et tu construis une usine à gaz plus loin
+- soit être **trop strict dès la lecture** → le job plante,
+- soit être **trop permissif** → tout passe, et tu construis une usine à gaz plus loin.
 
 Le bon pattern est toujours le même :
 
 1. **Lecture tolérante** → ne jamais planter à la lecture  
 2. **Validation stricte** → ne jamais polluer le pipeline  
-3. **Rejet exploitable** → jamais une poubelle
+3. **Rejet exploitable** → jamais une poubelle  
 
 👉 Un pipeline complexe mérite des données **simples, propres et prévisibles**.  
 > La permissivité n’est pas de la robustesse.  
@@ -86,7 +94,7 @@ Le bon pattern est toujours le même :
 Le contrôle s’appuie directement sur le schéma entrant.
 
 ✅ Rapide à mettre en place  
-⚠️ Peu utile si ton schéma d’entrée est permissif (ex : tout en String)
+⚠️ Peu utile si ton schéma d’entrée est permissif (ex. tout en String)
 
 ---
 
@@ -104,13 +112,14 @@ Tu définis manuellement les règles colonne par colonne.
 C’est l’approche la plus propre et la plus industrialisable.
 
 Principe :
-- le **schéma d’entrée** est tolérant (souvent 100 % String)
-- le **schéma de test** représente le **contrat métier strict**
-- `tSchemaComplianceCheck` valide la compatibilité
+- le **schéma d’entrée** est tolérant (souvent 100 % String),
+- le **schéma de test** représente le **contrat métier strict**,
+- `tSchemaComplianceCheck` valide la compatibilité.
 
 ✅ Lecture sans blocage  
 ✅ Contrat métier explicite  
 ✅ Rejets exploitables  
+
 👉 **C’est le pattern à privilégier dans la majorité des projets Talaxie.**
 
 ---
@@ -124,11 +133,11 @@ On reçoit deux fichiers :
 - `adresses.csv`
 
 Ils contiennent tout ce que tu connais :
-- séparateur `;`
-- formats incohérents
-- champs vides
-- types non respectés
-- valeurs “humaines” (`yes`, `1`, `FALSE`, …)
+- séparateur `;`,
+- formats incohérents,
+- champs vides,
+- types non respectés,
+- valeurs “humaines” (`yes`, `1`, `FALSE`, …).
 
 👉 Exactement le genre de fichiers qui passent “presque toujours”… jusqu’au jour où non.
 
@@ -137,8 +146,8 @@ Ils contiennent tout ce que tu connais :
 ## 4.2 Le pipeline naïf (et pourquoi il est dangereux)
 
 Le pipeline naïf, c’est :
-- soit **rejeter trop tôt** → plus rien ne rentre
-- soit **tout laisser passer** → dette technique assurée
+- soit **rejeter trop tôt** → plus rien ne rentre,
+- soit **tout laisser passer** → dette technique assurée.
 
 ### Trop strict dès la lecture
 
@@ -147,18 +156,18 @@ Un schéma d’entrée trop strict peut :
 - bloquer un traitement,
 - provoquer un incident en PROD.
 
-Oui, certains composants d’entrée ont un flux Reject.  
+Oui, certains composants d’entrée possèdent un flux Reject.  
 Mais :
 - tous ne se comportent pas pareil,
 - ce n’est pas leur rôle principal.
 
-👉 `tSchemaComplianceCheck` est **fait pour ça** : poser un contrôle cohérent, reproductible, et exploitable.
+👉 `tSchemaComplianceCheck` est **fait pour ça** : poser un contrôle cohérent, reproductible et exploitable.
 
 ### Trop permissif
 
 À l’inverse, tout laisser passer, c’est :
 - gérer des cas particuliers partout,
-- complexifier tes `tMap`,
+- complexifier les `tMap`,
 - rendre le job fragile.
 
 ---
@@ -177,12 +186,8 @@ La bonne pratique est simple :
    - schéma de test = **contrat métier**
 
 3. **Deux routes**
-   - **Main** → données conformes
-   - **Reject** → données hors-contrat
-
-4. **Conversions maîtrisées**
-   - `tMap` (conversion auto)
-   - ou `tConvertType`
+   - **Main** → données conformes,
+   - **Reject** → données hors-contrat.
 
 Résultat :
 - aucun crash à la lecture,
@@ -199,122 +204,120 @@ Résultat :
 #### Personnes
 
 On va créer un schéma d’entrée **tolérant** (tout en String).
+
 ![Schéma permissif personne]({{ '/assets/img/blog/8-tschemacompliancecheck/1-schema-personne-string.webp' | relative_url }}){:alt="Schéma permissif de personne" loading="lazy" decoding="async"}
 
 > Ce schéma est utilisé pour la lecture dans le `tFileInputDelimited`.
 
-On va également construire un schéma de contrôle, beaucoup plus strict : c’est **le contrat métier**.
+On va également construire un schéma de contrôle, beaucoup plus strict : **le contrat métier**.
+
 ![Schéma strict personne]({{ '/assets/img/blog/8-tschemacompliancecheck/2-schema-personne-strict.webp' | relative_url }}){:alt="Schéma strict de personne" loading="lazy" decoding="async"}
 
 > Ce schéma est utilisé pour le contrôle et pour les traitements aval.
 
 #### Adresses
 
-On fait exactement la même chose que pour `personnes.csv`.
+On applique exactement la même logique que pour `personnes.csv`.
 
 Schéma d’entrée tolérant (tout en String) :
+
 ![Schéma permissif adresse]({{ '/assets/img/blog/8-tschemacompliancecheck/1-schema-adresse-string.webp' | relative_url }}){:alt="Schéma permissif d'adresse" loading="lazy" decoding="async"}
 
 Schéma strict (contrat métier) :
+
 ![Schéma strict adresse]({{ '/assets/img/blog/8-tschemacompliancecheck/2-schema-adresse-strict.webp' | relative_url }}){:alt="Schéma strict d'adresse" loading="lazy" decoding="async"}
 
 ---
 
 ### Étape 1 — Lecture tolérante de `personnes.csv`
 
-- Ajoute un `tFileInputDelimited`
-- Séparateur `;`
-- Header = 1
-- Encodage UTF-8
-- Schéma : permissif (tout en String)
+- Ajoute un `tFileInputDelimited`,
+- Séparateur `;`,
+- Header = 1,
+- Encodage UTF-8,
+- Schéma : permissif (tout en String).
 
 ### Étape 2 — Lecture tolérante de `adresses.csv`
 
-Fais exactement la même chose qu’à l’étape 1, mais avec le fichier adresses.
+Effectue exactement la même configuration que pour l’étape 1, mais avec le fichier adresses.
 
-Normalement tu devrais obtenir quelque chose qui ressemble à ça :
-![Visualisation du job tFileInputDelimited et tLogRow]({{ '/assets/img/blog/8-tschemacompliancecheck/3-exemple_1-execution.webp' | relative_url }}){:alt="Visualisation du job tFileInputDelimited et tLogRow" loading="lazy" decoding="async"}
+Normalement, tu devrais obtenir quelque chose qui ressemble à ceci :
+
+![Visualisation du job]({{ '/assets/img/blog/8-tschemacompliancecheck/3-exemple_1-execution.webp' | relative_url }}){:alt="Visualisation du job Talend" loading="lazy" decoding="async"}
 
 ---
 
 ### Étape 3 — Ajouter `tSchemaComplianceCheck`
 
-Pour tes deux sous-jobs, le but est d’ajouter `tSchemaComplianceCheck` :
+Pour tes deux sous-jobs, ajoute `tSchemaComplianceCheck` :
 
-- Relie le flux **Main**
-- Active le schéma de test (contrat métier)
+- Relie le flux **Main**,
+- Active le **schéma de test** (contrat métier),
 - Branche :
-  - Main → traitement normal
-  - Reject → journalisation (ici, `tLogRow`)
+  - Main → traitement normal,
+  - Reject → journalisation (`tLogRow` ici).
 
-Voici la configuration à utiliser sur `tSchemaComplianceCheck` (exemple sur *personnes*) :
-![tSchemaComplianceCheck de Personnes]({{ '/assets/img/blog/8-tschemacompliancecheck/4-tSchemaComplianceCheck-personne.webp' | relative_url }}){:alt="Configuration du tSchemaComplianceCheck de personnes" loading="lazy" decoding="async"}
+Configuration exemple (personnes) :
 
-> ⚠️ Important : `tSchemaComplianceCheck` **ne convertit pas les types**.  
-> Il vérifie la compatibilité avec le schéma de test.  
-> La conversion réelle doit être faite **après**, via `tConvertType` (ou `tMap`).
+![Configuration tSchemaComplianceCheck]({{ '/assets/img/blog/8-tschemacompliancecheck/4-tSchemaComplianceCheck-personne.webp' | relative_url }}){:alt="Configuration tSchemaComplianceCheck" loading="lazy" decoding="async"}
 
-Comme les données du flux Main doivent correspondre au schéma strict, tu vas devoir convertir le schéma (String → types métiers) :
-![tConvertType, pour aligner le schéma]({{ '/assets/img/blog/8-tschemacompliancecheck/4-tConvertType-personne.webp' | relative_url }}){:alt="tConvertType pour aligner le schéma" loading="lazy" decoding="async"}
+> ⚠️ **Important** :  
+> `tSchemaComplianceCheck` **ne convertit pas les types**.  
+> Il vérifie uniquement la conformité.  
+> La conversion réelle se fait **après**, via `tConvertType` ou `tMap`.
 
-Pour le flux Reject, reste en **Built-in** : `tSchemaComplianceCheck` ajoute automatiquement deux colonnes (ex : `errorCode`, `errorMessage`) pour expliquer le rejet.
-![Schéma de rejet]({{ '/assets/img/blog/8-tschemacompliancecheck/4-tSchemaComplianceCheck-personne-rejects.webp' | relative_url }}){:alt="Schéma de rejet du tSchemaComplianceCheck" loading="lazy" decoding="async"}
+Conversion du schéma Main vers le schéma strict :
 
-> Note : la configuration montrée ici est un exemple.  
-> Il n’existe pas de configuration universelle : **le contrat métier dépend toujours du pipeline aval**.
+![tConvertType]({{ '/assets/img/blog/8-tschemacompliancecheck/4-tConvertType-personne.webp' | relative_url }}){:alt="tConvertType" loading="lazy" decoding="async"}
+
+Pour le flux Reject, reste en **Built-in** :  
+`errorCode` et `errorMessage` sont ajoutés automatiquement par le composant `tSchemaComplianceCheck`.
+
+![Schéma Reject]({{ '/assets/img/blog/8-tschemacompliancecheck/4-tSchemaComplianceCheck-personne-rejects.webp' | relative_url }}){:alt="Schéma Reject" loading="lazy" decoding="async"}
+
+> Cette configuration est un exemple.  
+> **Il n’existe pas de configuration universelle** : le contrat dépend toujours du pipeline aval.
 
 ---
 
 ### Étape 4 — Exploiter le Reject
 
-Pour l’instant, les rejets sont simplement affichés via un `tLogRow`.
+Pour l’instant, les rejets sont affichés via un `tLogRow`.
 
-Tu peux bien entendu les utiliser pour :
+Tu peux ensuite les utiliser pour :
 - log technique,
-- fichier d’erreurs pour la source / le client,
+- fichier d’erreurs,
 - analyse qualité,
-- process de correction séparé si besoin.
+- process de correction séparé.
 
 ---
 
 ## 4.5 Exemple de contrat strict sur la date (zéro tolérance)
 
-Dans ce cas concret, on choisit volontairement un contrat strict :
+Dans ce cas concret :
 
-- `date_de_naissance` doit être au format **`dd/MM/yyyy`**
-- **un seul format**
-- toute autre représentation est considérée comme **hors-contrat** et part en Reject
+- `date_de_naissance` doit être au format **`dd/MM/yyyy`**,
+- **un seul format accepté**,
+- toute autre valeur est **hors-contrat** et part en Reject.
 
 ⚠️ Une date “compréhensible” ne suffit pas.  
-Une date valide, c’est une date **compatible avec le pipeline aval**.
+Une date valide est une date **compatible avec le pipeline aval**.
 
-👉 Oui, ça peut générer des rejets.  
-👉 Et c’est justement le but : **protéger la production**.
+👉 Oui, ça génère des rejets.  
+👉 Et c’est exactement le but : **protéger la PROD**.
 
 ---
 
 ## 5. Et si tu veux corriger les données ?
 
-Très simple : maintenant que tu sais router tes rejets, tu peux mettre en place un process séparé qui les récupère et les corrige.
+Maintenant que tu sais router les rejets, tu peux mettre en place un **process séparé** pour les corriger.
 
 Tu obtiens deux pipelines :
-- **Pipeline PROD** → strict, protecteur
-- **Pipeline de normalisation** → à part
+- **Pipeline PROD** → strict, protecteur,
+- **Pipeline de normalisation** → à part.
 
-> L’avantage ?  
-> Une séparation claire des responsabilités.
-
----
-
-## Ressources partagées
-
-Pour reproduire exactement ce cas :
-
-- 📦 **Job Talend complet (repo GitHub)**  
-  👉 https://github.com/TON_ORGA/talaxie-tschemacompliancecheck *(remplace par ton vrai lien, ou indique “lien à venir”)*
-
-- 📄 Fichiers CSV d’exemple  
-- 🧪 Schémas Talend (entrée + schéma de test)
+> Avantage :  
+> une séparation claire des responsabilités, et une production sécurisée.
 
 ---
 
@@ -328,12 +331,6 @@ C’est un **point de contrôle stratégique**.
 Si tu laisses passer des données “presque conformes”,  
 tu prends une dette technique…  
 et tu la paieras en production.
-
-Avec ce pattern :
-- tu simplifies tes jobs,
-- tu fiabilises tes pipelines,
-- tu maîtrises tes rejets,
-- tu industrialises.
 
 👉 Tu passes d’un ETL qui subit…  
 à un ETL **qui protège la PROD**.
