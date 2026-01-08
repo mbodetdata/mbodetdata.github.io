@@ -12,7 +12,7 @@ category_label: Talaxie
 
 > Pour reproduire exactement ce cas, j’ai mis à disposition sur GitHub les éléments suivants :  
 > - 📦 **Un workspace Talend prêt à l’emploi**  
->   👉 **[[Le WOrkspace est ici](https://github.com/mbodetdata/BMDATA_Blog-tSchemaComplianceCheck.git)]** pour suivre le pas-à-pas.  
+>   👉 **[[Le Workspace est ici](https://github.com/mbodetdata/BMDATA_Blog-tSchemaComplianceCheck.git)]** pour suivre le pas-à-pas.  
 > - 📄 **Les fichiers CSV d’exemple**, dans le même repo (dossier `FICHIERS_EXEMPLES`).
 
 ---
