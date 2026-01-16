@@ -4,7 +4,7 @@ title: "Bien utiliser l’IA au quotidien : la configurer pour qu’elle te chal
 description: "Retour d’expérience concret sur l’utilisation de l’IA au quotidien : règles d’or, mise en pratique pas à pas, prompts réels et méthode pour faire de l’IA un vrai challenger."
 categories: blog
 tags: [IA, ChatGPT, Productivité, Prompt engineering, Bonnes pratiques, Méthodologie]
-image: "/assets/img/blog/ia-usage-quotidien/logo_1024.webp"
+image: "/assets/img/blog/9-utiliser-l-ia-au-quotidien/logo_1024.webp"
 active: true
 parent_category: ia
 category_label: Intelligence artificielle
