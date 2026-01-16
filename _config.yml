@@ -38,7 +38,7 @@ plugins:
 
 # ------------------------ 4) Auteur (pour JSON-LD & templates) -------
 author:
-  photo: "/assets/img/Photo_profil.webp"
+  photo: "/assets/img/Photo_profil-640.webp"
   name: "BODET Martial"
   prenom_nom: "Martial BODET"         # alias si tu l’utilises dans les includes
   enterprise: "BMData"

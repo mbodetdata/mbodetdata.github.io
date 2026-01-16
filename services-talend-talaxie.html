@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Services Talend & Talaxie — BM Data"
-description: "Migration Talend vers Talaxie assuree, automatisations ETL accompagnees et support pedagogique pour debutants."
+title: "Talend & Talaxie : flux ETL fiables et migrations sans rupture | BM Data"
+description: "Automatisation Talend/Talaxie, migration sécurisée et supervision des flux. Livrables documentés et transfert d'autonomie — BM Data."
 keywords_groups:
   - services
   - outils
@@ -97,6 +97,27 @@ permalink: /services-talend-talaxie/
   </div>
 </section>
 
+<section class="section service-page deliverables-section" aria-labelledby="talend-deliverables-title">
+  <div class="service-container">
+    <header class="premium-head" data-anim="fade-up">
+      <h2 id="talend-deliverables-title">{{ talend.deliverables.title }}</h2>
+      <p>{{ talend.deliverables.intro }}</p>
+    </header>
+    <div class="premium-grid">
+      {% for item in talend.deliverables.items %}
+      <article class="premium-card card" data-anim="fade-up">
+        <h3>{{ item.title }}</h3>
+        <ul class="premium-card__list">
+          {% for bullet in item.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 <section class="section service-page usecases-section" aria-labelledby="talend-usecases-title">
   <div class="service-container">
     <header class="premium-head" data-anim="fade-up">
@@ -175,6 +196,13 @@ permalink: /services-talend-talaxie/
         {{ talend.cta.linkText }}
       </a>
       <p class="cta-caption">{{ talend.cta.footnote }}</p>
+      <div class="cta-links">
+        <p class="cta-caption"><strong>À lire aussi :</strong></p>
+        <ul>
+          <li><a href="{{ '/blog/talend-studios/' | relative_url }}">Quel studio Talend choisir ?</a></li>
+          <li><a href="{{ '/blog/migration-talend-vers-talaxie/' | relative_url }}">Préparer sa migration Talend vers Talaxie</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

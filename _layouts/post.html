@@ -262,22 +262,32 @@
       {%- endif -%}
       {%- if post_tags_concat contains 'talend' or post_tags_concat contains 'talaxie' -%}
         <aside class="post-service-cta card" aria-labelledby="cta-title-talend" data-anim="fade-up">
-          <h2 id="cta-title-talend">Besoin d'aller plus loin avec Talend&nbsp;?</h2>
+          <h2 id="cta-title-talend">Besoin d'aide&nbsp;?</h2>
           <p>Je sécurise vos migrations Talaxie et vos flux ETL pour que vos données restent fiables chaque jour.</p>
           <a class="btn btn--primary"
              href="{{ '/services-talend-talaxie/' | relative_url }}"
              data-track-click="blog_to_talend">
-            En savoir plus sur les services Talend
+            Voir les services Talend &amp; Talaxie
+          </a>
+          <a class="btn btn--ghost"
+             href="{{ '/#contact' | relative_url }}"
+             data-track-click="blog_to_contact">
+            Me contacter
           </a>
         </aside>
       {%- elsif post_tags_concat contains 'power bi' or post_tags_concat contains 'powerbi' or post_tags_concat contains 'dax' -%}
         <aside class="post-service-cta card" aria-labelledby="cta-title-powerbi" data-anim="fade-up">
-          <h2 id="cta-title-powerbi">Vous travaillez sur Power BI&nbsp;?</h2>
+          <h2 id="cta-title-powerbi">Besoin d'aide&nbsp;?</h2>
           <p>Je conçois des tableaux de bord lisibles et automatisés pour vos équipes métier.</p>
           <a class="btn btn--primary"
              href="{{ '/services-powerbi/' | relative_url }}"
              data-track-click="blog_to_powerbi">
-            Découvrir les services Power BI
+            Voir les services Power BI
+          </a>
+          <a class="btn btn--ghost"
+             href="{{ '/#contact' | relative_url }}"
+             data-track-click="blog_to_contact">
+            Me contacter
           </a>
         </aside>
       {%- endif -%}

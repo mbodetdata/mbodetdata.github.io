@@ -68,7 +68,7 @@
     ]
   },
   "journey": {
-    "title": "Votre parcours projet Power BI",
+    "title": "Processus projet Power BI",
     "subtitle": "Quatre etapes pour cadrer, livrer et ancrer vos usages decisionnels.",
     "steps": [
       {
@@ -109,6 +109,36 @@
           "Workspaces structurés et règles de gouvernance documentées.",
           "Plan de communication et formation ciblée.",
           "Suivi de l'adoption et feuille de route des évolutions."
+        ]
+      }
+    ]
+  },
+  "deliverables": {
+    "title": "Livrables Power BI",
+    "intro": "Des livrables concrets pour que vos équipes puissent piloter et faire évoluer leurs dashboards.",
+    "items": [
+      {
+        "title": "Audit & cadrage KPI",
+        "bullets": [
+          "Cartographie des sources et priorités métier.",
+          "Backlog d'indicateurs validé avec les décideurs.",
+          "Plan d'action priorisé pour les quick wins."
+        ]
+      },
+      {
+        "title": "Modèle de données & DAX",
+        "bullets": [
+          "Schéma de données documenté et performant.",
+          "Mesures DAX claires, commentées et testées.",
+          "Règles de sécurité et de gouvernance alignées."
+        ]
+      },
+      {
+        "title": "Dashboards & adoption",
+        "bullets": [
+          "Tableaux de bord prêts à partager.",
+          "Guides de lecture et bonnes pratiques.",
+          "Transfert de compétences pour vos équipes."
         ]
       }
     ]

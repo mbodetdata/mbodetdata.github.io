@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Services Power BI — BM Data"
-description: "Tableaux de bord Power BI clairs et automatises pour debuter sans stress et piloter vos KPI."
+title: "Consultant Power BI : dashboards fiables en 4 semaines | BM Data"
+description: "Tableaux de bord Power BI clairs, rafraîchissements automatisés et livrables documentés. Méthode en 4 étapes et gouvernance cadrée — BM Data."
 keywords_groups:
   - services
   - outils
@@ -97,6 +97,27 @@ permalink: /services-powerbi/
   </div>
 </section>
 
+<section class="section service-page deliverables-section" aria-labelledby="powerbi-deliverables-title">
+  <div class="service-container">
+    <header class="premium-head" data-anim="fade-up">
+      <h2 id="powerbi-deliverables-title">{{ powerbi.deliverables.title }}</h2>
+      <p>{{ powerbi.deliverables.intro }}</p>
+    </header>
+    <div class="premium-grid">
+      {% for item in powerbi.deliverables.items %}
+      <article class="premium-card card" data-anim="fade-up">
+        <h3>{{ item.title }}</h3>
+        <ul class="premium-card__list">
+          {% for bullet in item.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 <section class="section service-page usecases-section" aria-labelledby="powerbi-usecases-title">
   <div class="service-container">
     <header class="premium-head" data-anim="fade-up">
@@ -175,6 +196,14 @@ permalink: /services-powerbi/
         {{ powerbi.cta.linkText }}
       </a>
       <p class="cta-caption">{{ powerbi.cta.footnote }}</p>
+      <div class="cta-links">
+        <p class="cta-caption"><strong>Ressources utiles :</strong></p>
+        <ul>
+          <li><a href="{{ '/blog/utilisation-talend/' | relative_url }}">Automatiser vos flux avant Power BI</a></li>
+          <li><a href="{{ '/blog/tschemacompliancecheck/' | relative_url }}">Fiabiliser vos données avec tSchemaComplianceCheck</a></li>
+          <li><a href="{{ '/blog/twritejsonfield/' | relative_url }}">Préparer des exports propres pour vos dashboards</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

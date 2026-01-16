@@ -8,7 +8,7 @@ keywords_groups:
   - competences
 permalink: /
 bandeau:
-  photo: "/assets/img/bm-hero_530_comp.webp"
+  photo: "/assets/img/bm-hero.webp"
 ---
 
 <!-- H1 accessible (améliore le SEO sans changer le design) -->
@@ -162,55 +162,3 @@ bandeau:
     </div>
   </div>
 </div>
-<!-- JSON-LD : ItemList Services + Réalisations (dynamique depuis _data) -->
-{%- assign services_list = site.data.services.cards | default: site.data.services -%}
-{%- assign total_services = services_list | size -%}
-{%- assign total_projets  = site.data.projets  | size -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ItemList",
-      "name": "Services de {{ site.author.name }}",
-      "itemListOrder": "https://schema.org/ItemListOrderAscending",
-      "numberOfItems": {{ total_services | default: 0 }},
-      "itemListElement": [
-        {% for s in services_list %}
-        {
-          "@type": "ListItem",
-          "position": {{ forloop.index }},
-          "item": {
-            "@type": "Service",
-            "name": {{ s.title | jsonify }},
-            "description": {{ s.description | default: s.tagline | jsonify }}{% if s.keywords %}
-            ,"keywords": {{ s.keywords | jsonify }}{% endif %}
-          }
-        }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
-    },
-    {
-      "@type": "ItemList",
-      "name": "Réalisations de {{ site.author.name }}",
-      "itemListOrder": "https://schema.org/ItemListOrderAscending",
-      "numberOfItems": {{ total_projets | default: 0 }},
-      "itemListElement": [
-        {% for p in site.data.projets %}
-        {
-          "@type": "ListItem",
-          "position": {{ forloop.index }},
-          "item": {
-            "@type": "CreativeWork",
-            "name": {{ p.title | jsonify }},
-            "abstract": {{ p.text | jsonify }},
-            {% if p.link %}"url": {{ p.link | jsonify }}{% endif %}
-          }
-        }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
-    }
-  ]
-}
-</script>
-

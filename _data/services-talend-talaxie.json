@@ -68,7 +68,7 @@
     ]
   },
   "journey": {
-    "title": "Votre plan d’action data",
+    "title": "Processus Talend & Talaxie",
     "subtitle": "Trois etapes claires pour structurer, realiser et perenniser vos projets data.",
     "steps": [
       {
@@ -99,6 +99,28 @@
           "Recette et passage en production",
           "Formation et documentation utilisateur",
           "Support et ajustements post-déploiement"
+        ]
+      }
+    ]
+  },
+  "deliverables": {
+    "title": "Livrables Talend & Talaxie",
+    "intro": "L'essentiel pour sécuriser vos flux et garantir la continuité opérationnelle.",
+    "items": [
+      {
+        "title": "Cartographie & plan d'action",
+        "bullets": [
+          "Inventaire des jobs critiques et dépendances.",
+          "Priorisation des flux à fiabiliser.",
+          "Plan de migration ou d'industrialisation."
+        ]
+      },
+      {
+        "title": "Mise en production & supervision",
+        "bullets": [
+          "Jobs Talend/Talaxie prêts à l'exécution.",
+          "Alertes et tableaux de bord de suivi.",
+          "Documentation et transfert aux équipes."
         ]
       }
     ]

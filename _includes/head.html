@@ -116,8 +116,9 @@
 
 {%- comment -%} =================== JSON-LD : WebPage / Article ========= {%- endcomment -%}
 {%- assign is_post = false -%}{% if page.layout == 'post' %}{% assign is_post = true %}{% endif -%}
-{%- assign page_type = 'WebPage' -%}{% if is_post %}{% assign page_type = 'Article' %}{% endif -%}
+{%- assign page_type = 'WebPage' -%}
 {%- assign site_url_abs = site.url | default: site.github.url -%}
+{%- assign org_name = 'BM Data' -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -151,7 +152,7 @@
     },
     {
       "@type": "ProfessionalService",
-      "name": {{ site.title | jsonify }},
+      "name": {{ org_name | jsonify }},
       "description": {{ site.description | jsonify }},
       "url": {{ site_url_abs | absolute_url | jsonify }},
       "areaServed": "FR",
@@ -195,7 +196,7 @@
   "datePublished":"{{ page.date | date_to_xmlschema }}"{% if page.last_modified_at %},
   "dateModified":"{{ page.last_modified_at | date_to_xmlschema }}"{% endif %},
   "author":{"@type":"Person","name": {{ site.author.name | jsonify }}},
-  "publisher":{"@type":"Organization","name": {{ site.title | jsonify }}},
+  "publisher":{"@type":"Organization","name": {{ org_name | jsonify }}},
   "mainEntityOfPage":{"@type":"WebPage","@id": {{ page.url | replace:'index.html','' | absolute_url | jsonify }} }
 }
 </script>
@@ -206,52 +207,46 @@
 {%- assign services_list = site.data.services.cards | default: site.data.services -%}
 {%- assign total_services = services_list | size -%}
 {%- assign total_projets  = site.data.projets  | size -%}
+{%- assign total_items = total_services | plus: total_projets -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ItemList",
-      "name": "Services de {{ site.author.name }}",
-      "itemListOrder": "https://schema.org/ItemListOrderAscending",
-      "numberOfItems": {{ total_services | default: 0 }},
-      "itemListElement": [
-        {% for s in services_list %}
-        {
-          "@type": "ListItem",
-          "position": {{ forloop.index }},
-          "item": {
-            "@type": "Service",
-            "name": {{ s.title | jsonify }},
-            "description": {{ s.description | default: s.tagline | jsonify }}{% if s.keywords %},
-            "keywords": {{ s.keywords | jsonify }}{% endif %}
-          }
-        }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
-    },
-    {
-      "@type": "ItemList",
-      "name": "Réalisations de {{ site.author.name }}",
-      "itemListOrder": "https://schema.org/ItemListOrderAscending",
-      "numberOfItems": {{ total_projets | default: 0 }},
-      "itemListElement": [
-        {% for p in site.data.projets %}
-        {
-          "@type": "ListItem",
-          "position": {{ forloop.index }},
-          "item": {
-            "@type": "CreativeWork",
-            "name": {{ p.title | jsonify }},
-            "abstract": {{ p["text-short"] | jsonify }}{% if p.details and p.details.contexte %},
-            "about": {{ p.details.contexte | jsonify }}{% endif %}{% if p.stack %},
-            "keywords": {{ p.stack | jsonify }}{% endif %}{% if p.link %},
-            "url": {{ p.link | jsonify }}{% endif %}
-          }
-        }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
-    }
+  "@type": "ItemList",
+  "name": "Offres et réalisations de {{ org_name }}",
+  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+  "numberOfItems": {{ total_items | default: 0 }},
+  "itemListElement": [
+    {% if services_list and services_list != empty %}
+      {% for s in services_list %}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "item": {
+          "@type": "Service",
+          "name": {{ s.title | jsonify }},
+          "description": {{ s.description | default: s.tagline | jsonify }}{% if s.keywords %},
+          "keywords": {{ s.keywords | jsonify }}{% endif %}
+        }
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% endif %}
+    {% if services_list and services_list != empty and site.data.projets and site.data.projets != empty %},{% endif %}
+    {% if site.data.projets and site.data.projets != empty %}
+      {% for p in site.data.projets %}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index | plus: total_services }},
+        "item": {
+          "@type": "CreativeWork",
+          "name": {{ p.title | jsonify }},
+          "abstract": {{ p["text-short"] | jsonify }}{% if p.details and p.details.contexte %},
+          "about": {{ p.details.contexte | jsonify }}{% endif %}{% if p.details and p.details.stack %},
+          "keywords": {{ p.details.stack | jsonify }}{% endif %}{% if p.link %},
+          "url": {{ p.link | jsonify }}{% endif %}
+        }
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% endif %}
   ]
 }
 </script>

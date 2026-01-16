@@ -1,0 +1,109 @@
+{% assign project = include.project %}
+{% if project %}
+<section class="section case-hero" aria-labelledby="case-title">
+  <div class="service-container">
+    <header class="premium-head">
+      <p class="service-eyebrow">{{ include.eyebrow | default: "Cas client" }}</p>
+      <h1 id="case-title">{{ project.title | escape }}</h1>
+      {% if project["text-short"] %}
+      <p>{{ project["text-short"] | escape }}</p>
+      {% endif %}
+    </header>
+    <div class="card case-meta">
+      <ul class="case-meta__list">
+        {% if project.client %}<li><strong>Client :</strong> {{ project.client | escape }}</li>{% endif %}
+        {% if include.sector %}<li><strong>Secteur :</strong> {{ include.sector | escape }}</li>{% endif %}
+        {% if project.date %}<li><strong>Date :</strong> {{ project.date | date: "%m/%Y" }}</li>{% endif %}
+        {% if project.details and project.details.stack %}<li><strong>Stack :</strong> {{ project.details.stack | join: ", " | escape }}</li>{% endif %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section case-section" aria-labelledby="case-contexte">
+  <div class="service-container">
+    <h2 id="case-contexte">Contexte</h2>
+    {% if project.details and project.details.contexte %}
+    <p>{{ project.details.contexte | escape }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section case-section" aria-labelledby="case-missions">
+  <div class="service-container">
+    <h2 id="case-missions">Missions</h2>
+    {% if project.details and project.details.missions %}
+    <ul>
+      {% for mission in project.details.missions %}
+      <li>{{ mission | escape }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section case-section" aria-labelledby="case-benefices">
+  <div class="service-container">
+    <h2 id="case-benefices">Bénéfices</h2>
+    {% if project.details and project.details.benefices %}
+    <ul>
+      {% for gain in project.details.benefices %}
+      <li>{{ gain | escape }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section case-section" aria-labelledby="case-stack">
+  <div class="service-container">
+    <h2 id="case-stack">Stack</h2>
+    {% if project.details and project.details.stack %}
+    <ul>
+      {% for tool in project.details.stack %}
+      <li>{{ tool | escape }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</section>
+
+{% assign stack_list = project.details.stack | default: empty %}
+{% assign has_talend = false %}
+{% assign has_powerbi = false %}
+{% if stack_list contains "Talend" or stack_list contains "Talaxie" %}
+  {% assign has_talend = true %}
+{% endif %}
+{% if stack_list contains "Power BI" %}
+  {% assign has_powerbi = true %}
+{% endif %}
+
+<section class="section cta-block premium-cta" aria-labelledby="case-cta-title">
+  <div class="service-container">
+    <div class="premium-cta__card card">
+      <h2 id="case-cta-title">Prêt à activer le même type de résultats ?</h2>
+      <p>Parlons de vos flux et de vos indicateurs pour cadrer rapidement la prochaine étape.</p>
+      <a class="btn btn--primary"
+         href="{{ site.author.cal_url | default: site.author.calendly_url }}"
+         data-booking-open="modal"
+         data-track-click="portfolio_cta">
+        Prendre rendez-vous
+      </a>
+      <p class="cta-caption">Ou contactez-moi via <a href="{{ '/#contact' | relative_url }}">le formulaire</a>.</p>
+      {% if has_talend or has_powerbi %}
+      <div class="case-links">
+        <p><strong>Services associés :</strong></p>
+        <div class="case-links__actions">
+          {% if has_talend %}
+          <a class="btn btn--ghost" href="{{ '/services-talend-talaxie/' | relative_url }}">Talend &amp; Talaxie</a>
+          {% endif %}
+          {% if has_powerbi %}
+          <a class="btn btn--ghost" href="{{ '/services-powerbi/' | relative_url }}">Power BI</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}

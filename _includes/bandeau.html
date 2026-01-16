@@ -30,6 +30,30 @@
                             | default: site.author.photo
                             | default: site.author.photo_url
                             | default: '' %}
+  {% assign loading_mode = 'lazy' %}
+  {% if page.url == '/' or page.permalink == '/' %}
+    {% assign loading_mode = 'eager' %}
+  {% endif %}
+  {% assign photo_is_profile = bandeau_photo contains 'Photo_profil' %}
+  {% assign photo_is_hero = bandeau_photo contains 'bm-hero' %}
+  {% assign img_src = bandeau_photo | relative_url %}
+  {% assign img_srcset = '' %}
+  {% assign img_sizes = '' %}
+  {% assign img_width = '' %}
+  {% assign img_height = '' %}
+  {% if photo_is_profile %}
+    {% assign img_src = '/assets/img/Photo_profil-640.webp' | relative_url %}
+    {% capture img_srcset %}{{ '/assets/img/Photo_profil-320.webp' | relative_url }} 320w, {{ '/assets/img/Photo_profil-640.webp' | relative_url }} 640w, {{ '/assets/img/Photo_profil-960.webp' | relative_url }} 960w{% endcapture %}
+    {% assign img_sizes = '(max-width: 720px) 240px, (max-width: 1024px) 320px, 360px' %}
+    {% assign img_width = '960' %}
+    {% assign img_height = '1100' %}
+  {% elsif photo_is_hero %}
+    {% assign img_src = '/assets/img/bm-hero.webp' | relative_url %}
+    {% capture img_srcset %}{{ '/assets/img/bm-hero_530.webp' | relative_url }} 530w, {{ '/assets/img/bm-hero.webp' | relative_url }} 1024w{% endcapture %}
+    {% assign img_sizes = '(max-width: 720px) 240px, (max-width: 1024px) 320px, 420px' %}
+    {% assign img_width = '1024' %}
+    {% assign img_height = '1024' %}
+  {% endif %}
   <div class="about-hero__canvas">
     <div class="about-hero__inner">
       <div class="about-hero__content">
@@ -59,8 +83,13 @@
         <div class="about-photo-frame">
           {% if bandeau_photo != '' %}
             <div class="about-photo-slot has-photo">
-              <img src="{{ bandeau_photo | relative_url }}"
-                   alt="Portrait de {{ site.author.prenom_nom }}">
+              <img src="{{ img_src }}"
+                   alt="Portrait de {{ site.author.prenom_nom }}"
+                   {% if img_srcset != '' %}srcset="{{ img_srcset }}"{% endif %}
+                   {% if img_sizes != '' %}sizes="{{ img_sizes }}"{% endif %}
+                   {% if img_width != '' %}width="{{ img_width }}" height="{{ img_height }}"{% endif %}
+                   loading="{{ loading_mode }}"
+                   decoding="async">
             </div>
           {% else %}
             <div class="about-photo-slot" role="img" aria-label="Espace r&eacute;serv&eacute; pour la photo"></div>
