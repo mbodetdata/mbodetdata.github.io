@@ -1,70 +1,91 @@
 {% assign project = include.project %}
 {% if project %}
 <section class="section case-hero" aria-labelledby="case-title">
-  <div class="service-container">
-    <header class="premium-head">
+  <div class="service-container case-hero__grid">
+    <header class="case-hero__content" data-anim="fade-up">
       <p class="service-eyebrow">{{ include.eyebrow | default: "Cas client" }}</p>
       <h1 id="case-title">{{ project.title | escape }}</h1>
       {% if project["text-short"] %}
-      <p>{{ project["text-short"] | escape }}</p>
+      <p class="case-hero__summary">{{ project["text-short"] | escape }}</p>
       {% endif %}
     </header>
-    <div class="card case-meta">
+    <aside class="card case-meta" data-anim="fade-up">
+      <p class="case-meta__title">Fiche synth&egrave;se</p>
       <ul class="case-meta__list">
-        {% if project.client %}<li><strong>Client :</strong> {{ project.client | escape }}</li>{% endif %}
-        {% if include.sector %}<li><strong>Secteur :</strong> {{ include.sector | escape }}</li>{% endif %}
-        {% if project.date %}<li><strong>Date :</strong> {{ project.date | date: "%m/%Y" }}</li>{% endif %}
-        {% if project.details and project.details.stack %}<li><strong>Stack :</strong> {{ project.details.stack | join: ", " | escape }}</li>{% endif %}
+        {% if project.client %}
+        <li class="case-meta__item">
+          <span class="case-meta__label">Client</span>
+          <span class="case-meta__value">{{ project.client | escape }}</span>
+        </li>
+        {% endif %}
+        {% if include.sector %}
+        <li class="case-meta__item">
+          <span class="case-meta__label">Secteur</span>
+          <span class="case-meta__value">{{ include.sector | escape }}</span>
+        </li>
+        {% endif %}
+        {% if project.date %}
+        <li class="case-meta__item">
+          <span class="case-meta__label">Date</span>
+          <span class="case-meta__value">{{ project.date | date: "%m/%Y" }}</span>
+        </li>
+        {% endif %}
       </ul>
-    </div>
+    </aside>
   </div>
 </section>
 
 <section class="section case-section" aria-labelledby="case-contexte">
   <div class="service-container">
-    <h2 id="case-contexte">Contexte</h2>
-    {% if project.details and project.details.contexte %}
-    <p>{{ project.details.contexte | escape }}</p>
-    {% endif %}
+    <article class="case-panel card" data-anim="fade-up">
+      <h2 id="case-contexte">Contexte</h2>
+      {% if project.details and project.details.contexte %}
+      <p>{{ project.details.contexte | escape }}</p>
+      {% endif %}
+    </article>
   </div>
 </section>
 
-<section class="section case-section" aria-labelledby="case-missions">
-  <div class="service-container">
-    <h2 id="case-missions">Missions</h2>
-    {% if project.details and project.details.missions %}
-    <ul>
-      {% for mission in project.details.missions %}
-      <li>{{ mission | escape }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </div>
-</section>
-
-<section class="section case-section" aria-labelledby="case-benefices">
-  <div class="service-container">
-    <h2 id="case-benefices">Bénéfices</h2>
-    {% if project.details and project.details.benefices %}
-    <ul>
-      {% for gain in project.details.benefices %}
-      <li>{{ gain | escape }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+<section class="section case-section">
+  <div class="service-container case-grid">
+    <article class="case-panel card" data-anim="fade-up">
+      <h2 id="case-missions">Missions</h2>
+      {% if project.details and project.details.missions %}
+      <ul class="case-list case-list--bullets">
+        {% for mission in project.details.missions %}
+        <li>{{ mission | escape }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </article>
+    <article class="case-panel card" data-anim="fade-up">
+      <h2 id="case-benefices">B&eacute;n&eacute;fices</h2>
+      {% if project.details and project.details.benefices %}
+      <ul class="case-list case-list--bullets case-list--benefits">
+        {% for gain in project.details.benefices %}
+        <li>{{ gain | escape }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </article>
   </div>
 </section>
 
 <section class="section case-section" aria-labelledby="case-stack">
   <div class="service-container">
-    <h2 id="case-stack">Stack</h2>
-    {% if project.details and project.details.stack %}
-    <ul>
-      {% for tool in project.details.stack %}
-      <li>{{ tool | escape }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+    <article class="case-panel card" data-anim="fade-up">
+      <div class="case-stack__head">
+        <h2 id="case-stack">Stack</h2>
+        <p>Outils &amp; plateformes mobilis&eacute;s.</p>
+      </div>
+      {% if project.details and project.details.stack %}
+      <ul class="case-tags" aria-label="Technologies principales">
+        {% for tool in project.details.stack %}
+        <li><span class="chip">{{ tool | escape }}</span></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </article>
   </div>
 </section>
 
@@ -80,7 +101,7 @@
 
 <section class="section cta-block premium-cta" aria-labelledby="case-cta-title">
   <div class="service-container">
-    <div class="premium-cta__card card">
+    <div class="premium-cta__card card" data-anim="fade-up">
       <h2 id="case-cta-title">Prêt à activer le même type de résultats ?</h2>
       <p>Parlons de vos flux et de vos indicateurs pour cadrer rapidement la prochaine étape.</p>
       <a class="btn btn--primary"

@@ -1162,6 +1162,140 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
   font-weight:600;
   color:color-mix(in oklab, var(--brand-2) 32%, var(--fg) 68%);
 }
+.case-hero{
+  position:relative;
+}
+.case-hero__grid{
+  display:grid;
+  gap:clamp(1.3rem, 2.6vw, 2.4rem);
+  align-items:start;
+}
+.case-hero__content{
+  display:grid;
+  gap:clamp(.7rem, 1.6vw, 1.2rem);
+  text-align:left;
+}
+.case-hero__summary{
+  margin:0;
+  color:color-mix(in oklab, var(--muted) 70%, var(--fg) 30%);
+  max-width:60ch;
+}
+.case-meta{
+  display:grid;
+  gap:.85rem;
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 26%);
+  background:linear-gradient(165deg,
+    color-mix(in oklab, var(--surface-1) 92%, transparent),
+    color-mix(in oklab, var(--surface-2) 68%, var(--brand) 18%));
+  box-shadow:var(--shadow-md);
+}
+.case-meta__title{
+  margin:0;
+  font-size:var(--step--1);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:color-mix(in oklab, var(--muted) 68%, var(--fg) 32%);
+}
+.case-meta__list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap:.8rem;
+}
+.case-meta__item{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:1rem;
+  padding-bottom:.6rem;
+  border-bottom:1px dashed color-mix(in oklab, var(--border), transparent 55%);
+}
+.case-meta__item:last-child{
+  padding-bottom:0;
+  border-bottom:0;
+}
+.case-meta__label{
+  font-size:var(--step--1);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:color-mix(in oklab, var(--muted) 70%, var(--fg) 30%);
+}
+.case-meta__value{
+  font-weight:700;
+  text-align:right;
+}
+.case-panel{
+  display:grid;
+  gap:.75rem;
+}
+.case-grid{
+  display:grid;
+  gap:clamp(1rem, 2vw, 1.6rem);
+}
+.case-list--bullets{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:.7rem;
+}
+.case-list--bullets li{
+  position:relative;
+  padding-left:1.6rem;
+  color:color-mix(in oklab, var(--muted) 70%, var(--fg) 30%);
+}
+.case-list--bullets li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.45rem;
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  background:var(--g-brand);
+  box-shadow:0 0 0 6px color-mix(in oklab, var(--brand) 18%, transparent);
+}
+.case-list--benefits li::before{
+  background:color-mix(in oklab, var(--brand-2) 70%, var(--brand) 30%);
+  box-shadow:0 0 0 6px color-mix(in oklab, var(--brand-2) 20%, transparent);
+}
+.case-stack__head{
+  display:grid;
+  gap:.35rem;
+}
+.case-stack__head p{
+  margin:0;
+  color:color-mix(in oklab, var(--muted) 70%, var(--fg) 30%);
+}
+.case-tags{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+}
+.case-tags .chip{
+  background:color-mix(in oklab, var(--surface-2) 82%, transparent);
+}
+@media (min-width:900px){
+  .case-hero__grid{
+    grid-template-columns:minmax(0, 1.1fr) minmax(240px, .9fr);
+  }
+  .case-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width:720px){
+  .case-meta__item{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .case-meta__value{
+    text-align:left;
+  }
+}
 .steps-list{
   list-style:none;
   margin:0;

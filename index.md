@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Consultant Talend & Power BI - Résultats rapides
-description: Freelance Talend & Power BI pour lancer vos flux ETL et dashboards actionnables en moins de 4 semaines.
+description: "Freelance Talend & Power BI pour automatiser vos flux de données et construire des dashboards KPI utiles, sans complexité inutile."
 keywords_groups:
   - services
   - local
@@ -12,7 +12,7 @@ bandeau:
 ---
 
 <!-- H1 accessible (améliore le SEO sans changer le design) -->
-<h1 class="sr-only">Consultant Talend et Power BI pour demarrer vos flux et tableaux de bord sans usine a gaz</h1>
+<h1 class="sr-only">Consultant Talend et Power BI pour demarrer vos flux et tableaux de bord</h1>
 
 <!-- BANDEAU -->
 <style>
