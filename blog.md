@@ -444,7 +444,6 @@ divers::Divers
               <span>{{ post.author }}</span>
               <span aria-hidden="true">&middot;</span>
             {% endif %}
-            <span>Talend / Power BI</span>
           </div>
           <h3 class="pc-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
           <p class="pc-excerpt muted">{{ post.excerpt | strip_html | truncate: 160 }}</p>
