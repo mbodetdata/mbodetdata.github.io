@@ -1336,12 +1336,12 @@ En POC, c’est utile pour valider ton code, mais le test “réel” reste GitH
 
 ## Sources
 
-- GitHub — Validating webhook deliveries : https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries
-- GitHub — Webhook events and payloads : https://docs.github.com/en/webhooks/webhook-events-and-payloads
-- GitHub — Troubleshooting webhooks : https://docs.github.com/fr/enterprise-cloud@latest/webhooks/testing-and-troubleshooting-webhooks/troubleshooting-webhooks
-- Caddy — reverse_proxy : https://caddyserver.com/docs/caddyfile/directives/reverse_proxy
-- Caddy — rewrite : https://caddyserver.com/docs/caddyfile/directives/rewrite
-- Talend (Qlik Help) — ESB REST components : https://help.qlik.com/talend/en-US/components/8.0/esb-rest/esb-rest-component
+- [GitHub — Validating webhook deliveries](https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries)
+- [GitHub — Webhook events and payloads](https://docs.github.com/en/webhooks/webhook-events-and-payloads)
+- [GitHub — Troubleshooting webhooks](https://docs.github.com/fr/enterprise-cloud@latest/webhooks/testing-and-troubleshooting-webhooks/troubleshooting-webhooks)
+- [Caddy — reverse_proxy](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy)
+- [Caddy — rewrite](https://caddyserver.com/docs/caddyfile/directives/rewrite)
+- [Talend (Qlik Help) — ESB REST components](https://help.qlik.com/talend/en-US/components/8.0/esb-rest/esb-rest-component)
 
 ## Liens pour le tuto : 
 - Le projet complet : [Téléchargement](https://github.com/mbodetdata/BMDATA_Blog-webhook)
