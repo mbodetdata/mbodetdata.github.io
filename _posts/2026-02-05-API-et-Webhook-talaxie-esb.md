@@ -32,11 +32,12 @@ Et ce “sens” change des choses très concrètes :
 
 ---
 
-> **TL;DR**
+
 > - **API** : tu vas chercher l’info.
 > - **Webhook** : on te pousse l’info.
 >
-> **Résultat à la fin du tuto :**
+> **Résultat à la fin du tuto :**   
+> 
 > 1) un endpoint Talaxie ESB qui répond en local  
 > 2) le même endpoint exposé en HTTPS derrière Caddy  
 > 3) un webhook GitHub **signé (HMAC SHA-256)**, **vérifié côté Talaxie**, avec des réponses 200/401 propres
@@ -64,7 +65,7 @@ Avec une API, tu pilotes tout :
 Tu veux le nombre de stars d’un repo ?  
 → tu appelles l’API GitHub, tu obtiens la valeur **au moment T**.
 
-Mais si tu veux être **prévenu** dès qu’une star est ajoutée…  
+Mais si tu veux être **prévenu** dès qu’une star est ajoutée  
 → une API seule te pousse à faire du *polling* (appeler en boucle) : inefficace, bruyant, et pas très élégant.
 
 ---
@@ -74,6 +75,7 @@ Mais si tu veux être **prévenu** dès qu’une star est ajoutée…
 Un webhook, c’est l’inverse : tu exposes une URL, et un service externe **t’envoie** une requête HTTP quand un événement se produit.
 
 En clair :
+---
 > “Quand ça arrive, appelle-moi ici.”
 
 ### Le point clé
@@ -97,7 +99,7 @@ Tu ne maîtrises pas le déclenchement. Donc tu dois être prêt à gérer :
 
 Exemple :
 - GitHub te notifie : “star ajoutée”
-- puis tu appelles l’API pour récupérer ce qui t’intéresse (repo, auteur, méta-données, etc.)
+- Puis tu appelles l’API pour récupérer ce qui t’intéresse (repo, auteur, méta-données, etc.)
 
 > Maintenant qu’on parle le même langage, on passe à la mise en place.
 
@@ -442,7 +444,9 @@ Il dit à Caddy :
 - “tu proxies vers `http://127.0.0.1:8088/...`”
 
 > Voici un CaddyFile prêt a l'emploi
-~~~CaddyFile
+
+
+~~~t
 {
 	# ============================================
 	# CONFIG GLOBALE CADDY
@@ -561,7 +565,9 @@ TON_DOMAINE.duckdns.org {
 	# =========================================================
 	respond 404
 }
+
 ~~~
+
 ---
 
 ## Valider, formatter, recharger
@@ -650,7 +656,7 @@ Dans **Settings → Webhooks** de ton repo, crée un webhook avec :
 
 ![Configuration 2/2 github]({{ '/assets/img/blog/10-esb-api-webhook/5-github-2.webp' | relative_url }}){:alt="Configuration 2/2 github" loading="lazy" decoding="async"}
 
-> Le **secret**, c’est ton mot de passe partagé avec GitHub : ne le hardcode pas n’importe où, et ne le loggue jamais.
+> ⚠️ Le **secret**, c’est ton mot de passe partagé avec GitHub : ne le hardcode pas n’importe où, et ne le loggue jamais.
 
 ---
 
@@ -664,12 +670,12 @@ tu dois récupérer le **BODY en `byte[]`** (octets bruts), sans aucune transfor
 ### Pourquoi le body doit être en `byte[]` (et pas en String/JSON “joli”) ?
 GitHub signe ses webhooks avec le header **`X-Hub-Signature-256`** : c’est un **HMAC SHA-256 calculé sur le body HTTP brut**.
 
-Donc côté serveur, tu dois :
+Donc côté serveur, tu dois :    
 1) reprendre **exactement** les mêmes octets reçus,  
 2) recalculer le HMAC avec le **secret**,  
 3) comparer avec le header.
 
-Point clé : **si tu modifies le payload avant la vérif** (reformat JSON, encodage, conversion String, etc.), tu changes les octets → la signature ne matchera plus.
+> ⚠️ **si tu modifies le payload avant la vérif** (reformat JSON, encodage, conversion String, etc.), tu changes les octets → la signature ne matchera plus.
 
 ---
 
@@ -682,7 +688,7 @@ La suite logique :
 
 ## Routine Java : `GitHubSig`
 
-Pour vérifier un webhook GitHub correctement, il te faut une routine qui fait **exactement** ça :
+Pour vérifier un webhook GitHub correctement, il te faut une routine qui fait **exactement** ça :    
 1) reprendre le **body brut** (`byte[]`) tel qu’il a été reçu,
 2) recalculer le **HMAC-SHA256** avec ton secret,
 3) comparer (proprement) avec le header **`X-Hub-Signature-256`**.
@@ -861,7 +867,7 @@ public class GitHubSig {
 Objectif : **refuser tout webhook dont la signature ne matche pas**.  
 Tu récupères le **body brut (`byte[]`)** + le header **`X-Hub-Signature-256`**, tu appelles `GitHubSig`, et tu poses un booléen `b_IsGithubTokenOk` pour piloter les branches.
 
-> Le code du tJava
+Le code du tJava   
 
 ~~~java
 /**
@@ -963,6 +969,8 @@ Ajoute un `tFixedFlowInput` avec une colonne `body` (String) et comme valeur :
 new String(((byte[])globalMap.get("webhook_github.body")), "UTF-8")
 ~~~
 
+> Adapte la valeur `webhook_github` en fonction du nom de ta connexion main issue du tRestRequest ! 
+
 ### 2) Extraire les champs (tExtractJSONFields)
 
 Configure `tExtractJSONFields` sur la colonne `body`.
@@ -1001,7 +1009,7 @@ Idée simple :
 > - `TON_DOMAINE.duckdns.org` par ton domaine
 > - `TON_SECRET_TRES_LONG` par ton token du webhook test
 
-~~~CaddyFile
+~~~t
 {
 	# ============================================
 	# CONFIG GLOBALE CADDY
@@ -1220,14 +1228,15 @@ bundle:restart ID
 Postman ne suffit pas “tel quel” : GitHub ajoute la signature `X-Hub-Signature-256`.  
 Donc tu testes en déclenchant un vrai événement.
 
-### Test rapide
-1) Mets une étoile sur ton repo
-2) Retire l’étoile
-3) Regarde les logs côté Karaf : `action = created` puis `deleted`
+### Test rapide    
+
+1) Mets une étoile sur ton repo    
+2) Retire l’étoile    
+3) Regarde les logs côté Karaf : `action = created` puis `deleted`    
 
 ![Ajouter une étoile sur GitHub]({{ '/assets/img/blog/10-esb-api-webhook/9-test-github.webp' | relative_url }}){:alt="Ajouter une etoile sur github" loading="lazy" decoding="async"}
 
-![Résultat du webhook côté Karaf]({{ '/assets/img/blog/10-esb-api-webhook/9-test-github.webp' | relative_url }}){:alt="Resultat du webhook" loading="lazy" decoding="async"}
+![Résultat du webhook côté Karaf]({{ '/assets/img/blog/10-esb-api-webhook/9-resultats.webp' | relative_url }}){:alt="Resultat du webhook" loading="lazy" decoding="async"}
 
 > Astuce : dans **Settings → Webhooks → Recent deliveries**, tu peux “redeliver” pour retester rapidement après un ajustement.
 
@@ -1251,14 +1260,75 @@ Ce lab est un **POC pédagogique** : il montre la mécanique, pas une prod “in
 
 # FAQ
 
-**“Un webhook, c’est une API ?”**  
-C’est du HTTP comme une API, mais la logique est inverse : **API = tu demandes**, **webhook = on te pousse l’info**.
+**1) “Un webhook, c’est une API ?”**  
+C’est du HTTP comme une API, mais la logique est inverse : **API = tu demandes**, **webhook = on te pousse l’info**.  
+Donc tu ne gères pas le “rythme” : c’est toi qui dois encaisser.
 
-**“Pourquoi Caddy + Talaxie/Talend plutôt que Talend en direct ?”**  
-Pour éviter d’exposer ton runtime, et centraliser routage + HTTPS via un reverse proxy.
+**2) “Pourquoi tu conseilles webhook + API derrière ?”**  
+Webhook = *signal* (un truc vient d’arriver).  
+API = *enrichissement* (tu vas chercher les détails quand tu en as besoin).  
+Ça réduit le bruit et ça évite le polling.
 
-**“Pourquoi GitHub insiste sur `X-Hub-Signature-256` ?”**  
-Parce qu’un header se forge. La signature HMAC prouve que l’émetteur connaît le secret, et tu dois valider **avant** traitement.
+**3) “Pourquoi Caddy + Talaxie/Talend plutôt que Karaf exposé direct ?”**  
+Parce que tu centralises :
+- HTTPS (TLS),
+- routing,
+- filtres simples (host/méthode/headers),
+- logs d’accès.  
+Et tu évites de publier ton runtime en frontal.
+
+**4) “Le filtre ‘header présent’ dans Caddy, ça sécurise vraiment ?”**  
+Non. Ça fait juste un **garde-barrière** minimal (anti bruit/anti scans).  
+La vraie sécurité, c’est la **vérification HMAC côté Talaxie**.
+
+**5) “Pourquoi GitHub insiste sur `X-Hub-Signature-256` ?”**  
+Parce qu’un header se forge.  
+La signature HMAC prouve que l’émetteur connaît le secret, *et* que le body n’a pas été modifié.
+
+**6) “`X-Hub-Signature` vs `X-Hub-Signature-256` : je prends quoi ?”**  
+Pour un POC moderne : `X-Hub-Signature-256` (SHA-256).  
+`X-Hub-Signature` (SHA-1) est l’ancien format.
+
+**7) “Pourquoi tu répètes ‘body brut’ ?”**  
+Parce que la signature est calculée sur **les octets exacts** du body HTTP.  
+Tu modifies (pretty JSON, conversion String, encodage…) → signature KO.
+
+**8) “GitHub renvoie les webhooks si je réponds 500 ?”**  
+Oui : si tu ne réponds pas correctement, il y a des retries/redeliver.  
+Le bon réflexe : répondre vite (2xx si accepté), et traiter ensuite si besoin (queue) — même en POC, garde ça en tête.
+
+**9) “Quel code HTTP je dois renvoyer à GitHub ?”**  
+- **200/204** : accepté  
+- **401** : rejet (signature invalide)  
+- **4xx/5xx** : GitHub peut considérer la livraison comme échouée (et retenter).
+
+**10) “Et si mon traitement est long ?”**  
+Réponds **vite** (accusé réception), puis traite derrière (file/queue).  
+Même en POC, c’est la différence entre “ça marche 1 fois” et “ça marche quand ça spike”.
+
+**11) “Comment je gère les doublons proprement ?”**  
+GitHub fournit un identifiant de livraison (`X-GitHub-Delivery`).  
+Stratégie simple :
+- tu loggues l’ID,
+- tu stockes les IDs déjà traités (même dans un fichier/redis/db en version “lite”),
+- si tu revois le même ID → tu ignores.
+
+**12) “Je peux whitelister les IP GitHub ?”**  
+Oui (et c’est une bonne défense réseau), mais ça demande de tenir la liste à jour.  
+En POC, tu peux le noter comme amélioration.
+
+**13) “Comment je débogue un 401 Talaxie sans fuite ?”**  
+Loggue uniquement :
+- `bodyLen`,
+- `sigPresent`,
+- éventuellement les **premiers caractères** du header (pas le secret),
+- et un ID de corrélation.  
+Ne loggue jamais le secret.
+
+**14) “Je peux tester la signature GitHub sans GitHub ?”**  
+Oui, mais il faut calculer l’HMAC côté client et envoyer le header `X-Hub-Signature-256`.  
+En POC, c’est utile pour valider ton code, mais le test “réel” reste GitHub → Recent deliveries.
+
 
 ---
 
