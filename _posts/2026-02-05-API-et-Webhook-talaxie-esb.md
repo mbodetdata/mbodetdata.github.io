@@ -626,6 +626,11 @@ Résultat attendu : **200 OK**.
 
 Mais un token statique, c’est bien pour un lab mais c'est vite limité.
 
+> 🔁 **Et si tu passais à la signature ? (Partie 2)**  
+> Le token statique, c’est parfait pour valider le flux… mais en prod ça montre vite ses limites.  
+> Dans la partie 2, tu passes côté émetteur : **génération HMAC-SHA256**, header `X-Signature-256`, et envoi via `tRESTClient`.  
+> 👉 [https://bmdata.fr/blog/API-et-Webhook-talaxie-esb-2/](https://bmdata.fr/blog/API-et-Webhook-talaxie-esb-2/)
+
 La suite devient vraiment intéressante : **webhook GitHub + signature HMAC**, preuve d’authenticité.
 
 ---
@@ -1245,6 +1250,11 @@ Donc tu testes en déclenchant un vrai événement.
 - **401 côté Talaxie** : signature invalide → secret différent, ou body modifié avant la vérif
 
 ---
+
+# Partie 2 ? 
+> ✅ **La partie 2 est en ligne : Webhook signé (HMAC) côté émetteur**  
+> Tu y apprends à **générer** la signature HMAC-SHA256, poser `X-Signature-256`, puis appeler ton endpoint Talaxie avec `tRESTClient`.  
+> 👉 [https://bmdata.fr/blog/API-et-Webhook-talaxie-esb-2/](https://bmdata.fr/blog/API-et-Webhook-talaxie-esb-2/)
 
 # Conclusion
 
