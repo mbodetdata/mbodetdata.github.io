@@ -464,11 +464,12 @@ La signature doit être calculée sur le **body brut (bytes)** : exactement ce q
 3) Encoder le résultat en **hex lowercase**  
 4) Construire la valeur finale : `sha256=<hex>`
 
-Java fournit tout ce qu’il faut via `javax.crypto.Mac` (doc Oracle) :  
-https://docs.oracle.com/en/java/javase/11/docs/api/java.base/javax/crypto/Mac.html
+Java fournit tout ce qu’il faut via `javax.crypto.Mac` [doc Oracle](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/javax/crypto/Mac.html)
 
 La routine **`HmacSig`** encapsule déjà ces étapes.  
 Il te reste à l’appeler depuis `Emetteur` :
+
+> Copie colle ce code, et ajoute le dans le `tJava`
 
 ~~~java
 
@@ -636,6 +637,7 @@ Côté `Receveur`, tu dois voir le rejet :
 2) Exécute `Emetteur`, puis récupère :
    - le **body** envoyé
    - la valeur du header `X-Signature-256`
+
 3) Rejoue la requête avec Postman (body + header inchangés) : **200**.
 
 ![test 3 - Postman - Header]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-3-emetteur-postman-header.webp' | relative_url }}){:alt="test 3 - Postman - Header" loading="lazy" decoding="async"}
@@ -679,7 +681,7 @@ Log minimal recommandé :
 HMAC garantit l’intégrité + l’authenticité, mais **n’empêche pas le rejeu**.
 
 OWASP recommande d’ajouter une protection replay (nonce, timestamp, etc.) :  
-https://scs.owasp.org/SCWE/SCSVS-COMM/SCWE-022/
+[https://scs.owasp.org/SCWE/SCSVS-COMM/SCWE-022/](https://scs.owasp.org/SCWE/SCSVS-COMM/SCWE-022/)
 
 ### Pattern simple
 
