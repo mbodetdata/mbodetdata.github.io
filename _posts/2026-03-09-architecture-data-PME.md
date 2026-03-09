@@ -34,11 +34,11 @@ Dans la majorité des cas, le point de fragilité vient de l’**architecture da
 - les transformations sont dispersées
 - personne ne sait vraiment où se trouve la version fiable d’un indicateur
 
-Autrement dit : tu n’as pas un problème de dashboard. Tu as un problème de fondation.
+Autrement dit : tu n’as pas un problème de dashboard. **Tu as un problème de fondation**.
 
 L’objectif de cet article est simple : te montrer comment construire une **architecture data simple pour PME**, crédible techniquement, facile à maintenir, et suffisamment robuste pour faire de la BI sérieuse sans basculer dans une usine à gaz.
 
-Si tu travailles déjà avec Talend ou Talaxie, tu peux aussi lire mon article sur [la manière dont les entreprises automatisent leurs données sans infrastructure complexe](/blog/utilisation-talend/).
+> ℹ️ Si tu travailles déjà avec Talend ou Talaxie, tu peux aussi lire mon article sur [la manière dont les entreprises automatisent leurs données sans infrastructure complexe](/blog/utilisation-talend/).
 
 ---
 
@@ -48,7 +48,11 @@ Pourquoi autant d’entreprises connectent-elles directement leurs dashboards au
 
 Parce que c’est le chemin le plus court.
 
-![Une architecture rapide, mais peu fiable]({{ '/assets/img/blog/12-architecture-data-pme/1-pb-chemin-court.webp' | relative_url }}){:alt="Brancher directement ses sources sur un outil de BI" loading="lazy" decoding="async"}
+~~~text
+Sources (CRM / ERP / APIs / Excel)
+                ↓
+             BI Tool
+~~~
 
 Sur le papier, c’est rapide.
 
@@ -80,6 +84,8 @@ Tu as un **pipeline de données caché dans la BI**.
 
 Et ce n’est pas le bon endroit pour ça.
 
+![Une architecture rapide, mais peu fiable]({{ '/assets/img/blog/12-architecture-data-pme/1-pb-chemin-court.webp' | relative_url }}){:alt="Brancher directement ses sources sur un outil de BI" loading="lazy" decoding="async"}
+
 ---
 
 # L’architecture data recommandée
@@ -97,9 +103,9 @@ Cette architecture BI suit une logique claire :
 - la base centrale stocke une version consolidée
 - l’outil BI consomme des données déjà prêtes
 
-C’est ce découpage qui change tout.
+**C’est ce découpage qui change tout**.
 
-Tu cesses de bricoler des rapports “intelligents” pour construire un système data plus lisible, plus stable et plus évolutif.
+Tu cesses de bricoler des rapports “intelligents” pour construire un système data plus *lisible*, plus *stable* et plus *évolutif*.
 
 ## Pourquoi cette approche fonctionne mieux
 
@@ -117,7 +123,7 @@ Quand une API change, quand un champ évolue ou quand une source devient instabl
 
 Tu peux ajouter un nouvel indicateur, une nouvelle source ou un nouvel outil BI sans refaire toute la tuyauterie du projet.
 
-En clair : tu remplaces un empilement de connexions fragiles par une architecture data lisible.
+> En clair : tu remplaces un empilement de connexions fragiles par une architecture data lisible.
 
 ---
 
@@ -143,7 +149,7 @@ C’est exactement pour cela qu’une source ne devrait presque jamais être exp
 
 La BI a besoin d’une donnée stable. Les systèmes métiers, eux, sont faits pour faire tourner l’activité, pas pour alimenter directement un modèle analytique propre.
 
-Et si tes flux manipulent beaucoup de JSON, tu peux aussi lire ce guide sur [la configuration de tWriteJSONField et du JSON Tree](/blog/tWriteJSONField/), particulièrement utile dès que les structures deviennent plus complexes.
+ℹ️ Et si tes flux manipulent beaucoup de JSON, tu peux aussi lire ce guide sur [la configuration de tWriteJSONField et du JSON Tree](/blog/tWriteJSONField/), particulièrement utile dès que les structures deviennent plus complexes.
 
 ## Le rôle de l’ETL
 
@@ -173,7 +179,7 @@ L’ETL ne sert pas juste à déplacer de la donnée.
 
 Il sert à rendre la donnée exploitable.
 
-Dans un projet PME, les transformations les plus utiles sont souvent les plus concrètes.
+Dans un projet data, les transformations les plus utiles sont souvent les plus concrètes.
 
 ### Nettoyage
 
@@ -197,7 +203,7 @@ Isoler les lignes rejetées, tracer les anomalies, éviter qu’un lot entier to
 
 Conserver l’évolution d’un état dans le temps au lieu d’écraser systématiquement la valeur précédente.
 
-Si tu hésites encore sur l’environnement à utiliser, tu peux lire aussi [Les différents Studios Talend : lequel choisir pour vos projets Data ?](/blog/talend-studios/).
+> ℹ️ Si tu hésites encore sur l’environnement à utiliser, tu peux lire aussi [Les différents Studios Talend : lequel choisir pour vos projets Data ?](/blog/talend-studios/).
 
 ### ETL ou ELT ?
 
@@ -218,11 +224,11 @@ Cette base peut être :
 - PostgreSQL
 - SQL Server
 - MySQL
-- ou une autre base adaptée à ton contexte
+- Ou une autre base adaptée à ton contexte
 
 Tu n’as pas besoin d’un data warehouse “enterprise” pour commencer proprement.
 
-Dans beaucoup de PME, une base relationnelle bien structurée suffit largement pour centraliser les données, stabiliser les modèles et alimenter la BI dans de bonnes conditions.
+Dans beaucoup d'entreprise, une base relationnelle bien structurée suffit largement pour centraliser les données, stabiliser les modèles et alimenter la BI dans de bonnes conditions.
 
 ## Pourquoi cette couche est indispensable
 
@@ -254,6 +260,8 @@ Il peut s’agir de :
 - Power BI
 - Metabase
 - Superset
+- Ou un autre outils adaptée à ton contexte
+
 
 Son rôle est clair :
 
@@ -269,9 +277,8 @@ En revanche, il ne devrait pas :
 - porter seul les jointures complexes
 - dépendre directement d’une API critique
 
-Dit autrement : la BI doit consommer des données préparées, pas les fabriquer à la volée.
-
-C’est souvent à ce moment-là que le projet change de niveau. Tu passes d’un dashboard “qui marche plus ou moins” à une architecture BI qui tient dans le temps.
+> Dit autrement : la BI doit consommer des données préparées, pas les fabriquer à la volée.
+> C’est souvent à ce moment-là que le projet change de niveau. Tu passes d’un dashboard “qui marche plus ou moins” à une architecture BI qui tient dans le temps.
 
 ---
 
@@ -309,7 +316,7 @@ Une fois les données centralisées, l’outil BI peut proposer des dashboards f
 - la logistique
 - la performance commerciale
 
-La différence est majeure.
+La différence est **majeure**.
 
 Le dashboard ne dépend plus directement de trois systèmes différents. Il lit une base centrale déjà préparée.
 
@@ -320,7 +327,7 @@ Résultat :
 - les règles métier sont plus faciles à maintenir
 - l’ajout d’un nouveau KPI devient beaucoup moins risqué
 
-Quand les flux deviennent événementiels ou doivent dialoguer avec des services externes, il faut aussi bien distinguer logique d’API et logique de notification. J’ai détaillé ce point ici : [API vs Webhook : comprendre la différence et implémenter un webhook sécurisé avec Talaxie](/blog/API-et-Webhook-talaxie-esb/).
+ℹ️ Quand les flux deviennent événementiels ou doivent dialoguer avec des services externes, il faut aussi bien distinguer logique d’API et logique de notification. J’ai détaillé ce point ici : [API vs Webhook : comprendre la différence et implémenter un webhook sécurisé avec Talaxie](/blog/API-et-Webhook-talaxie-esb/).
 
 ---
 
@@ -364,23 +371,23 @@ Tu n’as pas besoin de tout refaire d’un coup.
 
 Le plus efficace est souvent de procéder par étapes.
 
-## Étape 1 — Identifier les sources critiques
+### Étape 1 — Identifier les sources critiques
 
 Commence par les 2 ou 3 sources qui alimentent les indicateurs les plus importants.
 
-## Étape 2 — Sortir les transformations du dashboard
+### Étape 2 — Sortir les transformations du dashboard
 
 Tout ce qui relève du nettoyage, du rapprochement ou de la normalisation doit migrer vers le pipeline.
 
-## Étape 3 — Créer une base centrale simple
+### Étape 3 — Créer une base centrale simple
 
 Même une base relationnelle bien structurée peut déjà faire une énorme différence.
 
-## Étape 4 — Brancher la BI sur des tables préparées
+### Étape 4 — Brancher la BI sur des tables préparées
 
 Le dashboard doit lire des données déjà stabilisées, pas improviser leur préparation.
 
-## Étape 5 — Ajouter des logs et un minimum d’historique
+### Étape 5 — Ajouter des logs et un minimum d’historique
 
 C’est souvent ce qui fait la différence entre un pipeline “qui marche aujourd’hui” et un pipeline maintenable.
 
@@ -388,31 +395,31 @@ C’est souvent ce qui fait la différence entre un pipeline “qui marche aujou
 
 # FAQ — Architecture data, ETL et BI en PME
 
-## Faut-il une architecture data complète dès le début ?
+### Faut-il une architecture data complète dès le début ?
 
 Non. En PME, l’objectif n’est pas de construire une plateforme data complexe dès le départ. Le plus important est de poser une structure simple et saine : **sources → ETL → base de données → BI**.
 
 Tu peux très bien commencer avec quelques sources critiques, un pipeline clair et une base relationnelle bien structurée. Le vrai enjeu n’est pas la sophistication technique, mais la fiabilité de la donnée et la capacité à faire évoluer le système sans casser les dashboards.
 
-## Peut-on connecter directement Power BI ou Metabase aux sources ?
+### Peut-on connecter directement Power BI ou Metabase aux sources ?
 
 Oui, techniquement, mais ce n’est généralement pas une bonne idée dès que le besoin devient un peu sérieux.
 
 Pour un prototype ou un test rapide, ça peut suffire. En revanche, dès que plusieurs sources, transformations métier ou indicateurs stratégiques entrent en jeu, ce modèle devient vite fragile : performances irrégulières, logique métier dispersée, maintenance difficile, absence de source de vérité.
 
-## Une PME a-t-elle vraiment besoin d’un ETL ?
+### Une PME a-t-elle vraiment besoin d’un ETL ?
 
 Dans beaucoup de cas, oui.
 
 Dès que tu dois récupérer des données depuis plusieurs outils, nettoyer les formats, rapprocher des référentiels ou historiser des états, un ETL devient très utile. Il permet de sortir cette logique de l’outil BI et de la rendre plus stable, plus lisible et plus maintenable.
 
-## Quelle base de données choisir pour centraliser les données ?
+### Quelle base de données choisir pour centraliser les données ?
 
 Pour une PME, une base relationnelle bien connue suffit souvent largement.
 
 PostgreSQL, SQL Server ou MySQL peuvent très bien faire le travail selon ton contexte, tes compétences internes et ton existant. Le point clé n’est pas d’avoir la technologie la plus “impressionnante”, mais d’avoir un stockage central propre, cohérent et exploitable par la BI.
 
-## Quelle différence entre ETL et ELT ?
+### Quelle différence entre ETL et ELT ?
 
 La différence tient au moment où la transformation est faite.
 
@@ -421,7 +428,7 @@ La différence tient au moment où la transformation est faite.
 
 En pratique, pour une PME, le plus important n’est pas le sigle. Le vrai sujet est de ne pas laisser les transformations critiques vivre directement dans l’outil BI.
 
-## Quand faut-il passer d’un dashboard “rapide” à une vraie architecture BI ?
+### Quand faut-il passer d’un dashboard “rapide” à une vraie architecture BI ?
 
 Dès que tu observes un ou plusieurs de ces signaux :
 
@@ -433,13 +440,13 @@ Dès que tu observes un ou plusieurs de ces signaux :
 
 À ce moment-là, tu n’as plus seulement un besoin de visualisation. Tu as un besoin d’architecture.
 
-## Quelle est l’erreur la plus fréquente dans un projet BI PME ?
+### Quelle est l’erreur la plus fréquente dans un projet BI PME ?
 
 La plus fréquente, c’est de transformer l’outil BI en ETL caché.
 
 Au début, c’est rapide. Ensuite, tout devient plus dur : maintenance, performance, évolution, gouvernance, onboarding d’un nouveau collègue ou d’un prestataire. Une BI efficace consomme des données préparées ; elle ne devrait pas être l’endroit où toute la logique de préparation est reconstruite.
 
-## Peut-on mettre en place une architecture data simple sans équipe data dédiée ?
+### Peut-on mettre en place une architecture data simple sans équipe data dédiée ?
 
 Oui, à condition de rester pragmatique.
 
@@ -447,7 +454,7 @@ Une PME n’a pas forcément besoin d’un data engineer à temps plein ni d’u
 
 ---
 
-# Aller plus loin sur BMData
+# ℹ️ Aller plus loin sur BMData
 
 Si tu veux approfondir le sujet ou comparer cette approche avec d’autres cas concrets, voici quelques ressources utiles :
 
