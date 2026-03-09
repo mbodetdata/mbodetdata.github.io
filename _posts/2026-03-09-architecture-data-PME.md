@@ -50,19 +50,19 @@ Parce que c’est le chemin le plus court.
 
 ~~~text
 Sources (CRM / ERP / APIs / Excel)
-                ↓
-             BI Tool
+↓
+BI Tool
 ~~~
 
 Sur le papier, c’est rapide.
 
-En pratique, ce modèle déplace toute la complexité dans la dernière couche du système. L’outil BI se retrouve alors à faire trois métiers en même temps :
+En pratique, ce modèle **déplace toute la complexité dans la dernière couche du système**. L’outil BI se retrouve alors à faire trois métiers en même temps :
 
 - se connecter aux sources
 - transformer les données
 - restituer les indicateurs
 
-C’est précisément là que les ennuis commencent.
+C’est précisément là que les **ennuis commencent**.
 
 ## Pourquoi ce modèle casse vite
 
@@ -123,7 +123,7 @@ Quand une API change, quand un champ évolue ou quand une source devient instabl
 
 Tu peux ajouter un nouvel indicateur, une nouvelle source ou un nouvel outil BI sans refaire toute la tuyauterie du projet.
 
-> En clair : tu remplaces un empilement de connexions fragiles par une architecture data lisible.
+> En clair : tu remplaces un empilement de connexions fragiles par une **architecture data lisible**.
 
 ---
 
@@ -149,7 +149,7 @@ C’est exactement pour cela qu’une source ne devrait presque jamais être exp
 
 La BI a besoin d’une donnée stable. Les systèmes métiers, eux, sont faits pour faire tourner l’activité, pas pour alimenter directement un modèle analytique propre.
 
-ℹ️ Et si tes flux manipulent beaucoup de JSON, tu peux aussi lire ce guide sur [la configuration de tWriteJSONField et du JSON Tree](/blog/tWriteJSONField/), particulièrement utile dès que les structures deviennent plus complexes.
+> ℹ️ Et si tes flux manipulent beaucoup de JSON, tu peux aussi lire ce guide sur [la configuration de tWriteJSONField et du JSON Tree](/blog/tWriteJSONField/), particulièrement utile dès que les structures deviennent plus complexes.
 
 ## Le rôle de l’ETL
 
@@ -171,13 +171,13 @@ Concrètement, un ETL comme Talend ou Talaxie peut gérer :
 - l’historisation
 - le chargement dans une base cible
 
-Si tu utilises Talaxie ou Talend au quotidien, tu peux compléter avec ce retour d’expérience sur [la sécurisation de l’entrée du pipeline avec tSchemaComplianceCheck](/blog/tSchemaComplianceCheck/), très utile quand tu veux éviter que des données incohérentes polluent toute la chaîne.
+> ℹ️ Si tu utilises Talaxie ou Talend au quotidien, tu peux compléter avec ce retour d’expérience sur [la sécurisation de l’entrée du pipeline avec tSchemaComplianceCheck](/blog/tSchemaComplianceCheck/), très utile quand tu veux éviter que des données incohérentes polluent toute la chaîne.
 
 ## Ce que l’ETL apporte vraiment
 
 L’ETL ne sert pas juste à déplacer de la donnée.
 
-Il sert à rendre la donnée exploitable.
+Il sert à rendre la donnée **exploitable**.
 
 Dans un projet data, les transformations les plus utiles sont souvent les plus concrètes.
 
@@ -226,7 +226,7 @@ Cette base peut être :
 - MySQL
 - Ou une autre base adaptée à ton contexte
 
-Tu n’as pas besoin d’un data warehouse “enterprise” pour commencer proprement.
+Tu n’as pas besoin d’un data warehouse “*enterprise*” pour commencer proprement.
 
 Dans beaucoup d'entreprise, une base relationnelle bien structurée suffit largement pour centraliser les données, stabiliser les modèles et alimenter la BI dans de bonnes conditions.
 
@@ -278,7 +278,7 @@ En revanche, il ne devrait pas :
 - dépendre directement d’une API critique
 
 > Dit autrement : la BI doit consommer des données préparées, pas les fabriquer à la volée.
-> C’est souvent à ce moment-là que le projet change de niveau. Tu passes d’un dashboard “qui marche plus ou moins” à une architecture BI qui tient dans le temps.
+> C’est souvent à ce moment-là que le projet change de niveau. Tu passes d’un dashboard “qui marche plus ou moins” à une architecture BI qui **tient dans le temps**.
 
 ---
 
@@ -327,13 +327,13 @@ Résultat :
 - les règles métier sont plus faciles à maintenir
 - l’ajout d’un nouveau KPI devient beaucoup moins risqué
 
-ℹ️ Quand les flux deviennent événementiels ou doivent dialoguer avec des services externes, il faut aussi bien distinguer logique d’API et logique de notification. J’ai détaillé ce point ici : [API vs Webhook : comprendre la différence et implémenter un webhook sécurisé avec Talaxie](/blog/API-et-Webhook-talaxie-esb/).
+> ℹ️ Quand les flux deviennent événementiels ou doivent dialoguer avec des services externes, il faut aussi bien distinguer logique d’API et logique de notification. J’ai détaillé ce point ici : [API vs Webhook : comprendre la différence et implémenter un webhook sécurisé avec Talaxie](/blog/API-et-Webhook-talaxie-esb/).
 
 ---
 
 # Les erreurs les plus fréquentes
 
-Voici les erreurs que l’on retrouve le plus souvent dans les projets d’architecture data et de BI en PME.
+Voici les erreurs que l’on retrouve le plus souvent dans les projets d’architecture data et de BI en entreprise.
 
 ## 1) Transformer les données dans l’outil BI
 
@@ -444,7 +444,7 @@ Dès que tu observes un ou plusieurs de ces signaux :
 
 La plus fréquente, c’est de transformer l’outil BI en ETL caché.
 
-Au début, c’est rapide. Ensuite, tout devient plus dur : maintenance, performance, évolution, gouvernance, onboarding d’un nouveau collègue ou d’un prestataire. Une BI efficace consomme des données préparées ; elle ne devrait pas être l’endroit où toute la logique de préparation est reconstruite.
+Au début, c’est rapide. Ensuite, tout devient plus dur : maintenance, performance, évolution, gouvernance, onboarding d’un nouveau collègue ou d’un prestataire. Une BI efficace consomme des données préparées, elle ne devrait pas être l’endroit où toute la logique de préparation est reconstruite.
 
 ### Peut-on mettre en place une architecture data simple sans équipe data dédiée ?
 
@@ -475,7 +475,7 @@ Si tu veux aller au-delà des concepts et structurer un cas réel :
 
 # Conclusion
 
-Une bonne architecture data pour PME n’a pas besoin d’être compliquée.
+Une bonne architecture data n’a pas besoin d’être compliquée.
 
 Le message clé reste le même : **Sources → ETL → Base de données → BI**.
 
