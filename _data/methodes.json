@@ -2,43 +2,43 @@
   {
     "icon": "🧹",
     "title": "Qualité des données",
-    "talend": "Contrôles DQ et rejets traçables dès l’ingestion.",
+    "talend": "Contrôles DQ et rejets traçables dès l'ingestion.",
     "powerbi": "Colonnes propres et référentiels normalisés pour un modèle fiable.",
-    "note": "Objectif : données sûres, lisibles et prêtes à analyser."
+    "note": "Objectif : vous travaillez toujours avec des données fiables — jamais de chiffre douteux à revérifier manuellement."
   },
   {
     "icon": "🔁",
     "title": "Robustesse",
     "talend": "Jobs idempotents, reprises sur incident et journalisation claire.",
     "powerbi": "Planification stable et surveillance des rafraîchissements.",
-    "note": "Objectif : des flux qui tournent sans surprise."
+    "note": "Objectif : vos automatisations tournent sans intervention — même les nuits, les week-ends et les jours fériés."
   },
   {
     "icon": "⚡",
     "title": "Performance",
     "talend": "Filtres en amont, tMap optimisés, incrémental/CDC.",
     "powerbi": "Modèle en étoile, agrégations et DAX mesuré.",
-    "note": "Objectif : temps de traitement courts et rapports rapides."
+    "note": "Objectif : vos rapports s'ouvrent en quelques secondes et vos flux ne ralentissent pas votre activité."
   },
   {
     "icon": "🧩",
     "title": "Évolutivité",
     "talend": "Jobs paramétrables et réutilisables.",
     "powerbi": "Datasets modulaires, séparation données / visuels.",
-    "note": "Objectif : s’adapter vite aux besoins."
+    "note": "Objectif : ajouter une nouvelle source ou un nouvel indicateur sans tout reconstruire."
   },
   {
     "icon": "🛡️",
     "title": "Sécurité & conformité",
     "talend": "Secrets/contextes par environnement.",
     "powerbi": "Permissions/RLS et gouvernance alignée RGPD.",
-    "note": "Objectif : contrôle d’accès clair et traçable."
+    "note": "Objectif : seules les bonnes personnes voient les bonnes données — en totale conformité RGPD."
   },
   {
     "icon": "📚",
     "title": "Documentation & partage",
     "talend": "Jobs commentés et mapping explicite.",
     "powerbi": "Modèles BI annotés, handover et runbook.",
-    "note": "Objectif : passation simple et maintenance sereine."
+    "note": "Objectif : votre équipe comprend, reprend et fait évoluer le travail livré — sans dépendre de moi après la mission."
   }
 ]

@@ -4190,3 +4190,162 @@ body::before{
 @media (min-width:720px) and (max-width:959px){
   .journey-steps{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
 }
+
+/* ===================================================================
+   UI/UX Premium Pack 3 — trust signals, micro-interactions & polish
+   =================================================================== */
+
+/* -- 10. Hero badge "Disponible" avec dot pulsant ------------------- */
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.52rem;
+  padding:.3rem .9rem .3rem .62rem;
+  border-radius:999px;
+  background:color-mix(in oklab, var(--brand-2) 11%, transparent);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand-2) 36%);
+  font-size:var(--step--1);
+  letter-spacing:.04em;
+  color:color-mix(in oklab, var(--fg) 72%, var(--brand-2) 28%);
+  width:fit-content;
+  margin-bottom:.7rem;
+}
+.hero-badge__dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:50%;
+  flex-shrink:0;
+  background:var(--brand-2);
+  animation:pulse-badge 2.6s ease-in-out infinite;
+}
+@keyframes pulse-badge{
+  0%,100%{ box-shadow:0 0 0 0 color-mix(in oklab, var(--brand-2) 45%, transparent); }
+  50%{ box-shadow:0 0 0 6px color-mix(in oklab, var(--brand-2) 0%, transparent); }
+}
+
+/* -- 11. Hero proof line (social proof sous les CTA) ---------------- */
+.hero-proof{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:.25rem .55rem;
+  font-size:var(--step--1);
+  color:var(--muted);
+  margin-top:.55rem;
+}
+.hero-proof__sep{
+  opacity:.35;
+}
+
+/* -- 12. Contact guarantee badge ------------------------------------ */
+.contact-guarantee{
+  display:flex;
+  align-items:center;
+  gap:.55rem;
+  padding:.55rem .9rem;
+  border-radius:var(--radius-sm);
+  background:color-mix(in oklab, var(--brand-2) 8%, transparent);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand-2) 24%);
+  font-size:var(--step--1);
+  color:color-mix(in oklab, var(--fg) 80%, var(--brand-2) 20%);
+  margin-bottom:clamp(.9rem, 2vw, 1.3rem);
+}
+.contact-guarantee svg{
+  flex-shrink:0;
+  color:var(--brand-2);
+}
+
+/* -- 13. Section hook : left-border accent dégradé ----------------- */
+.section-hook{
+  border-left:3px solid var(--brand);
+  padding-left:clamp(.8rem, 1.5vw, 1.2rem);
+  margin-left:0;
+}
+
+/* -- 14. Section hook : title size amélioré ------------------------ */
+.section-hook__title{
+  font-size:clamp(1.1rem, .9rem + .65vw, 1.35rem);
+  font-weight:700;
+  line-height:1.3;
+}
+
+/* -- 15. Methodes : hover lift + border accent ---------------------- */
+.methode{
+  transition:transform .2s cubic-bezier(.22,.8,.2,1),
+             border-color .2s ease,
+             box-shadow .2s ease;
+  will-change:transform;
+}
+@media (hover:hover){
+  .methode:hover{
+    transform:translateY(-5px);
+    border-color:color-mix(in oklab, var(--border), var(--brand) 32%);
+    box-shadow:var(--shadow-md);
+  }
+}
+
+/* -- 16. Service cards : result line avec accent visuel ------------ */
+.svc-result{
+  border-left:2px solid color-mix(in oklab, var(--brand-2) 55%, transparent);
+  padding-left:.75rem;
+  margin-top:.5rem;
+}
+
+/* -- 17. Services section hook : tagline mieux lisible ------------- */
+.section-hook__tagline{
+  font-size:clamp(.85rem, .75rem + .3vw, 1rem);
+  opacity:.82;
+}
+
+/* -- 18. Recent works : subtitle max-width pour lisibilité --------- */
+.recent-works__subtitle{
+  max-width:60ch;
+  margin-inline:auto;
+}
+
+/* -- 19. Footer tagline : lisibilité améliorée -------------------- */
+.footer-brand .footer-brand-text small{
+  font-size:var(--step--2);
+  letter-spacing:.025em;
+  opacity:.75;
+}
+
+/* -- 20. Contact title : poids visuel renforcé -------------------- */
+.contact-hub__title{
+  font-size:clamp(1.5rem, 1.2rem + 1.2vw, 2.2rem);
+}
+
+/* -- 21. Hero badge : animation entrée douce ---------------------- */
+@media (prefers-reduced-motion: no-preference){
+  .hero-badge{
+    animation:fade-in-badge .55s cubic-bezier(.22,.8,.2,1) both;
+  }
+  @keyframes fade-in-badge{
+    from{ opacity:0; transform:translateY(-6px); }
+    to{ opacity:1; transform:none; }
+  }
+}
+
+/* -- 22. Methodes note : légèrement plus lisible ------------------ */
+.m-note{
+  font-size:var(--step--1);
+  line-height:1.55;
+}
+
+/* -- 23. Services CTA combo : hover cohérent avec le reste -------- */
+.service-cta{
+  transition:box-shadow .2s ease, border-color .2s ease;
+}
+@media (hover:hover){
+  .service-cta:hover{
+    box-shadow:var(--shadow-md);
+  }
+}
+
+/* -- 24. Hero proof : sur mobile full-width centré ---------------- */
+@media (max-width:719px){
+  .hero-proof{
+    justify-content:center;
+    text-align:center;
+  }
+}

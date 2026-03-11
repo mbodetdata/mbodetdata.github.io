@@ -9,42 +9,46 @@
         {
             "id": "solution-automatisation",
             "title": "Connecter vos logiciels et supprimer les ressaisies",
-            "problem": "Vous ressaisissez les mêmes informations dans plusieurs outils (ERP, CRM, Excel, WMS…) ?",
-            "promise": "J'automatise les échanges de données entre vos logiciels grâce à Talend/Talaxie (ETL) et vos APIs — fini le copier-coller.",
-            "result": "Moins d'erreurs, des équipes libérées des tâches répétitives, et des données toujours à jour.",
+            "problem": "Vous saisissez les mêmes informations dans plusieurs outils — ERP, CRM, Excel, WMS — et vous y perdez des heures chaque semaine ?",
+            "promise": "Je connecte vos logiciels entre eux pour qu'ils se parlent automatiquement grâce à Talend/Talaxie (ETL) et vos APIs — fini le copier-coller.",
+            "result": "Vos équipes gagnent des heures chaque semaine, les erreurs de saisie disparaissent et vos données sont toujours à jour, sans action manuelle.",
             "link": "/services-talend-talaxie/",
             "icon": "automation",
-            "category": "Automatisation"
+            "category": "Automatisation",
+            "keywords": ["automatisation données", "suppression ressaisies", "connecter logiciels", "ETL TPE PME", "Talend intégration"]
         },
         {
             "id": "solution-migration",
             "title": "Changer de logiciel sans perdre vos données",
-            "problem": "Vous changez d'application métier (ERP, CRM, e-commerce…) mais craignez de perdre vos données ou votre historique ?",
-            "promise": "Je reprends, contrôle et migre vos données vers le nouveau système — du diagnostic jusqu'à la mise en production.",
-            "result": "Une transition fluide, aucune perte d'information, activité continue sans interruption.",
+            "problem": "Vous changez d'application métier — ERP, CRM, e-commerce — mais vous craignez de perdre vos données ou votre historique client ?",
+            "promise": "Je reprends, contrôle et migre vos données vers le nouveau système — du diagnostic jusqu'à la mise en production, avec zéro interruption d'activité.",
+            "result": "Votre activité continue sans interruption, vos données arrivent intactes dans le nouveau système et votre historique est entièrement préservé.",
             "link": "/services-talend-talaxie/",
             "icon": "migration",
-            "category": "Migration"
+            "category": "Migration",
+            "keywords": ["migration données", "changement logiciel", "ERP CRM migration", "sans perte données", "continuité activité"]
         },
         {
             "id": "solution-exploitation",
             "title": "Rendre vos données fiables et exploitables",
-            "problem": "Vos équipes ont des données mais elles sont éparpillées, incohérentes ou difficiles à lire ?",
-            "promise": "Je nettoie, structure et centralise vos données pour créer une source unique et fiable que tout le monde comprend.",
-            "result": "Une seule version de la vérité, partagée par tous vos métiers — plus de débats sur les chiffres.",
+            "problem": "Vos équipes ont des données mais elles sont éparpillées, incohérentes ou difficiles à lire — chaque service a sa propre version des chiffres ?",
+            "promise": "Je nettoie, structure et centralise vos données pour créer une source unique et fiable que tout le monde comprend et utilise.",
+            "result": "Une seule version de la vérité, partagée par tous vos métiers — plus de débats sur les chiffres, des décisions prises en confiance.",
             "link": "/services-talend-talaxie/",
             "icon": "integration",
-            "category": "Qualité des données"
+            "category": "Qualité des données",
+            "keywords": ["qualité données", "données fiables", "centralisation données", "source unique", "fiabiliser données PME"]
         },
         {
             "id": "solution-reporting",
             "title": "Des tableaux de bord qui se mettent à jour tout seuls",
-            "problem": "Vous passez des heures chaque semaine à consolider des fichiers Excel pour produire vos rapports ?",
-            "promise": "Je conçois des tableaux de bord Power BI connectés à vos données réelles — ils se rafraîchissent automatiquement.",
-            "result": "Vos indicateurs clés (CA, marges, stocks, RH…) disponibles en un clic, toujours à jour, pour toute l'équipe.",
+            "problem": "Vous passez des heures chaque semaine à consolider des fichiers Excel pour produire vos rapports — et les chiffres sont déjà obsolètes à la livraison ?",
+            "promise": "Je conçois des tableaux de bord Power BI connectés à vos données réelles — ils se rafraîchissent automatiquement, sans aucune manipulation de votre part.",
+            "result": "Vos indicateurs clés — CA, marges, stocks, RH — disponibles en un clic, toujours à jour, accessibles par toute l'équipe depuis n'importe où.",
             "link": "/services-powerbi/",
             "icon": "dashboard",
-            "category": "Reporting & Pilotage"
+            "category": "Reporting & Pilotage",
+            "keywords": ["tableau de bord Power BI", "reporting automatique", "KPI temps réel", "dashboards TPE PME", "Excel automatisé"]
         }
     ],
     "schema": {

@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  {% include head.html %}
+    <meta charset="utf-8">
+  </head>{% include head.html %}
 </head>
 <body
   class="{% if page.url == '/' or page.url == '/index.md' %}home{% else %}page{% endif %} layout-{{ page.layout | default: 'page' }}{% if page.slug %} slug-{{ page.slug }}{% endif %}"
