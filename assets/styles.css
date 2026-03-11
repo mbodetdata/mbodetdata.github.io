@@ -4789,3 +4789,323 @@ body::before{
   font-size:clamp(.9rem,.85rem + .2vw,1rem);
   letter-spacing:.01em;
 }
+
+/* ===================================================================
+   Contact Premium Pack 6 — section redesign
+   =================================================================== */
+
+/* -- 1. Section background : radial glow brand -------------------- */
+.contact-hub{
+  position:relative;
+  overflow:hidden;
+}
+.contact-hub::before{
+  content:"";
+  position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(60% 55% at 50% 0%,
+    color-mix(in oklab, var(--brand) 8%, transparent) 0%,
+    transparent 70%);
+}
+.contact-hub__inner{ position:relative; z-index:1; }
+
+/* -- 2. Eyebrow : pill avec dot de disponibilité ------------------- */
+.contact-hub__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  padding:.3rem .9rem;
+  border-radius:999px;
+  background:color-mix(in oklab, var(--brand-2) 10%, transparent);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand-2) 38%);
+  font-size:var(--step--2);
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:color-mix(in oklab, var(--muted) 38%, var(--brand-2) 62%);
+  margin-bottom:.25rem;
+}
+.contact-eyebrow-dot{
+  display:inline-block;
+  width:.52rem; height:.52rem;
+  border-radius:50%;
+  background:var(--brand-2);
+  animation:pulse-contact-dot 2s ease-in-out infinite;
+  flex-shrink:0;
+}
+@keyframes pulse-contact-dot{
+  0%,100%{ box-shadow:0 0 0 0 color-mix(in oklab, var(--brand-2) 55%, transparent); }
+  50%{ box-shadow:0 0 0 5px color-mix(in oklab, var(--brand-2) 0%, transparent); }
+}
+
+/* -- 3. Title : plus grand + typographie renforcée ----------------- */
+.contact-hub__title{
+  font-size:clamp(1.7rem,1.25rem + 1.5vw,2.6rem);
+  font-weight:800;
+  line-height:1.15;
+  letter-spacing:-.025em;
+}
+
+/* -- 4. Subtitle : lisibilité optimisée ---------------------------- */
+.contact-hub__subtitle{
+  max-width:62ch;
+  color:var(--muted);
+  font-size:clamp(.9rem,.85rem + .2vw,1.05rem);
+  line-height:1.65;
+}
+
+/* -- 5. Cards : glass premium upgrade ----------------------------- */
+.contact-hub .contact-hub__card{
+  border-radius:clamp(1rem,2vw,1.6rem);
+  background:linear-gradient(155deg,
+    color-mix(in oklab, var(--surface-1) 96%, transparent),
+    color-mix(in oklab, var(--surface-2) 86%, var(--brand) 14%));
+  box-shadow:0 8px 36px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.04);
+  transition:box-shadow .22s ease, border-color .22s ease, transform .22s ease;
+}
+@media (hover:hover){
+  .contact-hub .contact-hub__card:hover{
+    border-color:color-mix(in oklab, var(--border), var(--brand) 28%);
+    box-shadow:0 18px 52px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06);
+    transform:translateY(-3px);
+  }
+}
+
+/* -- 6. Calendly card : tint brand ------------------------------- */
+.contact-hub__card--booking{
+  background:linear-gradient(155deg,
+    color-mix(in oklab, var(--surface-1) 94%, var(--brand) 6%),
+    color-mix(in oklab, var(--surface-2) 92%, var(--brand) 8%)) !important;
+}
+
+/* -- 7. Contact-guarantee : callout brand-2 amélioré -------------- */
+.contact-guarantee{
+  display:flex;
+  align-items:center;
+  gap:.55rem;
+  padding:.6rem 1rem;
+  border-radius:.8rem;
+  background:color-mix(in oklab, var(--brand-2) 9%, transparent);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand-2) 44%);
+  font-size:clamp(.8rem,.74rem + .2vw,.92rem);
+  font-weight:600;
+  color:color-mix(in oklab, var(--fg) 70%, var(--brand-2) 30%);
+  margin-bottom:.9rem;
+}
+.contact-guarantee svg{
+  color:var(--brand-2);
+  flex-shrink:0;
+}
+
+/* -- 8. CTA book button : gradient full-width -------------------- */
+.contact-hub__book-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.55rem;
+  width:100%;
+  padding:.82rem 1.6rem;
+  font-size:clamp(.92rem,.87rem + .2vw,1.05rem);
+  font-weight:700;
+  letter-spacing:.01em;
+  box-shadow:0 4px 22px color-mix(in oklab, var(--brand) 36%, transparent);
+  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+@media (hover:hover){
+  .contact-hub__book-btn:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.08);
+    box-shadow:0 8px 32px color-mix(in oklab, var(--brand) 48%, transparent);
+  }
+}
+.contact-hub__book-note{
+  margin:.5rem 0 0;
+  text-align:center;
+  font-size:var(--step--2);
+  color:var(--muted);
+  letter-spacing:.02em;
+}
+
+/* -- 9. Contact items : hover premium ---------------------------- */
+.contact-item{
+  transition:background .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+@media (hover:hover){
+  .contact-item:hover{
+    background:color-mix(in oklab, var(--brand) 7%, var(--surface-1));
+    border-color:color-mix(in oklab, var(--border), var(--brand) 32%);
+    box-shadow:0 4px 16px rgba(0,0,0,.16);
+  }
+}
+
+/* -- 10. Copy button : hover brand ------------------------------- */
+@media (hover:hover){
+  .ci-copy-btn:hover{
+    color:var(--brand);
+    background:color-mix(in oklab, var(--brand) 10%, transparent);
+  }
+}
+
+/* -- 11. Direct-title : plus affirmé ----------------------------- */
+.contact-hub__direct-title{
+  font-size:clamp(.92rem,.86rem + .22vw,1.05rem);
+  font-weight:700;
+  color:var(--fg);
+  margin-bottom:.15rem;
+}
+
+/* -- 12. Calendly-head title + dot ------------------------------- */
+.calendly-h3{
+  font-size:clamp(1rem,.9rem + .36vw,1.25rem);
+  font-weight:700;
+  line-height:1.25;
+}
+.calendly-dot{
+  display:inline-block;
+  width:.55rem; height:.55rem;
+  border-radius:50%;
+  background:var(--brand-2);
+  box-shadow:0 0 0 3px color-mix(in oklab, var(--brand-2) 22%, transparent);
+  flex-shrink:0;
+}
+
+
+/* ===================================================================
+   Blog Latest Premium Pack 7 — header restructuré + cards upgrade
+   =================================================================== */
+
+/* -- 1. Head : supprime la boîte card, devient section header ----- */
+.recent-posts__head{
+  max-width:100%;
+  padding:0;
+  border:none;
+  background:none;
+  box-shadow:none;
+  overflow:visible;
+}
+.recent-posts__head::before{
+  display:none;
+}
+
+/* -- 2. Head desktop : layout 2 colonnes (titre | subtitle) ------- */
+@media (min-width:720px){
+  .recent-posts__head{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto;
+    column-gap:clamp(2rem,5vw,4rem);
+    align-items:end;
+  }
+  .recent-posts__eyebrow{ grid-column:1 / -1; }
+  .recent-posts__title{
+    grid-column:1;
+    grid-row:2;
+    align-self:start;
+  }
+  .recent-posts__subtitle{
+    grid-column:2;
+    grid-row:2;
+    align-self:end;
+    max-width:none;
+    padding-bottom:.15rem;
+  }
+}
+
+/* -- 3. Eyebrow : pill brand (cohérent avec les autres sections) -- */
+.recent-posts__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:0;
+  padding:.28rem .85rem;
+  border-radius:999px;
+  background:color-mix(in oklab, var(--brand) 10%, transparent);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 32%);
+  font-size:var(--step--2);
+  font-weight:700;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:color-mix(in oklab, var(--muted) 40%, var(--brand) 60%);
+  width:fit-content;
+}
+.recent-posts__eyebrow::after{
+  display:none;
+}
+
+/* -- 4. Title : gradient text + taille cohérente ------------------ */
+.recent-posts__title{
+  background:linear-gradient(135deg,
+    var(--fg) 25%,
+    color-mix(in oklab, var(--fg) 68%, var(--brand) 32%) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  text-shadow:none;
+  color:var(--fg);
+  font-size:clamp(1.8rem,1.35rem + 1.5vw,2.6rem);
+  letter-spacing:-.022em;
+  line-height:1.18;
+}
+
+/* -- 5. Subtitle : taille cohérente ------------------------------- */
+.recent-posts__subtitle{
+  max-width:58ch;
+  color:var(--muted);
+  font-size:clamp(.9rem,.84rem + .22vw,1.05rem);
+  line-height:1.65;
+}
+
+/* -- 6. Tags : brand tintées -------------------------------------- */
+.recent-post-card__tags .chip{
+  background:color-mix(in oklab, var(--surface-2) 80%, var(--brand) 20%);
+  border-color:color-mix(in oklab, var(--border), var(--brand) 36%);
+  color:color-mix(in oklab, var(--muted) 48%, var(--brand) 52%);
+  font-size:var(--step--2);
+  font-weight:600;
+  padding:.22rem .65rem;
+}
+
+/* -- 7. Bouton "Lire l'article" : gradient solid ------------------ */
+.recent-posts .btn--details{
+  background:linear-gradient(135deg,
+    var(--brand),
+    color-mix(in oklab, var(--brand) 74%, var(--brand-2) 26%));
+  color:#fff;
+  font-weight:700;
+  padding:.52rem 1.4rem;
+  box-shadow:0 4px 16px color-mix(in oklab, var(--brand) 32%, transparent);
+  border:none;
+}
+.recent-posts .btn--details::after{
+  display:none;
+}
+@media (hover:hover){
+  .recent-posts .btn--details:hover,
+  .recent-posts .btn--details:focus-visible{
+    filter:brightness(1.1);
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px color-mix(in oklab, var(--brand) 46%, transparent);
+  }
+}
+
+/* -- 8. Date : brand-2 pour différenciation visuelle -------------- */
+.recent-post-card__meta time{
+  color:color-mix(in oklab, var(--brand-2) 72%, var(--muted) 28%);
+  font-weight:700;
+}
+
+/* -- 9. Cards : inset top-border brand au hover (cohérent) -------- */
+@media (hover:hover){
+  .recent-post-card:hover{
+    box-shadow:var(--shadow-lg), inset 0 2px 0 var(--brand);
+  }
+}
+
+/* -- 10. Title link : hover gradient text -------------------------- */
+@media (hover:hover){
+  .recent-post-card__title a:hover{
+    background:linear-gradient(135deg, var(--brand), var(--brand-2));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    text-decoration:none;
+  }
+}
+

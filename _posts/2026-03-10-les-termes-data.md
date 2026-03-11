@@ -5,7 +5,7 @@ description: "Un glossaire data clair et concret pour comprendre les termes util
 categories: blog
 tags: [Glossaire Data, Talend, Talaxie, Power BI, ETL, BI, Qualité des données, PME]
 image: ""
-active: true
+active: false
 parent_category: data
 category_label: Glossaire
 ---
