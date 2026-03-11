@@ -5109,3 +5109,103 @@ body::before{
   }
 }
 
+
+/* ===================================================================
+   Blog Pack 7b — alignement DA Portfolio (annule overrides Pack 7)
+   =================================================================== */
+
+/* -- Restore : head = card box comme réalisations ------------------ */
+.recent-posts__head{
+  max-width:100%;
+  padding: clamp(1.25rem,2.6vw,1.9rem);
+  border-radius: clamp(1rem,1.9vw,1.5rem);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 40%);
+  background: linear-gradient(150deg,
+              color-mix(in oklab, var(--surface-1) 86%, transparent) 6%,
+              color-mix(in oklab, var(--surface-2) 72%, var(--brand) 28%) 100%);
+  box-shadow:0 20px 48px rgba(0,0,0,.36);
+  position:relative;
+  overflow:hidden;
+}
+/* Restore : barre gradient en haut du head */
+.recent-posts__head::before{
+  display:block;
+  content:"";
+  position:absolute;
+  inset:18px 18px auto;
+  height:2px;
+  border-radius:999px;
+  background: var(--g-brand);
+  opacity:.6;
+}
+
+/* -- Head desktop : 2 colonnes (titre | subtitle) comme réalisations */
+@media (min-width:720px){
+  .recent-posts__head{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto;
+    column-gap:clamp(2rem,5vw,4rem);
+    align-items:end;
+  }
+  .recent-posts__eyebrow{ grid-column:1 / -1; }
+  .recent-posts__title{
+    grid-column:1;
+    grid-row:2;
+    align-self:start;
+  }
+  .recent-posts__subtitle{
+    grid-column:2;
+    grid-row:2;
+    align-self:end;
+    max-width:none;
+    padding-bottom:.15rem;
+  }
+}
+
+/* -- Restore : eyebrow = texte majuscule + ligne après (comme portfolio) */
+.recent-posts__eyebrow{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  padding:0;
+  border-radius:0;
+  background:none;
+  border:none;
+  font-size:.92rem;
+  font-weight:700;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color: color-mix(in oklab, var(--muted) 52%, #ffffff 48%);
+  width:auto;
+}
+.recent-posts__eyebrow::after{
+  display:block;
+  content:"";
+  flex:1 1 auto;
+  max-width:160px;
+  height:1px;
+  border-radius:999px;
+  background: color-mix(in oklab, var(--muted) 35%, var(--brand) 65%);
+  opacity:.45;
+}
+
+/* -- Restore : titre = blanc + glow (comme portfolio) ------------- */
+.recent-posts__title{
+  background:none;
+  -webkit-background-clip:unset;
+  -webkit-text-fill-color:#ffffff;
+  background-clip:unset;
+  color:#ffffff;
+  text-shadow:0 0 26px color-mix(in oklab, var(--brand) 40%, transparent);
+  font-size: clamp(1.8rem,1.5rem + 1.2vw,2.3rem);
+  letter-spacing:normal;
+  line-height:1.18;
+}
+
+/* -- Restore : subtitle couleur comme portfolio ------------------- */
+.recent-posts__subtitle{
+  color: color-mix(in oklab, var(--muted) 76%, #ffffff 24%);
+  font-size: clamp(1.02rem, 1rem + .5vw, 1.22rem);
+  max-width:56ch;
+}
+
