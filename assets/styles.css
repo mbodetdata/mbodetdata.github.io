@@ -4693,3 +4693,99 @@ body::before{
       transparent 0%, var(--border) 15%, var(--border) 85%, transparent 100%);
   }
 }
+
+/* ===================================================================
+   Réalisations Premium Pack 5 — head full-width + project cards
+   =================================================================== */
+
+/* -- 1. Head : supprime la limite 720px, devient full-width -------- */
+.recent-works__head{ max-width:100%; }
+
+/* -- 2. Head desktop : layout 2 colonnes (titre | subtitle) -------- */
+@media (min-width:720px){
+  .recent-works__head{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto;
+    column-gap:clamp(2rem,5vw,4rem);
+    align-items:end;
+  }
+  .recent-works__eyebrow{ grid-column:1 / -1; }
+  .recent-works__title{
+    grid-column:1;
+    grid-row:2;
+    align-self:start;
+  }
+  .recent-works__subtitle{
+    grid-column:2;
+    grid-row:2;
+    align-self:end;
+    padding-bottom:.15rem;
+    max-width:none;
+  }
+}
+
+/* -- 3. Client badge : pill style ---------------------------------- */
+.project-card__client{
+  display:inline-flex;
+  align-items:center;
+  gap:.38rem;
+  padding:.2rem .7rem .2rem .5rem;
+  border-radius:999px;
+  background:color-mix(in oklab, var(--brand) 11%, transparent);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 32%);
+  font-size:var(--step--2);
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:color-mix(in oklab, var(--muted) 42%, var(--brand) 58%);
+  width:fit-content;
+}
+
+/* -- 4. Tech pills : brand tintées, plus visibles ------------------ */
+.project-card__stack li{
+  padding:.3rem .9rem;
+  font-size:var(--step--2);
+  font-weight:600;
+  letter-spacing:.04em;
+  background:color-mix(in oklab, var(--surface-2) 82%, var(--brand) 18%);
+  border-color:color-mix(in oklab, var(--border), var(--brand) 38%);
+  color:color-mix(in oklab, var(--fg) 78%, var(--brand) 22%);
+}
+
+/* -- 5. Bouton "Voir le projet" : accent brand -------------------- */
+.open-project{
+  background:color-mix(in oklab, var(--brand) 14%, transparent);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 40%);
+  color:color-mix(in oklab, var(--fg) 80%, var(--brand) 20%);
+  font-weight:600;
+  padding:.45rem 1rem;
+  border-radius:var(--radius-sm);
+}
+@media (hover:hover){
+  .open-project:hover{
+    background:color-mix(in oklab, var(--brand) 24%, transparent);
+    border-color:var(--brand);
+    color:var(--brand);
+    transform:none;
+  }
+}
+
+/* -- 6. Project card : inset top-line brand au hover --------------- */
+@media (hover:hover){
+  .project-card:hover{
+    box-shadow:var(--shadow-lg), inset 0 2px 0 var(--brand);
+  }
+}
+
+/* -- 7. Date : couleur brand-2 (vert) ------------------------------ */
+.project-card__date{
+  color:color-mix(in oklab, var(--brand-2) 72%, var(--muted) 28%);
+  font-weight:700;
+}
+
+/* -- 8. CTA "Voir toutes les réalisations" : plus impactant -------- */
+.recent-works__cta .btn--gradient{
+  padding:.75rem 2.2rem;
+  font-size:clamp(.9rem,.85rem + .2vw,1rem);
+  letter-spacing:.01em;
+}
