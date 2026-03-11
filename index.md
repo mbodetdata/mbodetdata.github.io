@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Consultant Talend & Power BI - Résultats rapides
-description: "Freelance Talend & Power BI pour automatiser vos flux de données et construire des dashboards KPI utiles, sans complexité inutile."
+title: "Consultant Data pour PME — Connectez vos logiciels, pilotez vos chiffres | BM Data"
+description: "Vous perdez du temps à ressaisir des données entre vos logiciels ou cherchez vos chiffres dans des fichiers Excel éparpillés ? Je connecte vos outils, automatise vos flux et construis vos tableaux de bord. Consultant data freelance pour TPE/PME. Résultats concrets, sans jargon."
 keywords_groups:
   - services
   - local
@@ -12,7 +12,7 @@ bandeau:
 ---
 
 <!-- H1 accessible (améliore le SEO sans changer le design) -->
-<h1 class="sr-only">Consultant Talend et Power BI pour demarrer vos flux et tableaux de bord</h1>
+<h1 class="sr-only">Consultant data freelance pour PME : automatisez vos données, pilotez votre activité avec des tableaux de bord clairs</h1>
 
 <!-- BANDEAU -->
 <style>

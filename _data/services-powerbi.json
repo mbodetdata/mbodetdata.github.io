@@ -2,16 +2,16 @@
   "hero": {
     "eyebrow": "Power BI & Dashboards",
     "title": "Power BI : vos indicateurs clairs et automatisés",
-    "subtitle": "Vous debutez sur Power BI ? Je transforme vos donnees brutes en tableaux de bord lisibles et decides avec vous les priorites.",
+    "subtitle": "Vous avez des données éparpillées dans Excel, votre ERP ou votre CRM ? Je les rassemble dans des tableaux de bord clairs, qui se mettent à jour automatiquement — même si vous n'avez jamais entendu parler de Power BI.",
     "bullets": [
       "Modèles de données DAX documentés et prêts pour vos analyses.",
       "Données rafraîchies automatiquement et gouvernance maîtrisée.",
       "Visualisations orientées action pour les équipes métier."
     ],
-    "secondary": "On avance pas a pas : configuration, rafraichissement et partage expliques simplement pour vos equipes.",
-    "ctaLabel": "Obtenir mon diagnostic Power BI debutant",
+    "secondary": "On avance pas à pas : je configure, j'explique et je forme vos équipes pour qu'elles soient autonomes.",
+    "ctaLabel": "Obtenir mes premiers tableaux de bord (30 min)",
     "ctaTracking": "powerbi_diagnostic",
-    "ctaNote": "30 minutes pour clarifier vos usages et repartir avec un plan concret.",
+    "ctaNote": "30 minutes pour identifier vos indicateurs clés et repartir avec un plan d'action concret.",
     "metrics": [
        {
     "value": "100 %",
@@ -33,7 +33,7 @@
   "valueProposition": {
     "eyebrow": "Ce que vous gagnez",
     "title": "Une organisation Power BI pilotable et durable",
-    "description": "Je vous aide à clarifier, industrialiser et gouverner vos usages Power BI pour un reporting fiable et actionnable.",
+    "description": "Plus besoin de passer des heures sur Excel : je connecte vos sources de données et construis des tableaux de bord que vos équipes lisent et comprennent en 30 secondes.",
     "pillars": [
       {
         "title": "Modèles Power BI sur-mesure",
@@ -69,12 +69,12 @@
   },
   "journey": {
     "title": "Processus projet Power BI",
-    "subtitle": "Quatre etapes pour cadrer, livrer et ancrer vos usages decisionnels.",
+    "subtitle": "Quatre étapes pour passer de vos fichiers Excel éparpillés à des tableaux de bord automatiques et partagés.",
     "steps": [
       {
         "label": "Étape 1",
-        "title": "Atelier métier",
-        "description": "Clarification des objectifs, des indicateurs clés et des sources de données.",
+        "title": "Identifier vos indicateurs clés",
+        "description": "On identifie ensemble quels chiffres vous manquent et où vos données se trouvent (Excel, ERP, CRM, base de données…).",
         "deliverables": [
           "Vision partagée des KPI et parties prenantes.",
           "Cartographie des sources et contraintes techniques.",
@@ -83,8 +83,8 @@
       },
       {
         "label": "Étape 2",
-        "title": "Modélisation & DAX",
-        "description": "Construction du modèle, mesures DAX et tests de performance.",
+        "title": "Connecter et structurer vos données",
+        "description": "Je connecte vos sources de données, les structure et crée les calculs (appelés mesures DAX) pour que vos indicateurs soient fiables et rapides.",
         "deliverables": [
           "Modèle relationnel Power Query structuré.",
           "Jeu de mesures DAX validé avec les équipes métier.",
@@ -93,8 +93,8 @@
       },
       {
         "label": "Étape 3",
-        "title": "Design & itérations",
-        "description": "Prototypage, retours utilisateurs et mise en forme orientée action.",
+        "title": "Construire vos tableaux de bord",
+        "description": "Je construis vos tableaux de bord avec vos retours : clairs, interactifs et adaptés à vos équipes.",
         "deliverables": [
           "Tableaux de bord interactifs prêts à l'usage.",
           "Itérations basées sur les retours des utilisateurs pilotes.",
@@ -103,7 +103,7 @@
       },
       {
         "label": "Étape 4",
-        "title": "Déploiement & adoption",
+        "title": "Déployer et former vos équipes",
         "description": "Publication, sécurité, formation et plan d'amélioration continue.",
         "deliverables": [
           "Workspaces structurés et règles de gouvernance documentées.",
@@ -182,11 +182,11 @@
     "title": "Pourquoi travailler ensemble ?",
     "items": [
       {
-        "title": "Approche orientée métier",
-        "description": "Je traduis chaque décision technique en impacts business pour aider vos décideurs à trancher."
+        "title": "Je parle votre langue, pas celle de l'informatique",
+        "description": "CA, marges, stocks, RH : vos indicateurs métier d'abord — les aspects techniques passent au second plan."
       },
       {
-        "title": "Transparence & transfert",
+        "title": "Vos équipes deviennent autonomes",
         "description": "Documentation, guides et sessions de coaching pour rendre vos équipes autonomes sur Power BI."
       },
       {
@@ -235,9 +235,9 @@
     ]
   },
   "cta": {
-    "title": "On cadre votre prochain projet Power BI ?",
-    "intro": "Proposons un échange court pour comprendre vos enjeux, auditer vos dashboards et prioriser les gains rapides.",
-    "linkText": "Discuter de vos besoins Power BI",
+    "title": "Prêt à arrêter de chercher vos chiffres dans Excel ?",
+    "intro": "Proposons 30 minutes pour comprendre quels chiffres vous manquent, voir ce qui peut être automatisé et vous montrer à quoi ressembleraient vos futurs tableaux de bord.",
+    "linkText": "Réserver mon diagnostic Power BI gratuit",
     "footnote": "Objectif : clarifier vos indicateurs, sécuriser le déploiement et définir la feuille de route.",
     "tracking": "powerbi_diagnostic"
   },

@@ -1,8 +1,13 @@
 ---
 layout: default
-title: "Realisations Data & Automatisation - BM Data"
-description: "Catalogue complet des projets data, ETL Talend, Power BI et automatisation livres par BM Data. Parcourez toutes les missions avec contexte, stack et benefices."
+title: "Réalisations — Projets data livrés pour des TPE/PME | BM Data"
+description: "Découvrez les missions data réalisées pour des PME : connexion de logiciels, automatisation de données, tableaux de bord Power BI et migrations sans perte. Cas concrets avec résultats mesurables."
 permalink: /realisation/
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisation/
 ---
 
 {% assign total_projects = site.data.projets | size %}
@@ -12,9 +17,7 @@ permalink: /realisation/
     <p class="realisations-hero__eyebrow">Portfolio complet</p>
     <h1 id="realisation-hero-title">Toutes les r&eacute;alisations data &amp; automatisation</h1>
     <p class="realisations-hero__lead">
-      Retrouvez ici l&apos;int&eacute;gralit&eacute; des missions livr&eacute;es&nbsp;:
-      <strong>{{ total_projects }}</strong> projets Talend, Power BI, API et automatisation mis en production
-      pour fiabiliser la donn&eacute;e et acc&eacute;l&eacute;rer les d&eacute;cisions.
+      Retrouvez ici toutes les missions livrées&nbsp;: <strong>{{ total_projects }}</strong>&nbsp;projets concrets de connexion de logiciels, automatisation de données, tableaux de bord et migrations réalisés pour des TPE et PME. Pour chaque mission&nbsp;: le contexte client, ce qui a été fait et les bénéfices obtenus.
     </p>
     <div class="realisations-hero__actions">
       <a class="btn btn--gradient" href="#projects-grid">Explorer les projets</a>

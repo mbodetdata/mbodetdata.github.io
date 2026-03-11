@@ -2,16 +2,16 @@
   "hero": {
     "eyebrow": "Talend & Talaxie",
     "title": "Talend & Talaxie : vos flux conçus, livrés et suivis",
-    "subtitle": "Nouveau sur Talend ou Talaxie ? Je mets vos flux en production sans jargon ni equipe data interne.",
+    "subtitle": "Vous n'avez pas d'équipe technique dédiée ? Je m'occupe de connecter vos logiciels, d'automatiser vos échanges de données (ETL/API/EDI) et de fiabiliser vos flux — de A à Z.",
     "bullets": [
       "Conception de jobs Talend clairs, documentés et faciles à faire évoluer",
       "Mise en service encadrée : tests, déploiement et surveillance automatisée",
       "Talend comme point de rencontre de vos données métier, même sans équipe technique"
     ],
-    "secondary": "Je decortique chaque etape : cadrage, construction, migration Talaxie et supervision pour que vos equipes comprennent et pilotent.",
-    "ctaLabel": "Planifier ma migration Talend sans stress",
+    "secondary": "Je décortique chaque étape — cadrage, construction, migration Talaxie et supervision — pour que vos équipes comprennent et pilotent sans dépendre d'un expert permanent.",
+    "ctaLabel": "Analyser mes flux de données gratuitement (30 min)",
     "ctaTracking": "talend_diagnostic",
-    "ctaNote": "30 minutes pour cartographier vos flux et repartir avec des actions simples.",
+    "ctaNote": "30 minutes pour cartographier vos échanges de données et repartir avec des actions concrètes.",
     "metrics": [
       {
         "value": "Rapidité",
@@ -33,7 +33,7 @@
   "valueProposition": {
     "eyebrow": "Ce que vous gagnez",
     "title": "Une plateforme Talend qui sert votre opérationnel",
-    "description": "Je combine expertise technique et pédagogie pour rendre vos flux compréhensibles, pilotables et prêts pour les prochaines étapes de votre feuille de route data.",
+    "description": "Pas besoin de comprendre l'ETL (Extract-Transform-Load) pour en bénéficier : je traduis vos besoins métier en automatisations concrètes, documentées et pilotables par vos équipes.",
     "pillars": [
       {
         "title": "Automatisation sur-mesure",
@@ -69,11 +69,11 @@
   },
   "journey": {
     "title": "Processus Talend & Talaxie",
-    "subtitle": "Trois etapes claires pour structurer, realiser et perenniser vos projets data.",
+    "subtitle": "Trois étapes claires pour connecter, automatiser et pérenniser vos flux de données.",
     "steps": [
       {
         "label": "Phase 1",
-        "title": "Audit complet du besoin",
+        "title": "Comprendre votre contexte et vos besoins",
         "description": "Comprendre votre contexte, vos contraintes et vos objectifs pour cadrer efficacement l’intervention.",
         "deliverables": [
           "Analyse des flux, sources et dépendances",
@@ -83,7 +83,7 @@
       },
       {
         "label": "Phase 2",
-        "title": "Développement rapide et fiable",
+        "title": "Construction et automatisation de vos flux",
         "description": "Mise en œuvre pragmatique : automatisations, pipelines et contrôles qualité alignés avec les priorités métier.",
         "deliverables": [
           "Jobs Talend/Talaxie développés et testés",
@@ -93,7 +93,7 @@
       },
       {
         "label": "Phase 3",
-        "title": "Livraison & accompagnement",
+        "title": "Livraison, formation et autonomie de vos équipes",
         "description": "Validation, transfert de compétences et support post-livraison pour assurer la continuité opérationnelle.",
         "deliverables": [
           "Recette et passage en production",
@@ -164,15 +164,15 @@
     "title": "Pourquoi travailler ensemble ?",
     "items": [
       {
-        "title": "Approche pédagogique",
-        "description": "J’explique chaque choix technique dans un langage orienté métier, pour que vos décideurs puissent trancher en confiance."
+        "title": "Zéro jargon : je parle votre langue",
+        "description": "Je traduis chaque décision technique en impact concret pour votre activité : gains de temps, réduction des erreurs, économies."
       },
       {
-        "title": "Livrables prêts à l’emploi",
+        "title": "Des livrables que vos équipes utilisent vraiment",
         "description": "Dashboards, checklists et guides d’exploitation livrés dans vos outils existants pour une adoption immédiate."
       },
       {
-        "title": "Culture fiabilité",
+        "title": "Vos flux surveillés 24h/24",
         "description": "Monitoring, alertes, plan de reprise et suivis post-mise en production pour sécuriser vos opérations."
       }
     ],
@@ -188,9 +188,9 @@
     ]
   },
 "cta": {
-  "title": "On planifie vos prochaines actions Talend ?",
-  "intro": "Proposons un créneau court pour comprendre votre contexte, qualifier la valeur apportée et aligner une première liste d’actions prioritaires.",
-  "linkText": "Planifier un échange",
+  "title": "Prêt à supprimer vos ressaisies et automatiser vos données ?",
+  "intro": "Proposons un échange de 30 minutes pour cartographier vos échanges de données, identifier vos ressaisies et établir une liste d’actions prioritaires — sans engagement.",
+  "linkText": "Réserver mon diagnostic data gratuit",
   "footnote": "Objectif : clarifier le besoin, valider la plus-value et établir une feuille de route priorisée. Sans engagement.",
   "tracking": "talend_diagnostic"
 }

@@ -1,13 +1,13 @@
 {
   "hero": {
-    "eyebrow": "Consultant Talend & Power BI freelance",
-    "title": "Simplifier la donnée, automatiser la valeur.",
+    "eyebrow": "Consultant Data freelance — Talend & Power BI",
+    "title": "Je simplifie vos données pour que vous puissiez vous concentrer sur votre métier.",
     "paragraphs": [
-      "Depuis toujours, j’aime comprendre comment les choses fonctionnent, et surtout, comment les simplifier. Très vite, la donnée est devenue mon terrain de jeu : un univers où chaque chiffre, chaque flux raconte une histoire... à condition de savoir la lire.",
-      "Aujourd’hui, j’aide les organisations à tirer le meilleur parti de leurs données, du traitement automatisé avec Talend jusqu’à la visualisation dans Power BI.",
-      "Mon rôle, c’est de transformer vos fichiers hétérogènes, vos exports Excel ou vos bases métiers en informations claires, fiables et exploitables.",
-      "J’aime automatiser les tâches répétitives, fiabiliser les processus et créer des solutions qui vous font gagner du temps, et souvent, de l’argent. Je mets aussi un point d’honneur à transmettre : mes projets ne s’arrêtent pas à la technique, ils visent à rendre les équipes plus autonomes et à installer une culture de la donnée durable.",
-      "En résumé, je suis convaincu que la data ne doit pas être un sujet réservé aux experts : elle doit servir le métier, éclairer les décisions et simplifier le quotidien."
+      "Depuis toujours, j'aime comprendre comment les choses fonctionnent — et surtout, comment les simplifier. Très vite, la donnée est devenue mon terrain de jeu : un univers où chaque chiffre, chaque flux raconte une histoire... à condition de savoir la lire.",
+      "Concrètement, je m'occupe des tâches que vous n'avez ni le temps ni l'envie de gérer : connecter vos logiciels entre eux, automatiser vos exports et vos rapports, migrer vos données en changeant d'outil, ou construire les tableaux de bord dont vos équipes ont besoin pour piloter.",
+      "Je travaille avec Talend et Talaxie pour les flux de données (ETL — Extract, Transform, Load), et avec Power BI pour la visualisation et le reporting. Mais ce qui compte pour vous, c'est le résultat : moins de saisies manuelles, moins d'erreurs, et vos chiffres disponibles sans chercher.",
+      "Je mets un point d'honneur à transmettre : mes projets ne s'arrêtent pas à la livraison technique. Je forme vos équipes, documente mes travaux et m'assure que vous êtes autonomes quand je pars.",
+      "Ma conviction : la data ne doit pas être réservée aux grandes entreprises avec des équipes IT. Une TPE ou une PME peut aussi bénéficier de données fiables et de reportings automatiques — sans complexité, sans jargon."
     ]
   }
 }

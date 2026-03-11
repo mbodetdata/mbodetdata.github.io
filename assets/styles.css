@@ -4031,3 +4031,162 @@ body::before{
     padding: clamp(1.4rem, 5vw, 1.8rem);
   }
 }
+
+/* ===================================================================
+   UI/UX PREMIUM — pack d'améliorations parcours client 2025
+   =================================================================== */
+
+/* -- 1. Journey step labels : badge pill numéroté ------------------- */
+.journey-step__label{
+  display:inline-flex;
+  align-items:center;
+  gap:.55rem;
+  padding:.28rem .8rem .28rem .52rem;
+  border-radius:999px;
+  width:fit-content;
+  background:linear-gradient(135deg,
+    color-mix(in oklab, var(--brand-2) 14%, transparent),
+    color-mix(in oklab, var(--brand) 10%, transparent));
+  border:1px solid color-mix(in oklab, var(--border), var(--brand-2) 32%);
+  font-size:var(--step--1);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:color-mix(in oklab, var(--muted) 78%, var(--brand-2) 22%);
+}
+.journey-step__label::before{
+  content:"";
+  flex-shrink:0;
+  width:.5rem;
+  height:.5rem;
+  border-radius:999px;
+  background:var(--g-brand);
+  box-shadow:0 0 0 4px color-mix(in oklab, var(--brand) 22%, transparent);
+}
+
+/* -- 2. PowerBI hero : variante verte (brand-2) -------------------- */
+.powerbi-hero .talend-hero__benefits li::before{
+  background:linear-gradient(135deg, var(--brand-2), color-mix(in oklab, var(--brand-2) 70%, var(--brand) 30%));
+  box-shadow:0 0 0 6px color-mix(in oklab, var(--brand-2) 22%, transparent);
+}
+.powerbi-hero .talend-hero__stats{
+  background:linear-gradient(140deg, rgba(9,26,32,.92), rgba(12,46,38,.78));
+  border-color:color-mix(in oklab, var(--border), var(--brand-2) 28%);
+}
+.powerbi-hero .about-stats-card__value{
+  background:linear-gradient(135deg, var(--brand-2), color-mix(in oklab, var(--brand-2) 70%, var(--brand) 30%));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* -- 3. Premium head : left-align sur mobile (< 720px) ------------- */
+@media (max-width:719px){
+  .premium-head{
+    text-align:left;
+    margin-bottom:clamp(1.6rem, 3vw, 2.2rem);
+  }
+  .premium-head p{ margin:.5rem 0 0; }
+}
+
+/* -- 4. FAQ items : interactivité hover ----------------------------- */
+.faq-item{
+  transition:transform .18s cubic-bezier(.22,.8,.2,1),
+             border-color .18s ease,
+             box-shadow .18s ease;
+}
+@media (hover:hover){
+  .faq-item:hover{
+    transform:translateY(-3px);
+    border-color:color-mix(in oklab, var(--border), var(--brand) 34%);
+    box-shadow:var(--shadow-md);
+  }
+}
+
+/* -- 5. CTA final : section plus impactante avec glow --------------- */
+.premium-cta{
+  position:relative;
+  isolation:isolate;
+  padding-block:clamp(3rem, 5.5vw, 5.6rem);
+}
+.premium-cta::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(80% 80% at 50% 60%,
+      color-mix(in oklab, var(--brand) 20%, transparent) 0%,
+      transparent 70%),
+    radial-gradient(55% 55% at 78% 18%,
+      color-mix(in oklab, var(--brand-2) 16%, transparent) 0%,
+      transparent 68%);
+  opacity:.65;
+}
+.premium-cta__card{
+  background:linear-gradient(155deg,
+    color-mix(in oklab, var(--surface-1) 86%, transparent),
+    color-mix(in oklab, var(--surface-2) 58%, var(--brand) 30%));
+  box-shadow:0 32px 80px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
+  border-color:color-mix(in oklab, var(--border), var(--brand) 32%);
+}
+.premium-cta__card h2{ font-size:clamp(1.8rem, 1.5rem + 1.4vw, 2.5rem); }
+.premium-cta__card > p{ max-width:55ch; margin-inline:auto; }
+
+/* -- 6. CTA links (ressources utiles) ------------------------------ */
+.cta-links{
+  margin-top:.65rem;
+  text-align:left;
+  display:grid;
+  gap:.4rem;
+}
+.cta-links ul{
+  list-style:none;
+  padding:0;
+  margin:.3rem 0 0;
+  display:grid;
+  gap:.5rem;
+}
+.cta-links ul li{
+  display:flex;
+  align-items:baseline;
+  gap:.5rem;
+}
+.cta-links ul li::before{
+  content:"→";
+  color:color-mix(in oklab, var(--brand) 65%, var(--fg) 35%);
+  font-weight:700;
+  flex-shrink:0;
+}
+.cta-links a{
+  color:color-mix(in oklab, var(--fg) 88%, var(--brand) 12%);
+  text-decoration:underline;
+  text-underline-offset:3px;
+  text-decoration-color:color-mix(in oklab, var(--brand) 36%, transparent);
+  transition:color .18s ease, text-decoration-color .18s ease;
+}
+.cta-links a:hover{
+  color:color-mix(in oklab, var(--brand) 80%, var(--fg) 20%);
+  text-decoration-color:var(--brand);
+}
+
+/* -- 7. Sector chips dans les use cases ---------------------------- */
+.usecase-card__sector{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  width:fit-content;
+  padding:.22rem .7rem;
+  border-radius:999px;
+  background:color-mix(in oklab, var(--brand-2) 13%, transparent);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand-2) 32%);
+}
+
+/* -- 8. Sections manquantes : padding-top cohérent ----------------- */
+.deliverables-section{ padding-top:clamp(3rem, 5vw, 5.2rem); }
+.differentiators-section{ padding-top:clamp(3rem, 5vw, 5.2rem); }
+
+/* -- 9. Journey steps : 2 colonnes à 720-959px (ex: 4 étapes) ------ */
+@media (min-width:720px) and (max-width:959px){
+  .journey-steps{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+}

@@ -1,3 +1,4 @@
+<style>.bandeau-cta{margin-top:clamp(1rem,3vw,1.6rem)}</style>
 <section id="bandeau" class="section about-hero" itemscope itemtype="https://schema.org/Person">
   <meta itemprop="name" content="{{ site.author.prenom_nom }}">
   <meta itemprop="jobTitle" content="Freelance Talend &amp; Power BI">
@@ -57,26 +58,35 @@
   <div class="about-hero__canvas">
     <div class="about-hero__inner">
       <div class="about-hero__content">
-        <p class="about-hero__eyebrow">Consultant Talend &amp; Power BI</p>
-        <h2 class="about-hero__title">Illuminez vos d&eacute;cisions data sans stress</h2>
+        <p class="about-hero__eyebrow">Consultant Data pour TPE/PME</p>
+        <h2 class="about-hero__title">Vos donn&eacute;es, enfin claires et utiles &mdash; sans jargon</h2>
         <p class="about-hero__text">
-          Vos donn&eacute;es sont l&agrave;, mais difficiles &agrave; exploiter&nbsp;?<br>
-          Je vous aide &agrave; en tirer des informations claires et fiables,
-          pour que vos &eacute;quipes gagnent du temps et prennent des d&eacute;cisions plus sereinement.
+          Vous ressaisissez les m&ecirc;mes infos dans plusieurs logiciels&nbsp;? Vos chiffres sont &eacute;parpill&eacute;s dans des fichiers Excel&nbsp;? Je connecte vos outils, automatise les t&acirc;ches r&eacute;p&eacute;titives et vous donne acc&egrave;s &agrave; vos indicateurs en un clic &mdash; sans &eacute;quipe informatique interne.
         </p>
         <div class="about-stats-card">
           <div class="about-stats-card__item">
             <span class="about-stats-card__value">Automatiser</span>
-            <span class="about-stats-card__label">T&acirc;ches r&eacute;p&eacute;titives, flux API/EDI, ETL fiables</span>
+            <span class="about-stats-card__label">Fini les ressaisies&nbsp;: je connecte vos logiciels entre eux</span>
           </div>
           <div class="about-stats-card__item">
             <span class="about-stats-card__value">Piloter</span>
-            <span class="about-stats-card__label">Dashboards KPI (Power&nbsp;BI) et donn&eacute;es de confiance</span>
+            <span class="about-stats-card__label">Vos chiffres cl&eacute;s (CA, stocks, RH&hellip;) accessibles d&rsquo;un coup d&rsquo;&oelig;il</span>
           </div>
           <div class="about-stats-card__item">
             <span class="about-stats-card__value">Migrer</span>
-            <span class="about-stats-card__label">Sans perdre l&apos;historique (reprises, contr&ocirc;les, r&eacute;conciliation)</span>
+            <span class="about-stats-card__label">Changez de logiciel sans perdre vos donn&eacute;es ni votre historique</span>
           </div>
+        </div>
+        <div class="actions bandeau-cta">
+          <a class="btn cta"
+             href="{{ site.author.cal_url | default: site.author.calendly_url }}"
+             data-booking-open="modal"
+             data-track-click="hero_cta_rdv">
+            &#x1F4C5;&nbsp;Prendre rendez-vous (30&nbsp;min)
+          </a>
+          <a class="btn btn--ghost" href="{{ '/#services' | relative_url }}">
+            D&eacute;couvrir les services
+          </a>
         </div>
       </div>
       <div class="about-hero__media">

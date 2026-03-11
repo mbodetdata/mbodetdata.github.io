@@ -16,7 +16,11 @@
 
 {%- comment -%} =================== TITRE + DESCRIPTION =================== {%- endcomment -%}
 {%- assign meta_title = page.title | default: site.title -%}
+{%- if page.title and page.title != site.title -%}
+<title>{{ meta_title }} | {{ site.author.enterprise | default: "BM Data" }}</title>
+{%- else -%}
 <title>{{ meta_title }}</title>
+{%- endif -%}
 <meta name="description" content="{{ page.description | default: site.description | strip_newlines | escape }}" />
 {%- assign keywords_data = site.data.keywords | default: nil -%}
 {%- if keywords_data -%}

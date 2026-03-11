@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Blog Talend & Power BI pour debuter"
-description: Articles pedagogiques sur Talend, Talaxie, Power BI, ETL, DAX et DataOps pour progresser pas a pas.
+title: "Blog Talend & Power BI pour débuter"
+description: Articles pédagogiques sur Talend, Talaxie, Power BI, ETL, DAX et DataOps pour progresser pas à pas.
 keywords_groups:
   - competences
   - outils
@@ -353,7 +353,7 @@ divers::Divers
         <p class="about-hero__eyebrow">Journal de bord data</p>
         <h1 class="about-hero__title">Blog</h1>
         <p class="about-hero__text">
-          Guides, retours d'experience et veille autour de Talend, Talaxie, Power BI et des plateformes data modernes. Un blog pratique pour monter vite en competence sans sacrifier l'esthetique produit.
+          Guides, retours d'expérience et veille autour de Talend, Talaxie, Power BI et des plateformes data modernes. Un blog pratique pour monter vite en compétence sans sacrifier l'esthétique produit.
         </p>
         <p>
           Nouveau lecteur ? Commencez par les tutoriels simples pour comprendre Talend, Talaxie et Power BI sans jargon.
@@ -364,7 +364,7 @@ divers::Divers
           {% endfor %}
         </div>
         <div class="hero-actions">
-          <a class="btn primary" href="#articles">Guides pour debuter</a>
+          <a class="btn primary" href="#articles">Guides pour débuter</a>
           <a class="btn ghost" href="https://bmdata.fr/#contact">Parler de mon projet data</a>
         </div>
       </div>
@@ -393,8 +393,8 @@ divers::Divers
   <div class="articles-head">
     <div class="articles-head__copy">
       <p class="about-hero__eyebrow">Articles</p>
-      <h2>Guides pour debuter (et progresser) sans perdre de temps</h2>
-      <p>Une selection premium : des visuels soignes, des pas-a-pas concrets et des astuces terrain pour Talend, Talaxie et Power BI.</p>
+      <h2>Guides pour débuter (et progresser) sans perdre de temps</h2>
+      <p>Une sélection premium : des visuels soignés, des pas-à-pas concrets et des astuces terrain pour Talend, Talaxie et Power BI.</p>
     </div>
     <div class="articles-head__filters" aria-label="Categories disponibles">
       {% for category_label in categories_unique %}

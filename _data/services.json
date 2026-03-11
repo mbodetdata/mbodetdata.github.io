@@ -1,50 +1,50 @@
 {
     "section": {
-        "title": "Services Data & BI",
-        "hook": "Pour que vos données travaillent pour vous, pas l'inverse.",
-        "tagline": "Des données fiables, des process fluides, des décisions claires.",
-        "tagline_secondary": "Un gain de temps pour vous et vos equipes !"
+        "title": "Ce que je fais concrètement",
+        "hook": "Vous perdez du temps sur vos données ? Je m'en occupe à votre place.",
+        "tagline": "Des processus fluides, des chiffres fiables, des décisions éclairées.",
+        "tagline_secondary": "Résultats concrets pour vos équipes, dès la première mission."
     },
     "cards": [
         {
             "id": "solution-automatisation",
-            "title": "Automatisation des saisies et synchronisations",
-            "problem": "Vous perdez du temps à ressaisir les mêmes informations dans plusieurs outils ?",
-            "promise": "J’automatise vos flux Talend/Talaxie et vos échanges d’API pour éliminer les doubles saisies.",
-            "result": "Moins d’erreurs, plus de temps pour vos équipes et une gestion des données enfin fluide.",
+            "title": "Connecter vos logiciels et supprimer les ressaisies",
+            "problem": "Vous ressaisissez les mêmes informations dans plusieurs outils (ERP, CRM, Excel, WMS…) ?",
+            "promise": "J'automatise les échanges de données entre vos logiciels grâce à Talend/Talaxie (ETL) et vos APIs — fini le copier-coller.",
+            "result": "Moins d'erreurs, des équipes libérées des tâches répétitives, et des données toujours à jour.",
             "link": "/services-talend-talaxie/",
             "icon": "automation",
-            "category": "Solution Automatisation"
+            "category": "Automatisation"
         },
         {
             "id": "solution-migration",
-            "title": "Migration d’applications sans perte d’historique",
-            "problem": "Vous changez d’outil mais craignez de perdre vos données ou vos historiques ?",
-            "promise": "Je sécurise la reprise et la migration de vos données, du diagnostic jusqu’à la mise en production.",
-            "result": "Une transition fluide, sans perte d’information ni interruption d’activité.",
+            "title": "Changer de logiciel sans perdre vos données",
+            "problem": "Vous changez d'application métier (ERP, CRM, e-commerce…) mais craignez de perdre vos données ou votre historique ?",
+            "promise": "Je reprends, contrôle et migre vos données vers le nouveau système — du diagnostic jusqu'à la mise en production.",
+            "result": "Une transition fluide, aucune perte d'information, activité continue sans interruption.",
             "link": "/services-talend-talaxie/",
             "icon": "migration",
-            "category": "Solution Migration"
+            "category": "Migration"
         },
         {
             "id": "solution-exploitation",
-            "title": "Valorisation et exploitation de vos données",
-            "problem": "Vos équipes ont les données mais pas la visibilité pour agir efficacement ?",
-            "promise": "Je structure et nettoie vos données pour les rendre fiables et immédiatement exploitables.",
-            "result": "Une source unique de vérité, claire et partagée par tous vos métiers.",
+            "title": "Rendre vos données fiables et exploitables",
+            "problem": "Vos équipes ont des données mais elles sont éparpillées, incohérentes ou difficiles à lire ?",
+            "promise": "Je nettoie, structure et centralise vos données pour créer une source unique et fiable que tout le monde comprend.",
+            "result": "Une seule version de la vérité, partagée par tous vos métiers — plus de débats sur les chiffres.",
             "link": "/services-talend-talaxie/",
             "icon": "integration",
-            "category": "Solution Valorisation"
+            "category": "Qualité des données"
         },
         {
             "id": "solution-reporting",
-            "title": "Reporting et tableaux de bord Power BI",
-            "problem": "Vous manquez de visibilité sur vos indicateurs clés ?",
-            "promise": "Je conçois des tableaux de bord Power BI connectés et adaptés à vos besoins métiers.",
-            "result": "Des indicateurs à jour, visuels et partagés pour piloter vos décisions en toute confiance.",
+            "title": "Des tableaux de bord qui se mettent à jour tout seuls",
+            "problem": "Vous passez des heures chaque semaine à consolider des fichiers Excel pour produire vos rapports ?",
+            "promise": "Je conçois des tableaux de bord Power BI connectés à vos données réelles — ils se rafraîchissent automatiquement.",
+            "result": "Vos indicateurs clés (CA, marges, stocks, RH…) disponibles en un clic, toujours à jour, pour toute l'équipe.",
             "link": "/services-powerbi/",
             "icon": "dashboard",
-            "category": "Solution Reporting"
+            "category": "Reporting & Pilotage"
         }
     ],
     "schema": {
