@@ -4399,3 +4399,116 @@ body::before{
   font-size:clamp(.75rem,.67rem + .22vw,.87rem);
   color:var(--muted); line-height:1.4;
 }
+
+/* ===================================================================
+   Services PREMIUM Pack 4 — section hook + cards ultra premium
+   =================================================================== */
+
+/* -- 1. Section hook : full gradient card (remplace border-left) --- */
+.section-hook{
+  border-left:none;
+  padding-left:0;
+  padding:clamp(1.2rem,3vw,2rem) clamp(1.4rem,3.5vw,2.4rem);
+  background:linear-gradient(148deg,
+    color-mix(in oklab, var(--surface-1) 80%, var(--brand) 20%),
+    color-mix(in oklab, var(--surface-2) 70%, var(--brand-2) 30%));
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 30%);
+  border-radius:clamp(.8rem,1.8vw,1.3rem);
+  box-shadow:0 10px 40px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.06);
+  position:relative;
+  overflow:hidden;
+}
+/* Glow radial dans le coin gauche */
+.section-hook::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(60% 80% at 12% 60%,
+    color-mix(in oklab, var(--brand-2) 20%, transparent) 0%,
+    transparent 68%);
+  pointer-events:none;
+  z-index:0;
+}
+.section-hook > *{ position:relative; z-index:1; }
+
+/* -- 2. Restaurer la vraie taille du titre du hook (bug Pack 3) ---- */
+.section-hook__title{
+  font-size:clamp(1.35rem, 1.05rem + 1.1vw, 2.1rem);
+  font-weight:800;
+  line-height:1.22;
+  /* gradient text */
+  background:linear-gradient(125deg, var(--fg) 25%, color-mix(in oklab, var(--brand-2) 72%, var(--fg) 28%) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* -- 3. Restaurer la taille des taglines + accent couleur ---------- */
+.section-hook__tagline{
+  font-size:clamp(1rem, .9rem + .5vw, 1.3rem);
+  font-weight:500;
+  opacity:1;
+  color:color-mix(in oklab, var(--fg) 74%, var(--brand-2) 26%);
+}
+
+/* -- 4. Kicker : pill badge -------------------------------------- */
+.svc-kicker{
+  display:inline-flex;
+  align-items:center;
+  padding:.2rem .72rem;
+  border-radius:999px;
+  background:color-mix(in oklab, var(--brand) 12%, transparent);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 34%);
+  color:color-mix(in oklab, var(--muted) 48%, var(--brand) 52%);
+  font-size:var(--step--2);
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  width:fit-content;
+  margin:0;
+}
+
+/* -- 5. Icône service : squircle (plus premium qu'un cercle) ------- */
+.svc-ico{ border-radius:.75rem; }
+
+/* -- 6. Service card : inset top-border brand sur hover ------------ */
+@media (hover:hover){
+  .service-card:hover{
+    box-shadow:0 28px 52px rgba(8,11,20,.38),
+               inset 0 2px 0 var(--brand);
+  }
+}
+
+/* -- 7. svc-problem : left-border question ----------------------- */
+.svc-problem{
+  border-left:2px solid color-mix(in oklab, var(--brand) 40%, transparent);
+  padding-left:.8rem;
+  margin-left:0;
+}
+
+/* -- 8. svc-promise : arrow accent ------------------------------ */
+.svc-promise{
+  padding-left:1.3rem;
+  position:relative;
+}
+.svc-promise::before{
+  content:"→";
+  position:absolute;
+  left:0;
+  top:0;
+  font-weight:700;
+  font-size:.9em;
+  color:color-mix(in oklab, var(--brand-2) 75%, var(--fg) 25%);
+  line-height:inherit;
+}
+
+/* -- 9. Services grid : gap augmenté pour respiration ------------ */
+.services-grid{
+  gap:clamp(1.2rem,2.5vw,2rem);
+}
+
+/* -- 10. Titre section services : plus impactant ---------------- */
+.services-section #services-title{
+  font-size:clamp(1.8rem,1.35rem + 1.5vw,2.6rem);
+  letter-spacing:-.02em;
+}
