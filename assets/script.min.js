@@ -479,25 +479,28 @@ const Modal = (() => {
   <div class="modal__dialog booking-modal" role="dialog" aria-modal="true" aria-labelledby="calendlyTitle" aria-describedby="calendlySubtitle">
     <div class="booking-modal__glow" aria-hidden="true"></div>
     <header class="booking-modal__header">
-      <div class="booking-modal__titles">
-        <h3 id="calendlyTitle">Planifiez votre rendez-vous</h3>
-        <p id="calendlySubtitle">Choisissez un cr&eacute;neau de 30&nbsp;minutes pour &eacute;changer avec un expert Power&nbsp;BI &amp; Talend.</p>
+      <div class="booking-modal__intro">
+        <p class="booking-modal__eyebrow">Session d&eacute;couverte</p>
+        <div class="booking-modal__titles">
+          <h3 id="calendlyTitle">Planifiez votre rendez-vous</h3>
+          <p id="calendlySubtitle">Choisissez un cr&eacute;neau de 30&nbsp;minutes pour &eacute;changer avec un expert Power&nbsp;BI &amp; Talend.</p>
+        </div>
+        <div class="booking-modal__meta" aria-label="Informations de rendez-vous">
+          <span class="booking-modal__meta-item">30&nbsp;min</span>
+          <span class="booking-modal__meta-item">Visio</span>
+          <span class="booking-modal__meta-item">Sans engagement</span>
+        </div>
       </div>
       <button class="modal__close booking-modal__close" type="button" aria-label="Fermer">
         <span aria-hidden="true">&times;</span>
       </button>
     </header>
     <div class="booking-modal__content">
-      <section class="booking-modal__agenda" aria-labelledby="calendlyAgendaTitle">
-        <h4 id="calendlyAgendaTitle">D&eacute;roul&eacute; (30&nbsp;min)</h4>
-        <ul>
-          <li>Pr&eacute;sentation rapide de votre contexte</li>
-          <li>Identification de vos enjeux et objectifs</li>
-          <li>&Eacute;change sur les solutions possibles</li>
-          <li>Prochaines &eacute;tapes &eacute;ventuelles</li>
-        </ul>
-        <p class="booking-modal__agenda-note">La r&eacute;union se fera en visio avec lien automatique dans l&rsquo;invitation (pensez &agrave; v&eacute;rifier vos spams).</p>
-      </section>
+      <ul class="booking-modal__trust" aria-label="Informations de r&eacute;servation">
+        <li>Confirmation instantan&eacute;e</li>
+        <li>Lien visio automatique</li>
+        <li>Vos donn&eacute;es restent confidentielles</li>
+      </ul>
       <div class="booking-modal__frame">
         <div id="calendly-inline" class="calendly-inline booking-modal__iframe" data-booking-url="">
           <div class="calendly-skeleton booking-modal__skeleton" aria-hidden="true">
