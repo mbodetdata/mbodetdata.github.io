@@ -14,101 +14,30 @@ breadcrumbs:
     url: /about-me/
 ---
 
+{%- assign about      = site.data.about -%}
+{%- assign about_copy = about.hero -%}
 {%- assign about_photo = site.author.photo | default: site.author.photo_url | default: '' -%}
-{%- assign about_copy = site.data.about.hero -%}
 
-<style>
-  #about-person .about-hero__inner{
-    align-items:start;
-  }
-  #about-person .about-hero__content{
-    width:100%;
-    max-width:min(620px, 100%);
-    justify-items:start;
-    gap:clamp(.8rem, 2.4vw, 1.4rem);
-  }
-  #about-person .about-hero__content p{
-    text-align:left;
-  }
-  #about-person .about-photo-frame{
-    aspect-ratio:auto;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    gap:clamp(1rem, 3vw, 1.8rem);
-    padding:clamp(1rem, 4vw, 1.9rem);
-    max-width:min(480px, 100%);
-  }
-  #about-person .about-photo-frame::after{
-    display:none;
-  }
-  #about-person .about-photo-slot{
-    flex:1 1 auto;
-    min-height:0;
-  }
-  #about-person .about-photo-slot img{
-    width:100%;
-    height:auto;
-    object-fit:cover;
-  }
-  #about-person .about-hero__canvas::before,
-  #about-person .about-hero__canvas::after{
-    content:none;
-  }
-  #about-person .about-stats-card{
-    width:100%;
-    max-width:min(560px, 100%);
-    margin-top:clamp(1.2rem, 4vw, 2rem);
-  }
-  #about-person .about-stats-card__item{
-    max-width:none;
-  }
-  @media (max-width: 720px){
-    #about-person .about-hero__inner{
-      align-items:stretch;
-    }
-    #about-person .about-photo-frame{
-      margin-inline:auto;
-      max-width:min(360px, 100%);
-    }
-    #about-person .about-hero__content{
-      text-align:left;
-      justify-items:start;
-    }
-    #about-person .about-stats-card{
-      flex-direction:column;
-      align-items:stretch;
-      gap:clamp(.9rem, 4vw, 1.4rem);
-    }
-  }
-  @media (min-width: 721px){
-    #about-person .about-hero__inner{
-      align-items:start;
-    }
-    #about-person .about-stats-card{
-      gap:clamp(.9rem, 2vw, 1.6rem);
-    }
-  }
-</style>
+<!-- ================================================
+     HERO — Identité
+     ================================================ -->
+<section id="about-person" class="section about-hero about-page"
+         itemscope itemtype="https://schema.org/Person">
 
-<section id="about-person" class="section about-hero about-page" itemscope itemtype="https://schema.org/Person">
-  <meta itemprop="name" content="{{ site.author.prenom_nom }}">
+  <!-- Schema.org metas -->
+  <meta itemprop="name"     content="{{ site.author.prenom_nom }}">
   <meta itemprop="jobTitle" content="{{ site.author.job_title }}">
-  <link itemprop="url" href="{{ page.url | absolute_url }}">
-  {% if site.author.email %}<meta itemprop="email" content="mailto:{{ site.author.email }}">{% endif %}
-  {% if site.author.phone %}<meta itemprop="telephone" content="{{ site.author.phone }}">{% endif %}
+  <link itemprop="url"      href="{{ page.url | absolute_url }}">
+  {% if site.author.email    %}<meta itemprop="email"     content="mailto:{{ site.author.email }}">{% endif %}
+  {% if site.author.phone    %}<meta itemprop="telephone" content="{{ site.author.phone }}">{% endif %}
   {% if site.author.enterprise %}
     <span itemprop="worksFor" itemscope itemtype="https://schema.org/Organization" hidden>
       <meta itemprop="name" content="{{ site.author.enterprise }}">
     </span>
   {% endif %}
-  {% if site.author.linkedin %}
-    <link itemprop="sameAs" href="{{ site.author.linkedin }}">
-  {% endif %}
+  {% if site.author.linkedin %}<link itemprop="sameAs" href="{{ site.author.linkedin }}">{% endif %}
   {% if site.author.sameAs %}
-    {% for p in site.author.sameAs %}
-      <link itemprop="sameAs" href="{{ p }}">
-    {% endfor %}
+    {% for p in site.author.sameAs %}<link itemprop="sameAs" href="{{ p }}">{% endfor %}
   {% endif %}
   {% if site.author.description %}
     <meta itemprop="description" content="{{ site.author.description }}">
@@ -117,45 +46,117 @@ breadcrumbs:
   {% endif %}
 
   <div class="about-hero__canvas about-hero__canvas--about">
-    <div class="about-hero__inner">
-      <div class="about-hero__content">
+    <div class="about-hero__inner about-page__inner">
+
+      <!-- Contenu texte -->
+      <div class="about-hero__content about-page__content">
+
         {% if about_copy.eyebrow %}
-        <p class="about-hero__eyebrow">{{ about_copy.eyebrow }}</p>
+        <p class="about-page__eyebrow">{{ about_copy.eyebrow }}</p>
         {% endif %}
+
         {% if about_copy.title %}
-        <h1 class="about-hero__title">{{ about_copy.title }}</h1>
+        <h1 class="about-page__title">{{ about_copy.title }}</h1>
         {% endif %}
-        {% if about_copy.paragraphs %}
-          {% for paragraph in about_copy.paragraphs %}
-        <p class="about-hero__text">{{ paragraph }}</p>
+
+        {% if about_copy.intro %}
+        <p class="about-page__intro">{{ about_copy.intro }}</p>
+        {% endif %}
+
+        {% if about_copy.values %}
+        <ul class="about-page__values" role="list">
+          {% for v in about_copy.values %}
+          <li class="about-page__value">
+            <span class="about-page__value-check" aria-hidden="true">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" aria-hidden="true">
+                <path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>{{ v.text }}</span>
+          </li>
           {% endfor %}
+        </ul>
         {% endif %}
-      </div>
-      <div class="about-hero__media">
-        <figure class="about-photo-frame">
-          {% if about_photo != '' %}
-            <div class="about-photo-slot has-photo">
-              <img src="{{ about_photo | relative_url }}"
-                   alt="Portrait de {{ site.author.prenom_nom }}">
-            </div>
-          {% else %}
-            <div class="about-photo-slot" role="img" aria-label="Espace r&#233;serv&#233; pour la photo"></div>
+
+        <div class="actions about-page__actions">
+          <a class="btn btn--gradient" href="{{ '/#contact' | relative_url }}">
+            Discutons de votre projet
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+          {% if site.author.cal_url or site.author.calendly_url %}
+          <a class="btn btn--ghost" href="{{ site.author.cal_url | default: site.author.calendly_url }}"
+             data-booking-open="modal" rel="noopener">
+            Réserver 30&nbsp;min
+          </a>
           {% endif %}
-          <figcaption class="sr-only">Martial BODET - consultant Talend &amp; Power BI</figcaption>
+        </div>
+
+      </div><!-- /content -->
+
+      <!-- Photo -->
+      <div class="about-hero__media about-page__media">
+        <figure class="about-photo-frame about-page__photo-frame">
+          {% if about_photo != '' %}
+          <div class="about-photo-slot has-photo">
+            <img src="{{ about_photo | relative_url }}"
+                 alt="Portrait de {{ site.author.prenom_nom }}"
+                 width="400" height="500"
+                 loading="eager" decoding="sync"
+                 itemprop="image">
+          </div>
+          {% else %}
+          <div class="about-photo-slot" role="img" aria-label="Photo de profil"></div>
+          {% endif %}
+          <figcaption class="sr-only">Martial BODET — consultant Talend &amp; Power BI</figcaption>
         </figure>
-      </div>
-    </div>
-  </div>
+      </div><!-- /media -->
+
+    </div><!-- /inner -->
+  </div><!-- /canvas -->
 </section>
 
-  <div class="services-footer">
-    <div class="services-divider" role="presentation"></div>
+<!-- ================================================
+     ENGAGEMENTS — Pourquoi me choisir
+     ================================================ -->
+{% if about.engagements %}
+<section id="about-engagements" class="section about-engagements"
+         aria-labelledby="about-eng-title">
+  <div class="about-eng__shell">
+
+    <header class="about-eng__head">
+      <p class="about-eng__eyebrow">
+        Pourquoi travailler avec moi
+        <span class="about-eng__eyebrow-line" aria-hidden="true"></span>
+      </p>
+      <h2 id="about-eng-title" class="about-eng__title">Des engagements concrets</h2>
+      <p class="about-eng__subtitle">Pas de promesses vagues — des principes que j'applique à chaque mission.</p>
+    </header>
+
+    <div class="about-eng__grid">
+      {% for e in about.engagements %}
+      <article class="card about-eng__card">
+        <h3 class="about-eng__card-title">{{ e.title }}</h3>
+        <p class="about-eng__card-desc">{{ e.desc }}</p>
+      </article>
+      {% endfor %}
+    </div>
+
   </div>
+</section>
+{% endif %}
+
+<div class="services-footer">
+  <div class="services-divider" role="presentation"></div>
+</div>
 
 {% include certs.html %}
 
-  <div class="services-footer">
-    <div class="services-divider" role="presentation"></div>
-  </div>
-  
+<div class="services-footer">
+  <div class="services-divider" role="presentation"></div>
+</div>
+
 {% include methodes.html %}

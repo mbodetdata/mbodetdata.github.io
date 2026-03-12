@@ -1,12 +1,31 @@
 {
   "hero": {
-    "eyebrow": "Consultant Data freelance — Talend & Power BI",
+    "eyebrow": "Consultant Data Freelance",
     "title": "Je simplifie vos données pour que vous puissiez vous concentrer sur votre métier.",
-    "paragraphs": [
-      "Les données, c'est mon domaine depuis des années — et ma conviction est simple : une TPE ou une PME peut bénéficier de chiffres fiables et de rapports automatiques, sans équipe IT dédiée et sans jargon.",
-      "En pratique, je prends en charge ce qui vous coûte le plus de temps : connecter vos logiciels entre eux, supprimer les ressaisies manuelles, migrer vos données en toute sécurité lors d'un changement d'outil, et construire les tableaux de bord dont vos équipes ont besoin pour décider vite et bien.",
-      "J'utilise Talend et Talaxie pour orchestrer les flux de données (ETL — extraire, transformer, charger) et Power BI pour la visualisation et le pilotage. Mais pour vous, ce qui compte c'est le résultat : moins de ressaisies, zéro perte d'information, vos indicateurs clés accessibles en un clic.",
-      "Je m'engage sur l'autonomie : chaque mission se termine par une formation, une documentation claire et un transfert complet — vous n'avez pas besoin de moi pour faire tourner ce que j'ai livré."
+    "intro": "J'aide les TPE et PME à connecter leurs logiciels, automatiser leurs données et décider avec des chiffres fiables — sans équipe IT dédiée.",
+    "values": [
+      { "text": "Connexion ERP, CRM, WMS — fini les ressaisies manuelles" },
+      { "text": "Tableaux de bord Power BI mis à jour automatiquement" },
+      { "text": "Migration de données sans interruption ni perte" },
+      { "text": "Autonomie garantie : formation et documentation incluses" }
     ]
-  }
+  },
+  "engagements": [
+    {
+      "title": "Résultats mesurables",
+      "desc": "Heures gagnées, erreurs supprimées, décisions plus rapides — chaque mission produit des gains concrets et quantifiables."
+    },
+    {
+      "title": "Autonomie garantie",
+      "desc": "Formation et documentation complète à chaque livraison. Vous faites tourner ce que je livre sans avoir besoin de moi."
+    },
+    {
+      "title": "Zéro jargon",
+      "desc": "J'explique tout en termes métier. Pas besoin de connaître ETL ou pipeline — on parle résultats, pas technique."
+    },
+    {
+      "title": "Taillé TPE / PME",
+      "desc": "Solutions pragmatiques, sans sur-ingénierie. Adaptées à vos contraintes de budget et d'organisation."
+    }
+  ]
 }
