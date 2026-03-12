@@ -5517,3 +5517,28 @@ body::before{
   .footer-seo-tags{ margin-left:auto; }
 }
 
+
+/* ===================================================================
+   Services Pack 10 — aération des cartes (moins de texte)
+   =================================================================== */
+
+/* Plus d'espace entre promise et result */
+.svc-promise{
+  margin-bottom:.2rem;
+}
+.service-card .svc-result{
+  margin-top:auto;
+  padding-top:.85rem;
+}
+/* Section hook : supprimer le 2e tagline si vide */
+.section-hook__tagline:empty{ display:none; }
+
+/* Cards : min-height réduit, plus de padding pour respirer */
+.service-card{
+  padding: clamp(1.4rem,2.5vw,2rem);
+  display:flex;
+  flex-direction:column;
+  gap:.9rem;
+}
+.svc-head{ margin-bottom:.1rem; }
+
