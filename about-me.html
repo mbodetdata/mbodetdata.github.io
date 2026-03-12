@@ -63,6 +63,10 @@ breadcrumbs:
         <p class="about-page__intro">{{ about_copy.intro }}</p>
         {% endif %}
 
+        {% if about_copy.motivation %}
+        <p class="about-page__motivation">{{ about_copy.motivation }}</p>
+        {% endif %}
+
         {% if about_copy.values %}
         <ul class="about-page__values" role="list">
           {% for v in about_copy.values %}
@@ -78,22 +82,6 @@ breadcrumbs:
           {% endfor %}
         </ul>
         {% endif %}
-
-        <div class="actions about-page__actions">
-          <a class="btn btn--gradient" href="{{ '/#contact' | relative_url }}">
-            Discutons de votre projet
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
-                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14M13 6l6 6-6 6"/>
-            </svg>
-          </a>
-          {% if site.author.cal_url or site.author.calendly_url %}
-          <a class="btn btn--ghost" href="{{ site.author.cal_url | default: site.author.calendly_url }}"
-             data-booking-open="modal" rel="noopener">
-            Réserver 30&nbsp;min
-          </a>
-          {% endif %}
-        </div>
 
       </div><!-- /content -->
 

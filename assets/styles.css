@@ -5934,3 +5934,162 @@ body::before{
   .methodes-subtitle{ grid-column:2; grid-row:2; align-self:end; padding-bottom:.1rem; }
 }
 
+/* ===================================================================
+   Pack 12 — About: motivation block + Methodes cards premium redesign
+   =================================================================== */
+
+/* ---- About hero: motivation paragraph ---- */
+.about-page__motivation{
+  margin:0;
+  padding:.85rem 1rem .85rem 1.1rem;
+  border-left:2px solid color-mix(in oklab,var(--brand-2) 55%,transparent);
+  font-size:clamp(.86rem,.8rem + .2vw,.96rem);
+  color:color-mix(in oklab,#fff 68%,transparent);
+  line-height:1.65;
+  font-style:italic;
+  background:color-mix(in oklab,var(--brand-2) 6%,transparent);
+  border-radius:0 .5rem .5rem 0;
+}
+.about-page__motivation strong{
+  color:color-mix(in oklab,#fff 88%,transparent);
+  font-style:normal;
+  font-weight:700;
+}
+
+/* ---- Methodes cards: premium redesign ---- */
+/* Override display:grid → flex column */
+.methode{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  padding:clamp(1.3rem,2.4vw,1.8rem);
+  background:linear-gradient(155deg,
+    color-mix(in oklab,var(--surface-1) 90%,var(--brand) 10%),
+    color-mix(in oklab,var(--surface-1) 94%,var(--brand-2) 6%));
+  border:1px solid color-mix(in oklab,var(--border),var(--brand) 20%);
+  position:relative;
+  overflow:hidden;
+}
+.methode::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto;
+  height:2px;
+  background:var(--g-brand);
+  opacity:.45;
+  border-radius:999px 999px 0 0;
+  transition:opacity .25s ease;
+  pointer-events:none;
+}
+.methode:hover::before{ opacity:.85; }
+
+/* Header: icon + title inline */
+.methode-head{
+  display:flex;
+  align-items:center;
+  gap:.85rem;
+  margin-bottom:.9rem;
+}
+.methode__icon{
+  flex-shrink:0;
+  width:2.8rem;
+  height:2.8rem;
+  border-radius:.9rem;
+  background:linear-gradient(135deg,
+    color-mix(in oklab,var(--brand) 20%,rgba(255,255,255,.06)),
+    color-mix(in oklab,var(--brand-2) 16%,rgba(255,255,255,.04)));
+  border:1px solid color-mix(in oklab,var(--border),var(--brand) 28%);
+  font-size:1.25rem;
+  grid-column:unset;
+  grid-row:unset;
+}
+.methode__title{
+  margin:0;
+  font-size:clamp(1rem,.92rem + .24vw,1.12rem);
+  font-weight:800;
+  color:#fff;
+  text-shadow:0 0 18px color-mix(in oklab,var(--brand) 28%,transparent);
+  line-height:1.25;
+  letter-spacing:-.01em;
+  grid-column:unset;
+  grid-row:unset;
+}
+
+/* Tech bullets list: subtle inset panel */
+.m-list{
+  grid-column:unset;
+  display:flex;
+  flex-direction:column;
+  gap:.45rem;
+  margin:0 0 .85rem;
+  padding:.7rem .85rem;
+  background:color-mix(in oklab,var(--surface-0) 65%,transparent);
+  border-radius:.65rem;
+  border:1px solid color-mix(in oklab,var(--border) 60%,transparent);
+}
+.m-item{
+  display:flex;
+  align-items:center;
+  gap:.55rem;
+  grid-template-columns:none;
+}
+.m-bullet{
+  flex-shrink:0;
+  width:20px;
+  height:20px;
+  border-radius:.38rem;
+}
+.m-text{
+  flex:1;
+  font-size:clamp(.8rem,.74rem + .18vw,.88rem);
+  color:color-mix(in oklab,var(--muted) 60%,#fff 40%);
+  line-height:1.4;
+}
+.m-tech{
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  padding:.18rem .55rem;
+  border-radius:999px;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+/* Talend pill — brand blue */
+.m-item:first-child .m-tech{
+  background:color-mix(in oklab,var(--brand) 14%,transparent);
+  border-color:color-mix(in oklab,var(--brand) 36%,transparent);
+  color:color-mix(in oklab,var(--brand) 75%,#fff 25%);
+}
+/* Power BI pill — brand-2 green */
+.m-item:last-child .m-tech{
+  background:color-mix(in oklab,var(--brand-2) 12%,transparent);
+  border-color:color-mix(in oklab,var(--brand-2) 34%,transparent);
+  color:color-mix(in oklab,var(--brand-2) 72%,#fff 28%);
+}
+
+/* Note/objectif: highlighted result box */
+.m-note{
+  grid-column:unset;
+  margin-top:auto;
+  padding:.6rem .85rem;
+  border-left:2px solid color-mix(in oklab,var(--brand-2) 52%,transparent);
+  background:color-mix(in oklab,var(--brand-2) 6%,transparent);
+  border-radius:0 .5rem .5rem 0;
+  gap:.45rem;
+  align-items:flex-start;
+  font-size:0;
+}
+.m-note span{
+  font-size:clamp(.78rem,.73rem + .12vw,.86rem);
+  color:color-mix(in oklab,var(--muted) 52%,#fff 48%);
+  line-height:1.55;
+  font-style:italic;
+}
+.m-note-ico{
+  color:var(--brand-2);
+  opacity:1;
+  margin-top:.1rem;
+}
+
+
