@@ -4,133 +4,189 @@
   {% assign is_post = true %}
   {% include head.html %}
   <style>
-    /* Post layout enhancements */
-    .layout-post .post-hero {
-      background: radial-gradient(circle at 20% 20%, rgba(80, 141, 255, 0.12), transparent 35%), radial-gradient(circle at 80% 0%, rgba(255, 99, 146, 0.12), transparent 32%), linear-gradient(135deg, #0f172a 0%, #111827 20%, #0b1223 100%);
-      border-radius: 24px;
-      padding: clamp(1.5rem, 3vw, 2.5rem);
-      margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
-      color: #e5e7eb;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+    /* ── POST LAYOUT ── */
+    /* Reading-progress: gradient multi-ton pour les articles */
+    .layout-post .reading-progress__bar {
+      background: linear-gradient(90deg, var(--brand), color-mix(in oklab, var(--brand) 55%, var(--brand-2) 45%), var(--brand-2));
     }
-    .layout-post .post-hero__inner {
-      display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      gap: clamp(1.25rem, 3vw, 2rem);
-      align-items: center;
-    }
-    @media (max-width: 960px) {
-      .layout-post .post-hero__inner {
-        grid-template-columns: 1fr;
-      }
-    }
-    .layout-post .post-hero__content {
-      position: relative;
-      z-index: 1;
-    }
-    .layout-post .post-hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 40%);
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
-    .layout-post .post-title {
-      color: #fff;
-      letter-spacing: -0.02em;
-    }
-    .layout-post .post-desc {
-      color: #cbd5e1;
-      max-width: 42ch;
-      line-height: 1.6;
-    }
-    .layout-post .post-meta,
-    .layout-post .breadcrumbs a,
-    .layout-post .post-hero__eyebrow,
-    .layout-post .post-tags .chip {
-      color: #e5e7eb;
-    }
-    .layout-post .post-meta__item {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      padding: 0.65rem 0.9rem;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
-    }
-    .layout-post .post-tags .chip {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.14);
-    }
-    .layout-post .post-hero__actions .btn,
-    .layout-post .post-hero__actions .post-share {
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-    }
+
+    /* Hero media — cadre flottant avec image en contain */
     .layout-post .post-hero__media {
-      position: relative;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 18px;
-      padding: 1.25rem;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 240px;
+      padding: 1.1rem;
+      background: color-mix(in oklab, var(--surface-0) 80%, transparent);
+      border: 1px solid color-mix(in oklab, var(--border), transparent 30%);
+      border-radius: clamp(1.2rem, 2.5vw, 1.8rem);
+      box-shadow: var(--shadow-md);
+      min-height: 220px;
     }
     .layout-post .post-hero__media img {
       width: 100%;
-      height: auto;
-      max-height: 380px;
+      max-height: 340px;
       object-fit: contain;
       object-position: center;
-      border-radius: 12px;
+      border-radius: .75rem;
     }
-    .layout-post .post-shell {
-      background: #0b1223;
-      border-radius: 20px;
-      padding: clamp(1.5rem, 3vw, 2.25rem);
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+
+    /* ── TOC ── */
+    .post-toc {
+      border-radius: var(--radius-2);
+      border: 1px solid color-mix(in oklab, var(--border), var(--brand) 22%);
+      background:
+        radial-gradient(120% 120% at 0% 0%, color-mix(in oklab, var(--brand) 12%, transparent) 0%, transparent 65%),
+        color-mix(in oklab, var(--surface-2) 82%, transparent);
+      overflow: hidden;
+      transition: box-shadow .2s ease;
     }
-    .layout-post .post-body {
-      color: #e5e7eb;
+    .post-toc:focus-within { box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 28%, transparent); }
+
+    .post-toc__toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      padding: .9rem 1.2rem;
+      cursor: pointer;
+      list-style: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
-    .layout-post .post-body h2,
-    .layout-post .post-body h3,
-    .layout-post .post-body h4 {
+    .post-toc__toggle::-webkit-details-marker { display: none; }
+    .post-toc__toggle-inner {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-weight: 700;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: color-mix(in oklab, var(--fg) 80%, var(--brand) 20%);
+    }
+    .post-toc__toggle-inner svg { color: var(--brand); flex-shrink: 0; }
+    .post-toc__chev {
+      color: var(--muted);
+      transition: transform .22s ease;
+    }
+    .post-toc[open] .post-toc__chev { transform: rotate(180deg); }
+
+    .post-toc__nav { padding: 0 1.2rem 1rem; }
+    .post-toc__nav ul {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .05rem;
+      border-top: 1px solid color-mix(in oklab, var(--border), transparent 20%);
+      padding-top: .65rem;
+    }
+    .post-toc__item { margin: 0; }
+    .post-toc__item--sub .post-toc__link { padding-left: 1.4rem; font-size: .85rem; color: var(--muted); }
+    .post-toc__link {
+      display: block;
+      padding: .32rem .4rem;
+      border-radius: .5rem;
+      text-decoration: none;
+      font-size: .9rem;
+      color: color-mix(in oklab, var(--fg) 75%, var(--muted) 25%);
+      transition: background .15s ease, color .15s ease, padding-left .15s ease;
+      line-height: 1.4;
+    }
+    .post-toc__link:hover {
+      background: color-mix(in oklab, var(--brand) 12%, transparent);
       color: #fff;
-      scroll-margin-top: 96px;
+      padding-left: .8rem;
     }
-    .layout-post .post-body a {
-      color: #7dd3fc;
+    .post-toc__link.is-active {
+      color: var(--brand);
+      background: color-mix(in oklab, var(--brand) 10%, transparent);
     }
-    .layout-post .post-body code {
-      background: rgba(255, 255, 255, 0.06);
-      color: #f0f9ff;
+
+    /* ── POST SERVICE CTA ── */
+    .post-service-cta {
+      position: relative;
+      overflow: hidden;
     }
-    .layout-post .post-body table {
-      border-color: rgba(255, 255, 255, 0.12);
+    .post-service-cta::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, color-mix(in oklab, var(--brand) 45%, transparent), transparent 55%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
     }
-    .layout-post .card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+    .post-service-cta__icon {
+      width: 40px; height: 40px;
+      border-radius: 999px;
+      background: color-mix(in oklab, var(--brand) 18%, var(--surface-2) 82%);
+      border: 1px solid color-mix(in oklab, var(--brand) 32%, transparent);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--brand);
+      flex-shrink: 0;
     }
-    .layout-post .post-nav .btn {
-      border-radius: 12px;
+    .post-service-cta__head {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
     }
-    .layout-post .reading-progress {
-      background: rgba(255, 255, 255, 0.06);
+    .post-service-cta__head h2 {
+      margin: 0;
+      font-size: clamp(1.05rem, 1rem + .3vw, 1.2rem);
+      font-weight: 700;
     }
-    .layout-post .reading-progress__bar {
-      background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+    .post-service-cta .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+    }
+
+    /* ── POST NAV ── */
+    .post-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(.8rem, 1.6vw, 1.4rem);
+    }
+    .post-nav__item {
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      padding: .9rem 1.1rem;
+      border-radius: var(--radius-2);
+      border: 1px solid color-mix(in oklab, var(--border), transparent 20%);
+      background: color-mix(in oklab, var(--surface-2) 75%, transparent);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+      min-width: 0;
+    }
+    .post-nav__item:hover {
+      border-color: color-mix(in oklab, var(--border), var(--brand) 38%);
+      background: color-mix(in oklab, var(--brand) 8%, var(--surface-1) 92%);
+      transform: translateY(-2px);
+    }
+    .post-nav__item--next { text-align: right; }
+    .post-nav__dir {
+      font-size: .7rem; text-transform: uppercase; letter-spacing: .16em;
+      font-weight: 700; color: var(--muted);
+      display: flex; align-items: center; gap: .35rem;
+    }
+    .post-nav__item--next .post-nav__dir { justify-content: flex-end; }
+    .post-nav__title {
+      font-size: .88rem; font-weight: 600; color: #fff; line-height: 1.3;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .post-nav__placeholder { display: none; }
+
+    @media (max-width: 580px) {
+      .post-nav { grid-template-columns: 1fr; }
+      .post-nav__item--next { text-align: left; }
+      .post-nav__item--next .post-nav__dir { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -171,7 +227,8 @@
     <header class="post-hero" data-anim="fade-up">
       <div class="post-hero__inner">
         <div class="post-hero__content">
-          <nav class="breadcrumbs" aria-label="Fil d’Ariane">
+
+          <nav class="breadcrumbs" aria-label="Fil d'Ariane">
             <a href="{{ '/' | relative_url }}">Accueil</a>
             <span aria-hidden="true">›</span>
             <a href="{{ '/blog/' | relative_url }}">Blog</a>
@@ -187,7 +244,7 @@
             <p class="post-desc">{{ page.description }}</p>
           {%- endif -%}
 
-          <div class="post-meta" aria-label="Métadonnées de l’article">
+          <div class="post-meta" aria-label="Métadonnées de l'article">
             <div class="post-meta__item">
               <span class="icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -202,7 +259,7 @@
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
               <div class="post-meta__stack">
-                <span class="post-meta__label muted">Temps de lecture</span>
+                <span class="post-meta__label muted">Lecture</span>
                 <span>~{{ minutes }} min</span>
               </div>
             </div>
@@ -212,7 +269,7 @@
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M21 12a9 9 0 1 1-3.37-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 3v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
               <div class="post-meta__stack">
-                <span class="post-meta__label muted">Mise à jour</span>
+                <span class="post-meta__label muted">Mis à jour</span>
                 <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: '%d %b %Y' }}</time>
               </div>
             </div>
@@ -228,19 +285,23 @@
           {%- endif -%}
 
           <div class="post-hero__actions">
-            <a href="{{ '/blog/' | relative_url }}" class="btn ghost back-blog">← Retour au blog</a>
+            <a href="{{ '/blog/' | relative_url }}" class="btn ghost back-blog">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Retour au blog
+            </a>
             <button type="button"
                     class="post-share"
                     data-share
                     data-share-title="{{ page.title | escape }}"
                     data-share-url="{{ page.url | replace:'index.html','' | absolute_url }}">
               <span class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M16 6 12 2 8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2v14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M16 6 12 2 8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2v14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
               <span>Partager</span>
             </button>
           </div>
           <p class="post-share__feedback muted" data-share-feedback aria-live="polite"></p>
+
         </div>
 
         {%- if article_image -%}
@@ -252,6 +313,25 @@
     </header>
 
     <div class="post-shell">
+
+      <!-- Sommaire auto-généré -->
+      <details class="post-toc" id="post-toc" open>
+        <summary class="post-toc__toggle">
+          <span class="post-toc__toggle-inner">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+              <path d="M2 4h11M2 7.5h7M2 11h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            Sommaire
+          </span>
+          <svg class="post-toc__chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </summary>
+        <nav class="post-toc__nav" aria-label="Sommaire de l'article" id="post-toc-nav">
+          <!-- généré par JS -->
+        </nav>
+      </details>
+
       <article class="post-body" itemprop="articleBody">
         {{ content }}
       </article>
@@ -260,50 +340,78 @@
       {%- if page.tags -%}
         {%- assign post_tags_concat = page.tags | join: '|' | downcase -%}
       {%- endif -%}
+
       {%- if post_tags_concat contains 'talend' or post_tags_concat contains 'talaxie' -%}
         <aside class="post-service-cta card" aria-labelledby="cta-title-talend" data-anim="fade-up">
-          <h2 id="cta-title-talend">Besoin d'aide&nbsp;?</h2>
+          <div class="post-service-cta__head">
+            <span class="post-service-cta__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h2 id="cta-title-talend">Besoin d'aide sur Talend ou Talaxie&nbsp;?</h2>
+          </div>
           <p>Je sécurise vos migrations Talaxie et vos flux ETL pour que vos données restent fiables chaque jour.</p>
-          <a class="btn btn--primary"
-             href="{{ '/services-talend-talaxie/' | relative_url }}"
-             data-track-click="blog_to_talend">
-            Voir les services Talend &amp; Talaxie
-          </a>
-          <a class="btn btn--ghost"
-             href="{{ '/#contact' | relative_url }}"
-             data-track-click="blog_to_contact">
-            Me contacter
-          </a>
+          <div class="cta-actions">
+            <a class="btn btn--primary"
+               href="{{ '/services-talend-talaxie/' | relative_url }}"
+               data-track-click="blog_to_talend">
+              Voir les services Talend &amp; Talaxie
+            </a>
+            <a class="btn btn--ghost"
+               href="{{ '/#contact' | relative_url }}"
+               data-track-click="blog_to_contact">
+              Me contacter
+            </a>
+          </div>
         </aside>
       {%- elsif post_tags_concat contains 'power bi' or post_tags_concat contains 'powerbi' or post_tags_concat contains 'dax' -%}
         <aside class="post-service-cta card" aria-labelledby="cta-title-powerbi" data-anim="fade-up">
-          <h2 id="cta-title-powerbi">Besoin d'aide&nbsp;?</h2>
+          <div class="post-service-cta__head">
+            <span class="post-service-cta__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <h2 id="cta-title-powerbi">Besoin d'aide sur Power BI&nbsp;?</h2>
+          </div>
           <p>Je conçois des tableaux de bord lisibles et automatisés pour vos équipes métier.</p>
-          <a class="btn btn--primary"
-             href="{{ '/services-powerbi/' | relative_url }}"
-             data-track-click="blog_to_powerbi">
-            Voir les services Power BI
-          </a>
-          <a class="btn btn--ghost"
-             href="{{ '/#contact' | relative_url }}"
-             data-track-click="blog_to_contact">
-            Me contacter
-          </a>
+          <div class="cta-actions">
+            <a class="btn btn--primary"
+               href="{{ '/services-powerbi/' | relative_url }}"
+               data-track-click="blog_to_powerbi">
+              Voir les services Power BI
+            </a>
+            <a class="btn btn--ghost"
+               href="{{ '/#contact' | relative_url }}"
+               data-track-click="blog_to_contact">
+              Me contacter
+            </a>
+          </div>
         </aside>
       {%- endif -%}
 
-      <nav class="post-nav" aria-label="Navigation de l’article">
-        <div>
-          {%- if page.previous -%}
-            <a class="btn ghost" rel="prev" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
-          {%- endif -%}
-        </div>
-        <div>
-          {%- if page.next -%}
-            <a class="btn" rel="next" href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
-          {%- endif -%}
-        </div>
+      <nav class="post-nav" aria-label="Navigation entre articles">
+        {%- if page.previous -%}
+          <a class="post-nav__item post-nav__item--prev" rel="prev" href="{{ page.previous.url | relative_url }}">
+            <span class="post-nav__dir">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M8 2L4 6l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Article précédent
+            </span>
+            <span class="post-nav__title">{{ page.previous.title }}</span>
+          </a>
+        {%- else -%}
+          <span class="post-nav__placeholder"></span>
+        {%- endif -%}
+        {%- if page.next -%}
+          <a class="post-nav__item post-nav__item--next" rel="next" href="{{ page.next.url | relative_url }}">
+            <span class="post-nav__dir">
+              Article suivant
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="post-nav__title">{{ page.next.title }}</span>
+          </a>
+        {%- else -%}
+          <span class="post-nav__placeholder"></span>
+        {%- endif -%}
       </nav>
+
     </div>
   </main>
 
@@ -314,6 +422,56 @@
   <script type="text/javascript">
   var $zoho=$zoho || {}; $zoho.salesiq = $zoho.salesiq || {widgetcode:"siqba0aaa5451b6ef0417b73d38b11af17ea47309503718222755e77de3e3e35cc8", values:{}, ready:function(){ $zoho.salesiq.floatbutton.visible('hide'); }};
   var d=document; s=d.createElement("script"); s.type="text/javascript"; s.id="zsiqscript"; s.defer=true; s.src="https://salesiq.zoho.eu/widget"; t=d.getElementsByTagName("script")[0]; t.parentNode.insertBefore(s,t);
+  </script>
+
+  <script>
+  /* ── TOC auto-generator ── */
+  (function () {
+    var article = document.querySelector('.post-body');
+    var tocNav  = document.getElementById('post-toc-nav');
+    var tocEl   = document.getElementById('post-toc');
+    if (!article || !tocNav || !tocEl) return;
+
+    var headings = article.querySelectorAll('h2, h3');
+    if (headings.length < 2) { tocEl.remove(); return; }
+
+    var ul = document.createElement('ul');
+    headings.forEach(function (h) {
+      if (!h.id) {
+        h.id = h.textContent.trim()
+          .toLowerCase()
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, '');
+      }
+      var li = document.createElement('li');
+      li.className = 'post-toc__item' + (h.tagName === 'H3' ? ' post-toc__item--sub' : '');
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.className = 'post-toc__link';
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    tocNav.appendChild(ul);
+
+    /* Active link on scroll */
+    var links = tocNav.querySelectorAll('.post-toc__link');
+    if (!links.length) return;
+
+    function onScroll() {
+      var scrollY = window.scrollY + 110;
+      var active = null;
+      headings.forEach(function (h) {
+        if (h.offsetTop <= scrollY) active = h.id;
+      });
+      links.forEach(function (a) {
+        a.classList.toggle('is-active', a.getAttribute('href') === '#' + active);
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
   </script>
 </body>
 </html>
