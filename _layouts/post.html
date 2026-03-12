@@ -30,12 +30,31 @@
       border-radius: .75rem;
     }
 
-    /* ── Hero title : gradient text ── */
+    /* ── Hero title : premium glow + accent underline ── */
     .layout-post .post-title {
-      background: linear-gradient(135deg, #fff 40%, color-mix(in oklab, var(--brand) 65%, #fff 35%) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      position: relative;
+      display: inline-block;
+      color: color-mix(in oklab, #fff 94%, var(--brand) 6%);
+      background: none;
+      -webkit-text-fill-color: currentColor;
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.14),
+        0 10px 24px rgba(5, 11, 32, .46),
+        0 0 22px color-mix(in oklab, var(--brand) 28%, transparent);
+      -webkit-text-stroke: .35px color-mix(in oklab, #ffffff 12%, transparent);
+      letter-spacing: -.015em;
+    }
+    .layout-post .post-title::after {
+      content: "";
+      display: block;
+      width: clamp(92px, 34%, 190px);
+      height: 3px;
+      margin-top: .5rem;
+      margin-inline: auto;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      box-shadow: 0 0 16px color-mix(in oklab, var(--brand) 38%, transparent);
+      opacity: .92;
     }
 
     /* ── Hero entrance animations ── */
