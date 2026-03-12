@@ -1,8 +1,6 @@
 {% assign project = include.project %}
 {% if project %}
 {% assign stack_list = project.details.stack | default: empty %}
-{% assign mission_1 = project.details.missions | first | default: '' %}
-{% assign benefit_1 = project.details.benefices | first | default: '' %}
 {% assign project_summary = project["text-short"] | default: page.description | default: site.description %}
 {% assign project_url_abs = page.url | replace:'index.html','' | absolute_url %}
 {% assign has_talend = false %}
@@ -84,51 +82,9 @@
     gap: .65rem;
     margin-top: .25rem;
   }
-  .pcase .pcase-summary{
-    border: 1px solid color-mix(in oklab, var(--border), var(--brand-2) 30%);
-    background: linear-gradient(162deg,
-      color-mix(in oklab, var(--surface-1) 90%, transparent),
-      color-mix(in oklab, var(--surface-2) 66%, var(--brand-2) 20%));
-    box-shadow: var(--shadow-md);
-    border-radius: clamp(1rem, 2vw, 1.4rem);
-    padding: clamp(1.1rem, 2.2vw, 1.5rem);
-    display: grid;
-    gap: .85rem;
-  }
-  .pcase .pcase-summary h2{
-    margin: 0;
-    font-size: clamp(1.05rem, .95rem + .4vw, 1.3rem);
-  }
-  .pcase .pcase-summary__list{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: .7rem;
-  }
-  .pcase .pcase-summary__list li{
-    margin: 0;
-    padding-left: 1.15rem;
-    position: relative;
-    color: color-mix(in oklab, var(--muted) 74%, #fff 26%);
-    line-height: 1.52;
-  }
-  .pcase .pcase-summary__list li::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    top: .54rem;
-    width: .45rem;
-    height: .45rem;
-    border-radius: 999px;
-    background: var(--g-brand);
-  }
-  .pcase .pcase-summary__list strong{
-    color: #fff;
-  }
-  .pcase .pcase-section{
-    padding-top: .25rem;
-  }
+	  .pcase .pcase-section{
+	    padding-top: .25rem;
+	  }
   .pcase .pcase-card{
     border-radius: clamp(1rem, 2vw, 1.4rem);
     border: 1px solid color-mix(in oklab, var(--border), var(--brand) 24%);
@@ -231,13 +187,10 @@
     min-height: 40px;
     padding: .55rem .9rem;
   }
-  @media (min-width: 980px){
-    .pcase .pcase-hero__grid{
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
-    }
-    .pcase .pcase-grid{
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+	  @media (min-width: 980px){
+	    .pcase .pcase-grid{
+	      grid-template-columns: repeat(2, minmax(0, 1fr));
+	    }
   }
 </style>
 <div class="pcase">
@@ -266,66 +219,56 @@
           <a class="btn btn--ghost" href="{{ '/realisation/' | relative_url }}">Voir toutes les r&eacute;alisations</a>
         </div>
       </header>
-      <aside class="pcase-summary card" data-anim="fade-up" aria-labelledby="pcase-summary-title">
-        <h2 id="pcase-summary-title">En clair</h2>
-        <ul class="pcase-summary__list">
-          <li>
-            <strong>Ce qui posait probl&egrave;me :</strong>
-            {% include utils/abbrify.html text=project_summary %}
-          </li>
-          <li>
-            <strong>Ce qui a &eacute;t&eacute; mis en place :</strong>
-            {% if mission_1 != '' %}{% include utils/abbrify.html text=mission_1 %}{% else %}Une approche progressive adapt&eacute;e au besoin m&eacute;tier.{% endif %}
-          </li>
-          <li>
-            <strong>Le r&eacute;sultat principal :</strong>
-            {% if benefit_1 != '' %}{% include utils/abbrify.html text=benefit_1 %}{% else %}Une meilleure fiabilit&eacute; et un pilotage plus simple au quotidien.{% endif %}
-          </li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+	    </div>
+	  </section>
 
-  <section class="section pcase-section" aria-labelledby="pcase-problem-title">
-    <div class="pcase-container">
-      <article class="pcase-card" data-anim="fade-up">
-        <h2 id="pcase-problem-title">Ce qui posait probl&egrave;me</h2>
-        {% if project.details and project.details.contexte %}
-        <p>{% include utils/abbrify.html text=project.details.contexte %}</p>
-        {% endif %}
-      </article>
-    </div>
-  </section>
+	  <section class="section pcase-section" aria-labelledby="pcase-context-title">
+	    <div class="pcase-container">
+	      <article class="pcase-card" data-anim="fade-up">
+	        <h2 id="pcase-context-title">Contexte</h2>
+	        {% if project.details and project.details.contexte %}
+	        <p>{% include utils/abbrify.html text=project.details.contexte %}</p>
+	        {% endif %}
+	      </article>
+	    </div>
+	  </section>
 
-  <section class="section pcase-section" aria-labelledby="pcase-work-title">
-    <div class="pcase-container pcase-grid">
-      <article class="pcase-card" data-anim="fade-up">
-        <h2 id="pcase-work-title">Ce qui a &eacute;t&eacute; mis en place</h2>
-        {% if project.details and project.details.missions %}
-        <ul class="pcase-list" aria-label="Actions menées">
-          {% for mission in project.details.missions %}
-          <li>{% include utils/abbrify.html text=mission %}</li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-      </article>
-      <article class="pcase-card" data-anim="fade-up">
-        <h2 id="pcase-gains-title">Ce que vous y gagnez</h2>
-        {% if project.details and project.details.benefices %}
-        <ul class="pcase-list pcase-list--benefits" aria-label="Bénéfices obtenus">
-          {% for gain in project.details.benefices %}
-          <li>{% include utils/abbrify.html text=gain %}</li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-      </article>
-    </div>
-  </section>
+	  <section class="section pcase-section" aria-labelledby="pcase-frictions-title">
+	    <div class="pcase-container">
+	      <article class="pcase-card" data-anim="fade-up">
+	        <h2 id="pcase-frictions-title">Points de frictions</h2>
+	        {% if project.details and project.details.frictions and project.details.frictions != empty %}
+	        <ul class="pcase-list" aria-label="Points de friction identifiés">
+	          {% for friction in project.details.frictions %}
+	          <li>{% include utils/abbrify.html text=friction %}</li>
+	          {% endfor %}
+	        </ul>
+	        {% else %}
+	        <p>Les principaux points de frictions ont &eacute;t&eacute; trait&eacute;s au cadrage du projet.</p>
+	        {% endif %}
+	      </article>
+	    </div>
+	  </section>
+
+	  <section class="section pcase-section" aria-labelledby="pcase-work-title">
+	    <div class="pcase-container">
+	      <article class="pcase-card" data-anim="fade-up">
+	        <h2 id="pcase-work-title">Solutions apport&eacute;es</h2>
+	        {% if project.details and project.details.missions %}
+	        <ul class="pcase-list" aria-label="Actions menées">
+	          {% for mission in project.details.missions %}
+	          <li>{% include utils/abbrify.html text=mission %}</li>
+	          {% endfor %}
+	        </ul>
+	        {% endif %}
+	      </article>
+	    </div>
+	  </section>
 
   <section class="section pcase-section" aria-labelledby="pcase-stack-title">
     <div class="pcase-container">
       <article class="pcase-card" data-anim="fade-up">
-        <h2 id="pcase-stack-title">Les outils utilis&eacute;s</h2>
+        <h2 id="pcase-stack-title">Stack technique</h2>
         <p>Technologies mobilis&eacute;es pour livrer une solution fiable, maintenable et &eacute;volutive.</p>
         {% if project.details and project.details.stack %}
         <ul class="pcase-stack" aria-label="Technologies principales">

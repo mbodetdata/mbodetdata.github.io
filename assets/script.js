@@ -723,8 +723,7 @@ const Modal = (() => {
   const clientEl   = document.getElementById('project-client');
   const abstractEl = document.getElementById('project-abstract');
   const ctxEl      = document.getElementById('project-contexte');
-  const missionsEl = document.getElementById('project-missions');
-  const benefEl    = document.getElementById('project-benefices');
+  const solutionEl = document.getElementById('project-solution');
   const stackEl    = document.getElementById('project-stack');
   const linkEl     = document.getElementById('project-link');
 
@@ -774,6 +773,7 @@ const Modal = (() => {
     try { return JSON.parse(String(value)); } catch { return []; }
   };
   const renderList = (ul, data) => {
+    if (!ul) return;
     ul.innerHTML = '';
     toArray(data).forEach(item => {
       const li = document.createElement('li');
@@ -781,14 +781,33 @@ const Modal = (() => {
       ul.appendChild(li);
     });
   };
+  const truncate = (txt, max = 220) => {
+    const s = String(txt || '').trim();
+    if (!s) return '';
+    if (s.length <= max) return s;
+    return `${s.slice(0, max - 1).trimEnd()}…`;
+  };
+  const firstSentence = (txt) => {
+    const s = String(txt || '').trim();
+    if (!s) return '';
+    const m = s.match(/(.+?[.!?])(\s|$)/);
+    return m ? m[1].trim() : s;
+  };
 
   function fill(card){
+    const missions = toArray(card.dataset.missions);
+    const benefices = toArray(card.dataset.benefices);
+    const solution = [];
+    missions.slice(0, 2).forEach(item => solution.push(item));
+    if (benefices[0]) solution.push(`Bénéfice client: ${benefices[0]}`);
+    const ctxSource = card.dataset.contexte || '';
+    const contextSynth = truncate(firstSentence(ctxSource) || card.dataset.abstract || '');
+
     titleEl.innerHTML      = abbrify(card.dataset.title || '');
     clientEl.textContent   = card.dataset.client ? `Client : ${card.dataset.client}` : '';
     abstractEl.innerHTML   = abbrify(card.dataset.abstract || '');
-    ctxEl.innerHTML        = abbrify(card.dataset.contexte || '');
-    renderList(missionsEl,  card.dataset.missions);
-    renderList(benefEl,     card.dataset.benefices);
+    ctxEl.innerHTML        = abbrify(contextSynth);
+    renderList(solutionEl,  solution);
     renderList(stackEl,     card.dataset.stack);
     if (linkEl) {
       if (card.dataset.link) { linkEl.href = card.dataset.link; linkEl.setAttribute('aria-label', `Ouvrir ${card.dataset.title}`); }
@@ -971,51 +990,6 @@ const Modal = (() => {
       scrollToSlide(current < 0 ? 0 : current);
     });
   }, { passive: true });
-})();
-
-// ===== Patch robustesse pour le modal projet (évite "forEach of null") =====
-(() => {
-  const modal = document.getElementById('project-modal');
-  if (!modal) return;
-
-  const titleEl    = document.getElementById('project-title');
-  const clientEl   = document.getElementById('project-client');
-  const abstractEl = document.getElementById('project-abstract');
-  const ctxEl      = document.getElementById('project-contexte');
-  const missionsEl = document.getElementById('project-missions');
-  const benefEl    = document.getElementById('project-benefices');
-  const stackEl    = document.getElementById('project-stack');
-  const linkEl     = document.getElementById('project-link');
-
-  // remplace la version précédente : si ce n’est pas un array -> []
-  const safeParse = (str, fallback = []) => {
-    try {
-      const v = JSON.parse(str);
-      return Array.isArray(v) ? v : fallback;
-    } catch { return fallback; }
-  };
-  const renderList = (ul, arr) => { ul.innerHTML = ''; arr.forEach(t => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); }); };
-
-  function fill(card){
-    titleEl.textContent    = card.dataset.title || '';
-    clientEl.textContent   = card.dataset.client ? `Client : ${card.dataset.client}` : '';
-    abstractEl.textContent = card.dataset.abstract || '';
-    ctxEl.textContent      = card.dataset.contexte || '';
-    renderList(missionsEl, safeParse(card.dataset.missions));
-    renderList(benefEl,    safeParse(card.dataset.benefices));
-    renderList(stackEl,    safeParse(card.dataset.stack));
-    if (linkEl) {
-      if (card.dataset.link) { linkEl.href = card.dataset.link; linkEl.setAttribute('aria-label', `Ouvrir ${card.dataset.title}`); }
-      else { linkEl.removeAttribute('href'); }
-    }
-  }
-
-  document.querySelectorAll('.project-card').forEach(card => {
-    const open = (e) => { e?.preventDefault?.(); fill(card); Modal.open(modal); };
-    card.querySelector('.open-project')?.addEventListener('click', open);
-    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { open(e); } });
-    card.addEventListener('click', e => { if (!e.target.closest('a, .open-project')) open(e); });
-  });
 })();
 
 /* ==================== 15) Services animations & tracking ==================== */

@@ -25,41 +25,27 @@
     <!-- Corps (scrollable) -->
     <div class="proj-modal__body">
 
-      <!-- Contexte -->
+      <!-- Contexte synthétique -->
       <div class="proj-modal__block proj-modal__block--ctx">
         <h3 class="proj-modal__block-title">
           <svg class="proj-modal__block-ico" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
             <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
             <path d="M10 9v5M10 7h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
-          Contexte
+          Contexte synth&eacute;tique
         </h3>
         <p id="project-contexte" class="proj-modal__ctx-text"></p>
       </div>
 
-      <!-- Grille missions + r&eacute;sultats -->
-      <div class="proj-modal__grid">
-
-        <div class="proj-modal__block proj-modal__block--missions">
-          <h3 class="proj-modal__block-title">
-            <svg class="proj-modal__block-ico" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
-              <path d="M4 6h12M4 10h8M4 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            Missions
-          </h3>
-          <ul id="project-missions" class="proj-modal__list proj-modal__list--missions"></ul>
-        </div>
-
-        <div class="proj-modal__block proj-modal__block--benefices">
-          <h3 class="proj-modal__block-title">
-            <svg class="proj-modal__block-ico" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
-              <path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            R&eacute;sultats
-          </h3>
-          <ul id="project-benefices" class="proj-modal__list proj-modal__list--benefices"></ul>
-        </div>
-
+      <!-- Solution apportée (orientée client + bénéfice) -->
+      <div class="proj-modal__block proj-modal__block--missions">
+        <h3 class="proj-modal__block-title">
+          <svg class="proj-modal__block-ico" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+            <path d="M4 6h12M4 10h8M4 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Solution apport&eacute;e
+        </h3>
+        <ul id="project-solution" class="proj-modal__list proj-modal__list--missions"></ul>
       </div>
 
       <!-- Stack technique -->

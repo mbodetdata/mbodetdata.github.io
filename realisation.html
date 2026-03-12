@@ -109,9 +109,9 @@ breadcrumbs:
                data-abstract="{{ projet['text-short'] | default: projet.text | escape }}"
                data-link="{{ projet.link | relative_url }}"
                data-contexte="{{ projet.details.contexte | escape }}"
-               data-missions='{{ projet.details.missions | jsonify }}'
-               data-benefices='{{ projet.details.benefices | jsonify }}'
-               data-stack='{{ projet.details.stack | jsonify }}'
+               data-missions="{{ projet.details.missions | jsonify | escape }}"
+               data-benefices="{{ projet.details.benefices | jsonify | escape }}"
+               data-stack="{{ projet.details.stack | jsonify | escape }}"
                itemscope itemtype="https://schema.org/CreativeWork">
 
         <meta itemprop="name" content="{{ projet.title | escape }}">
