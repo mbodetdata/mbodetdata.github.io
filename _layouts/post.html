@@ -177,6 +177,18 @@
       border-top: 1px solid color-mix(in oklab, var(--border), transparent 28%);
       letter-spacing: -.01em;
       text-wrap: balance;
+      background: var(--g-brand);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+      .layout-post .post-body h2 {
+        background: none;
+        -webkit-text-fill-color: initial;
+        color: color-mix(in oklab, var(--brand) 72%, #fff 28%);
+      }
     }
     .layout-post .post-body h2::after {
       content: "";
