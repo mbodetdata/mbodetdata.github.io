@@ -23,6 +23,12 @@
         "Clôture quotidienne accélérée et pilotage de trésorerie en temps réel",
         "La direction dispose d'une vision consolidée et fiable à tout moment"
       ],
+      "benefices_cles": [
+        "Temps de clôture réduit",
+        "Données financières fiabilisées",
+        "Visibilité temps réel",
+        "Décisions plus rapides"
+      ],
       "stack": ["Talend", "Microsoft Azure", "Power BI"]
     }
   },
@@ -49,6 +55,12 @@
         "Nette réduction des incidents bloquants entre le WMS et les SI clients",
         "Continuité opérationnelle supply chain préservée, moins d'escalades",
         "Équipes plus réactives grâce à une supervision centralisée et des alertes automatiques"
+      ],
+      "benefices_cles": [
+        "Incidents EDI réduits",
+        "Continuité supply sécurisée",
+        "Supervision centralisée",
+        "Réactivité support renforcée"
       ],
       "stack": ["Talend", "EDI", "Reflex WMS"]
     }
@@ -77,6 +89,12 @@
         "Réduction significative des saisies chronophages pour les équipes opérationnelles",
         "Traçabilité complète et processus logistiques plus fiables au quotidien"
       ],
+      "benefices_cles": [
+        "Zéro envoi manuel",
+        "Traçabilité des échanges",
+        "Moins de ressaisie",
+        "Processus transport fiabilisés"
+      ],
       "stack": ["Talend", "API REST", "MariaDB"]
     }
   },
@@ -103,6 +121,12 @@
         "Interopérabilité garantie pour 6+ clients aux SI hétérogènes",
         "Anomalies et erreurs manuelles réduites grâce à la traçabilité automatique",
         "Équipes opérationnelles alertées en temps réel, réactivité décuplée"
+      ],
+      "benefices_cles": [
+        "Interopérabilité multi-clients",
+        "Erreurs manuelles réduites",
+        "Alertes en temps réel",
+        "Exploitation plus fluide"
       ],
       "stack": ["Talend", "IzyPro", "API REST", "MariaDB", "Robotask"]
     }
@@ -131,6 +155,12 @@
         "Identification rapide des agents et processus en retard sur les SLA",
         "Performance des équipes support améliorée grâce à des indicateurs objectifs"
       ],
+      "benefices_cles": [
+        "Pilotage SLA clair",
+        "Backlog mieux priorisé",
+        "Blocages vite détectés",
+        "Performance support améliorée"
+      ],
       "stack": ["Power BI", "iTop"]
     }
   },
@@ -157,6 +187,12 @@
         "Risque d'obsolescence éliminé avec une architecture pérenne et supportée",
         "Continuité des traitements assurée pendant toute la durée de la transition",
         "Investissement protégé : migration progressive, sans rupture ni perte de données"
+      ],
+      "benefices_cles": [
+        "Risque d'obsolescence levé",
+        "Transition sans rupture",
+        "Architecture pérenne",
+        "Migration maîtrisée"
       ],
       "stack": ["Talend", "Talaxie", "Tests de non-régression"]
     }
@@ -185,6 +221,12 @@
         "Réactivité accrue : les incidents critiques sont détectés et traités plus vite",
         "3 outils distincts consolidés en un seul tableau de bord opérationnel"
       ],
+      "benefices_cles": [
+        "Vision opérations unifiée",
+        "Réactivité accrue",
+        "Incidents mieux priorisés",
+        "Décision temps réel"
+      ],
       "stack": ["Talend", "MariaDB", "iTop", "ServiceNow", "Avaya", "Power BI", "OptiSign"]
     }
   },
@@ -211,6 +253,12 @@
         "Migration 100 % sans perte : produits, clients et commandes tous intégrés",
         "Mise en production accélérée, sans interruption de l'activité e-commerce",
         "Transition fluide pour les équipes, sans ressaisie manuelle ni risque d'erreur"
+      ],
+      "benefices_cles": [
+        "Migration sans perte",
+        "Mise en production rapide",
+        "Activité sans interruption",
+        "Équipes rassurées"
       ],
       "stack": ["Talend", "Microsoft SQL Server", "PrestaShop"]
     }
@@ -239,6 +287,12 @@
         "Système NoSQL plus flexible, plus rapide et plus facile à maintenir",
         "Processus de migration industrialisé, reproductible et entièrement documenté"
       ],
+      "benefices_cles": [
+        "Intégrité données médicales",
+        "Performance améliorée",
+        "Système plus flexible",
+        "Maintenance simplifiée"
+      ],
       "stack": ["Talend", "Oracle DB", "MongoDB", "JSON", "Linux"]
     }
   },
@@ -266,6 +320,12 @@
         "Transition fluide pour les utilisateurs, sans interruption d'activité",
         "Automatisation totale : aucune ressaisie manuelle, moins d'erreurs humaines"
       ],
+      "benefices_cles": [
+        "Historique entièrement conservé",
+        "Transition utilisateur fluide",
+        "Ressaisie supprimée",
+        "Moins d'erreurs"
+      ],
       "stack": ["Talend", "CSV", "Microsoft Excel"]
     }
   },
@@ -292,6 +352,12 @@
         "Vision consolidée du parc automobile sur l'ensemble des 15 garages",
         "Suivi précis des coûts par véhicule et identification des anomalies budgétaires",
         "Aide à la décision opérationnelle pour optimiser les dépenses de flotte"
+      ],
+      "benefices_cles": [
+        "Vue flotte consolidée",
+        "Coûts mieux pilotés",
+        "Anomalies vite identifiées",
+        "Décision facilitée"
       ],
       "stack": ["Talend", "API KeplerVo", "MySQL", "phpMyAdmin"]
     }

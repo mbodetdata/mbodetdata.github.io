@@ -2,6 +2,14 @@
 {% if project %}
 {% assign stack_list = project.details.stack | default: empty %}
 {% assign project_summary = project["text-short"] | default: page.description | default: site.description %}
+{% assign benefit_keywords = project.details.benefices_cles | default: empty %}
+{% assign fallback_benefits = project.details.benefices | default: empty %}
+{% assign benefit_keywords_count = benefit_keywords | size %}
+{% if benefit_keywords == empty or benefit_keywords_count < 4 %}
+  {% if fallback_benefits != empty %}
+    {% assign benefit_keywords = fallback_benefits %}
+  {% endif %}
+{% endif %}
 {% assign project_url_abs = page.url | replace:'index.html','' | absolute_url %}
 {% assign has_talend = false %}
 {% assign has_powerbi = false %}
@@ -82,9 +90,51 @@
     gap: .65rem;
     margin-top: .25rem;
   }
-	  .pcase .pcase-section{
-	    padding-top: .25rem;
-	  }
+  .pcase .pcase-benefits{
+    border: 1px solid color-mix(in oklab, var(--border), var(--brand-2) 26%);
+    background: linear-gradient(160deg,
+      color-mix(in oklab, var(--surface-1) 92%, transparent),
+      color-mix(in oklab, var(--surface-2) 64%, var(--brand-2) 20%));
+    box-shadow: var(--shadow-md);
+    border-radius: clamp(1rem, 2vw, 1.35rem);
+    padding: clamp(1rem, 2.1vw, 1.35rem);
+    display: grid;
+    gap: .65rem;
+    align-content: start;
+  }
+  .pcase .pcase-benefits h2{
+    margin: 0;
+    font-size: clamp(1rem, .94rem + .3vw, 1.18rem);
+    letter-spacing: .03em;
+  }
+  .pcase .pcase-benefits__list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: .48rem;
+  }
+  .pcase .pcase-benefits__list li{
+    position: relative;
+    padding-left: 1.15rem;
+    color: color-mix(in oklab, var(--muted) 64%, #fff 36%);
+    font-size: .9rem;
+    line-height: 1.4;
+  }
+  .pcase .pcase-benefits__list li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .46rem;
+    width: .46rem;
+    height: .46rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--brand-2) 78%, var(--brand) 22%);
+    box-shadow: 0 0 0 5px color-mix(in oklab, var(--brand-2) 16%, transparent);
+  }
+  .pcase .pcase-section{
+    padding-top: .25rem;
+  }
   .pcase .pcase-card{
     border-radius: clamp(1rem, 2vw, 1.4rem);
     border: 1px solid color-mix(in oklab, var(--border), var(--brand) 24%);
@@ -187,10 +237,14 @@
     min-height: 40px;
     padding: .55rem .9rem;
   }
-	  @media (min-width: 980px){
-	    .pcase .pcase-grid{
-	      grid-template-columns: repeat(2, minmax(0, 1fr));
-	    }
+  @media (min-width: 980px){
+    .pcase .pcase-hero__grid{
+      grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr);
+      align-items: start;
+    }
+    .pcase .pcase-grid{
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 </style>
 <div class="pcase">
@@ -219,8 +273,18 @@
           <a class="btn btn--ghost" href="{{ '/realisation/' | relative_url }}">Voir toutes les r&eacute;alisations</a>
         </div>
       </header>
-	    </div>
-	  </section>
+      {% if benefit_keywords and benefit_keywords != empty %}
+      <aside class="pcase-benefits card" data-anim="fade-up" aria-labelledby="pcase-benefits-title">
+        <h2 id="pcase-benefits-title">B&eacute;n&eacute;fices cl&eacute;s</h2>
+        <ul class="pcase-benefits__list" aria-label="Bénéfices clés du projet">
+          {% for benefit in benefit_keywords limit: 4 %}
+          <li>{% include utils/abbrify.html text=benefit %}</li>
+          {% endfor %}
+        </ul>
+      </aside>
+      {% endif %}
+    </div>
+  </section>
 
 	  <section class="section pcase-section" aria-labelledby="pcase-context-title">
 	    <div class="pcase-container">
