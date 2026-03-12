@@ -50,6 +50,20 @@ bandeau:
   #bandeau .about-hero__title{
     grid-area:title;
     max-width:18ch;
+    margin:0;
+    font-size:clamp(2.6rem, 1.7rem + 2.9vw, 4.55rem);
+    font-weight:900;
+    line-height:1.02;
+    letter-spacing:.005em;
+    color:#f5f8ff;
+    background:linear-gradient(112deg, #f9fbff 14%, #9fb5ff 54%, #4be0af 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:
+      0 18px 38px rgba(0, 0, 0, .52),
+      0 0 24px color-mix(in oklab, var(--brand) 24%, transparent);
+    animation:homeHeroHeadlineIn .64s cubic-bezier(.2, .76, .22, 1) both;
   }
   #bandeau .about-hero__text{
     grid-area:text;
@@ -85,6 +99,74 @@ bandeau:
   #bandeau .about-hero__canvas::after{
     content:none;
   }
+  #services .section-hook__title{
+    position:relative;
+    display:inline-block;
+    margin:0;
+    max-width:26ch;
+    font-size:clamp(1.5rem, 1.08rem + 1.72vw, 2.48rem);
+    font-weight:900;
+    line-height:1.08;
+    letter-spacing:.005em;
+    color:#f6f9ff;
+    background:linear-gradient(114deg, #f9fbff 14%, #abc8ff 56%, #4be0af 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:
+      0 12px 30px rgba(0, 0, 0, .35),
+      0 0 20px color-mix(in oklab, var(--brand-2) 22%, transparent);
+    animation:homeHookTitleIn .58s cubic-bezier(.2, .76, .22, 1) both .12s;
+  }
+  #services .section-hook__title::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-.2em;
+    height:.15em;
+    border-radius:999px;
+    transform-origin:left center;
+    background:linear-gradient(90deg,
+      color-mix(in oklab, var(--brand) 78%, #fff 22%),
+      color-mix(in oklab, var(--brand-2) 82%, #fff 18%));
+    box-shadow:0 8px 18px rgba(21, 175, 136, .28);
+    animation:homeHookUnderlineIn .62s cubic-bezier(.22, .9, .26, 1) both .22s;
+  }
+  @keyframes homeHeroHeadlineIn{
+    from{
+      opacity:0;
+      transform:translateY(12px) scale(.985);
+      filter:blur(3px);
+    }
+    to{
+      opacity:1;
+      transform:translateY(0) scale(1);
+      filter:blur(0);
+    }
+  }
+  @keyframes homeHookTitleIn{
+    from{
+      opacity:0;
+      transform:translateY(8px);
+      filter:blur(2px);
+    }
+    to{
+      opacity:1;
+      transform:translateY(0);
+      filter:blur(0);
+    }
+  }
+  @keyframes homeHookUnderlineIn{
+    from{
+      opacity:0;
+      transform:scaleX(.14);
+    }
+    to{
+      opacity:1;
+      transform:scaleX(1);
+    }
+  }
   @media (max-width: 980px){
     #bandeau .about-hero__content{
       grid-template-columns:1fr;
@@ -98,6 +180,36 @@ bandeau:
     #bandeau .about-hero__title,
     #bandeau .about-hero__text{
       max-width:none;
+    }
+  }
+  @media (max-width: 580px){
+    #bandeau .about-hero__title{
+      font-size:clamp(2rem, 1.36rem + 5.1vw, 2.82rem);
+      line-height:1.05;
+      max-width:14ch;
+      overflow-wrap:anywhere;
+    }
+    #services .section-hook{
+      padding:clamp(.95rem, 4vw, 1.25rem);
+    }
+    #services .section-hook__title{
+      font-size:clamp(1.28rem, 1.02rem + 2.5vw, 1.72rem);
+      line-height:1.14;
+      max-width:100%;
+      overflow-wrap:anywhere;
+    }
+    #services .section-hook__title::after{
+      bottom:-.17em;
+      height:.12em;
+    }
+  }
+  @media (prefers-reduced-motion: reduce){
+    #bandeau .about-hero__title,
+    #services .section-hook__title,
+    #services .section-hook__title::after{
+      animation:none !important;
+      transform:none !important;
+      filter:none !important;
     }
   }
 </style>
