@@ -453,6 +453,63 @@ divers::Divers
   @media (max-width: 480px) {
     #articles .posts-grid.modern-grid { grid-template-columns: 1fr; }
   }
+
+  /* ── WOW EFFECTS ── */
+
+  /* Dot pulse sur le dernier article */
+  @keyframes dot-pulse {
+    0%, 100% { box-shadow: 0 0 0 5px color-mix(in oklab, var(--brand-2) 20%, transparent); }
+    50%       { box-shadow: 0 0 0 10px color-mix(in oklab, var(--brand-2) 6%, transparent); }
+  }
+  #blog-hero .stat-latest__dot { animation: dot-pulse 2.2s ease-in-out infinite; }
+
+  /* Entrée staggerée des cards */
+  @keyframes card-enter {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  #articles .post-card { animation: card-enter .5s cubic-bezier(.22,.8,.2,1) backwards; }
+
+  /* Mouse-tracking radial glow (--mouse-x / --mouse-y injectés via JS) */
+  #articles .post-card::after {
+    content: "";
+    position: absolute; inset: 0; border-radius: inherit;
+    background: radial-gradient(
+      280px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      color-mix(in oklab, var(--brand) 14%, transparent),
+      transparent 72%
+    );
+    opacity: 0;
+    transition: opacity .32s ease;
+    pointer-events: none; z-index: 1;
+  }
+  #articles .post-card:hover::after { opacity: 1; }
+
+  /* Featured card : bordure + ombre plus prononcées */
+  #articles .post-card--featured {
+    border-color: color-mix(in oklab, var(--border), var(--brand) 34%);
+    box-shadow: var(--shadow-lg), 0 0 0 1px color-mix(in oklab, var(--brand) 10%, transparent);
+  }
+  #articles .post-card--featured:hover {
+    box-shadow: 0 28px 64px rgba(6,11,30,.62), 0 0 52px color-mix(in oklab, var(--brand) 12%, transparent);
+  }
+  /* Light-sweep périodique sur la featured card */
+  #articles .post-card--featured::before {
+    content: "";
+    position: absolute; top: -10%; left: 0;
+    width: 44%; height: 120%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.055), transparent);
+    transform: translateX(-130%) skewX(-18deg);
+    animation: feat-shine 5.5s ease-in-out infinite;
+    animation-delay: 2s;
+    pointer-events: none; z-index: 1;
+  }
+  @keyframes feat-shine {
+    0%, 55%, 100% { transform: translateX(-130%) skewX(-18deg); opacity: 0; }
+    4%  { opacity: 1; }
+    38% { transform: translateX(330%) skewX(-18deg); opacity: 1; }
+    46% { opacity: 0; }
+  }
 </style>
 
 <section id="blog-hero" class="section about-hero">
@@ -463,7 +520,7 @@ divers::Divers
         <p class="about-hero__eyebrow">Journal de bord data</p>
         <h1 class="about-hero__title">Blog</h1>
         <p class="about-hero__text">
-          Guides pratiques, retours terrain et veille sur Talend, Talaxie, Power BI et les plateformes data modernes. Des articles concrets pour progresser vite — sans jargon inutile.
+          Guides pratiques, retours terrain et veille sur Talend, Talaxie, Power BI et les plateformes data modernes. Des articles concrets pour progresser vite.
         </p>
         <div class="hero-actions">
           <a class="btn primary" href="#articles">Parcourir les articles</a>
@@ -475,11 +532,11 @@ divers::Divers
         <p class="stats-top-label">Vue d'ensemble</p>
         <div class="stats-numbers">
           <div class="stat-block">
-            <span class="stat-block__value">{{ total_posts }}</span>
+            <span class="stat-block__value" data-count="{{ total_posts }}">0</span>
             <span class="stat-block__label">Articles publiés</span>
           </div>
           <div class="stat-block">
-            <span class="stat-block__value">{{ total_categories }}</span>
+            <span class="stat-block__value" data-count="{{ total_categories }}">0</span>
             <span class="stat-block__label">Thématiques</span>
           </div>
         </div>
@@ -532,7 +589,8 @@ divers::Divers
         {% if cat_label == cat_input %}{% assign cat_label = cat_input | replace: '-', ' ' | capitalize %}{% endif %}
       {% endif %}
 
-      <article class="post-card card{% if forloop.first %} post-card--featured{% endif %}" data-category="{{ cat_slug }}">
+      {% assign anim_delay = forloop.index0 | times: 85 %}
+      <article class="post-card card{% if forloop.first %} post-card--featured{% endif %}" data-category="{{ cat_slug }}" style="animation-delay:{{ anim_delay }}ms">
         <div class="pc-media" aria-hidden="true">
           <img src="{{ cover | relative_url }}" alt="" loading="lazy" decoding="async">
         </div>
@@ -600,5 +658,47 @@ divers::Divers
       updateCount(visible);
     });
   });
+})();
+
+/* ── Mouse-glow tracking ── */
+(function () {
+  var cards = document.querySelectorAll('#blog-posts-grid .post-card');
+  cards.forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--mouse-y', (e.clientY - r.top) + 'px');
+    });
+  });
+})();
+
+/* ── Count-up animation sur les stats ── */
+(function () {
+  var els = document.querySelectorAll('.stat-block__value[data-count]');
+  if (!els.length) return;
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.textContent = el.dataset.count; });
+    return;
+  }
+  function countUp(el, target) {
+    var dur = Math.min(900 + target * 15, 1800);
+    var start = performance.now();
+    function step(now) {
+      var p = Math.min((now - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        countUp(entry.target, parseInt(entry.target.dataset.count, 10));
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.7 });
+  els.forEach(function (el) { obs.observe(el); });
 })();
 </script>
