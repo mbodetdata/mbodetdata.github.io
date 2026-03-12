@@ -60,9 +60,9 @@
                      data-abstract="{{ projet['text-short'] | default: projet.text | escape }}"
                      data-link="{{ projet.link | relative_url }}"
                      data-contexte="{{ projet.details.contexte | escape }}"
-                     data-missions='{{ projet.details.missions | jsonify }}'
-                     data-benefices='{{ projet.details.benefices | jsonify }}'
-                     data-stack='{{ projet.details.stack | jsonify }}'>
+                     data-missions="{{ projet.details.missions | jsonify | escape }}"
+                     data-benefices="{{ projet.details.benefices | jsonify | escape }}"
+                     data-stack="{{ projet.details.stack | jsonify | escape }}">
               <header class="project-card__head">
                 {% if projet.client %}
                 <p class="project-card__client" aria-label="Client">
