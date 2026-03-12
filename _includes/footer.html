@@ -7,13 +7,15 @@
   <div class="footer container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="{{ '/' | relative_url }}" rel="home" aria-label="Retour à l’accueil">
-          <img src="{{ '/assets/img/logo_112_comp.webp' | relative_url }}" alt="Logo {{ site.author.enterprise | default: site.title }}" class="footer-logo" width="64" height="64" loading="lazy" decoding="async">
+        <a class="brand" href="{{ ‘/’ | relative_url }}" rel="home" aria-label="Retour à l’accueil">
+          <img src="{{ ‘/assets/img/logo_112_comp.webp’ | relative_url }}" alt="Logo {{ site.author.enterprise | default: site.title }}" class="footer-logo" width="64" height="64" loading="lazy" decoding="async">
           <div class="footer-brand-text">
-            <strong class="footer-title">{{ site.title }}</strong>
-            <small class="muted">Donn&eacute;es &amp; automatisation pour TPE&nbsp;/ PME &mdash; sans jargon</small>
+            <strong class="footer-title">BM Data</strong>
+            <small class="footer-tagline">Donn&eacute;es &amp; automatisation pour TPE&nbsp;/ PME &mdash; sans jargon</small>
           </div>
         </a>
+        <p class="footer-brand-desc">Connecter vos logiciels, supprimer les ressaisies, piloter avec des tableaux de bord fiables. Consultant freelance <strong>Talend</strong> &amp; <strong>Power&nbsp;BI</strong>.</p>
+        <p class="footer-avail"><span class="footer-avail-dot" aria-hidden="true"></span>Disponible pour nouvelles missions</p>
       </div>
 
       <nav class="footer-col" aria-label="Navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
@@ -94,7 +96,8 @@
     <hr class="soft-sep" aria-hidden="true">
 
     <div class="footer-meta">
-      <p class="footer-copy">&copy; {{ site.time | date: '%Y' }} <span itemprop="copyrightHolder">{{ site.title }}</span></p>
+      <p class="footer-copy">&copy; {{ site.time | date: '%Y' }} <span itemprop="copyrightHolder">BM Data</span> &mdash; Martial Bodet, consultant data freelance</p>
+      <p class="footer-seo-tags" aria-hidden="true">Talend &middot; Talaxie &middot; Power BI &middot; ETL &middot; Automatisation &middot; Int&eacute;gration de donn&eacute;es &middot; TPE &middot; PME</p>
     </div>
   </div>
 
@@ -107,7 +110,7 @@
     {% if site.author.email %}"email": {{ site.author.email | prepend: "mailto:" | jsonify }},{% endif %}
     {% if site.author.linkedin %}"sameAs": [ {{ site.author.linkedin | jsonify }} ],{% endif %}
     {% if site_url %}"url": {{ site_url | absolute_url | jsonify }},{% endif %}
-    "description": "Consultant Freelance spécialisé ETL Talend & Power BI"
+    "description": "Consultant data freelance pour TPE/PME : automatisation des données, intégration Talend/Talaxie, tableaux de bord Power BI — pour gagner du temps, fiabiliser vos chiffres et supprimer les ressaisies."
   }
   </script>
 </footer>

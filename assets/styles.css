@@ -5344,3 +5344,176 @@ body::before{
   opacity:.7;
 }
 
+
+/* ===================================================================
+   Footer Pack 9 — DA premium + SEO
+   =================================================================== */
+
+/* 1. Footer : fond sombre + barre gradient en haut (remplace border-top) */
+.site-footer{
+  border-top:none;
+  position:relative;
+  background:linear-gradient(180deg,
+    color-mix(in oklab, var(--bg) 80%, var(--brand) 20%) 0%,
+    var(--bg) 100%);
+  padding-block: clamp(2.8rem,4vw,4rem) clamp(1.4rem,2vw,2rem);
+}
+/* Barre dégradée en haut */
+.site-footer::before{
+  content:"";
+  position:absolute;
+  top:0; left:0; right:0;
+  height:2px;
+  background: var(--g-brand);
+  opacity:.7;
+}
+/* Glow radial subtil */
+.site-footer::after{
+  content:"";
+  position:absolute;
+  inset:0; pointer-events:none;
+  background:radial-gradient(50% 30% at 50% 0%,
+    color-mix(in oklab, var(--brand) 6%, transparent) 0%,
+    transparent 70%);
+}
+
+/* 2. Footer-grid : meilleur espacement -------------------------------- */
+.footer-grid{
+  gap: clamp(2.2rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 2.8rem);
+  padding-bottom: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+/* 3. Brand column ----------------------------------------------------- */
+.footer-brand .brand{
+  gap:1rem;
+  margin-bottom:1rem;
+}
+.footer-logo{
+  border-radius:.75rem;
+  flex-shrink:0;
+}
+.footer-title{
+  display:block;
+  font-size:clamp(1.1rem, 1vw + .6rem, 1.3rem);
+  font-weight:800;
+  background: var(--g-brand);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1.2;
+}
+.footer-tagline{
+  display:block;
+  color:color-mix(in oklab, var(--muted) 68%, #ffffff 32%);
+  font-size:clamp(.8rem,.75rem + .15vw,.9rem);
+  line-height:1.5;
+  margin-top:.2rem;
+}
+.footer-brand-desc{
+  margin:.6rem 0 .9rem;
+  color:var(--muted);
+  font-size:clamp(.8rem,.75rem + .18vw,.9rem);
+  line-height:1.6;
+  max-width:32ch;
+}
+.footer-brand-desc strong{
+  color:color-mix(in oklab, var(--fg) 65%, var(--brand) 35%);
+  font-weight:700;
+}
+
+/* 4. Badge "Disponible" ----------------------------------------------- */
+.footer-avail{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  padding:.28rem .75rem;
+  border-radius:999px;
+  background:color-mix(in oklab, var(--brand-2) 10%, transparent);
+  border:1px solid color-mix(in oklab, var(--border), var(--brand-2) 36%);
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:color-mix(in oklab, var(--muted) 30%, var(--brand-2) 70%);
+  margin:0;
+}
+.footer-avail-dot{
+  display:inline-block;
+  width:.42rem; height:.42rem;
+  border-radius:50%;
+  background:var(--brand-2);
+  animation:pulse-contact-dot 2.2s ease-in-out infinite;
+  flex-shrink:0;
+}
+
+/* 5. Titres de colonnes : accentuation brand -------------------------- */
+.footer-col-title{
+  font-size:clamp(.75rem,.7rem + .15vw,.85rem);
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:color-mix(in oklab, var(--muted) 38%, var(--brand) 62%);
+  margin:0 0 .9rem;
+  padding-bottom:.55rem;
+  border-bottom:1px solid color-mix(in oklab, var(--border), var(--brand) 28%);
+  display:block;
+}
+
+/* 6. Links : hover premium (translate + brand, sans underline) -------- */
+.footer-list{ gap:.55rem; }
+.footer-list a{
+  color:color-mix(in oklab, var(--muted) 70%, #ffffff 30%);
+  font-size:clamp(.85rem,.8rem + .18vw,.96rem);
+  padding:.15rem 0;
+  transition:color .18s ease, transform .18s ease, gap .18s ease;
+  gap:.55rem;
+  text-decoration:none !important;
+}
+.footer-list a:hover{
+  color:#ffffff;
+  transform:translateX(4px);
+  text-decoration:none !important;
+  gap:.75rem;
+}
+.fi{
+  width:16px; height:16px;
+  flex:0 0 16px;
+  opacity:.55;
+  transition:opacity .18s ease, color .18s ease;
+  color:var(--muted);
+}
+.footer-list a:hover .fi{
+  opacity:1;
+  color:var(--brand);
+}
+
+/* 7. Soft-sep : gradient brand --------------------------------------- */
+.soft-sep{
+  background:linear-gradient(90deg,
+    transparent 0%,
+    color-mix(in oklab, var(--brand) 28%, transparent) 30%,
+    color-mix(in oklab, var(--brand-2) 22%, transparent) 70%,
+    transparent 100%);
+  margin-block: clamp(1.2rem,2vw,1.8rem);
+}
+
+/* 8. Footer meta + copy ----------------------------------------------- */
+.footer-meta{
+  padding-top:clamp(.8rem,1.5vw,1.2rem);
+  gap:.5rem 1.5rem;
+}
+.footer-copy{
+  font-size:clamp(.78rem,.74rem + .15vw,.88rem);
+  color:var(--muted);
+  margin:0;
+}
+.footer-seo-tags{
+  font-size:.72rem;
+  color:color-mix(in oklab, var(--muted) 50%, transparent 50%);
+  letter-spacing:.04em;
+  margin:0;
+}
+@media (min-width:600px){
+  .footer-seo-tags{ margin-left:auto; }
+}
+
