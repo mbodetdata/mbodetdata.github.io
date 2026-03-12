@@ -46,6 +46,19 @@
     font-size:clamp(.75rem,.67rem + .22vw,.87rem);
     color:var(--muted); line-height:1.4;
   }
+  .hero-benefits-panel{
+    display:grid;
+    gap:clamp(.45rem,1.2vw,.8rem);
+    margin-top:clamp(1rem,2.8vw,1.4rem);
+  }
+  .hero-benefits-panel__label{
+    margin:0;
+    font-size:clamp(.72rem,.64rem + .24vw,.86rem);
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-weight:700;
+    color:color-mix(in oklab, #fff 78%, transparent);
+  }
 </style>
 <section id="bandeau" class="section about-hero" itemscope itemtype="https://schema.org/Person">
   <meta itemprop="name" content="{{ site.author.prenom_nom }}">
@@ -73,6 +86,7 @@
   {% endif %}
 
   {% assign _bandeau_data  = page.bandeau | default: site.bandeau | default: site.author %}
+  {% assign hide_photo = _bandeau_data.hide_photo | default: false %}
   {% assign bandeau_photo = _bandeau_data.photo
                             | default: page.bandeau_photo
                             | default: site.author.bandeau_photo
@@ -111,64 +125,68 @@
         <p class="about-hero__text">
           Ressaisies manuelles, chiffres &eacute;parpill&eacute;s dans Excel, rapports qui prennent des heures&hellip; Je m&rsquo;en occupe &agrave; votre place &mdash; sans &eacute;quipe IT, sans jargon.
         </p>
-
-        <ul class="hero-benefits" aria-label="Ce que vous gagnez">
-          <li class="hero-benefit">
-            <span class="hero-benefit__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 2v2.5M12 19.5V22M4.22 4.22l1.77 1.77M18.01 18.01l1.77 1.77M2 12h2.5M19.5 12H22M4.22 19.78l1.77-1.77M18.01 6.99l1.77-1.77"/>
-                <circle cx="12" cy="12" r="3.5" fill="currentColor" stroke="none"/>
-              </svg>
-            </span>
-            <span class="hero-benefit__body">
-              <strong class="hero-benefit__title">Automatiser</strong>
-              <span class="hero-benefit__desc">Fini les ressaisies &mdash; je connecte vos logiciels entre eux</span>
-            </span>
-          </li>
-          <li class="hero-benefit">
-            <span class="hero-benefit__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="4" width="18" height="16" rx="2"/>
-                <path d="M7 13h2v4H7zM11 10h2v7h-2zM15 15h2v2h-2z" fill="currentColor" stroke="none"/>
-                <path d="M3 8h18"/>
-              </svg>
-            </span>
-            <span class="hero-benefit__body">
-              <strong class="hero-benefit__title">Piloter</strong>
-              <span class="hero-benefit__desc">Vos chiffres cl&eacute;s (CA, stocks, RH&hellip;) accessibles en un clic</span>
-            </span>
-          </li>
-          <li class="hero-benefit">
-            <span class="hero-benefit__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M7 7h10M7 12h10M7 17h10"/>
-                <path d="M15 4l3 3-3 3M9 14l-3 3 3 3"/>
-              </svg>
-            </span>
-            <span class="hero-benefit__body">
-              <strong class="hero-benefit__title">Migrer</strong>
-              <span class="hero-benefit__desc">Changez de logiciel sans perdre vos donn&eacute;es ni votre historique</span>
-            </span>
-          </li>
-        </ul>
-      </div>
-      <div class="about-hero__media">
-        <div class="about-photo-frame">
-          {% if bandeau_photo != '' %}
-            <div class="about-photo-slot has-photo">
-              <img src="{{ img_src }}"
-                   alt="Portrait de {{ site.author.prenom_nom }}"
-                   {% if img_srcset != '' %}srcset="{{ img_srcset }}"{% endif %}
-                   {% if img_sizes != '' %}sizes="{{ img_sizes }}"{% endif %}
-                   {% if img_width != '' %}width="{{ img_width }}" height="{{ img_height }}"{% endif %}
-                   loading="{{ loading_mode }}"
-                   decoding="async">
-            </div>
-          {% else %}
-            <div class="about-photo-slot" role="img" aria-label="Espace r&eacute;serv&eacute; pour la photo"></div>
-          {% endif %}
+        <div class="hero-benefits-panel" aria-label="Ce que vous gagnez">
+          <p class="hero-benefits-panel__label">Concr&egrave;tement, je vous aide &agrave; :</p>
+          <ul class="hero-benefits" aria-label="Ce que vous gagnez">
+            <li class="hero-benefit">
+              <span class="hero-benefit__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 2v2.5M12 19.5V22M4.22 4.22l1.77 1.77M18.01 18.01l1.77 1.77M2 12h2.5M19.5 12H22M4.22 19.78l1.77-1.77M18.01 6.99l1.77-1.77"/>
+                  <circle cx="12" cy="12" r="3.5" fill="currentColor" stroke="none"/>
+                </svg>
+              </span>
+              <span class="hero-benefit__body">
+                <strong class="hero-benefit__title">Automatiser</strong>
+                <span class="hero-benefit__desc">Fini les doubles saisies &mdash; vos logiciels &eacute;changent enfin entre eux</span>
+              </span>
+            </li>
+            <li class="hero-benefit">
+              <span class="hero-benefit__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="16" rx="2"/>
+                  <path d="M7 13h2v4H7zM11 10h2v7h-2zM15 15h2v2h-2z" fill="currentColor" stroke="none"/>
+                  <path d="M3 8h18"/>
+                </svg>
+              </span>
+              <span class="hero-benefit__body">
+                <strong class="hero-benefit__title">Piloter</strong>
+                <span class="hero-benefit__desc">Vos indicateurs essentiels (ventes, stocks, RH&hellip;) visibles en un clic</span>
+              </span>
+            </li>
+            <li class="hero-benefit">
+              <span class="hero-benefit__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7 7h10M7 12h10M7 17h10"/>
+                  <path d="M15 4l3 3-3 3M9 14l-3 3 3 3"/>
+                </svg>
+              </span>
+              <span class="hero-benefit__body">
+                <strong class="hero-benefit__title">Migrer</strong>
+                <span class="hero-benefit__desc">Changez d&rsquo;outil sans perdre vos donn&eacute;es ni votre historique</span>
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
+      {% unless hide_photo %}
+        <div class="about-hero__media">
+          <div class="about-photo-frame">
+            {% if bandeau_photo != '' %}
+              <div class="about-photo-slot has-photo">
+                <img src="{{ img_src }}"
+                     alt="Portrait de {{ site.author.prenom_nom }}"
+                     {% if img_srcset != '' %}srcset="{{ img_srcset }}"{% endif %}
+                     {% if img_sizes != '' %}sizes="{{ img_sizes }}"{% endif %}
+                     {% if img_width != '' %}width="{{ img_width }}" height="{{ img_height }}"{% endif %}
+                     loading="{{ loading_mode }}"
+                     decoding="async">
+              </div>
+            {% else %}
+              <div class="about-photo-slot" role="img" aria-label="Espace r&eacute;serv&eacute; pour la photo"></div>
+            {% endif %}
+          </div>
+        </div>
+      {% endunless %}
     </div>
   </div>
 </section>

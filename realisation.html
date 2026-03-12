@@ -1,7 +1,11 @@
 ---
 layout: default
-title: "Réalisations — Projets data livrés pour des TPE/PME | BM Data"
-description: "Découvrez les missions data réalisées pour des PME : connexion de logiciels, automatisation de données, tableaux de bord Power BI et migrations sans perte. Cas concrets avec résultats mesurables."
+title: "Réalisations — Projets data Talend & Power BI pour TPE/PME | BM Data"
+description: "11 projets data livrés pour des TPE/PME : automatisation Talend, tableaux de bord Power BI, migrations sans perte, EDI. Cas concrets avec contexte client et résultats mesurables."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
 permalink: /realisation/
 breadcrumbs:
   - name: Accueil
@@ -10,71 +14,94 @@ breadcrumbs:
     url: /realisation/
 ---
 
-{% assign total_projects = site.data.projets | size %}
+{%- assign projets_sorted = site.data.projets | sort: 'date' | reverse -%}
+{%- assign total_projects = site.data.projets | size -%}
+{%- assign unique_clients = "" | split: "" -%}
+{%- for p in site.data.projets -%}
+  {%- unless unique_clients contains p.client -%}
+    {%- assign unique_clients = unique_clients | push: p.client -%}
+  {%- endunless -%}
+{%- endfor -%}
 
-<section class="section realisations-hero" aria-labelledby="realisation-hero-title">
-  <div class="realisations-hero__inner">
-    <p class="realisations-hero__eyebrow">Portfolio complet</p>
-    <h1 id="realisation-hero-title">Toutes les r&eacute;alisations data &amp; automatisation</h1>
-    <p class="realisations-hero__lead">
-      Retrouvez ici toutes les missions livrées&nbsp;: <strong>{{ total_projects }}</strong>&nbsp;projets concrets de connexion de logiciels, automatisation de données, tableaux de bord et migrations réalisés pour des TPE et PME. Pour chaque mission&nbsp;: le contexte client, ce qui a été fait et les bénéfices obtenus.
+<!-- ================================================
+     HERO
+     ================================================ -->
+<section class="section real-hero" aria-labelledby="real-hero-title">
+  <div class="real-hero__inner">
+    <p class="real-hero__eyebrow">
+      Portfolio de réalisations
+      <span class="real-hero__eyebrow-line" aria-hidden="true"></span>
     </p>
-    <div class="realisations-hero__actions">
-      <a class="btn btn--gradient" href="#projects-grid">Explorer les projets</a>
-      <a class="btn btn--ghost" href="{{ '/#contact' | relative_url }}">Planifier un appel</a>
+    <h1 id="real-hero-title" class="real-hero__title">
+      Des projets data&nbsp;<span class="text-gradient">concrets</span>,<br>
+      livrés à des TPE&nbsp;&amp;&nbsp;PME
+    </h1>
+    <p class="real-hero__lead">
+      Chaque mission ci-dessous est un vrai cas client&nbsp;: le contexte de départ, ce qui a été fait, et les résultats obtenus. Pour que vous puissiez vous identifier et imaginer ce que l'on pourrait construire ensemble.
+    </p>
+
+    <!-- Stats strip -->
+    <div class="real-stats" aria-label="Chiffres clés">
+      <div class="real-stat">
+        <strong class="real-stat__num">{{ total_projects }}</strong>
+        <span class="real-stat__label">projets livrés</span>
+      </div>
+      <div class="real-stat__sep" aria-hidden="true"></div>
+      <div class="real-stat">
+        <strong class="real-stat__num">{{ unique_clients | size }}</strong>
+        <span class="real-stat__label">clients accompagnés</span>
+      </div>
+      <div class="real-stat__sep" aria-hidden="true"></div>
+      <div class="real-stat">
+        <strong class="real-stat__num">4</strong>
+        <span class="real-stat__label">ans d'expérience</span>
+      </div>
     </div>
   </div>
 </section>
 
-{% assign has_dates = false %}
-{% for p in site.data.projets %}{% if p.date %}{% assign has_dates = true %}{% break %}{% endif %}{% endfor %}
-{% if has_dates %}
-  {% assign projets_sorted = site.data.projets | sort: 'date' | reverse %}
-{% else %}
-  {% assign projets_sorted = site.data.projets %}
-{% endif %}
+<!-- ================================================
+     GRID + FILTRES
+     ================================================ -->
+<section class="section real-grid-section" id="projects-grid"
+         aria-labelledby="real-grid-title">
+  <div class="real-grid-section__head">
+    <h2 id="real-grid-title" class="real-grid-section__title">Toutes les missions</h2>
 
-<section class="section realisations-grid" id="projects-grid" aria-labelledby="projects-grid-title">
-  <div class="realisations-grid__head">
-    <h2 id="projects-grid-title">Catalogue des projets</h2>
-    <p class="realisations-grid__meta">
-      Classement par ordre ant&eacute;chronologique. D&eacute;tails complets disponibles via le bouton &laquo;&nbsp;D&eacute;tails&nbsp;&raquo;.
-    </p>
+    <!-- Filter pills -->
+    <div class="proj-filters" role="group" aria-label="Filtrer par catégorie">
+      <button class="proj-filter is-active" data-filter="all" type="button">
+        Tous
+        <span class="proj-filter__count">{{ total_projects }}</span>
+      </button>
+      <button class="proj-filter" data-filter="edi" type="button">EDI</button>
+      <button class="proj-filter" data-filter="bi" type="button">BI &amp; Reporting</button>
+      <button class="proj-filter" data-filter="migration" type="button">Migration</button>
+      <button class="proj-filter" data-filter="automatisation" type="button">Automatisation</button>
+    </div>
   </div>
 
-  <ul class="realisations-grid__list">
+  <ul class="real-grid" role="list" aria-label="Liste des projets">
     {% for projet in projets_sorted %}
     {% assign idx = forloop.index0 %}
-    {% assign _pt = projet.title
+    {%- assign _pt = projet.title
       | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
-      | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
       | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
       | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
-      | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
-      | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
-      | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
-      | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
-      | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
-      | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
       | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
       | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
-    %}
-    {% assign _ps = projet['text-short']
+      | replace: 'EDI','<abbr title="Electronic Data Interchange">EDI</abbr>'
+    -%}
+    {%- assign _ps = projet['text-short']
       | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
-      | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
       | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
       | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
-      | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
-      | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
-      | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
-      | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
       | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
       | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
-      | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
-      | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
-    %}
-    <li class="realisations-grid__item">
-      <article class="project-card project-card--grid"
+      | replace: 'EDI','<abbr title="Electronic Data Interchange">EDI</abbr>'
+    -%}
+    <li class="real-card-wrap" data-category="{{ projet.category | default: 'autre' }}">
+      <article class="real-card"
                tabindex="0"
                data-index="{{ idx }}"
                data-title="{{ projet.title | escape }}"
@@ -84,62 +111,116 @@ breadcrumbs:
                data-contexte="{{ projet.details.contexte | escape }}"
                data-missions='{{ projet.details.missions | jsonify }}'
                data-benefices='{{ projet.details.benefices | jsonify }}'
-               data-stack='{{ projet.details.stack | jsonify }}'>
-        <header class="project-card__head">
+               data-stack='{{ projet.details.stack | jsonify }}'
+               itemscope itemtype="https://schema.org/CreativeWork">
+
+        <meta itemprop="name" content="{{ projet.title | escape }}">
+        {% if projet.date %}<meta itemprop="dateCreated" content="{{ projet.date | date: '%Y-%m-%d' }}">{% endif %}
+        {% if projet.client %}<meta itemprop="author" content="{{ projet.client | escape }}">{% endif %}
+
+        <!-- Category badge -->
+        {% if projet.category %}
+        <span class="real-card__cat real-card__cat--{{ projet.category }}" aria-label="Catégorie">
+          {%- case projet.category -%}
+            {%- when 'edi' -%}EDI
+            {%- when 'bi' -%}BI &amp; Reporting
+            {%- when 'migration' -%}Migration
+            {%- when 'automatisation' -%}Automatisation
+            {%- else -%}{{ projet.category | capitalize }}
+          {%- endcase -%}
+        </span>
+        {% endif %}
+
+        <!-- Card head -->
+        <header class="real-card__head">
           {% if projet.client %}
-          <p class="project-card__client" aria-label="Client">
-            <span class="project-card__client-dot" aria-hidden="true"></span>
+          <p class="real-card__client">
+            <span class="real-card__client-dot" aria-hidden="true"></span>
             {{ projet.client }}
           </p>
           {% endif %}
-          <h3 class="project-card__title">{{ _pt }}</h3>
+          <h3 class="real-card__title" itemprop="headline">{{ _pt }}</h3>
         </header>
 
-        <p class="project-card__excerpt">{{ _ps }}</p>
+        <!-- Excerpt -->
+        <p class="real-card__excerpt">{{ _ps }}</p>
 
-        {% assign stack_full = projet.details.stack %}
-        {% if stack_full %}
-        {% assign stack_preview = stack_full | slice: 0, 6 %}
-        {% if stack_preview and stack_preview.size > 0 %}
-        <ul class="project-card__stack" aria-label="Technologies principales">
-          {% for tech in stack_preview %}
-          <li>{{ tech | escape }}</li>
+        <!-- Key results (2 first benefices) -->
+        {% if projet.details.benefices %}
+        <ul class="real-card__results" aria-label="Résultats clés">
+          {% for b in projet.details.benefices limit:2 %}
+          <li class="real-card__result">
+            <svg class="real-card__result-ico" viewBox="0 0 20 20" width="14" height="14" fill="none" aria-hidden="true">
+              <path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {{ b }}
+          </li>
           {% endfor %}
         </ul>
         {% endif %}
-        {% endif %}
 
-        {% assign missions_full = projet.details.missions %}
-        {% if missions_full %}
-        {% assign missions_preview = missions_full | slice: 0, 3 %}
-        {% if missions_preview and missions_preview.size > 0 %}
-        <ul class="project-card__missions" aria-label="Missions phares">
-          {% for mission in missions_preview %}
-          <li>{{ mission | escape }}</li>
+        <!-- Stack pills -->
+        {% if projet.details.stack %}
+        <ul class="real-card__stack" aria-label="Technologies utilisées">
+          {% for tech in projet.details.stack limit:5 %}
+          <li>{{ tech }}</li>
           {% endfor %}
         </ul>
         {% endif %}
-        {% endif %}
 
-        <footer class="project-card__footer">
+        <!-- Footer -->
+        <footer class="real-card__footer">
           {% if projet.date %}
-          <time class="project-card__date" datetime="{{ projet.date | date_to_xmlschema }}">
-            {{ projet.date | date: "%b %Y" }}
+          <time class="real-card__date" datetime="{{ projet.date | date_to_xmlschema }}">
+            {{ projet.date | date: "%Y" }}
           </time>
           {% endif %}
-          <div class="project-card__footer-actions">
-            {% if projet.link %}
-            <a class="btn btn--ghost" href="{{ projet.link | relative_url }}" aria-label="Voir le cas d&apos;usage {{ projet.title | escape }}">
-              Voir le projet
-            </a>
-            {% endif %}
-            <button class="btn btn--ghost open-project" type="button" aria-label="Afficher les d&eacute;tails du projet {{ projet.title | escape }}">
-              D&eacute;tails
-            </button>
-          </div>
+          <button class="real-card__btn open-project" type="button"
+                  aria-label="Voir les détails du projet {{ projet.title | escape }}">
+            Voir le détail
+            <svg viewBox="0 0 20 20" width="13" height="13" fill="none" aria-hidden="true">
+              <path d="M7 10h6M10 7l3 3-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </footer>
       </article>
     </li>
     {% endfor %}
   </ul>
 </section>
+
+<!-- ================================================
+     CTA BAS DE PAGE
+     ================================================ -->
+<section class="section real-cta" aria-labelledby="real-cta-title">
+  <div class="real-cta__inner">
+    <p class="real-cta__eyebrow">Votre projet, le prochain ?</p>
+    <h2 id="real-cta-title" class="real-cta__title">Un besoin similaire&nbsp;?<br>Parlons-en.</h2>
+    <p class="real-cta__sub">30 minutes pour comprendre votre situation et voir si je peux vous aider. Sans engagement, sans jargon.</p>
+    <a class="btn btn--gradient" href="{{ '/#contact' | relative_url }}">Planifier un échange gratuit</a>
+  </div>
+</section>
+
+{% include modal-project.html %}
+
+<script>
+(function () {
+  var filters = document.querySelectorAll('.proj-filter');
+  var cards   = document.querySelectorAll('.real-card-wrap');
+  if (!filters.length) return;
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.dataset.filter;
+      filters.forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      cards.forEach(function (c) {
+        if (f === 'all' || c.dataset.category === f) {
+          c.classList.remove('is-hidden');
+        } else {
+          c.classList.add('is-hidden');
+        }
+      });
+    });
+  });
+}());
+</script>

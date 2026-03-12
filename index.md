@@ -8,7 +8,7 @@ keywords_groups:
   - competences
 permalink: /
 bandeau:
-  photo: "/assets/img/bm-hero.webp"
+  hide_photo: true
 ---
 
 <!-- H1 accessible (améliore le SEO sans changer le design) -->
@@ -16,75 +16,88 @@ bandeau:
 
 <!-- BANDEAU -->
 <style>
+  #bandeau .about-hero__canvas{
+    max-width:min(1400px, 96vw);
+    padding:clamp(1.3rem, 4vw, 2.8rem);
+  }
   #bandeau .about-hero__inner{
-    align-items:start;
+    grid-template-columns:1fr;
+    align-items:stretch;
+    justify-items:stretch;
+    gap:0;
+  }
+  #bandeau .about-hero__media{
+    display:none;
   }
   #bandeau .about-hero__content{
     width:100%;
-    max-width:min(620px, 100%);
-    justify-items:start;
-    gap:clamp(.8rem, 2.4vw, 1.4rem);
+    max-width:min(1120px, 100%);
+    margin-inline:auto;
+    display:grid;
+    grid-template-columns:minmax(0, 1.18fr) minmax(0, .92fr);
+    grid-template-areas:
+      "eyebrow panel"
+      "title panel"
+      "text panel";
+    align-items:start;
+    column-gap:clamp(1.2rem, 3vw, 2.6rem);
+    row-gap:clamp(.55rem, 1.6vw, 1rem);
   }
-  #bandeau .about-hero__content p{
-    text-align:left;
+  #bandeau .about-hero__eyebrow{
+    grid-area:eyebrow;
+    margin:0;
   }
-  #bandeau .about-photo-frame{
-    aspect-ratio:auto;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    gap:clamp(1rem, 3vw, 1.8rem);
-    padding:clamp(1rem, 4vw, 1.9rem);
-    max-width:min(480px, 100%);
+  #bandeau .about-hero__title{
+    grid-area:title;
+    max-width:18ch;
   }
-  #bandeau .about-photo-frame::after{
-    display:none;
+  #bandeau .about-hero__text{
+    grid-area:text;
+    max-width:58ch;
+    margin:0;
   }
-  #bandeau .about-photo-slot{
-    flex:1 1 auto;
-    min-height:0;
+  #bandeau .hero-benefits-panel{
+    grid-area:panel;
+    margin:0;
+    align-self:stretch;
+    display:grid;
+    gap:clamp(.55rem, 1.2vw, .9rem);
   }
-  #bandeau .about-photo-slot img{
-    width:100%;
-    height:auto;
-    object-fit:cover;
+  #bandeau .hero-benefits-panel__label{
+    color:color-mix(in oklab, #fff 80%, transparent);
+  }
+  #bandeau .hero-benefits{
+    margin:0;
+    border:1px solid color-mix(in oklab, var(--border) 64%, var(--brand-2) 36%);
+    background:linear-gradient(148deg,
+      rgba(8, 14, 42, .9),
+      color-mix(in oklab, rgba(8, 14, 42, .82) 68%, var(--brand-2) 32%));
+    box-shadow:0 14px 34px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .08);
+  }
+  #bandeau .hero-benefit{
+    align-items:flex-start;
+    padding:clamp(.78rem, 1.9vw, 1rem) clamp(.95rem, 2.2vw, 1.25rem);
+  }
+  #bandeau .hero-benefit__desc{
+    color:color-mix(in oklab, #eef4ff 82%, rgba(168, 186, 220, .45) 18%);
   }
   #bandeau .about-hero__canvas::before,
   #bandeau .about-hero__canvas::after{
     content:none;
   }
-  #bandeau .about-stats-card{
-    width:100%;
-    max-width:min(560px, 100%);
-    margin-top:clamp(1.2rem, 4vw, 2rem);
-  }
-  #bandeau .about-stats-card__item{
-    max-width:none;
-  }
-  @media (max-width: 720px){
-    #bandeau .about-hero__inner{
-      align-items:stretch;
-    }
-    #bandeau .about-photo-frame{
-      margin-inline:auto;
-      max-width:min(360px, 100%);
-    }
+  @media (max-width: 980px){
     #bandeau .about-hero__content{
-      text-align:left;
-      justify-items:start;
+      grid-template-columns:1fr;
+      grid-template-areas:
+        "eyebrow"
+        "title"
+        "text"
+        "panel";
+      row-gap:clamp(.8rem, 2.8vw, 1.2rem);
     }
-    #bandeau .about-stats-card{
-      flex-direction:column;
-      align-items:stretch;
-      gap:clamp(.9rem, 4vw, 1.4rem);
-    }
-  }
-  @media (min-width: 721px){
-    #bandeau .about-hero__inner{
-      align-items:start;
-    }
-    #bandeau .about-stats-card{
-      gap:clamp(.9rem, 2vw, 1.6rem);
+    #bandeau .about-hero__title,
+    #bandeau .about-hero__text{
+      max-width:none;
     }
   }
 </style>
