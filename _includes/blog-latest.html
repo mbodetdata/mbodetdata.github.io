@@ -18,8 +18,8 @@
       <div class="recent-posts__carousel carousel" data-carousel="blog" data-carousel-label="l’article">
         <button class="carousel__btn prev" type="button" aria-label="Défiler vers la gauche">&lsaquo;</button>
 
-        <ul class="recent-posts__grid carousel__track" role="listbox" aria-label="Liste d’articles récents">
-        {% for post in posts_sorted limit:3 %}
+        <ul class="recent-posts__grid carousel__track" role="listbox" aria-label="Liste d’articles du blog">
+        {% for post in posts_sorted %}
           {% assign idx = forloop.index0 %}
 
           {%- comment -%} Temps de lecture {%- endcomment -%}
@@ -83,7 +83,7 @@
         </ul>
 
         <button class="carousel__btn next" type="button" aria-label="Défiler vers la droite">&rsaquo;</button>
-        <div class="carousel__dots" aria-label="Sélecteur d’articles récents"></div>
+        <div class="carousel__dots" aria-label="Sélecteur d’articles du blog"></div>
       </div>
     </div>
     {% endif %}
