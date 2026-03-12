@@ -53,7 +53,7 @@ breadcrumbs:
       </div>
       <div class="real-stat__sep" aria-hidden="true"></div>
       <div class="real-stat">
-        <strong class="real-stat__num">4</strong>
+        <strong class="real-stat__num">5</strong>
         <span class="real-stat__label">ans d'expérience</span>
       </div>
     </div>
@@ -101,7 +101,7 @@ breadcrumbs:
       | replace: 'EDI','<abbr title="Electronic Data Interchange">EDI</abbr>'
     -%}
     <li class="real-card-wrap" data-category="{{ projet.category | default: 'autre' }}">
-      <article class="real-card"
+      <article class="real-card project-card"
                tabindex="0"
                data-index="{{ idx }}"
                data-title="{{ projet.title | escape }}"
@@ -200,8 +200,6 @@ breadcrumbs:
     <a class="btn btn--gradient" href="{{ '/#contact' | relative_url }}">Planifier un échange gratuit</a>
   </div>
 </section>
-
-{% include modal-project.html %}
 
 <script>
 (function () {
