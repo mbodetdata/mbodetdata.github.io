@@ -149,6 +149,106 @@
     }
 
     /* ── Post body — typographie éditoriale ── */
+    .layout-post .post-body {
+      max-width: 72ch;
+      margin-inline: auto;
+      font-size: clamp(1rem, .98rem + .22vw, 1.12rem);
+      line-height: 1.84;
+      color: color-mix(in oklab, var(--fg) 95%, #fff 5%);
+      text-wrap: pretty;
+    }
+    .layout-post .post-body > * { max-width: 100%; }
+    .layout-post .post-body p {
+      margin: 0;
+      color: color-mix(in oklab, var(--fg) 94%, var(--muted) 6%);
+    }
+    .layout-post .post-body p + p { margin-top: .95rem; }
+    .layout-post .post-body h2,
+    .layout-post .post-body h3 {
+      color: #fff;
+      background: none;
+      -webkit-text-fill-color: currentColor;
+    }
+    .layout-post .post-body h2 {
+      position: relative;
+      margin-top: clamp(2.2rem, 4vw, 3.2rem);
+      margin-bottom: .9rem;
+      padding-top: clamp(.9rem, 1.4vw, 1.15rem);
+      border-top: 1px solid color-mix(in oklab, var(--border), transparent 28%);
+      letter-spacing: -.01em;
+      text-wrap: balance;
+    }
+    .layout-post .post-body h2::after {
+      content: "";
+      display: block;
+      width: clamp(56px, 9vw, 88px);
+      height: 2px;
+      margin-top: .45rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, color-mix(in oklab, var(--brand) 72%, transparent), transparent);
+      opacity: .8;
+    }
+    .layout-post .post-body h3 {
+      margin-top: clamp(1.45rem, 2.6vw, 2rem);
+      margin-bottom: .55rem;
+      color: color-mix(in oklab, #fff 92%, var(--brand) 8%);
+      letter-spacing: -.005em;
+      text-wrap: pretty;
+    }
+    .layout-post .post-body ul,
+    .layout-post .post-body ol {
+      padding-left: 1.3rem;
+      margin: 1rem 0;
+    }
+    .layout-post .post-body li {
+      margin: .42rem 0;
+      line-height: 1.72;
+    }
+    .layout-post .post-body a {
+      color: color-mix(in oklab, var(--brand) 82%, #fff 18%);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: .18em;
+      text-decoration-color: color-mix(in oklab, var(--brand) 65%, transparent);
+      transition: color .16s ease, text-decoration-color .16s ease;
+    }
+    .layout-post .post-body a:hover,
+    .layout-post .post-body a:focus-visible {
+      color: color-mix(in oklab, var(--brand-2) 48%, #fff 52%);
+      text-decoration-color: color-mix(in oklab, var(--brand-2) 70%, transparent);
+    }
+    .layout-post .post-body :is(img, video, iframe) {
+      border: 1px solid color-mix(in oklab, var(--border), var(--brand) 14%);
+      background: color-mix(in oklab, var(--surface-2) 86%, transparent);
+    }
+    .layout-post .post-body pre {
+      border: 1px solid color-mix(in oklab, var(--border), var(--brand) 18%);
+      background:
+        linear-gradient(180deg, color-mix(in oklab, var(--surface-2) 92%, transparent), color-mix(in oklab, var(--surface-0) 90%, transparent));
+    }
+    .layout-post .post-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: clamp(1.2rem, 2.4vw, 1.8rem) 0;
+      border: 1px solid color-mix(in oklab, var(--border), transparent 20%);
+      border-radius: .85rem;
+      overflow: hidden;
+      display: block;
+      overflow-x: auto;
+    }
+    .layout-post .post-body table th,
+    .layout-post .post-body table td {
+      padding: .62rem .72rem;
+      border-bottom: 1px solid color-mix(in oklab, var(--border), transparent 30%);
+      text-align: left;
+      white-space: nowrap;
+    }
+    .layout-post .post-body table th {
+      color: #fff;
+      background: color-mix(in oklab, var(--surface-2) 86%, var(--brand) 14%);
+      font-weight: 700;
+    }
+    .layout-post .post-body table tr:last-child td { border-bottom: 0; }
+
     /* Lead paragraph */
     .post-body > p:first-of-type {
       font-size: 1.06em;
@@ -199,7 +299,26 @@
     .layout-post .post-body img.is-loaded { opacity: 1; }
 
     /* ── Post shell ── */
-    .layout-post .post-shell { position: relative; }
+    .layout-post .post-shell {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .layout-post .post-shell::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      background:
+        radial-gradient(120% 90% at 0% 0%, color-mix(in oklab, var(--brand) 8%, transparent) 0%, transparent 60%),
+        radial-gradient(110% 85% at 100% 100%, color-mix(in oklab, var(--brand-2) 7%, transparent) 0%, transparent 65%);
+      pointer-events: none;
+      opacity: .9;
+    }
+    .layout-post .post-shell > * {
+      position: relative;
+      z-index: 1;
+    }
 
     /* ── CTA service — premium ── */
     .post-service-cta {
@@ -309,13 +428,25 @@
       .post-nav { grid-template-columns: 1fr; }
       .post-nav__item--next { text-align: left; }
       .post-nav__item--next .post-nav__dir { justify-content: flex-start; }
+      .layout-post .post-body {
+        font-size: clamp(.98rem, .94rem + .4vw, 1.04rem);
+        line-height: 1.76;
+      }
+      .layout-post .post-body h2 {
+        margin-top: clamp(1.8rem, 5vw, 2.4rem);
+        padding-top: .8rem;
+      }
+      .layout-post .post-body h2::after {
+        width: 54px;
+      }
     }
 
     /* ── Back to top ── */
     .btn-top {
       position: fixed;
-      bottom: clamp(1.4rem, 3vw, 2.2rem);
-      right: clamp(1.4rem, 3vw, 2.2rem);
+      bottom: calc(clamp(1rem, 2.3vw, 1.5rem) + env(safe-area-inset-bottom, 0px));
+      left: clamp(1rem, 2.3vw, 1.5rem);
+      right: auto;
       width: 44px; height: 44px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
@@ -324,7 +455,7 @@
       color: var(--fg); text-decoration: none;
       opacity: 0; transform: translateY(12px) scale(.92);
       transition: opacity .28s ease, transform .28s ease, background .2s ease, box-shadow .2s ease;
-      pointer-events: none; z-index: 90;
+      pointer-events: none; z-index: 120;
       -webkit-backdrop-filter: blur(12px);
       backdrop-filter: blur(12px);
       box-shadow: var(--shadow-md);
@@ -335,6 +466,13 @@
       border-color: color-mix(in oklab, var(--brand) 48%, transparent);
       box-shadow: 0 8px 28px color-mix(in oklab, var(--brand) 28%, transparent);
       transform: translateY(-2px) scale(1);
+    }
+    @media (max-width: 540px) {
+      .btn-top {
+        width: 40px; height: 40px;
+        left: 11px;
+        bottom: calc(11px + env(safe-area-inset-bottom, 0px));
+      }
     }
   </style>
 </head>
