@@ -356,7 +356,7 @@ divers::Divers
           Guides, retours d'expérience et veille autour de Talend, Talaxie, Power BI et des plateformes data modernes. Un blog pratique pour monter vite en compétence sans sacrifier l'esthétique produit.
         </p>
         <p>
-          Nouveau lecteur ? Commencez par les tutoriels simples pour comprendre Talend, Talaxie et Power BI sans jargon.
+          Nouveau lecteur ? Commencez par les tutoriels simples pour comprendre Talend, Talaxie et Power BI.
         </p>
         <div class="hero-tags" aria-label="Categories disponibles">
           {% for category_label in categories_unique %}
