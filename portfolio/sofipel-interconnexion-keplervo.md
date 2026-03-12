@@ -1,7 +1,18 @@
 ---
 layout: default
 title: "SOFIPEL • Interconnexion KeplerVo | BM Data"
-description: "Collecte API KeplerVo, base MySQL et vue consolidée multi-garages pour SOFIPEL."
+description: "Cas client automobile: interconnexion API KeplerVo, base MySQL et vision consolidée pour piloter un parc multi-garages plus simplement."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisation/
+  - name: SOFIPEL • Interconnexion KeplerVo
+    url: /portfolio/sofipel-interconnexion-keplervo.html
 permalink: /portfolio/sofipel-interconnexion-keplervo.html
 project_link: "/portfolio/sofipel-interconnexion-keplervo.html"
 sector: "Automobile & services"

@@ -1,7 +1,18 @@
 ---
 layout: default
 title: "EDI • TMS OneWorld | BM Data"
-description: "Mappings EDI et automatisations Talend pour connecter les SI clients au TMS OneWorld."
+description: "Cas client transport: mise en place de flux EDI et automatisations Talend pour connecter les logiciels clients au TMS OneWorld de façon fiable."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisation/
+  - name: EDI • TMS OneWorld
+    url: /portfolio/edi-tms-oneworld.html
 permalink: /portfolio/edi-tms-oneworld.html
 project_link: "/portfolio/edi-tms-oneworld.html"
 sector: "Transport & logistique"

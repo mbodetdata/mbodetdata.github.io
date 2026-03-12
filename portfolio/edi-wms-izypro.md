@@ -1,7 +1,18 @@
 ---
 layout: default
 title: "EDI • WMS IzyPro | BM Data"
-description: "Flux EDI standardisés, supervision et alertes pour WMS IzyPro multi-clients."
+description: "Cas client supply chain: flux EDI standardisés, supervision continue et alertes automatiques pour sécuriser un WMS IzyPro multi-clients."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisation/
+  - name: EDI • WMS IzyPro
+    url: /portfolio/edi-wms-izypro.html
 permalink: /portfolio/edi-wms-izypro.html
 project_link: "/portfolio/edi-wms-izypro.html"
 sector: "Supply chain multi-clients"

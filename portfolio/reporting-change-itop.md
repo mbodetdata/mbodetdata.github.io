@@ -1,7 +1,18 @@
 ---
 layout: default
 title: "Reporting Change • iTop | BM Data"
-description: "Dashboard Power BI pour piloter les SLA et le backlog des changements dans iTop."
+description: "Cas client support IT: dashboard Power BI connecté à iTop pour piloter les SLA, suivre le backlog et prioriser plus vite."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisation/
+  - name: Reporting Change • iTop
+    url: /portfolio/reporting-change-itop.html
 permalink: /portfolio/reporting-change-itop.html
 project_link: "/portfolio/reporting-change-itop.html"
 sector: "ITSM & support"

@@ -1,7 +1,18 @@
 ---
 layout: default
 title: "UBA • Data & Automatisation (Azure) | BM Data"
-description: "Centralisation Azure, automatisations Talend et dashboard Power BI pour fiabiliser le pilotage financier d'UBA."
+description: "Cas client finance: centralisation Azure, automatisations Talend et tableau de bord Power BI pour fiabiliser le pilotage financier sans doubles saisies."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisation/
+  - name: UBA • Data & Automatisation (Azure)
+    url: /portfolio/uba-data-automation.html
 permalink: /portfolio/uba-data-automation.html
 project_link: "/portfolio/uba-data-automation.html"
 sector: "Services financiers"

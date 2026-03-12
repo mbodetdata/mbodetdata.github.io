@@ -1,7 +1,18 @@
 ---
 layout: default
 title: "Media Participations • Migration applicative | BM Data"
-description: "Migration applicative Talend avec contrôles qualité et historique conservé pour Media Participations."
+description: "Cas client édition: migration applicative avec Talend, contrôles qualité et conservation complète de l'historique métier."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisation/
+  - name: Media Participations • Migration applicative
+    url: /portfolio/media-participations-migration.html
 permalink: /portfolio/media-participations-migration.html
 project_link: "/portfolio/media-participations-migration.html"
 sector: "Édition & médias"

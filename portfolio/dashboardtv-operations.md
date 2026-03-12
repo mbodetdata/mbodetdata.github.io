@@ -1,7 +1,18 @@
 ---
 layout: default
 title: "DashboardTV • Opérations temps réel | BM Data"
-description: "Collecte multi-sources Talend et reporting temps réel pour le pilotage des opérations support."
+description: "Cas client support: collecte multi-sources avec Talend et tableau de bord temps réel pour suivre l'activité, détecter les blocages et piloter sans ressaisie."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisation/
+  - name: DashboardTV • Opérations temps réel
+    url: /portfolio/dashboardtv-operations.html
 permalink: /portfolio/dashboardtv-operations.html
 project_link: "/portfolio/dashboardtv-operations.html"
 sector: "Support opérationnel"

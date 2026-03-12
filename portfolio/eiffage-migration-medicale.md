@@ -1,7 +1,18 @@
 ---
 layout: default
 title: "Eiffage • Migration données médicales | BM Data"
-description: "Migration Oracle vers MongoDB pour sécuriser des questionnaires médicaux et améliorer les performances."
+description: "Cas client migration: passage d'Oracle vers MongoDB pour sécuriser des données médicales sensibles et améliorer la performance au quotidien."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisation/
+  - name: Eiffage • Migration données médicales
+    url: /portfolio/eiffage-migration-medicale.html
 permalink: /portfolio/eiffage-migration-medicale.html
 project_link: "/portfolio/eiffage-migration-medicale.html"
 sector: "BTP & santé au travail"

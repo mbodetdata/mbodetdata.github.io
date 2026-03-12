@@ -1,7 +1,18 @@
 ---
 layout: default
 title: "Migration Talend OSS → Talaxie | BM Data"
-description: "Étude de migration Talend OSS vers Talaxie pour sécuriser l'intégration data et préparer la continuité."
+description: "Cas client IT: étude et cadrage de migration Talend OSS vers Talaxie pour sécuriser les flux de données et garantir la continuité."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisation/
+  - name: Migration Talend OSS → Talaxie
+    url: /portfolio/migration-talend-oss-talaxie.html
 permalink: /portfolio/migration-talend-oss-talaxie.html
 project_link: "/portfolio/migration-talend-oss-talaxie.html"
 sector: "IT interne"

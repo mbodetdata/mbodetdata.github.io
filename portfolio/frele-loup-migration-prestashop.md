@@ -1,7 +1,18 @@
 ---
 layout: default
 title: "Frère-Loup • Migration e-commerce | BM Data"
-description: "Migration e-commerce avec ETL Talend et API PrestaShop pour préserver les données clés."
+description: "Cas client e-commerce: migration PrestaShop avec Talend et API pour conserver produits, clients et commandes sans perte de données."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisation/
+  - name: Frère-Loup • Migration e-commerce
+    url: /portfolio/frele-loup-migration-prestashop.html
 permalink: /portfolio/frele-loup-migration-prestashop.html
 project_link: "/portfolio/frele-loup-migration-prestashop.html"
 sector: "E-commerce"

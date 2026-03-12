@@ -1,95 +1,10 @@
 {% assign project = include.project %}
 {% if project %}
-<section class="section case-hero" aria-labelledby="case-title">
-  <div class="service-container case-hero__grid">
-    <header class="case-hero__content" data-anim="fade-up">
-      <p class="service-eyebrow">{{ include.eyebrow | default: "Cas client" }}</p>
-      <h1 id="case-title">{{ project.title | escape }}</h1>
-      {% if project["text-short"] %}
-      <p class="case-hero__summary">{{ project["text-short"] | escape }}</p>
-      {% endif %}
-    </header>
-    <aside class="card case-meta" data-anim="fade-up">
-      <p class="case-meta__title">Fiche synth&egrave;se</p>
-      <ul class="case-meta__list">
-        {% if project.client %}
-        <li class="case-meta__item">
-          <span class="case-meta__label">Client</span>
-          <span class="case-meta__value">{{ project.client | escape }}</span>
-        </li>
-        {% endif %}
-        {% if include.sector %}
-        <li class="case-meta__item">
-          <span class="case-meta__label">Secteur</span>
-          <span class="case-meta__value">{{ include.sector | escape }}</span>
-        </li>
-        {% endif %}
-        {% if project.date %}
-        <li class="case-meta__item">
-          <span class="case-meta__label">Date</span>
-          <span class="case-meta__value">{{ project.date | date: "%m/%Y" }}</span>
-        </li>
-        {% endif %}
-      </ul>
-    </aside>
-  </div>
-</section>
-
-<section class="section case-section" aria-labelledby="case-contexte">
-  <div class="service-container">
-    <article class="case-panel card" data-anim="fade-up">
-      <h2 id="case-contexte">Contexte</h2>
-      {% if project.details and project.details.contexte %}
-      <p>{{ project.details.contexte | escape }}</p>
-      {% endif %}
-    </article>
-  </div>
-</section>
-
-<section class="section case-section">
-  <div class="service-container case-grid">
-    <article class="case-panel card" data-anim="fade-up">
-      <h2 id="case-missions">Missions</h2>
-      {% if project.details and project.details.missions %}
-      <ul class="case-list case-list--bullets">
-        {% for mission in project.details.missions %}
-        <li>{{ mission | escape }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </article>
-    <article class="case-panel card" data-anim="fade-up">
-      <h2 id="case-benefices">B&eacute;n&eacute;fices</h2>
-      {% if project.details and project.details.benefices %}
-      <ul class="case-list case-list--bullets case-list--benefits">
-        {% for gain in project.details.benefices %}
-        <li>{{ gain | escape }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </article>
-  </div>
-</section>
-
-<section class="section case-section" aria-labelledby="case-stack">
-  <div class="service-container">
-    <article class="case-panel card" data-anim="fade-up">
-      <div class="case-stack__head">
-        <h2 id="case-stack">Stack</h2>
-        <p>Outils &amp; plateformes mobilis&eacute;s.</p>
-      </div>
-      {% if project.details and project.details.stack %}
-      <ul class="case-tags" aria-label="Technologies principales">
-        {% for tool in project.details.stack %}
-        <li><span class="chip">{{ tool | escape }}</span></li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </article>
-  </div>
-</section>
-
 {% assign stack_list = project.details.stack | default: empty %}
+{% assign mission_1 = project.details.missions | first | default: '' %}
+{% assign benefit_1 = project.details.benefices | first | default: '' %}
+{% assign project_summary = project["text-short"] | default: page.description | default: site.description %}
+{% assign project_url_abs = page.url | replace:'index.html','' | absolute_url %}
 {% assign has_talend = false %}
 {% assign has_powerbi = false %}
 {% if stack_list contains "Talend" or stack_list contains "Talaxie" %}
@@ -98,33 +13,380 @@
 {% if stack_list contains "Power BI" %}
   {% assign has_powerbi = true %}
 {% endif %}
-
-<section class="section cta-block premium-cta" aria-labelledby="case-cta-title">
-  <div class="service-container">
-    <div class="premium-cta__card card" data-anim="fade-up">
-      <h2 id="case-cta-title">Prêt à activer le même type de résultats ?</h2>
-      <p>Parlons de vos flux et de vos indicateurs pour cadrer rapidement la prochaine étape.</p>
-      <a class="btn btn--primary"
-         href="{{ site.author.cal_url | default: site.author.calendly_url }}"
-         data-booking-open="modal"
-         data-track-click="portfolio_cta">
-        Prendre rendez-vous
-      </a>
-      <p class="cta-caption">Ou contactez-moi via <a href="{{ '/#contact' | relative_url }}">le formulaire</a>.</p>
-      {% if has_talend or has_powerbi %}
-      <div class="case-links">
-        <p><strong>Services associés :</strong></p>
-        <div class="case-links__actions">
-          {% if has_talend %}
-          <a class="btn btn--ghost" href="{{ '/services-talend-talaxie/' | relative_url }}">Talend &amp; Talaxie</a>
+<style>
+  .pcase{
+    --pcase-gap: clamp(1rem, 2.2vw, 1.8rem);
+  }
+  .pcase .pcase-container{
+    max-width: var(--container-tight);
+    margin-inline: auto;
+    display: grid;
+    gap: var(--pcase-gap);
+  }
+  .pcase .pcase-hero{
+    padding-top: clamp(2.8rem, 5vw, 4.4rem);
+  }
+  .pcase .pcase-hero__grid{
+    display: grid;
+    gap: clamp(1rem, 2.8vw, 2rem);
+    align-items: start;
+  }
+  .pcase .pcase-hero__content{
+    display: grid;
+    gap: clamp(.7rem, 1.4vw, 1.15rem);
+  }
+  .pcase .pcase-eyebrow{
+    margin: 0;
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: color-mix(in oklab, var(--brand) 70%, #fff 30%);
+    font-weight: 700;
+  }
+  .pcase .pcase-title{
+    margin: 0;
+    font-size: clamp(1.9rem, 1.5rem + 1.3vw, 2.8rem);
+    line-height: 1.15;
+    color: #fff;
+    text-wrap: balance;
+    text-shadow: 0 14px 34px rgba(0, 0, 0, .36);
+  }
+  .pcase .pcase-lead{
+    margin: 0;
+    max-width: 62ch;
+    color: color-mix(in oklab, var(--muted) 72%, #fff 28%);
+  }
+  .pcase .pcase-kpis{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+  }
+  .pcase .pcase-kpi{
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .35rem .7rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--border), var(--brand) 24%);
+    background: color-mix(in oklab, var(--surface-1) 82%, transparent);
+    font-size: .78rem;
+    color: color-mix(in oklab, var(--muted) 62%, #fff 38%);
+  }
+  .pcase .pcase-kpi strong{
+    color: #fff;
+    font-size: .75rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .pcase .pcase-actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin-top: .25rem;
+  }
+  .pcase .pcase-summary{
+    border: 1px solid color-mix(in oklab, var(--border), var(--brand-2) 30%);
+    background: linear-gradient(162deg,
+      color-mix(in oklab, var(--surface-1) 90%, transparent),
+      color-mix(in oklab, var(--surface-2) 66%, var(--brand-2) 20%));
+    box-shadow: var(--shadow-md);
+    border-radius: clamp(1rem, 2vw, 1.4rem);
+    padding: clamp(1.1rem, 2.2vw, 1.5rem);
+    display: grid;
+    gap: .85rem;
+  }
+  .pcase .pcase-summary h2{
+    margin: 0;
+    font-size: clamp(1.05rem, .95rem + .4vw, 1.3rem);
+  }
+  .pcase .pcase-summary__list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: .7rem;
+  }
+  .pcase .pcase-summary__list li{
+    margin: 0;
+    padding-left: 1.15rem;
+    position: relative;
+    color: color-mix(in oklab, var(--muted) 74%, #fff 26%);
+    line-height: 1.52;
+  }
+  .pcase .pcase-summary__list li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .54rem;
+    width: .45rem;
+    height: .45rem;
+    border-radius: 999px;
+    background: var(--g-brand);
+  }
+  .pcase .pcase-summary__list strong{
+    color: #fff;
+  }
+  .pcase .pcase-section{
+    padding-top: .25rem;
+  }
+  .pcase .pcase-card{
+    border-radius: clamp(1rem, 2vw, 1.4rem);
+    border: 1px solid color-mix(in oklab, var(--border), var(--brand) 24%);
+    background: linear-gradient(160deg,
+      color-mix(in oklab, var(--surface-1) 94%, transparent),
+      color-mix(in oklab, var(--surface-2) 72%, var(--brand) 14%));
+    box-shadow: var(--shadow-sm);
+    padding: clamp(1.1rem, 2.2vw, 1.5rem);
+    display: grid;
+    gap: .75rem;
+  }
+  .pcase .pcase-card h2{
+    margin: 0;
+    font-size: clamp(1.1rem, .98rem + .4vw, 1.35rem);
+  }
+  .pcase .pcase-card p{
+    margin: 0;
+    color: color-mix(in oklab, var(--muted) 72%, #fff 28%);
+  }
+  .pcase .pcase-grid{
+    display: grid;
+    gap: var(--pcase-gap);
+  }
+  .pcase .pcase-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: .65rem;
+  }
+  .pcase .pcase-list li{
+    position: relative;
+    padding-left: 1.4rem;
+    color: color-mix(in oklab, var(--muted) 70%, #fff 30%);
+  }
+  .pcase .pcase-list li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .5rem;
+    width: .5rem;
+    height: .5rem;
+    border-radius: 999px;
+    background: var(--g-brand);
+    box-shadow: 0 0 0 5px color-mix(in oklab, var(--brand) 16%, transparent);
+  }
+  .pcase .pcase-list--benefits li::before{
+    background: color-mix(in oklab, var(--brand-2) 70%, var(--brand) 30%);
+    box-shadow: 0 0 0 5px color-mix(in oklab, var(--brand-2) 18%, transparent);
+  }
+  .pcase .pcase-stack{
+    list-style: none;
+    margin: .1rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .pcase .pcase-stack .chip{
+    font-size: .75rem;
+    background: color-mix(in oklab, var(--surface-2) 84%, transparent);
+  }
+  .pcase .pcase-cta{
+    padding-bottom: clamp(2.2rem, 5vw, 4rem);
+  }
+  .pcase .pcase-cta__card{
+    border-radius: clamp(1.1rem, 2vw, 1.5rem);
+    border: 1px solid color-mix(in oklab, var(--border), var(--brand) 28%);
+    background: linear-gradient(160deg,
+      color-mix(in oklab, var(--surface-1) 88%, transparent),
+      color-mix(in oklab, var(--surface-2) 58%, var(--brand) 26%));
+    box-shadow: var(--shadow-lg);
+    padding: clamp(1.5rem, 2.8vw, 2.2rem);
+    display: grid;
+    gap: .9rem;
+    text-align: center;
+  }
+  .pcase .pcase-cta__card h2{
+    margin: 0;
+    font-size: clamp(1.45rem, 1.2rem + .85vw, 2rem);
+  }
+  .pcase .pcase-cta__card p{
+    margin: 0;
+    color: color-mix(in oklab, var(--muted) 68%, #fff 32%);
+  }
+  .pcase .pcase-cta__actions{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .7rem;
+  }
+  .pcase .pcase-service-links{
+    margin-top: .2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .6rem;
+  }
+  .pcase .pcase-service-links .btn{
+    min-height: 40px;
+    padding: .55rem .9rem;
+  }
+  @media (min-width: 980px){
+    .pcase .pcase-hero__grid{
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+    }
+    .pcase .pcase-grid{
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
+<div class="pcase">
+  <section class="section pcase-hero" aria-labelledby="pcase-title">
+    <div class="pcase-container pcase-hero__grid">
+      <header class="pcase-hero__content" data-anim="fade-up">
+        <p class="pcase-eyebrow">{{ include.eyebrow | default: "Cas client" }}</p>
+        <h1 class="pcase-title" id="pcase-title">{% include utils/abbrify.html text=project.title %}</h1>
+        <p class="pcase-lead">{% include utils/abbrify.html text=project_summary %}</p>
+        <div class="pcase-kpis" aria-label="Informations clés du projet">
+          {% if project.client %}
+          <span class="pcase-kpi"><strong>Client</strong> {{ project.client | escape }}</span>
           {% endif %}
-          {% if has_powerbi %}
-          <a class="btn btn--ghost" href="{{ '/services-powerbi/' | relative_url }}">Power BI</a>
+          {% if include.sector %}
+          <span class="pcase-kpi"><strong>Secteur</strong> {{ include.sector | escape }}</span>
+          {% endif %}
+          {% if project.date %}
+          <span class="pcase-kpi"><strong>Date</strong> {{ project.date | date: "%m/%Y" }}</span>
           {% endif %}
         </div>
-      </div>
-      {% endif %}
+        <div class="pcase-actions">
+          <a class="btn btn--primary"
+             href="{{ site.author.cal_url | default: site.author.calendly_url }}"
+             data-booking-open="modal"
+             data-track-click="portfolio_case_hero_cta">Prendre rendez-vous</a>
+          <a class="btn btn--ghost" href="{{ '/realisation/' | relative_url }}">Voir toutes les r&eacute;alisations</a>
+        </div>
+      </header>
+      <aside class="pcase-summary card" data-anim="fade-up" aria-labelledby="pcase-summary-title">
+        <h2 id="pcase-summary-title">En clair</h2>
+        <ul class="pcase-summary__list">
+          <li>
+            <strong>Ce qui posait probl&egrave;me :</strong>
+            {% include utils/abbrify.html text=project_summary %}
+          </li>
+          <li>
+            <strong>Ce qui a &eacute;t&eacute; mis en place :</strong>
+            {% if mission_1 != '' %}{% include utils/abbrify.html text=mission_1 %}{% else %}Une approche progressive adapt&eacute;e au besoin m&eacute;tier.{% endif %}
+          </li>
+          <li>
+            <strong>Le r&eacute;sultat principal :</strong>
+            {% if benefit_1 != '' %}{% include utils/abbrify.html text=benefit_1 %}{% else %}Une meilleure fiabilit&eacute; et un pilotage plus simple au quotidien.{% endif %}
+          </li>
+        </ul>
+      </aside>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="section pcase-section" aria-labelledby="pcase-problem-title">
+    <div class="pcase-container">
+      <article class="pcase-card" data-anim="fade-up">
+        <h2 id="pcase-problem-title">Ce qui posait probl&egrave;me</h2>
+        {% if project.details and project.details.contexte %}
+        <p>{% include utils/abbrify.html text=project.details.contexte %}</p>
+        {% endif %}
+      </article>
+    </div>
+  </section>
+
+  <section class="section pcase-section" aria-labelledby="pcase-work-title">
+    <div class="pcase-container pcase-grid">
+      <article class="pcase-card" data-anim="fade-up">
+        <h2 id="pcase-work-title">Ce qui a &eacute;t&eacute; mis en place</h2>
+        {% if project.details and project.details.missions %}
+        <ul class="pcase-list" aria-label="Actions menées">
+          {% for mission in project.details.missions %}
+          <li>{% include utils/abbrify.html text=mission %}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </article>
+      <article class="pcase-card" data-anim="fade-up">
+        <h2 id="pcase-gains-title">Ce que vous y gagnez</h2>
+        {% if project.details and project.details.benefices %}
+        <ul class="pcase-list pcase-list--benefits" aria-label="Bénéfices obtenus">
+          {% for gain in project.details.benefices %}
+          <li>{% include utils/abbrify.html text=gain %}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </article>
+    </div>
+  </section>
+
+  <section class="section pcase-section" aria-labelledby="pcase-stack-title">
+    <div class="pcase-container">
+      <article class="pcase-card" data-anim="fade-up">
+        <h2 id="pcase-stack-title">Les outils utilis&eacute;s</h2>
+        <p>Technologies mobilis&eacute;es pour livrer une solution fiable, maintenable et &eacute;volutive.</p>
+        {% if project.details and project.details.stack %}
+        <ul class="pcase-stack" aria-label="Technologies principales">
+          {% for tool in project.details.stack %}
+          <li><span class="chip">{{ tool | escape }}</span></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </article>
+    </div>
+  </section>
+
+  <section class="section pcase-cta" aria-labelledby="pcase-cta-title">
+    <div class="pcase-container">
+      <div class="pcase-cta__card card" data-anim="fade-up">
+        <h2 id="pcase-cta-title">Un contexte proche du v&ocirc;tre ?</h2>
+        <p>Je vous aide &agrave; cadrer rapidement les actions utiles, avec une feuille de route claire et sans jargon.</p>
+        <div class="pcase-cta__actions">
+          <a class="btn btn--primary"
+             href="{{ site.author.cal_url | default: site.author.calendly_url }}"
+             data-booking-open="modal"
+             data-track-click="portfolio_case_bottom_cta">Parler de votre projet</a>
+          <a class="btn btn--ghost" href="{{ '/#contact' | relative_url }}">Passer par le formulaire</a>
+        </div>
+        {% if has_talend or has_powerbi %}
+        <div class="pcase-service-links" aria-label="Services liés">
+          {% if has_talend %}
+          <a class="btn btn--ghost" href="{{ '/services-talend-talaxie/' | relative_url }}">Service Talend &amp; Talaxie</a>
+          {% endif %}
+          {% if has_powerbi %}
+          <a class="btn btn--ghost" href="{{ '/services-powerbi/' | relative_url }}">Service Power BI</a>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": {{ project.title | jsonify }},
+  "headline": {{ project.title | jsonify }},
+  "description": {{ project_summary | strip_newlines | jsonify }},
+  "url": {{ project_url_abs | jsonify }},
+  "inLanguage": "fr-FR",
+  {% if project.date %}"datePublished": "{{ project.date | date: '%Y-%m-%d' }}",{% endif %}
+  "author": {
+    "@type": "Organization",
+    "name": {{ project.client | default: site.author.enterprise | default: site.author.name | jsonify }}
+  },
+  "creator": {
+    "@type": "Person",
+    "name": {{ site.author.name | jsonify }}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ project_url_abs | jsonify }}
+  }{% if stack_list and stack_list != empty %},
+  "keywords": {{ stack_list | join: ", " | jsonify }}{% endif %}
+}
+</script>
 {% endif %}
