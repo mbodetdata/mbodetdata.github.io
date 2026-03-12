@@ -5209,3 +5209,138 @@ body::before{
   max-width:56ch;
 }
 
+
+/* ===================================================================
+   Contact Pack 8 — DA premium alignée sur le reste du site
+   =================================================================== */
+
+/* 1. Head full-width + 2 colonnes desktop (comme réalisations) ------- */
+.contact-hub__head{
+  max-width:100%;
+}
+@media (min-width:720px){
+  .contact-hub__head{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto;
+    column-gap:clamp(2rem,5vw,4rem);
+    align-items:end;
+  }
+  .contact-hub__eyebrow{ grid-column:1 / -1; }
+  .contact-hub__title{
+    grid-column:1;
+    grid-row:2;
+    align-self:start;
+  }
+  .contact-hub__subtitle{
+    grid-column:2;
+    grid-row:2;
+    align-self:end;
+    max-width:none;
+    padding-bottom:.15rem;
+  }
+}
+
+/* 2. Title : blanc + glow (annule gradient de Pack 6) ---------------- */
+.contact-hub__title{
+  background:none;
+  -webkit-background-clip:unset;
+  background-clip:unset;
+  -webkit-text-fill-color:#ffffff;
+  color:#ffffff;
+  text-shadow:0 0 28px color-mix(in oklab, var(--brand) 42%, transparent);
+  font-size:clamp(1.7rem,1.3rem + 1.4vw,2.5rem);
+  letter-spacing:-.025em;
+  font-weight:800;
+}
+
+/* 3. Eyebrow : pill vert (reste pill — signale disponibilité) --------- */
+/* Déjà bien stylé en Pack 6, on affine juste */
+.contact-hub__eyebrow{
+  font-size:.8rem;
+  letter-spacing:.12em;
+}
+
+/* 4. Direct-title : hiérarchie renforcée ----------------------------- */
+.contact-hub__direct-title{
+  font-size:clamp(1rem,.9rem + .3vw,1.15rem);
+  font-weight:800;
+  color:#ffffff;
+  letter-spacing:-.01em;
+  margin-bottom:.85rem !important;
+  padding-bottom:.75rem;
+  border-bottom:1px solid color-mix(in oklab, var(--border), var(--brand) 25%);
+}
+
+/* 5. Carte contact-direct : tint brand-2 pour la différencier -------- */
+.contact-hub__card--direct{
+  background:linear-gradient(155deg,
+    color-mix(in oklab, var(--surface-1) 94%, var(--brand-2) 6%),
+    color-mix(in oklab, var(--surface-2) 88%, var(--brand-2) 12%)) !important;
+  border-color:color-mix(in oklab, var(--border), var(--brand-2) 22%) !important;
+}
+
+/* 6. Contact items : plus d'espace, plus de substance ---------------- */
+.contact-hub__card--direct .contact-item{
+  padding:clamp(.75rem,.6rem + .4vw,1rem) clamp(.9rem,.7rem + .4vw,1.15rem);
+  border-radius:.85rem;
+  gap:.85rem;
+}
+/* Icônes : squircle avec tint brand */
+.contact-hub__card--direct .ci-icon.badge-glass{
+  width:44px; height:44px;
+  border-radius:1rem;
+  background:linear-gradient(135deg,
+    color-mix(in oklab, var(--brand) 18%, transparent),
+    color-mix(in oklab, var(--brand-2) 22%, transparent));
+  border:1px solid color-mix(in oklab, var(--border), var(--brand) 30%);
+}
+/* Body text */
+.contact-hub__card--direct .ci-body strong{
+  font-size:clamp(.92rem,.86rem + .22vw,1.05rem);
+}
+/* Arrow CTA toujours visible */
+.contact-hub__card--direct .ci-cta{
+  opacity:.9;
+  color:var(--brand);
+}
+/* Hover : inset top-border brand (comme les cards du site) */
+@media (hover:hover){
+  .contact-hub__card--direct .contact-item:hover{
+    background:color-mix(in oklab, var(--brand) 8%, var(--surface-1));
+    border-color:color-mix(in oklab, var(--border), var(--brand) 36%);
+    box-shadow:inset 0 2px 0 var(--brand), 0 6px 20px rgba(0,0,0,.18);
+    transform:translateY(-2px);
+  }
+  .contact-hub__card--direct .contact-item:hover .ci-cta{
+    color:var(--brand-2);
+    transform:translateX(3px);
+    transition:transform .18s ease, color .18s ease;
+  }
+}
+
+/* 7. Guarantee callout : plus d'espace, full-width ------------------- */
+.contact-guarantee{
+  margin-bottom:1.1rem;
+  padding:.7rem 1.15rem;
+  gap:.65rem;
+  font-size:clamp(.83rem,.78rem + .18vw,.96rem);
+}
+
+/* 8. Book-note : badge discret -------------------------- ------------ */
+.contact-hub__book-note{
+  font-size:var(--step--2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.4rem;
+  color:var(--muted);
+}
+.contact-hub__book-note::before{
+  content:"";
+  display:inline-block;
+  width:.4rem; height:.4rem;
+  border-radius:50%;
+  background:var(--brand-2);
+  opacity:.7;
+}
+
