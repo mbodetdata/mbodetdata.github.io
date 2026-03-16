@@ -14,7 +14,7 @@
             <small class="footer-tagline">Donn&eacute;es &amp; automatisation pour TPE&nbsp;/ PME</small>
           </div>
         </a>
-        <p class="footer-brand-desc">Connecter vos logiciels, supprimer les ressaisies, piloter avec des tableaux de bord fiables. Consultant freelance <strong>Talend</strong> &amp; <strong>Power&nbsp;BI</strong>.</p>
+        <p class="footer-brand-desc">Connecter vos logiciels, supprimer les ressaisies, piloter avec des tableaux de bord fiables. Consultant freelance <strong>Talend</strong> &amp; <strong>Power&nbsp;BI</strong> &agrave; <strong>Agen</strong> et en Lot-et-Garonne.</p>
       </div>
 
       <nav class="footer-col" aria-label="Navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
@@ -50,6 +50,12 @@
       <div class="footer-col" aria-label="Contacts">
         <h3 class="footer-col-title">Contacts</h3>
         <ul class="footer-list" role="list">
+          {% if site.author.phone %}
+          <li><a href="tel:{{ site.author.phone | replace: ' ', '' }}" itemprop="telephone">
+            <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+            {{ site.author.phone }}
+          </a></li>
+          {% endif %}
           <li><a href="mailto:{{ site.author.email }}" rel="me" itemprop="email">
             <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
             {{ site.author.email }}
@@ -95,8 +101,8 @@
     <hr class="soft-sep" aria-hidden="true">
 
     <div class="footer-meta">
-      <p class="footer-copy">&copy; {{ site.time | date: '%Y' }} <span itemprop="copyrightHolder">BM Data</span> &mdash; Martial Bodet, Consultant data freelance pour TPE/PME</p>
-      <p class="footer-seo-tags" aria-hidden="true">Talend &middot; Talaxie &middot; Power BI &middot; ETL &middot; Automatisation &middot; Int&eacute;gration de donn&eacute;es &middot; TPE &middot; PME</p>
+      <p class="footer-copy">&copy; {{ site.time | date: '%Y' }} <span itemprop="copyrightHolder">BM Data</span> &mdash; Martial Bodet, Consultant data freelance &agrave; Agen (Lot-et-Garonne) pour TPE/PME</p>
+      <p class="footer-seo-tags" aria-hidden="true">Talend &middot; Talaxie &middot; Power BI &middot; ETL &middot; Automatisation &middot; Int&eacute;gration de donn&eacute;es &middot; TPE &middot; PME &middot; Agen &middot; Lot-et-Garonne &middot; Nouvelle-Aquitaine</p>
     </div>
   </div>
 

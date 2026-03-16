@@ -155,11 +155,28 @@
       "sameAs": {{ site.author.sameAs | jsonify }}{% endif %}
     },
     {
-      "@type": "ProfessionalService",
+      "@type": ["ProfessionalService", "LocalBusiness"],
       "name": {{ org_name | jsonify }},
       "description": {{ site.description | jsonify }},
-      "url": {{ site_url_abs | absolute_url | jsonify }},
-      "areaServed": "FR",
+      "url": {{ site_url_abs | absolute_url | jsonify }}{% if site.author.phone %},
+      "telephone": {{ site.author.phone | jsonify }}{% endif %}{% if site.author.email %},
+      "email": {{ site.author.email | prepend: "mailto:" | jsonify }}{% endif %},
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": {{ site.author.address_street | default: "31 Chemin du Rieumort" | jsonify }},
+        "addressLocality": {{ site.author.address_city | default: "Brax" | jsonify }},
+        "postalCode": {{ site.author.address_postal | default: "47310" | jsonify }},
+        "addressRegion": {{ site.author.address_region | default: "Lot-et-Garonne" | jsonify }},
+        "addressCountry": {{ site.author.address_country | default: "FR" | jsonify }}
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Agen" },
+        { "@type": "City", "name": "Villeneuve-sur-Lot" },
+        { "@type": "City", "name": "Marmande" },
+        { "@type": "City", "name": "N\u00e9rac" },
+        { "@type": "AdministrativeArea", "name": "Lot-et-Garonne" },
+        { "@type": "AdministrativeArea", "name": "Nouvelle-Aquitaine" }
+      ],
       "provider": { "@type": "Person", "name": {{ site.author.name | jsonify }} }
     }
   ]

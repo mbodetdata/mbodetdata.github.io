@@ -56,6 +56,12 @@ author:
 
   # Mentions légales (EI / Micro-entreprise)
   address: "31 Chemin du Rieumort, Brax, 47310"
+  address_street: "31 Chemin du Rieumort"
+  address_city: "Brax"
+  address_postal: "47310"
+  address_region: "Lot-et-Garonne"
+  address_country: "FR"
+  city_main: "Agen"
   siret: "99215339500015"
   ape: "62.02A"
   rcs_rm: ""

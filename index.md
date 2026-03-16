@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Consultant Data pour PME — Connectez vos logiciels, pilotez vos chiffres | BM Data"
-description: "Vous perdez du temps à ressaisir des données entre vos logiciels ou cherchez vos chiffres dans des fichiers Excel éparpillés ? Je connecte vos outils, automatise vos flux et construis vos tableaux de bord. Consultant data freelance pour TPE/PME. Résultats concrets, et rapides."
+description: "Vous perdez du temps à ressaisir des données entre vos logiciels ou cherchez vos chiffres dans des fichiers Excel éparpillés ? Je connecte vos outils, automatise vos flux et construis vos tableaux de bord. Consultant data freelance pour TPE/PME à Agen et en Lot-et-Garonne. Résultats concrets, et rapides."
 keywords_groups:
   - services
   - local
@@ -12,7 +12,7 @@ bandeau:
 ---
 
 <!-- H1 accessible (améliore le SEO sans changer le design) -->
-<h1 class="sr-only">Consultant data freelance pour PME : automatisez vos données, pilotez votre activité avec des tableaux de bord clairs</h1>
+<h1 class="sr-only">Consultant data freelance pour PME à Agen et en Lot-et-Garonne : automatisez vos données, pilotez votre activité avec des tableaux de bord clairs</h1>
 
 <!-- BANDEAU -->
 <style>
@@ -236,6 +236,38 @@ bandeau:
   <div class="services-footer">
     <div class="services-divider" role="presentation"></div>
   </div>
+
+<!-- TÉMOIGNAGE -->
+<section class="section testimonials" aria-label="Recommandation professionnelle">
+  <div class="container" style="max-width:min(820px,94vw);margin-inline:auto;padding-block:clamp(2.5rem,6vw,4rem);">
+    <p class="section-eyebrow" style="text-align:center;margin-bottom:clamp(1.4rem,3vw,2rem);">Ce qu&rsquo;on dit de mon travail</p>
+    <figure class="testimonial-card" style="
+        background:linear-gradient(145deg,
+          color-mix(in oklab, var(--surface-1) 94%, transparent),
+          color-mix(in oklab, var(--surface-2) 78%, var(--brand) 22%));
+        border:1px solid var(--border);
+        border-radius:clamp(.9rem,2vw,1.4rem);
+        padding:clamp(1.4rem,4vw,2.4rem) clamp(1.4rem,4vw,2.8rem);
+        box-shadow:0 8px 32px rgba(0,0,0,.18);
+        margin:0;
+      ">
+      <svg aria-hidden="true" width="36" height="28" viewBox="0 0 36 28" fill="none" style="margin-bottom:1rem;opacity:.55;">
+        <path d="M0 28V17.6C0 7.87 5.6 2.13 16.8 0l1.4 2.8C12.13 4.27 9.07 7.6 8.4 13.2H14V28H0zm20 0V17.6C20 7.87 25.6 2.13 36.8 0L38.2 2.8C32.13 4.27 29.07 7.6 28.4 13.2H34V28H20z" fill="currentColor"/>
+      </svg>
+      <blockquote style="margin:0 0 1.4rem;">
+        <p style="font-size:clamp(.95rem,.86rem + .36vw,1.12rem);line-height:1.7;color:var(--fg-2);font-style:italic;">
+          &laquo;&nbsp;Martial poss&egrave;de une vraie capacit&eacute; d&rsquo;autonomie, une rigueur pr&eacute;cieuse, et une curiosit&eacute; naturelle qui le pousse &agrave; aller au fond des sujets, m&ecirc;me les plus complexes ou inconnus. L&agrave; o&ugrave; certains reculent, lui avance, explore, teste, propose &mdash; toujours avec pertinence et fiabilit&eacute;. C&rsquo;est quelqu&rsquo;un sur qui on peut vraiment compter, et avec qui il est aussi agr&eacute;able qu&rsquo;efficace de travailler.&nbsp;&raquo;
+        </p>
+      </blockquote>
+      <figcaption style="display:flex;align-items:center;gap:.75rem;">
+        <div>
+          <strong style="display:block;font-size:.95rem;color:var(--fg);">Nicolas Lambert</strong>
+          <span style="font-size:.83rem;color:var(--muted);">Pilotage business &mdash; Manager direct</span>
+        </div>
+      </figcaption>
+    </figure>
+  </div>
+</section>
 
 <!-- CONTACTS -->
 {% include contact.html %}
