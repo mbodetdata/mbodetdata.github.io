@@ -239,31 +239,120 @@ bandeau:
 
 <!-- TÉMOIGNAGE -->
 <section class="section testimonials" aria-label="Recommandation professionnelle">
-  <div class="container" style="max-width:min(820px,94vw);margin-inline:auto;padding-block:clamp(2.5rem,6vw,4rem);">
-    <p class="section-eyebrow" style="text-align:center;margin-bottom:clamp(1.4rem,3vw,2rem);">Ce qu&rsquo;on dit de mon travail</p>
-    <figure class="testimonial-card" style="
-        background:linear-gradient(145deg,
-          color-mix(in oklab, var(--surface-1) 94%, transparent),
-          color-mix(in oklab, var(--surface-2) 78%, var(--brand) 22%));
-        border:1px solid var(--border);
-        border-radius:clamp(.9rem,2vw,1.4rem);
-        padding:clamp(1.4rem,4vw,2.4rem) clamp(1.4rem,4vw,2.8rem);
-        box-shadow:0 8px 32px rgba(0,0,0,.18);
-        margin:0;
-      ">
-      <svg aria-hidden="true" width="36" height="28" viewBox="0 0 36 28" fill="none" style="margin-bottom:1rem;opacity:.55;">
-        <path d="M0 28V17.6C0 7.87 5.6 2.13 16.8 0l1.4 2.8C12.13 4.27 9.07 7.6 8.4 13.2H14V28H0zm20 0V17.6C20 7.87 25.6 2.13 36.8 0L38.2 2.8C32.13 4.27 29.07 7.6 28.4 13.2H34V28H20z" fill="currentColor"/>
+  <style>
+    .testimonial-wrap{
+      max-width:min(780px,94vw);
+      margin-inline:auto;
+      padding-block:clamp(1.8rem,4vw,2.8rem);
+    }
+    .testimonial-head{
+      text-align:center;
+      margin-bottom:clamp(1.2rem,3vw,1.8rem);
+    }
+    .testimonial-head__title{
+      font-size:clamp(1.25rem,1rem + 1vw,1.7rem);
+      font-weight:800;
+      color:var(--fg);
+      margin:0 0 .35rem;
+    }
+    .testimonial-head__sub{
+      font-size:clamp(.8rem,.74rem + .22vw,.9rem);
+      color:var(--muted);
+      margin:0;
+    }
+    .testimonial-card{
+      position:relative;
+      margin:0;
+      padding:clamp(1.4rem,3.5vw,2.2rem) clamp(1.4rem,3.5vw,2.4rem) clamp(1.4rem,3.5vw,2.2rem) clamp(1.8rem,4vw,2.8rem);
+      background:linear-gradient(148deg,
+        color-mix(in oklab, var(--surface-1) 92%, transparent),
+        color-mix(in oklab, var(--surface-2) 76%, var(--brand) 24%));
+      border:1px solid color-mix(in oklab, var(--border) 70%, var(--brand) 30%);
+      border-left:3px solid var(--brand);
+      border-radius:clamp(.9rem,2vw,1.3rem);
+      box-shadow:0 12px 40px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .testimonial-quote-icon{
+      position:absolute;
+      top:clamp(1rem,2.5vw,1.5rem);
+      right:clamp(1rem,2.5vw,1.6rem);
+      opacity:.12;
+      color:var(--brand);
+    }
+    .testimonial-body{
+      font-size:clamp(.95rem,.88rem + .3vw,1.08rem);
+      line-height:1.75;
+      color:var(--fg-2);
+      font-style:italic;
+      margin:0 0 1.6rem;
+    }
+    .testimonial-footer{
+      display:flex;
+      align-items:center;
+      gap:clamp(.7rem,2vw,1rem);
+    }
+    .testimonial-avatar{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:2.6rem;
+      height:2.6rem;
+      min-width:2.6rem;
+      border-radius:50%;
+      background:var(--g-brand);
+      color:#fff;
+      font-size:.82rem;
+      font-weight:700;
+      letter-spacing:.04em;
+      flex-shrink:0;
+    }
+    .testimonial-author__name{
+      display:block;
+      font-size:.95rem;
+      font-weight:700;
+      color:var(--fg);
+      line-height:1.2;
+    }
+    .testimonial-author__role{
+      font-size:.8rem;
+      color:var(--muted);
+    }
+    .testimonial-badge{
+      margin-left:auto;
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      font-size:.75rem;
+      font-weight:600;
+      color:color-mix(in oklab, var(--brand) 80%, #fff 20%);
+      background:color-mix(in oklab, var(--brand) 10%, transparent);
+      border:1px solid color-mix(in oklab, var(--brand) 28%, transparent);
+      border-radius:999px;
+      padding:.28rem .7rem;
+    }
+  </style>
+  <div class="container testimonial-wrap">
+    <div class="testimonial-head">
+      <h2 class="testimonial-head__title">Ils parlent mieux que moi</h2>
+      <p class="testimonial-head__sub">Recommandation professionnelle v&eacute;rifi&eacute;e</p>
+    </div>
+    <figure class="testimonial-card">
+      <svg class="testimonial-quote-icon" aria-hidden="true" width="64" height="52" viewBox="0 0 36 28" fill="currentColor">
+        <path d="M0 28V17.6C0 7.87 5.6 2.13 16.8 0l1.4 2.8C12.13 4.27 9.07 7.6 8.4 13.2H14V28H0zm20 0V17.6C20 7.87 25.6 2.13 36.8 0L38.2 2.8C32.13 4.27 29.07 7.6 28.4 13.2H34V28H20z"/>
       </svg>
-      <blockquote style="margin:0 0 1.4rem;">
-        <p style="font-size:clamp(.95rem,.86rem + .36vw,1.12rem);line-height:1.7;color:var(--fg-2);font-style:italic;">
-          &laquo;&nbsp;Martial poss&egrave;de une vraie capacit&eacute; d&rsquo;autonomie, une rigueur pr&eacute;cieuse, et une curiosit&eacute; naturelle qui le pousse &agrave; aller au fond des sujets, m&ecirc;me les plus complexes ou inconnus. L&agrave; o&ugrave; certains reculent, lui avance, explore, teste, propose &mdash; toujours avec pertinence et fiabilit&eacute;. C&rsquo;est quelqu&rsquo;un sur qui on peut vraiment compter, et avec qui il est aussi agr&eacute;able qu&rsquo;efficace de travailler.&nbsp;&raquo;
-        </p>
+      <blockquote class="testimonial-body">
+        &laquo;&nbsp;Martial poss&egrave;de une vraie capacit&eacute; d&rsquo;autonomie, une rigueur pr&eacute;cieuse, et une curiosit&eacute; naturelle qui le pousse &agrave; aller au fond des sujets, m&ecirc;me les plus complexes ou inconnus. L&agrave; o&ugrave; certains reculent, lui avance, explore, teste, propose &mdash; toujours avec pertinence et fiabilit&eacute;. C&rsquo;est quelqu&rsquo;un sur qui on peut vraiment compter, et avec qui il est aussi agr&eacute;able qu&rsquo;efficace de travailler.&nbsp;&raquo;
       </blockquote>
-      <figcaption style="display:flex;align-items:center;gap:.75rem;">
-        <div>
-          <strong style="display:block;font-size:.95rem;color:var(--fg);">Nicolas Lambert</strong>
-          <span style="font-size:.83rem;color:var(--muted);">Pilotage business &mdash; Manager direct</span>
+      <figcaption class="testimonial-footer">
+        <span class="testimonial-avatar" aria-hidden="true">NL</span>
+        <div class="testimonial-author">
+          <strong class="testimonial-author__name">Nicolas Lambert</strong>
+          <span class="testimonial-author__role">Pilotage business &mdash; Manager direct</span>
         </div>
+        <span class="testimonial-badge" aria-label="Source : LinkedIn">
+          <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2.05h.05c.53-1 1.82-2.05 3.75-2.05 4.01 0 4.75 2.64 4.75 6.08V23h-4v-5.28c0-1.26-.02-2.89-1.76-2.89-1.76 0-2.03 1.37-2.03 2.79V23h-4V8z" fill="currentColor"/></svg>
+          LinkedIn
+        </span>
       </figcaption>
     </figure>
   </div>
