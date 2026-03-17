@@ -6193,32 +6193,36 @@ body::before{
   color:color-mix(in oklab,var(--brand-2) 78%,#fff 22%);
 }
 
-/* Objectif callout — FIXED: was font-size:0 which hid the text */
+/* Objectif callout */
 .m-note{
   grid-column:unset;
-  display:flex;
-  align-items:flex-start;
-  gap:.5rem;
+  display:grid;
+  grid-template-columns:16px 1fr;
+  align-items:start;
+  gap:.45rem;
   margin-top:auto;
   padding:.65rem .9rem;
   background:color-mix(in oklab,var(--brand-2) 7%,transparent);
-  border-left:2px solid color-mix(in oklab,var(--brand-2) 58%,transparent);
+  border-left:2px solid color-mix(in oklab,var(--brand-2) 62%,transparent);
   border-radius:0 .6rem .6rem 0;
-  font-size:inherit;
+  font-size:.875rem;
 }
 .m-note-ico{
-  flex-shrink:0;
-  width:15px;
-  height:15px;
-  margin-top:.15rem;
+  display:block;
+  width:16px;
+  height:16px;
+  margin-top:.12rem;
   color:var(--brand-2);
-  opacity:.9;
+  opacity:.95;
+  flex:none;
 }
 .m-note span{
+  display:block;
   font-size:clamp(.79rem,.74rem + .14vw,.87rem);
-  color:color-mix(in oklab,var(--fg) 62%,var(--muted) 38%);
+  color:var(--fg);
   line-height:1.55;
   font-style:italic;
+  opacity:.82;
 }
 
 
