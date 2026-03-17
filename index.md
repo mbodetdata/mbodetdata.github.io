@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Consultant Data pour PME — Connectez vos logiciels, pilotez vos chiffres | BM Data"
-description: "Vous perdez du temps à ressaisir des données entre vos logiciels ou cherchez vos chiffres dans des fichiers Excel éparpillés ? Je connecte vos outils, automatise vos flux et construis vos tableaux de bord. Consultant data freelance pour TPE/PME — basé à Agen (47), remote toute la France, déplacements en Nouvelle-Aquitaine. Résultats concrets, et rapides."
+description: "Vous perdez du temps à ressaisir des données entre vos logiciels ou cherchez vos chiffres dans des fichiers Excel éparpillés ? Je connecte vos outils, automatise vos flux et construis vos tableaux de bord. Consultant data pour TPE/PME — basé à Agen (47), remote toute la France, déplacements en Nouvelle-Aquitaine. Résultats concrets, et rapides."
 keywords_groups:
   - services
   - local
