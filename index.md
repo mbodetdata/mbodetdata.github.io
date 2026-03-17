@@ -12,7 +12,7 @@ bandeau:
 ---
 
 <!-- H1 accessible (améliore le SEO sans changer le design) -->
-<h1 class="sr-only">Consultant data freelance pour PME — basé à Agen (47), remote toute la France : automatisez vos données, pilotez votre activité avec des tableaux de bord clairs</h1>
+<h1 class="sr-only">Consultant data pour PME — basé à Agen (47), remote toute la France : automatisez vos données, pilotez votre activité avec des tableaux de bord clairs</h1>
 
 <!-- BANDEAU -->
 <style>

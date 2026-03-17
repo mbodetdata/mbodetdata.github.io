@@ -5943,20 +5943,22 @@ body::before{
   color:var(--muted);
 }
 
-/* ---- Methodes section: DA header ---- */
+/* ---- Methodes section: premium header ---- */
 .methodes-head{
   max-width:100%;
-  padding:clamp(1.25rem,2.6vw,1.9rem);
-  border-radius:clamp(1rem,1.9vw,1.5rem);
-  border:1px solid color-mix(in oklab,var(--border),var(--brand) 38%);
-  background:linear-gradient(150deg,
-    color-mix(in oklab,var(--surface-1) 87%,var(--brand) 13%),
-    color-mix(in oklab,var(--surface-1) 92%,var(--brand-2) 8%));
-  box-shadow:0 20px 48px rgba(0,0,0,.34);
+  padding:clamp(1.4rem,3vw,2.2rem);
+  border-radius:clamp(1rem,2vw,1.6rem);
+  border:1px solid color-mix(in oklab,var(--border),var(--brand) 40%);
+  background:linear-gradient(145deg,
+    color-mix(in oklab,var(--surface-1) 84%,var(--brand) 16%),
+    color-mix(in oklab,var(--surface-1) 90%,var(--brand-2) 10%));
+  box-shadow:0 24px 56px rgba(0,0,0,.38),
+             0 0 0 1px color-mix(in oklab,var(--brand) 10%,transparent),
+             inset 0 1px 0 rgba(255,255,255,.05);
   position:relative;
   overflow:hidden;
   display:grid;
-  gap:.55rem;
+  gap:.6rem;
   margin-bottom:clamp(1.5rem,3vw,2.6rem);
 }
 .methodes-head::before{
@@ -5965,9 +5967,9 @@ body::before{
   position:absolute;
   inset:0 0 auto;
   height:2px;
-  border-radius:999px 999px 0 0;
+  border-radius:1.6rem 1.6rem 0 0;
   background:var(--g-brand);
-  opacity:.65;
+  opacity:.75;
   pointer-events:none;
 }
 .methodes-eyebrow{
@@ -6039,76 +6041,110 @@ body::before{
   font-weight:700;
 }
 
-/* ---- Methodes cards: premium redesign ---- */
-/* Override display:grid → flex column */
+/* ---- Methodes cards: premium v2 ---- */
 .methode{
   display:flex;
   flex-direction:column;
   gap:0;
-  padding:clamp(1.3rem,2.4vw,1.8rem);
-  background:linear-gradient(155deg,
-    color-mix(in oklab,var(--surface-1) 90%,var(--brand) 10%),
-    color-mix(in oklab,var(--surface-1) 94%,var(--brand-2) 6%));
-  border:1px solid color-mix(in oklab,var(--border),var(--brand) 20%);
+  padding:clamp(1.4rem,2.6vw,2rem);
+  background:linear-gradient(150deg,
+    color-mix(in oklab,var(--surface-1) 86%,var(--brand) 14%),
+    color-mix(in oklab,var(--surface-1) 91%,var(--brand-2) 9%));
+  border:1px solid color-mix(in oklab,var(--border),var(--brand) 22%);
+  border-radius:1.15rem;
   position:relative;
   overflow:hidden;
+  transition:transform .28s cubic-bezier(.22,.8,.2,1),
+             border-color .28s ease,
+             box-shadow .28s ease;
+  box-shadow:0 8px 28px rgba(0,0,0,.3),
+             inset 0 1px 0 rgba(255,255,255,.04);
 }
+/* Top accent gradient bar */
 .methode::before{
   content:"";
   position:absolute;
   inset:0 0 auto;
   height:2px;
   background:var(--g-brand);
-  opacity:.45;
-  border-radius:999px 999px 0 0;
-  transition:opacity .25s ease;
+  opacity:.5;
+  border-radius:1.15rem 1.15rem 0 0;
+  transition:opacity .28s ease, height .28s ease;
   pointer-events:none;
 }
-.methode:hover::before{ opacity:.85; }
+/* Corner ambient glow */
+.methode::after{
+  content:"";
+  position:absolute;
+  top:-50px;
+  right:-50px;
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  background:radial-gradient(circle,
+    color-mix(in oklab,var(--brand) 9%,transparent),
+    transparent 68%);
+  pointer-events:none;
+  transition:opacity .3s ease;
+  opacity:.5;
+}
+.methode:hover{
+  transform:translateY(-7px);
+  border-color:color-mix(in oklab,var(--brand) 45%,var(--border));
+  box-shadow:0 28px 60px rgba(0,0,0,.5),
+             0 0 0 1px color-mix(in oklab,var(--brand) 20%,transparent),
+             0 0 44px color-mix(in oklab,var(--brand) 7%,transparent);
+}
+.methode:hover::before{ opacity:1; height:3px; }
+.methode:hover::after{ opacity:.9; }
 
-/* Header: icon + title inline */
+/* Header: icon + title */
 .methode-head{
   display:flex;
   align-items:center;
-  gap:.85rem;
-  margin-bottom:.9rem;
+  gap:.9rem;
+  margin-bottom:1rem;
 }
 .methode__icon{
   flex-shrink:0;
-  width:2.8rem;
-  height:2.8rem;
-  border-radius:.9rem;
+  width:3rem;
+  height:3rem;
+  border-radius:1rem;
+  display:grid;
+  place-items:center;
+  font-size:1.35rem;
   background:linear-gradient(135deg,
-    color-mix(in oklab,var(--brand) 20%,rgba(255,255,255,.06)),
-    color-mix(in oklab,var(--brand-2) 16%,rgba(255,255,255,.04)));
-  border:1px solid color-mix(in oklab,var(--border),var(--brand) 28%);
-  font-size:1.25rem;
+    color-mix(in oklab,var(--brand) 24%,rgba(255,255,255,.07)),
+    color-mix(in oklab,var(--brand-2) 18%,rgba(255,255,255,.04)));
+  border:1px solid color-mix(in oklab,var(--border),var(--brand) 32%);
+  box-shadow:0 4px 14px rgba(0,0,0,.28),
+             inset 0 1px 0 rgba(255,255,255,.08);
   grid-column:unset;
   grid-row:unset;
 }
 .methode__title{
   margin:0;
-  font-size:clamp(1rem,.92rem + .24vw,1.12rem);
+  font-size:clamp(1rem,.92rem + .28vw,1.15rem);
   font-weight:800;
   color:#fff;
-  text-shadow:0 0 18px color-mix(in oklab,var(--brand) 28%,transparent);
-  line-height:1.25;
-  letter-spacing:-.01em;
+  text-shadow:0 0 22px color-mix(in oklab,var(--brand) 32%,transparent);
+  line-height:1.2;
+  letter-spacing:-.015em;
   grid-column:unset;
   grid-row:unset;
 }
 
-/* Tech bullets list: subtle inset panel */
+/* Tech bullets list */
 .m-list{
   grid-column:unset;
   display:flex;
   flex-direction:column;
-  gap:.45rem;
-  margin:0 0 .85rem;
-  padding:.7rem .85rem;
-  background:color-mix(in oklab,var(--surface-0) 65%,transparent);
-  border-radius:.65rem;
-  border:1px solid color-mix(in oklab,var(--border) 60%,transparent);
+  gap:.5rem;
+  margin:0 0 1rem;
+  padding:.8rem .95rem;
+  background:color-mix(in oklab,var(--surface-0) 72%,transparent);
+  border-radius:.75rem;
+  border:1px solid color-mix(in oklab,var(--border) 52%,transparent);
 }
 .m-item{
   display:flex;
@@ -6118,61 +6154,71 @@ body::before{
 }
 .m-bullet{
   flex-shrink:0;
-  width:20px;
-  height:20px;
-  border-radius:.38rem;
+  width:22px;
+  height:22px;
+  border-radius:.45rem;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,
+    color-mix(in oklab,var(--brand) 24%,transparent),
+    color-mix(in oklab,var(--brand-2) 20%,transparent));
+  border:1px solid color-mix(in oklab,var(--border),var(--brand) 26%);
 }
 .m-text{
   flex:1;
   font-size:clamp(.8rem,.74rem + .18vw,.88rem);
-  color:color-mix(in oklab,var(--muted) 60%,#fff 40%);
-  line-height:1.4;
+  color:color-mix(in oklab,var(--fg) 70%,var(--muted) 30%);
+  line-height:1.45;
 }
 .m-tech{
-  font-size:.7rem;
+  font-size:.67rem;
   font-weight:700;
   letter-spacing:.07em;
   text-transform:uppercase;
-  padding:.18rem .55rem;
+  padding:.2rem .58rem;
   border-radius:999px;
   white-space:nowrap;
   flex-shrink:0;
 }
-/* Talend pill — brand blue */
+/* Talend — brand blue */
 .m-item:first-child .m-tech{
-  background:color-mix(in oklab,var(--brand) 14%,transparent);
-  border-color:color-mix(in oklab,var(--brand) 36%,transparent);
-  color:color-mix(in oklab,var(--brand) 75%,#fff 25%);
+  background:color-mix(in oklab,var(--brand) 15%,transparent);
+  border:1px solid color-mix(in oklab,var(--brand) 40%,transparent);
+  color:color-mix(in oklab,var(--brand) 82%,#fff 18%);
 }
-/* Power BI pill — brand-2 green */
+/* Power BI — brand-2 green */
 .m-item:last-child .m-tech{
-  background:color-mix(in oklab,var(--brand-2) 12%,transparent);
-  border-color:color-mix(in oklab,var(--brand-2) 34%,transparent);
-  color:color-mix(in oklab,var(--brand-2) 72%,#fff 28%);
+  background:color-mix(in oklab,var(--brand-2) 13%,transparent);
+  border:1px solid color-mix(in oklab,var(--brand-2) 38%,transparent);
+  color:color-mix(in oklab,var(--brand-2) 78%,#fff 22%);
 }
 
-/* Note/objectif: highlighted result box */
+/* Objectif callout — FIXED: was font-size:0 which hid the text */
 .m-note{
   grid-column:unset;
-  margin-top:auto;
-  padding:.6rem .85rem;
-  border-left:2px solid color-mix(in oklab,var(--brand-2) 52%,transparent);
-  background:color-mix(in oklab,var(--brand-2) 6%,transparent);
-  border-radius:0 .5rem .5rem 0;
-  gap:.45rem;
+  display:flex;
   align-items:flex-start;
-  font-size:0;
-}
-.m-note span{
-  font-size:clamp(.78rem,.73rem + .12vw,.86rem);
-  color:color-mix(in oklab,var(--muted) 52%,#fff 48%);
-  line-height:1.55;
-  font-style:italic;
+  gap:.5rem;
+  margin-top:auto;
+  padding:.65rem .9rem;
+  background:color-mix(in oklab,var(--brand-2) 7%,transparent);
+  border-left:2px solid color-mix(in oklab,var(--brand-2) 58%,transparent);
+  border-radius:0 .6rem .6rem 0;
+  font-size:inherit;
 }
 .m-note-ico{
+  flex-shrink:0;
+  width:15px;
+  height:15px;
+  margin-top:.15rem;
   color:var(--brand-2);
-  opacity:1;
-  margin-top:.1rem;
+  opacity:.9;
+}
+.m-note span{
+  font-size:clamp(.79rem,.74rem + .14vw,.87rem);
+  color:color-mix(in oklab,var(--fg) 62%,var(--muted) 38%);
+  line-height:1.55;
+  font-style:italic;
 }
 
 
@@ -7758,11 +7804,10 @@ body::before{
 /* ── 15. Méthodes cards : glow au hover sur desktop ─────────────────── */
 @media (hover:hover) and (min-width:700px){
   .methode:hover{
-    border-color: color-mix(in oklab, var(--brand) 40%, var(--border));
-    box-shadow:
-      0 28px 56px rgba(0,0,0,.46),
-      0 0 0 1px color-mix(in oklab, var(--brand) 18%, transparent),
-      0 0 32px color-mix(in oklab, var(--brand) 6%, transparent);
+    border-color:color-mix(in oklab,var(--brand) 46%,var(--border));
+    box-shadow:0 32px 64px rgba(0,0,0,.52),
+               0 0 0 1px color-mix(in oklab,var(--brand) 22%,transparent),
+               0 0 48px color-mix(in oklab,var(--brand) 9%,transparent);
   }
 }
 
