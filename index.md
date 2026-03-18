@@ -331,31 +331,7 @@ bandeau:
       padding:.28rem .7rem;
     }
   </style>
-  <div class="container testimonial-wrap">
-    <div class="testimonial-head">
-      <h2 class="testimonial-head__title">Ils parlent mieux que moi</h2>
-      <p class="testimonial-head__sub">Recommandation professionnelle v&eacute;rifi&eacute;e</p>
-    </div>
-    <figure class="testimonial-card">
-      <svg class="testimonial-quote-icon" aria-hidden="true" width="64" height="52" viewBox="0 0 36 28" fill="currentColor">
-        <path d="M0 28V17.6C0 7.87 5.6 2.13 16.8 0l1.4 2.8C12.13 4.27 9.07 7.6 8.4 13.2H14V28H0zm20 0V17.6C20 7.87 25.6 2.13 36.8 0L38.2 2.8C32.13 4.27 29.07 7.6 28.4 13.2H34V28H20z"/>
-      </svg>
-      <blockquote class="testimonial-body">
-        &laquo;&nbsp;Martial poss&egrave;de une vraie capacit&eacute; d&rsquo;autonomie, une rigueur pr&eacute;cieuse, et une curiosit&eacute; naturelle qui le pousse &agrave; aller au fond des sujets, m&ecirc;me les plus complexes ou inconnus. L&agrave; o&ugrave; certains reculent, lui avance, explore, teste, propose &mdash; toujours avec pertinence et fiabilit&eacute;. C&rsquo;est quelqu&rsquo;un sur qui on peut vraiment compter, et avec qui il est aussi agr&eacute;able qu&rsquo;efficace de travailler.&nbsp;&raquo;
-      </blockquote>
-      <figcaption class="testimonial-footer">
-        <span class="testimonial-avatar" aria-hidden="true">NL</span>
-        <div class="testimonial-author">
-          <strong class="testimonial-author__name">Nicolas Lambert</strong>
-          <span class="testimonial-author__role">Pilotage business &mdash; Manager direct</span>
-        </div>
-        <span class="testimonial-badge" aria-label="Source : LinkedIn">
-          <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2.05h.05c.53-1 1.82-2.05 3.75-2.05 4.01 0 4.75 2.64 4.75 6.08V23h-4v-5.28c0-1.26-.02-2.89-1.76-2.89-1.76 0-2.03 1.37-2.03 2.79V23h-4V8z" fill="currentColor"/></svg>
-          LinkedIn
-        </span>
-      </figcaption>
-    </figure>
-  </div>
+  {% include recommandations.html %}
 </section>
 
 <!-- CONTACTS -->

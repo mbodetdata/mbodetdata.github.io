@@ -5,56 +5,131 @@
         "tagline": "Des processus fluides, des chiffres fiables, des décisions éclairées."
     },
     "cards": [
-        {
-            "id": "solution-automatisation",
-            "title": "Connecter vos logiciels et supprimer les ressaisies",
-            "promise": "Je connecte vos outils entre eux (ERP, CRM, WMS) via Talend — fini le copier-coller et les doubles saisies.",
-            "result": "Vos équipes récupèrent des heures chaque semaine et vos données sont toujours à jour, sans action manuelle.",
-            "link": "/services-talend-talaxie/",
-            "icon": "automation",
-            "category": "Automatisation",
-            "keywords": ["automatisation données", "suppression ressaisies", "connecter logiciels", "ETL TPE PME", "Talend intégration"]
-        },
-        {
-            "id": "solution-migration",
-            "title": "Changer de logiciel sans perdre vos données",
-            "promise": "Je prends en charge la migration complète — du diagnostic à la mise en production — avec zéro interruption d'activité.",
-            "result": "Votre historique arrive intact dans le nouveau système. Aucune donnée perdue, aucune surprise.",
-            "link": "/services-talend-talaxie/",
-            "icon": "migration",
-            "category": "Migration",
-            "keywords": ["migration données", "changement logiciel", "ERP CRM migration", "sans perte données", "continuité activité"]
-        },
-        {
-            "id": "solution-exploitation",
-            "title": "Rendre vos données fiables et exploitables",
-            "promise": "Je nettoie, structure et centralise vos données pour créer une source unique que tous vos métiers comprennent.",
-            "result": "Une seule version de la vérité — plus de débats sur les chiffres, des décisions prises en confiance.",
-            "link": "/services-talend-talaxie/",
-            "icon": "integration",
-            "category": "Qualité des données",
-            "keywords": ["qualité données", "données fiables", "centralisation données", "source unique", "fiabiliser données PME"]
-        },
-        {
-            "id": "solution-reporting",
-            "title": "Des tableaux de bord qui se mettent à jour tout seuls",
-            "promise": "Je conçois des dashboards Power BI connectés à vos données réelles — ils se rafraîchissent automatiquement.",
-            "result": "Vos KPIs — CA, marges, stocks — disponibles en un clic, toujours à jour, accessibles par toute l'équipe.",
-            "link": "/services-powerbi/",
-            "icon": "dashboard",
-            "category": "Reporting & Pilotage",
-            "keywords": ["tableau de bord Power BI", "reporting automatique", "KPI temps réel", "dashboards TPE PME", "Excel automatisé"]
-        }
+{
+  "id": "solution-automatisation",
+  "title": "Connecter vos logiciels pour éviter les doubles saisies",
+  "promise": "Je relie vos logiciels pour que les bonnes informations circulent automatiquement, sans copier-coller ni double saisie.",
+  "result": "Vous gagnez du temps, vos données restent à jour et vos équipes évitent les erreurs manuelles.",
+  "link": "/services-talend-talaxie/",
+  "icon": "automation",
+  "category": "Automatisation",
+  "keywords": [
+    "automatisation des données",
+    "connecter ses logiciels",
+    "éviter les doubles saisies",
+    "intégration de données PME",
+    "Talend PME"
+  ]
+},
+{
+  "id": "solution-migration",
+  "title": "Changer de logiciel sans perdre vos données",
+  "promise": "Je prépare et sécurise le passage vers votre nouveau logiciel pour transférer vos données et votre historique sans perte ni blocage.",
+  "result": "Vous retrouvez vos données dans votre nouveau logiciel, avec votre historique, sans mauvaise surprise.",
+  "link": "/services-talend-talaxie/",
+  "icon": "migration",
+  "category": "Migration",
+  "keywords": [
+    "migration de données",
+    "changer de logiciel",
+    "transfert de données",
+    "conserver son historique",
+    "migration logiciel PME"
+  ]
+},
+{
+  "id": "solution-exploitation",
+  "title": "Rendre vos données claires, fiables et utiles",
+  "promise": "Je nettoie, organise et regroupe vos données pour que vous travailliez enfin sur une base claire et cohérente.",
+  "result": "Tout le monde s’appuie sur les mêmes chiffres, avec moins d’erreurs et plus de confiance pour décider.",
+  "link": "/services-talend-talaxie/",
+  "icon": "integration",
+  "category": "Fiabilité des données",
+  "keywords": [
+    "fiabiliser les données",
+    "nettoyer les données",
+    "centraliser les données",
+    "données claires et fiables",
+    "qualité des données PME"
+  ]
+},
+{
+  "id": "solution-reporting",
+  "title": "Voir vos chiffres clés en un coup d’œil",
+  "promise": "Je crée des tableaux de bord connectés à vos données pour suivre facilement votre activité, sans mise à jour manuelle.",
+  "result": "Ventes, marges, stocks : vos chiffres sont clairs, à jour et accessibles rapidement par les bonnes personnes.",
+  "link": "/services-powerbi/",
+  "icon": "dashboard",
+  "category": "Tableaux de bord",
+  "keywords": [
+    "tableau de bord Power BI",
+    "suivi d'activité",
+    "chiffres clés entreprise",
+    "reporting automatisé PME",
+    "tableaux de bord PME"
+  ]
+}
     ],
-    "schema": {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "serviceType": "Data Integration and Business Intelligence",
-        "provider": {
-            "@type": "Person",
-            "name": "BM Data"
+
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Automatisation des données et tableaux de bord pour TPE/PME",
+    "serviceType": [
+      "Automatisation des échanges entre logiciels",
+      "Migration de données",
+      "Fiabilisation des données",
+      "Tableaux de bord Power BI"
+    ],
+    "description": "BM Data aide les TPE et PME à connecter leurs logiciels, migrer leurs données, fiabiliser leurs chiffres et créer des tableaux de bord clairs.",
+    "provider": {
+      "@type": "Organization",
+      "name": "BM Data",
+      "url": "https://bmdata.fr"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "France"
+    },
+    "brand": {
+      "@type": "Brand",
+      "name": "BM Data Solutions"
+    },
+    "url": "https://bmdata.fr",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services BM Data",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Automatisation des échanges entre logiciels"
+          }
         },
-        "areaServed": "France",
-        "brand": "BM Data Solutions"
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Migration de données"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Fiabilisation des données"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tableaux de bord Power BI"
+          }
+        }
+      ]
     }
+  }
+
 }
