@@ -2,43 +2,43 @@
   {
     "icon": "🧹",
     "title": "Qualité des données",
-    "talend": "Contrôles DQ et rejets traçables dès l'ingestion.",
-    "powerbi": "Colonnes propres et référentiels normalisés pour un modèle fiable.",
-    "note": "Objectif : vous travaillez toujours avec des données fiables — jamais de chiffre douteux à revérifier manuellement."
+    "talend": "Les données sont contrôlées dès leur arrivée et les anomalies sont identifiées clairement.",
+    "powerbi": "Les tableaux de bord s’appuient sur des données propres et cohérentes pour afficher des chiffres fiables.",
+    "note": "Objectif : vous travaillez toujours avec des données fiables, sans devoir revérifier vos chiffres à la main."
   },
   {
     "icon": "🔁",
-    "title": "Robustesse",
-    "talend": "Jobs idempotents, reprises sur incident et journalisation claire.",
-    "powerbi": "Planification stable et surveillance des rafraîchissements.",
-    "note": "Objectif : vos automatisations tournent sans intervention — même les nuits, les week-ends et les jours fériés."
+    "title": "Fiabilité",
+    "talend": "Les traitements sont conçus pour continuer correctement même en cas d’incident, avec un suivi clair.",
+    "powerbi": "Les mises à jour sont planifiées de façon stable et surveillées pour éviter les mauvaises surprises.",
+    "note": "Objectif : vos automatisations tournent dans la durée, sans intervention manuelle inutile."
   },
   {
     "icon": "⚡",
     "title": "Performance",
-    "talend": "Filtres en amont, tMap optimisés, incrémental/CDC.",
-    "powerbi": "Modèle en étoile, agrégations et DAX mesuré.",
-    "note": "Objectif : vos rapports s'ouvrent en quelques secondes et vos flux ne ralentissent pas votre activité."
+    "talend": "Les flux sont optimisés pour traiter uniquement les données utiles et éviter les lenteurs.",
+    "powerbi": "Les tableaux de bord sont conçus pour afficher les informations rapidement, même avec beaucoup de données.",
+    "note": "Objectif : vos rapports s’ouvrent vite et vos traitements ne ralentissent pas votre activité."
   },
   {
     "icon": "🧩",
     "title": "Évolutivité",
-    "talend": "Jobs paramétrables et réutilisables.",
-    "powerbi": "Datasets modulaires, séparation données / visuels.",
-    "note": "Objectif : ajouter une nouvelle source ou un nouvel indicateur sans tout reconstruire."
+    "talend": "Les traitements sont pensés pour être réutilisables et faciles à adapter à de nouveaux besoins.",
+    "powerbi": "Les tableaux de bord sont organisés pour pouvoir ajouter de nouveaux indicateurs sans tout refaire.",
+    "note": "Objectif : faire évoluer vos outils simplement à mesure que votre activité grandit."
   },
   {
     "icon": "🛡️",
     "title": "Sécurité & conformité",
-    "talend": "Secrets/contextes par environnement.",
-    "powerbi": "Permissions/RLS et gouvernance alignée RGPD.",
-    "note": "Objectif : seules les bonnes personnes voient les bonnes données — en totale conformité RGPD."
+    "talend": "Les accès et les paramètres sensibles sont gérés de manière sécurisée selon l’environnement.",
+    "powerbi": "Les droits d’accès sont définis pour que chacun voie uniquement les données qui le concernent.",
+    "note": "Objectif : les bonnes personnes accèdent aux bonnes données, dans un cadre conforme et sécurisé."
   },
   {
     "icon": "📚",
     "title": "Documentation & partage",
-    "talend": "Jobs commentés et mapping explicite.",
-    "powerbi": "Modèles BI annotés, handover et runbook.",
-    "note": "Objectif : votre équipe comprend, reprend et fait évoluer le travail livré — sans dépendre de moi après la mission."
+    "talend": "Les traitements sont documentés pour que leur fonctionnement reste clair et compréhensible.",
+    "powerbi": "Les tableaux de bord sont expliqués et transmis avec les éléments utiles pour être repris facilement.",
+    "note": "Objectif : votre équipe comprend ce qui a été mis en place et peut le faire vivre sans dépendre de moi."
   }
 ]

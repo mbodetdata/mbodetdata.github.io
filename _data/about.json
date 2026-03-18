@@ -1,32 +1,32 @@
 {
   "hero": {
-    "eyebrow": "Consultant data pour TPE/PME",
-    "title": "Je simplifie vos données pour que vous puissiez vous concentrer sur votre métier.",
-    "intro": "J'aide les TPE et PME à connecter leurs logiciels, automatiser leurs données et décider avec des chiffres fiables.",
-    "motivation": "Ma conviction : chaque PME mérite des données aussi fiables que celles des grands groupes ! Sans les coûts, sans la complexité. J'ai choisi le freelance pour aller au concret : livrer vite, coller aux réalités terrain, et rendre chaque équipe <strong>vraiment autonome</strong> sur ce qu'on construit ensemble.",
+    "eyebrow": "Consultant en automatisation des données pour TPE/PME",
+    "title": "Je simplifie vos données pour vous faire gagner du temps et fiabiliser vos décisions.",
+    "intro": "J’aide les TPE et PME à connecter leurs logiciels, automatiser leurs données et suivre leur activité avec des chiffres fiables.",
+    "motivation": "Ma conviction : une PME doit pouvoir s’appuyer sur des données fiables, sans complexité inutile ni budget disproportionné. J’ai choisi le freelance pour aller au concret : livrer vite, m’adapter à votre réalité terrain, et rendre chaque équipe <strong>vraiment autonome</strong> sur ce que nous mettons en place ensemble.",
     "values": [
-      { "text": "Connexion ERP, CRM, RH, Compta,... Fini les ressaisies manuelles" },
-      { "text": "Tableaux de bord Power BI mis à jour automatiquement" },
-      { "text": "Migration de données sans interruption ni perte" },
-      { "text": "Autonomie garantie : formation et documentation incluses" }
+      { "text": "Vos logiciels partagent les bonnes informations, sans double saisie" },
+      { "text": "Des tableaux de bord mis à jour automatiquement" },
+      { "text": "Une migration de données sans perte ni blocage" },
+      { "text": "Formation et documentation incluses pour rester autonome" }
     ]
   },
   "engagements": [
     {
-      "title": "Résultats mesurables",
-      "desc": "Heures gagnées, erreurs supprimées, décisions plus rapides. Chaque mission produit des gains concrets et quantifiables."
+      "title": "Résultats concrets",
+      "desc": "Temps gagné, erreurs évitées, décisions plus rapides : chaque mission doit produire des bénéfices visibles."
     },
     {
-      "title": "Autonomie garantie",
-      "desc": "Formation et documentation complète à chaque livraison. Vous faites tourner ce que je livre sans avoir besoin de moi."
+      "title": "Autonomie après livraison",
+      "desc": "Je fournis la formation et la documentation nécessaires pour que vous puissiez utiliser et faire vivre la solution sans dépendre de moi."
     },
     {
-      "title": "Zéro jargon",
-      "desc": "J'explique tout en termes métier. Pas besoin de connaître ETL ou pipeline, ici on parle résultats, pas technique."
+      "title": "Un langage clair",
+      "desc": "J’explique les choses simplement, avec des mots métier. L’objectif est que vous compreniez ce qui est mis en place et à quoi cela vous sert."
     },
     {
-      "title": "Taillé TPE / PME",
-      "desc": "Solutions pragmatiques, sans sur-ingénierie. Adaptées à vos contraintes de budget et d'organisation."
+      "title": "Pensé pour les TPE / PME",
+      "desc": "Des solutions simples, efficaces et adaptées à votre budget, à votre organisation et à vos outils existants."
     }
   ]
 }
