@@ -1,32 +1,88 @@
+<!-- _includes/methodes.html -->
 <section id="methodes" class="section" aria-labelledby="methodes-title"
          itemscope itemtype="https://schema.org/HowTo">
   <header class="methodes-head">
-    <p class="methodes-eyebrow">Approche &amp; qualité</p>
-    <h2 id="methodes-title" class="methodes-title" itemprop="name">Des solutions fiables, pensées pour durer</h2>
-    <p class="methodes-subtitle" itemprop="description">Qualit&eacute;, fiabilit&eacute;, s&eacute;curit&eacute; et performance &mdash; appliqu&eacute;es &agrave; chaque solution mise en place.</p>
+    <p class="methodes-eyebrow">Approche &amp; qualit&eacute;</p>
+    <h2 id="methodes-title" class="methodes-title" itemprop="name">Des solutions fiables, pens&eacute;es pour durer</h2>
+    <p class="methodes-subtitle" itemprop="description">
+      Qualit&eacute;, fiabilit&eacute;, s&eacute;curit&eacute; et performance &mdash; appliqu&eacute;es &agrave; chaque solution mise en place.
+    </p>
   </header>
 
-  <div class="methodes methodes--modern" aria-label="Liste de mes méthodes de travail">
+  <div class="methodes methodes--modern" aria-label="Liste de mes principes de travail">
     {% for methode in site.data.methodes %}
       <article class="methode" itemscope itemtype="https://schema.org/HowToStep" itemprop="step">
         <div class="methode-head">
           <div class="methode__icon badge-glass" aria-hidden="true">{{ methode.icon }}</div>
-          <h3 class="methode__title" itemprop="name">{{ methode.title }}</h3>
+          {%- assign _mt = methode.title -%}
+          {%- assign _mt = _mt
+            | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+            | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+            | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+            | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+            | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+            | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+            | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+            | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+            | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+            | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+            | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+            | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+          -%}
+          <h3 class="methode__title" itemprop="name">{{ _mt }}</h3>
         </div>
 
-        <ul class="m-list" itemprop="step">
+        <ul class="m-list">
           {% if methode.talend %}
           <li class="m-item">
-            <span class="m-bullet" aria-hidden="true">...</span>
-            <span class="m-text" itemprop="text">{{ methode.talend }}</span>
-            <span class="m-tech" title="Traitement automatisé des données">Automatisation</span>
+            <span class="m-bullet" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            {%- assign _mtal = methode.talend -%}
+            {%- assign _mtal = _mtal
+              | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+              | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+              | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+              | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+              | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+              | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+              | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+              | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+              | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+              | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+              | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+              | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+            -%}
+            <span class="m-text" itemprop="text">{{ _mtal }}</span>
+            <span class="m-tech" title="Traitement automatis&eacute; des donn&eacute;es">Automatisation</span>
           </li>
           {% endif %}
 
           {% if methode.powerbi %}
           <li class="m-item">
-            <span class="m-bullet" aria-hidden="true">...</span>
-            <span class="m-text" itemprop="text">{{ methode.powerbi }}</span>
+            <span class="m-bullet" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                <path d="M4 17h16M6 13h12M8 9h8M10 5h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            {%- assign _mpbi = methode.powerbi -%}
+            {%- assign _mpbi = _mpbi
+              | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+              | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+              | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+              | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+              | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+              | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+              | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+              | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+              | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+              | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+              | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+              | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+            -%}
+            <span class="m-text" itemprop="text">{{ _mpbi }}</span>
             <span class="m-tech" title="Tableaux de bord et restitution">Tableaux de bord</span>
           </li>
           {% endif %}
@@ -34,8 +90,25 @@
 
         {% if methode.note %}
           <p class="m-note" itemprop="tip">
-            <svg class="m-note-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="..." fill="currentColor"/></svg>
-            <span>{{ methode.note }}</span>
+            <svg class="m-note-ico" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-6h2Zm0-8h-2V7h2Z" fill="currentColor"/>
+            </svg>
+            {%- assign _mnote = methode.note -%}
+            {%- assign _mnote = _mnote
+              | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
+              | replace: 'CI/CD','<abbr title="Continuous Integration / Continuous Deployment">CI/CD</abbr>'
+              | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
+              | replace: 'API','<abbr title="Application Programming Interface">API</abbr>'
+              | replace: 'BI','<abbr title="Business Intelligence">BI</abbr>'
+              | replace: 'DAX','<abbr title="Data Analysis Expressions">DAX</abbr>'
+              | replace: 'SQL','<abbr title="Structured Query Language">SQL</abbr>'
+              | replace: 'NoSQL','<abbr title="Not Only SQL">NoSQL</abbr>'
+              | replace: 'KPI','<abbr title="Key Performance Indicator">KPI</abbr>'
+              | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
+              | replace: 'WMS','<abbr title="Warehouse Management System">WMS</abbr>'
+              | replace: 'TMS','<abbr title="Transport Management System">TMS</abbr>'
+            -%}
+            <span>{{ _mnote }}</span>
           </p>
         {% endif %}
       </article>
