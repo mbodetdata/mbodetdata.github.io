@@ -5,7 +5,7 @@
          class="section services-section services-section--full"
          aria-labelledby="services-title"
          data-section="services">
-  <div class="section-header">
+  <div class="section-header" data-anim="fade-up">
     <h2 id="services-title">{{ services_data.section.title | default: 'Services' }}</h2>
     {% if services_data.section.hook or services_data.section.intro or services_data.section.bullets %}
       <div class="section-pitch">
