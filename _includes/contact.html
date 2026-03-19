@@ -6,7 +6,7 @@
   {% if site.author.linkedin %}<link itemprop="sameAs" href="{{ site.author.linkedin }}">{% endif %}
 
   <div class="contact-hub__inner">
-    <header class="contact-hub__head">
+    <header class="contact-hub__head" data-reveal>
 
       <h2 id="contact-title" class="contact-hub__title">Parlons de votre projet &mdash; 30&nbsp;min, sans engagement</h2>
       <p class="contact-hub__subtitle">
@@ -17,7 +17,7 @@
     <div class="contact-hub__body">
       <div class="contact-hub__shell">
         <div class="contact-hub__layout">
-          <article class="card calendly-card contact-hub__card contact-hub__card--booking"
+          <article class="card calendly-card contact-hub__card contact-hub__card--booking" data-reveal data-reveal-delay="60"
                    role="region" aria-label="R&eacute;servation et agenda">
             <div class="calendly-head">
               <div class="calendly-title">
@@ -52,7 +52,7 @@
             </div>
           </article>
 
-          <aside class="card contact-hub__card contact-hub__card--direct contact-sticky"
+          <aside class="card contact-hub__card contact-hub__card--direct contact-sticky" data-reveal data-reveal-delay="160"
                  aria-label="Contacts directs"
                  itemprop="contactPoint" itemscope itemtype="https://schema.org/ContactPoint">
             <meta itemprop="contactType" content="customer support">

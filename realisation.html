@@ -27,7 +27,7 @@ breadcrumbs:
      HERO
      ================================================ -->
 <section class="section real-hero" aria-labelledby="real-hero-title">
-  <div class="real-hero__inner">
+  <div class="real-hero__inner" data-reveal>
     <p class="real-hero__eyebrow">
       Portfolio de réalisations
       <span class="real-hero__eyebrow-line" aria-hidden="true"></span>
@@ -84,6 +84,7 @@ breadcrumbs:
   <ul class="real-grid" role="list" aria-label="Liste des projets">
     {% for projet in projets_sorted %}
     {% assign idx = forloop.index0 %}
+    {% assign proj_delay = forloop.index0 | times: 70 | modulo: 280 %}
     {%- assign _pt = projet.title
       | replace: 'Power BI','<abbr title="Business Intelligence">Power BI</abbr>'
       | replace: 'ETL','<abbr title="Extract-Transform-Load">ETL</abbr>'
@@ -100,7 +101,7 @@ breadcrumbs:
       | replace: 'SLA','<abbr title="Service Level Agreement">SLA</abbr>'
       | replace: 'EDI','<abbr title="Electronic Data Interchange">EDI</abbr>'
     -%}
-    <li class="real-card-wrap" data-category="{{ projet.category | default: 'autre' }}">
+    <li class="real-card-wrap" data-category="{{ projet.category | default: 'autre' }}" data-reveal data-reveal-delay="{{ proj_delay }}">
       <article class="real-card project-card"
                tabindex="0"
                data-index="{{ idx }}"
@@ -193,7 +194,7 @@ breadcrumbs:
      CTA BAS DE PAGE
      ================================================ -->
 <section class="section real-cta" aria-labelledby="real-cta-title">
-  <div class="real-cta__inner">
+  <div class="real-cta__inner" data-reveal>
     <p class="real-cta__eyebrow">Votre projet, le prochain ?</p>
     <h2 id="real-cta-title" class="real-cta__title">Un besoin similaire&nbsp;?<br>Parlons-en.</h2>
     <p class="real-cta__sub">30 minutes pour comprendre votre situation et voir si je peux vous aider. Sans engagement, sans jargon.</p>

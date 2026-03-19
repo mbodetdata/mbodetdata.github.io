@@ -5,7 +5,7 @@
          class="section services-section services-section--full"
          aria-labelledby="services-title"
          data-section="services">
-  <div class="section-header">
+  <div class="section-header" data-reveal>
     <h2 id="services-title">{{ services_data.section.title | default: 'Services' }}</h2>
     {% if services_data.section.hook or services_data.section.intro or services_data.section.bullets %}
       <div class="section-pitch">
@@ -50,9 +50,11 @@
     <meta itemprop="itemListOrder" content="https://schema.org/ItemListOrderAscending">
 
     {% for service in services_cards %}
+      {% assign svc_delay = forloop.index0 | times: 90 %}
       <article id="{{ service.id }}"
                class="card service-card service-card--{{ service.icon | default: 'generic' }}"
                role="listitem"
+               data-reveal data-reveal-delay="{{ svc_delay }}"
                data-anim="fade-up"
                data-service="{{ service.id }}"
                itemscope itemtype="https://schema.org/Service"
@@ -122,7 +124,7 @@
   </div>
 
   <div class="services-cta-grid">
-    <article class="service-duo" aria-labelledby="services-duo-data" data-anim="fade-up">
+    <article class="service-duo" aria-labelledby="services-duo-data" data-reveal data-anim="fade-up">
 
       <!-- Panel Data — accent brand (purple) -->
       <div class="service-duo__panel service-duo__panel--data">

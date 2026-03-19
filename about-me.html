@@ -50,7 +50,7 @@ breadcrumbs:
     <div class="about-hero__inner about-page__inner">
 
       <!-- Contenu texte -->
-      <div class="about-hero__content about-page__content">
+      <div class="about-hero__content about-page__content" data-reveal>
 
         {% if about_copy.eyebrow %}
         <p class="about-page__eyebrow">{{ about_copy.eyebrow }}</p>
@@ -87,7 +87,7 @@ breadcrumbs:
       </div><!-- /content -->
 
       <!-- Photo -->
-      <div class="about-hero__media about-page__media">
+      <div class="about-hero__media about-page__media" data-reveal data-reveal-delay="100">
         <figure class="about-photo-frame about-page__photo-frame">
           {% if about_photo != '' %}
           <div class="about-photo-slot has-photo">

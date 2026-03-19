@@ -1,12 +1,13 @@
 {% assign recommandations_actives = site.data.recommandations | where: "active", true %}
 {% if recommandations_actives.size > 0 %}
 <div class="container testimonial-wrap">
-  <div class="testimonial-head">
+  <div class="testimonial-head" data-reveal>
     <h2 class="testimonial-head__title">Ils parlent mieux que moi</h2>
     <p class="testimonial-head__sub">Recommandation professionnelle v&eacute;rifi&eacute;e</p>
   </div>
   {% for reco in recommandations_actives %}
-  <figure class="testimonial-card">
+  {% assign reco_delay = forloop.index0 | times: 100 %}
+  <figure class="testimonial-card" data-reveal data-reveal-delay="{{ reco_delay }}">
     <svg class="testimonial-quote-icon" aria-hidden="true" width="64" height="52" viewBox="0 0 36 28" fill="currentColor">
       <path d="M0 28V17.6C0 7.87 5.6 2.13 16.8 0l1.4 2.8C12.13 4.27 9.07 7.6 8.4 13.2H14V28H0zm20 0V17.6C20 7.87 25.6 2.13 36.8 0L38.2 2.8C32.13 4.27 29.07 7.6 28.4 13.2H34V28H20z"/>
     </svg>

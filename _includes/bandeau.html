@@ -119,7 +119,7 @@
   {% endif %}
   <div class="about-hero__canvas">
     <div class="about-hero__inner">
-      <div class="about-hero__content">
+      <div class="about-hero__content" data-reveal data-reveal-delay="0">
         <p class="about-hero__eyebrow">Consultant Data pour TPE/PME</p>
         <h2 class="about-hero__title">Vos donn&eacute;es, enfin claires et utiles</h2>
         <p class="about-hero__text">
@@ -168,7 +168,7 @@ Vous perdez du temps &agrave; recopier des donn&eacute;es, g&eacute;rer plusieur
         </div>
       </div>
       {% unless hide_photo %}
-        <div class="about-hero__media">
+        <div class="about-hero__media" data-reveal data-reveal-delay="120">
           <div class="about-photo-frame">
             {% if bandeau_photo != '' %}
               <div class="about-photo-slot has-photo">
