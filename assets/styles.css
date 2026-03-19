@@ -453,13 +453,13 @@ main{ max-width:var(--container); margin:auto; padding:clamp(1.2rem,1.5vw,2rem) 
 
 /* ==================== 4) HEADER & NAV ==================== */
 .site-header{
-  position:sticky; top:0; z-index:60;
+  position:fixed; top:0; left:0; right:0; z-index:60;
   border-bottom:1px solid var(--border);
   background:color-mix(in oklab, var(--surface-0) 92%, transparent);
   -webkit-backdrop-filter:saturate(1.05) blur(10px);
   backdrop-filter:saturate(1.05) blur(10px);
-  max-width:100vw;
-  overflow:clip;
+  width:100%;
+  overflow:visible;
 }
 .site-header.is-scrolled{background:color-mix(in oklab, var(--surface-0) 96%, transparent);box-shadow:0 10px 30px rgba(0,0,0,.25);border-bottom-color: color-mix(in oklab, var(--border), var(--brand) 16%);}
 .navbar{
@@ -10961,7 +10961,7 @@ button:focus-visible{
    AJUSTEMENTS — Navbar fixe + Footer + Bouton flottant
    ════════════════════════════════════════════════════════════════════════ */
 
-/* ── A. NAVBAR TOUJOURS VISIBLE (position: fixed) ── */
+/* ── A. NAVBAR TOUJOURS VISIBLE — variables hauteur ── */
 :root{
   --nav-h: 3.6rem;
 }
@@ -10977,12 +10977,6 @@ html{
 }
 body{
   padding-top: var(--nav-h);
-}
-.site-header{
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  width: 100%;
-  z-index: 60;
 }
 
 /* ── B. FOOTER — réduction de la hauteur excessive ── */
@@ -11013,9 +11007,9 @@ body{
 /* ── C. BOUTON FLOTTANT RÉSERVATION ── */
 .float-cta{
   position: fixed;
-  bottom: clamp(1.2rem, 2.5vw, 1.8rem);
-  right: clamp(1.2rem, 2.5vw, 1.8rem);
-  z-index: 49;
+  bottom: clamp(1.4rem, 2.5vw, 2rem);
+  right: clamp(1.4rem, 2.5vw, 2rem);
+  z-index: 55;
   display: inline-flex;
   align-items: center;
   gap: .55rem;
@@ -11065,4 +11059,10 @@ body{
 @media (prefers-reduced-motion: reduce){
   .float-cta{ animation: none; transition: none; }
 }
+
+/* Masquer le widget Zoho SalesIQ (remplacé par float-cta) */
+#zsiqwidget,
+#zsiq_float,
+.zsiq_flt_rel,
+.siqico-chat{ display: none !important; }
 
