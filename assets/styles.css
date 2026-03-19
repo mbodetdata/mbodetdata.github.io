@@ -10957,3 +10957,112 @@ button:focus-visible{
     0 0 0 1px color-mix(in oklab, var(--brand) 18%, transparent);
 }
 
+/* ════════════════════════════════════════════════════════════════════════
+   AJUSTEMENTS — Navbar fixe + Footer + Bouton flottant
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ── A. NAVBAR TOUJOURS VISIBLE (position: fixed) ── */
+:root{
+  --nav-h: 3.6rem;
+}
+@media (min-width:600px){
+  :root{ --nav-h: 4.4rem; }
+}
+@media (min-width:992px){
+  :root{ --nav-h: 5.2rem; }
+}
+
+html{
+  scroll-padding-top: var(--nav-h);
+}
+body{
+  padding-top: var(--nav-h);
+}
+.site-header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  width: 100%;
+  z-index: 60;
+}
+
+/* ── B. FOOTER — réduction de la hauteur excessive ── */
+.site-footer{
+  padding-block: clamp(1.8rem, 3vw, 2.8rem) clamp(1rem, 1.8vw, 1.6rem);
+}
+.footer-grid{
+  gap: clamp(1.2rem, 2.5vw, 1.8rem) clamp(1.2rem, 2.5vw, 2rem);
+  padding-bottom: clamp(1rem, 2vw, 1.6rem);
+}
+/* footer-meta : empêcher le wrap sur desktop */
+@media (min-width:600px){
+  .footer-meta{
+    flex-wrap: nowrap;
+    gap: .4rem 1rem;
+    align-items: center;
+  }
+  .footer-seo-tags{
+    flex: 1 1 0;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: auto;
+  }
+}
+
+/* ── C. BOUTON FLOTTANT RÉSERVATION ── */
+.float-cta{
+  position: fixed;
+  bottom: clamp(1.2rem, 2.5vw, 1.8rem);
+  right: clamp(1.2rem, 2.5vw, 1.8rem);
+  z-index: 49;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .72rem 1.25rem .72rem 1rem;
+  border-radius: 999px;
+  background: var(--g-brand);
+  color: #fff;
+  font-size: clamp(.85rem, .82rem + .2vw, .95rem);
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  box-shadow: 0 8px 28px color-mix(in oklab, var(--brand) 45%, rgba(0,0,0,.45)),
+              0 0 0 1px color-mix(in oklab, var(--brand) 38%, transparent);
+  /* GPU-friendly : on anime filter + transform uniquement */
+  filter: drop-shadow(0 0 0px color-mix(in oklab, var(--brand) 0%, transparent));
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+  animation: float-pulse 3.2s ease-in-out infinite;
+}
+/* Pulse via opacity uniquement (compositor-only, zéro Paint) */
+@keyframes float-pulse{
+  0%, 100%{ opacity: 1; }
+  50%{       opacity: .82; }
+}
+.float-cta:hover{
+  transform: translateY(-3px) scale(1.05);
+  filter: drop-shadow(0 0 18px color-mix(in oklab, var(--brand) 65%, transparent));
+  animation: none;
+}
+.float-cta:active{
+  transform: translateY(0) scale(.97);
+}
+.float-cta svg{ flex-shrink: 0; }
+
+/* Mobile : icône seule */
+@media (max-width:480px){
+  .float-cta__label{ display: none; }
+  .float-cta{
+    padding: .9rem;
+    border-radius: 50%;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .float-cta{ animation: none; transition: none; }
+}
+
