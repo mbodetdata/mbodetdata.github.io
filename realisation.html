@@ -201,3 +201,24 @@ breadcrumbs:
   </div>
 </section>
 
+<script>
+(function () {
+  var filters = document.querySelectorAll('.proj-filter');
+  var cards   = document.querySelectorAll('.real-card-wrap');
+  if (!filters.length) return;
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.dataset.filter;
+      filters.forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      cards.forEach(function (c) {
+        if (f === 'all' || c.dataset.category === f) {
+          c.classList.remove('is-hidden');
+        } else {
+          c.classList.add('is-hidden');
+        }
+      });
+    });
+  });
+}());
+</script>

@@ -22,8 +22,6 @@
 <title>{{ meta_title }}</title>
 {%- endif -%}
 <meta name="description" content="{{ page.description | default: site.description | strip_newlines | escape }}" />
-{%- assign _cal_link = site.author.cal_url | default: site.author.calendly_url -%}
-{%- if _cal_link -%}<meta name="cal:link" content="{{ _cal_link }}">{%- endif -%}
 {%- assign keywords_data = site.data.keywords | default: nil -%}
 {%- if keywords_data -%}
   {%- assign keywords_all = keywords_data.global | default: [] -%}
@@ -111,14 +109,9 @@
 <link rel="alternate" hreflang="fr" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
 <link rel="alternate" hreflang="x-default" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
 
-{%- comment -%} =================== GOOGLE FONTS ======================== {%- endcomment -%}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 {%- comment -%} =================== CSS / JS ============================= {%- endcomment -%}
-<link rel="preload" href="{{ '/assets/styles.css' | relative_url }}" as="style" />
-<link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
+<link rel="preload" href="{{ '/assets/styles.min.css' | relative_url }}" as="style" />
+<link rel="stylesheet" href="{{ '/assets/styles.min.css' | relative_url }}">
 <script defer src="{{ '/assets/script.min.js' | relative_url }}"></script>
 
 {%- comment -%} =================== SITEMAP / FEED ====================== {%- endcomment -%}

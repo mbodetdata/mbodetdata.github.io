@@ -606,7 +606,32 @@ const Modal = (() => {
       document.body.appendChild(btn);
     }
 
-    /* styles .booking-float-cta déplacés dans styles.css */
+    if (!document.getElementById('booking-float-cta-style')) {
+      const st = document.createElement('style');
+      st.id = 'booking-float-cta-style';
+      st.textContent = `
+        .booking-float-cta{ position:fixed; right:14px; bottom:14px; z-index:9999;
+          display:inline-flex; align-items:center; gap:.55rem; padding:.75rem 1.05rem;
+          border-radius:999px; border:0; background:linear-gradient(135deg,
+            color-mix(in oklab, var(--brand) 74%, transparent),
+            color-mix(in oklab, var(--brand-2) 58%, transparent));
+          color:#fff; font-weight:700; letter-spacing:.01em;
+          box-shadow:0 14px 32px color-mix(in oklab, var(--brand) 36%, transparent);
+          cursor:pointer; transition:transform .22s ease, box-shadow .22s ease; }
+        .booking-float-cta .cal-label{ display:flex; flex-direction:column; align-items:flex-start; line-height:1.1; }
+        .booking-float-cta .cal-label strong{ font-size:.9rem; font-weight:800; }
+        .booking-float-cta .cal-label small{ font-size:.68rem; opacity:.78; }
+        .booking-float-cta:hover{ transform:translateY(-2px); box-shadow:0 20px 44px color-mix(in oklab, var(--brand) 42%, transparent); }
+        .booking-float-cta:focus-visible{ outline:none; box-shadow:0 0 0 4px color-mix(in oklab, #fff 75%, transparent), 0 0 0 8px color-mix(in oklab, var(--brand) 48%, transparent); }
+        .booking-float-cta .cal-ico{ display:grid; place-items:center; width:34px; height:34px; border-radius:12px;
+          background: color-mix(in oklab, rgba(255,255,255,.85) 24%, transparent);
+          backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        @media (max-width:540px){ .booking-float-cta{ right:11px; bottom:11px; padding:.68rem .95rem; }
+          .booking-float-cta .cal-label strong{ font-size:.86rem; }
+          .booking-float-cta .cal-label small{ display:none; } }
+      `;
+      document.head.appendChild(st);
+    }
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
@@ -1052,27 +1077,10 @@ const Modal = (() => {
           entry.target.classList.add('is-visible');
           io.unobserve(entry.target);
         });
-      }, { threshold: 0.06, rootMargin: '0px 0px -3% 0px' });
+      }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
       animated.forEach((el) => io.observe(el));
     } else {
       animated.forEach((el) => el.classList.add('is-visible'));
-    }
-  }
-
-  // Stagger animation groups
-  const groups = $$('[data-anim-group]');
-  if (groups.length) {
-    if ('IntersectionObserver' in window && !PREFERS_REDUCED) {
-      const gio = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
-          gio.unobserve(entry.target);
-        });
-      }, { threshold: 0.04, rootMargin: '0px 0px -2% 0px' });
-      groups.forEach((el) => gio.observe(el));
-    } else {
-      groups.forEach((el) => el.classList.add('is-visible'));
     }
   }
 })();
@@ -1147,93 +1155,4 @@ const Modal = (() => {
   update();
   window.addEventListener('scroll', requestUpdate, { passive: true });
   window.addEventListener('resize', requestUpdate, { passive: true });
-})();
-
-/* ==================== 7) Blog — filtre catégories ==================== */
-(() => {
-  const btns  = document.querySelectorAll('#articles .filter-btn');
-  const cards = document.querySelectorAll('#blog-posts-grid .post-card');
-  const empty = document.getElementById('blog-empty-state');
-  const count = document.getElementById('blog-filter-count');
-  if (!btns.length) return;
-
-  const updateCount = (n) => {
-    if (count) count.textContent = n + ' article' + (n !== 1 ? 's' : '');
-  };
-
-  btns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      btns.forEach((b) => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-      const filter = btn.dataset.filter;
-      let visible = 0;
-      cards.forEach((card) => {
-        const match = filter === 'all' || card.dataset.category === filter;
-        card.style.display = match ? '' : 'none';
-        if (match) visible++;
-      });
-      if (empty) empty.classList.toggle('is-visible', visible === 0);
-      updateCount(visible);
-    });
-  });
-})();
-
-/* ==================== 7b) Blog — mouse-glow sur cards ==================== */
-(() => {
-  const cards = document.querySelectorAll('#blog-posts-grid .post-card');
-  if (!cards.length) return;
-  cards.forEach((card) => {
-    card.addEventListener('mousemove', (e) => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--mouse-x', (e.clientX - r.left) + 'px');
-      card.style.setProperty('--mouse-y', (e.clientY - r.top) + 'px');
-    });
-  });
-})();
-
-/* ==================== 7c) Blog — count-up stats ==================== */
-(() => {
-  const els = document.querySelectorAll('.stat-block__value[data-count]');
-  if (!els.length) return;
-  if (!('IntersectionObserver' in window)) {
-    els.forEach((el) => { el.textContent = el.dataset.count; });
-    return;
-  }
-  const countUp = (el, target) => {
-    const dur = Math.min(900 + target * 15, 1800);
-    const start = performance.now();
-    const step = (now) => {
-      const p = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(eased * target);
-      if (p < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        countUp(entry.target, parseInt(entry.target.dataset.count, 10));
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.7 });
-  els.forEach((el) => obs.observe(el));
-})();
-
-/* ==================== 8) Réalisations — filtre projets ==================== */
-(() => {
-  const filters = document.querySelectorAll('.proj-filter');
-  const cards   = document.querySelectorAll('.real-card-wrap');
-  if (!filters.length) return;
-  filters.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const f = btn.dataset.filter;
-      filters.forEach((b) => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-      cards.forEach((c) => {
-        c.classList.toggle('is-hidden', f !== 'all' && c.dataset.category !== f);
-      });
-    });
-  });
 })();

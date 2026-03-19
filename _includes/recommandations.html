@@ -1,40 +1,9 @@
 {% assign recommandations_actives = site.data.recommandations | where: "active", true %}
-
-<!-- STATS SECTION -->
-<section class="stats-section section" aria-label="Chiffres cl&eacute;s">
-  <div class="stats-inner">
-    <div class="stats-grid">
-      <div class="stat-item" data-anim="fade-up">
-        <span class="stat-item__value">5+</span>
-        <span class="stat-item__label">Projets livr&eacute;s</span>
-      </div>
-      <div class="stat-sep" aria-hidden="true"></div>
-      <div class="stat-item" data-anim="fade-up">
-        <span class="stat-item__value">100%</span>
-        <span class="stat-item__label">Remote &amp; d&eacute;placements</span>
-      </div>
-      <div class="stat-sep" aria-hidden="true"></div>
-      <div class="stat-item" data-anim="fade-up">
-        <span class="stat-item__value">4+</span>
-        <span class="stat-item__label">Secteurs accompagn&eacute;s</span>
-      </div>
-      <div class="stat-sep" aria-hidden="true"></div>
-      <div class="stat-item" data-anim="fade-up">
-        <span class="stat-item__value">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 15.9 6.8 18l1-5.8-4.2-4.1 5.8-.8L12 2z" fill="currentColor" stroke="none"/></svg>
-          Certifi&eacute;
-        </span>
-        <span class="stat-item__label">Talend Data Integration</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 {% if recommandations_actives.size > 0 %}
-<div class="container testimonial-wrap" data-anim="fade-up">
+<div class="container testimonial-wrap">
   <div class="testimonial-head">
-    <span class="testimonial-head__eyebrow">Recommandation v&eacute;rifi&eacute;e</span>
     <h2 class="testimonial-head__title">Ils parlent mieux que moi</h2>
+    <p class="testimonial-head__sub">Recommandation professionnelle v&eacute;rifi&eacute;e</p>
   </div>
   {% for reco in recommandations_actives %}
   <figure class="testimonial-card">
