@@ -6,6 +6,7 @@
          aria-labelledby="services-title"
          data-section="services">
   <div class="section-header" data-anim="fade-up">
+    <p class="services-section__eyebrow">Ce que je fais concr&egrave;tement</p>
     <h2 id="services-title">{{ services_data.section.title | default: 'Services' }}</h2>
     {% if services_data.section.hook or services_data.section.intro or services_data.section.bullets %}
       <div class="section-pitch">
@@ -51,7 +52,7 @@
 
     {% for service in services_cards %}
       <article id="{{ service.id }}"
-               class="card service-card service-card--{{ service.icon | default: 'generic' }}"
+               class="card service-card service-card--{{ service.icon | default: 'generic' }}{% if forloop.index == 1 %} service-card--featured{% endif %}"
                role="listitem"
                data-anim="fade-up"
                data-service="{{ service.id }}"
@@ -59,6 +60,15 @@
                itemprop="itemListElement"
                aria-labelledby="{{ service.id }}-title">
         <meta itemprop="position" content="{{ forloop.index }}">
+
+        {% if forloop.index == 1 %}
+        <span class="svc-badge-popular" aria-label="Service le plus demand&eacute;">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 15.9 6.8 18l1-5.8-4.2-4.1 5.8-.8L12 2z"/></svg>
+          Populaire
+        </span>
+        {% endif %}
+
+        <span class="svc-num" aria-hidden="true">0{{ forloop.index }}</span>
 
         <header class="svc-head">
           <span class="svc-ico badge-glass"
