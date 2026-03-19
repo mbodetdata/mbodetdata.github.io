@@ -109,9 +109,14 @@
 <link rel="alternate" hreflang="fr" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
 <link rel="alternate" hreflang="x-default" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
 
+{%- comment -%} =================== GOOGLE FONTS ======================== {%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@600;700;800;900&display=swap" rel="stylesheet">
+
 {%- comment -%} =================== CSS / JS ============================= {%- endcomment -%}
-<link rel="preload" href="{{ '/assets/styles.min.css' | relative_url }}" as="style" />
-<link rel="stylesheet" href="{{ '/assets/styles.min.css' | relative_url }}">
+<link rel="preload" href="{{ '/assets/styles.css' | relative_url }}" as="style" />
+<link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
 <script defer src="{{ '/assets/script.min.js' | relative_url }}"></script>
 
 {%- comment -%} =================== SITEMAP / FEED ====================== {%- endcomment -%}

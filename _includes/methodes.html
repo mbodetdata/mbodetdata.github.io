@@ -1,7 +1,7 @@
 <!-- _includes/methodes.html -->
 <section id="methodes" class="section" aria-labelledby="methodes-title"
          itemscope itemtype="https://schema.org/HowTo">
-  <header class="methodes-head">
+  <header class="methodes-head" data-anim="fade-up">
     <p class="methodes-eyebrow">Approche &amp; qualit&eacute;</p>
     <h2 id="methodes-title" class="methodes-title" itemprop="name">Des solutions fiables, pens&eacute;es pour durer</h2>
     <p class="methodes-subtitle" itemprop="description">
@@ -9,7 +9,7 @@
     </p>
   </header>
 
-  <div class="methodes methodes--modern" aria-label="Liste de mes principes de travail">
+  <div class="methodes methodes--modern" aria-label="Liste de mes principes de travail" data-anim-group>
     {% for methode in site.data.methodes %}
       <article class="methode" itemscope itemtype="https://schema.org/HowToStep" itemprop="step">
         <div class="methode-head">
