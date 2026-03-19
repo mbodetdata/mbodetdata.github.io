@@ -1173,3 +1173,92 @@ const Modal = (() => {
   window.addEventListener('scroll', requestUpdate, { passive: true });
   window.addEventListener('resize', requestUpdate, { passive: true });
 })();
+
+/* ==================== 7) Blog — filtre catégories ==================== */
+(() => {
+  const btns  = document.querySelectorAll('#articles .filter-btn');
+  const cards = document.querySelectorAll('#blog-posts-grid .post-card');
+  const empty = document.getElementById('blog-empty-state');
+  const count = document.getElementById('blog-filter-count');
+  if (!btns.length) return;
+
+  const updateCount = (n) => {
+    if (count) count.textContent = n + ' article' + (n !== 1 ? 's' : '');
+  };
+
+  btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      btns.forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      const filter = btn.dataset.filter;
+      let visible = 0;
+      cards.forEach((card) => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+      if (empty) empty.classList.toggle('is-visible', visible === 0);
+      updateCount(visible);
+    });
+  });
+})();
+
+/* ==================== 7b) Blog — mouse-glow sur cards ==================== */
+(() => {
+  const cards = document.querySelectorAll('#blog-posts-grid .post-card');
+  if (!cards.length) return;
+  cards.forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--mouse-y', (e.clientY - r.top) + 'px');
+    });
+  });
+})();
+
+/* ==================== 7c) Blog — count-up stats ==================== */
+(() => {
+  const els = document.querySelectorAll('.stat-block__value[data-count]');
+  if (!els.length) return;
+  if (!('IntersectionObserver' in window)) {
+    els.forEach((el) => { el.textContent = el.dataset.count; });
+    return;
+  }
+  const countUp = (el, target) => {
+    const dur = Math.min(900 + target * 15, 1800);
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target);
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        countUp(entry.target, parseInt(entry.target.dataset.count, 10));
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.7 });
+  els.forEach((el) => obs.observe(el));
+})();
+
+/* ==================== 8) Réalisations — filtre projets ==================== */
+(() => {
+  const filters = document.querySelectorAll('.proj-filter');
+  const cards   = document.querySelectorAll('.real-card-wrap');
+  if (!filters.length) return;
+  filters.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.filter;
+      filters.forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      cards.forEach((c) => {
+        c.classList.toggle('is-hidden', f !== 'all' && c.dataset.category !== f);
+      });
+    });
+  });
+})();
