@@ -8124,3 +8124,157 @@ h1,h2,h3{
   text-transform:uppercase;
   font-size:clamp(.68rem,.6rem + .2vw,.82rem);
 }
+
+/* ============================================================
+   PREMIUM V2 — DJfilm-inspired upgrades
+   ============================================================ */
+
+/* ------ 1. Canvas: fond sombre + grain texture ------------ */
+.bg-canvas{
+  background-color:#080b14;
+}
+.bg-canvas::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat:repeat;
+  background-size:300px 300px;
+}
+
+/* ------ 2. Orbs : réduire le blur pour plus de vivacité --- */
+.bg-orb{
+  filter:blur(55px) !important;
+}
+
+/* ------ 3. Glass morphism — cards ------------------------- */
+.card,
+.service-card,
+.project-card,
+.methode,
+.recent-post-card,
+.cert-item,
+.about-eng__card,
+.contact-hub__card{
+  background:color-mix(in oklab, var(--surface-1) 80%, transparent) !important;
+  -webkit-backdrop-filter:blur(18px) saturate(1.4);
+  backdrop-filter:blur(18px) saturate(1.4);
+  border:1px solid color-mix(in oklab, var(--brand) 14%, transparent);
+  transition:transform .35s cubic-bezier(.16,1,.3,1),
+             box-shadow .35s cubic-bezier(.16,1,.3,1),
+             border-color .35s ease;
+}
+.card:hover,
+.service-card:hover,
+.project-card:hover,
+.methode:hover,
+.recent-post-card:hover,
+.cert-item:hover,
+.about-eng__card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 24px 64px -12px color-mix(in oklab, var(--brand) 28%, transparent),
+             0 0 0 1px color-mix(in oklab, var(--brand) 22%, transparent);
+  border-color:color-mix(in oklab, var(--brand) 35%, transparent);
+}
+
+/* ------ 4. Eyebrow — ligne dégradé avant le texte --------- */
+.methodes-eyebrow,
+.about-eng__eyebrow,
+.about-page__eyebrow,
+.contact-hub__eyebrow,
+.about-hero__eyebrow,
+.recent-works__eyebrow,
+.recent-posts__eyebrow,
+.certs-eyebrow,
+.hero__eyebrow,
+.services__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+}
+.methodes-eyebrow::before,
+.about-eng__eyebrow::before,
+.about-page__eyebrow::before,
+.contact-hub__eyebrow::before,
+.about-hero__eyebrow::before,
+.recent-works__eyebrow::before,
+.recent-posts__eyebrow::before,
+.certs-eyebrow::before,
+.hero__eyebrow::before,
+.services__eyebrow::before{
+  content:'';
+  display:inline-block;
+  width:22px;
+  height:2px;
+  border-radius:2px;
+  background:linear-gradient(to right, var(--brand), var(--brand-2));
+  flex-shrink:0;
+}
+
+/* ------ 5. data-anim-delay : décalages explicites --------- */
+[data-anim-delay="1"]{ transition-delay: 80ms !important; }
+[data-anim-delay="2"]{ transition-delay:160ms !important; }
+[data-anim-delay="3"]{ transition-delay:240ms !important; }
+[data-anim-delay="4"]{ transition-delay:320ms !important; }
+[data-anim-delay="5"]{ transition-delay:400ms !important; }
+[data-anim-delay="6"]{ transition-delay:480ms !important; }
+
+/* ------ 6. Séparateur ambiant avant #contact -------------- */
+#contact{
+  position:relative;
+}
+#contact::before{
+  content:'';
+  display:block;
+  width:min(520px,80%);
+  height:1px;
+  margin:0 auto 4rem;
+  background:linear-gradient(to right,
+    transparent,
+    color-mix(in oklab, var(--brand) 50%, transparent),
+    color-mix(in oklab, var(--brand-2) 50%, transparent),
+    transparent);
+}
+
+/* ------ 7. Footer semi-transparent ------------------------ */
+.site-footer{
+  background:color-mix(in oklab, var(--surface-1) 70%, transparent) !important;
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+  border-top:1px solid color-mix(in oklab, var(--brand) 12%, transparent);
+}
+
+/* ------ 8. Hero CTA buttons — micro-interaction ----------- */
+.hero__cta .btn,
+.hero-cta .btn{
+  transition:transform .28s cubic-bezier(.16,1,.3,1),
+             box-shadow .28s cubic-bezier(.16,1,.3,1),
+             background .2s ease;
+}
+.hero__cta .btn:hover,
+.hero-cta .btn:hover{
+  transform:translateY(-3px) scale(1.025);
+  box-shadow:0 12px 32px -6px color-mix(in oklab, var(--brand) 40%, transparent);
+}
+
+/* ------ 9. Sections transparentes — orbs visibles --------- */
+.section,
+.services-section,
+.methodes-section,
+.recent-works,
+.certs,
+.about-section,
+.blog-section{
+  background:transparent !important;
+}
+
+/* ------ 10. Smooth focus ring ---------------------------- */
+:focus-visible{
+  outline:2px solid var(--brand);
+  outline-offset:3px;
+  border-radius:4px;
+}
+/* ============================================================ */
