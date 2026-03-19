@@ -10223,3 +10223,129 @@ h1,h2,h3{
   .not-found .hero{ grid-template-columns: 1.25fr .9fr; }
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   FLOATING CTA — "Prendre rendez-vous · 30 min offertes"
+   Visible sur toutes les pages, généré dynamiquement par le JS
+   ═══════════════════════════════════════════════════════════════ */
+.booking-float-cta{
+  position:fixed;
+  right:18px;
+  bottom:22px;
+  z-index:9000;
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  padding:.8rem 1.15rem;
+  border-radius:999px;
+  border:1px solid color-mix(in oklab, var(--brand) 55%, transparent);
+  background:linear-gradient(135deg,
+    color-mix(in oklab, var(--brand) 82%, #000 18%),
+    color-mix(in oklab, var(--brand-2) 68%, #000 32%));
+  color:#fff;
+  font-family:inherit;
+  font-weight:700;
+  letter-spacing:.01em;
+  cursor:pointer;
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+  box-shadow:
+    0 16px 40px -6px color-mix(in oklab, var(--brand) 48%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--brand) 30%, transparent),
+    inset 0 1px 0 rgba(255,255,255,.12);
+  transition:transform .25s cubic-bezier(.16,1,.3,1),
+             box-shadow .25s cubic-bezier(.16,1,.3,1),
+             opacity .2s ease;
+  will-change:transform;
+}
+.booking-float-cta:hover{
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:
+    0 24px 52px -6px color-mix(in oklab, var(--brand) 56%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--brand) 40%, transparent),
+    inset 0 1px 0 rgba(255,255,255,.16);
+}
+.booking-float-cta:active{
+  transform:translateY(0) scale(.98);
+}
+.booking-float-cta:focus-visible{
+  outline:none;
+  box-shadow:
+    0 0 0 3px var(--surface-0),
+    0 0 0 6px color-mix(in oklab, var(--brand) 70%, transparent);
+}
+
+/* Icône calendrier */
+.booking-float-cta .cal-ico{
+  display:grid;
+  place-items:center;
+  width:36px; height:36px;
+  min-width:36px;
+  border-radius:10px;
+  background:rgba(255,255,255,.18);
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+  flex-shrink:0;
+}
+
+/* Label texte */
+.booking-float-cta .cal-label{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  line-height:1.15;
+  gap:.05rem;
+}
+.booking-float-cta .cal-label strong{
+  font-size:.88rem;
+  font-weight:800;
+  letter-spacing:.005em;
+}
+.booking-float-cta .cal-label small{
+  font-size:.68rem;
+  font-weight:500;
+  opacity:.82;
+  letter-spacing:.02em;
+}
+
+/* Pulse ring — attention grabber */
+.booking-float-cta::before{
+  content:'';
+  position:absolute;
+  inset:-6px;
+  border-radius:inherit;
+  background:transparent;
+  border:2px solid color-mix(in oklab, var(--brand) 50%, transparent);
+  opacity:0;
+  animation:float-cta-pulse 3s ease-out 2s infinite;
+}
+@keyframes float-cta-pulse{
+  0%  { transform:scale(1);    opacity:.7; }
+  70% { transform:scale(1.12); opacity:0; }
+  100%{ transform:scale(1.12); opacity:0; }
+}
+
+/* Masquer si modal ouverte ou reduced-motion */
+.is-modal-open .booking-float-cta{
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(12px);
+}
+@media (prefers-reduced-motion:reduce){
+  .booking-float-cta::before{ animation:none; }
+  .booking-float-cta{ transition:none; }
+}
+
+/* Mobile */
+@media (max-width:540px){
+  .booking-float-cta{
+    right:12px;
+    bottom:16px;
+    padding:.72rem 1rem;
+    gap:.5rem;
+  }
+  .booking-float-cta .cal-label strong{ font-size:.82rem; }
+  .booking-float-cta .cal-label small{ display:none; }
+  .booking-float-cta .cal-ico{ width:30px; height:30px; min-width:30px; border-radius:8px; }
+  .booking-float-cta::before{ display:none; }
+}
+

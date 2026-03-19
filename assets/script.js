@@ -606,32 +606,7 @@ const Modal = (() => {
       document.body.appendChild(btn);
     }
 
-    if (!document.getElementById('booking-float-cta-style')) {
-      const st = document.createElement('style');
-      st.id = 'booking-float-cta-style';
-      st.textContent = `
-        .booking-float-cta{ position:fixed; right:14px; bottom:14px; z-index:9999;
-          display:inline-flex; align-items:center; gap:.55rem; padding:.75rem 1.05rem;
-          border-radius:999px; border:0; background:linear-gradient(135deg,
-            color-mix(in oklab, var(--brand) 74%, transparent),
-            color-mix(in oklab, var(--brand-2) 58%, transparent));
-          color:#fff; font-weight:700; letter-spacing:.01em;
-          box-shadow:0 14px 32px color-mix(in oklab, var(--brand) 36%, transparent);
-          cursor:pointer; transition:transform .22s ease, box-shadow .22s ease; }
-        .booking-float-cta .cal-label{ display:flex; flex-direction:column; align-items:flex-start; line-height:1.1; }
-        .booking-float-cta .cal-label strong{ font-size:.9rem; font-weight:800; }
-        .booking-float-cta .cal-label small{ font-size:.68rem; opacity:.78; }
-        .booking-float-cta:hover{ transform:translateY(-2px); box-shadow:0 20px 44px color-mix(in oklab, var(--brand) 42%, transparent); }
-        .booking-float-cta:focus-visible{ outline:none; box-shadow:0 0 0 4px color-mix(in oklab, #fff 75%, transparent), 0 0 0 8px color-mix(in oklab, var(--brand) 48%, transparent); }
-        .booking-float-cta .cal-ico{ display:grid; place-items:center; width:34px; height:34px; border-radius:12px;
-          background: color-mix(in oklab, rgba(255,255,255,.85) 24%, transparent);
-          backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-        @media (max-width:540px){ .booking-float-cta{ right:11px; bottom:11px; padding:.68rem .95rem; }
-          .booking-float-cta .cal-label strong{ font-size:.86rem; }
-          .booking-float-cta .cal-label small{ display:none; } }
-      `;
-      document.head.appendChild(st);
-    }
+    /* styles .booking-float-cta déplacés dans styles.css */
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
