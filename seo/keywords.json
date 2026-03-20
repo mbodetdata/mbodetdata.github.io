@@ -1,5 +1,0 @@
----
-layout: null
-permalink: /seo/keywords.json
----
-{{ site.data.keywords | jsonify }}

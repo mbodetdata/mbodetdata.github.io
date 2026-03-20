@@ -1,137 +1,104 @@
-# =====================================================================
-#  ABM — Configuration Jekyll (optimisée GitHub Pages + SEO)
-#  Docs: https://jekyllrb.com/docs/configuration/
-# =====================================================================
- 
-# ------------------------ 1) Métadonnées site ------------------------
-title: "BM Data - Libérez-vous du temps, Maximisez vos gains"       # <title> par défaut
-tagline: "Intégration de données, pipelines Talend, dashboards Power BI"
-description: "Intégrations de données, ETL Talend, modèles DAX et dashboards Power BI performants."
-lang: fr                                                   # pour <html lang="fr">
-locale: fr_FR                                              # pour Open Graph/Schema
-timezone: Europe/Paris
+# ─────────────────────────────────────────────────────────────────
+# BM DATA — Configuration Jekyll
+# ─────────────────────────────────────────────────────────────────
 
-# ------------------------ 2) URL & déploiement -----------------------
-# ⚠️ Remplace par ton domaine final. Si tu restes sur GitHub Pages user, mets:
-# url: "https://marssouss.github.io"
-url: "https://bmdata.fr"                          # domaine canonique (ABSOLU)
-baseurl: ""                                               # vide pour site user (username.github.io)
-# Si tu utilises un domaine custom: url: "https://ton-domaine.fr" et baseurl: ""
+title: "BM Data"
+tagline: "Conseil en données pour TPE/PME"
+description: "BM Data est un consultant data basé à Agen. Il aide les TPE et PME à exploiter leurs données pour prendre de meilleures décisions, optimiser leurs performances et gagner du temps."
+# ─── DÉPLOIEMENT ───────────────────────────────────────────────
+# Domaine personnalisé bmdata.fr → baseurl: "" / url: "https://bmdata.fr"
+# GitHub Pages sans domaine custom → baseurl: "/test-site" / url: "https://mbodetdata.github.io"
+#
+# Version TEST (GitHub Pages sans domaine custom) :
+# baseurl: "/test-site"
+# url: "https://mbodetdata.github.io"
+#
+# Décommentez ci-dessous et commentez les lignes ci-dessus quand le domaine custom est actif :
+baseurl: ""
+# url: "https://bmdata.fr"
+url: "https://test.bmdata.fr"
+lang: "fr"
 
-# Image par défaut pour Open Graph/Twitter (fichier existant dans /assets/img)
-og_image: "/assets/img/logo_512.webp"
-
-# Liens légaux (utilisés dans le footer)
-legal_url: "/mentions-legales/"
-privacy_url: "/mentions-legales/#donnees-personnelles"
-
-# ------------------------ 3) Plugins supportés GH Pages --------------
-# (Tous sont compatibles avec GitHub Pages)
-plugins:
-  - jekyll-sitemap    # /sitemap.xml auto
-  - jekyll-seo-tag    # métadonnées SEO (⚠️ n’insère pas {% seo %} si tu as un head custom)
-  - jekyll-feed       # flux RSS/Atom des posts
-
-# Astuce: on conserve jekyll-seo-tag installé (utile pour certains helpers),
-# mais comme ton `_includes/head.html` est custom et complet, NE PAS ajouter
-# `{% seo %}` dans le head pour éviter les doublons de <meta>.
-
-# ------------------------ 4) Auteur (pour JSON-LD & templates) -------
+# Identité
 author:
-  photo: "/assets/img/Photo_profil-640.webp"
-  name: "BODET Martial"
-  prenom_nom: "Martial BODET"         # alias si tu l’utilises dans les includes
-  enterprise: "BMData"
-  job_title: "Consultant Data"
-  email: "contact@bmdata.fr"      # ⚠️ remplace
-  phone: "+33 6 70 21 09 28"          # ⚠️ remplace
-  url: "https://bmdata.fr"  # ou ton domaine custom
+  name: "Martial Bodet"
+  email: "contact@bmdata.fr"
+  twitter: "@bmdata_fr"
+
+# Localisation
+location:
+  city: "Agen"
+  region: "Lot-et-Garonne"
+  country: "France"
+  postal_code: "47000"
+  phone: "+33 (0)6 70 21 09 28"
+  address: "Agen, 47000, France"
+
+# Réseaux sociaux
+social:
   linkedin: "https://www.linkedin.com/in/martial-bodet/"
-  sameAs:
-    - "https://www.linkedin.com/in/martial-bodet/"
-    - "https://github.com/mbodetdata"
-  # Liens pris dans le HTML (contact & Calendly)
-#  calendly_url: "https://calendly.com/bmdata/30min"
-  cal_url: "https://outlook.office.com/book/meeting@bmdata.fr/"
+  github: "https://github.com/mbodetdata"
+  twitter: ""
 
-  # Mentions légales (EI / Micro-entreprise)
-  address: "31 Chemin du Rieumort, Brax, 47310"
-  address_street: "31 Chemin du Rieumort"
-  address_city: "Brax"
-  address_postal: "47310"
-  address_region: "Lot-et-Garonne"
-  address_country: "FR"
-  city_main: "Agen"
-  siret: "99215339500015"
-  ape: "62.02A"
-  rcs_rm: ""
-  vat: "FR65992153395"
-  vat_note: "TVA non applicable, art. 293 B du CGI"
-  mediation_name: ""
-  mediation_url: ""
-  b2c: false
+# SEO & open graph
+favicon: "/assets/img/favicon/favicon-32.png"
+logo: "/assets/img/logo_512.webp"
+og_image: "/assets/img/logo_512.webp"
+twitter_card: "summary_large_image"
 
-  # Optionnel (si tu veux la meta twitter:creator)
-  # twitter: "ton_handle_sans@"
-
-# ------------------------ 5) Sortie & permaliens ---------------------
-permalink: /:categories/:title/          # URLs SEO-friendly (sans .html)
-# Pour un blog simple: "/blog/:title/" est aussi possible.
-
-# ------------------------ 6) Defaults (front-matter auto) ------------
-# Valeurs appliquées si absentes dans les pages/posts.
-
-
-defaults:
-  - scope: { path: "" }
-    values:
-      layout: "page"
-      lang: "fr"
-      image: "{{ site.og_image }}"      # image OG par défaut si page.image absent
-      robots: "index,follow"            # override page par page avec `noindex`
-  - scope: { path: "", type: "posts" }
-    values:
-      layout: "post"
-      lang: "fr"
-      image: "{{ site.og_image }}"
-      robots: "index,follow"
-      active: true
-
-# ------------------------ 7) Markdown / Rendu ------------------------
+# Build
 markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+
 kramdown:
   input: GFM
-  hard_wrap: false
-  auto_ids: true
+  syntax_highlighter: rouge
 
-# ------------------------ 8) Flux & Sitemap --------------------------
-# jekyll-feed et jekyll-sitemap n’exigent rien de plus par défaut.
-feed:
-  path: atom.xml                        # flux à /atom.xml (par défaut rss.xml)
+# Plugins (compatibles GitHub Pages)
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
-# ------------------------ 9) Build / perf ----------------------------
-# Ces options sont sûres pour GH Pages (pas d’outils non supportés).
-strict_front_matter: false
-future: false                           # n’affiche pas les posts datés dans le futur
-lsi: false                              # pas d’indexation LSI (perf)
-# incremental: true                     # utile en local (pas sur GH Pages build)
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:title/
 
-# ------------------------ 10) Fichiers à exclure ---------------------
+# Pagination blog
+paginate: 6
+paginate_path: "/blog/page:num/"
+
+# Exclusions du build
 exclude:
-  - README.md
+  - Gemfile
+  - Gemfile.lock
   - node_modules
-  - package.json
-  - package-lock.json
-  - yarn.lock
+  - vendor
+  - .git
   - .gitignore
-  - .github
+  - README.md
+  - "*.sh"
 
-# ------------------------ 11) Divers (optionnel) ---------------------
-# Collections personnalisées (si besoin)
-# collections:
-#   projects:
-#     output: true
-#     permalink: /projets/:name/
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Martial Bodet"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
 
-bandeau.photo:
-  photo: "/assets/img/bm-hero_530_comp.webp"
+# Timezone
+timezone: Europe/Paris
+
+# Feed
+feed:
+  path: feed.xml

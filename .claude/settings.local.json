@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(node _append_css14.js)"
-    ]
-  }
-}

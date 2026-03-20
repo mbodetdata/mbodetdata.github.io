@@ -1,201 +1,63 @@
-<!-- _includes/header.html -->
-<header class="site-header" role="banner"
-        itemscope itemtype="https://schema.org/WPHeader">
-  <!-- Skip link (SXO/A11y) -->
-  <a class="sr-only" href="#main">Aller au contenu</a>
+{% assign g   = site.data.global %}
+{% assign nav = site.data.navigation %}
 
-  <div class="container navbar">
-    <!-- Marque -->
-    <a class="brand" href="{{ '/' | relative_url }}" rel="home"
-       itemprop="publisher" itemscope itemtype="https://schema.org/Organization"
-       aria-label="Aller a l'accueil"
-       {% if page.url == "/" or page.url == site.baseurl %}aria-current="page"{% endif %}>
-      <img src="{{ '/assets/img/logo_112_comp.webp' | relative_url }}"
-           alt="Logo {{ site.author.enterprise }}"
-           class="brand-logo"
-           width="256" height="256" loading="eager" decoding="async" fetchpriority="high"
-           itemprop="logo">
-      <meta itemprop="name" content="{{ site.author.enterprise | default: site.title }}">
-      <meta itemprop="url"  content="{{ site.url | default: site.github.url | absolute_url }}">
-      {% if site.author.linkedin %}<link itemprop="sameAs" href="{{ site.author.linkedin }}">{% endif %}
-      {% if site.author.sameAs %}
-        {% for p in site.author.sameAs %}<link itemprop="sameAs" href="{{ p }}">{% endfor %}
-      {% endif %}
+<!-- Backdrop menu mobile -->
+<div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+
+    <!-- Logo -->
+    <a href="{{ '/' | relative_url }}" class="site-logo" aria-label="{{ g.site_name }} — Retour à l'accueil">
+      <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" class="site-logo-img">
     </a>
 
-    <!-- Nav desktop -->
-    <nav class="nav-desktop" aria-label="Navigation principale"
-         itemscope itemtype="https://schema.org/SiteNavigationElement">
-            <ul class="nav-inline" role="list">
+    <!-- Navigation principale -->
+    <nav class="site-nav" id="site-nav" role="navigation" aria-label="Navigation principale">
+      {% for item in nav.main %}
+      <a href="{{ item.url | relative_url }}"
+         class="nav-link{% if item.highlight %} nav-cta{% endif %}{% if page.url == item.url or page.url == item.active_path %} active{% endif %}"
+         {% if page.url == item.url or page.url == item.active_path %}aria-current="page"{% endif %}>
+        {{ item.label }}
+      </a>
+      {% endfor %}
 
-        <li>
-          <a class="chip" data-nav="home" href="{{ '/' | relative_url }}" itemprop="url"
-             {% if page.url == '/' %}aria-current="page"{% endif %}
-             aria-label="Aller a la page Accueil">
-            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 11.5L12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"
-                    fill="currentColor"/>
-            </svg>
-            Accueil
-          </a>
-        </li>
-
-        <li>
-          <a class="chip" data-nav="about" href="{{ '/about-me/' | relative_url }}" itemprop="url"
-             {% if page.url == '/about-me/' %}aria-current="page"{% endif %}
-             aria-label="Aller a la page A propos">
-            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-3.31 0-6 1.79-6 4v1h12v-1c0-2.21-2.69-4-6-4z"
-                    fill="currentColor"/>
-            </svg>
-            &Agrave; propos
-          </a>
-        </li>
-
-        <li>
-          <a class="chip" data-nav="services" href="{{ '/#services' | relative_url }}" itemprop="url"
-             {% if page.url contains '/services-' %}aria-current="page"{% endif %}
-             aria-label="Aller vers la page Services">
-            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            Services
-          </a>
-        </li>
-
-        <li>
-          <a class="chip" data-nav="certifications" href="{{ '/about-me/#certifications' | relative_url }}" itemprop="url"
-             aria-label="Aller vers la section Certifications de la page A propos">
-            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 15.9 6.8 18l1-5.8-4.2-4.1 5.8-.8L12 2z" fill="currentColor"/></svg>
-            Certifications
-          </a>
-        </li>
-
-        <li>
-          <a class="chip" data-nav="realisations" href="{{ '/realisation/' | relative_url }}" itemprop="url"
-             {% if page.url == '/realisation/' %}aria-current="page"{% endif %}
-             aria-label="Aller a la page Realisations">
-            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h6v6H4zM14 6h6v6h-6zM4 16h6v6H4zM14 16h6v6h-6z" fill="currentColor"/></svg>
-            R&eacute;alisations
-          </a>
-        </li>
-        <li>
-          <a class="chip" data-nav="blog" href="{{ '/blog/' | relative_url }}" itemprop="url"
-             {% if page.url contains '/blog/' %}aria-current="page"{% endif %}
-             aria-label="Aller au blog">
-            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            Blog
-          </a>
-        </li>
-        <li>
-          <a class="chip" data-nav="contact" href="{{ '/#contact' | relative_url }}" itemprop="url"
-             aria-label="Aller a la section Contact">
-            <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 4V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            Contact
-          </a>
-        </li>
-        <!-- CTA supprime : remplace par le bouton flottant Booking -->
-      </ul>
+      <!-- Hub + séparateur (visibles uniquement en menu mobile) -->
+      <div class="nav-mobile-divider" aria-hidden="true"></div>
+      <a href="{{ g.hub.url }}" target="_blank" rel="noopener noreferrer"
+         class="nav-mobile-hub"
+         aria-label="{{ g.hub.label }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6Zm-9.75 9.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clip-rule="evenodd"/>
+        </svg>
+        {{ g.hub.label }}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="nav-mobile-hub-ext" aria-hidden="true">
+          <path fill-rule="evenodd" d="M8.914 6.025a.75.75 0 0 1 1.06 0 6 6 0 0 1 0 8.485.75.75 0 0 1-1.06-1.061 4.5 4.5 0 0 0 0-6.364.75.75 0 0 1 0-1.06ZM6.025 8.914a.75.75 0 0 1 0 1.06 4.5 4.5 0 0 0 0 6.364.75.75 0 0 1-1.06 1.06 6 6 0 0 1 0-8.484.75.75 0 0 1 1.06 0Z" clip-rule="evenodd"/>
+        </svg>
+      </a>
     </nav>
 
-    <!-- Actions à droite -->
-    <div class="nav-actions">
-      <!-- Accès direct au hub -->
-      <a class="hub-nav-btn" href="https://hub.bmdata.fr/" aria-label="Accéder à l'espace ressources BM Data (Hub)" title="Espace ressources & outils BM Data">
-        <svg class="hub-nav-btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="12" cy="7" r="2.5" stroke="currentColor" stroke-width="2"/>
-          <circle cx="6.5" cy="17" r="2.5" stroke="currentColor" stroke-width="2"/>
-          <circle cx="17.5" cy="17" r="2.5" stroke="currentColor" stroke-width="2"/>
-          <path d="M11 9.5 7.7 15M13 9.5l3.3 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Actions header : hub (desktop) + burger (mobile) -->
+    <div class="header-actions">
+
+      <!-- Hub icon — desktop uniquement -->
+      <a href="{{ g.hub.url }}" target="_blank" rel="noopener noreferrer"
+         class="nav-hub"
+         aria-label="{{ g.hub.label }}"
+         data-tooltip="{{ g.hub.label }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6Zm-9.75 9.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clip-rule="evenodd"/>
         </svg>
-        <span>Mon hub</span>
       </a>
 
-      <!-- Toggle mobile -->
-      <button class="nav-toggle" type="button"
-              aria-controls="nav-collapsible"
-              aria-expanded="false"
-              aria-label="Afficher le menu">
-        <span>Menu</span>
-        <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <!-- Burger mobile -->
+      <button type="button" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
+
     </div>
+
   </div>
-
-  <!-- Menu mobile -->
-  <nav id="nav-collapsible" class="nav-collapsible" aria-label="Navigation mobile"
-       itemscope itemtype="https://schema.org/SiteNavigationElement">
-        <ul class="nav-list" role="list">
-      <li><a data-nav="home" href="{{ '/' | relative_url }}" itemprop="url"
-             {% if page.url == '/' %}aria-current="page"{% endif %}
-             aria-label="Aller a la page Accueil">
-        <svg class="ni" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 11.5L12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"
-                fill="currentColor"/>
-        </svg>
-        Accueil
-      </a></li>
-      <li><a data-nav="about" href="{{ '/about-me/' | relative_url }}" itemprop="url"
-             {% if page.url == '/about-me/' %}aria-current="page"{% endif %}
-             aria-label="Aller a la page A propos">
-        <svg class="ni" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-3.31 0-6 1.79-6 4v1h12v-1c0-2.21-2.69-4-6-4z"
-                fill="currentColor"/>
-        </svg>
-        &Agrave; propos
-      </a></li>
-      <li><a data-nav="certifications" href="{{ '/about-me/#certifications' | relative_url }}" itemprop="url" aria-label="Aller vers la section Certifications de la page A propos">
-        <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 15.9 6.8 18l1-5.8-4.2-4.1 5.8-.8L12 2z" fill="currentColor"/></svg>
-        Certifications
-      </a></li>
-      <li><a data-nav="methodes" href="{{ '/about-me/#methodes' | relative_url }}" itemprop="url"
-             {% if page.url == '/methodes/' %}aria-current="page"{% endif %}
-             aria-label="Aller a la page Methodes">
-        <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6l-2 2M5 18l-2 2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm8 12-3-3M7 7 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        Methodes
-      </a></li>
-      <li><a data-nav="services" href="{{ '/services-talend-talaxie/' | relative_url }}" itemprop="url"
-             {% if page.url contains '/services-' %}aria-current="page"{% endif %}
-             aria-label="Aller vers la page Services">
-        <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        Services
-      </a></li>
-      <li><a data-nav="realisations" href="{{ '/realisation/' | relative_url }}" itemprop="url"
-             {% if page.url == '/realisation/' %}aria-current="page"{% endif %}
-             aria-label="Aller a la page Realisations">
-        <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h6v6H4zM14 6h6v6h-6zM4 16h6v6H4zM14 16h6v6h-6z" fill="currentColor"/></svg>
-        R&eacute;alisations
-      </a></li>
-      <li><a data-nav="blog" href="{{ '/blog/' | relative_url }}" itemprop="url"
-             {% if page.url contains '/blog/' %}aria-current="page"{% endif %}
-             aria-label="Aller au blog">
-        <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        Blog
-      </a></li>
-      <li><a data-nav="contact" href="{{ '/#contact' | relative_url }}" itemprop="url" aria-label="Aller a la section Contact">
-        <svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 4V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-        Contact
-      </a></li>
-    </ul>
-  </nav>
-
-  <!-- Expose le lien RDV au JS (Booking Microsoft (fallback Calendly)) -->
-  <meta name="cal:link" content="{{ site.author.cal_url | default: site.author.calendly_url }}">
 </header>
-
-<!-- Fallback si JS désactivé -->
-<noscript>
-  {% if site.author.cal_url %}
-    <p class="container"><a class="btn cta" href="{{ site.author.cal_url }}" rel="noopener">Réserver un créneau</a></p>
-  {% elsif site.author.calendly_url %}
-    <p class="container"><a class="btn cta" href="{{ site.author.calendly_url }}" rel="noopener">Réserver un créneau</a></p>
-  {% endif %}
-</noscript>
-
-
-
-
-
-
-

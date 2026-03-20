@@ -1,288 +1,81 @@
-<!-- _includes/head.html -->
+{% assign g = site.data.global %}
+{% assign page_title    = page.title | default: g.site_name %}
+{% assign page_desc     = page.description | default: site.description %}
+{% assign page_image    = page.og_image | default: site.og_image %}
+{% assign canonical_url = page.url | absolute_url %}
 
-{%- comment -%} =================== MÉTA DE BASE =================== {%- endcomment -%}
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Charset & Viewport -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-{%- comment -%} =================== FAVICONS & APP ICONS =================== {%- endcomment -%}
-{%- assign favicon_path = '/assets/img/favicon' -%}
-<link rel="icon" href="{{ (favicon_path | append: '/favicon.svg') | relative_url }}" type="image/svg+xml">
-<link rel="icon" href="{{ (favicon_path | append: '/favicon-32.webp')  | relative_url }}" sizes="32x32" type="image/png">
-<link rel="icon" href="{{ (favicon_path | append: '/favicon-16.webp')  | relative_url }}" sizes="16x16" type="image/png">
-<link rel="apple-touch-icon" href="{{ (favicon_path | append: '/apple-touch-icon.webp') | relative_url }}">
-<link rel="mask-icon" href="{{ (favicon_path | append: '/safari-pinned-tab.svg') | relative_url }}" color="#5865f2">
-<link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
-
-{%- comment -%} =================== TITRE + DESCRIPTION =================== {%- endcomment -%}
-{%- assign meta_title = page.title | default: site.title -%}
-{%- if page.title and page.title != site.title -%}
-<title>{{ meta_title }} | {{ site.author.enterprise | default: "BM Data" }}</title>
-{%- else -%}
-<title>{{ meta_title }}</title>
-{%- endif -%}
-<meta name="description" content="{{ page.description | default: site.description | strip_newlines | escape }}" />
-{%- assign keywords_data = site.data.keywords | default: nil -%}
-{%- if keywords_data -%}
-  {%- assign keywords_all = keywords_data.global | default: [] -%}
-  {%- if page.keywords_groups -%}
-    {%- for grp in page.keywords_groups -%}
-      {%- assign grp_values = keywords_data[grp] | default: [] -%}
-      {%- assign keywords_all = keywords_all | concat: grp_values -%}
-    {%- endfor -%}
-  {%- endif -%}
-  {%- if page.keywords_group -%}
-    {%- assign grp_values = keywords_data[page.keywords_group] | default: [] -%}
-    {%- assign keywords_all = keywords_all | concat: grp_values -%}
-  {%- endif -%}
-  {%- if page.keywords -%}
-    {%- assign keywords_all = keywords_all | concat: page.keywords -%}
-  {%- endif -%}
-  {%- if page.layout == 'post' and page.tags -%}
-    {%- assign keywords_all = keywords_all | concat: page.tags -%}
-  {%- endif -%}
-  {%- assign keywords_all = keywords_all | uniq -%}
-  {%- if keywords_all and keywords_all != empty -%}
-<meta name="keywords" content="{{ keywords_all | join: ', ' | escape }}" />
-  {%- endif -%}
-{%- endif -%}
-<meta name="author" content="{{ site.author.name }}">
-
-{%- comment -%} =================== CANONICAL =================== {%- endcomment -%}
-<link rel="canonical" href="{{ page.url | replace: 'index.html','' | absolute_url }}" />
-
-{%- comment -%} =================== ROBOTS ================= {%- endcomment -%}
-{%- assign robots_default = site.robots | default: 'index,follow,max-image-preview:large' -%}
-{%- if page.noindex == true -%}
-  <meta name="robots" content="noindex,follow" />
-{%- else -%}
-  <meta name="robots" content="{{ page.robots | default: robots_default }}" />
-{%- endif -%}
-
-{%- comment -%} =================== THEME-COLOR ================= {%- endcomment -%}
-<meta name="theme-color" content="#0f172a" />
-
-{% comment %} =================== PERF HINTS (Microsoft Booking) ================ {% endcomment %}
-<link rel="preconnect" href="https://outlook.office.com" crossorigin>
-<link rel="dns-prefetch" href="//outlook.office.com">
-
-{%- comment -%} =================== OPEN GRAPH =========================== {%- endcomment -%}
-{%- assign og_title = page.og_title | default: meta_title -%}
-{%- assign og_desc  = page.description | default: site.description -%}
-{%- assign og_image = page.image | default: site.og_image | default: '/assets/img/og-image.webp' -%}
-{%- assign og_type  = 'website' -%}
-{%- if page.layout == 'post' -%}{% assign og_type = 'article' %}{% endif -%}
-
-<meta property="og:type" content="{{ og_type }}" />
-<meta property="og:site_name" content="{{ site.title }}" />
-<meta property="og:locale" content="{{ site.locale | default: 'fr_FR' }}" />
-<meta property="og:title" content="{{ og_title }} | {{ site.title }}" />
-<meta property="og:description" content="{{ og_desc | escape }}" />
-<meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}" />
-<meta property="og:image" content="{{ og_image | absolute_url }}" />
-<meta property="og:image:secure_url" content="{{ og_image | absolute_url }}" />
-<meta property="og:image:alt" content="{{ og_title }} - {{ site.title }}" />
-{%- if page.last_modified_at -%}
-<meta property="og:updated_time" content="{{ page.last_modified_at | date_to_xmlschema }}" />
-{%- endif -%}
-{%- if page.layout == 'post' -%}
-  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
-  {%- if page.last_modified_at -%}
-  <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}" />
-  {%- endif -%}
-  {%- if page.tags -%}
-    {%- for tag in page.tags -%}
-      <meta property="article:tag" content="{{ tag }}" />
-    {%- endfor -%}
-  {%- endif -%}
-{%- endif -%}
-
-{%- comment -%} =================== TWITTER ======================== {%- endcomment -%}
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="{{ og_title }} | {{ site.title }}" />
-<meta name="twitter:description" content="{{ og_desc | escape }}" />
-<meta name="twitter:image" content="{{ og_image | absolute_url }}" />
-{%- if site.author.twitter -%}<meta name="twitter:creator" content="@{{ site.author.twitter | replace:'@','' }}" />{%- endif -%}
-{%- if site.twitter_site -%}<meta name="twitter:site" content="@{{ site.twitter_site | replace:'@','' }}" />{%- endif -%}
-
-{%- comment -%} =================== HREFLANG ======================== {%- endcomment -%}
-<link rel="alternate" hreflang="fr" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
-<link rel="alternate" hreflang="x-default" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
-
-{%- comment -%} =================== CSS / JS ============================= {%- endcomment -%}
-<link rel="preload" href="{{ '/assets/styles.css' | relative_url }}" as="style" />
-<link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}"> 
-
-<!-- <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}"> -->
-<script defer src="{{ '/assets/script.min.js' | relative_url }}"></script>
-<script defer src="{{ '/assets/main.js' | relative_url }}"></script>
-
-{%- comment -%} =================== SITEMAP / FEED ====================== {%- endcomment -%}
-<link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}">
-<link rel="alternate" type="application/atom+xml" title="{{ site.title }} — Flux" href="{{ '/atom.xml' | absolute_url }}">
-
-{%- comment -%} =================== JSON-LD : WebPage / Article ========= {%- endcomment -%}
-{%- assign is_post = false -%}{% if page.layout == 'post' %}{% assign is_post = true %}{% endif -%}
-{%- assign page_type = 'WebPage' -%}
-{%- assign site_url_abs = site.url | default: site.github.url -%}
-{%- assign org_name = 'BM Data' -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": {{ page_type | jsonify }},
-  "name": {{ meta_title | jsonify }},
-  "url": {{ page.url | replace:'index.html','' | absolute_url | jsonify }},
-  "inLanguage": {{ site.locale | default: "fr-FR" | jsonify }},
-  "description": {{ (page.description | default: site.description) | strip_newlines | jsonify }},
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": {{ site.title | jsonify }},
-    "url": {{ site_url_abs | absolute_url | jsonify }}
-  }{% if is_post %},
-  "datePublished": "{{ page.date | date_to_xmlschema }}"{% endif %}{% if page.last_modified_at %},
-  "dateModified": "{{ page.last_modified_at | date_to_xmlschema }}"{% endif %}
-}
-</script>
-
-{%- comment -%} ===== JSON-LD : Person & ProfessionalService ============ {%- endcomment -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "name": {{ site.author.name | jsonify }},
-      "jobTitle": {{ site.author.job_title | default: "Consultant freelance ETL Talend & Power BI" | jsonify }},
-      "url": {{ site.author.url | default: site.url | default: site.github.url | absolute_url | jsonify }}{% if site.author.email %},
-      "email": {{ site.author.email | prepend: "mailto:" | jsonify }}{% endif %}{% if site.author.sameAs %},
-      "sameAs": {{ site.author.sameAs | jsonify }}{% endif %}
-    },
-    {
-      "@type": ["ProfessionalService", "LocalBusiness"],
-      "name": {{ org_name | jsonify }},
-      "description": {{ site.description | jsonify }},
-      "url": {{ site_url_abs | absolute_url | jsonify }}{% if site.author.phone %},
-      "telephone": {{ site.author.phone | jsonify }}{% endif %}{% if site.author.email %},
-      "email": {{ site.author.email | prepend: "mailto:" | jsonify }}{% endif %},
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": {{ site.author.address_street | default: "31 Chemin du Rieumort" | jsonify }},
-        "addressLocality": {{ site.author.address_city | default: "Brax" | jsonify }},
-        "postalCode": {{ site.author.address_postal | default: "47310" | jsonify }},
-        "addressRegion": {{ site.author.address_region | default: "Lot-et-Garonne" | jsonify }},
-        "addressCountry": {{ site.author.address_country | default: "FR" | jsonify }}
-      },
-      "areaServed": [
-        { "@type": "Country", "name": "France" },
-        { "@type": "City", "name": "Agen" },
-        { "@type": "City", "name": "Bordeaux" },
-        { "@type": "City", "name": "Toulouse" },
-        { "@type": "City", "name": "Marmande" },
-        { "@type": "City", "name": "Villeneuve-sur-Lot" },
-        { "@type": "City", "name": "N\u00e9rac" },
-        { "@type": "AdministrativeArea", "name": "Lot-et-Garonne" },
-        { "@type": "AdministrativeArea", "name": "Nouvelle-Aquitaine" }
-      ],
-      "provider": { "@type": "Person", "name": {{ site.author.name | jsonify }} }
-    }
-  ]
-}
-</script>
-
-{%- comment -%} ===== JSON-LD : BreadcrumbList (si fourni) ============== {%- endcomment -%}
-{%- if page.breadcrumbs -%}
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"BreadcrumbList",
-  "itemListElement":[
-    {%- for b in page.breadcrumbs -%}
-    {
-      "@type":"ListItem",
-      "position": {{ forloop.index }},
-      "name": {{ b.name | jsonify }},
-      "item": {{ b.url | absolute_url | jsonify }}
-    
-    }{%- unless forloop.last -%},{%- endunless -%}
-    {%- endfor -%}
-  ]
-}
-</script>
-{%- endif -%}
-
-{%- comment -%} ===== JSON-LD : Article (complément si post) ============ {%- endcomment -%}
-{%- if is_post -%}
-{%- assign article_image = page.image | default: site.og_image | default: '/assets/img/og-image.webp' -%}
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Article",
-  "headline": {{ page.title | jsonify }},
-  "description": {{ (page.description | default: site.description) | jsonify }},
-  "image":[ {{ article_image | absolute_url | jsonify }} ],
-  "datePublished":"{{ page.date | date_to_xmlschema }}"{% if page.last_modified_at %},
-  "dateModified":"{{ page.last_modified_at | date_to_xmlschema }}"{% endif %},
-  "author":{"@type":"Person","name": {{ site.author.name | jsonify }}},
-  "publisher":{"@type":"Organization","name": {{ org_name | jsonify }}},
-  "mainEntityOfPage":{"@type":"WebPage","@id": {{ page.url | replace:'index.html','' | absolute_url | jsonify }} }
-}
-</script>
-{%- endif -%}
-
-{%- comment -%} ======= JSON-LD : ItemList Services + Réalisations (HOME uniquement) ======= {%- endcomment -%}
-{% if page.url == "/" or page.permalink == "/" %}
-{%- assign services_list = site.data.services.cards | default: site.data.services -%}
-{%- assign total_services = services_list | size -%}
-{%- assign total_projets  = site.data.projets  | size -%}
-{%- assign total_items = total_services | plus: total_projets -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Offres et réalisations de {{ org_name }}",
-  "itemListOrder": "https://schema.org/ItemListOrderAscending",
-  "numberOfItems": {{ total_items | default: 0 }},
-  "itemListElement": [
-    {% if services_list and services_list != empty %}
-      {% for s in services_list %}
-      {
-        "@type": "ListItem",
-        "position": {{ forloop.index }},
-        "item": {
-          "@type": "Service",
-          "name": {{ s.title | jsonify }},
-          "description": {{ s.description | default: s.tagline | jsonify }}{% if s.keywords %},
-          "keywords": {{ s.keywords | jsonify }}{% endif %}
-        }
-      }{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    {% endif %}
-    {% if services_list and services_list != empty and site.data.projets and site.data.projets != empty %},{% endif %}
-    {% if site.data.projets and site.data.projets != empty %}
-      {% for p in site.data.projets %}
-      {
-        "@type": "ListItem",
-        "position": {{ forloop.index | plus: total_services }},
-        "item": {
-          "@type": "CreativeWork",
-          "name": {{ p.title | jsonify }},
-          "abstract": {{ p["text-short"] | jsonify }}{% if p.details and p.details.contexte %},
-          "about": {{ p.details.contexte | jsonify }}{% endif %}{% if p.details and p.details.stack %},
-          "keywords": {{ p.details.stack | jsonify }}{% endif %}{% if p.link %},
-          "url": {{ p.link | jsonify }}{% endif %}
-        }
-      }{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    {% endif %}
-  ]
-}
-</script>
+<!-- Title -->
+{% if page.url == "/" %}
+<title>{{ g.site_name }} — {{ g.baseline }}</title>
+{% else %}
+<title>{{ page_title }} | {{ g.site_name }}</title>
 {% endif %}
 
-{%- comment -%} =================== ANALYTICS (GoatCounter) =============== {%- endcomment -%}
-<!-- GoatCounter Analytics -->
-<script data-goatcounter="https://bmdata.goatcounter.com/count"
-        async src="https://gc.zgo.at/count.js"></script>
-<noscript>
-  <img src="https://bmdata.goatcounter.com/count?p={{ page.url | replace:'index.html','' }}" alt="" />
-</noscript>
+<!-- Meta description -->
+<meta name="description" content="{{ page_desc | strip_html | truncate: 160 }}">
+
+<!-- Canonical -->
+<link rel="canonical" href="{{ canonical_url }}">
+
+<!-- Robots -->
+{% if page.robots %}
+<meta name="robots" content="{{ page.robots }}">
+{% else %}
+<meta name="robots" content="index, follow">
+{% endif %}
+
+<!-- Open Graph -->
+<meta property="og:type"         content="{{ page.og_type | default: 'website' }}">
+<meta property="og:title"        content="{{ page_title }}">
+<meta property="og:description"  content="{{ page_desc | strip_html | truncate: 200 }}">
+<meta property="og:url"          content="{{ canonical_url }}">
+<meta property="og:image"        content="{{ page_image | absolute_url }}">
+<meta property="og:site_name"    content="{{ g.site_name }}">
+<meta property="og:locale"       content="fr_FR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="{{ site.twitter_card | default: 'summary_large_image' }}">
+<meta name="twitter:title"       content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_desc | strip_html | truncate: 200 }}">
+<meta name="twitter:image"       content="{{ page_image | absolute_url }}">
+
+<!-- Author -->
+<meta name="author" content="{{ g.contact.email }}">
+
+<!-- Langue -->
+<meta name="language" content="fr">
+<meta name="geo.region" content="FR-47">
+<meta name="geo.placename" content="{{ g.location.city }}">
+
+<!-- Couleur du navigateur -->
+<meta name="theme-color" content="#0f172a">
+<meta name="msapplication-TileColor" content="#0f172a">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/img/logo_192.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="512x512" href="{{ '/assets/img/logo_512.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/assets/img/logo_192.png' | relative_url }}">
+
+<!-- Manifest -->
+<link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
+
+<!-- Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+<!-- Feed -->
+<link rel="alternate" type="application/rss+xml" title="{{ g.site_name }} Blog" href="{{ '/feed.xml' | relative_url }}">
+
+<!-- Schema.org -->
+{% include schema.html %}
