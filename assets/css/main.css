@@ -2731,7 +2731,8 @@ p { line-height: 1.75; color: var(--color-gray-600); }
     rgba(43,212,143,.10) 100%);
   border: 1px solid rgba(102,119,255,.28);
   border-radius: var(--radius-xl);
-  padding: var(--space-7) var(--space-8);
+  padding: var(--space-10) var(--space-10);
+  min-height: 140px;
   position: relative;
   overflow: hidden;
   transition: border-color .3s ease, box-shadow .3s ease, transform .2s ease;
@@ -2761,13 +2762,14 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   transform: translateY(-2px);
 }
 .footer-cta-label {
-  font-size: var(--text-lg);
-  color: rgba(255,255,255,.9);
+  font-size: var(--text-xl);
+  color: rgba(255,255,255,.95);
   margin-bottom: 0;
   font-weight: 700;
-  letter-spacing: .01em;
+  letter-spacing: -.01em;
   position: relative;
   flex: 1;
+  line-height: 1.3;
 }
 .footer-cta-btn {
   display: inline-flex;
