@@ -7,92 +7,78 @@ body_class: "page-blog"
 ---
 
 {% assign g = site.data.global %}
-
-<!-- HERO -->
-<section class="page-hero" aria-labelledby="blog-title">
-  <div class="container">
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
-      <a href="{{ '/' | relative_url }}">Accueil</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>Blog</span>
-    </nav>
-    <span class="section-eyebrow">Blog</span>
-    <h1 id="blog-title">Conseils data pour les dirigeants de TPE/PME</h1>
-    <p>Des articles clairs et pratiques pour comprendre comment vos données peuvent améliorer vos décisions — sans jargon technique.</p>
-  </div>
-</section>
-
-<!-- BLOG STATS -->
 {% assign all_cats = site.posts | map: "category" | compact | uniq %}
 {% assign articles_total = site.posts.size %}
 {% assign cats_total = all_cats | size %}
 {% assign read_minutes = articles_total | times: 6 %}
 
-<section class="blog-stats" aria-label="Statistiques du blog">
-  <div class="container">
-    <div class="blog-stats__inner">
+<!-- HERO + STATS (layout 2 colonnes) -->
+<section class="page-hero blog-hero-split" aria-labelledby="blog-title">
+  <div class="container blog-hero-split__container">
 
-      <div class="blog-stats__grid">
+    <!-- Colonne gauche : texte -->
+    <div class="blog-hero-split__text">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="{{ '/' | relative_url }}">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Blog</span>
+      </nav>
+      <span class="section-eyebrow">Blog</span>
+      <h1 id="blog-title">Conseils data pour les dirigeants de TPE/PME</h1>
+      <p>Des articles clairs et pratiques pour comprendre comment vos données peuvent améliorer vos décisions — sans jargon technique.</p>
+    </div>
 
-        <!-- Stat 1 : Articles -->
-        <div class="blog-stat" data-count="{{ articles_total }}">
-          <div class="blog-stat__glow blog-stat__glow--blue"></div>
-          <div class="blog-stat__icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414A1 1 0 0 1 19 9.414V19a2 2 0 0 1-2 2z"/>
-            </svg>
+    <!-- Colonne droite : stats -->
+    <div class="blog-hero-split__panel" aria-label="Statistiques du blog">
+      <div class="blog-stats__inner">
+
+        <div class="blog-stats__grid">
+
+          <div class="blog-stat" data-count="{{ articles_total }}">
+            <div class="blog-stat__glow blog-stat__glow--blue"></div>
+            <div class="blog-stat__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414A1 1 0 0 1 19 9.414V19a2 2 0 0 1-2 2z"/></svg>
+            </div>
+            <div class="blog-stat__num"><span class="blog-stat__count" aria-live="polite">0</span></div>
+            <div class="blog-stat__label">Articles publiés</div>
+            <div class="blog-stat__bar"></div>
           </div>
-          <div class="blog-stat__num">
-            <span class="blog-stat__count" aria-live="polite">0</span>
+
+          <div class="blog-stat" data-count="{{ cats_total }}">
+            <div class="blog-stat__glow blog-stat__glow--gold"></div>
+            <div class="blog-stat__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 0 1 0 2.828l-7 7a2 2 0 0 1-2.828 0l-7-7A2 2 0 0 1 3 12V7a4 4 0 0 1 4-4z"/></svg>
+            </div>
+            <div class="blog-stat__num"><span class="blog-stat__count" aria-live="polite">0</span></div>
+            <div class="blog-stat__label">Thématiques couvertes</div>
+            <div class="blog-stat__bar"></div>
           </div>
-          <div class="blog-stat__label">Articles publiés</div>
-          <div class="blog-stat__bar"></div>
+
+          <div class="blog-stat" data-count="{{ read_minutes }}" data-suffix=" min">
+            <div class="blog-stat__glow blog-stat__glow--teal"></div>
+            <div class="blog-stat__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+            </div>
+            <div class="blog-stat__num"><span class="blog-stat__count" aria-live="polite">0</span><span class="blog-stat__unit"> min</span></div>
+            <div class="blog-stat__label">De lecture au total</div>
+            <div class="blog-stat__bar"></div>
+          </div>
+
+        </div><!-- /.blog-stats__grid -->
+
+        {% if all_cats.size > 0 %}
+        <div class="blog-stats__cats" aria-label="Catégories">
+          <span class="blog-stats__cats-label">Catégories :</span>
+          {% for cat in all_cats %}
+            <span class="blog-stats__cat-badge">{{ cat }}</span>
+          {% endfor %}
         </div>
+        {% endif %}
 
-        <!-- Stat 2 : Thématiques -->
-        <div class="blog-stat" data-count="{{ cats_total }}">
-          <div class="blog-stat__glow blog-stat__glow--gold"></div>
-          <div class="blog-stat__icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 0 1 0 2.828l-7 7a2 2 0 0 1-2.828 0l-7-7A2 2 0 0 1 3 12V7a4 4 0 0 1 4-4z"/>
-            </svg>
-          </div>
-          <div class="blog-stat__num">
-            <span class="blog-stat__count" aria-live="polite">0</span>
-          </div>
-          <div class="blog-stat__label">Thématiques couvertes</div>
-          <div class="blog-stat__bar"></div>
-        </div>
+      </div><!-- /.blog-stats__inner -->
+    </div><!-- /.blog-hero-split__panel -->
 
-        <!-- Stat 3 : Temps de lecture -->
-        <div class="blog-stat" data-count="{{ read_minutes }}" data-suffix=" min">
-          <div class="blog-stat__glow blog-stat__glow--teal"></div>
-          <div class="blog-stat__icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="9"/>
-              <polyline points="12 7 12 12 15.5 14"/>
-            </svg>
-          </div>
-          <div class="blog-stat__num">
-            <span class="blog-stat__count" aria-live="polite">0</span><span class="blog-stat__unit"> min</span>
-          </div>
-          <div class="blog-stat__label">De lecture au total</div>
-          <div class="blog-stat__bar"></div>
-        </div>
-
-      </div><!-- /.blog-stats__grid -->
-
-      {% if all_cats.size > 0 %}
-      <div class="blog-stats__cats" aria-label="Catégories">
-        <span class="blog-stats__cats-label">Catégories :</span>
-        {% for cat in all_cats %}
-          <span class="blog-stats__cat-badge">{{ cat }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
-
-    </div><!-- /.blog-stats__inner -->
-  </div>
+  </div><!-- /.blog-hero-split__container -->
 </section>
 
 <!-- ARTICLES -->
