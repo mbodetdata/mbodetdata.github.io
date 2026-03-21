@@ -110,9 +110,13 @@
       var dots = tl.querySelectorAll('.timeline-line');
       if (dots.length < 2) return;
 
+      var isMobile = window.innerWidth < 640;
       var tlRect = tl.getBoundingClientRect();
       var H = tl.scrollHeight;
       var W = tlRect.width;
+
+      /* Amplitude : forte sur desktop pour le S bien visible, nulle sur mobile (trait droit) */
+      var amp = isMobile ? 0 : Math.min(W * 0.22, 130);
 
       /* Centre de chaque dot : top + 1rem (offset CSS) + 9px (demi-dot 18px) */
       var pts = Array.prototype.map.call(dots, function (dot) {
@@ -123,16 +127,18 @@
         };
       });
 
-      /* Amplitude de la courbe S selon la largeur dispo */
-      var amp = Math.min(W * 0.10, 70);
-
+      /*
+       * Arc alterné : les DEUX points de contrôle sont du MÊME côté (sign).
+       * Segment 1 → arc à DROITE  | Segment 2 → arc à GAUCHE | etc.
+       * Résultat : sinusoïde lisse droite-gauche-droite...
+       */
       var d = 'M ' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1);
       for (var i = 1; i < pts.length; i++) {
         var p0 = pts[i - 1], p1 = pts[i];
         var dy = p1.y - p0.y;
         var sign = (i % 2 === 1) ? 1 : -1;
-        d += ' C ' + (p0.x + sign * amp).toFixed(1) + ' ' + (p0.y + dy * 0.38).toFixed(1) +
-             ', '  + (p1.x - sign * amp).toFixed(1) + ' ' + (p1.y - dy * 0.38).toFixed(1) +
+        d += ' C ' + (p0.x + sign * amp).toFixed(1) + ' ' + (p0.y + dy * 0.35).toFixed(1) +
+             ', '  + (p1.x + sign * amp).toFixed(1) + ' ' + (p1.y - dy * 0.35).toFixed(1) +
              ', '  + p1.x.toFixed(1) + ' ' + p1.y.toFixed(1);
       }
 

@@ -2496,9 +2496,11 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   margin: 0;
 }
 
-/* RESPONSIVE — mobile : ligne gauche, items en colonne */
+/* RESPONSIVE — mobile : chemin droit à gauche, items en colonne */
 @media (max-width: 640px) {
-  .timeline::before { left: 20px; transform: none; }
+  /* Le SVG devient un trait droit car amp=0 côté JS */
+  .timeline-svg-path { overflow: visible; }
+
   .timeline-item {
     grid-template-columns: 40px 1fr;
     grid-template-rows: auto auto;
@@ -2518,6 +2520,14 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   .timeline-item:nth-child(even) .timeline-content::after { display: none; }
   .timeline-item:nth-child(even) .timeline-content:hover,
   .timeline-item:nth-child(odd)  .timeline-content:hover  { transform: translateX(4px); }
+
+  /* Cards pleine largeur sur mobile */
+  .timeline-content {
+    border-radius: var(--radius-xl);
+    padding: 1.25rem 1.25rem;
+  }
+  .timeline-toggle-title { font-size: var(--text-sm); }
+  .timeline-year { font-size: var(--text-base); }
 }
 
 /* ─── FOOTER ─── */
