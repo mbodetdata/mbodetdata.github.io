@@ -408,4 +408,93 @@
     });
   }
 
+
+  /* ─── Particules connectées globales ─── */
+  if (
+    !document.body.classList.contains('page-404') &&
+    window.innerWidth >= 768 &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    const bmdCanvas = document.getElementById('bmd-particles-bg');
+    if (bmdCanvas) {
+      const bmdCtx = bmdCanvas.getContext('2d');
+      let bmdW, bmdH, bmdPts, bmdRaf;
+      const BMD_COUNT = 55;
+      const BMD_LINK  = 120;
+      const BMD_COLS  = [
+        [102, 119, 255],   /* periwinkle */
+        [43,  212, 143],   /* vert signature */
+        [29,  185, 154]    /* teal */
+      ];
+
+      function bmdResize() {
+        bmdW = bmdCanvas.width  = window.innerWidth;
+        bmdH = bmdCanvas.height = window.innerHeight;
+      }
+
+      function bmdMkPt() {
+        const col = BMD_COLS[Math.floor(Math.random() * BMD_COLS.length)];
+        return {
+          x:  Math.random() * bmdW,
+          y:  Math.random() * bmdH,
+          vx: (Math.random() - .5) * .22,
+          vy: (Math.random() - .5) * .22,
+          r:  Math.random() * 1.2 + .4,
+          col,
+          a:  Math.random() * .45 + .3
+        };
+      }
+
+      function bmdTick() {
+        bmdCtx.clearRect(0, 0, bmdW, bmdH);
+
+        /* lignes de connexion */
+        for (let i = 0; i < bmdPts.length; i++) {
+          for (let j = i + 1; j < bmdPts.length; j++) {
+            const dx = bmdPts[i].x - bmdPts[j].x;
+            const dy = bmdPts[i].y - bmdPts[j].y;
+            const d2 = dx * dx + dy * dy;
+            if (d2 < BMD_LINK * BMD_LINK) {
+              const dist = Math.sqrt(d2);
+              bmdCtx.beginPath();
+              bmdCtx.strokeStyle = 'rgba(102,119,255,' + (.22 * (1 - dist / BMD_LINK)) + ')';
+              bmdCtx.lineWidth = .5;
+              bmdCtx.moveTo(bmdPts[i].x, bmdPts[i].y);
+              bmdCtx.lineTo(bmdPts[j].x, bmdPts[j].y);
+              bmdCtx.stroke();
+            }
+          }
+        }
+
+        /* points */
+        bmdPts.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = bmdW; else if (p.x > bmdW) p.x = 0;
+          if (p.y < 0) p.y = bmdH; else if (p.y > bmdH) p.y = 0;
+          bmdCtx.beginPath();
+          bmdCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          bmdCtx.fillStyle = 'rgba(' + p.col[0] + ',' + p.col[1] + ',' + p.col[2] + ',' + p.a + ')';
+          bmdCtx.fill();
+        });
+
+        bmdRaf = requestAnimationFrame(bmdTick);
+      }
+
+      bmdResize();
+      bmdPts = Array.from({ length: BMD_COUNT }, bmdMkPt);
+      bmdTick();
+
+      window.addEventListener('resize', bmdResize, { passive: true });
+
+      /* Pause quand l'onglet est caché (économie CPU/batterie) */
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          cancelAnimationFrame(bmdRaf);
+        } else {
+          bmdTick();
+        }
+      });
+    }
+  }
+
 })();

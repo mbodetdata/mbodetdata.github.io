@@ -2392,6 +2392,17 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 .legal-content p, .legal-content li { color: var(--color-gray-600); margin-bottom: var(--space-4); }
 .legal-content ul { padding-left: var(--space-6); }
 
+/* ─── PARTICULES GLOBALES ─── */
+#bmd-particles-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 500;
+  mix-blend-mode: screen;
+}
+
 /* ─── 404 ─── */
 .error-page {
   min-height: 100vh;
