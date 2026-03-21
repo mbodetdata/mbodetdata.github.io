@@ -154,8 +154,13 @@ body_class: "page-about"
         <div class="timeline-year">{{ item.year }}</div>
         <div class="timeline-line" aria-hidden="true"></div>
         <div class="timeline-content">
-          <h4>{{ item.title }}</h4>
-          <p>{{ item.description }}</p>
+          <button class="timeline-toggle" type="button" aria-expanded="false">
+            <span class="timeline-toggle-title">{{ item.title }}</span>
+            <span class="timeline-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="timeline-body">
+            <p>{{ item.description }}</p>
+          </div>
         </div>
       </div>
       {% endfor %}
