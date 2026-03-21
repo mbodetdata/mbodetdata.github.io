@@ -18,6 +18,7 @@ body_class: "page-faq"
      HERO PREMIUM
 ═══════════════════════════════════════════ -->
 <section class="faq-hero" aria-labelledby="faq-title">
+  <canvas class="hero-particles" aria-hidden="true"></canvas>
   <div class="faq-hero__bg" aria-hidden="true">
     <div class="faq-hero__grid"></div>
     <div class="faq-hero__orb faq-hero__orb--1"></div>
@@ -57,105 +58,114 @@ body_class: "page-faq"
 </section>
 
 <!-- ═══════════════════════════════════════════
-     CONTROLS : RECHERCHE + FILTRES (sticky)
+     FAQ LAYOUT : SIDEBAR GAUCHE + CONTENU
 ═══════════════════════════════════════════ -->
-<div class="faq-controls" id="faq-controls" role="search">
-  <div class="container">
-    <div class="faq-controls__inner">
+<div class="faq-layout">
+  <div class="container faq-layout__inner">
 
-      <!-- Barre de recherche -->
-      <div class="faq-search-wrap">
-        <svg class="faq-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input
-          type="search"
-          class="faq-search-input"
-          id="faq-search"
-          placeholder="Rechercher une question…"
-          aria-label="Rechercher dans la FAQ"
-          autocomplete="off"
-          spellcheck="false">
-        <button class="faq-search-clear" id="faq-search-clear" aria-label="Effacer la recherche" title="Effacer">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
+    <!-- ── SIDEBAR GAUCHE : recherche + filtres ── -->
+    <aside class="faq-sidebar" aria-label="Filtres et recherche">
+      <div class="faq-sidebar__inner">
 
-      <!-- Filtres par catégorie -->
-      <div class="faq-filters" role="tablist" aria-label="Filtrer par thème">
-        <button class="faq-filter-btn active" data-category="all" role="tab" aria-selected="true">
-          Tout <span class="faq-filter-count">{{ faq_total_questions }}</span>
-        </button>
-        {% for cat in d.categories %}
-        <button class="faq-filter-btn" data-category="{{ cat.id }}" role="tab" aria-selected="false">
-          {{ cat.label }} <span class="faq-filter-count">{{ cat.questions | size }}</span>
-        </button>
-        {% endfor %}
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     CONTENU FAQ
-═══════════════════════════════════════════ -->
-<section class="faq-body" aria-label="Questions fréquentes">
-  <div class="container faq-body__inner">
-
-    <!-- État "aucun résultat" -->
-    <div class="faq-empty" id="faq-empty" hidden aria-live="polite">
-      <div class="faq-empty__icon" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"><circle cx="28" cy="28" r="18" stroke="currentColor" stroke-width="3" opacity=".3"/><line x1="41" y1="41" x2="56" y2="56" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".3"/><path d="M22 28h12M28 22v12" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"/></svg>
-      </div>
-      <h3 class="faq-empty__title">Aucun résultat</h3>
-      <p class="faq-empty__text">Aucune question ne correspond à votre recherche.</p>
-      <button class="btn btn-outline btn-sm" id="faq-reset">Voir toutes les questions</button>
-    </div>
-
-    <!-- Catégories -->
-    {% for cat in d.categories %}
-    {% assign cat_icons = "💡,🎯,💰,🔄,⚙️" | split: "," %}
-    {% assign cat_index = forloop.index0 %}
-    <div class="faq-category fade-up" data-category="{{ cat.id }}" id="faqcat-{{ cat.id }}">
-      <div class="faq-category__header">
-        <span class="faq-category__icon" aria-hidden="true">{% if cat.id == 'general' %}💡{% elsif cat.id == 'offre' %}🎯{% elsif cat.id == 'budget' %}💰{% elsif cat.id == 'process' %}🔄{% elsif cat.id == 'technique' %}⚙️{% else %}✦{% endif %}</span>
-        <h2 class="faq-category__title">{{ cat.label }}</h2>
-        <span class="faq-category__count" aria-label="{{ cat.questions | size }} questions">{{ cat.questions | size }}</span>
-      </div>
-
-      <div class="faq-category__items">
-        {% for q in cat.questions %}
-        <div class="faq-card" data-id="{{ q.id }}" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button
-            type="button"
-            class="faq-card__question"
-            aria-expanded="false"
-            aria-controls="fqa-{{ q.id }}"
-            id="fqb-{{ q.id }}"
-            itemprop="name">
-            <span class="faq-card__num" aria-hidden="true">{{ forloop.index }}</span>
-            <span class="faq-card__text">{{ q.question }}</span>
-            <span class="faq-card__toggle" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </span>
+        <!-- Recherche -->
+        <div class="faq-search-wrap">
+          <svg class="faq-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input
+            type="search"
+            class="faq-search-input"
+            id="faq-search"
+            placeholder="Rechercher…"
+            aria-label="Rechercher dans la FAQ"
+            autocomplete="off"
+            spellcheck="false">
+          <button class="faq-search-clear" id="faq-search-clear" type="button" aria-label="Effacer" title="Effacer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
-          <div
-            class="faq-card__answer"
-            id="fqa-{{ q.id }}"
-            role="region"
-            aria-labelledby="fqb-{{ q.id }}"
-            itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div class="faq-card__answer-inner">
-              <span itemprop="text">{{ q.answer }}</span>
+        </div>
+
+        <!-- Filtres verticaux -->
+        <div class="faq-sidebar__section">
+          <span class="faq-sidebar__label">Catégories</span>
+          <div class="faq-filters" role="tablist" aria-label="Filtrer par thème">
+            <button class="faq-filter-btn active" type="button" data-category="all" role="tab" aria-selected="true">
+              <span class="faq-filter-icon" aria-hidden="true">◈</span>
+              <span class="faq-filter-name">Toutes les questions</span>
+              <span class="faq-filter-count">{{ faq_total_questions }}</span>
+            </button>
+            {% for cat in d.categories %}
+            <button class="faq-filter-btn" type="button" data-category="{{ cat.id }}" role="tab" aria-selected="false">
+              <span class="faq-filter-icon" aria-hidden="true">{% if cat.id == 'general' %}💡{% elsif cat.id == 'offre' %}🎯{% elsif cat.id == 'budget' %}💰{% elsif cat.id == 'process' %}🔄{% elsif cat.id == 'technique' %}⚙️{% else %}✦{% endif %}</span>
+              <span class="faq-filter-name">{{ cat.label }}</span>
+              <span class="faq-filter-count">{{ cat.questions | size }}</span>
+            </button>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- ── CONTENU FAQ ── -->
+    <section class="faq-body" aria-label="Questions fréquentes">
+      <div class="faq-body__inner">
+
+        <!-- État "aucun résultat" -->
+        <div class="faq-empty" id="faq-empty" hidden aria-live="polite">
+          <div class="faq-empty__icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"><circle cx="28" cy="28" r="18" stroke="currentColor" stroke-width="3" opacity=".3"/><line x1="41" y1="41" x2="56" y2="56" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".3"/><path d="M22 28h12M28 22v12" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"/></svg>
+          </div>
+          <h3 class="faq-empty__title">Aucun résultat</h3>
+          <p class="faq-empty__text">Aucune question ne correspond à votre recherche.</p>
+          <button class="btn btn-outline btn-sm" type="button" id="faq-reset">Voir toutes les questions</button>
+        </div>
+
+        <!-- Catégories -->
+        {% for cat in d.categories %}
+        {% assign cat_index = forloop.index0 %}
+        <div class="faq-category fade-up" data-category="{{ cat.id }}" id="faqcat-{{ cat.id }}">
+          <div class="faq-category__header">
+            <span class="faq-category__icon" aria-hidden="true">{% if cat.id == 'general' %}💡{% elsif cat.id == 'offre' %}🎯{% elsif cat.id == 'budget' %}💰{% elsif cat.id == 'process' %}🔄{% elsif cat.id == 'technique' %}⚙️{% else %}✦{% endif %}</span>
+            <h2 class="faq-category__title">{{ cat.label }}</h2>
+            <span class="faq-category__count" aria-label="{{ cat.questions | size }} questions">{{ cat.questions | size }}</span>
+          </div>
+
+          <div class="faq-category__items">
+            {% for q in cat.questions %}
+            <div class="faq-card" data-id="{{ q.id }}" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <button
+                type="button"
+                class="faq-card__question"
+                aria-expanded="false"
+                aria-controls="fqa-{{ q.id }}"
+                id="fqb-{{ q.id }}"
+                itemprop="name">
+                <span class="faq-card__num" aria-hidden="true">{{ forloop.index }}</span>
+                <span class="faq-card__text">{{ q.question }}</span>
+                <span class="faq-card__toggle" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </button>
+              <div
+                class="faq-card__answer"
+                id="fqa-{{ q.id }}"
+                role="region"
+                aria-labelledby="fqb-{{ q.id }}"
+                itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div class="faq-card__answer-inner">
+                  <span itemprop="text">{{ q.answer }}</span>
+                </div>
+              </div>
             </div>
+            {% endfor %}
           </div>
         </div>
         {% endfor %}
-      </div>
-    </div>
-    {% endfor %}
 
-  </div>
-</section>
+      </div>
+    </section><!-- /.faq-body -->
+
+  </div><!-- /.faq-layout__inner -->
+</div><!-- /.faq-layout -->
 
 <!-- ═══════════════════════════════════════════
      CTA PREMIUM

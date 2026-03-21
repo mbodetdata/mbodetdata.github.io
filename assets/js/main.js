@@ -812,17 +812,7 @@ if (document.querySelector('.faq-hero')) {
       });
     }
 
-    /* ── Sticky shadow via IntersectionObserver ── */
-    var controls = document.getElementById('faq-controls');
-    if (controls && window.IntersectionObserver) {
-      var io = new IntersectionObserver(
-        function (entries) {
-          controls.classList.toggle('scrolled', entries[0].intersectionRatio < 1);
-        },
-        { threshold: [1], rootMargin: '-1px 0px 0px 0px' }
-      );
-      io.observe(controls);
-    }
+    /* ── Sticky shadow — supprimé (sidebar remplace la top bar) ── */
 
     /* ── Stagger animation des cards ── */
     document.querySelectorAll('.faq-card').forEach(function (card, i) {
@@ -1012,6 +1002,78 @@ if (document.querySelector('.blog-stat')) {
     stats.forEach(function(card) { observer.observe(card); });
   })();
 }
+
+/* ═══ Hero particles — toutes les pages hero ═══ */
+(function () {
+  if (
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    window.innerWidth < 768
+  ) return;
+
+  var canvases = document.querySelectorAll('.hero-particles');
+  if (!canvases.length) return;
+
+  var COLORS = ['rgba(102,119,255,', 'rgba(43,212,143,', 'rgba(29,185,154,'];
+
+  function initParticles(canvas) {
+    var ctx = canvas.getContext('2d');
+    var W, H, pts;
+    var COUNT = 60, LINK = 120;
+
+    function resize() {
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+
+    function mkPt() {
+      return {
+        x:  Math.random() * W,
+        y:  Math.random() * H,
+        vx: (Math.random() - .5) * .35,
+        vy: (Math.random() - .5) * .35,
+        r:  Math.random() * 1.4 + .5,
+        c:  COLORS[Math.floor(Math.random() * COLORS.length)],
+        a:  Math.random() * .5 + .15
+      };
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < pts.length; i++) {
+        for (var j = i + 1; j < pts.length; j++) {
+          var dx = pts[i].x - pts[j].x;
+          var dy = pts[i].y - pts[j].y;
+          var d  = Math.sqrt(dx * dx + dy * dy);
+          if (d < LINK) {
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(102,119,255,' + (.12 * (1 - d / LINK)) + ')';
+            ctx.lineWidth = .5;
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(pts[j].x, pts[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      pts.forEach(function (p) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; else if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; else if (p.y > H) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.c + p.a + ')';
+        ctx.fill();
+      });
+      requestAnimationFrame(tick);
+    }
+
+    resize();
+    pts = Array.from({ length: COUNT }, mkPt);
+    tick();
+    window.addEventListener('resize', resize);
+  }
+
+  canvases.forEach(function (c) { initParticles(c); });
+}());
 
 /* ═══ PAGE: 404.html ═══ */
 if (document.querySelector('.page-404')) {
