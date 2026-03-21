@@ -1092,4 +1092,18 @@ if (document.getElementById('postArticle')) {
     }
 
   })();
+
+  /* ─── Hero tagline premium — home page ─── */
+  var sub = document.querySelector('.hero-subtitle');
+  if (sub) {
+    var phrase = 'Avec BM Data, la bonne donn\u00e9e, au bon endroit, au bon moment.';
+    var html = sub.innerHTML;
+    var idx = html.indexOf(phrase);
+    if (idx !== -1) {
+      sub.innerHTML =
+        html.slice(0, idx) +
+        '<span class="hero-tagline">' + phrase + '</span>' +
+        html.slice(idx + phrase.length);
+    }
+  }
 }

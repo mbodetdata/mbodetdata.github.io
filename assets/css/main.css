@@ -6085,6 +6085,30 @@ mark.faq-hl {
   bottom: -150px; left: -80px; pointer-events: none;
 }
 
+/* ─── Hero tagline premium (home page) ─── */
+@keyframes taglineGlow {
+  0%   { filter: hue-rotate(0deg)   brightness(1);    }
+  40%  { filter: hue-rotate(50deg)  brightness(1.12); }
+  100% { filter: hue-rotate(0deg)   brightness(1);    }
+}
+
+.hero-tagline {
+  display: block;
+  margin-top: 1.1em;
+  padding-top: 1em;
+  border-top: 1px solid rgba(102,119,255,.18);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.05em;
+  letter-spacing: .01em;
+  background: linear-gradient(90deg, #6677ff 0%, #818cf8 35%, #2bd48f 75%, #1db99a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  will-change: filter;
+  animation: taglineGlow 5s ease-in-out infinite;
+}
+
 /* ─── Responsive : garder les gradients sur mobile ─── */
 @media (max-width: 768px) {
   .section-header h2::after {
