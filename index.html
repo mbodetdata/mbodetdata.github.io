@@ -37,9 +37,18 @@ Moins de tâches manuelles<br>plus <span class="accent">de temps pour votre acti
         </div>
       </div>
 
-      <!-- Colonne droite : description -->
+      <!-- Colonne droite : description + slogan -->
       <div class="hero-right">
         <p class="hero-subtitle">{{ h.hero.subtitle }}</p>
+
+        <div class="hero-slogan" aria-label="Avec BM Data : {{ h.hero.slogan | join: ' ' }}">
+          <span class="hero-slogan__intro">Avec BM Data</span>
+          <div class="hero-slogan__lines">
+            {% for line in h.hero.slogan %}
+            <span class="hero-slogan__line">{{ line }}</span>
+            {% endfor %}
+          </div>
+        </div>
       </div>
 
     </div>

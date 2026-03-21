@@ -723,6 +723,71 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   max-width: none;
   line-height: 1.8;
 }
+
+/* ── Hero slogan — mise en valeur typographique ── */
+.hero-slogan {
+  position: relative;
+  margin-top: 2rem;
+  padding: 1.25rem 0 1.25rem 1.5rem;
+}
+
+/* Barre latérale dégradée animée */
+.hero-slogan::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--color-blue) 0%, #4aa8ff 50%, var(--color-gold) 100%);
+  will-change: filter;
+  animation: timelineLineFlow 4s ease-in-out infinite;
+}
+
+/* "Avec BM Data" — label discret au-dessus */
+.hero-slogan__intro {
+  display: block;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.38);
+  margin-bottom: .85rem;
+}
+
+/* Conteneur des 3 lignes */
+.hero-slogan__lines {
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+}
+
+/* Chaque ligne — gradient blanc → or */
+.hero-slogan__line {
+  display: block;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.2;
+  background: linear-gradient(110deg,
+    #ffffff       0%,
+    rgba(255,255,255,.92) 40%,
+    var(--color-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Entrée décalée — opacity seul (GPU Composite) */
+  opacity: 0;
+  will-change: opacity;
+  animation: sloganFadeIn .6s ease forwards;
+}
+.hero-slogan__line:nth-child(1) { animation-delay: .5s; }
+.hero-slogan__line:nth-child(2) { animation-delay: .72s; }
+.hero-slogan__line:nth-child(3) { animation-delay: .94s; }
+
+@keyframes sloganFadeIn {
+  to { opacity: 1; }
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -2496,38 +2561,66 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   margin: 0;
 }
 
-/* RESPONSIVE — mobile : chemin droit à gauche, items en colonne */
+/* ──────────────────────────────────────────────────────────────
+   RESPONSIVE TIMELINE — mobile  (<= 640px)
+   Layout : dot gauche (36px) | année + carte droite
+   Zig-zag desktop entièrement neutralisé
+────────────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  /* Le SVG devient un trait droit car amp=0 côté JS */
-  .timeline-svg-path { overflow: visible; }
 
+  /* Chemin SVG droit (amp=0 côté JS) — juste s'assurer qu'il ne déborde pas */
+  .timeline-svg-path { overflow: hidden; }
+
+  /* ── Grille 2 colonnes pour TOUS les items ── */
   .timeline-item {
-    grid-template-columns: 40px 1fr;
-    grid-template-rows: auto auto;
-    gap: 0 var(--space-4);
+    display: grid !important;
+    grid-template-columns: 36px 1fr !important;
+    grid-template-rows: auto auto !important;
+    gap: 0 var(--space-3) !important;
+    padding-bottom: var(--space-7);
+    align-items: start;
   }
-  .timeline-item:nth-child(odd) .timeline-year,
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  /* Dot : col 1, span 2 lignes */
+  .timeline-item:nth-child(odd)  .timeline-line,
+  .timeline-item:nth-child(even) .timeline-line {
+    grid-column: 1 !important;
+    grid-row: 1 / 3 !important;
+    width: 36px;
+  }
+
+  /* Année : col 2 ligne 1 — réinitialise paddings desktop */
+  .timeline-item:nth-child(odd)  .timeline-year,
   .timeline-item:nth-child(even) .timeline-year {
-    grid-column: 2; grid-row: 1;
-    text-align: left; padding: 0 0 var(--space-1);
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    text-align: left !important;
+    padding: 0 0 var(--space-1) !important;
     font-size: var(--text-base);
   }
-  .timeline-item:nth-child(odd) .timeline-line,
-  .timeline-item:nth-child(even) .timeline-line  { grid-column: 1; grid-row: 1 / 3; }
-  .timeline-item:nth-child(odd) .timeline-content,
-  .timeline-item:nth-child(even) .timeline-content { grid-column: 2; grid-row: 2; }
-  .timeline-item:nth-child(odd) .timeline-content::after,
-  .timeline-item:nth-child(even) .timeline-content::after { display: none; }
-  .timeline-item:nth-child(even) .timeline-content:hover,
-  .timeline-item:nth-child(odd)  .timeline-content:hover  { transform: translateX(4px); }
 
-  /* Cards pleine largeur sur mobile */
+  /* Carte : col 2 ligne 2 */
+  .timeline-item:nth-child(odd)  .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+
+  /* Flèches speech-bubble : cachées sur mobile */
+  .timeline-item:nth-child(odd)  .timeline-content::after,
+  .timeline-item:nth-child(even) .timeline-content::after { display: none !important; }
+
+  /* Aucun slide horizontal sur touch */
+  .timeline-item:nth-child(odd)  .timeline-content:hover,
+  .timeline-item:nth-child(even) .timeline-content:hover { transform: none !important; }
+
+  /* Carte compacte */
   .timeline-content {
     border-radius: var(--radius-xl);
-    padding: 1.25rem 1.25rem;
+    padding: 1rem 1rem;
   }
   .timeline-toggle-title { font-size: var(--text-sm); }
-  .timeline-year { font-size: var(--text-base); }
 }
 
 /* ─── FOOTER ─── */
