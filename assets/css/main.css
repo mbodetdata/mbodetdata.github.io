@@ -2400,7 +2400,6 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   height: 100%;
   pointer-events: none;
   z-index: 500;
-  mix-blend-mode: screen;
 }
 
 /* ─── 404 ─── */

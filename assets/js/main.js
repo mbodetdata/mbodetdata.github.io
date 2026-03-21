@@ -410,8 +410,9 @@
 
 
   /* ─── Particules connectées globales ─── */
+  const _bmdExcluded = ['page-404', 'page-blog', 'page-contact'];
   if (
-    !document.body.classList.contains('page-404') &&
+    !_bmdExcluded.some(c => document.body.classList.contains(c)) &&
     window.innerWidth >= 768 &&
     !window.matchMedia('(prefers-reduced-motion: reduce)').matches
   ) {
@@ -419,8 +420,8 @@
     if (bmdCanvas) {
       const bmdCtx = bmdCanvas.getContext('2d');
       let bmdW, bmdH, bmdPts, bmdRaf;
-      const BMD_COUNT = 55;
-      const BMD_LINK  = 120;
+      const BMD_COUNT = 60;
+      const BMD_LINK  = 130;
       const BMD_COLS  = [
         [102, 119, 255],   /* periwinkle */
         [43,  212, 143],   /* vert signature */
@@ -437,11 +438,11 @@
         return {
           x:  Math.random() * bmdW,
           y:  Math.random() * bmdH,
-          vx: (Math.random() - .5) * .22,
-          vy: (Math.random() - .5) * .22,
-          r:  Math.random() * 1.2 + .4,
+          vx: (Math.random() - .5) * .25,
+          vy: (Math.random() - .5) * .25,
+          r:  Math.random() * 1.5 + .5,
           col,
-          a:  Math.random() * .45 + .3
+          a:  Math.random() * .35 + .2
         };
       }
 
@@ -457,8 +458,8 @@
             if (d2 < BMD_LINK * BMD_LINK) {
               const dist = Math.sqrt(d2);
               bmdCtx.beginPath();
-              bmdCtx.strokeStyle = 'rgba(102,119,255,' + (.22 * (1 - dist / BMD_LINK)) + ')';
-              bmdCtx.lineWidth = .5;
+              bmdCtx.strokeStyle = 'rgba(102,119,255,' + (.18 * (1 - dist / BMD_LINK)) + ')';
+              bmdCtx.lineWidth = .6;
               bmdCtx.moveTo(bmdPts[i].x, bmdPts[i].y);
               bmdCtx.lineTo(bmdPts[j].x, bmdPts[j].y);
               bmdCtx.stroke();
