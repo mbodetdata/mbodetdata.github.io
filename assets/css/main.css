@@ -237,26 +237,25 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 }
 
 .btn-primary {
-  background: var(--gradient-brand);
+  background: var(--color-gold);
   color: var(--color-white);
-  box-shadow: var(--shadow-brand);
+  box-shadow: var(--shadow-gold);
 }
 .btn-primary:hover {
-  background: var(--gradient-brand);
-  filter: brightness(1.08) saturate(1.12);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 36px rgba(102,119,255,.38), 0 3px 12px rgba(43,212,143,.2);
+  background: #22c47a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(43,212,143,.42);
 }
 
 .btn-gold {
-  background: var(--gradient-brand-rev);
+  background: var(--color-gold);
   color: var(--color-white);
-  box-shadow: var(--shadow-brand);
+  box-shadow: var(--shadow-gold);
 }
 .btn-gold:hover {
-  filter: brightness(1.08) saturate(1.12);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 36px rgba(43,212,143,.38), 0 3px 12px rgba(102,119,255,.18);
+  background: #22c47a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(43,212,143,.42);
 }
 
 .btn-outline {
@@ -478,35 +477,40 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 }
 
 .nav-link.nav-cta {
-  background: var(--gradient-brand);
+  background: var(--color-gold);
   color: white;
   padding: 8px 22px;
   font-weight: 600;
-  box-shadow: var(--shadow-brand);
-  transition: box-shadow .25s ease, transform .18s ease, filter .2s ease;
+  box-shadow: var(--shadow-gold);
+  transition: box-shadow .25s ease, transform .18s ease;
   overflow: hidden;
   animation: ctaPulse 3.5s ease-in-out 2s infinite;
 }
 .nav-link.nav-cta:hover { animation: none; }
-/* Shimmer overlay sur le CTA */
+/* Shine automatique sur le CTA nav */
 .nav-link.nav-cta::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(115deg, transparent 25%, rgba(255,255,255,.22) 50%, transparent 75%);
-  background-size: 200% 100%;
-  background-position: 200% 0;
-  transition: background-position .52s ease;
+  top: -60%;
+  left: -10%;
+  width: 45%;
+  height: 220%;
+  background: linear-gradient(108deg, transparent 20%, rgba(255,255,255,.38) 50%, transparent 80%);
+  will-change: transform, opacity;
+  animation: ctaShine 3.5s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0;
 }
 .nav-link.nav-cta::after { display: none; }
 .nav-link.nav-cta:hover {
   color: white;
-  box-shadow: 0 8px 32px rgba(102,119,255,.42), 0 3px 12px rgba(43,212,143,.2), 0 0 0 4px rgba(102,119,255,.1);
+  background: #22c47a;
+  box-shadow: 0 8px 28px rgba(43,212,143,.45);
   transform: translateY(-2px);
-  filter: brightness(1.1) saturate(1.1);
 }
-.nav-link.nav-cta:hover::before {
-  background-position: -200% 0;
+.nav-link.nav-cta.active {
+  color: white;
+  background: var(--color-gold);
 }
 .nav-link.nav-cta.active {
   color: white;
@@ -2937,7 +2941,16 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   to { opacity: 1; }
 }
 
-/* ─── BOUTONS — SHIMMER AU HOVER ─── */
+/* ─── BOUTONS CTA — SHINE AUTOMATIQUE (toutes les 3.5s) ─── */
+
+/* Animation GPU-only (transform uniquement — pas de Layout/Paint) */
+@keyframes ctaShine {
+  0%        { transform: translateX(-200%) skewX(-22deg); opacity: 0; }
+  8%        { opacity: 1; }
+  35%       { transform: translateX(300%)  skewX(-22deg); opacity: 0; }
+  100%      { transform: translateX(300%)  skewX(-22deg); opacity: 0; }
+}
+
 .btn-primary,
 .btn-gold {
   position: relative;
@@ -2948,22 +2961,19 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   content: '';
   position: absolute;
   top: -60%;
-  left: -80%;
-  width: 55%;
+  left: -10%;          /* position fixe — seul transform bouge */
+  width: 45%;
   height: 220%;
   background: linear-gradient(
     108deg,
     transparent 20%,
-    rgba(255,255,255,.28) 50%,
+    rgba(255,255,255,.38) 50%,
     transparent 80%
   );
-  transform: skewX(-22deg);
-  transition: left 0.55s ease;
+  will-change: transform, opacity;
+  animation: ctaShine 3.5s ease-in-out infinite;
   pointer-events: none;
-}
-.btn-primary:hover::after,
-.btn-gold:hover::after {
-  left: 130%;
+  opacity: 0;
 }
 
 /* ─── LOGO — HOVER ANIMÉ ─── */
@@ -4982,24 +4992,23 @@ mark.faq-hl {
 .ch-ctas { display: flex; gap: .875rem; flex-wrap: wrap; }
 .btn-cta-dark {
   display: inline-flex; align-items: center; gap: .55rem;
-  background: var(--gradient-brand); color: white;
+  background: var(--color-gold); color: white;
   padding: .92rem 1.85rem; border-radius: 100px;
   font-weight: 700; font-size: .875rem; text-decoration: none;
-  box-shadow: var(--shadow-brand);
-  transition: all .25s ease;
+  box-shadow: var(--shadow-gold);
+  transition: background .25s ease, transform .2s ease, box-shadow .25s ease;
   position: relative; overflow: hidden;
 }
 .btn-cta-dark::after {
   content: '';
-  position: absolute; top: -50%; left: -75%;
-  width: 50%; height: 200%;
-  background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.28) 50%, transparent 80%);
-  transform: skewX(-22deg);
-  transition: left .55s ease;
-  pointer-events: none;
+  position: absolute; top: -60%; left: -10%;
+  width: 45%; height: 220%;
+  background: linear-gradient(108deg, transparent 20%, rgba(255,255,255,.38) 50%, transparent 80%);
+  will-change: transform, opacity;
+  animation: ctaShine 3.5s ease-in-out infinite;
+  pointer-events: none; opacity: 0;
 }
-.btn-cta-dark:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 10px 36px rgba(102,119,255,.42), 0 4px 14px rgba(43,212,143,.2); }
-.btn-cta-dark:hover::after { left: 140%; }
+.btn-cta-dark:hover { transform: translateY(-2px); background: #22c47a; box-shadow: 0 10px 32px rgba(43,212,143,.45); }
 .btn-cta-outline {
   display: inline-flex; align-items: center; gap: .55rem;
   background: rgba(255,255,255,.07); color: rgba(255,255,255,.85);
@@ -5153,25 +5162,24 @@ mark.faq-hl {
 .pf-submit {
   width: 100%; display: flex; align-items: center; justify-content: center; gap: .6rem;
   padding: 1.05rem 2rem;
-  background: var(--gradient-brand);
+  background: var(--color-gold);
   color: white; border: none; border-radius: 14px;
   font-size: .9rem; font-weight: 700; cursor: pointer;
-  transition: all .25s ease;
-  box-shadow: var(--shadow-brand);
+  transition: background .25s ease, transform .2s ease, box-shadow .25s ease;
+  box-shadow: var(--shadow-gold);
   margin-top: .5rem;
   position: relative; overflow: hidden;
 }
 .pf-submit::after {
   content: '';
-  position: absolute; top: -60%; left: -80%;
-  width: 55%; height: 220%;
-  background: linear-gradient(108deg, transparent 20%, rgba(255,255,255,.28) 50%, transparent 80%);
-  transform: skewX(-22deg);
-  transition: left .55s ease;
-  pointer-events: none;
+  position: absolute; top: -60%; left: -10%;
+  width: 45%; height: 220%;
+  background: linear-gradient(108deg, transparent 20%, rgba(255,255,255,.38) 50%, transparent 80%);
+  will-change: transform, opacity;
+  animation: ctaShine 3.5s ease-in-out infinite;
+  pointer-events: none; opacity: 0;
 }
-.pf-submit:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 10px 36px rgba(102,119,255,.42), 0 4px 14px rgba(43,212,143,.2); }
-.pf-submit:hover::after { left: 130%; }
+.pf-submit:hover { transform: translateY(-2px); background: #22c47a; box-shadow: 0 10px 32px rgba(43,212,143,.45); }
 .pf-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
 .pf-privacy { font-size: .7rem; color: var(--color-gray-400); margin-top: .9rem; line-height: 1.6; text-align: center; }
 .pf-privacy a { color: var(--color-blue); text-decoration: underline; }
@@ -5215,22 +5223,23 @@ mark.faq-hl {
 .btn-book {
   display: inline-flex; align-items: center; gap: .6rem;
   padding: 1.05rem 2.2rem;
-  background: var(--gradient-brand);
+  background: var(--color-gold);
   color: white; border-radius: 14px; font-weight: 700; font-size: .9rem;
-  border: none; cursor: pointer; transition: all .25s ease;
-  box-shadow: var(--shadow-brand);
+  border: none; cursor: pointer;
+  transition: background .25s ease, transform .2s ease, box-shadow .25s ease;
+  box-shadow: var(--shadow-gold);
   position: relative; overflow: hidden;
 }
 .btn-book::after {
   content: '';
-  position: absolute; top: -60%; left: -80%;
-  width: 55%; height: 220%;
-  background: linear-gradient(108deg, transparent 20%, rgba(255,255,255,.28) 50%, transparent 80%);
-  transform: skewX(-22deg);
-  transition: left .55s ease; pointer-events: none;
+  position: absolute; top: -60%; left: -10%;
+  width: 45%; height: 220%;
+  background: linear-gradient(108deg, transparent 20%, rgba(255,255,255,.38) 50%, transparent 80%);
+  will-change: transform, opacity;
+  animation: ctaShine 3.5s ease-in-out infinite;
+  pointer-events: none; opacity: 0;
 }
-.btn-book:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 10px 36px rgba(102,119,255,.42); }
-.btn-book:hover::after { left: 130%; }
+.btn-book:hover { transform: translateY(-2px); background: #22c47a; box-shadow: 0 10px 32px rgba(43,212,143,.45); }
 .booking-badges {
   display: flex; gap: 1.5rem; margin-top: 2rem;
   flex-wrap: wrap; justify-content: center;
@@ -5892,14 +5901,32 @@ mark.faq-hl {
    Gradient bleu → vert appliqué globalement
    ============================================================ */
 
-/* ─── Gradient sur tous les boutons principaux CTA des pages dark ─── */
+/* ─── Vert uni + shine sur tous les CTA restants ─── */
 .pc-card__cta-btn.btn-gold,
 .pc-card__cta-btn.btn-primary,
 .faq-cta__btn.btn-primary,
-.faq-cta__btn.btn-gold {
-  background: var(--gradient-brand);
+.faq-cta__btn.btn-gold,
+.svc-card__cta.btn-primary,
+.svc-card__cta.btn-gold {
+  background: var(--color-gold);
   border: none;
-  box-shadow: var(--shadow-brand);
+  box-shadow: var(--shadow-gold);
+  position: relative;
+  overflow: hidden;
+}
+.pc-card__cta-btn.btn-gold::after,
+.pc-card__cta-btn.btn-primary::after,
+.faq-cta__btn.btn-primary::after,
+.faq-cta__btn.btn-gold::after,
+.svc-card__cta.btn-primary::after,
+.svc-card__cta.btn-gold::after {
+  content: '';
+  position: absolute; top: -60%; left: -10%;
+  width: 45%; height: 220%;
+  background: linear-gradient(108deg, transparent 20%, rgba(255,255,255,.38) 50%, transparent 80%);
+  will-change: transform, opacity;
+  animation: ctaShine 3.5s ease-in-out infinite;
+  pointer-events: none; opacity: 0;
 }
 
 /* ─── Avatar / badge gradient unifié ─── */
