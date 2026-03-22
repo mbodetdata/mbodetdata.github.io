@@ -548,6 +548,8 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 }
 .nav-link.nav-cta:hover {
   animation: none;
+  background: linear-gradient(135deg, var(--color-gold) 0%, #22c47a 100%) !important;
+  color: white !important;
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 8px 28px rgba(43,212,143,.55);
 }
