@@ -56,6 +56,25 @@
       link.addEventListener('click', closeNav);
     });
 
+    // Hover forcé sur le bouton Contact mobile (contourne tous les conflits CSS)
+    var navCta = siteNav.querySelector('.nav-link.nav-cta');
+    if (navCta) {
+      navCta.addEventListener('mouseenter', function () {
+        this.style.setProperty('background', 'linear-gradient(135deg, #2bd48f 0%, #22c47a 100%)', 'important');
+        this.style.setProperty('color', 'white', 'important');
+        this.style.setProperty('filter', 'brightness(1.12)', 'important');
+        this.style.setProperty('transform', 'translateY(-2px)', 'important');
+        this.style.setProperty('box-shadow', '0 8px 28px rgba(43,212,143,.5)', 'important');
+      });
+      navCta.addEventListener('mouseleave', function () {
+        this.style.removeProperty('background');
+        this.style.removeProperty('color');
+        this.style.removeProperty('filter');
+        this.style.removeProperty('transform');
+        this.style.removeProperty('box-shadow');
+      });
+    }
+
     // Fermer via le backdrop
     if (navBackdrop) {
       navBackdrop.addEventListener('click', closeNav);
