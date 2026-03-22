@@ -26,32 +26,38 @@ body_class: "page-faq"
     <div class="faq-hero__orb faq-hero__orb--3"></div>
   </div>
   <div class="container faq-hero__content">
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
-      <a href="{{ '/' | relative_url }}">Accueil</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>FAQ</span>
-    </nav>
-    <div class="faq-hero__eyebrow" aria-hidden="true">
-      <span class="eyebrow-dot"></span>
-      {{ d.hero.eyebrow }}
-      <span class="eyebrow-dot"></span>
-    </div>
-    <h1 id="faq-title" class="faq-hero__title">{{ d.hero.title }}</h1>
-    <p class="faq-hero__subtitle">{{ d.hero.subtitle }}</p>
-    <div class="faq-hero__stats" aria-label="Statistiques FAQ">
-      <div class="stat-pill">
-        <span class="stat-number">{{ faq_total_questions }}</span>
-        <span class="stat-label">réponses</span>
+    <div class="page-hero__content">
+      <div class="page-hero__left">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <a href="{{ '/' | relative_url }}">Accueil</a>
+          <span class="breadcrumb-sep">›</span>
+          <span>FAQ</span>
+        </nav>
+        <div class="faq-hero__eyebrow" aria-hidden="true">
+          <span class="eyebrow-dot"></span>
+          {{ d.hero.eyebrow }}
+          <span class="eyebrow-dot"></span>
+        </div>
+        <h1 id="faq-title" class="faq-hero__title">{{ d.hero.title }}</h1>
       </div>
-      <div class="stat-divider" aria-hidden="true"></div>
-      <div class="stat-pill">
-        <span class="stat-number">{{ faq_total_categories }}</span>
-        <span class="stat-label">thèmes</span>
-      </div>
-      <div class="stat-divider" aria-hidden="true"></div>
-      <div class="stat-pill">
-        <span class="stat-number">0€</span>
-        <span class="stat-label">pour répondre</span>
+      <div class="page-hero__right">
+        <p class="faq-hero__subtitle">{{ d.hero.subtitle }}</p>
+        <div class="faq-hero__stats" aria-label="Statistiques FAQ">
+          <div class="stat-pill">
+            <span class="stat-number">{{ faq_total_questions }}</span>
+            <span class="stat-label">réponses</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-pill">
+            <span class="stat-number">{{ faq_total_categories }}</span>
+            <span class="stat-label">thèmes</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-pill">
+            <span class="stat-number">0€</span>
+            <span class="stat-label">pour répondre</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
