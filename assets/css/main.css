@@ -5254,10 +5254,7 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   font-weight: 800;
   line-height: 1.15;
   margin-bottom: var(--space-5);
-  background: linear-gradient(130deg, #ffffff 20%, var(--color-blue-light) 55%, var(--color-gold) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: white;
   max-width: none;
 }
 .faq-hero__subtitle {
@@ -6378,6 +6375,21 @@ mark.faq-hl {
   align-items: center;
 }
 
+.blog-hero-split__text {
+  position: relative;
+}
+.blog-hero-split__text::after {
+  content: '';
+  position: absolute;
+  right: calc(-1 * var(--space-6));
+  top: 8%; bottom: 8%;
+  width: 1px;
+  background: linear-gradient(180deg,
+    transparent,
+    rgba(102,119,255,.35) 30%,
+    rgba(43,212,143,.25) 70%,
+    transparent);
+}
 .blog-hero-split__text h1 { max-width: 100%; }
 .blog-hero-split__text p  { max-width: 100%; font-size: var(--text-lg); }
 
