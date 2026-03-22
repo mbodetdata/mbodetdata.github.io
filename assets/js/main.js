@@ -257,7 +257,7 @@
         grad.setAttribute('gradientUnits', 'userSpaceOnUse');
         grad.setAttribute('x1', '0'); grad.setAttribute('y1', '0');
         grad.setAttribute('x2', '0'); grad.setAttribute('y2', String(H));
-        [['0%','#6677ff'],['50%','#4aa8ff'],['100%','#2bd48f']].forEach(function (s) {
+        [['0%','#2bd48f'],['50%','#4aa8ff'],['100%','#6677ff']].forEach(function (s) {
           var stop = document.createElementNS(ns, 'stop');
           stop.setAttribute('offset', s[0]);
           stop.setAttribute('stop-color', s[1]);
@@ -332,11 +332,11 @@
       });
     });
 
-    /* Construction initiale après fonts/images chargées */
+    /* Construction initiale après fonts/images chargées + délai pour la transition CSS du 1er item ouvert */
     if (document.readyState === 'complete') {
-      buildTimelinePath();
+      setTimeout(buildTimelinePath, 450);
     } else {
-      window.addEventListener('load', buildTimelinePath);
+      window.addEventListener('load', function () { setTimeout(buildTimelinePath, 450); });
     }
     window.addEventListener('resize', buildTimelinePath);
   }());
