@@ -4520,10 +4520,7 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   line-height: 1.15;
 }
 .svc-hero__title .svc-hero__accent {
-  background: linear-gradient(130deg, var(--color-blue-light) 0%, var(--color-teal) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-blue-light);
 }
 
 .svc-hero__sub {
