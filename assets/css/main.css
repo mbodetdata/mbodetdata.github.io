@@ -5997,8 +5997,7 @@ mark.faq-hl {
   margin-bottom: 1.25rem;
 }
 .ch-title .grad {
-  background: var(--gradient-brand-h);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  color: var(--color-gold);
 }
 
 .ch-subtitle {
