@@ -6072,6 +6072,128 @@ mark.faq-hl {
 .cs-value { font-size: .83rem; font-weight: 700; color: var(--color-navy); white-space: nowrap; }
 .cs-sep { display: none; }
 
+/* ── CC CARDS (premium contact cards) ── */
+.cc-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  padding: 3rem 0 2rem;
+}
+.cc-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.375rem 1.5rem;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1.5px solid rgba(102,119,255,.12);
+  box-shadow:
+    0 2px 8px rgba(14,20,60,.04),
+    0 8px 24px rgba(14,20,60,.06);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+.cc-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 4px 12px rgba(14,20,60,.06),
+    0 16px 40px rgba(14,20,60,.10);
+}
+.cc-card__glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.cc-card:hover .cc-card__glow { opacity: 1; }
+
+/* Email — blue accent */
+.cc-card--email { border-color: rgba(102,119,255,.15); }
+.cc-card--email:hover { border-color: rgba(102,119,255,.4); }
+.cc-card--email .cc-card__glow {
+  background: radial-gradient(ellipse at 0% 50%, rgba(102,119,255,.08) 0%, transparent 70%);
+}
+.cc-card--email .cc-card__icon { background: linear-gradient(135deg, #eff1ff, #e6e9ff); color: var(--color-blue); }
+
+/* Phone — teal/green accent */
+.cc-card--phone { border-color: rgba(43,212,143,.15); }
+.cc-card--phone:hover { border-color: rgba(43,212,143,.45); }
+.cc-card--phone .cc-card__glow {
+  background: radial-gradient(ellipse at 0% 50%, rgba(43,212,143,.09) 0%, transparent 70%);
+}
+.cc-card--phone .cc-card__icon { background: linear-gradient(135deg, #e8faf3, #d8f5ea); color: #1baa6e; }
+
+/* LinkedIn — indigo accent */
+.cc-card--linkedin { border-color: rgba(10,102,194,.12); }
+.cc-card--linkedin:hover { border-color: rgba(10,102,194,.35); }
+.cc-card--linkedin .cc-card__glow {
+  background: radial-gradient(ellipse at 0% 50%, rgba(10,102,194,.08) 0%, transparent 70%);
+}
+.cc-card--linkedin .cc-card__icon { background: linear-gradient(135deg, #e8f0fb, #dce8f8); color: #0a66c2; }
+
+.cc-card__icon {
+  width: 46px; height: 46px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform .22s ease;
+}
+.cc-card:hover .cc-card__icon { transform: scale(1.08); }
+
+.cc-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.cc-card__label {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  line-height: 1;
+}
+.cc-card__value {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+.cc-card__hint {
+  font-size: .72rem;
+  color: var(--color-gray-400);
+  line-height: 1;
+}
+.cc-card__arrow {
+  flex-shrink: 0;
+  color: var(--color-gray-300);
+  transition: transform .22s ease, color .22s ease;
+}
+.cc-card:hover .cc-card__arrow {
+  transform: translateX(4px);
+  color: var(--color-blue);
+}
+.cc-card--phone:hover .cc-card__arrow { color: #1baa6e; }
+.cc-card--linkedin:hover .cc-card__arrow { color: #0a66c2; }
+
+@media (max-width: 768px) {
+  .cc-cards { grid-template-columns: 1fr; gap: .875rem; padding: 2rem 0 1.5rem; }
+}
+@media (min-width: 480px) and (max-width: 768px) {
+  .cc-cards { grid-template-columns: repeat(2, 1fr); }
+  .cc-card--linkedin { grid-column: 1 / -1; }
+}
+
 /* ── MAIN SECTION ── */
 .contact-main {
   padding: 4rem 0 6rem;

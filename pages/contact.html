@@ -96,46 +96,54 @@ body_class: "page-contact"
 <section class="contact-main" id="contact-form-section" aria-label="Formulaire de contact">
   <div class="container">
 
-    <!-- Contact strip -->
-    <div class="contact-strip fade-up" aria-label="Informations de contact">
+    <!-- Contact cards -->
+    <div class="cc-cards fade-up" aria-label="Informations de contact">
 
-      <a href="mailto:contact@bmdata.fr" class="cs-item">
-        <div class="cs-icon-wrap" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <a href="mailto:contact@bmdata.fr" class="cc-card cc-card--email">
+        <div class="cc-card__glow" aria-hidden="true"></div>
+        <div class="cc-card__icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
             <polyline points="22,6 12,13 2,6"/>
           </svg>
         </div>
-        <div class="cs-info">
-          <span class="cs-label">Email</span>
-          <span class="cs-value">contact@bmdata.fr</span>
+        <div class="cc-card__body">
+          <span class="cc-card__label">Email</span>
+          <span class="cc-card__value">contact@bmdata.fr</span>
+          <span class="cc-card__hint">Réponse sous 24 h</span>
         </div>
+        <svg class="cc-card__arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
 
-      <a href="tel:+33670210929" class="cs-item">
-        <div class="cs-icon-wrap" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <a href="tel:+33670210929" class="cc-card cc-card--phone">
+        <div class="cc-card__glow" aria-hidden="true"></div>
+        <div class="cc-card__icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.93 3.42 2 2 0 0 1 3.92 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
           </svg>
         </div>
-        <div class="cs-info">
-          <span class="cs-label">Téléphone</span>
-          <span class="cs-value">06 70 21 09 29</span>
+        <div class="cc-card__body">
+          <span class="cc-card__label">Téléphone</span>
+          <span class="cc-card__value">06 70 21 09 29</span>
+          <span class="cc-card__hint">Lun – Ven, 9h – 18h</span>
         </div>
+        <svg class="cc-card__arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
 
-
-      <a href="https://www.linkedin.com/in/martial-bodet/" target="_blank" rel="noopener noreferrer" class="cs-item">
-        <div class="cs-icon-wrap" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+      <a href="https://www.linkedin.com/in/martial-bodet/" target="_blank" rel="noopener noreferrer" class="cc-card cc-card--linkedin">
+        <div class="cc-card__glow" aria-hidden="true"></div>
+        <div class="cc-card__icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
             <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
           </svg>
         </div>
-        <div class="cs-info">
-          <span class="cs-label">Réseau</span>
-          <span class="cs-value">LinkedIn</span>
+        <div class="cc-card__body">
+          <span class="cc-card__label">Réseau professionnel</span>
+          <span class="cc-card__value">LinkedIn</span>
+          <span class="cc-card__hint">Martial Bodet</span>
         </div>
+        <svg class="cc-card__arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
 
     </div>
@@ -144,14 +152,7 @@ body_class: "page-contact"
     <div class="contact-center">
       <div class="action-card fade-up">
         <div class="action-tabs" role="tablist" aria-label="Choisir un mode de contact">
-          <button class="action-tab active" id="tab-form" role="tab" aria-selected="true" aria-controls="panel-form" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-            <span class="tab-text">Envoyer un message</span>
-          </button>
-          <button class="action-tab tab-book-btn" id="tab-book" role="tab" aria-selected="false" aria-controls="panel-book" type="button">
+          <button class="action-tab tab-book-btn active" id="tab-book" role="tab" aria-selected="true" aria-controls="panel-book" type="button">
             <span class="tab-badge" aria-hidden="true">⚡</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -160,10 +161,57 @@ body_class: "page-contact"
             </svg>
             <span class="tab-text">Réserver un créneau</span>
           </button>
+          <button class="action-tab" id="tab-form" role="tab" aria-selected="false" aria-controls="panel-form" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span class="tab-text">Envoyer un message</span>
+          </button>
+        </div>
+
+        <!-- PANEL RÉSERVATION -->
+        <div class="tab-panel active" id="panel-book" role="tabpanel" aria-labelledby="tab-book">
+          <div class="booking-panel">
+            <div class="booking-illus" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue)" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+                <circle cx="8" cy="15" r="1" fill="currentColor"/>
+                <circle cx="12" cy="15" r="1" fill="currentColor"/>
+                <circle cx="16" cy="15" r="1" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3>Choisissez votre créneau</h3>
+            <p>Réservez directement dans mon agenda en ligne. Échange de 30 minutes, visio ou téléphone, à votre convenance.</p>
+            <button class="btn-book open-booking" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              Ouvrir l'agenda
+            </button>
+            <div class="booking-badges">
+              <div class="bk-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                30 minutes
+              </div>
+              <div class="bk-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Gratuit
+              </div>
+              <div class="bk-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Sans engagement
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- PANEL FORMULAIRE -->
-        <div class="tab-panel active" id="panel-form" role="tabpanel" aria-labelledby="tab-form">
+        <div class="tab-panel" id="panel-form" role="tabpanel" aria-labelledby="tab-form">
           <div class="pf-error" id="pf-error" role="alert"></div>
           <div class="pf-success" id="pf-success" aria-live="polite">
             <div class="pf-success-icon" aria-hidden="true">
@@ -222,46 +270,6 @@ body_class: "page-contact"
             </button>
             <p class="pf-privacy">{{ d.form.privacy_notice }}</p>
           </form>
-        </div>
-
-        <!-- PANEL RÉSERVATION -->
-        <div class="tab-panel" id="panel-book" role="tabpanel" aria-labelledby="tab-book">
-          <div class="booking-panel">
-            <div class="booking-illus" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue)" stroke-width="1.5">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-                <circle cx="8" cy="15" r="1" fill="currentColor"/>
-                <circle cx="12" cy="15" r="1" fill="currentColor"/>
-                <circle cx="16" cy="15" r="1" fill="currentColor"/>
-              </svg>
-            </div>
-            <h3>Choisissez votre créneau</h3>
-            <p>Réservez directement dans mon agenda en ligne. Échange de 30 minutes, visio ou téléphone, à votre convenance.</p>
-            <button class="btn-book open-booking" type="button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-              Ouvrir l'agenda
-            </button>
-            <div class="booking-badges">
-              <div class="bk-badge">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                30 minutes
-              </div>
-              <div class="bk-badge">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Gratuit
-              </div>
-              <div class="bk-badge">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Sans engagement
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
