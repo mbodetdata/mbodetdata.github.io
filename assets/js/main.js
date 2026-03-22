@@ -1105,11 +1105,6 @@ if (document.querySelector('.blog-stat')) {
 
 /* ═══ Hero particles — toutes les pages hero ═══ */
 (function () {
-  if (
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
-    window.innerWidth < 768
-  ) return;
-
   var canvases = document.querySelectorAll('.hero-particles');
   if (!canvases.length) return;
 
@@ -1118,7 +1113,7 @@ if (document.querySelector('.blog-stat')) {
   function initParticles(canvas) {
     var ctx = canvas.getContext('2d');
     var W, H, pts;
-    var COUNT = 60, LINK = 120;
+    var COUNT = 85, LINK = 130;
 
     function resize() {
       W = canvas.width  = canvas.offsetWidth;
@@ -1129,11 +1124,11 @@ if (document.querySelector('.blog-stat')) {
       return {
         x:  Math.random() * W,
         y:  Math.random() * H,
-        vx: (Math.random() - .5) * .35,
-        vy: (Math.random() - .5) * .35,
-        r:  Math.random() * 1.4 + .5,
+        vx: (Math.random() - .5) * .38,
+        vy: (Math.random() - .5) * .38,
+        r:  Math.random() * 1.6 + .5,
         c:  COLORS[Math.floor(Math.random() * COLORS.length)],
-        a:  Math.random() * .5 + .15
+        a:  Math.random() * .55 + .2
       };
     }
 
@@ -1146,8 +1141,8 @@ if (document.querySelector('.blog-stat')) {
           var d  = Math.sqrt(dx * dx + dy * dy);
           if (d < LINK) {
             ctx.beginPath();
-            ctx.strokeStyle = 'rgba(102,119,255,' + (.12 * (1 - d / LINK)) + ')';
-            ctx.lineWidth = .5;
+            ctx.strokeStyle = 'rgba(102,119,255,' + (.14 * (1 - d / LINK)) + ')';
+            ctx.lineWidth = .55;
             ctx.moveTo(pts[i].x, pts[i].y);
             ctx.lineTo(pts[j].x, pts[j].y);
             ctx.stroke();
