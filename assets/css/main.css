@@ -553,11 +553,10 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   transition: transform .28s cubic-bezier(.34,1.56,.64,1);
 }
 .nav-link.nav-cta:hover {
-  animation: none;
   opacity: 1 !important;
   background: linear-gradient(135deg, var(--color-gold) 0%, #22c47a 100%) !important;
   color: white !important;
-  transform: translateY(-2px) scale(1.03);
+  transform: translateY(-2px) scale(1.03) !important;
   box-shadow: 0 8px 28px rgba(43,212,143,.55);
 }
 .nav-link.nav-cta:hover .nav-link__icon { transform: scale(1.2) rotate(-8deg); }
