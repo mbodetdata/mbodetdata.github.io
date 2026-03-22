@@ -3389,6 +3389,16 @@ p { line-height: 1.75; color: var(--color-gray-600); }
     transform: translateY(-2px) !important;
     box-shadow: 0 8px 28px rgba(43,212,143,.5) !important;
   }
+  /* Spécificité ID — écrase TOUT sans exception */
+  #site-nav .nav-link.nav-cta,
+  #site-nav .nav-link.nav-cta:hover,
+  #site-nav .nav-link.nav-cta:active,
+  #site-nav .nav-link.nav-cta:focus {
+    background: linear-gradient(135deg, var(--color-gold) 0%, #22c47a 100%) !important;
+    color: white !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
 
   /* Séparateur + Hub */
   .nav-mobile-divider {
