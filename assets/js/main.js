@@ -1339,7 +1339,7 @@ if (document.getElementById('postArticle')) {
       /* auto-reveal post content children */
       if (content) {
         var revealEls = content.querySelectorAll(
-          'h2, h3, p, ul, ol, blockquote, pre, img, table, .post-tags, .post-share-cta, .post-author-card'
+          'h2, h3, p, ul, ol, blockquote, pre, img, table, .post-tags, .post-share-banner, .post-author-card'
         );
         revealEls.forEach(function (el) {
           el.classList.add('reveal');

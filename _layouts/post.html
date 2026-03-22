@@ -147,28 +147,36 @@ layout: default
         </div>
         {% endif %}
 
-        <!-- Share CTA inline -->
-        <div class="post-share-cta reveal" aria-label="Partager cet article">
-          <div class="post-share-cta__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <!-- Share Banner -->
+        <div class="post-share-banner reveal" aria-label="Partager cet article">
+          <div class="post-share-banner__bg" aria-hidden="true">
+            <div class="post-share-banner__orb post-share-banner__orb--1"></div>
+            <div class="post-share-banner__orb post-share-banner__orb--2"></div>
+            <div class="post-share-banner__orb post-share-banner__orb--3"></div>
           </div>
-          <div class="post-share-cta__copy">
-            <strong>Cet article vous a été utile ?</strong>
-            <p>Partagez-le avec votre réseau — ça aide vraiment.</p>
-          </div>
-          <div class="post-share-cta__actions">
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-share-cta__btn post-share-cta__btn--li" aria-label="Partager sur LinkedIn">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              LinkedIn
-            </a>
-            <button type="button" class="post-share-cta__btn post-share-cta__btn--native" id="nativeShareCta" aria-label="Partager">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-              Partager
-            </button>
-            <button class="post-share-cta__btn post-share-cta__btn--copy" id="copyLinkBtn2" type="button">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              Copier
-            </button>
+          <div class="post-share-banner__inner">
+            <div class="post-share-banner__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <div class="post-share-banner__text">
+              <p class="post-share-banner__eyebrow">Vous avez apprécié cet article ?</p>
+              <h3 class="post-share-banner__title">Partagez-le avec votre réseau</h3>
+              <p class="post-share-banner__sub">Un simple partage aide d'autres professionnels à découvrir ces ressources — et ça ne prend que 2 secondes.</p>
+            </div>
+            <div class="post-share-banner__actions">
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-share-banner__btn post-share-banner__btn--li" aria-label="Partager sur LinkedIn">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                <span>LinkedIn</span>
+              </a>
+              <button type="button" class="post-share-banner__btn post-share-banner__btn--native" id="nativeShareCta" aria-label="Partager">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                <span>Partager</span>
+              </button>
+              <button type="button" class="post-share-banner__btn post-share-banner__btn--copy" id="copyLinkBtn2" aria-label="Copier le lien">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copier le lien</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -223,7 +231,7 @@ layout: default
       {% include components/post-card.html post=post %}
       {% endfor %}
     </div>
-    <div style="text-align:center;margin-top:3rem;">
+    <div class="section-footer">
       <a href="{{ '/blog/' | relative_url }}" class="btn btn-outline">Voir tous les articles</a>
     </div>
   </div>
