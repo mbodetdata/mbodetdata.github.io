@@ -27,23 +27,24 @@
     siteNav.classList.add('nav-open');
     navToggle.classList.add('active');
     navToggle.setAttribute('aria-expanded', 'true');
-    // Fix scroll iOS Safari : position fixed + restauration scroll
     document.body.style.position = 'fixed';
     document.body.style.top = '-' + savedScrollY + 'px';
     document.body.style.width = '100%';
     if (navBackdrop) navBackdrop.classList.add('active');
+    // Désactiver backdrop-filter du header (bug de rendu navigateur au survol)
+    if (header) header.classList.add('nav-is-open');
   }
 
   function closeNav() {
     siteNav.classList.remove('nav-open');
     navToggle.classList.remove('active');
     navToggle.setAttribute('aria-expanded', 'false');
-    // Restaurer la position de scroll
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';
     window.scrollTo(0, savedScrollY);
     if (navBackdrop) navBackdrop.classList.remove('active');
+    if (header) header.classList.remove('nav-is-open');
   }
 
   if (navToggle && siteNav) {
