@@ -3384,6 +3384,16 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   }
   .site-nav.nav-open .nav-link.nav-cta::before,
   .site-nav.nav-open .nav-link.nav-cta::after { display: none !important; }
+  /* Tuer toutes les animations + overflow pour bloquer la shine */
+  .site-nav.nav-open .nav-link.nav-cta {
+    animation: none !important;
+    overflow: hidden;
+  }
+  .site-nav.nav-open .nav-link.nav-cta *,
+  .site-nav.nav-open .nav-link.nav-cta *::before,
+  .site-nav.nav-open .nav-link.nav-cta *::after {
+    animation: none !important;
+  }
   .site-nav.nav-open .nav-link.nav-cta:hover {
     filter: brightness(1.12) !important;
     transform: translateY(-2px) !important;
