@@ -1738,6 +1738,8 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 .post-qshare-btn--li:hover { box-shadow: 0 4px 20px rgba(10,102,194,.5); }
 .post-qshare-btn--x   { background: #000; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 2px 12px rgba(0,0,0,.35); }
 .post-qshare-btn--x:hover { box-shadow: 0 4px 20px rgba(0,0,0,.5); }
+.post-qshare-btn--native { background: #6366f1; border: none; cursor: pointer; box-shadow: 0 2px 12px rgba(99,102,241,.35); }
+.post-qshare-btn--native:hover { box-shadow: 0 4px 20px rgba(99,102,241,.5); }
 
 .post-hero__right { position: relative; animation: hero-fade-up .8s cubic-bezier(.22,1,.36,1) .35s both; }
 .post-hero__img-frame {
@@ -1867,6 +1869,8 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 .post-sidebar-share__btn--li:hover { box-shadow: 0 4px 16px rgba(10,102,194,.45); }
 .post-sidebar-share__btn--x   { background: #000; border: 1px solid var(--color-gray-200); color: #111; }
 .post-sidebar-share__btn--x:hover { color: white; background: #111; }
+.post-sidebar-share__btn--native { background: #6366f1; color: white; border: none; cursor: pointer; box-shadow: 0 2px 10px rgba(99,102,241,.3); }
+.post-sidebar-share__btn--native:hover { box-shadow: 0 4px 16px rgba(99,102,241,.45); }
 .post-sidebar-share__btn--copy {
   background: var(--color-blue-pale);
   color: var(--color-blue);
@@ -2082,6 +2086,8 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 .post-share-cta__btn--li:hover { box-shadow: 0 4px 20px rgba(10,102,194,.45); }
 .post-share-cta__btn--x   { background: var(--color-navy); color: white; box-shadow: 0 2px 12px rgba(8,11,20,.25); }
 .post-share-cta__btn--x:hover { box-shadow: 0 4px 18px rgba(8,11,20,.4); }
+.post-share-cta__btn--native { background: #6366f1; color: white; border: none; cursor: pointer; box-shadow: 0 2px 12px rgba(99,102,241,.3); }
+.post-share-cta__btn--native:hover { box-shadow: 0 4px 20px rgba(99,102,241,.45); }
 .post-share-cta__btn--copy { background: var(--color-blue-pale); color: var(--color-blue); border: 1px solid rgba(102,119,255,.2); }
 .post-share-cta__btn--copy:hover { background: var(--color-blue); color: white; }
 .post-share-cta__btn--copy.is-copied { background: var(--color-gold-pale); color: var(--color-teal); }

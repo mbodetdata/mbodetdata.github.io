@@ -1378,6 +1378,35 @@ if (document.getElementById('postArticle')) {
     setupCopy(document.getElementById('copyLinkBtn'),  'Copier le lien');
     setupCopy(document.getElementById('copyLinkBtn2'), false);
 
+    /* ─── Native share ─── */
+    function setupNativeShare(btn) {
+      if (!btn) return;
+      if (navigator.share) {
+        btn.addEventListener('click', function () {
+          var meta = document.querySelector('meta[name="description"]');
+          navigator.share({
+            title: document.title,
+            text: meta ? meta.content : '',
+            url: window.location.href
+          }).catch(function () {});
+        });
+      } else {
+        /* Fallback : copie l'URL si Web Share API indisponible */
+        btn.addEventListener('click', function () {
+          var self = this;
+          navigator.clipboard.writeText(window.location.href).then(function () {
+            var orig = self.innerHTML;
+            self.innerHTML = orig.replace(/Partager/, 'Copié !');
+            setTimeout(function () { self.innerHTML = orig; }, 2200);
+          });
+        });
+      }
+    }
+
+    setupNativeShare(document.getElementById('nativeShareHero'));
+    setupNativeShare(document.getElementById('nativeShareSidebar'));
+    setupNativeShare(document.getElementById('nativeShareCta'));
+
     /* ─── 5. Back to top ─── */
     var btt = document.getElementById('backToTop');
     if (btt) {
