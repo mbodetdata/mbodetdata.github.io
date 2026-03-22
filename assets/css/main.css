@@ -3348,12 +3348,12 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   }
   .site-nav.nav-open .nav-link::after { display: none; }
 
-  .site-nav.nav-open .nav-link:hover {
+  .site-nav.nav-open .nav-link:not(.nav-cta):hover {
     background: rgba(99,102,241,.08);
     color: white;
     transform: translateX(6px);
   }
-  .site-nav.nav-open .nav-link:hover::before {
+  .site-nav.nav-open .nav-link:not(.nav-cta):hover::before {
     transform: translateY(-50%) scaleY(1);
   }
   .site-nav.nav-open .nav-link.active {
