@@ -16,25 +16,30 @@ body_class: "page-services"
 <section class="page-hero svc-hero" aria-labelledby="services-title">
   <canvas class="hero-particles" aria-hidden="true"></canvas>
   <div class="container">
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
-      <a href="{{ '/' | relative_url }}">Accueil</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>Services</span>
-    </nav>
-    <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
-    <h1 id="services-title" class="svc-hero__title">{{ d.hero.title }}</h1>
-    <p class="svc-hero__sub">{{ d.hero.subtitle }}</p>
-
-    <!-- Ancres rapides vers chaque service -->
-    <nav class="svc-pills" aria-label="Accès rapide aux services">
-      {% for s in d.services %}
-      <a href="#{{ s.id }}" class="svc-pill">
-        <span class="svc-pill__num">{{ s.number }}</span>
-        <span>{{ s.title }}</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-      </a>
-      {% endfor %}
-    </nav>
+    <div class="page-hero__content">
+      <div class="page-hero__left">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <a href="{{ '/' | relative_url }}">Accueil</a>
+          <span class="breadcrumb-sep">›</span>
+          <span>Services</span>
+        </nav>
+        <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
+        <h1 id="services-title" class="svc-hero__title">{{ d.hero.title }}</h1>
+      </div>
+      <div class="page-hero__right">
+        <p class="svc-hero__sub">{{ d.hero.subtitle }}</p>
+        <!-- Ancres rapides vers chaque service -->
+        <nav class="svc-pills" aria-label="Accès rapide aux services">
+          {% for s in d.services %}
+          <a href="#{{ s.id }}" class="svc-pill">
+            <span class="svc-pill__num">{{ s.number }}</span>
+            <span>{{ s.title }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          {% endfor %}
+        </nav>
+      </div>
+    </div>
   </div>
 </section>
 

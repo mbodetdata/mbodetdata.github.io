@@ -56,32 +56,38 @@ body_class: "page-contact"
   <div class="ch-orb ch-orb--b" aria-hidden="true"></div>
   <div class="ch-dots" aria-hidden="true"></div>
   <div class="container">
-    <nav class="ch-breadcrumb" aria-label="Fil d'Ariane">
-      <a href="{{ '/' | relative_url }}">Accueil</a>
-      <span aria-hidden="true">›</span>
-      <span>Contact</span>
-    </nav>
-    <h1 class="ch-title" id="contact-h1">
-      Parlons de votre<br>
-      <span class="grad">projet data</span>
-    </h1>
-    <p class="ch-subtitle">{{ d.hero.subtitle }}</p>
-    <div class="ch-ctas">
-      <a href="#contact-form-section" class="btn-cta-dark">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-          <polyline points="22,6 12,13 2,6"/>
-        </svg>
-        Envoyer un message
-      </a>
-      <button class="btn-cta-outline open-booking" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-          <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-          <line x1="3" y1="10" x2="21" y2="10"/>
-        </svg>
-        Réserver un créneau
-      </button>
+    <div class="page-hero__content">
+      <div class="page-hero__left">
+        <nav class="ch-breadcrumb" aria-label="Fil d'Ariane">
+          <a href="{{ '/' | relative_url }}">Accueil</a>
+          <span aria-hidden="true">›</span>
+          <span>Contact</span>
+        </nav>
+        <h1 class="ch-title" id="contact-h1">
+          Parlons de votre<br>
+          <span class="grad">projet data</span>
+        </h1>
+      </div>
+      <div class="page-hero__right">
+        <p class="ch-subtitle">{{ d.hero.subtitle }}</p>
+        <div class="ch-ctas">
+          <a href="#contact-form-section" class="btn-cta-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            Envoyer un message
+          </a>
+          <button class="btn-cta-outline open-booking" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Réserver un créneau
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </section>

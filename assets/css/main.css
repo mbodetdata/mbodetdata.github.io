@@ -3127,6 +3127,36 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 .page-hero h1 { color: white; max-width: 700px; }
 .page-hero p { color: rgba(255,255,255,.7); max-width: 580px; font-size: var(--text-xl); }
 
+/* ─── PAGE HERO — Layout 2 colonnes (identique à la home) ─── */
+.page-hero__content {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+.page-hero__left {
+  display: flex;
+  flex-direction: column;
+}
+.page-hero__right {
+  position: relative;
+  padding-left: var(--space-10);
+}
+.page-hero__right::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8%; bottom: 8%;
+  width: 1px;
+  background: linear-gradient(180deg,
+    transparent,
+    rgba(102,119,255,.35) 30%,
+    rgba(43,212,143,.25) 70%,
+    transparent);
+}
+.page-hero__left h1 { max-width: none; }
+.page-hero__right p { max-width: none; }
+
 /* ─── FEATURED QUOTE ─── */
 .featured-quote {
   background: var(--color-blue-pale);
@@ -3261,6 +3291,7 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
   .hero-content { grid-template-columns: 1fr 1fr; gap: var(--space-10); }
+  .page-hero__content { gap: var(--space-10); }
   .contact-layout,
   .about-intro-layout {
     grid-template-columns: 1fr;
@@ -3472,6 +3503,9 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   .hero-content { padding: var(--space-12) 0; grid-template-columns: 1fr; gap: var(--space-8); }
   .hero-right { padding-left: 0; border-left: none; }
   .hero-right::before { display: none; }
+  .page-hero__content { grid-template-columns: 1fr; gap: var(--space-8); }
+  .page-hero__right { padding-left: 0; }
+  .page-hero__right::before { display: none; }
   .hero-subtitle { margin-bottom: 0; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; justify-content: center; }
@@ -5928,6 +5962,8 @@ mark.faq-hl {
   mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
 }
 .contact-hero .container { position: relative; z-index: 2; }
+.contact-hero .ch-subtitle { max-width: none; }
+.contact-hero .ch-breadcrumb { margin-bottom: 1.25rem; }
 
 .ch-breadcrumb {
   display: flex; align-items: center; gap: .45rem;
