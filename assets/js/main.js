@@ -1434,3 +1434,76 @@ if (document.getElementById('postArticle')) {
     }
   }
 }
+
+/* ─── PWA : Service Worker + Install Prompt ─── */
+(function () {
+  'use strict';
+
+  /* Enregistrement du service worker */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    });
+  }
+
+  /* Prompt d'installation */
+  var deferredPrompt = null;
+  var banner = null;
+
+  function createBanner() {
+    banner = document.createElement('div');
+    banner.id = 'pwa-install-banner';
+    banner.setAttribute('role', 'complementary');
+    banner.setAttribute('aria-label', 'Installer l\'application');
+    banner.innerHTML =
+      '<div class="pwa-banner-content">' +
+        '<img src="/assets/img/logo_192.png" alt="" class="pwa-banner-icon" aria-hidden="true">' +
+        '<div class="pwa-banner-text">' +
+          '<strong>BM Data</strong>' +
+          '<span>Installer l\'application</span>' +
+        '</div>' +
+        '<button id="pwa-install-btn" class="pwa-install-btn">Installer</button>' +
+        '<button id="pwa-dismiss-btn" class="pwa-dismiss-btn" aria-label="Fermer">&#x2715;</button>' +
+      '</div>';
+    document.body.appendChild(banner);
+
+    document.getElementById('pwa-install-btn').addEventListener('click', function () {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(function () {
+        deferredPrompt = null;
+        hideBanner();
+      });
+    });
+
+    document.getElementById('pwa-dismiss-btn').addEventListener('click', function () {
+      hideBanner();
+      try { sessionStorage.setItem('pwa-dismissed', '1'); } catch (err) {}
+    });
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        banner.classList.add('pwa-banner-visible');
+      });
+    });
+  }
+
+  function hideBanner() {
+    if (!banner) return;
+    banner.classList.remove('pwa-banner-visible');
+    setTimeout(function () { if (banner) { banner.remove(); banner = null; } }, 400);
+  }
+
+  try { if (sessionStorage.getItem('pwa-dismissed')) return; } catch (err) {}
+
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (!banner) createBanner();
+  });
+
+  window.addEventListener('appinstalled', function () {
+    hideBanner();
+    deferredPrompt = null;
+  });
+})();
