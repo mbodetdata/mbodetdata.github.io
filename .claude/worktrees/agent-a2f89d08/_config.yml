@@ -15,8 +15,7 @@ description: "BM Data est un consultant data basé à Agen. Il aide les TPE et P
 #
 # Décommentez ci-dessous et commentez les lignes ci-dessus quand le domaine custom est actif :
 baseurl: ""
-# url: "https://bmdata.fr"
-url: "https://test.bmdata.fr"
+url: "https://bmdata.fr"
 lang: "fr"
 
 # Identité
