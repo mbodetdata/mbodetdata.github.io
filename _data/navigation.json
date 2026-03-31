@@ -6,8 +6,8 @@
     { "label": "À propos",      "url": "/a-propos/",    "active_path": "/a-propos/",    "icon": "user" },
     { "label": "Blog",          "url": "/blog/",        "active_path": "/blog/",        "icon": "edit" },
     { "label": "FAQ",           "url": "/faq/",         "active_path": "/faq/",         "icon": "help" },
-    { "label": "Diagnostic data", "url": "/score-maturite-data/", "active_path": "/score-maturite-data/", "icon": "activity", "highlight": true },
-    { "label": "Contact",       "url": "/contact/",     "active_path": "/contact/",     "icon": "mail" }
+    { "label": "Diagnostic data", "url": "/score-maturite-data/", "active_path": "/score-maturite-data/", "icon": "activity", "pill": true },
+    { "label": "Contact",       "url": "/contact/",     "active_path": "/contact/",     "icon": "mail", "highlight": true }
   ],
   "footer_col1": [
     { "label": "Accueil",       "url": "/" },

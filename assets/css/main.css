@@ -580,6 +580,43 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 .nav-link.nav-cta.active {
   background: linear-gradient(135deg, var(--color-blue) 0%, #818cf8 100%);
 }
+
+/* Diagnostic data — pill léger (bordure dégradée, fond transparent) */
+.nav-link.nav-quiz {
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(102,119,255,.35);
+  color: var(--color-blue) !important;
+  font-weight: 600;
+  margin-left: var(--space-2);
+  gap: 5px;
+  transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease;
+  animation: navFadeIn .45s cubic-bezier(.34,1,.64,1) .32s both;
+}
+.nav-link.nav-quiz::before,
+.nav-link.nav-quiz::after { display: none !important; }
+.nav-link.nav-quiz:hover {
+  border-color: var(--color-blue);
+  background: rgba(102,119,255,.08) !important;
+  color: var(--color-blue) !important;
+  transform: translateY(-1px);
+}
+.nav-link.nav-quiz.active {
+  border-color: var(--color-blue);
+  background: rgba(102,119,255,.1);
+  color: var(--color-blue) !important;
+  font-weight: 700;
+}
+/* Sur fond sombre (avant scroll) */
+.site-header:not(.scrolled) .nav-link.nav-quiz {
+  border-color: rgba(102,119,255,.5);
+  color: rgba(255,255,255,.85) !important;
+}
+.site-header:not(.scrolled) .nav-link.nav-quiz:hover {
+  border-color: rgba(102,119,255,.8);
+  background: rgba(102,119,255,.15) !important;
+  color: white !important;
+}
 .site-header.scrolled .nav-link.nav-cta {
   padding: 6px 18px;
   font-size: .8rem;
