@@ -6,7 +6,8 @@
     { "label": "À propos",      "url": "/a-propos/",    "active_path": "/a-propos/",    "icon": "user" },
     { "label": "Blog",          "url": "/blog/",        "active_path": "/blog/",        "icon": "edit" },
     { "label": "FAQ",           "url": "/faq/",         "active_path": "/faq/",         "icon": "help" },
-    { "label": "Contact",       "url": "/contact/",     "active_path": "/contact/",     "icon": "mail", "highlight": true }
+    { "label": "Diagnostic data", "url": "/score-maturite-data/", "active_path": "/score-maturite-data/", "icon": "activity", "highlight": true },
+    { "label": "Contact",       "url": "/contact/",     "active_path": "/contact/",     "icon": "mail" }
   ],
   "footer_col1": [
     { "label": "Accueil",       "url": "/" },
@@ -18,6 +19,7 @@
     { "label": "Blog",                       "url": "/blog/" },
     { "label": "Témoignages",               "url": "/temoignages/" },
     { "label": "FAQ",                        "url": "/faq/" },
+    { "label": "Diagnostic data",           "url": "/score-maturite-data/" },
     { "label": "Contact",                    "url": "/contact/" }
   ],
   "footer_col3": [

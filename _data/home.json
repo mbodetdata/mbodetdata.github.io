@@ -124,8 +124,8 @@
       "url": "/contact/"
     },
     "cta_secondary": {
-      "label": "Voir les réalisations",
-      "url": "/realisations/"
+      "label": "Tester ma maturité data",
+      "url": "/score-maturite-data/"
     }
   }
 }
