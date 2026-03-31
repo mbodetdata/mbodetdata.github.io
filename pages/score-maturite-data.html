@@ -1,0 +1,260 @@
+---
+layout: page
+title: "Score de Maturité Data — Évaluez votre niveau | BM Data"
+description: "Répondez à 10 questions et obtenez en 3 minutes votre score de maturité data. Identifiez vos axes de progrès et recevez des recommandations personnalisées."
+permalink: /score-maturite-data/
+body_class: "page-quiz"
+---
+
+{%- comment -%}
+  ═══════════════════════════════════════════════════════
+  CONFIG QUIZ — modifier ici l'URL du webhook n8n
+  et les données de pondération issues du JSON
+  ═══════════════════════════════════════════════════════
+{%- endcomment -%}
+{%- assign quiz_data = site.data["score-maturite-questions"] -%}
+<script>
+/* ── Config modifiable ── */
+window.QUIZ_CONFIG = {
+  webhook: 'https://n8n-collocbrax.duckdns.org/webhook/score-maturite'
+};
+
+/* ── Données de pondération (générées depuis _data/score-maturite-questions.json) ── */
+window.QUIZ_DATA = { axes: [
+{%- for axe in quiz_data.axes %}
+  {"id":{{ axe.id }},"axis_weight":{{ axe.axis_weight }},"questions":[
+    {%- for q in axe.questions %}{"id":{{ q.id }},"weight":{{ q.weight }}}{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]}{% unless forloop.last %},{% endunless %}
+{%- endfor %}
+]};
+</script>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="quiz-hero" aria-labelledby="quiz-h1">
+  <div class="quiz-hero__orb quiz-hero__orb--a" aria-hidden="true"></div>
+  <div class="quiz-hero__orb quiz-hero__orb--b" aria-hidden="true"></div>
+  <div class="container">
+    <nav class="ch-breadcrumb" aria-label="Fil d'Ariane" style="margin-bottom:1.5rem;">
+      <a href="{{ '/' | relative_url }}">Accueil</a>
+      <span aria-hidden="true">›</span>
+      <span>Score de maturité data</span>
+    </nav>
+    <div class="quiz-hero__inner">
+      <div class="quiz-hero__badge" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Diagnostic gratuit · 3 min
+      </div>
+      <h1 id="quiz-h1" class="quiz-hero__title">
+        Quel est votre<br><span class="grad">niveau de maturité data&nbsp;?</span>
+      </h1>
+      <p class="quiz-hero__sub">30 questions pour évaluer votre organisation sur 6 axes clés et recevoir des recommandations personnalisées.</p>
+      <div class="quiz-hero__stats" aria-hidden="true">
+        <div class="qhs-item"><span class="qhs-num">30</span><span class="qhs-label">questions</span></div>
+        <div class="qhs-sep"></div>
+        <div class="qhs-item"><span class="qhs-num">6</span><span class="qhs-label">axes analysés</span></div>
+        <div class="qhs-sep"></div>
+        <div class="qhs-item"><span class="qhs-num">4</span><span class="qhs-label">niveaux de maturité</span></div>
+      </div>
+      <a href="#quiz-section" class="btn-quiz-start">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        Commencer le diagnostic
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ QUIZ SECTION ═══════════════════════ -->
+<section class="quiz-section" id="quiz-section" aria-label="Formulaire de diagnostic data">
+  <div class="container">
+    <div class="quiz-wrapper">
+
+      <!-- Barre de progression -->
+      <div class="quiz-progress" id="quiz-progress" aria-hidden="true">
+        <div class="qp-track">
+          <div class="qp-fill" id="qp-fill" style="width:0%"></div>
+        </div>
+        <div class="qp-label" id="qp-label">Étape 1 sur 7</div>
+      </div>
+
+      <!-- ── ÉTAPES QUESTIONS (générées depuis _data/score-maturite-questions.json) ── -->
+      {% assign quiz_data = site.data["score-maturite-questions"] %}
+      {% for axe in quiz_data.axes %}
+      {% assign step_num = forloop.index %}
+      {% assign next_step = step_num | plus: 1 %}
+      {% assign prev_step = step_num | minus: 1 %}
+
+      <div class="quiz-step{% if forloop.first %} active{% endif %}" id="step-{{ step_num }}" data-step="{{ step_num }}" role="group" aria-labelledby="step{{ step_num }}-title">
+        <div class="quiz-step__header">
+          <div class="quiz-step__axe">
+            {% case axe.id %}
+              {% when 1 %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              {% when 2 %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              {% when 3 %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              {% when 4 %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              {% when 5 %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+              {% when 6 %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+            {% endcase %}
+            Axe {{ step_num }} · {{ axe.label }}
+          </div>
+          <h2 class="quiz-step__title" id="step{{ step_num }}-title">{{ axe.step_title }}</h2>
+        </div>
+
+        {% for q in axe.questions %}
+        <fieldset class="quiz-fieldset">
+          <legend class="quiz-question">Q{{ q.id }}. {{ q.text }}</legend>
+          <div class="quiz-answers" role="radiogroup">
+            {% for answer in q.answers %}
+            <label class="qa-option" data-q="{{ q.id }}" data-val="{{ answer.value }}">
+              <input type="radio" name="q{{ q.id }}" value="{{ answer.value }}" class="qa-radio">
+              <span class="qa-letter" aria-hidden="true">{{ answer.letter }}</span>
+              <span class="qa-text">{{ answer.text }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </fieldset>
+        {% endfor %}
+
+        <div class="quiz-nav">
+          {% if forloop.first %}<span></span>{% else %}
+          <button class="btn-quiz-prev" data-prev="{{ prev_step }}" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            Précédent
+          </button>
+          {% endif %}
+          <button class="btn-quiz-next" data-next="{{ next_step }}" type="button">
+            {% if forloop.last %}Voir mes résultats{% else %}Suivant{% endif %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!-- ── ÉTAPE 7 : Coordonnées ── -->
+      <div class="quiz-step" id="step-7" data-step="7" role="group" aria-labelledby="step7-title">
+        <div class="quiz-step__header">
+          <div class="quiz-step__axe">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Dernière étape
+          </div>
+          <h2 class="quiz-step__title" id="step7-title">Où envoyer votre score et vos recommandations&nbsp;?</h2>
+          <p class="quiz-step__sub">Renseignez vos coordonnées pour recevoir votre score personnalisé et des conseils adaptés à votre niveau.</p>
+        </div>
+
+        <div class="quiz-error" id="quiz-error" role="alert" style="display:none;"></div>
+
+        <form id="quiz-form" novalidate aria-label="Formulaire de contact pour le score de maturité data">
+
+          <div class="pf-row">
+            <div class="pf-group">
+              <label class="pf-label" for="quiz-name">Nom et prénom <span class="req" aria-label="obligatoire">*</span></label>
+              <input type="text" id="quiz-name" name="name" class="pf-input" placeholder="Jean Dupont" required aria-required="true" autocomplete="name">
+            </div>
+            <div class="pf-group">
+              <label class="pf-label" for="quiz-company">Entreprise</label>
+              <input type="text" id="quiz-company" name="company" class="pf-input" placeholder="Votre société (facultatif)" autocomplete="organization">
+            </div>
+          </div>
+          <div class="pf-row">
+            <div class="pf-group">
+              <label class="pf-label" for="quiz-email">Adresse email <span class="req" aria-label="obligatoire">*</span></label>
+              <input type="email" id="quiz-email" name="email" class="pf-input" placeholder="jean@exemple.fr" required aria-required="true" autocomplete="email">
+            </div>
+            <div class="pf-group">
+              <label class="pf-label" for="quiz-sector">Secteur d'activité</label>
+              <select id="quiz-sector" name="sector" class="pf-select">
+                <option value="">— Choisir —</option>
+                <option value="industrie">Industrie / Production</option>
+                <option value="commerce">Commerce / Distribution</option>
+                <option value="services">Services aux entreprises</option>
+                <option value="sante">Santé / Médico-social</option>
+                <option value="batiment">Bâtiment / BTP</option>
+                <option value="logistique">Transport / Logistique</option>
+                <option value="agroalimentaire">Agroalimentaire</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="pf-group">
+            <label class="pf-label" for="quiz-size">Taille de votre entreprise</label>
+            <select id="quiz-size" name="company_size" class="pf-select">
+              <option value="">— Choisir —</option>
+              <option value="1-5">1 à 5 salariés</option>
+              <option value="6-20">6 à 20 salariés</option>
+              <option value="21-50">21 à 50 salariés</option>
+              <option value="51-200">51 à 200 salariés</option>
+              <option value="200+">Plus de 200 salariés</option>
+            </select>
+          </div>
+
+          <label class="quiz-consent">
+            <input type="checkbox" id="quiz-consent" name="consent" required aria-required="true">
+            <span>J'accepte que BM Data utilise mes coordonnées pour m'envoyer mon score et me recontacter. <a href="{{ '/politique-de-confidentialite/' | relative_url }}" target="_blank">Politique de confidentialité</a>.</span>
+          </label>
+
+          <div class="quiz-nav quiz-nav--submit">
+            <button class="btn-quiz-prev" data-prev="6" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+              Précédent
+            </button>
+            <button type="submit" class="btn-quiz-submit" id="quiz-submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              Obtenir mon score
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- ── RÉSULTATS ── -->
+      <div class="quiz-step" id="step-results" data-step="results" role="region" aria-labelledby="qr-level-name" style="display:none;">
+        <div class="quiz-results">
+          <div class="qr-header">
+            <div class="qr-score-wrap" aria-live="polite">
+              <div class="qr-score-ring" id="qr-ring" aria-hidden="true">
+                <svg viewBox="0 0 120 120" class="qr-ring-svg">
+                  <circle class="qr-ring-bg" cx="60" cy="60" r="52"/>
+                  <circle class="qr-ring-fill" id="qr-ring-fill" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"/>
+                </svg>
+                <div class="qr-score-num" id="qr-score-num">0</div>
+                <div class="qr-score-max">/100</div>
+              </div>
+            </div>
+            <div class="qr-level-info">
+              <div class="qr-level-badge" id="qr-level-badge">—</div>
+              <h2 class="qr-title" id="qr-level-name">Votre résultat</h2>
+              <p class="qr-desc" id="qr-level-desc">Calcul en cours…</p>
+            </div>
+          </div>
+
+          <!-- Scores par axe -->
+          <div class="qr-axes">
+            <h3 class="qr-axes-title">Détail par axe</h3>
+            <div class="qr-axes-grid" id="qr-axes-grid">
+              <!-- généré par JS -->
+            </div>
+          </div>
+
+          <!-- Recommandations -->
+          <div class="qr-reco" id="qr-reco">
+            <!-- généré par JS -->
+          </div>
+
+          <!-- CTA -->
+          <div class="qr-cta">
+            <p class="qr-cta-text">Prêt à passer au niveau supérieur&nbsp;? Échangeons 30 minutes sur votre situation.</p>
+            <div class="qr-cta-btns">
+              <a href="{{ '/contact/' | relative_url }}" class="btn-cta-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Réserver un échange gratuit
+              </a>
+              <button class="btn-quiz-restart" id="btn-restart" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+                Refaire le diagnostic
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- .quiz-wrapper -->
+  </div>
+</section>

@@ -1534,3 +1534,401 @@ if (document.getElementById('postArticle')) {
     deferredPrompt = null;
   });
 })();
+
+/* ─── Score de Maturité Data ─── */
+(function () {
+  'use strict';
+
+  var TOTAL_STEPS   = 7;   // 6 axes + 1 coordonnées
+  var CIRCUMFERENCE = 326.7;
+
+  var AXES_LABELS = [
+    'Saisie & récupération',
+    'Fiabilité des chiffres',
+    'Temps perdu',
+    'Suivi de l\'activité',
+    'Circulation des infos',
+    'Simplicité & autonomie'
+  ];
+
+  /* Scores sur 100 (pondérés) — seuils des niveaux globaux */
+  var LEVELS = [
+    {
+      badge: 'Niveau 1', name: 'Fragile', color: '#ef4444',
+      desc: 'Votre organisation data est encore fragile. Les informations sont éparpillées, les tâches manuelles nombreuses et les chiffres souvent peu fiables. C\'est le bon moment pour poser des bases solides.',
+      reco: [
+        'Centraliser vos données dans un outil unique (même un tableur bien structuré)',
+        'Identifier les 3 informations les plus critiques à fiabiliser en priorité',
+        'Cartographier vos flux pour repérer les ressaisies inutiles',
+        'Mettre en place un tableau de bord simple, même basique'
+      ]
+    },
+    {
+      badge: 'Niveau 2', name: 'En construction', color: '#f59e0b',
+      desc: 'Vous avez posé quelques bases, mais votre organisation reste partielle. Certains outils fonctionnent bien ensemble, mais beaucoup de traitements restent manuels. Avec de la méthode, vous pouvez gagner rapidement en efficacité.',
+      reco: [
+        'Automatiser les 2 ou 3 flux de données les plus répétitifs',
+        'Mettre en place des contrôles de cohérence sur vos données clés',
+        'Créer un reporting régulier et standardisé pour votre activité',
+        'Former les équipes à des pratiques communes de gestion des données'
+      ]
+    },
+    {
+      badge: 'Niveau 3', name: 'Structuré', color: '#6677ff',
+      desc: 'Votre maturité data est bonne ! Vous avez une organisation solide et des pratiques efficaces. Il reste quelques axes à optimiser pour atteindre un niveau avancé.',
+      reco: [
+        'Automatiser les dernières tâches manuelles résiduelles',
+        'Mettre en place des alertes automatiques sur vos indicateurs clés',
+        'Connecter les outils encore isolés pour fluidifier les échanges',
+        'Explorer des analyses prédictives ou des tableaux de bord avancés'
+      ]
+    },
+    {
+      badge: 'Niveau 4', name: 'Avancé', color: '#2bd48f',
+      desc: 'Félicitations ! Votre organisation data est mature et performante. Vos outils sont bien connectés, vos chiffres fiables et vos équipes autonomes. Vous êtes prêt pour les prochaines étapes.',
+      reco: [
+        'Explorer les opportunités de l\'intelligence artificielle sur vos données',
+        'Mettre en place des modèles prédictifs pour anticiper votre activité',
+        'Partager vos bonnes pratiques en interne pour ancrer une culture data',
+        'Définir une stratégie data ambitieuse avec un partenaire expert'
+      ]
+    }
+  ];
+
+  /* Seuils par axe (score 0-100) */
+  var AXIS_LEVELS = [
+    { label: 'Faible',      color: '#ef4444' },
+    { label: 'À améliorer', color: '#f59e0b' },
+    { label: 'Correct',     color: '#6677ff' },
+    { label: 'Solide',      color: '#2bd48f' }
+  ];
+
+  var quizWrapper = document.querySelector('.quiz-wrapper');
+  if (!quizWrapper) return;
+
+  var currentStep = 1;
+  var answers = {};
+
+  /* ── Afficher une étape ── */
+  function showStep(n) {
+    quizWrapper.querySelectorAll('.quiz-step').forEach(function (s) {
+      s.classList.remove('active');
+      s.style.display = 'none';
+    });
+    var selector = (n === 'results') ? '#step-results' : '[data-step="' + n + '"]';
+    var step = quizWrapper.querySelector(selector);
+    if (step) {
+      step.style.display = '';
+      step.classList.add('active');
+    }
+    currentStep = n;
+    updateProgress(n);
+    var section = document.getElementById('quiz-section');
+    if (section) {
+      var top = section.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  }
+
+  /* ── Barre de progression ── */
+  function updateProgress(step) {
+    var fill  = document.getElementById('qp-fill');
+    var label = document.getElementById('qp-label');
+    if (!fill || !label) return;
+    if (step === 'results') {
+      fill.style.width = '100%';
+      label.textContent = 'Diagnostic terminé !';
+    } else {
+      fill.style.width = Math.round((step / (TOTAL_STEPS + 1)) * 100) + '%';
+      label.textContent = 'Étape ' + step + ' sur ' + TOTAL_STEPS;
+    }
+  }
+
+  /* ── Clic délégué ── */
+  quizWrapper.addEventListener('click', function (e) {
+    /* Sélection d'une réponse */
+    var opt = e.target.closest('.qa-option');
+    if (opt) {
+      var qId = parseInt(opt.dataset.q, 10);
+      var val  = parseInt(opt.dataset.val, 10);
+      var radio = opt.querySelector('input[type="radio"]');
+      if (radio) radio.checked = true;
+      opt.closest('.quiz-answers').querySelectorAll('.qa-option').forEach(function (o) {
+        o.classList.remove('selected');
+      });
+      opt.classList.add('selected');
+      answers[qId] = val;
+      return;
+    }
+
+    /* Bouton Suivant */
+    var nextBtn = e.target.closest('.btn-quiz-next');
+    if (nextBtn) {
+      var next = parseInt(nextBtn.dataset.next, 10);
+      if (validateStep(currentStep)) showStep(next);
+      return;
+    }
+
+    /* Bouton Précédent */
+    var prevBtn = e.target.closest('.btn-quiz-prev');
+    if (prevBtn) {
+      var prev = parseInt(prevBtn.dataset.prev, 10);
+      showStep(prev);
+    }
+  });
+
+  /* ── Validation d'une étape ── */
+  function validateStep(stepNum) {
+    if (typeof stepNum !== 'number' || stepNum > 6) return true;
+    var step = quizWrapper.querySelector('[data-step="' + stepNum + '"]');
+    if (!step) return true;
+    var valid = true;
+    step.querySelectorAll('.quiz-fieldset').forEach(function (fs) {
+      var firstOpt = fs.querySelector('.qa-option');
+      if (!firstOpt) return;
+      var qId = parseInt(firstOpt.dataset.q, 10);
+      if (!answers[qId]) {
+        valid = false;
+        fs.classList.add('quiz-fieldset--error');
+        setTimeout(function () { fs.classList.remove('quiz-fieldset--error'); }, 2500);
+      }
+    });
+    if (!valid) {
+      var firstErr = step.querySelector('.quiz-fieldset--error');
+      if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return valid;
+  }
+
+  /* ── Bouton démarrer (hero) ── */
+  var startBtn = document.querySelector('.btn-quiz-start');
+  if (startBtn) {
+    startBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var target = document.getElementById('quiz-section');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  /* ── Calcul des scores (pondérés, scores 0-100) ── */
+  function calcScores() {
+    var data = window.QUIZ_DATA;
+    if (!data || !data.axes) return { axeScores: [], axeScoresById: {}, total: 0 };
+
+    /* Score par axe : moyenne pondérée des questions → 0-100 */
+    var axeScoresById = {};
+    var axeScores = data.axes.map(function (axe) {
+      var weightedSum = axe.questions.reduce(function (sum, q) {
+        return sum + ((answers[q.id] || 0) * q.weight);
+      }, 0);
+      var maxWeightedSum = axe.questions.reduce(function (sum, q) {
+        return sum + (4 * q.weight);
+      }, 0);
+      var score = maxWeightedSum > 0 ? Math.round((weightedSum / maxWeightedSum) * 100) : 0;
+      axeScoresById[axe.id] = score;
+      return score;
+    });
+
+    /* Score global : moyenne pondérée des axes → 0-100 */
+    var totalWeight = data.axes.reduce(function (sum, axe) { return sum + axe.axis_weight; }, 0);
+    var weightedSum = data.axes.reduce(function (sum, axe) {
+      return sum + (axeScoresById[axe.id] * axe.axis_weight);
+    }, 0);
+    var global = totalWeight > 0 ? Math.round(weightedSum / totalWeight) : 0;
+
+    /* Règle de plafonnement : Fiabilité des chiffres (axe id=2) < 40 → score global ≤ 55 */
+    if (axeScoresById[2] < 40) {
+      global = Math.min(global, 55);
+    }
+
+    return { axeScores: axeScores, axeScoresById: axeScoresById, total: global };
+  }
+
+  function getLevel(total) {
+    if (total <= 40) return LEVELS[0];
+    if (total <= 60) return LEVELS[1];
+    if (total <= 80) return LEVELS[2];
+    return LEVELS[3];
+  }
+
+  function getAxisLevel(score) {
+    if (score <= 39) return AXIS_LEVELS[0];
+    if (score <= 59) return AXIS_LEVELS[1];
+    if (score <= 79) return AXIS_LEVELS[2];
+    return AXIS_LEVELS[3];
+  }
+
+  /* ── Affichage résultats ── */
+  function displayResults(scores) {
+    var axeScores = scores.axeScores;
+    var total     = scores.total;
+    var level     = getLevel(total);
+
+    /* Ring SVG */
+    var ringFill = document.getElementById('qr-ring-fill');
+    if (ringFill) {
+      ringFill.style.stroke = level.color;
+      setTimeout(function () {
+        ringFill.style.strokeDashoffset = CIRCUMFERENCE * (1 - total / 100);
+      }, 300);
+    }
+
+    /* Compteur animé */
+    var scoreNum = document.getElementById('qr-score-num');
+    if (scoreNum) animateNumber(scoreNum, 0, total, 1400);
+
+    /* Badge & texte */
+    var badge = document.getElementById('qr-level-badge');
+    var name  = document.getElementById('qr-level-name');
+    var desc  = document.getElementById('qr-level-desc');
+    if (badge) {
+      badge.textContent = level.badge + ' — ' + level.name;
+      badge.style.cssText = 'background:' + level.color + '22;color:' + level.color + ';border-color:' + level.color + '55';
+    }
+    if (name) name.textContent = 'Vous êtes au ' + level.badge + ' : ' + level.name;
+    if (desc) desc.textContent = level.desc;
+
+    /* Grille des axes */
+    var axesGrid = document.getElementById('qr-axes-grid');
+    if (axesGrid) {
+      axesGrid.innerHTML = axeScores.map(function (s, i) {
+        var al = getAxisLevel(s);
+        return '<div class="qr-axe-item">' +
+          '<div class="qr-axe-header">' +
+            '<span class="qr-axe-name">' + AXES_LABELS[i] + '</span>' +
+            '<span class="qr-axe-score" style="color:' + al.color + '">' + s + '%</span>' +
+          '</div>' +
+          '<div class="qr-axe-bar"><div class="qr-axe-fill" style="width:' + s + '%;background:' + al.color + '"></div></div>' +
+          '<span class="qr-axe-level" style="color:' + al.color + '">' + al.label + '</span>' +
+        '</div>';
+      }).join('');
+    }
+
+    /* Recommandations */
+    var recoEl = document.getElementById('qr-reco');
+    if (recoEl) {
+      var checkSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="' + level.color + '" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
+      recoEl.innerHTML =
+        '<div class="qr-reco-inner">' +
+          '<h3 class="qr-reco-title">Vos recommandations prioritaires</h3>' +
+          '<ul class="qr-reco-list">' +
+            level.reco.map(function (r) {
+              return '<li class="qr-reco-item">' + checkSvg + '<span>' + r + '</span></li>';
+            }).join('') +
+          '</ul>' +
+        '</div>';
+    }
+
+    showStep('results');
+  }
+
+  function animateNumber(el, from, to, duration) {
+    var startTime = performance.now();
+    function step(now) {
+      var p = Math.min((now - startTime) / duration, 1);
+      el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ── Soumission du formulaire ── */
+  var quizForm = document.getElementById('quiz-form');
+  if (quizForm) {
+    quizForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var errorEl   = document.getElementById('quiz-error');
+      var submitBtn = document.getElementById('quiz-submit');
+      if (errorEl) errorEl.style.display = 'none';
+
+      var nameVal    = quizForm.querySelector('[name="name"]').value.trim();
+      var emailVal   = quizForm.querySelector('[name="email"]').value.trim();
+      var consentVal = quizForm.querySelector('[name="consent"]').checked;
+
+      if (!nameVal || !emailVal || !consentVal) {
+        if (errorEl) {
+          errorEl.textContent = 'Veuillez remplir les champs obligatoires et cocher la case de consentement.';
+          errorEl.style.display = 'block';
+        }
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+        if (errorEl) {
+          errorEl.textContent = 'Adresse email invalide.';
+          errorEl.style.display = 'block';
+        }
+        return;
+      }
+
+      var scores  = calcScores();
+      var level   = getLevel(scores.total);
+      var webhook = window.QUIZ_CONFIG && window.QUIZ_CONFIG.webhook;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Calcul en cours…';
+
+      var payload = {
+        name:         nameVal,
+        email:        emailVal,
+        company:      quizForm.querySelector('[name="company"]').value.trim(),
+        sector:       quizForm.querySelector('[name="sector"]').value,
+        company_size: quizForm.querySelector('[name="company_size"]').value,
+        total_score:  scores.total,
+        max_score:    100,
+        level_badge:  level.badge,
+        level_name:   level.name,
+        axes: scores.axeScores.map(function (s, i) {
+          return { name: AXES_LABELS[i], score: s, max: 100, level: getAxisLevel(s).label };
+        }),
+        recommendations: level.reco,
+        submitted_at: new Date().toISOString(),
+        source:       window.location.href
+      };
+
+      function finish() { displayResults(scores); }
+
+      if (webhook) {
+        fetch(webhook, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload)
+        }).then(finish).catch(function (err) {
+          console.warn('Quiz webhook error:', err);
+          finish();
+        });
+      } else {
+        finish();
+      }
+    });
+  }
+
+  /* ── Refaire le diagnostic ── */
+  var restartBtn = document.getElementById('btn-restart');
+  if (restartBtn) {
+    restartBtn.addEventListener('click', function () {
+      Object.keys(answers).forEach(function (k) { delete answers[k]; });
+      quizWrapper.querySelectorAll('.qa-option').forEach(function (o) { o.classList.remove('selected'); });
+      quizWrapper.querySelectorAll('input[type="radio"]').forEach(function (r) { r.checked = false; });
+      if (quizForm) {
+        quizForm.reset();
+        var submitBtn = document.getElementById('quiz-submit');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Obtenir mon score';
+        }
+      }
+      var ringFill = document.getElementById('qr-ring-fill');
+      if (ringFill) ringFill.style.strokeDashoffset = CIRCUMFERENCE;
+      showStep(1);
+    });
+  }
+
+  /* ── Init ── */
+  quizWrapper.querySelectorAll('.quiz-step').forEach(function (s) {
+    var isFirst = s.dataset.step === '1';
+    s.style.display = isFirst ? '' : 'none';
+    s.classList.toggle('active', isFirst);
+  });
+  updateProgress(1);
+
+})();

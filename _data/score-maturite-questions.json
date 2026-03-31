@@ -1,0 +1,382 @@
+{
+  "axes": [
+    {
+      "id": 1,
+      "label": "Saisie et récupération des informations",
+      "axis_weight": 25,
+      "step_title": "Comment récupérez-vous les informations utiles à votre activité ?",
+      "questions": [
+        {
+          "id": 1,
+          "weight": 3,
+          "text": "Comment récupérez-vous les informations utiles à votre activité ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Tout est saisi ou recopié à la main" },
+            { "value": 2, "letter": "B", "text": "On exporte des fichiers puis on les retravaille à la main" },
+            { "value": 3, "letter": "C", "text": "Une partie arrive automatiquement, mais pas tout" },
+            { "value": 4, "letter": "D", "text": "Les informations arrivent presque toutes automatiquement au bon endroit" }
+          ]
+        },
+        {
+          "id": 2,
+          "weight": 3,
+          "text": "Devez-vous ressaisir plusieurs fois les mêmes informations dans différents outils ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Très souvent" },
+            { "value": 2, "letter": "B", "text": "Régulièrement" },
+            { "value": 3, "letter": "C", "text": "Parfois" },
+            { "value": 4, "letter": "D", "text": "Rarement ou jamais" }
+          ]
+        },
+        {
+          "id": 3,
+          "weight": 2,
+          "text": "Quand un client, une vente ou une intervention est enregistrée, l'information circule-t-elle facilement ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, il faut la ressaisir ailleurs" },
+            { "value": 2, "letter": "B", "text": "Pas toujours, cela dépend des cas" },
+            { "value": 3, "letter": "C", "text": "Oui, pour une partie du processus" },
+            { "value": 4, "letter": "D", "text": "Oui, de façon fluide et automatique" }
+          ]
+        },
+        {
+          "id": 4,
+          "weight": 3,
+          "text": "Pour préparer vos fichiers de suivi, devez-vous faire beaucoup de copier-coller ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Oui, presque tout le temps" },
+            { "value": 2, "letter": "B", "text": "Oui, assez souvent" },
+            { "value": 3, "letter": "C", "text": "Un peu" },
+            { "value": 4, "letter": "D", "text": "Non, très peu" }
+          ]
+        },
+        {
+          "id": 5,
+          "weight": 2,
+          "text": "Vos informations sont-elles centralisées au même endroit ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, elles sont éparpillées partout" },
+            { "value": 2, "letter": "B", "text": "Partiellement" },
+            { "value": 3, "letter": "C", "text": "Oui, pour l'essentiel" },
+            { "value": 4, "letter": "D", "text": "Oui, de façon claire et organisée" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "label": "Fiabilité des chiffres",
+      "axis_weight": 25,
+      "step_title": "Pouvez-vous faire confiance à vos chiffres ?",
+      "questions": [
+        {
+          "id": 6,
+          "weight": 3,
+          "text": "Avez-vous confiance dans vos chiffres au moment de décider ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Pas vraiment" },
+            { "value": 2, "letter": "B", "text": "Moyennement" },
+            { "value": 3, "letter": "C", "text": "Globalement oui" },
+            { "value": 4, "letter": "D", "text": "Oui, clairement" }
+          ]
+        },
+        {
+          "id": 7,
+          "weight": 3,
+          "text": "Rencontrez-vous souvent des erreurs, doublons ou oublis dans vos fichiers ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Très souvent" },
+            { "value": 2, "letter": "B", "text": "Assez souvent" },
+            { "value": 3, "letter": "C", "text": "Parfois" },
+            { "value": 4, "letter": "D", "text": "Rarement" }
+          ]
+        },
+        {
+          "id": 8,
+          "weight": 2,
+          "text": "Quand deux personnes regardent le même sujet, obtiennent-elles toujours le même chiffre ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, presque jamais" },
+            { "value": 2, "letter": "B", "text": "Pas toujours" },
+            { "value": 3, "letter": "C", "text": "Souvent" },
+            { "value": 4, "letter": "D", "text": "Oui, quasiment toujours" }
+          ]
+        },
+        {
+          "id": 9,
+          "weight": 2,
+          "text": "Quand une erreur apparaît, à quel moment la voyez-vous ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Très tard" },
+            { "value": 2, "letter": "B", "text": "Après plusieurs vérifications" },
+            { "value": 3, "letter": "C", "text": "Relativement vite" },
+            { "value": 4, "letter": "D", "text": "Presque immédiatement" }
+          ]
+        },
+        {
+          "id": 10,
+          "weight": 3,
+          "text": "Vos chiffres nécessitent-ils souvent des corrections avant d'être présentés ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Oui, presque toujours" },
+            { "value": 2, "letter": "B", "text": "Souvent" },
+            { "value": 3, "letter": "C", "text": "Parfois" },
+            { "value": 4, "letter": "D", "text": "Rarement" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "label": "Temps perdu au quotidien",
+      "axis_weight": 20,
+      "step_title": "Combien de temps vos suivis vous prennent-ils ?",
+      "questions": [
+        {
+          "id": 11,
+          "weight": 3,
+          "text": "Combien de temps passez-vous chaque semaine à chercher, corriger ou consolider vos chiffres ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Plus d'une journée" },
+            { "value": 2, "letter": "B", "text": "Plusieurs heures" },
+            { "value": 3, "letter": "C", "text": "1 à 2 heures" },
+            { "value": 4, "letter": "D", "text": "Très peu de temps" }
+          ]
+        },
+        {
+          "id": 12,
+          "weight": 3,
+          "text": "Préparer un reporting ou un suivi vous demande-t-il beaucoup d'efforts ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Oui, c'est lourd à chaque fois" },
+            { "value": 2, "letter": "B", "text": "Oui, mais c'est devenu une habitude" },
+            { "value": 3, "letter": "C", "text": "Pas trop" },
+            { "value": 4, "letter": "D", "text": "Non, c'est rapide" }
+          ]
+        },
+        {
+          "id": 13,
+          "weight": 2,
+          "text": "Certaines tâches administratives se répètent-elles chaque semaine ou chaque mois ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Oui, énormément" },
+            { "value": 2, "letter": "B", "text": "Oui, plusieurs" },
+            { "value": 3, "letter": "C", "text": "Quelques-unes" },
+            { "value": 4, "letter": "D", "text": "Très peu" }
+          ]
+        },
+        {
+          "id": 14,
+          "weight": 2,
+          "text": "Quand vous devez faire le point sur l'activité, est-ce rapide ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, c'est long et pénible" },
+            { "value": 2, "letter": "B", "text": "Pas vraiment" },
+            { "value": 3, "letter": "C", "text": "Assez rapide" },
+            { "value": 4, "letter": "D", "text": "Oui, très rapide" }
+          ]
+        },
+        {
+          "id": 15,
+          "weight": 2,
+          "text": "Avez-vous l'impression que vos outils vous font gagner du temps ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, ils en font perdre" },
+            { "value": 2, "letter": "B", "text": "Pas vraiment" },
+            { "value": 3, "letter": "C", "text": "Un peu" },
+            { "value": 4, "letter": "D", "text": "Oui, clairement" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "label": "Suivi de l'activité",
+      "axis_weight": 15,
+      "step_title": "Voyez-vous facilement ce qui se passe dans votre activité ?",
+      "questions": [
+        {
+          "id": 16,
+          "weight": 2,
+          "text": "Aujourd'hui, comment suivez-vous votre activité ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Surtout à l'intuition ou au feeling" },
+            { "value": 2, "letter": "B", "text": "Avec quelques fichiers faits maison" },
+            { "value": 3, "letter": "C", "text": "Avec des suivis réguliers" },
+            { "value": 4, "letter": "D", "text": "Avec un tableau clair et facile à lire" }
+          ]
+        },
+        {
+          "id": 17,
+          "weight": 3,
+          "text": "Quand vous voulez connaître vos indicateurs clés, est-ce simple ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, il faut chercher partout" },
+            { "value": 2, "letter": "B", "text": "Pas toujours" },
+            { "value": 3, "letter": "C", "text": "Oui, dans la plupart des cas" },
+            { "value": 4, "letter": "D", "text": "Oui, immédiatement" }
+          ]
+        },
+        {
+          "id": 18,
+          "weight": 2,
+          "text": "Vos reportings sont-ils à jour quand vous en avez besoin ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Rarement" },
+            { "value": 2, "letter": "B", "text": "Pas toujours" },
+            { "value": 3, "letter": "C", "text": "Souvent" },
+            { "value": 4, "letter": "D", "text": "Oui, presque toujours" }
+          ]
+        },
+        {
+          "id": 19,
+          "weight": 2,
+          "text": "Vos suivis vous aident-ils vraiment à décider ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, très peu" },
+            { "value": 2, "letter": "B", "text": "Un peu" },
+            { "value": 3, "letter": "C", "text": "Oui, assez souvent" },
+            { "value": 4, "letter": "D", "text": "Oui, clairement" }
+          ]
+        },
+        {
+          "id": 20,
+          "weight": 1,
+          "text": "Vos tableaux ou fichiers sont-ils faciles à comprendre pour quelqu'un d'autre ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, ils dépendent d'une seule personne" },
+            { "value": 2, "letter": "B", "text": "Pas vraiment" },
+            { "value": 3, "letter": "C", "text": "Oui, avec un peu d'explication" },
+            { "value": 4, "letter": "D", "text": "Oui, ils sont clairs et lisibles" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "label": "Circulation des informations entre outils",
+      "axis_weight": 10,
+      "step_title": "Vos outils travaillent-ils ensemble ?",
+      "questions": [
+        {
+          "id": 21,
+          "weight": 2,
+          "text": "Vos logiciels échangent-ils facilement des informations entre eux ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, pas du tout" },
+            { "value": 2, "letter": "B", "text": "Très peu" },
+            { "value": 3, "letter": "C", "text": "En partie" },
+            { "value": 4, "letter": "D", "text": "Oui, de façon fluide" }
+          ]
+        },
+        {
+          "id": 22,
+          "weight": 3,
+          "text": "Quand une information change dans un outil, faut-il la remettre à jour ailleurs ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Oui, presque toujours" },
+            { "value": 2, "letter": "B", "text": "Souvent" },
+            { "value": 3, "letter": "C", "text": "Parfois" },
+            { "value": 4, "letter": "D", "text": "Rarement" }
+          ]
+        },
+        {
+          "id": 23,
+          "weight": 3,
+          "text": "Utilisez-vous des exports/imports manuels pour faire le lien entre vos outils ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Oui, tout le temps" },
+            { "value": 2, "letter": "B", "text": "Souvent" },
+            { "value": 3, "letter": "C", "text": "Parfois" },
+            { "value": 4, "letter": "D", "text": "Rarement ou jamais" }
+          ]
+        },
+        {
+          "id": 24,
+          "weight": 1,
+          "text": "Entre votre logiciel métier, Excel, la caisse, le CRM ou la compta, tout est-il cohérent ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, c'est très fragmenté" },
+            { "value": 2, "letter": "B", "text": "Pas vraiment" },
+            { "value": 3, "letter": "C", "text": "Globalement oui" },
+            { "value": 4, "letter": "D", "text": "Oui, bien coordonné" }
+          ]
+        },
+        {
+          "id": 25,
+          "weight": 1,
+          "text": "Quand il faut transmettre une information d'un service à un autre, est-ce fluide ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, ça bloque souvent" },
+            { "value": 2, "letter": "B", "text": "Pas toujours" },
+            { "value": 3, "letter": "C", "text": "Globalement oui" },
+            { "value": 4, "letter": "D", "text": "Oui, sans effort" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "label": "Simplicité et autonomie",
+      "axis_weight": 5,
+      "step_title": "Votre organisation est-elle simple à utiliser au quotidien ?",
+      "questions": [
+        {
+          "id": 26,
+          "weight": 2,
+          "text": "Vos outils actuels sont-ils simples à utiliser au quotidien ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, c'est compliqué" },
+            { "value": 2, "letter": "B", "text": "Moyennement" },
+            { "value": 3, "letter": "C", "text": "Plutôt oui" },
+            { "value": 4, "letter": "D", "text": "Oui, clairement" }
+          ]
+        },
+        {
+          "id": 27,
+          "weight": 1,
+          "text": "Le suivi de votre activité dépend-il d'une seule personne ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Oui, totalement" },
+            { "value": 2, "letter": "B", "text": "Beaucoup" },
+            { "value": 3, "letter": "C", "text": "Un peu" },
+            { "value": 4, "letter": "D", "text": "Non, plusieurs personnes peuvent s'en servir" }
+          ]
+        },
+        {
+          "id": 28,
+          "weight": 1,
+          "text": "Quand une personne s'absente, le suivi continue-t-il normalement ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, ça bloque" },
+            { "value": 2, "letter": "B", "text": "C'est compliqué" },
+            { "value": 3, "letter": "C", "text": "Ça reste possible" },
+            { "value": 4, "letter": "D", "text": "Oui, sans problème" }
+          ]
+        },
+        {
+          "id": 29,
+          "weight": 1,
+          "text": "Vos méthodes de travail sont-elles clairement définies pour suivre l'activité ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, chacun fait à sa façon" },
+            { "value": 2, "letter": "B", "text": "Pas vraiment" },
+            { "value": 3, "letter": "C", "text": "Oui, pour l'essentiel" },
+            { "value": 4, "letter": "D", "text": "Oui, de manière claire" }
+          ]
+        },
+        {
+          "id": 30,
+          "weight": 1,
+          "text": "Avez-vous un système simple qui peut évoluer avec votre activité ?",
+          "answers": [
+            { "value": 1, "letter": "A", "text": "Non, on bricole" },
+            { "value": 2, "letter": "B", "text": "Pas vraiment" },
+            { "value": 3, "letter": "C", "text": "Oui, partiellement" },
+            { "value": 4, "letter": "D", "text": "Oui, il est solide et simple" }
+          ]
+        }
+      ]
+    }
+  ]
+}
