@@ -7,7 +7,7 @@ author: "Martial Bodet"
 category: "Stratégie data"
 tags: ["données", "TPE/PME", "stratégie", "décision"]
 read_time: "6 min"
-image: "/assets/images/blog/donnees-meilleur-atout.jpg"
+image: "/assets/img/blog/18-donnees-meilleur-atout/logo_1024.webp"
 image_alt: "Un dirigeant de PME devant un tableau de bord de données"
 excerpt: "Les données ne sont pas réservées aux grandes entreprises. Voici pourquoi chaque TPE et PME dispose déjà d'une mine d'or inexploitée, et comment en tirer parti dès maintenant."
 ---

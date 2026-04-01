@@ -7,7 +7,7 @@ author: "Martial Bodet"
 category: "Tableaux de bord"
 tags: ["tableau de bord", "pilotage", "KPI", "Power BI"]
 read_time: "7 min"
-image: "/assets/images/blog/tableau-de-bord-pilotage.jpg"
+image: "/assets/img/blog/17-tableau-de-bord-pilotage/logo_1024.webp"
 image_alt: "Tableau de bord de pilotage d'activité sur écran"
 excerpt: "Un bon tableau de bord de pilotage change tout pour un dirigeant de PME. Voici comment en construire un qui soit réellement utile, et les erreurs à éviter."
 ---

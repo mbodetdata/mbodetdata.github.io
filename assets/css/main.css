@@ -7647,6 +7647,7 @@ mark.faq-hl {
   overflow: hidden;
 }
 .qp-fill {
+  width: 0%;
   height: 100%;
   background: var(--color-gold);
   border-radius: var(--radius-full);
@@ -7782,6 +7783,7 @@ mark.faq-hl {
 
 /* ── Formulaire coordonnées ── */
 .quiz-error {
+  display: none;
   background: rgba(220,38,38,.06);
   border: 1px solid rgba(220,38,38,.2);
   color: #dc2626; border-radius: var(--radius-lg);

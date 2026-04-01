@@ -7,7 +7,7 @@ author: "Martial Bodet"
 category: "Outils"
 tags: ["Excel", "Power BI", "outils", "comparaison", "PME"]
 read_time: "5 min"
-image: "/assets/images/blog/excel-vs-power-bi.jpg"
+image: "/assets/img/blog/16-excel-vs-power-bi-lequel-choisir/logo_1024.webp"
 image_alt: "Comparaison Excel et Power BI pour une PME"
 excerpt: "Excel ou Power BI ? C'est la question que me posent souvent les dirigeants. Voici une comparaison honnête pour vous aider à choisir l'outil adapté à votre situation réelle."
 ---
