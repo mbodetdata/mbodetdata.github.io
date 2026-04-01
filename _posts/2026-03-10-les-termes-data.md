@@ -8,6 +8,7 @@ image: ""
 active: false
 parent_category: data
 category_label: Glossaire
+image: "/assets/img/blog/13-les-termes-data/logo_1024.webp"
 ---
 
 # Introduction — Quand le vocabulaire bloque plus que la technique

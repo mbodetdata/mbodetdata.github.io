@@ -7,7 +7,7 @@ author: "Martial Bodet"
 category: "Stratégie data"
 tags: ["RGPD", "conformité", "données clients", "PME"]
 read_time: "6 min"
-image: "/assets/images/blog/rgpd-pme-guide.jpg"
+image: "/assets/img/blog/14-rgpd-donnees-clients-guide-pme/logo_1024.webp"
 image_alt: "Guide RGPD pour les PME - protection des données clients"
 excerpt: "Le RGPD effraie encore beaucoup de dirigeants de PME. Pourtant, se mettre en conformité n'est pas si compliqué quand on sait par où commencer."
 ---

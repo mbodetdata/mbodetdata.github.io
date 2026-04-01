@@ -7,7 +7,7 @@ author: "Martial Bodet"
 category: "Automatisation"
 tags: ["automatisation", "reporting", "productivité", "Power Automate"]
 read_time: "8 min"
-image: "/assets/images/blog/automatiser-reportings.jpg"
+image: "/assets/img/blog/15-automatiser-ses-reportings-guide-pratique/logo_1024.webp"
 image_alt: "Automatisation des reportings dans une PME"
 excerpt: "Comment arrêter de passer des heures à préparer vos rapports manuellement ? Guide pas-à-pas pour automatiser vos reportings dans une TPE ou PME."
 ---
