@@ -1517,56 +1517,64 @@ if (document.getElementById('postArticle')) {
     'Simplicité & autonomie'
   ];
 
-  /* Scores sur 100 (pondérés) — seuils des niveaux globaux */
+  /* Scores en % (pondérés) — seuils des niveaux globaux */
   var LEVELS = [
     {
-      badge: 'Niveau 1', name: 'Fragile', color: '#ef4444',
-      desc: 'Votre organisation data est encore fragile. Les informations sont éparpillées, les tâches manuelles nombreuses et les chiffres souvent peu fiables. C\'est le bon moment pour poser des bases solides.',
+      badge: 'En démarrage',
+      name: 'Vous avez un vrai potentiel à exploiter !',
+      color: '#f59e0b',
+      desc: 'Pas de panique — la plupart des entreprises partent de là ! Vous gérez encore beaucoup de choses à la main, et c\'est justement ça qui représente le plus grand gisement de temps à récupérer. Quelques ajustements simples peuvent déjà transformer votre quotidien.',
       reco: [
-        'Centraliser vos données dans un outil unique (même un tableur bien structuré)',
-        'Identifier les 3 informations les plus critiques à fiabiliser en priorité',
-        'Cartographier vos flux pour repérer les ressaisies inutiles',
-        'Mettre en place un tableau de bord simple, même basique'
+        'Commencer par regrouper vos infos au même endroit — même un tableur bien organisé change tout',
+        'Identifier les 2 ou 3 tâches qui vous prennent le plus de temps chaque semaine',
+        'Tester un premier tableau de bord simple : l\'essentiel, pas le parfait',
+        'Automatiser une seule chose — ça prend 1h et ça fait gagner des heures chaque mois'
       ]
     },
     {
-      badge: 'Niveau 2', name: 'En construction', color: '#f59e0b',
-      desc: 'Vous avez posé quelques bases, mais votre organisation reste partielle. Certains outils fonctionnent bien ensemble, mais beaucoup de traitements restent manuels. Avec de la méthode, vous pouvez gagner rapidement en efficacité.',
+      badge: 'En progression',
+      name: 'Vous êtes sur la bonne voie !',
+      color: '#3b82f6',
+      desc: 'Vous avez déjà mis en place de bonnes choses ! Certains outils fonctionnent bien, quelques process sont rodés. Il reste des zones où vous perdez encore du temps — et ce sont justement celles sur lesquelles on peut aller vite.',
       reco: [
-        'Automatiser les 2 ou 3 flux de données les plus répétitifs',
-        'Mettre en place des contrôles de cohérence sur vos données clés',
-        'Créer un reporting régulier et standardisé pour votre activité',
-        'Former les équipes à des pratiques communes de gestion des données'
+        'Automatiser les 2 ou 3 tâches répétitives qui reviennent chaque semaine',
+        'Fiabiliser vos chiffres clés pour décider avec plus de confiance',
+        'Mettre en place un reporting simple et régulier, sans y passer des heures',
+        'Relier vos outils pour éviter les ressaisies — c\'est souvent plus simple qu\'on ne le croit'
       ]
     },
     {
-      badge: 'Niveau 3', name: 'Structuré', color: '#6677ff',
-      desc: 'Votre maturité data est bonne ! Vous avez une organisation solide et des pratiques efficaces. Il reste quelques axes à optimiser pour atteindre un niveau avancé.',
+      badge: 'Bien organisé',
+      name: 'Votre organisation est déjà solide !',
+      color: '#6677ff',
+      desc: 'Bravo, vous avez de vraiment bonnes pratiques en place ! Vos données sont globalement fiables, vos process sont structurés. Il reste quelques points à affiner pour gagner encore en sérénité et en efficacité.',
       reco: [
-        'Automatiser les dernières tâches manuelles résiduelles',
+        'Éliminer les dernières tâches manuelles — vous y êtes presque',
         'Mettre en place des alertes automatiques sur vos indicateurs clés',
-        'Connecter les outils encore isolés pour fluidifier les échanges',
-        'Explorer des analyses prédictives ou des tableaux de bord avancés'
+        'Connecter les quelques outils encore isolés pour tout centraliser',
+        'Explorer des analyses pour anticiper plutôt que subir'
       ]
     },
     {
-      badge: 'Niveau 4', name: 'Avancé', color: '#2bd48f',
-      desc: 'Félicitations ! Votre organisation data est mature et performante. Vos outils sont bien connectés, vos chiffres fiables et vos équipes autonomes. Vous êtes prêt pour les prochaines étapes.',
+      badge: 'Expert data',
+      name: 'Vous êtes un exemple à suivre !',
+      color: '#2bd48f',
+      desc: 'Chapeau ! Votre organisation data est mature et performante. Vos outils communiquent, vos chiffres sont fiables, votre équipe est autonome. Vous avez toutes les cartes en main pour aller encore plus loin.',
       reco: [
-        'Explorer les opportunités de l\'intelligence artificielle sur vos données',
-        'Mettre en place des modèles prédictifs pour anticiper votre activité',
-        'Partager vos bonnes pratiques en interne pour ancrer une culture data',
-        'Définir une stratégie data ambitieuse avec un partenaire expert'
+        'Explorer les opportunités de l\'IA sur vos données existantes',
+        'Mettre en place des analyses prédictives pour anticiper votre activité',
+        'Partager vos bonnes pratiques en interne pour ancrer une vraie culture data',
+        'Définir une stratégie data ambitieuse avec un partenaire de confiance'
       ]
     }
   ];
 
   /* Seuils par axe (score 0-100) */
   var AXIS_LEVELS = [
-    { label: 'Faible',      color: '#ef4444' },
-    { label: 'À améliorer', color: '#f59e0b' },
-    { label: 'Correct',     color: '#6677ff' },
-    { label: 'Solide',      color: '#2bd48f' }
+    { label: 'À explorer',     color: '#f59e0b' },
+    { label: 'En progression', color: '#3b82f6' },
+    { label: 'Bien engagé',    color: '#6677ff' },
+    { label: 'Optimisé',       color: '#2bd48f' }
   ];
 
   var quizWrapper = document.querySelector('.quiz-wrapper');
@@ -1741,17 +1749,17 @@ if (document.getElementById('postArticle')) {
 
     /* Compteur animé */
     var scoreNum = document.getElementById('qr-score-num');
-    if (scoreNum) animateNumber(scoreNum, 0, total, 1400);
+    if (scoreNum) animateNumber(scoreNum, 0, total, 1400, '%');
 
     /* Badge & texte */
     var badge = document.getElementById('qr-level-badge');
     var name  = document.getElementById('qr-level-name');
     var desc  = document.getElementById('qr-level-desc');
     if (badge) {
-      badge.textContent = level.badge + ' — ' + level.name;
+      badge.textContent = level.badge;
       badge.style.cssText = 'background:' + level.color + '22;color:' + level.color + ';border-color:' + level.color + '55';
     }
-    if (name) name.textContent = 'Vous êtes au ' + level.badge + ' : ' + level.name;
+    if (name) name.textContent = level.name;
     if (desc) desc.textContent = level.desc;
 
     /* Grille des axes */
@@ -1788,11 +1796,12 @@ if (document.getElementById('postArticle')) {
     showStep('results');
   }
 
-  function animateNumber(el, from, to, duration) {
+  function animateNumber(el, from, to, duration, suffix) {
+    suffix = suffix || '';
     var startTime = performance.now();
     function step(now) {
       var p = Math.min((now - startTime) / duration, 1);
-      el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
+      el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3))) + suffix;
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
