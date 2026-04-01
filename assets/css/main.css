@@ -7512,14 +7512,14 @@ mark.faq-hl {
 .quiz-teaser-cta {
   flex-shrink: 0;
   display: inline-flex; align-items: center; gap: .4rem;
-  background: var(--gradient-brand-h);
+  background: var(--color-gold);
   color: white; font-size: .85rem; font-weight: 700;
   padding: .65rem 1.3rem; border-radius: var(--radius-full);
   text-decoration: none; white-space: nowrap;
-  box-shadow: 0 3px 12px rgba(102,119,255,.28);
+  box-shadow: 0 3px 12px rgba(43,212,143,.28);
   transition: transform .2s ease, box-shadow .2s ease;
 }
-.quiz-teaser-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,119,255,.38); }
+.quiz-teaser-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(43,212,143,.38); }
 @media (max-width: 640px) {
   .quiz-teaser-band { flex-direction: column; align-items: flex-start; }
   .quiz-teaser-cta { align-self: stretch; justify-content: center; }
