@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Services data pour TPE/PME"
-description: "Tableaux de bord, analyse de données, automatisation des reportings, migration et formation : découvrez les services data de BM Data pour les TPE et PME du Lot-et-Garonne."
+description: "Automatisez vos tâches répétitives, sécurisez votre changement d'outil ou mettez en place un reporting utile. BM Data accompagne les TPE et PME à Agen et partout en France."
 permalink: /services/
 body_class: "page-services"
 ---
@@ -112,6 +112,16 @@ body_class: "page-services"
             </div>
 
             <p class="svc-card__desc">{{ s.description }}</p>
+
+            {% if s.example %}
+            <div class="svc-card__example">
+              <span class="svc-card__example-label">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Cas concret
+              </span>
+              <p>{{ s.example }}</p>
+            </div>
+            {% endif %}
 
             <div class="svc-card__bottom">
               {% if s.tools %}

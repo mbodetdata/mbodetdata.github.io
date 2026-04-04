@@ -5,7 +5,7 @@
 "subtitle": "BM Data aide les TPE et PME à automatiser les tâches répétitives, simplifier les changements d’outils et mettre en place des tableaux de bord clairs pour mieux suivre leur activité.",
 "slogan": ["La bonne donnée,", "Au bon endroit,", "Au bon moment."],
   "cta_primary": {
-    "label": "Parler de votre besoin",
+    "label": "Faire le point sur mon activité",
     "url": "/contact/"
   },
   "cta_secondary": {
@@ -15,13 +15,13 @@
   "trust_indicators": [
     "Réponse sous 24 h",
     "Premier échange offert",
-    "Explications simples"
+    "Sans jargon technique"
   ]
 },
   "stats": [
     { "value": "5+", "label": "Années d'expérience", "icon": "calendar" },
     { "value": "15+", "label": "Projets réalisés",     "icon": "chart" },
-    { "value": "100%", "label": "Clients satisfaits",  "icon": "star" },
+    { "value": "France", "label": "Interventions à distance",  "icon": "star" },
     { "value": "24 h", "label": "Délai de réponse",    "icon": "clock" }
   ],
 
@@ -106,7 +106,7 @@
 },
   "realisations_intro": {
     "title": "Quelques projets récents",
-    "subtitle": "Des résultats concrets obtenus pour des TPE et PME de la région",
+    "subtitle": "Des missions menées pour des TPE locales, des PME régionales et de grandes organisations — sur des sujets d'automatisation, de migration et de pilotage.",
     "link_label": "Voir toutes les réalisations",
     "link_url": "/realisations/"
   },
@@ -117,10 +117,10 @@
     "link_url": "/temoignages/"
   },
   "cta_section": {
-    "title": "Prêt à prendre les bonnes décisions avec vos données ?",
-    "subtitle": "Premier échange offert, sans engagement. Je vous explique concrètement comment vos données peuvent devenir un vrai levier pour votre activité.",
+    "title": "Moins de ressaisies, des chiffres fiables, une meilleure visibilité sur votre activité.",
+    "subtitle": "Un premier échange de 30 minutes pour faire le point sur votre situation. Gratuit, sans engagement, sans jargon.",
     "cta_primary": {
-      "label": "Réserver un échange",
+      "label": "Faire le point gratuitement",
       "url": "/contact/"
     },
     "cta_secondary": {

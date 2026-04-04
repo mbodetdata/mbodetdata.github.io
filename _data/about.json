@@ -1,17 +1,17 @@
 {
   "meta": {
-    "title": "À propos — Martial Bodet, consultant data | BM Data Agen",
-    "description": "Martial Bodet, consultant data basé à Agen. Découvrez son parcours, sa philosophie et pourquoi il accompagne les TPE et PME du Lot-et-Garonne dans la valorisation de leurs données."
+    "title": "À propos — Martial Bodet, consultant data pour TPE/PME | BM Data Agen",
+    "description": "Martial Bodet aide les TPE et PME à automatiser leurs tâches, fiabiliser leurs chiffres et mieux piloter leur activité. Basé à Agen, disponible partout en France."
   },
   "hero": {
     "eyebrow": "À propos",
-    "title": "Martial Bodet, consultant data",
-    "subtitle": "Des données aux décisions : un accompagnement humain, concret et orienté résultats pour les TPE et PME.",
+    "title": "Martial Bodet — J'aide les TPE et PME à mieux exploiter leurs données",
+    "subtitle": "Pas de jargon, pas d'usine à gaz. Des solutions concrètes pour gagner du temps, fiabiliser vos chiffres et mieux piloter votre activité.",
     "image": "/assets/img/Photo_profil-960.webp",
     "image_alt": "Martial Bodet, consultant data BM Data à Agen"
   },
   "intro": {
-    "title": "Bonjour, je suis Martial",
+    "title": "Pourquoi j'ai créé BM Data",
     "paragraphs": [
       "J'ai créé BM Data avec une conviction simple : les données ne sont pas réservées aux grandes entreprises. Une TPE ou une PME bien équipée, avec les bons indicateurs et les bons outils, peut prendre des décisions aussi éclairées que n'importe quel grand groupe.",
       "Après plusieurs années dans le conseil et l'analyse de données dans des environnements variés, j'ai décidé de mettre cette expertise au service des entrepreneurs et des dirigeants locaux, ceux qui ont un vrai besoin mais qui n'ont pas la taille pour embaucher un directeur data à temps plein.",
@@ -110,9 +110,9 @@
   ]
 },
 "cta": {
-  "title": "Parlons simplement de vos besoins",
-  "subtitle": "Je vous propose un premier échange gratuit de 30 minutes pour faire le point sur votre organisation, vos outils et vos reportings, et voir où vous pouvez gagner du temps et en clarté.",
-  "primary": { "label": "Prendre rendez-vous", "url": "/contact/" },
+  "title": "Parlons simplement de votre situation",
+  "subtitle": "30 minutes pour faire le point sur vos outils, vos tâches répétitives et vos reportings. Je vous dis clairement ce que je peux améliorer et comment. Gratuit, sans engagement.",
+  "primary": { "label": "Faire le point gratuitement", "url": "/contact/" },
   "secondary": { "label": "Voir les réalisations", "url": "/realisations/" }
 }
 }

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Services — Automatisation, migration et reporting | BM Data Agen",
-    "description": "BM Data accompagne les TPE et PME dans l’automatisation des tâches répétitives, la migration de données et la mise en place de reportings simples et clairs."
+    "title": "Services — Automatisation, migration et reporting pour TPE/PME | BM Data",
+    "description": "Automatisez vos tâches répétitives, sécurisez votre changement d’outil ou mettez en place un reporting utile. BM Data accompagne les TPE et PME à Agen et partout en France."
   },
   "hero": {
     "eyebrow": "Services",
@@ -28,6 +28,7 @@
       ],
       "tools": ["Talend", "Talaxie", "Python", "Power Automate", "API"],
       "target": "TPE et PME qui veulent gagner du temps sur leurs tâches répétitives",
+      "example": "Un gérant passait 2 h chaque lundi à copier ses chiffres de vente dans un fichier de suivi. Après automatisation : le récapitulatif arrive tout seul dans sa boîte mail le lundi matin à 8 h.",
       "cta": {
         "label": "Automatiser mes tâches",
         "url": "/contact/?service=automatisations"
@@ -48,6 +49,7 @@
       ],
       "tools": ["Talend", "Talaxie", "SQL", "API", "ETL"],
       "target": "TPE et PME qui changent d’outil ou veulent mieux organiser leurs données",
+      "example": "Un artisan changeait de logiciel de facturation. Il craignait de perdre 4 ans d’historique clients. Résultat : toutes les fiches et commandes ont été reprises proprement, sans ressaisie, en quelques jours.",
       "cta": {
         "label": "Parler de ma migration",
         "url": "/contact/?service=migration"
@@ -68,6 +70,7 @@
       ],
       "tools": ["Power BI", "Excel", "Talend", "Talaxie"],
       "target": "TPE et PME qui veulent suivre leur activité avec des reportings simples",
+      "example": "Un responsable commercial cherchait ses chiffres dans 3 fichiers différents à chaque fin de semaine. Après : un tableau de bord actualisé automatiquement, avec les indicateurs qui comptent, lisible en 2 minutes.",
       "cta": {
         "label": "Mettre en place un reporting",
         "url": "/contact/?service=reporting"
@@ -101,10 +104,10 @@
     ]
   },
   "cta": {
-    "title": "Quel service correspond à votre besoin ?",
-    "subtitle": "Un premier échange permet souvent d’identifier rapidement la solution la plus simple et la plus utile pour votre entreprise.",
+    "title": "Vous ne savez pas par où commencer ? C’est normal.",
+    "subtitle": "Un premier échange de 30 minutes suffit souvent pour identifier la priorité la plus simple et la plus utile. Gratuit, sans engagement.",
     "primary": {
-      "label": "Prendre rendez-vous",
+      "label": "Faire le point gratuitement",
       "url": "/contact/"
     },
     "secondary": {

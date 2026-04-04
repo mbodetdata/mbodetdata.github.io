@@ -4946,6 +4946,33 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 }
 .svc-card__cta { align-self: flex-start; }
 
+/* Cas concret */
+.svc-card__example {
+  background: rgba(43,212,143,.06);
+  border: 1px solid rgba(43,212,143,.18);
+  border-left: 3px solid var(--color-gold);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+}
+.svc-card__example-label {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--color-gold);
+  margin-bottom: .5rem;
+}
+.svc-card__example p {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,.65);
+  line-height: 1.65;
+  margin: 0;
+  font-style: italic;
+}
+
 /* Bénéfices */
 .svc-benefits-box {
   background: rgba(255,255,255,.04);

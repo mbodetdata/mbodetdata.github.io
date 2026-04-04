@@ -32,6 +32,16 @@
           "id": "q4",
           "question": "À partir de quand une entreprise a-t-elle besoin d'automatiser ses données ?",
           "answer": "En général, le besoin apparaît quand vous perdez du temps à refaire toujours les mêmes manipulations, quand les chiffres ne sont pas fiables, quand les données sont dispersées dans plusieurs outils ou quand le reporting devient trop lourd à produire. À ce moment-là, l'automatisation et une meilleure visualisation peuvent faire gagner un temps réel."
+        },
+        {
+          "id": "q4b",
+          "question": "Je suis une très petite structure (moins de 10 personnes). Est-ce vraiment adapté à ma taille ?",
+          "answer": "Oui. C'est même souvent là que l'impact est le plus visible. Une petite structure n'a pas de DSI, pas de service IT, et chaque heure gagnée ou chaque erreur évitée a un effet direct sur le quotidien. Je travaille justement avec des entreprises de toutes tailles, y compris des structures de 2 à 10 personnes qui veulent fiabiliser leurs données ou automatiser une tâche précise sans monter un projet lourd."
+        },
+        {
+          "id": "q4c",
+          "question": "Est-ce que je vais devoir m'impliquer beaucoup dans le projet ?",
+          "answer": "Pas de façon excessive. Un projet typique demande quelques échanges pour cadrer le besoin, puis des retours intermédiaires pour valider que ce qui est mis en place correspond bien à votre réalité. Je m'adapte à vos contraintes de disponibilité. Mon rôle est justement de limiter la charge côté client tout en produisant quelque chose de réellement utile."
         }
       ]
     },
@@ -131,6 +141,11 @@
           "id": "q19",
           "question": "Peut-on commencer petit ?",
           "answer": "Oui. C'est souvent la meilleure approche. On peut démarrer par un besoin précis : automatiser un fichier, connecter deux outils, fiabiliser un reporting ou créer un premier tableau de bord. Cela permet d'obtenir des résultats concrets rapidement, sans lancer un projet trop ambitieux dès le départ."
+        },
+        {
+          "id": "q19b",
+          "question": "En combien de temps est-ce que je verrai des résultats concrets ?",
+          "answer": "Pour une intervention ciblée — automatiser un traitement récurrent ou fiabiliser un reporting existant — les premiers résultats sont visibles en quelques jours à quelques semaines. Pour un projet plus structuré avec plusieurs sources de données ou un tableau de bord connecté, le délai est plus long mais cadré dès le départ. Dans tous les cas, je préfère livrer quelque chose d'utile rapidement plutôt que de promettre un projet ambitieux qui tarde à produire de la valeur."
         },
         {
           "id": "q20",

@@ -1,12 +1,12 @@
 {
   "meta": {
-    "title": "Réalisations — Talend, Talaxie, Power BI, EDI & migrations | BM Data Agen",
-    "description": "Découvrez des réalisations concrètes menées par BM Data autour de Talend, Talaxie, Power BI, EDI, interconnexions API, migrations de données et automatisation."
+    "title": "Réalisations — Projets d'automatisation, migration et reporting | BM Data",
+    "description": "Réalisations concrètes de BM Data : automatisation des flux, migration de données, tableaux de bord et interconnexions pour des TPE, PME et grandes organisations."
   },
   "hero": {
     "eyebrow": "Réalisations",
     "title": "Des réalisations concrètes en automatisation, migration et reporting",
-    "subtitle": "Talend, Talaxie, Power BI, EDI, API, Azure : des projets menés sur des enjeux de continuité, de fiabilité, de migration de données et de pilotage opérationnel."
+    "subtitle": "Des projets menés sur des enjeux concrets : supprimer les ressaisies, sécuriser un changement d'outil, fiabiliser les données et mieux piloter l'activité — pour des structures de toutes tailles."
   },
   "filters": [
     "Tous",
