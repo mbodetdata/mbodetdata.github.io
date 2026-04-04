@@ -83,12 +83,21 @@ body_class: "page-blog"
 </section>
 
 <!-- ARTICLES -->
+{% assign pme_posts = site.posts | where_exp: "p", "p.parent_category != 'talend-talaxie'" %}
+{% assign expert_posts = site.posts | where_exp: "p", "p.parent_category == 'talend-talaxie'" %}
+
+<!-- ── SECTION 1 : Conseils pour dirigeants ── -->
 <section class="section">
   <div class="container">
-    {% if site.posts.size > 0 %}
+    {% if pme_posts.size > 0 %}
+
+    <div class="section-header" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:var(--text-2xl);">Conseils pratiques pour dirigeants</h2>
+      <p style="color:var(--color-gray-500);max-width:560px;margin:0 auto;">Des articles clairs pour comprendre comment mieux exploiter vos données au quotidien, sans jargon.</p>
+    </div>
 
     <!-- Article à la une -->
-    {% assign featured = site.posts.first %}
+    {% assign featured = pme_posts.first %}
     <div class="fade-up" style="background:white;border-radius:var(--radius-2xl);border:var(--border-card);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:4rem;box-shadow:var(--shadow-card);">
       <div style="background:linear-gradient(135deg,var(--color-navy-mid),var(--color-navy));min-height:300px;display:flex;align-items:center;justify-content:center;">
         {% if featured.image %}
@@ -115,9 +124,9 @@ body_class: "page-blog"
       </div>
     </div>
 
-    <!-- Grille articles -->
+    <!-- Grille articles PME -->
     <div class="grid grid-auto">
-      {% for post in site.posts offset:1 %}
+      {% for post in pme_posts offset:1 %}
         {% include components/post-card.html post=post %}
       {% endfor %}
     </div>
@@ -132,6 +141,25 @@ body_class: "page-blog"
     {% endif %}
   </div>
 </section>
+
+<!-- ── SECTION 2 : Expertise technique ── -->
+{% if expert_posts.size > 0 %}
+<section class="section section--light" id="expertise-technique" aria-labelledby="expert-section-title">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:2.5rem;">
+      <span class="section-eyebrow">Expertise technique</span>
+      <h2 id="expert-section-title" style="font-size:var(--text-2xl);">Articles techniques — Talend & Talaxie</h2>
+      <p style="color:var(--color-gray-500);max-width:600px;margin:0 auto;">Ces articles s'adressent à des profils techniques (intégrateurs, développeurs data, chefs de projet IT). Ils illustrent le niveau d'expertise mis au service des projets.</p>
+    </div>
+
+    <div class="grid grid-auto">
+      {% for post in expert_posts %}
+        {% include components/post-card.html post=post %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
 
 <!-- CTA Newsletter / Contact -->
 <section class="section section--light">

@@ -44,18 +44,15 @@
     ]
   },
 "expertise": {
-  "title": "Expertises et outils",
+  "title": "Domaines d'intervention",
+  "intro": "Je travaille sur trois axes principaux : automatisation des tâches répétitives, migration et consolidation de données, mise en place de reportings et tableaux de bord. La liste ci-dessous détaille les outils maîtrisés — mais l'essentiel reste le résultat, pas la technologie.",
   "categories": [
     {
-      "name": "Expertise principale",
-      "items": ["Talend", "Talaxie", "Power BI"]
+      "name": "Automatisation & intégration",
+      "items": ["Talend / Talaxie", "Python", "Power Automate", "Apps Script", "VBA", "SQL", "API REST"]
     },
     {
-      "name": "Intégration & automatisation",
-      "items": ["Talend ETL / Data pipelines", "SQL", "API REST", "Python", "Power Automate", "Apps Script", "VBA"]
-    },
-    {
-      "name": "Analyse & reporting",
+      "name": "Reporting & tableaux de bord",
       "items": ["Power BI", "Excel avancé", "Google Looker Studio", "Metabase"]
     },
     {
@@ -74,12 +71,12 @@
     },
     {
       "year": "2023-2025",
-      "title": "Analyste développeur Talend / Talaxie",
+      "title": "Consultant data & automatisation",
       "description": "Accompagnement de moyennes et grandes entreprises dans leurs projets data, avec un rôle à la fois technique et fonctionnel. Mise en place de solutions décisionnelles, structuration des flux de données, amélioration des reportings et formation des équipes pour faciliter la prise en main des outils."
     },
     {
       "year": "2021-2023",
-      "title": "Intégrateur Talend / Power BI",
+      "title": "Intégration de données & reporting",
       "description": "Participation à des projets d’intégration et de valorisation de la donnée dans des secteurs variés comme l’industrie, les services ou le commerce. Cette expérience m’a permis de développer une approche orientée terrain, centrée sur la fiabilité des données, la clarté des tableaux de bord et l’utilité des outils pour les utilisateurs au quotidien."
     },
         {

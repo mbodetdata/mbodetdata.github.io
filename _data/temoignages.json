@@ -1,31 +1,33 @@
 {
   "meta": {
-    "title": "Témoignages & recommandations — BM Data, consultant data Agen",
-    "description": "Ce que disent les personnes ayant travaillé avec BM Data : recommandations professionnelles sur la rigueur, l'autonomie et la qualité relationnelle de Martial Bodet."
+    "title": "Témoignages — BM Data, consultant data pour TPE/PME | Agen",
+    "description": "Ce que disent les clients et partenaires de BM Data : fiabilité, clarté, résultats concrets. Martial Bodet accompagne les TPE et PME à Agen et partout en France."
   },
   "hero": {
-    "eyebrow": "Recommandations",
+    "eyebrow": "Témoignages",
     "title": "Ce que disent les personnes qui ont travaillé avec moi",
-    "subtitle": "Des recommandations professionnelles qui mettent en avant ma rigueur, mon autonomie et la qualité de mes relations de travail."
+    "subtitle": "Des retours concrets sur la qualité de l'accompagnement, la clarté des solutions mises en place et les résultats obtenus."
   },
   "testimonials": [
     {
       "id": 1,
       "quote": "J’ai eu le plaisir de travailler avec Martial en tant qu’employeur, et je peux dire sans hésiter que c’est une personne rare. Toujours de bonne humeur, engagé, à l’écoute et prêt à rendre service, il a su créer autour de lui un climat de confiance aussi bien en interne qu’auprès des clients, qui étaient ravis de l’avoir comme interlocuteur.\n\nMartial possède une vraie capacité d’autonomie, une rigueur précieuse, et une curiosité naturelle qui le pousse à aller au fond des sujets, même les plus complexes ou inconnus. Là où certains reculent, lui avance, explore, teste, propose — toujours avec pertinence et fiabilité.\n\nC’est quelqu’un sur qui on peut vraiment compter, et avec qui il est aussi agréable qu’efficace de travailler. Je lui souhaite le meilleur pour la suite, et je le recommande chaudement à toute structure qui cherche à s’entourer de collaborateurs solides, brillants et humains.",
       "author": "Nicolas L",
-      "role": "Manager direct de Martial",
+      "role": "Manager direct — recommandation professionnelle",
       "company": "Axysweb",
-      "sector": "Intégrateur talend",
-      "service": "Service",
+      "sector": "Intégration de données",
+      "service": "Collaboration professionnelle",
       "rating": 5,
       "featured": true
     }
   ],
+  "note": "D'autres témoignages clients sont en cours de collecte. Vous pouvez retrouver des recommandations professionnelles complémentaires sur LinkedIn.",
+  "linkedin_url": "https://www.linkedin.com/in/martial-bodet/",
   "cta": {
-    "title": "Parlons de votre projet data",
-    "subtitle": "Un premier échange de 30 minutes pour comprendre votre situation. Gratuit, sans engagement.",
+    "title": "Parlons de votre projet",
+    "subtitle": "Un premier échange de 30 minutes pour comprendre votre situation et voir ce que je peux améliorer concrètement. Gratuit, sans engagement.",
     "primary": {
-      "label": "Prendre rendez-vous",
+      "label": "Faire le point gratuitement",
       "url": "/contact/"
     }
   }

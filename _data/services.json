@@ -47,7 +47,7 @@
         "Moins de risques de perte ou d’erreur",
         "Transition plus fluide pour votre activité"
       ],
-      "tools": ["Talend", "Talaxie", "SQL", "API", "ETL"],
+      "tools": ["Talend", "Talaxie", "SQL", "API"],
       "target": "TPE et PME qui changent d’outil ou veulent mieux organiser leurs données",
       "example": "Un artisan changeait de logiciel de facturation. Il craignait de perdre 4 ans d’historique clients. Résultat : toutes les fiches et commandes ont été reprises proprement, sans ressaisie, en quelques jours.",
       "cta": {
