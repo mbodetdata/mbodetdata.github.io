@@ -200,25 +200,30 @@ Pas besoin de transformer l’entreprise en usine à gaz. Il faut surtout enleve
 
 ## Un exemple très concret
 
-Prenons un cas fictif, mais très courant.
+Ce type de problème ne concerne pas seulement les devis, la facturation ou les tableaux Excel. Voici un cas réel, anonymisé, qui montre à quel point quelques automatisations bien ciblées peuvent changer le quotidien.
 
-Une entreprise reçoit une demande client par mail. Une personne note les informations dans un fichier partagé. Une autre reprend une partie dans un devis. Puis certaines données sont ressaisies dans un outil de facturation. En fin de mois, il faut encore consolider tout cela pour suivre l’activité.
+Dans cette entreprise, une partie importante du travail reposait encore sur des manipulations manuelles : récupérer des fichiers reçus par mail ou déposés sur un espace de fichiers, vérifier qu’ils étaient bien présents, lancer des calculs, préparer des versements, puis mettre à jour un tableau de bord de suivi.
 
-Résultat :
-des informations incomplètes,
-des oublis,
-des écarts entre les outils,
-un suivi peu fiable,
-et plusieurs heures perdues chaque mois.
+Concrètement, cela voulait dire :
+ouvrir les mails,
+télécharger les fichiers,
+contrôler qu’aucun document ne manque,
+récupérer d’autres fichiers dans un espace dédié,
+lancer les traitements nécessaires,
+préparer les versements,
+puis mettre à jour manuellement le suivi de l’activité.
 
-Dans ce cas, le vrai problème n’est pas le tableau final.
+Le problème n’était pas seulement le temps passé.
 
-Le vrai problème, c’est que l’information n’est pas saisie une seule fois, puis envoyée automatiquement là où elle doit aller.
+Le vrai problème, c’est que tout reposait sur une suite d’actions répétitives, avec plusieurs risques à chaque étape : oubli d’un fichier, retard de traitement, erreur dans un calcul, mise à jour incomplète, ou manque de visibilité sur l’avancement.
 
-Une amélioration utile ne consisterait pas à tout changer. Elle consisterait d’abord à saisir l’information une seule fois, puis à la faire arriver automatiquement dans les bons outils.
+L’amélioration mise en place n’a pas consisté à tout changer.
 
-C’est souvent là que les gains deviennent visibles le plus vite.
+Le premier travail a été de simplifier ce qui revenait tout le temps : récupérer automatiquement les fichiers reçus, lancer les calculs nécessaires, déclencher les versements prévus, puis alimenter automatiquement un tableau de bord de suivi.
 
+Résultat : moins d’actions à faire à la main, moins d’oublis, moins de retards, et un suivi beaucoup plus clair au quotidien.
+
+C’est exactement le type de situation où l’automatisation apporte un gain rapide. Non pas parce qu’elle rend l’entreprise plus compliquée, mais parce qu’elle supprime des tâches répétitives qui n’ont pas besoin d’être faites à la main.
 ## Test rapide
 
 Si vous répondez oui à au moins 3 de ces questions, il y a probablement un vrai sujet à traiter :
