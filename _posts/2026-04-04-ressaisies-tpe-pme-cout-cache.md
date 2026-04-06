@@ -2,7 +2,7 @@
 layout: post
 title: "Double saisie en TPE/PME : 7 signes que tes outils te font perdre du temps"
 description: "Copier-coller, ressaisie, fichiers en double, erreurs entre devis, facturation et suivi... Découvre les 7 signes qui montrent qu’il est temps d’automatiser ton entreprise et de fluidifier tes données."
-date: 2026-04-07
+date: 2026-04-06
 categories: [automatisation, productivite]
 tags: [double saisie, ressaisie, automatisation TPE PME, gain de temps, outils de gestion, flux de données, productivite entreprise, erreurs de saisie, digitalisation PME, reporting]
 author: Martial Bodet
