@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Changer de logiciel sans perdre ses données — les erreurs que font beaucoup de PME"
+title: "Changer de logiciel sans perdre ses données : les erreurs que font beaucoup de PME"
 description: "Migration de données : évitez les pièges courants et sécurisez votre projet avec une vraie méthode."
 date: 2026-04-24
 categories: [migration-donnees, conseils-dirigeants]
@@ -13,197 +13,197 @@ parent_category: data
 category_label: Migration de données
 ---
 
-C'est une situation qu'on rencontre régulièrement chez les PME : vous avez trouvé un meilleur logiciel pour votre compta, votre CRM ou votre ERP. Vous êtes prêt à franchir le pas.
+C'est une situation fréquente dans les PME : vous avez trouvé un meilleur logiciel pour votre comptabilité, votre CRM ou votre ERP. Vous êtes prêt à franchir le pas.
 
-Mais une question vous paralyse :
+Mais une question vous freine :
 
 *et mes données ?*
 
 Clients, factures, historique, contrats… parfois dix ans d’activité.
 
-Vous repensez à ce que vous avez entendu :  
-une PME qui a perdu l’accès à ses données pendant plusieurs jours.  
-une autre qui a dû ressaisir une partie de son historique.
+C’est une inquiétude légitime. Et dans certains cas, des projets ont effectivement mal tourné.
 
-Et vous vous demandez si le jeu en vaut vraiment la peine.
+Mais la réalité est plus simple :
 
-> Spoiler : le jeu en vaut la peine. Mais pas comme vous l’imaginez peut-être.
+> Une migration bien préparée se passe bien, dans la grande majorité des cas.
 
-Ce que beaucoup découvrent trop tard, c’est que le problème ne vient presque jamais de la technique.
+Le vrai sujet n’est pas la technique.
 
-Il vient de la **préparation**.
+C’est la **préparation**.
 
-Beaucoup d’entreprises pensent que la migration est une affaire de clic :  
+Beaucoup d’entreprises imaginent une migration comme une opération simple :  
 « On exporte, on importe, et c’est réglé. »
 
-En réalité, la majorité des problèmes post-migration — données incomplètes, doublons, incohérences — trouvent leur origine en amont :
-- un cadrage insuffisant
-- des données mal préparées
-- ou une validation trop rapide
+En pratique, les écarts observés après migration (doublons, données incomplètes, incohérences) viennent surtout :
+- d’un cadrage insuffisant
+- de données non préparées
+- ou d’une validation trop rapide
 
-Commençons par la réalité : changer de logiciel sans perdre ses données, c'est possible. C’est même atteignable dans la grande majorité des cas.
+Bonne nouvelle : ces problèmes sont **prévisibles et évitables**.
 
-Mais ça demande un vrai cadrage, une compréhension de ce que vous transportez, et une rigueur de projet.
+Et c’est exactement ce que vous allez voir ici.
 
-C’est l’objet de ce guide.
+## Le vrai enjeu : comprendre ce que vous transportez
 
-## Le vrai danger : ce qui semble simple à première vue
+Migrer des données, ce n’est pas déplacer des fichiers.
 
-Beaucoup de dirigeants pensent que migrer, c'est juste un export-import. Un peu comme déménager : on met tout dans des cartons, on monte dans le camion, et on dépose le tout à côté.
+C’est **adapter une structure à une autre**.
 
-Mais les données, ce n'est pas des cartons.
+Quand vous changez de logiciel :
+- certains champs évoluent (ex : téléphone → fixe + mobile)
+- les formats changent (dates, codes, statuts)
+- les règles métier diffèrent
 
-Quand vous changez de logiciel, vous changez aussi de **structure**. Un champ « Téléphone » dans l'ancien logiciel, c'est peut-être deux champs « Tél fixe » et « Tél mobile » dans le nouveau. Les listes déroulantes ne correspondent pas. Les formats de date diffèrent. Les règles de validation ne sont pas les mêmes.
+Résultat : vos données doivent être **interprétées**, pas simplement copiées.
 
-Et vous avez des données qui ne rentrent nulle part, simplement parce qu’elles étaient organisées différemment avant.
+À cela s’ajoutent des réalités classiques :
+- des doublons accumulés dans le temps
+- des données incomplètes ou tolérées auparavant
+- des informations structurées différemment selon les outils
 
-Ajoutez à ça les doublons. Chaque PME en accumule sans vraiment le voir : des clients saisis sous deux formes (« ACME SAS » vs « ACME »), des contacts créés plusieurs fois. Dans l'ancien logiciel, ça passe. Dans le nouveau, ça saute aux yeux.
+Rien d’anormal. Mais rien qui ne se corrige automatiquement non plus.
 
-Et puis il y a les données orphelines : ce qui était toléré avant ne l’est plus. Adresse vide, client incomplet, contrat mal renseigné. Rien de critique isolément… mais problématique une fois regroupé.
+## Ce qui fait vraiment la différence dans une migration
 
-## Ce qui se joue en coulisses (et que beaucoup sous-estiment)
+Dans les projets réussis, le point clé est toujours le même :
 
-Les problèmes de migration ne sont presque jamais **techniques**.
+On arrête de parler “outil” pour parler **données métier**.
 
-Un export/import, c’est rarement le vrai sujet.
+Concrètement :
 
-Dans les projets que j’accompagne, le point de bascule est toujours le même :  
-le moment où l’on arrête de parler “outil”… et où l’on commence à parler “données métier”.
+**Avant la migration**, vous clarifiez :
+- ce que vous gardez (et pourquoi)
+- ce que vous laissez
+- comment les données doivent s’adapter
+- qui est responsable du nettoyage
 
-**Avant la migration**, les vraies questions sont :
-- Qu’est-ce qu’on emporte réellement ?
-- Qu’est-ce qu’on décide de ne pas garder ?
-- Comment adapte-t-on les données au nouveau système ?
-- Qui est responsable du nettoyage ?
+**Après la migration**, vous sécurisez :
+- la validation des données
+- la transition entre ancien et nouveau système
+- la correction des écarts
+- l’accompagnement des équipes
 
-**Après la migration** :
-- Qui valide que tout est correct ?
-- Comment gère-t-on la cohabitation entre ancien et nouveau système ?
-- Comment corrige-t-on les écarts ?
-- Qui accompagne les équipes ?
+Ce cadre change tout.
 
-Ces questions ne se résolvent pas par un clic. Elles demandent une compréhension du métier et une coordination entre les équipes.
+Sans lui, vous subissez la migration.  
+Avec lui, vous la pilotez.
 
-Voici les signaux d’alerte que je vois le plus souvent sur le terrain :
+## Les signaux d’alerte à ne pas ignorer
 
-- **“On va tout migrer”** → sans jamais définir ce que “tout” contient réellement  
-- **Aucune vision claire des données** → ni où elles sont, ni qui les utilise  
-- **Les doublons sont connus… mais tolérés**  
-- **Aucun test prévu avant le basculement**  
-- **Pas de responsable clairement identifié**
+Certains signaux indiquent qu’un projet manque de structuration :
 
-Si vous vous reconnaissez dans plusieurs de ces points, vous n’êtes pas face à une simple tâche technique.
+- **“On va tout migrer”** sans définition précise  
+- **Aucune vision claire des données existantes**  
+- **Des doublons connus mais jamais traités**  
+- **Aucun test avant le basculement**  
+- **Pas de responsable identifié**
 
-Vous êtes déjà dans un projet à risque.
+Si vous cochez plusieurs de ces points, ce n’est pas problématique.
 
-## La douleur du changement : coûts cachés et interruption d'activité
+Mais cela signifie qu’il faut structurer avant d’avancer.
 
-Si vous pensez que le coût de la migration se limite à la prestation, vous vous trompez.
+## Ce que coûte vraiment une migration (et comment le maîtriser)
 
-Il y a le coût visible :
-- accompagnement
-- migration
-- formation
+Le coût d’une migration ne se limite pas à la prestation technique.
 
-Mais il y a aussi le coût invisible :
-- temps mobilisé en interne
-- baisse temporaire de productivité
-- hésitations côté équipes
-- coexistence de deux systèmes
+Il inclut aussi :
+- le temps mobilisé en interne
+- une baisse temporaire de productivité
+- une phase d’adaptation des équipes
 
-Et surtout : le coût du mal-faire.
+C’est normal.
 
-Une migration mal préparée peut entraîner :
-- des données difficiles à exploiter
-- une perte de confiance dans le nouvel outil
-- un retour partiel à l’ancien système
-- des décisions basées sur des données erronées
+L’objectif n’est pas de supprimer ces effets…  
+mais de les **anticiper et les réduire**.
 
-Ce coût-là est rarement anticipé. Mais il est souvent le plus élevé.
+Une migration bien préparée permet justement :
+- de limiter les interruptions
+- d’éviter les corrections lourdes après coup
+- et d’accélérer l’adoption du nouvel outil
 
-À l’inverse, rester sur un outil inadapté finit aussi par coûter cher.
-
-Repousser la migration ne supprime pas le problème. Ça le décale… et souvent l’aggrave.
+À l’inverse, repousser une migration nécessaire finit souvent par coûter plus cher (rigidité, perte d’efficacité, dépendance à un outil vieillissant).
 
 ## Les quatre piliers d'une migration réussie
 
-Une migration solide repose sur quatre leviers simples, mais exigeants.
+Une migration fiable repose sur quatre fondamentaux.
 
 **Cadrage métier en amont**  
-Avant tout export, vous devez comprendre vos données : où elles sont, à quoi elles servent, qui les utilise. Et surtout décider : qu’est-ce qu’on garde, qu’est-ce qu’on abandonne, pourquoi.
+Comprendre ses données, leur usage, et décider ce qui doit être conservé.
 
-**Nettoyage des données en amont**  
-Doublons, incohérences, données inutiles… c’est le moment de traiter le sujet. Sinon, vous déplacez simplement vos problèmes dans le nouveau système.
+**Nettoyage des données**  
+Traiter les doublons, incohérences et données inutiles avant migration.
 
-**Migration testée et progressive**  
-Une migration unique “en direct” est risquée. Mieux vaut tester, valider avec les utilisateurs, corriger, puis basculer. Idéalement avec une période de coexistence.
+**Migration progressive et testée**  
+Tester, valider, corriger… puis basculer avec une phase de transition.
 
 **Formation et accompagnement**  
-Un outil bien migré mais mal utilisé reste un échec. L’adoption des équipes est aussi critique que la migration elle-même.
+Assurer une bonne prise en main côté équipes.
 
-## Test rapide : où vous en êtes
+Ce n’est pas complexe.
 
-Si vous répondez oui à au moins trois de ces questions, votre migration nécessite un vrai cadrage :
+Mais c’est structurant.
 
-1. Avez-vous un volume important de données ?
-2. Vos données sont-elles réparties dans plusieurs outils ?
-3. Avez-vous des doutes sur leur qualité ?
-4. Votre activité dépend-elle fortement du logiciel actuel ?
-5. Une seule personne comprend-elle vraiment les données ?
+## Test rapide : où en êtes-vous
 
-Trois oui ? Vous êtes face à un projet structurant, pas à une simple opération technique.
+Si vous répondez oui à au moins trois de ces questions, votre migration mérite d’être cadrée :
+
+1. Vous avez un volume important de données  
+2. Vos données sont réparties dans plusieurs outils  
+3. Vous avez des doutes sur leur qualité  
+4. Votre activité dépend fortement du logiciel actuel  
+5. Une seule personne comprend vraiment les données  
+
+Trois oui ?  
+Vous êtes face à un projet structurant, pas à une simple opération technique.
 
 ## Quand se faire accompagner ?
 
-Certaines situations dépassent rapidement le cadre interne :
+Dans certains cas, l’accompagnement devient rapidement pertinent :
 
-- Plusieurs outils interconnectés  
-- Règles métier spécifiques ou complexes  
-- Données sensibles (clients, finances, contrats)  
-- Forte contrainte de continuité d’activité  
-- Dépendance à une personne clé  
+- plusieurs outils interconnectés  
+- règles métier spécifiques  
+- données sensibles  
+- contrainte forte de continuité  
+- dépendance à une personne clé  
 
-Dans ces cas-là, l’enjeu n’est plus seulement technique.
+L’objectif n’est pas de complexifier.
 
-C’est un sujet d’organisation et de sécurisation.
+C’est de **sécuriser et accélérer**.
 
 ## À retenir
 
-- Les problèmes de migration viennent majoritairement de la préparation, pas de la technique  
-- Une migration réussie est d’abord un sujet métier  
-- Nettoyer avant coûte toujours moins cher que corriger après  
-- L’adoption des équipes est aussi importante que la migration elle-même  
+- Une migration est maîtrisable quand elle est préparée  
+- Les problèmes viennent surtout du cadrage, pas de la technique  
+- Nettoyer avant évite de corriger après  
+- L’adoption des équipes est clé  
 
 ## FAQ
 
-**Combien de temps ça prend ?**  
-Cela dépend du volume, de la complexité et de la qualité des données. Une migration sérieuse prend généralement plusieurs semaines, rarement quelques jours.
+**Combien de temps cela prend-il ?**  
+Quelques semaines dans la majorité des cas, selon le volume et la complexité.
 
 **Peut-on éviter toute perte de données ?**  
-Oui, si tout est identifié, préparé et validé. Le principal risque est l’oubli ou la mauvaise transformation.
+Oui, si tout est identifié et validé en amont.
 
-**Faut-il migrer toutes les données ?**  
-Non. Migrer, c’est aussi faire des choix.
+**Faut-il tout migrer ?**  
+Non. Migrer, c’est aussi faire des choix utiles.
 
 **Peut-on le faire en interne ?**  
-Oui pour des cas simples. Dès que plusieurs systèmes ou règles métier sont impliqués, un accompagnement devient pertinent.
+Oui pour des cas simples. Au-delà, un accompagnement sécurise fortement le projet.
 
 ## Conclusion
 
-Changer de logiciel sans perdre ses données n’est pas une affaire d’outil.
+Changer de logiciel sans perdre ses données est un objectif réaliste.
 
-C’est une affaire de **cadrage et de rigueur en amont**.
+À condition de ne pas le traiter comme une simple opération technique.
 
-Les PME qui réussissent leur migration ne sont pas celles qui vont le plus vite.
+C’est un sujet de **cadrage, de méthode et de pilotage**.
 
-Ce sont celles qui prennent le temps de comprendre, de nettoyer, de tester et d’accompagner.
+Les PME qui réussissent leur migration ne sont pas celles qui évitent les contraintes.
 
-Une migration bien faite ne se voit pas.  
-Mais une migration mal préparée se paie pendant des mois.
+Ce sont celles qui les anticipent.
 
-Si vous vous reconnaissez dans ce guide, le bon point de départ n’est pas technique.
-
-C’est de faire le point sur vos données.
+Et c’est précisément ce qui fait la différence.
 
 → [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}
 
@@ -214,6 +214,7 @@ C’est de faire le point sur vos données.
 Les éléments présentés dans cet article sont basés sur des pratiques terrain observées dans des projets de migration (ERP/CRM).
 
 Pour approfondir :
-- https://www.vertuoz.fr/blog/logiciel-metier/une-migration-de-vos-donnees-reussie-les-sept-etapes-cles
-- https://www.erpimplementation.eu/migration-erp-guide-complet-changement-systeme/
-- https://www.discoveryintech.com/fr/blog/migration-erp-les-6-etapes-essentielles-pour-une-transition-reussie
+
+- Vertuoz — [Une migration de vos données réussie : les sept étapes clés](https://www.vertuoz.fr/blog/logiciel-metier/une-migration-de-vos-donnees-reussie-les-sept-etapes-cles)
+- ERP Implementation — [Migration ERP : guide complet du changement de système](https://www.erpimplementation.eu/migration-erp-guide-complet-changement-systeme/)
+- Discovery in Tech — [Migration ERP : les 6 étapes essentielles](https://www.discoveryintech.com/fr/blog/migration-erp-les-6-etapes-essentielles-pour-une-transition-reussie)
