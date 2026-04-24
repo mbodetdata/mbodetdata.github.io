@@ -48,7 +48,7 @@ Voici les trois premières questions que je pose systématiquement à mes client
 C'est toujours le meilleur point de départ. Identifier la décision où vous manquez de données, c'est identifier où une meilleure exploitation de vos données aurait le plus d'impact.
 
 **2. Combien de temps passez-vous à préparer vos reportings ?**
-Si la réponse est "plusieurs heures par semaine", vous avez là un gain potentiel immédiat et mesurable. Les tâches répétitives de reporting sont souvent les premières à automatiser.
+Si la réponse est "plusieurs heures par semaine", vous avez là un gain potentiel immédiat et mesurable. Les tâches répétitives de reporting sont souvent les premières à automatiser — [un guide pratique en 5 niveaux](/blog/automatiser-ses-reportings-guide-pratique/) montre comment s'y prendre progressivement, du Power Query à l'automatisation complète des flux.
 
 **3. Faites-vous confiance à vos données actuelles ?**
 Beaucoup d'entreprises ont des données mais ne leur font pas confiance — parce qu'elles sont dispersées, contradictoires ou saisies manuellement. Avant d'analyser, il faut parfois simplement fiabiliser.

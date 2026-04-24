@@ -689,6 +689,8 @@ La suite logique :
 - un **tJava** pour comparer avec `X-Hub-Signature-256`,
 - puis deux branches : **OK** (200) / **KO** (401).
 
+> 💡 Le secret HMAC utilisé pour signer tes webhooks ne doit jamais être stocké en clair dans ton job. [Ce guide sur le chiffrement AES dans Talaxie](/blog/chiffrer-des-mots-de-passe-AES/) montre comment le protéger proprement.
+
 ---
 
 ## Routine Java : `GitHubSig`

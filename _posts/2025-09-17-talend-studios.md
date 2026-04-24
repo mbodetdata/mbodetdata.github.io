@@ -52,7 +52,7 @@ Ce studio est pensé pour le **temps réel** et l’**interopérabilité entre a
 - Fonction de médiateur entre systèmes.  
 - Exécution continue de jobs à l’écoute d’événements (API, mails, dossiers, etc.).  
 
-**Particularité :** là où DI et BD consomment des API, ESB permet d’en créer.  
+**Particularité :** là où DI et BD consomment des API, ESB permet d’en créer. Pour voir un exemple concret, [cet article montre comment implémenter un webhook sécurisé avec Talaxie ESB](/blog/API-et-Webhook-talaxie-esb/).  
 
 ---
 
@@ -85,6 +85,6 @@ Il détecte incohérences, doublons et erreurs dans des fichiers sources ou base
 Talend reste aujourd’hui un acteur incontournable de l’intégration de données.  
 Cependant, il faut noter que la **version open source de Talend Open Studio n’est plus maintenue depuis janvier 2024**.  
 
-Pour celles et ceux qui souhaitent continuer à utiliser une alternative libre, le projet [**Talaxie**](https://talaxie.deilink.fr/) a vu le jour. Ce fork de Talend Open Studio reprend l’héritage open source, avec des mises à jour techniques et une communauté active.  
+Pour celles et ceux qui souhaitent continuer à utiliser une alternative libre, le projet [**Talaxie**](https://talaxie.deilink.fr/) a vu le jour. Ce fork de Talend Open Studio reprend l’héritage open source, avec des mises à jour techniques et une communauté active. [Un guide complet de migration en 8 étapes](/blog/migration-talend-vers-talaxie/) détaille la procédure pour passer de Talend Open Studio à Talaxie.  
 
 ---

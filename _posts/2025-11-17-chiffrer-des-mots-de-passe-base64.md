@@ -296,7 +296,9 @@ Voici les bonnes pratiques à adopter :
 
 > **Ton objectif**        
 > Aucune chaîne sensible en clair dans le projet. Aucun accès possible sans la clé.   
-> Si quelqu’un récupère ton workspace, il ne doit rien pouvoir exploiter. 
+> Si quelqu’un récupère ton workspace, il ne doit rien pouvoir exploiter.
+
+➡️ [Article 2/2 — AES](/blog/chiffrer-des-mots-de-passe-AES/) : passer de l’encodage Base64 à un vrai chiffrement cryptographique, avec une routine AES-256 prête à l’emploi.
 
 ---
 

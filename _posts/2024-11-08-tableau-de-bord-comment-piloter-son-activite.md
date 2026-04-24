@@ -42,7 +42,7 @@ Certaines informations sont pertinentes en temps réel (activité commerciale, s
 Un tableau de bord pour un directeur général n'est pas le même que pour un responsable commercial ou un chef d'atelier. Pensez aux utilisateurs finaux dès le départ.
 
 ### 5. D'où viennent mes données ?
-C'est la question que beaucoup oublient. Un tableau de bord est aussi fiable que ses sources. Si vos données sont éparpillées et peu fiables, c'est par là qu'il faut commencer.
+C'est la question que beaucoup oublient. Un tableau de bord est aussi fiable que ses sources. Si vos données sont éparpillées et peu fiables, c'est par là qu'il faut commencer — [cet article sur la valeur des données en PME](/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/) vous aide à faire l'inventaire de ce que vous avez déjà sans le savoir.
 
 ## Les 3 erreurs les plus fréquentes
 
@@ -85,7 +85,7 @@ Voici ma recommandation selon votre situation :
 | Vous avez besoin de puissance et de collaboration | Power BI |
 | Vous avez une base de données SQL | Metabase |
 
-Le meilleur outil est celui que vous utiliserez. Pas le plus cher, pas le plus sophistiqué.
+Le meilleur outil est celui que vous utiliserez. Pas le plus cher, pas le plus sophistiqué. Si vous hésitez entre Excel et Power BI, [cette comparaison honnête](/blog/excel-vs-power-bi-lequel-choisir/) détaille les critères selon votre situation réelle.
 
 ## Par où commencer ?
 

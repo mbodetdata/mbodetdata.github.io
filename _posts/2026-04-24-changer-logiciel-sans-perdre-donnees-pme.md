@@ -61,7 +61,7 @@ Résultat : vos données doivent être **interprétées**, pas simplement copié
 - des données incomplètes ou tolérées auparavant
 - des informations structurées différemment selon les outils
 
-Rien d’anormal. Mais rien qui ne se corrige automatiquement non plus.
+Rien d’anormal. Mais rien qui ne se corrige automatiquement non plus. Si ces doublons et ressaisies vous semblent familiers, vous reconnaîtrez peut-être aussi [les 7 signes que vos outils vous font perdre du temps](/blog/ressaisies-tpe-pme-cout-cache/) — autant les traiter avant la migration.
 
 ## Ce qui fait vraiment la différence dans une migration
 
@@ -121,7 +121,7 @@ Une migration bien préparée permet justement :
 - d’éviter les corrections lourdes après coup
 - et d’accélérer l’adoption du nouvel outil
 
-À l’inverse, repousser une migration nécessaire finit souvent par coûter plus cher (rigidité, perte d’efficacité, dépendance à un outil vieillissant).
+À l’inverse, repousser une migration nécessaire finit souvent par coûter plus cher (rigidité, perte d’efficacité, dépendance à un outil vieillissant). C’est d’autant plus vrai en 2026, où [la facturation électronique oblige de nombreuses PME à revoir leurs outils](/blog/facturation-electronique-2026-pme-integration-logiciels/) — souvent dans l’urgence.
 
 ## Les quatre piliers d'une migration réussie
 

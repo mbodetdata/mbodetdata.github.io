@@ -41,7 +41,7 @@ Power BI n'est pas "un meilleur Excel". Ce sont deux outils différents qui rép
 
 3. **Volumes de données plus importants** : pour des historiques de plusieurs centaines de milliers de lignes, Power BI est plus adapté.
 
-4. **Actualisation automatique** : les données se rafraîchissent seules, sans manipulation humaine.
+4. **Actualisation automatique** : les données se rafraîchissent seules, sans manipulation humaine. C'est précisément ce dont [un tableau de bord de pilotage quotidien](/blog/tableau-de-bord-comment-piloter-son-activite/) a besoin pour être réellement utilisé.
 
 ## La comparaison franche
 

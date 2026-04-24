@@ -31,7 +31,7 @@ Un reporting manuel, ça coûte à trois niveaux :
 L'automatisation n'est pas tout ou rien. Voici les différents niveaux, du plus simple au plus élaboré :
 
 ### Niveau 1 : Structurer ses données source
-Avant d'automatiser quoi que ce soit, il faut que les données source soient fiables et bien structurées. C'est souvent la première étape, et elle suffit parfois à résoudre 50 % des problèmes.
+Avant d'automatiser quoi que ce soit, il faut que les données source soient fiables et bien structurées. C'est souvent la première étape, et elle suffit parfois à résoudre 50 % des problèmes. Si vous ne savez pas encore ce que vous avez et où ça coince, [cet article sur la valeur des données en PME](/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/) est un bon point de départ.
 
 **Durée estimée : 1 à 2 jours de travail**
 
@@ -94,7 +94,7 @@ Le retour sur investissement a été total en moins d'un mois.
 
 ## Ce qui freine souvent les projets d'automatisation
 
-- **Des données sources de mauvaise qualité** : si les données sont sales au départ, l'automatisation va propager les erreurs plus vite.
+- **Des données sources de mauvaise qualité** : si les données sont sales au départ, l'automatisation va propager les erreurs plus vite. [Identifier les ressaisies inutiles](/blog/ressaisies-tpe-pme-cout-cache/) est souvent le premier nettoyage à faire avant de se lancer.
 - **Des processus instables** : si votre façon de travailler change souvent, automatiser trop tôt peut générer plus de maintenance que de gain.
 - **Le manque d'adhésion des équipes** : une automatisation qui change les habitudes sans formation ni accompagnement sera contournée.
 

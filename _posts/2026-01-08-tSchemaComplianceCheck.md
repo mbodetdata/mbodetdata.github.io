@@ -334,4 +334,6 @@ et tu la paieras en production.
 
 👉 Tu passes d’un ETL qui subit…  
 à un ETL **qui protège la PROD**.
+
+Et si ton pipeline doit produire du JSON après cette validation, [tWriteJSONField](/blog/tWriteJSONField/) est l’étape suivante naturelle — avec un guide complet pour maîtriser le JSON Tree sans se prendre les pieds dedans.
 ---

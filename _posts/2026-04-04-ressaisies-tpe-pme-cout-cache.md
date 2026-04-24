@@ -137,7 +137,7 @@ Dans les faits, ce n’est pas la seule voie.
 
 France Num explique que l’automatisation n’est plus réservée aux grandes entreprises et qu’elle est devenue plus accessible aux TPE et PME [1]. Cela veut dire qu’on peut souvent commencer petit, sur une tâche simple, sans refaire toute l’organisation.
 
-Dans beaucoup de cas, il ne s’agit pas de tout changer. Il s’agit d’abord de supprimer une ressaisie inutile, de mieux relier deux outils existants, ou de faire en sorte qu’une information saisie une fois arrive automatiquement au bon endroit.
+Dans beaucoup de cas, il ne s’agit pas de tout changer. Il s’agit d’abord de supprimer une ressaisie inutile, de mieux relier deux outils existants, ou de faire en sorte qu’une information saisie une fois arrive automatiquement au bon endroit. [Ce guide pratique sur l’automatisation des reportings](/blog/automatiser-ses-reportings-guide-pratique/) montre comment aborder ça par étapes, sans lancer un chantier trop lourd.
 
 C’est souvent beaucoup plus simple, beaucoup plus rapide, et beaucoup plus rentable qu’on ne l’imagine.
 
@@ -259,7 +259,7 @@ Oui. France Num explique que l’automatisation est aujourd’hui plus accessibl
 
 ### Faut-il changer tous ses logiciels pour automatiser ?
 
-Non. Dans beaucoup de cas, le premier gain vient d’une meilleure circulation des informations entre les outils déjà en place. L’objectif n’est pas forcément de tout remplacer, mais d’éviter une ressaisie inutile ou de simplifier une étape importante.
+Non. Dans beaucoup de cas, le premier gain vient d’une meilleure circulation des informations entre les outils déjà en place. L’objectif n’est pas forcément de tout remplacer, mais d’éviter une ressaisie inutile ou de simplifier une étape importante. Et si un changement de logiciel devient inévitable, [changer de logiciel sans perdre ses données est tout à fait maîtrisable](/blog/changer-logiciel-sans-perdre-donnees-pme/) — à condition de bien préparer la migration.
 
 ### Par quoi commencer si on ne sait pas quoi automatiser ?
 

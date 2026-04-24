@@ -53,7 +53,7 @@ Talend exécute ces jobs de manière régulière (toutes les nuits, chaque heure
 
 ## 3. Gérer les migrations et évolutions applicatives
 
-Lorsqu’une entreprise change de logiciel ou fait évoluer son ERP, la **migration des données** est souvent le point de tension.  
+Lorsqu’une entreprise change de logiciel ou fait évoluer son ERP, la **migration des données** est souvent le point de tension. Pour les dirigeants qui abordent ce sujet côté métier, [cet article sur les erreurs à éviter lors d’une migration](/blog/changer-logiciel-sans-perdre-donnees-pme/) donne un cadrage utile avant de se lancer.  
 Talend permet de :
 - Lire les données depuis l’ancien système.  
 - Les **nettoyer** (formats, doublons, incohérences).  
@@ -86,7 +86,7 @@ Depuis 2024, la version open source de Talend n’est plus maintenue.
 La communauté a pris le relais à travers **Talaxie**, qui prolonge l’héritage de Talend Open Studio tout en l’adaptant aux environnements modernes.
 
 Talaxie conserve la logique visuelle, les composants et la compatibilité des anciens jobs,  
-tout en apportant des mises à jour techniques (Java 17+, PostgreSQL 15, support REST modernisé).
+tout en apportant des mises à jour techniques (Java 17+, PostgreSQL 15, support REST modernisé). Si vous souhaitez comprendre les différents studios disponibles et leurs cas d'usage, [cet article fait le tour des studios Talend/Talaxie](/blog/talend-studios/).
 
 > **Exemple client — ACSEP (migration Talend OS → Talaxie)**  
 > **Contexte :** sécuriser le socle d’intégration interne face à l’arrêt de Talend Open Source.  

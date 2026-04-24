@@ -90,7 +90,7 @@ La CNIL a d'ailleurs publié des guides spécifiques pour les TPE/PME, avec une 
 
 Au-delà de la contrainte, le RGPD vous oblige à faire le ménage dans vos données : supprimer les contacts inactifs, ne conserver que ce qui est utile, structurer votre base clients.
 
-Ce nettoyage bénéficie directement à votre efficacité commerciale. Une base de données propre et à jour, c'est une meilleure base pour vos actions marketing et vos analyses.
+Ce nettoyage bénéficie directement à votre efficacité commerciale. Une base de données propre et à jour, c'est une meilleure base pour vos actions marketing et vos analyses — et souvent la condition préalable pour [commencer à exploiter sérieusement vos données](/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/).
 
 ---
 
