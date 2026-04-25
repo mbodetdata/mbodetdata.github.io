@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Talaxie : sécuriser l’entrée du pipeline avec tSchemaComplianceCheck (Main/Reject, contrat strict, cas concret)"
+title: "Talaxie : sécuriser le pipeline avec tSchemaComplianceCheck"
 description: "Comment utiliser tSchemaComplianceCheck pour imposer un contrat métier dès l’entrée, rejeter les données hors-format et protéger la production : schéma de test, Main/Reject et bonnes pratiques."
 categories: blog
 tags: [Talend, Talaxie, Qualité des données, Schéma, tSchemaComplianceCheck, ETL, Bonnes pratiques]

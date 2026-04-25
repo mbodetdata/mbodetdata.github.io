@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Chiffre vraiment tes mots de passe Talend & Talaxie : passer à AES"
+title: "Chiffrement AES pour Talend & Talaxie : sécuriser vraiment vos mots de passe"
 description: "Passer du masquage Base64 à un chiffrement réel (AES/GCM) pour sécuriser sérieusement tes mots de passe dans Talend/Talaxie."
 categories: blog
 tags: [Talend, Talaxie, Sécurité, Chiffrement, AES, ETL, Bonnes pratiques]

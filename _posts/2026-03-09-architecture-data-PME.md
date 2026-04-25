@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Architecture data simple pour PME : structurer un pipeline entre les sources, l’ETL et la BI"
+title: "Architecture data PME : structurer un pipeline entre sources, ETL et BI"
 description: "Tu veux des dashboards fiables sans usine à gaz ? Voici une architecture data simple et robuste pour PME, avec sources, ETL, base centralisée et outil BI."
 categories: blog
 tags: [Architecture Data, Pipeline de données, ETL, Talend, Talaxie, Power BI, BI, PME]
@@ -467,8 +467,8 @@ Si tu veux approfondir le sujet ou comparer cette approche avec d’autres cas c
 
 Si tu veux aller au-delà des concepts et structurer un cas réel :
 
-- [Services Talend & Talaxie](/services-talend-talaxie/)
-- [Services Power BI](/services-powerbi/)
+- [Services Talend & Talaxie](/services/)
+- [Services Power BI](/services/)
 - [Voir des réalisations concrètes](/realisation/)
 
 ---
@@ -500,8 +500,8 @@ Si tu veux fiabiliser tes dashboards, clarifier tes flux ou remettre de l’ordr
 
 Tu peux aussi :
 
-- découvrir mes [services Talend & Talaxie](/services-talend-talaxie/)
-- voir mes [services Power BI](/services-powerbi/)
+- découvrir mes [services Talend & Talaxie](/services/)
+- voir mes [services Power BI](/services/)
 - ou parcourir mes [réalisations data & automatisation](/realisation/)
 
 ---

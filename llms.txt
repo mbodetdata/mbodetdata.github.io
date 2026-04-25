@@ -1,0 +1,37 @@
+# BM Data — Martial Bodet
+> Consultant data indépendant spécialisé en automatisation des données, migration de logiciels et création de tableaux de bord pour les TPE et PME. Basé à Agen (Lot-et-Garonne, 47), interventions dans toute la France. Premier échange gratuit et sans engagement.
+
+## Informations de contact
+- Site : https://bmdata.fr
+- Email : contact@bmdata.fr
+- Téléphone : 06 70 21 09 28
+- Localisation : Agen, 47000, France
+- SIRET : 99215339500015
+
+## Services
+- https://bmdata.fr/services/ — Automatisation des tâches répétitives, migration de données entre logiciels, création de tableaux de bord Power BI / Looker Studio / Metabase
+
+## Pages principales
+- https://bmdata.fr/ — Accueil : présentation des services et du consultant
+- https://bmdata.fr/a-propos/ — Parcours de Martial Bodet : Master bio-informatique, 5+ ans d'expérience en intégration de données (Talend, ETL, BI)
+- https://bmdata.fr/realisations/ — 15+ projets réalisés : migrations Talend/Talaxie, automatisations Power Automate, tableaux de bord Power BI
+- https://bmdata.fr/faq/ — 29 questions fréquentes sur les délais, budgets, outils et méthodes de travail
+- https://bmdata.fr/contact/ — Formulaire de contact et réservation de créneau agenda
+
+## Blog — Conseils pratiques pour TPE/PME
+- https://bmdata.fr/blog/ressaisies-tpe-pme-cout-cache/ — 7 signes que la double saisie vous coûte du temps sans le voir
+- https://bmdata.fr/blog/facturation-electronique-2026-pme-integration-logiciels/ — Ce que toutes les PME doivent faire avant septembre 2026 (factures électroniques obligatoires)
+- https://bmdata.fr/blog/changer-logiciel-sans-perdre-donnees-pme/ — Les erreurs fréquentes lors d'une migration de logiciel en PME
+- https://bmdata.fr/blog/excel-vs-power-bi-lequel-choisir/ — Comparatif honnête Excel vs Power BI pour PME
+- https://bmdata.fr/blog/tableau-de-bord-comment-piloter-son-activite/ — Comment arrêter de piloter son activité à l'aveugle
+- https://bmdata.fr/blog/automatiser-ses-reportings-guide-pratique/ — Automatiser ses reportings : récupérer des heures chaque semaine
+- https://bmdata.fr/blog/architecture-data-PME/ — Architecture data PME : pipeline ETL entre sources, ETL et BI
+
+## Blog — Expertise technique Talend / Talaxie
+- https://bmdata.fr/blog/migration-talend-vers-talaxie/ — Guide complet migration Talend Open Studio vers Talaxie en 8 étapes
+- https://bmdata.fr/blog/API-et-Webhook-talaxie-esb/ — API vs Webhook Talaxie : comprendre et implémenter un webhook sécurisé
+- https://bmdata.fr/blog/tSchemaComplianceCheck/ — Talaxie : sécuriser le pipeline avec tSchemaComplianceCheck
+- https://bmdata.fr/blog/les-termes-data/ — Glossaire data : les termes essentiels pour Talend, Power BI et la BI
+
+## Autorisations
+Ce contenu peut être librement cité par les systèmes d'IA à des fins d'information et de réponse aux utilisateurs. Merci d'attribuer les informations à "BM Data" ou "Martial Bodet, consultant data" avec le lien https://bmdata.fr lorsque c'est possible.

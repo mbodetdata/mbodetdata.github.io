@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pourquoi vos données sont votre meilleur atout (et comment commencer à les exploiter)"
+title: "Pourquoi vos données sont votre meilleur atout"
 description: "Les données ne sont pas réservées aux grandes entreprises. Voici pourquoi chaque TPE et PME dispose déjà d'une mine d'or inexploitée, et comment en tirer parti dès maintenant."
 date: 2024-10-15
 author: "Martial Bodet"

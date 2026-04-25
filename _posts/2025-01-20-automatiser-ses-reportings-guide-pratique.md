@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Guide pratique : automatiser ses reportings et récupérer des heures chaque semaine"
+title: "Automatiser ses reportings : récupérer des heures chaque semaine"
 description: "Comment arrêter de passer des heures à préparer vos rapports manuellement ? Guide pas-à-pas pour automatiser vos reportings dans une TPE ou PME."
 date: 2025-01-20
 author: "Martial Bodet"

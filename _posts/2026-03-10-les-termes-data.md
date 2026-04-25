@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Glossaire data : les termes essentiels pour comprendre Talend, Power BI et les projets BI en entreprise"
+title: "Glossaire data : les termes essentiels pour Talend, Power BI et la BI"
 description: "Un glossaire data clair et concret pour comprendre les termes utiles en intégration de données, qualité, reporting et Power BI."
 categories: blog
 tags: [Glossaire Data, Talend, Talaxie, Power BI, ETL, BI, Qualité des données, PME]
@@ -742,7 +742,7 @@ La **passerelle** permet au service Power BI d’accéder à certaines sources, 
 
 **Confusion fréquente :** publier un rapport ne suffit pas si la source reste inaccessible sans passerelle.
 
-> ℹ️ Si tu veux un accompagnement plus opérationnel sur ces sujets, tu peux consulter mes [services Power BI](/services-powerbi/).
+> ℹ️ Si tu veux un accompagnement plus opérationnel sur ces sujets, tu peux consulter mes [services Power BI](/services/).
 
 ---
 
@@ -906,9 +906,9 @@ Si tu veux relier ce glossaire à des cas concrets, tu peux continuer avec ces c
 - [Talaxie : sécuriser l’entrée du pipeline avec tSchemaComplianceCheck](/blog/tSchemaComplianceCheck/)
 - [Talaxie : bien configurer tWriteJSONField et le JSON Tree](/blog/tWriteJSONField/)
 - [Migration de Talend Open Studio vers Talaxie : guide complet en 8 étapes](/blog/migration-talend-vers-talaxie/)
-- [Services Talend & Talaxie](/services-talend-talaxie/)
-- [Services Power BI](/services-powerbi/)
-- [Réalisations data & automatisation](/realisation/)
+- [Services Talend & Talaxie](/services/)
+- [Services Power BI](/services/)
+- [Réalisations data & automatisation](/realisations/)
 
 ---
 
@@ -943,9 +943,9 @@ Si tu veux relier ce glossaire à des cas concrets, tu peux continuer avec ces c
 ## Sources BMData
 
 - [BMData — Accueil](https://bmdata.fr/)
-- [BMData — Services Talend & Talaxie](https://bmdata.fr/services-talend-talaxie/)
-- [BMData — Services Power BI](https://bmdata.fr/services-powerbi/)
-- [BMData — Réalisations data & automatisation](https://bmdata.fr/realisation/)
+- [BMData — Services Talend & Talaxie](https://bmdata.fr/services/)
+- [BMData — Services Power BI](https://bmdata.fr/services/)
+- [BMData — Réalisations data & automatisation](https://bmdata.fr/realisations/)
 - [BMData — Talend/Talaxie : comment les entreprises automatisent leurs données sans infrastructure complexe](https://bmdata.fr/blog/utilisation-talend/)
 - [BMData — API vs Webhook : comprendre la différence et implémenter un webhook sécurisé avec Talaxie](https://bmdata.fr/blog/API-et-Webhook-talaxie-esb/)
 - [BMData — Talaxie : sécuriser l’entrée du pipeline avec tSchemaComplianceCheck](https://bmdata.fr/blog/tSchemaComplianceCheck/)

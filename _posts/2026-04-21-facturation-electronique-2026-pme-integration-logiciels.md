@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Facturation électronique 2026 : ce que toutes les PME doivent faire avant septembre"
-description: "Septembre 2026 : toutes les entreprises doivent recevoir des factures électroniques. Êtes-vous prêt ? Découvrez ce qui change, les pièges à éviter et comment anticiper sans stress."
+description: "Toutes les entreprises doivent recevoir des factures électroniques en septembre 2026. Ce qui change, les pièges à éviter et comment anticiper sereinement."
 date: 2026-04-21
 categories: [interconnexion, facturation]
 tags: [facturation electronique 2026, PME, integration logiciels, conformite, obligation legale]

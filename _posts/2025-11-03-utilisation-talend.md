@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Talend/Talaxie : comment les Entreprises automatisent leurs données sans infrastructure complexe"
+title: "Talend/Talaxie : automatiser vos données sans infrastructure complexe"
 description: "Comment Talend et Talaxie automatisent vos flux de donnees sans equipe IT, avec exemples concrets et astuces debutant."
 categories: blog
 tags: [Talend, Talaxie, ETL, Automatisation, Entreprises, Data, Intégration]

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Partie 2 — Webhook signé : générer une signature HMAC côté Talaxie et l’envoyer proprement"
-description: "Après la vérification côté serveur (partie 1), tu passes côté émetteur : construire un JSON, calculer une signature HMAC SHA-256 sur le body brut, poser X-Signature-256, puis appeler ton endpoint webhook Talaxie via tRESTClient."
+title: "Webhook signé Talaxie : générer une signature HMAC et l’envoyer (partie 2)"
+description: "Côté émetteur : construire un JSON, calculer une signature HMAC SHA-256 sur le body brut, poser X-Signature-256 et appeler l'endpoint webhook Talaxie via tRESTClient."
 categories: blog
 tags: [Webhook, HMAC, Talaxie ESB, Karaf, Sécurité, tRESTClient, JSON]
 image: "/assets/img/blog/11-esb-api-webhook-partie-2/logo_1024.webp"
