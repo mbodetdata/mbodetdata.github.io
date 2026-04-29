@@ -751,17 +751,59 @@
     }
   }
 
+  /* ── Clics data-track ── */
   document.addEventListener('click', function (e) {
     var el = e.target.closest('[data-track]');
     if (el) gcTrack(el.getAttribute('data-track'));
   });
 
+  /* ── Soumission formulaire ── */
   var contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', function () {
       gcTrack('form-submit');
     });
   }
+
+  /* ── Scroll depth ── */
+  var scrollReached = {};
+  function onScroll() {
+    var el = document.documentElement;
+    var scrollable = el.scrollHeight - el.clientHeight;
+    if (scrollable < 200) return;
+    var pct = Math.round((window.scrollY / scrollable) * 100);
+    [25, 50, 75, 100].forEach(function (t) {
+      if (!scrollReached[t] && pct >= t) {
+        scrollReached[t] = true;
+        gcTrack('scroll-' + t);
+      }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ── Temps actif sur page ── */
+  var activeSeconds = 0;
+  var lastActivity = Date.now();
+  var timeReached = {};
+  var INACTIVITY_LIMIT = 30000;
+
+  function onActivity() { lastActivity = Date.now(); }
+  ['mousemove', 'keydown', 'scroll', 'click', 'touchstart'].forEach(function (ev) {
+    document.addEventListener(ev, onActivity, { passive: true });
+  });
+
+  setInterval(function () {
+    if (document.hidden) return;
+    if (Date.now() - lastActivity > INACTIVITY_LIMIT) return;
+    activeSeconds++;
+    [30, 60, 180].forEach(function (s) {
+      if (!timeReached[s] && activeSeconds >= s) {
+        timeReached[s] = true;
+        gcTrack('time-' + (s < 60 ? s + 's' : (s / 60) + 'm'));
+      }
+    });
+  }, 1000);
+
 })();
 
 /* ═══ PAGE: faq.html ═══ */
