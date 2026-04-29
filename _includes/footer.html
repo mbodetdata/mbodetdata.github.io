@@ -24,11 +24,11 @@
 
         <!-- Contacts -->
         <div class="footer-contacts">
-          <a href="mailto:{{ g.contact.email }}" class="footer-contact-link">
+          <a href="mailto:{{ g.contact.email }}" class="footer-contact-link" data-track="click-email">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
             {{ g.contact.email }}
           </a>
-          <a href="tel:{{ g.contact.phone | remove: ' ' | remove: '(' | remove: ')' }}" class="footer-contact-link">
+          <a href="tel:{{ g.contact.phone | remove: ' ' | remove: '(' | remove: ')' }}" class="footer-contact-link" data-track="click-phone">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
             {{ g.contact.phone_display }}
           </a>
@@ -84,7 +84,7 @@
       <!-- Col 5 : CTA -->
       <div class="footer-cta-card">
         <p class="footer-cta-label">Parlons de votre projet</p>
-        <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-sm footer-cta-btn">
+        <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-sm footer-cta-btn" data-track="cta-contact">
           Prendre rendez-vous
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2 8a.75.75 0 01.75-.75h8.69L8.22 4.03a.75.75 0 011.06-1.06l4.5 4.5a.75.75 0 010 1.06l-4.5 4.5a.75.75 0 01-1.06-1.06l3.22-3.22H2.75A.75.75 0 012 8z" clip-rule="evenodd"/></svg>
         </a>

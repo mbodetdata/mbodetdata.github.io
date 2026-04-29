@@ -741,6 +741,29 @@
 
 })();
 
+/* ═══ TRACKING GoatCounter ═══ */
+(function () {
+  'use strict';
+
+  function gcTrack(name) {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: 'event/' + name, title: name, event: true });
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-track]');
+    if (el) gcTrack(el.getAttribute('data-track'));
+  });
+
+  var contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function () {
+      gcTrack('form-submit');
+    });
+  }
+})();
+
 /* ═══ PAGE: faq.html ═══ */
 if (document.querySelector('.faq-hero')) {
   (function () {
