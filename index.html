@@ -220,11 +220,22 @@ Moins de tâches manuelles<br>plus <span class="accent">de temps pour votre acti
       <span class="section-eyebrow">Témoignages</span>
       <h2 id="testimonial-home-title" style="color:white;">Ce qu'on dit de mon travail</h2>
     </div>
-    <div class="grid grid-auto" style="max-width:960px;margin:0 auto;">
-      {% assign featured_testimonials = site.data.temoignages.testimonials | where: "featured", true %}
-      {% for t in featured_testimonials limit:3 %}
-        {% include components/testimonial-card.html testimonial=t %}
-      {% endfor %}
+    <div class="testimonial-carousel" id="testimonialCarousel">
+      <div class="testimonial-carousel__track">
+        {% assign featured_testimonials = site.data.temoignages.testimonials | where: "featured", true %}
+        {% for t in featured_testimonials limit:3 %}
+          <div class="testimonial-carousel__slide">
+            {% include components/testimonial-card.html testimonial=t %}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="testimonial-carousel__dots">
+        {% for t in featured_testimonials limit:3 %}
+          <button type="button" class="testimonial-carousel__dot{% if forloop.first %} is-active{% endif %}"
+                  data-index="{{ forloop.index0 }}"
+                  aria-label="Témoignage {{ forloop.index }}"></button>
+        {% endfor %}
+      </div>
     </div>
     <div style="text-align:center;margin-top:2.5rem;">
       <a href="{{ h.testimonial_featured.link_url | relative_url }}" class="btn btn-outline-white">
@@ -233,6 +244,29 @@ Moins de tâches manuelles<br>plus <span class="accent">de temps pour votre acti
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var el = document.getElementById('testimonialCarousel');
+  if(!el) return;
+  var track = el.querySelector('.testimonial-carousel__track');
+  var dots  = el.querySelectorAll('.testimonial-carousel__dot');
+  var n = el.querySelectorAll('.testimonial-carousel__slide').length;
+  var cur = 0, timer;
+  function go(i){
+    cur = (i + n) % n;
+    track.style.transform = 'translateX(-' + cur * 100 + '%)';
+    dots.forEach(function(d,j){ d.classList.toggle('is-active', j === cur); });
+  }
+  function start(){ timer = setInterval(function(){ go(cur + 1); }, 5000); }
+  function stop(){ clearInterval(timer); }
+  dots.forEach(function(d){
+    d.addEventListener('click', function(){ stop(); go(+this.dataset.index); start(); });
+  });
+  el.addEventListener('mouseenter', stop);
+  el.addEventListener('mouseleave', start);
+  start();
+})();
+</script>
 
 <!-- ═══════════════════════════════════ CTA FINAL ═══════════════════════════════════ -->
 <section class="section">

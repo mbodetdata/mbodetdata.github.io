@@ -1362,6 +1362,43 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   color: var(--color-gray-400);
 }
 
+/* Testimonial carousel */
+.testimonial-carousel {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.testimonial-carousel__track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.testimonial-carousel__slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+.testimonial-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+.testimonial-carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+}
+.testimonial-carousel__dot.is-active {
+  background: white;
+  border-color: white;
+  transform: scale(1.25);
+}
+
 /* FAQ */
 .faq-item {
   border-bottom: 1px solid var(--color-gray-100);
