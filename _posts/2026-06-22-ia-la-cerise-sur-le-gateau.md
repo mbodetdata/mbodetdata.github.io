@@ -13,7 +13,7 @@ parent_category: data
 category_label: Intelligence Artificielle
 ---
 
-Laurent estun dirigeant de PME industrielle en Lot-et-Garonne qui a décidé début 2025 d'intégrer l'IA dans son pilotage. 
+Laurent est un dirigeant de PME industrielle en Lot-et-Garonne qui a décidé début 2025 d'intégrer l'IA dans son pilotage. 
 Il a souscrit à un outil, il a suivi une démo convaincante, il a investi. 
 Résultat six mois plus tard : 
 - des analyses qui contredisent ce que ses commerciaux voient sur le terrain, 

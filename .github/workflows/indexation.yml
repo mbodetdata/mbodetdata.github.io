@@ -22,9 +22,13 @@ jobs:
         run: |
           BASE_URL="https://bmdata.fr"
 
-          CHANGED=$(git diff --name-only HEAD~1 HEAD | grep -E '\.(md|html)$' || true)
-          echo "📄 Fichiers modifiés détectés :"
-          echo "$CHANGED"
+          ALL_CHANGED=$(git diff --name-only HEAD~1 HEAD || true)
+          echo "📂 Tous les fichiers du commit :"
+          echo "$ALL_CHANGED"
+
+          CHANGED=$(echo "$ALL_CHANGED" | grep -E '\.(md|html)$' || true)
+          echo "📄 Fichiers .md/.html retenus :"
+          echo "${CHANGED:-"(aucun)"}"
 
           URLS_JSON=""
 
@@ -94,15 +98,6 @@ jobs:
           echo "IndexNow HTTP: $HTTP_CODE"
           echo "status=$HTTP_CODE" >> $GITHUB_OUTPUT
 
-      # ── Google → ping sitemap ────────────────────────────────────────
-      - name: Ping Google sitemap
-        id: google
-        run: |
-          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
-            "https://www.google.com/ping?sitemap=https://bmdata.fr/sitemap.xml")
-          echo "Google ping HTTP: $HTTP_CODE"
-          echo "status=$HTTP_CODE" >> $GITHUB_OUTPUT
-
       # ── Résumé dans l'onglet GitHub Actions ──────────────────────────
       - name: Résumé GitHub Actions
         run: |
@@ -113,7 +108,7 @@ jobs:
           echo "| Moteur | Statut HTTP |" >> $GITHUB_STEP_SUMMARY
           echo "|--------|-------------|" >> $GITHUB_STEP_SUMMARY
           echo "| IndexNow (Bing / Yandex) | ${{ steps.indexnow.outputs.status }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Google sitemap ping | ${{ steps.google.outputs.status }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Google | via GSC (ping déprécié depuis 2023) |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**URLs envoyées :**" >> $GITHUB_STEP_SUMMARY
           echo '${{ steps.changed_urls.outputs.urls }}' \
@@ -141,7 +136,6 @@ jobs:
           📅 $(date '+%d/%m/%Y à %H:%M')
 
           *IndexNow :* HTTP ${{ steps.indexnow.outputs.status }}
-          *Google :* HTTP ${{ steps.google.outputs.status }}
 
           *URLs envoyées :*
           ${URLS_TEXT}"
