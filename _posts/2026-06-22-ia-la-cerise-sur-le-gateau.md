@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "L'IA dans votre PME — pourquoi l'adopter sans fondations, c'est l'erreur la plus coûteuse de 2026"
-description: "34 % des TPE-PME françaises ont adopté l'IA en 2025 — triplement en un an. Le problème : 19 % de leurs données sont erronées. L'IA amplifie le chaos autant que la performance."
+title: "L'IA dans votre PME, pourquoi l'adopter sans fondations, c'est l'erreur la plus coûteuse de 2026"
+description: "34 % des TPE-PME françaises ont adopté l'IA en 20251 triplement en un an. Le problème : 19 % de leurs données sont erronées. L'IA amplifie le chaos autant que la performance."
 date: 2026-06-19
 categories: [data, ia]
 tags: [intelligence artificielle, PME, données, fondations data, pilotage]
