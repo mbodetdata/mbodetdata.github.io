@@ -1,0 +1,147 @@
+name: Ping indexation après déploiement
+
+on:
+  workflow_run:
+    workflows: ["pages-build-deployment"]  # Workflow interne GitHub Pages
+    types: [completed]
+
+jobs:
+  ping-indexation:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 2  # Nécessaire pour git diff HEAD~1
+
+      # ── Construire la liste des URLs modifiées ────────────────────────
+      - name: Construire la liste des URLs modifiées
+        id: changed_urls
+        run: |
+          BASE_URL="https://bmdata.fr"
+
+          CHANGED=$(git diff --name-only HEAD~1 HEAD | grep -E '\.(md|html)$' || true)
+          echo "📄 Fichiers modifiés détectés :"
+          echo "$CHANGED"
+
+          URLS_JSON=""
+
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+
+            # _posts/YYYY-MM-DD-slug.md → /blog/slug/
+            if echo "$file" | grep -q '^_posts/'; then
+              BASENAME=$(basename "$file" .md)
+              SLUG=$(echo "$BASENAME" | sed 's/^[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}-//')
+              URLS_JSON="$URLS_JSON\"$BASE_URL/blog/$SLUG/\","
+
+            # index.html / index.md → /
+            elif [ "$file" = "index.html" ] || [ "$file" = "index.md" ]; then
+              URLS_JSON="$URLS_JSON\"$BASE_URL/\","
+
+            # pages/foo.html → /foo/
+            elif echo "$file" | grep -q '^pages/'; then
+              BASENAME=$(basename "$file")
+              SLUG="${BASENAME%.*}"
+              URLS_JSON="$URLS_JSON\"$BASE_URL/$SLUG/\","
+
+            # Autres .md/.html à la racine
+            else
+              BASENAME=$(basename "$file")
+              SLUG="${BASENAME%.*}"
+              [ "$SLUG" != "index" ] && URLS_JSON="$URLS_JSON\"$BASE_URL/$SLUG/\","
+            fi
+          done <<< "$CHANGED"
+
+          # Toujours inclure le sitemap
+          URLS_JSON="$URLS_JSON\"$BASE_URL/sitemap.xml\""
+
+          echo "urls=[$URLS_JSON]" >> $GITHUB_OUTPUT
+          echo "📋 URLs construites : [$URLS_JSON]"
+
+      # ── Valider chaque URL avant d'envoyer ───────────────────────────
+      - name: Valider les URLs (HTTP 200)
+        run: |
+          BASE_URL="https://bmdata.fr"
+          RAW='${{ steps.changed_urls.outputs.urls }}'
+
+          echo "🔎 Vérification des URLs :"
+          echo "$RAW" | tr ',' '\n' | tr -d '[] ' | tr -d '"' | while read -r url; do
+            [ -z "$url" ] && continue
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$url")
+            if [ "$STATUS" = "200" ]; then
+              echo "  ✅ $url → HTTP $STATUS"
+            else
+              echo "  ⚠️  $url → HTTP $STATUS"
+            fi
+          done
+
+      # ── IndexNow → Bing + Yandex ─────────────────────────────────────
+      - name: Ping IndexNow (Bing + Yandex)
+        id: indexnow
+        run: |
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "host": "bmdata.fr",
+              "key": "${{ secrets.INDEXNOW_KEY }}",
+              "keyLocation": "https://bmdata.fr/${{ secrets.INDEXNOW_KEY }}.txt",
+              "urlList": ${{ steps.changed_urls.outputs.urls }}
+            }')
+          echo "IndexNow HTTP: $HTTP_CODE"
+          echo "status=$HTTP_CODE" >> $GITHUB_OUTPUT
+
+      # ── Google → ping sitemap ────────────────────────────────────────
+      - name: Ping Google sitemap
+        id: google
+        run: |
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://www.google.com/ping?sitemap=https://bmdata.fr/sitemap.xml")
+          echo "Google ping HTTP: $HTTP_CODE"
+          echo "status=$HTTP_CODE" >> $GITHUB_OUTPUT
+
+      # ── Résumé dans l'onglet GitHub Actions ──────────────────────────
+      - name: Résumé GitHub Actions
+        run: |
+          echo "## 🔍 Rapport d'indexation BMData" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Date :** $(date '+%d/%m/%Y à %H:%M')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Moteur | Statut HTTP |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| IndexNow (Bing / Yandex) | ${{ steps.indexnow.outputs.status }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Google sitemap ping | ${{ steps.google.outputs.status }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**URLs envoyées :**" >> $GITHUB_STEP_SUMMARY
+          echo '${{ steps.changed_urls.outputs.urls }}' \
+            | tr ',' '\n' | tr -d '[]"' | sed '/^[[:space:]]*$/d' \
+            | while read -r u; do echo "- \`$u\`" >> $GITHUB_STEP_SUMMARY; done
+
+      # ── Notification Telegram (optionnel) ────────────────────────────
+      - name: Notification Telegram
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT:  ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_TOKEN" ]; then
+            echo "⏭️ Secret TELEGRAM_BOT_TOKEN absent — notification ignorée"
+            exit 0
+          fi
+
+          URLS_TEXT=$(echo '${{ steps.changed_urls.outputs.urls }}' \
+            | tr ',' '\n' | tr -d '[]"' | sed '/^[[:space:]]*$/d' | sed 's/^/• /')
+
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+            -d "chat_id=${TELEGRAM_CHAT}" \
+            -d "parse_mode=Markdown" \
+            --data-urlencode "text=✅ *BMData — Indexation pinguée*
+          📅 $(date '+%d/%m/%Y à %H:%M')
+
+          *IndexNow :* HTTP ${{ steps.indexnow.outputs.status }}
+          *Google :* HTTP ${{ steps.google.outputs.status }}
+
+          *URLs envoyées :*
+          ${URLS_TEXT}"
