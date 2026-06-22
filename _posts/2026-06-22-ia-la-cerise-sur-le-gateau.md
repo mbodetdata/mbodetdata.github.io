@@ -6,7 +6,7 @@ date: 2026-06-19
 categories: [data, ia]
 tags: [intelligence artificielle, PME, données, fondations data, pilotage]
 author: Martial Bodet
-excerpt: "95 % des PME ne sont pas prêtes pour l'IA. Pas à cause d'un manque de budget — à cause de fondations data absentes. L'IA amplifie ce qu'elle trouve : le bon comme le mauvais."
+excerpt: "95 % des PME ne sont pas prêtes pour l'IA. Pas à cause d'un manque de budget, à cause de fondations data absentes. L'IA amplifie ce qu'elle trouve : le bon comme le mauvais."
 image: "assets/img/blog/26-ia-la-cerise-sur-le-gateau/logo_1024.webp"
 active: true
 parent_category: data
