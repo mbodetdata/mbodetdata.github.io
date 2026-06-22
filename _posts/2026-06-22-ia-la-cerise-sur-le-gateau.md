@@ -53,7 +53,7 @@ Vous ne vous trompez plus tout seul. Vous vous trompez avec une technologie soph
 Voici une situation type. Une PME de commerce connecte un outil d'analyse à sa base clients pour préparer une campagne de fidélisation. La base contient 8 clients. L'outil génère une analyse en quelques secondes. Le rapport est propre, les chiffres précis.
 
 ![Analyse clients sans filtre — 8 clients, CA total 177 900 €](/assets/img/blog/26-ia-la-cerise-sur-le-gateau/1-sans-filtre.webp)
-*Sans le champ "Actif" : l'outil analyse 8 clients pour un CA total de 177 900 €. Pierre Lefèvre apparaît en 3e position — identifié comme priorité pour la campagne.*
+*l'outil analyse 8 clients pour un CA total de 177 900 €.*
 
 Pierre Lefèvre, 22 800 € de CA, 3e "meilleur client". Sauf que Pierre Lefèvre a passé sa dernière commande en novembre 2024 et ne répond plus aux emails depuis six mois. Il est parti chez un concurrent. Sa fiche n'a jamais été marquée inactive dans le système.
 
@@ -62,7 +62,7 @@ La campagne de fidélisation va lui être envoyée. Classé priorité par l'outi
 Maintenant, regardez la même base avec la colonne "Actif" visible :
 
 ![Analyse clients avec filtre — 5 clients actifs, CA réel 124 600 €](/assets/img/blog/26-ia-la-cerise-sur-le-gateau/2-avec-filtre.webp)
-*Avec le champ "Actif" visible : 5 clients actifs réels, CA = 124 600 €. Les lignes en rouge (Lefèvre, Rousseau, Petit) représentent 53 300 € analysés par erreur — des clients qui ne commandent plus depuis 6 à 18 mois.*
+* 5 clients actifs réels, CA = 124 600 €. Les lignes en rouge (Lefèvre, Rousseau, Petit) représentent 53 300 € analysés par erreur,  des clients qui ne commandent plus.*
 
 La réalité : 5 clients actifs, 124 600 € de CA. **53 300 €, soit 30 % du total, étaient des fantômes dans la base.** L'outil a parfaitement exécuté sa tâche. Sur des données qui ne reflétaient plus la réalité depuis des mois.
 
