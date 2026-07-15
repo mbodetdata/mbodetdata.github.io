@@ -474,4 +474,4 @@ Une fois cette logique acquise, générer des JSON complexes devient :
 - changer la granularité (1 JSON par ligne ou global),  
 - intégrer ces JSON dans des API, bases NoSQL ou pipelines plus larges.
 
-Et si tu veux t'assurer que les données respectent bien leur format avant d'entrer dans ce type de pipeline, [tSchemaComplianceCheck](/blog/tSchemaComplianceCheck/) est le composant idéal pour valider l'entrée et protéger la production.
+Et si tu veux t'assurer que les données respectent bien leur format avant d'entrer dans ce type de pipeline, [tSchemaComplianceCheck](/blog/tSchemaComplianceCheck/) est le composant idéal pour valider l'entrée et protéger la production. Et quand la sortie attendue n'est pas du JSON mais un document imprimable, [générer un PDF avec tFileOutputPDF2](/blog/tFileOutputPDF2/) répond à la même logique de composant d'écriture.

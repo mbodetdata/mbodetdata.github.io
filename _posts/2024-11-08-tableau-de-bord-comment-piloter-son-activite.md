@@ -36,7 +36,7 @@ C'est le point de départ. Un tableau de bord existe pour vous aider à décider
 Pas tous les indicateurs — les bons. Il vaut mieux 5 KPI que vous consultez tous les jours que 50 que vous ignorez.
 
 ### 3. À quelle fréquence ai-je besoin de ces informations ?
-Certaines informations sont pertinentes en temps réel (activité commerciale, stock). D'autres n'ont de sens qu'en vue mensuelle ou trimestrielle (rentabilité, tendances).
+Certaines informations sont pertinentes en temps réel (activité commerciale, stock). D'autres n'ont de sens qu'en vue mensuelle ou trimestrielle (rentabilité, tendances). Quand ces indicateurs doivent bouger en direct, on passe à un [pilotage en temps réel](/blog/tableau-de-bord-et-pilotage-temps-reel/) : un tableau de bord qui se rafraîchit sans intervention.
 
 ### 4. Qui d'autre a besoin de voir quoi ?
 Un tableau de bord pour un directeur général n'est pas le même que pour un responsable commercial ou un chef d'atelier. Pensez aux utilisateurs finaux dès le départ.

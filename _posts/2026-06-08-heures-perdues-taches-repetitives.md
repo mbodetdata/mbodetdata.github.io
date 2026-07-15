@@ -97,7 +97,7 @@ l'automatisation n'est utile que si elle s'applique à un processus stable, docu
 ## L'automatisation n'est pas un interrupteur qu'on allume
 
 Il y a une idée répandue selon laquelle l'automatisation serait un produit que l'on branche et qui "fait tourner" les tâches à votre place. 
-Cette représentation est trompeuse et elle explique beaucoup d'échecs.
+Cette représentation est trompeuse et elle explique beaucoup d'échecs. Elle explique aussi pourquoi [choisir le bon moment pour automatiser](/blog/automatisation-pme-bon-moment/) pèse autant que le choix de l'outil.
 
 Les outils d'automatisation modernes sont puissants. Certains permettent de relier des dizaines de logiciels entre eux, de déclencher des actions sur des événements précis, d'envoyer des notifications contextualisées au bon moment. 
 Des solutions conformes au RGPD et hébergées en France existent aujourd'hui pour les PME qui veulent garder la maîtrise de leurs données [3].
@@ -190,7 +190,7 @@ Par cartographier ce qui prend le plus de temps de façon récurrente. Pas par c
 ### L'intelligence artificielle peut-elle m'aider à automatiser mes tâches ?
 
 Oui, c'est même la cerise sur le gâteau. Mais avant de mettre la cerise, il faut faire le gâteau. 
-Un processus documenté, des données fiables, des règles métier claires : sans ça, l'IA n'a rien de solide sur quoi s'appuyer. Elle amplifie ce qu'elle reçoit, le bon comme le mauvais.
+Un processus documenté, des données fiables, des règles métier claires : sans ça, l'IA n'a rien de solide sur quoi s'appuyer. Elle amplifie ce qu'elle reçoit, le bon comme le mauvais. Une fois ces fondations posées, [utiliser l'IA au quotidien](/blog/utiliser-l-ia-au-quotidien/) devient un vrai levier plutôt qu'un gadget.
 
 ### Dois-je forcément changer mes logiciels actuels pour automatiser ?
 

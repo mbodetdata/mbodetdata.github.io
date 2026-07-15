@@ -95,7 +95,7 @@ Le retour sur investissement a été total en moins d'un mois.
 ## Ce qui freine souvent les projets d'automatisation
 
 - **Des données sources de mauvaise qualité** : si les données sont sales au départ, l'automatisation va propager les erreurs plus vite. [Identifier les ressaisies inutiles](/blog/ressaisies-tpe-pme-cout-cache/) est souvent le premier nettoyage à faire avant de se lancer.
-- **Des processus instables** : si votre façon de travailler change souvent, automatiser trop tôt peut générer plus de maintenance que de gain.
+- **Des processus instables** : si votre façon de travailler change souvent, automatiser trop tôt peut générer plus de maintenance que de gain. Reste à [choisir le bon moment pour automatiser](/blog/automatisation-pme-bon-moment/), car se lancer trop tôt peut coûter plus cher que d'attendre.
 - **Le manque d'adhésion des équipes** : une automatisation qui change les habitudes sans formation ni accompagnement sera contournée.
 
 ---

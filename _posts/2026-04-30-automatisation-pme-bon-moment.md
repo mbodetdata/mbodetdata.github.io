@@ -40,7 +40,7 @@ Beaucoup de petites structures restent bloquées là.
 
 Voici ce que ça coûte réellement :
 
-- **Heures perdues** : si une personne passe 5 heures par semaine sur une tâche répétitive qui pourrait être automatisée, c'est plus de 230 heures par an. Des heures qui ne créent aucune valeur pour votre activité.
+- **Heures perdues** : si une personne passe 5 heures par semaine sur une tâche répétitive qui pourrait être automatisée, c'est plus de 230 heures par an. Des heures qui ne créent aucune valeur pour votre activité — [ce que coûtent réellement les tâches répétitives](/blog/heures-perdues-taches-repetitives/) le détaille, chiffres à l'appui.
 - **Erreurs qui arrivent tard** : les données saisies manuellement, c'est une source d'erreurs constante. Ces erreurs, vous les découvrez souvent après quand le client appelle, quand vous devez tout recommencer.
 - **Retards de décision** : vous attendez le rapport mensuel préparé à la main ? En PME, les décisions qui arrivent avec deux ou trois semaines de retard, c'est des opportunités manquées.
 - **Dépendance d'une personne** : c'est une seule personne qui sait faire "le truc". Elle prend des congés. Tout s'arrête. Ou elle part. Vous êtes bloqué.

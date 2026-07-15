@@ -150,7 +150,7 @@ L'humain reste l'arbitre final. L'IA prépare, propose, alerte. Vous décidez. E
 
 La bonne nouvelle : construire ces fondations n'est pas un projet de deux ans réservé aux grands groupes. 
 Pour une PME de 5 à 50 personnes, c'est un travail de quelques semaines à quelques mois, avec les bonnes priorités. 
-Et chaque couche construite a de la valeur en elle-même indépendamment de l'IA.
+Et chaque couche construite a de la valeur en elle-même indépendamment de l'IA. Une fois ces bases en place, [utiliser l'IA au quotidien](/blog/utiliser-l-ia-au-quotidien/) devient concret : des usages simples sur des tâches réelles, pas un grand projet abstrait.
 
 ---
 
