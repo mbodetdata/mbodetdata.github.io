@@ -80,6 +80,10 @@ exclude:
   - .gitignore
   - README.md
   - "*.sh"
+  # Outils & rapports internes d'audit SEO — ne doivent pas être publiés
+  - scripts
+  - maillage-audit.md
+  - maillage-changements.md
 
 # Defaults
 defaults:
