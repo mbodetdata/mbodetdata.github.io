@@ -283,6 +283,13 @@ def write_report(pages, out_edges, inbound, depth, source_map, nav_urls) -> None
     content_pages = sorted(u for u in pages if is_content_page(u))
     orphans = [u for u in content_pages if not inbound.get(u)]
 
+    # Liens internes cassés : cible interne qui ne correspond à aucune page rendue
+    broken: dict[str, list[str]] = defaultdict(list)
+    for src_url, targets in out_edges.items():
+        for tgt in targets:
+            if tgt not in pages:
+                broken[tgt].append(src_url)
+
     A("# Audit du maillage interne — bmdata.fr\n")
     A("> Généré par `scripts/audit-maillage.py` à partir de `_site/`. "
       "Relançable après modification. **Aucun contenu n'est modifié par ce script.**\n")
@@ -297,7 +304,23 @@ def write_report(pages, out_edges, inbound, depth, source_map, nav_urls) -> None
     A(f"- Liens contextuels au total : "
       f"**{sum(len(v) for v in out_edges.values())}**")
     A(f"- Pages de contenu orphelines (0 lien entrant contextuel) : "
-      f"**{len(orphans)}**\n")
+      f"**{len(orphans)}**")
+    A(f"- Liens internes **cassés** (cible 404) : **{len(broken)}**\n")
+
+    # ── Liens cassés ────────────────────────────────────────────────────────
+    A("## Liens internes cassés (404)\n")
+    if not broken:
+        A("_Aucun._\n")
+    else:
+        A("Cible interne qui ne correspond à aucune page rendue (souvent une "
+          "casse ou un pluriel erroné). GitHub Pages est **sensible à la "
+          "casse** : à corriger en priorité.\n")
+        A("| Cible cassée | Référencée depuis |")
+        A("|---|---|")
+        for tgt in sorted(broken):
+            srcs = ", ".join(f"`{s}`" for s in sorted(broken[tgt]))
+            A(f"| `{tgt}` | {srcs} |")
+        A("")
 
     # ── Tableau principal ──────────────────────────────────────────────────
     A("## Liens entrants contextuels par page\n")
@@ -360,6 +383,19 @@ def write_report(pages, out_edges, inbound, depth, source_map, nav_urls) -> None
         outs = out_edges.get(url, [])
         outs_str = ", ".join(f"`{t}`" for t in outs) if outs else "_aucun_"
         A(f"| `{url}` | {outs_str} |")
+    A("")
+
+    # ── Capacité : liens sortants de CHAQUE page de contenu ─────────────────
+    A("## Capacité — liens contextuels sortants par page\n")
+    A("Règle : ≤ 3 liens sortants pour un article normal (les pages piliers/"
+      "glossaire peuvent en avoir plus). Sert à savoir où l'on peut encore "
+      "ajouter un lien sans sur-lier.\n")
+    A("| Page source | Nb sortants | Cibles |")
+    A("|---|---:|---|")
+    for url in sorted(content_pages, key=lambda u: (-len(out_edges.get(u, [])), u)):
+        outs = out_edges.get(url, [])
+        outs_str = ", ".join(f"`{t}`" for t in outs) if outs else "_aucun_"
+        A(f"| `{url}` | {len(outs)} | {outs_str} |")
     A("")
 
     OUTPUT.write_text("\n".join(lines), encoding="utf-8")
