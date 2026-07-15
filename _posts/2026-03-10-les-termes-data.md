@@ -31,7 +31,7 @@ Ici, on reste sur des mots utiles en entreprise :
 - ceux qui structurent la qualité et le reporting
 - ceux qui reviennent dans les projets BMData autour de Talend, Talaxie, API, EDI et Power BI
 
-> ℹ️ Si tu veux voir comment ces notions s’articulent dans une architecture simple, tu peux aussi lire [Architecture data simple pour PME : structurer un pipeline entre les sources, l’ETL et la BI](/blog/architecture-data-pme/).
+> ℹ️ Si tu veux voir comment ces notions s’articulent dans une architecture simple, tu peux aussi lire [Architecture data simple pour PME : structurer un pipeline entre les sources, l’ETL et la BI](/blog/architecture-data-PME/).
 
 ---
 
@@ -900,7 +900,7 @@ Si tu veux aller plus loin, le prolongement naturel de ce glossaire se fait sur 
 
 Si tu veux relier ce glossaire à des cas concrets, tu peux continuer avec ces contenus :
 
-- [Architecture data simple pour PME : structurer un pipeline entre les sources, l’ETL et la BI](/blog/architecture-data-pme/)
+- [Architecture data simple pour PME : structurer un pipeline entre les sources, l’ETL et la BI](/blog/architecture-data-PME/)
 - [Talend/Talaxie : comment les entreprises automatisent leurs données sans infrastructure complexe](/blog/utilisation-talend/)
 - [API vs Webhook : comprendre la différence et implémenter un webhook sécurisé avec Talaxie](/blog/API-et-Webhook-talaxie-esb/)
 - [Talaxie : sécuriser l’entrée du pipeline avec tSchemaComplianceCheck](/blog/tSchemaComplianceCheck/)

@@ -469,7 +469,7 @@ Si tu veux aller au-delà des concepts et structurer un cas réel :
 
 - [Services Talend & Talaxie](/services/)
 - [Services Power BI](/services/)
-- [Voir des réalisations concrètes](/realisation/)
+- [Voir des réalisations concrètes](/realisations/)
 
 ---
 
@@ -502,7 +502,7 @@ Tu peux aussi :
 
 - découvrir mes [services Talend & Talaxie](/services/)
 - voir mes [services Power BI](/services/)
-- ou parcourir mes [réalisations data & automatisation](/realisation/)
+- ou parcourir mes [réalisations data & automatisation](/realisations/)
 
 ---
 
