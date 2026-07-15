@@ -1,67 +1,89 @@
 # Maillage interne — journal des changements
 
-Suivi des liens contextuels ajoutés (Tâche 3). Chaque lien est posé **en corps
-de texte**, avec une ancre descriptive et un pont thématique réel — jamais pour
-faire du volume. Chemins en `{{ '/…/' | relative_url }}` (pas d'URL absolue en
-dur), conformément à la convention déjà utilisée pour les images du site.
+Suivi des liens contextuels ajoutés et des liens cassés corrigés. Chaque lien est
+posé **en corps de texte**, avec une ancre descriptive et un pont thématique réel
+(même audience), jamais pour faire du volume. Règle : **≤ 3 liens sortants** par
+article (les pages piliers/glossaire préexistantes peuvent en avoir plus).
 
-## Liens ajoutés
+Bilan mesuré par `scripts/audit-maillage.py` :
 
-| # | Source | Cible | Texte d'ancre | Justification |
-|---|--------|-------|---------------|---------------|
-| 1 | `_posts/2025-10-07-migration-talend-vers-talaxie.md` (§7 « Déployez et automatisez ») | `/blog/automatiser-ses-reportings-guide-pratique/` | *automatiser ses reportings de bout en bout* | La section parle de planifier les jobs (CRON, tâches Windows). Enchaînement naturel : une fois les flux migrés et planifiés, l'étape suivante est d'en automatiser la restitution. Pont explicitement suggéré dans le brief. |
-| 2 | `_posts/2025-10-07-migration-talend-vers-talaxie.md` (Conclusion) | `/blog/architecture-data-PME/` | *structurer une architecture data de PME* | La conclusion évoque « sécuriser vos flux ETL ». Suite logique : où placer ces flux dans une architecture data complète (sources → ETL → BI). L'article cible porte exactement sur ce sujet. |
-| 3 | `_posts/2025-09-17-talend-studios.md` (Introduction) | `/blog/les-termes-data/` | *lexique des principaux termes data* | L'intro empile le jargon (ETL, ESB, Big Data, NoSQL, qualité des données). Pont naturel vers le glossaire qui définit ces termes — utile au lecteur, et dé-orphelinise une page qui n'avait aucun lien entrant. |
-| 4 | `_posts/2025-12-16-tWriteJSONField.md` (Introduction) | `/blog/architecture-data-PME/` | *structurer une architecture data de PME* | L'article est très technique (composant JSON). Pont « zoom arrière » honnête : ce type de composant s'inscrit dans un pipeline plus large. Renforce le hub PME architecture. |
+| Indicateur | Avant | Après |
+|---|---:|---:|
+| Liens contextuels | 101 | 115 |
+| Pages orphelines (0 lien entrant) | 8 | 2 |
+| Liens internes cassés (404) | 5 | 0 |
 
-## Respect des règles du brief
+Les 2 « orphelines » restantes (`/a-propos/`, `/faq/`) sont dans la **navigation
+principale** (profondeur 1) : atteignables et indexables, pas un problème. Un lien
+contextuel en corps y serait artificiel — non ajouté volontairement.
 
-- **En corps de texte uniquement** — aucun bloc « articles liés », footer ou sidebar.
-- **≤ 3 liens sortants par page** — migration : 3 au total (1 existant + 2 ajoutés) ;
-  talend-studios : 3 (2 existants + 1 ajouté) ; tWriteJSONField : 2 (1 + 1).
-- **Ancres descriptives** — chaque ancre décrit la page cible, jamais « cliquez ici ».
-- **Pertinence thématique** — chaque lien repose sur un pont logique, pas sur du volume.
+---
 
-## Accueil (Tâche 3.4) — aucun changement, volontairement
+## A. Liens internes cassés corrigés (priorité)
 
-L'accueil (`index.html`) est une landing page **100 % pilotée par les données**
-(`_data/home.json`) : chaque bloc de texte est une variable Liquid et les seuls
-liens en corps de page sont des CTA de conversion (`/contact/`, `/services/`,
-`/score-maturite-data/`…). La seule section thématiquement proche (« Problèmes »)
-est une grille de cartes.
+GitHub Pages est **sensible à la casse** ; ces liens renvoyaient un **404** en
+production (invisibles en preview locale Windows, casse-insensible) :
 
-Il n'existe donc **aucun emplacement éditorial naturel** pour un lien contextuel
-vers un article PME sans insérer une phrase artificielle dans une page soignée —
-ce que le brief interdit explicitement (« Ne force pas un lien dans un paragraphe
-où il n'a rien à faire »). Les articles PME restent atteignables depuis l'accueil
-via la nav principale (Blog). **Recommandation** : ne pas forcer ; traiter la
-découvrabilité PME par le maillage entre articles (ci-dessous).
+| Fichier | Avant (404) | Après |
+|---|---|---|
+| `_posts/2026-03-10-les-termes-data.md` (×2) | `/blog/architecture-data-pme/` | `/blog/architecture-data-PME/` |
+| `_posts/2026-03-09-architecture-data-PME.md` (×2) | `/realisation/` | `/realisations/` |
+| `_posts/2025-11-03-utilisation-talend.md` | `/realisation/` | `/realisations/` |
 
-## Impact mesuré (script d'audit, avant → après)
+Impact : le glossaire `les-termes-data` (hub à 10 liens sortants) pointait vers un
+404 au lieu de `architecture-data-PME` — ce hub alimente désormais réellement la
+page architecture.
 
-- `les-termes-data` : **orphelin (0) → 1 lien entrant** ✅
-- `architecture-data-PME` : 1 → **3 liens entrants** ✅
-- `automatiser-ses-reportings-guide-pratique` : 3 → **4 liens entrants** ✅
-- Les 3 pages fortes déjà indexées (migration 256 clics, talend-studios,
-  tWriteJSONField) pointent désormais vers les hubs PME → Google découvrira ces
-  cibles lors de ses passages sur les pages qui rankent déjà.
+## B. 1ʳᵉ passe — pages fortes → hubs PME
 
-## Reste à traiter — 2ᵉ passe recommandée
+| Source | Cible | Ancre |
+|---|---|---|
+| migration-talend-vers-talaxie (§7) | automatiser-ses-reportings | *automatiser ses reportings de bout en bout* |
+| migration-talend-vers-talaxie (conclusion) | architecture-data-PME | *structurer une architecture data de PME* |
+| talend-studios (intro) | les-termes-data | *lexique des principaux termes data* |
+| tWriteJSONField (intro) | architecture-data-PME | *structurer une architecture data de PME* |
 
-Cinq articles restent à **0 lien entrant contextuel** (aucun pont thématique
-naturel depuis les 4 sources du brief) :
+## C. 2ᵉ passe — dé-orphelinisation complète du blog
 
-- `/blog/automatisation-pme-bon-moment/`
-- `/blog/heures-perdues-taches-repetitives/`
-- `/blog/tableau-de-bord-et-pilotage-temps-reel/`
-- `/blog/utiliser-l-ia-au-quotidien/`
-- `/blog/tFileOutputPDF2/` (page forte, 42 clics, mais elle-même orpheline)
+Chaque page auparavant à 0 lien entrant reçoit **2 liens entrants** genuinement
+pertinents, en privilégiant les pages à forte autorité comme sources.
 
-Ces pages seraient mieux servies depuis leurs **pages-parentes PME** (désormais
-renforcées), avec des ponts genuinement pertinents, par exemple :
+| Source | Cible | Ancre / pont |
+|---|---|---|
+| tableau-de-bord-comment-piloter (Q3 « temps réel ») | tableau-de-bord-et-pilotage-temps-reel | *pilotage en temps réel* |
+| excel-vs-power-bi (§ actualisation auto) | tableau-de-bord-et-pilotage-temps-reel | *pilotage en temps réel* (suivi à l'instant T) |
+| automatiser-ses-reportings (§ « automatiser trop tôt ») | automatisation-pme-bon-moment | *choisir le bon moment pour automatiser* |
+| heures-perdues (§ « pas un interrupteur ») | automatisation-pme-bon-moment | *choisir le bon moment pour automatiser* |
+| pourquoi-vos-donnees (Q2 temps/reporting) | heures-perdues-taches-repetitives | *ces heures passées sur des tâches répétitives* |
+| automatisation-pme-bon-moment (bullet « Heures perdues ») | heures-perdues-taches-repetitives | *ce que coûtent réellement les tâches répétitives* |
+| ia-la-cerise (§5 fondations) | utiliser-l-ia-au-quotidien | *utiliser l'IA au quotidien* |
+| heures-perdues (FAQ « l'IA peut-elle m'aider ») | utiliser-l-ia-au-quotidien | *utiliser l'IA au quotidien* |
+| tWriteJSONField (conclusion) | tFileOutputPDF2 | *générer un PDF avec tFileOutputPDF2* (composant de sortie) |
+| tSchemaComplianceCheck (conclusion) | tFileOutputPDF2 | *produire un PDF avec tFileOutputPDF2* |
 
-- `architecture-data-PME` → `tableau-de-bord-et-pilotage-temps-reel` (couche BI / restitution)
-- `automatiser-ses-reportings-guide-pratique` → `heures-perdues-taches-repetitives` (ROI du temps gagné)
-- `migration-talend-vers-talaxie` ou `tWriteJSONField` → `tFileOutputPDF2` (composant de sortie Talaxie)
+## Comment l'autorité descend maintenant
 
-À valider avant exécution (sources hors périmètre initial du brief).
+- **Cluster Talend** (top trafic) : migration (256 clics) → talend-studios,
+  automatiser-ses-reportings, architecture-data-PME ; le glossaire les-termes-data
+  (réparé) → architecture-data-PME ; tWriteJSONField ↔ tSchemaComplianceCheck ↔
+  tFileOutputPDF2.
+- **Cluster PME/automatisation** : migration → automatiser-ses-reportings →
+  pourquoi-vos-donnees → heures-perdues / automatisation-pme-bon-moment →
+  utiliser-l-ia ; tableaux de bord reliés (comment-piloter + excel-vs-power-bi →
+  pilotage temps réel).
+- Les pages qui rankent déjà découvrent donc les pages « non indexées » lors des
+  passages de Googlebot → c'est le mécanisme qui débloque le statut « Détectée,
+  actuellement non indexée » en GSC.
+
+## Accueil (Tâche 3.4) — inchangé, volontairement
+
+Landing page 100 % pilotée par `_data/home.json`, sans emplacement éditorial
+naturel. Le blog reste atteignable depuis l'accueil via la nav (Blog) + la
+pagination. Injecter un lien d'article dans le corps de la home serait forcé.
+
+## Piste facultative (non faite)
+
+Pour connecter le cluster blog à l'autorité de l'accueil dans un modèle strict
+(liens contextuels uniquement), on pourrait ajouter **1 lien en corps** depuis une
+page de nav vers un guide (ex. `/services/` → automatiser-ses-reportings). À
+valider car cela touche une page de conversion.
