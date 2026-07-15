@@ -13,6 +13,8 @@ category_label: Talaxie
 Le JSON est partout : NoSQL, API, événements, configs. Et dès que les structures se corsent (objets imbriqués, tableaux, types non-string), `tWriteJSONField` peut vite te faire transpirer.  
 Dans ce guide, je te montre comment **garder la main**, produire un JSON **propre et exploitable**, et surtout **comprendre ce que fait le JSON Tree** (au lieu de cliquer au hasard et espérer que ça passe).
 
+Un composant comme celui-ci ne travaille jamais seul : il s’insère dans un flux plus large. Pour voir où il se place, cet article détaille comment [structurer une architecture data de PME]({{ '/blog/architecture-data-PME/' | relative_url }}) entre sources, ETL et restitution.
+
 > Workspace prêt : **[[Lien](https://github.com/mbodetdata/BMDATA_Blog-tWriteJSONField.git)]** pour suivre pas à pas.
 
 Si tu as déjà joué avec le JSON sur Talaxie (ou Talend), tu connais **tWriteJSONField**.  

@@ -13,6 +13,8 @@ category_label: Talaxie / Talend
 Talend/Talaxie est l’un des acteurs majeurs du monde de l’**ETL et de l’intégration de données**.  
 La plateforme propose plusieurs studios spécialisés, chacun pensé pour des besoins précis : intégration classique, Big Data, temps réel, préparation ou encore qualité des données.  
 
+Si une partie de ce vocabulaire (ETL, ESB, NoSQL, qualité des données…) reste floue, ce [lexique des principaux termes data]({{ '/blog/les-termes-data/' | relative_url }}) les définit simplement avant d’aller plus loin.
+
 Dans cet article, je vous présente les principaux studios Talend / Talaxie et leurs cas d’usage.  
 
 <!--more-->

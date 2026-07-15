@@ -124,6 +124,8 @@ Talaxie fonctionne comme Talend :
 - Vous pouvez compiler votre job de la même façon. 
 - Planifiez les via **CRON** ou **tâches planifiées Windows** ou tout autre service.  
 
+Une fois vos jobs planifiés, l’étape suivante consiste à les mettre au service de vos indicateurs : c’est toute la démarche du guide pour [automatiser ses reportings de bout en bout]({{ '/blog/automatiser-ses-reportings-guide-pratique/' | relative_url }}), une fois vos flux migrés et fiabilisés.
+
 ---
 
 ## 8. Bonnes pratiques & pièges à éviter
@@ -139,6 +141,8 @@ Talaxie fonctionne comme Talend :
 
 Migrer de **Talend Open Studio** vers **Talaxie** est une opération simple à condition de bien la préparer.  
 Avec ces **8 étapes**, vous sécurisez vos flux ETL tout en rejoignant une communauté open source dynamique et engagée.  
+
+Reste ensuite à situer ces flux dans un ensemble cohérent : voir comment [structurer une architecture data de PME]({{ '/blog/architecture-data-PME/' | relative_url }}) autour de vos sources, de l’ETL et de vos outils de reporting.
 
 
 ➡️ Découvrez davantage sur [**Talaxie**](https://talaxie.deilink.fr/).
