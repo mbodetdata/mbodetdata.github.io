@@ -4,10 +4,10 @@ sitemap: false
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{% for page in site.pages %}{% assign u = page.url %}{% unless page.sitemap == false or u == "/404.html" or u contains "/blog/page" or u contains ".xml" or u contains ".txt" or u contains ".json" or u contains ".js" or u contains ".webmanifest" %}  <url>
+{% for page in site.pages %}{% assign u = page.url %}{% assign seg = u | split: '/' | last %}{% assign has_dot = false %}{% if seg contains "." %}{% assign has_dot = true %}{% endif %}{% if page.sitemap != false and u != "/404.html" %}{% unless u contains "/blog/page" %}{% if u contains ".html" or has_dot == false %}  <url>
     <loc>{{ u | replace: "/index.html", "/" | absolute_url }}</loc>
   </url>
-{% endunless %}{% endfor %}{% for post in site.posts %}  <url>
+{% endif %}{% endunless %}{% endif %}{% endfor %}{% for post in site.posts %}  <url>
     <loc>{{ post.url | absolute_url }}</loc>
     <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
   </url>
