@@ -81,9 +81,10 @@ Landing page 100 % pilotée par `_data/home.json`, sans emplacement éditorial
 naturel. Le blog reste atteignable depuis l'accueil via la nav (Blog) + la
 pagination. Injecter un lien d'article dans le corps de la home serait forcé.
 
-## Piste facultative (non faite)
+## D. Connexion du blog à l'autorité de l'accueil
 
-Pour connecter le cluster blog à l'autorité de l'accueil dans un modèle strict
-(liens contextuels uniquement), on pourrait ajouter **1 lien en corps** depuis une
-page de nav vers un guide (ex. `/services/` → automatiser-ses-reportings). À
-valider car cela touche une page de conversion.
+Ajout d'**1 lien contextuel** dans l'intro de `/services/` (page de nav,
+profondeur 1) → `automatiser-ses-reportings`. Cela relie tout le graphe à
+l'accueil : le cluster PME, puis via `facturation → architecture-data-PME` le
+cluster Talend, deviennent atteignables depuis l'accueil par liens contextuels +
+nav principale.

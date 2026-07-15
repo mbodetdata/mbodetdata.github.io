@@ -8,7 +8,7 @@ Seuls les liens **en corps de contenu éditorial** sont comptés. Sont exclus : 
 
 - Pages analysées : **51**
 - Pages de contenu : **32**
-- Liens contextuels au total : **115**
+- Liens contextuels au total : **116**
 - Pages de contenu orphelines (0 lien entrant contextuel) : **2**
 - Liens internes **cassés** (cible 404) : **0**
 
@@ -47,9 +47,9 @@ Trié par nombre de liens entrants croissant (les plus fragiles d'abord).
 | `/blog/talend-studios/` | `_posts/2025-09-17-talend-studios.md` | 3 | `/blog/architecture-data-PME/`, `/blog/migration-talend-vers-talaxie/`, `/blog/utilisation-talend/` |
 | `/blog/API-et-Webhook-talaxie-esb/` | `_posts/2026-02-05-API-et-Webhook-talaxie-esb.md` | 4 | `/blog/API-et-Webhook-talaxie-esb-2/`, `/blog/architecture-data-PME/`, `/blog/les-termes-data/`, `/blog/talend-studios/` |
 | `/blog/architecture-data-PME/` | `_posts/2026-03-09-architecture-data-PME.md` | 4 | `/blog/facturation-electronique-2026-pme-integration-logiciels/`, `/blog/les-termes-data/`, `/blog/migration-talend-vers-talaxie/`, `/blog/tWriteJSONField/` |
-| `/blog/automatiser-ses-reportings-guide-pratique/` | `_posts/2025-01-20-automatiser-ses-reportings-guide-pratique.md` | 4 | `/blog/facturation-electronique-2026-pme-integration-logiciels/`, `/blog/migration-talend-vers-talaxie/`, `/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/`, `/blog/ressaisies-tpe-pme-cout-cache/` |
 | `/blog/migration-talend-vers-talaxie/` | `_posts/2025-10-07-migration-talend-vers-talaxie.md` | 4 | `/blog/architecture-data-PME/`, `/blog/les-termes-data/`, `/blog/tFileOutputPDF2/`, `/blog/talend-studios/` |
 | `/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/` | `_posts/2024-10-15-pourquoi-vos-donnees-sont-votre-meilleur-atout.md` | 4 | `/blog/automatiser-ses-reportings-guide-pratique/`, `/blog/facturation-electronique-2026-pme-integration-logiciels/`, `/blog/rgpd-donnees-clients-guide-pme/`, `/blog/tableau-de-bord-comment-piloter-son-activite/` |
+| `/blog/automatiser-ses-reportings-guide-pratique/` | `_posts/2025-01-20-automatiser-ses-reportings-guide-pratique.md` | 5 | `/blog/facturation-electronique-2026-pme-integration-logiciels/`, `/blog/migration-talend-vers-talaxie/`, `/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/`, `/blog/ressaisies-tpe-pme-cout-cache/`, `/services/` |
 | `/services/` | `pages/services.html` | 7 | `/`, `/blog/architecture-data-PME/`, `/blog/les-termes-data/`, `/blog/page2/`, `/blog/page3/`, `/blog/page4/`, `/blog/page5/` |
 | `/contact/` | `pages/contact.html` | 10 | `/`, `/a-propos/`, `/blog/`, `/blog/page2/`, `/blog/page3/`, `/blog/page4/`, `/blog/page5/`, `/faq/`, `/score-maturite-data/`, `/services/` |
 | `/score-maturite-data/` | `pages/score-maturite-data.html` | 12 | `/`, `/blog/automatisation-pme-bon-moment/`, `/blog/changer-logiciel-sans-perdre-donnees-pme/`, `/blog/facturation-electronique-2026-pme-integration-logiciels/`, `/blog/heures-perdues-taches-repetitives/`, `/blog/ia-la-cerise-sur-le-gateau/`, `/blog/page2/`, `/blog/page3/`, `/blog/page4/`, `/blog/page5/`, `/blog/ressaisies-tpe-pme-cout-cache/`, `/blog/tableau-de-bord-et-pilotage-temps-reel/` |
@@ -79,57 +79,37 @@ Distance minimale depuis `/` en suivant **uniquement** les liens contextuels et 
 | `/realisations/` | `pages/realisations.html` | 1 |
 | `/score-maturite-data/` | `pages/score-maturite-data.html` | 1 |
 | `/services/` | `pages/services.html` | 1 |
+| `/blog/automatiser-ses-reportings-guide-pratique/` | `_posts/2025-01-20-automatiser-ses-reportings-guide-pratique.md` | 2 |
 | `/blog/ia-la-cerise-sur-le-gateau/` | `_posts/2026-06-22-ia-la-cerise-sur-le-gateau.md` | 2 |
+| `/blog/automatisation-pme-bon-moment/` | `_posts/2026-04-30-automatisation-pme-bon-moment.md` | 3 |
+| `/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/` | `_posts/2024-10-15-pourquoi-vos-donnees-sont-votre-meilleur-atout.md` | 3 |
+| `/blog/ressaisies-tpe-pme-cout-cache/` | `_posts/2026-04-04-ressaisies-tpe-pme-cout-cache.md` | 3 |
 | `/blog/utiliser-l-ia-au-quotidien/` | `_posts/2026-01-16-utiliser-l-ia-au-quotidien.md` | 3 |
-| `/blog/API-et-Webhook-talaxie-esb-2/` | `_posts/2026-02-05-API-et-Webhook-talaxie-esb-2.md` | ∞ |
-| `/blog/API-et-Webhook-talaxie-esb/` | `_posts/2026-02-05-API-et-Webhook-talaxie-esb.md` | ∞ |
-| `/blog/architecture-data-PME/` | `_posts/2026-03-09-architecture-data-PME.md` | ∞ |
-| `/blog/automatisation-pme-bon-moment/` | `_posts/2026-04-30-automatisation-pme-bon-moment.md` | ∞ |
-| `/blog/automatiser-ses-reportings-guide-pratique/` | `_posts/2025-01-20-automatiser-ses-reportings-guide-pratique.md` | ∞ |
-| `/blog/changer-logiciel-sans-perdre-donnees-pme/` | `_posts/2026-04-24-changer-logiciel-sans-perdre-donnees-pme.md` | ∞ |
-| `/blog/chiffrer-des-mots-de-passe-AES/` | `_posts/2025-11-18-chiffrer-des-mots-de-passe-AES.md` | ∞ |
-| `/blog/chiffrer-des-mots-de-passe-base64/` | `_posts/2025-11-17-chiffrer-des-mots-de-passe-base64.md` | ∞ |
+| `/blog/changer-logiciel-sans-perdre-donnees-pme/` | `_posts/2026-04-24-changer-logiciel-sans-perdre-donnees-pme.md` | 4 |
+| `/blog/heures-perdues-taches-repetitives/` | `_posts/2026-06-08-heures-perdues-taches-repetitives.md` | 4 |
+| `/blog/facturation-electronique-2026-pme-integration-logiciels/` | `_posts/2026-04-21-facturation-electronique-2026-pme-integration-logiciels.md` | 5 |
+| `/blog/architecture-data-PME/` | `_posts/2026-03-09-architecture-data-PME.md` | 6 |
+| `/blog/rgpd-donnees-clients-guide-pme/` | `_posts/2025-02-18-rgpd-donnees-clients-guide-pme.md` | 6 |
+| `/blog/API-et-Webhook-talaxie-esb/` | `_posts/2026-02-05-API-et-Webhook-talaxie-esb.md` | 7 |
+| `/blog/migration-talend-vers-talaxie/` | `_posts/2025-10-07-migration-talend-vers-talaxie.md` | 7 |
+| `/blog/tSchemaComplianceCheck/` | `_posts/2026-01-08-tSchemaComplianceCheck.md` | 7 |
+| `/blog/tWriteJSONField/` | `_posts/2025-12-16-tWriteJSONField.md` | 7 |
+| `/blog/talend-studios/` | `_posts/2025-09-17-talend-studios.md` | 7 |
+| `/blog/utilisation-talend/` | `_posts/2025-11-03-utilisation-talend.md` | 7 |
+| `/blog/API-et-Webhook-talaxie-esb-2/` | `_posts/2026-02-05-API-et-Webhook-talaxie-esb-2.md` | 8 |
+| `/blog/chiffrer-des-mots-de-passe-AES/` | `_posts/2025-11-18-chiffrer-des-mots-de-passe-AES.md` | 8 |
+| `/blog/les-termes-data/` | `_posts/2026-03-10-les-termes-data.md` | 8 |
+| `/blog/tFileOutputPDF2/` | `_posts/2025-10-15-tFileOutputPDF2.md` | 8 |
+| `/blog/chiffrer-des-mots-de-passe-base64/` | `_posts/2025-11-17-chiffrer-des-mots-de-passe-base64.md` | 9 |
 | `/blog/excel-vs-power-bi-lequel-choisir/` | `_posts/2024-12-03-excel-vs-power-bi-lequel-choisir.md` | ∞ |
-| `/blog/facturation-electronique-2026-pme-integration-logiciels/` | `_posts/2026-04-21-facturation-electronique-2026-pme-integration-logiciels.md` | ∞ |
-| `/blog/heures-perdues-taches-repetitives/` | `_posts/2026-06-08-heures-perdues-taches-repetitives.md` | ∞ |
-| `/blog/les-termes-data/` | `_posts/2026-03-10-les-termes-data.md` | ∞ |
-| `/blog/migration-talend-vers-talaxie/` | `_posts/2025-10-07-migration-talend-vers-talaxie.md` | ∞ |
-| `/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/` | `_posts/2024-10-15-pourquoi-vos-donnees-sont-votre-meilleur-atout.md` | ∞ |
-| `/blog/ressaisies-tpe-pme-cout-cache/` | `_posts/2026-04-04-ressaisies-tpe-pme-cout-cache.md` | ∞ |
-| `/blog/rgpd-donnees-clients-guide-pme/` | `_posts/2025-02-18-rgpd-donnees-clients-guide-pme.md` | ∞ |
-| `/blog/tFileOutputPDF2/` | `_posts/2025-10-15-tFileOutputPDF2.md` | ∞ |
-| `/blog/tSchemaComplianceCheck/` | `_posts/2026-01-08-tSchemaComplianceCheck.md` | ∞ |
-| `/blog/tWriteJSONField/` | `_posts/2025-12-16-tWriteJSONField.md` | ∞ |
 | `/blog/tableau-de-bord-comment-piloter-son-activite/` | `_posts/2024-11-08-tableau-de-bord-comment-piloter-son-activite.md` | ∞ |
 | `/blog/tableau-de-bord-et-pilotage-temps-reel/` | `_posts/2026-06-04-tableau-de-bord-et-pilotage-temps-reel.md` | ∞ |
-| `/blog/talend-studios/` | `_posts/2025-09-17-talend-studios.md` | ∞ |
-| `/blog/utilisation-talend/` | `_posts/2025-11-03-utilisation-talend.md` | ∞ |
 
-**23 page(s) inatteignable(s)** par liens contextuels + nav principale (seulement via pagination/sitemap) :
+**3 page(s) inatteignable(s)** par liens contextuels + nav principale (seulement via pagination/sitemap) :
 
-- `/blog/API-et-Webhook-talaxie-esb-2/` — `_posts/2026-02-05-API-et-Webhook-talaxie-esb-2.md`
-- `/blog/API-et-Webhook-talaxie-esb/` — `_posts/2026-02-05-API-et-Webhook-talaxie-esb.md`
-- `/blog/architecture-data-PME/` — `_posts/2026-03-09-architecture-data-PME.md`
-- `/blog/automatisation-pme-bon-moment/` — `_posts/2026-04-30-automatisation-pme-bon-moment.md`
-- `/blog/automatiser-ses-reportings-guide-pratique/` — `_posts/2025-01-20-automatiser-ses-reportings-guide-pratique.md`
-- `/blog/changer-logiciel-sans-perdre-donnees-pme/` — `_posts/2026-04-24-changer-logiciel-sans-perdre-donnees-pme.md`
-- `/blog/chiffrer-des-mots-de-passe-AES/` — `_posts/2025-11-18-chiffrer-des-mots-de-passe-AES.md`
-- `/blog/chiffrer-des-mots-de-passe-base64/` — `_posts/2025-11-17-chiffrer-des-mots-de-passe-base64.md`
 - `/blog/excel-vs-power-bi-lequel-choisir/` — `_posts/2024-12-03-excel-vs-power-bi-lequel-choisir.md`
-- `/blog/facturation-electronique-2026-pme-integration-logiciels/` — `_posts/2026-04-21-facturation-electronique-2026-pme-integration-logiciels.md`
-- `/blog/heures-perdues-taches-repetitives/` — `_posts/2026-06-08-heures-perdues-taches-repetitives.md`
-- `/blog/les-termes-data/` — `_posts/2026-03-10-les-termes-data.md`
-- `/blog/migration-talend-vers-talaxie/` — `_posts/2025-10-07-migration-talend-vers-talaxie.md`
-- `/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/` — `_posts/2024-10-15-pourquoi-vos-donnees-sont-votre-meilleur-atout.md`
-- `/blog/ressaisies-tpe-pme-cout-cache/` — `_posts/2026-04-04-ressaisies-tpe-pme-cout-cache.md`
-- `/blog/rgpd-donnees-clients-guide-pme/` — `_posts/2025-02-18-rgpd-donnees-clients-guide-pme.md`
-- `/blog/tFileOutputPDF2/` — `_posts/2025-10-15-tFileOutputPDF2.md`
-- `/blog/tSchemaComplianceCheck/` — `_posts/2026-01-08-tSchemaComplianceCheck.md`
-- `/blog/tWriteJSONField/` — `_posts/2025-12-16-tWriteJSONField.md`
 - `/blog/tableau-de-bord-comment-piloter-son-activite/` — `_posts/2024-11-08-tableau-de-bord-comment-piloter-son-activite.md`
 - `/blog/tableau-de-bord-et-pilotage-temps-reel/` — `_posts/2026-06-04-tableau-de-bord-et-pilotage-temps-reel.md`
-- `/blog/talend-studios/` — `_posts/2025-09-17-talend-studios.md`
-- `/blog/utilisation-talend/` — `_posts/2025-11-03-utilisation-talend.md`
 
 ## Liens contextuels sortants des pages fortes
 
@@ -170,6 +150,7 @@ Règle : ≤ 3 liens sortants pour un article normal (les pages piliers/glossair
 | `/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/` | 2 | `/blog/heures-perdues-taches-repetitives/`, `/blog/automatiser-ses-reportings-guide-pratique/` |
 | `/blog/tSchemaComplianceCheck/` | 2 | `/blog/tWriteJSONField/`, `/blog/tFileOutputPDF2/` |
 | `/score-maturite-data/` | 2 | `/politique-de-confidentialite/`, `/contact/` |
+| `/services/` | 2 | `/blog/automatiser-ses-reportings-guide-pratique/`, `/contact/` |
 | `/blog/API-et-Webhook-talaxie-esb-2/` | 1 | `/blog/API-et-Webhook-talaxie-esb/` |
 | `/blog/chiffrer-des-mots-de-passe-AES/` | 1 | `/blog/chiffrer-des-mots-de-passe-base64/` |
 | `/blog/chiffrer-des-mots-de-passe-base64/` | 1 | `/blog/chiffrer-des-mots-de-passe-AES/` |
@@ -178,6 +159,5 @@ Règle : ≤ 3 liens sortants pour un article normal (les pages piliers/glossair
 | `/blog/tableau-de-bord-et-pilotage-temps-reel/` | 1 | `/score-maturite-data/` |
 | `/contact/` | 1 | `/politique-de-confidentialite/` |
 | `/faq/` | 1 | `/contact/` |
-| `/services/` | 1 | `/contact/` |
 | `/blog/utiliser-l-ia-au-quotidien/` | 0 | _aucun_ |
 | `/realisations/` | 0 | _aucun_ |
