@@ -1,0 +1,17 @@
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for page in site.pages %}{% assign u = page.url %}{% unless page.sitemap == false or u == "/404.html" or u contains "/blog/page" or u contains ".xml" or u contains ".txt" or u contains ".json" or u contains ".js" or u contains ".webmanifest" %}  <url>
+    <loc>{{ u | replace: "/index.html", "/" | absolute_url }}</loc>
+  </url>
+{% endunless %}{% endfor %}{% for post in site.posts %}  <url>
+    <loc>{{ post.url | absolute_url }}</loc>
+    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+  </url>
+{% endfor %}{% for file in site.static_files %}{% if file.extname == ".html" and file.name != "404.html" %}  <url>
+    <loc>{{ file.path | absolute_url }}</loc>
+  </url>
+{% endif %}{% endfor %}</urlset>

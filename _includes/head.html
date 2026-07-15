@@ -23,7 +23,9 @@
 <link rel="canonical" href="{{ canonical_url }}">
 
 <!-- Robots -->
-{% if page.robots %}
+{% if paginator and paginator.page > 1 %}
+<meta name="robots" content="noindex, follow">
+{% elsif page.robots %}
 <meta name="robots" content="{{ page.robots }}">
 {% else %}
 <meta name="robots" content="index, follow">
