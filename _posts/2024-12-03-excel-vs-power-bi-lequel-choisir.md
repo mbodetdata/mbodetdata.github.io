@@ -88,6 +88,8 @@ C'est normal. Si vous n'êtes pas sûr de ce dont vous avez besoin, c'est souven
 
 La question "quel outil ?" vient après la question "que veux-je pouvoir faire ?" C'est justement ce type de cadrage que je fais lors des premières missions d'accompagnement.
 
+Un exemple de ce que ça donne une fois le besoin clarifié : l'étude de cas [reporting Change sur iTop](/portfolio/reporting-change-itop.html), où un tableau de bord Power BI connecté à l'outil de ticketing a remplacé les extractions manuelles pour suivre les SLA.
+
 ---
 
 **Vous voulez qu'on fasse le point sur votre situation ?** Un échange de 30 minutes suffit souvent pour identifier le bon outil et la bonne approche. C'est gratuit, sans engagement.

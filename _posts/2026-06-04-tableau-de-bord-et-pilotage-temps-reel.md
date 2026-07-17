@@ -187,6 +187,8 @@ Le Baromètre Bpifrance 2026 le confirme : la trésorerie et la visibilité sur 
 
 La vraie question n'est pas "est-ce que j'en ai besoin ?", si vous avez lu jusqu'ici, vous avez probablement déjà la réponse. La vraie question, c'est : par où commencer sérieusement, avec les bons indicateurs, les bonnes sources, et la garantie que ça tienne dans le temps ?
 
+À quoi ça ressemble une fois en place ? L'étude de cas [pilotage temps réel des opérations DashboardTV](/portfolio/dashboardtv-operations.html) montre une collecte multi-sources consolidée dans un tableau de bord suivi au quotidien, sans ressaisie.
+
 → [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}
 
 ---

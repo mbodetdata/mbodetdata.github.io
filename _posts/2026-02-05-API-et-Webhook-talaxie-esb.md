@@ -10,7 +10,7 @@ parent_category: data
 category_label: ESB
 ---
 
-# Introduction — Une API, tu la sollicites. Un webhook, il te prévient.
+## Introduction — Une API, tu la sollicites. Un webhook, il te prévient.
 
 Quand tu débutes, tu mets souvent **API** et **webhook** dans le même sac : *“un truc HTTP”*.  
 Sauf que la différence n’est pas un détail : c’est une **question de direction**.
@@ -44,7 +44,7 @@ Et ce “sens” change des choses très concrètes :
 
 ---
 
-## Une API REST, c’est quoi ?
+### Une API REST, c’est quoi ?
 
 Une API REST, c’est un service que tu **interroges** :  
 tu envoies une requête → tu récupères une réponse.
@@ -54,14 +54,14 @@ Elle sert typiquement à :
 - **créer** ou **modifier** (POST / PUT / PATCH),
 - **déclencher** une action (POST).
 
-### Le point clé
+#### Le point clé
 Avec une API, tu pilotes tout :
 - **quand** tu appelles,
 - **combien de fois**,
 - **quoi** demander,
 - **comment** gérer les erreurs (retry, timeout, fallback).
 
-### Mini-exemple (GitHub)
+#### Mini-exemple (GitHub)
 Tu veux le nombre de stars d’un repo ?  
 → tu appelles l’API GitHub, tu obtiens la valeur **au moment T**.
 
@@ -70,7 +70,7 @@ Mais si tu veux être **prévenu** dès qu’une star est ajoutée
 
 ---
 
-## Un webhook, c’est quoi ?
+### Un webhook, c’est quoi ?
 
 Un webhook, c’est l’inverse : tu exposes une URL, et un service externe **t’envoie** une requête HTTP quand un événement se produit.
 
@@ -78,13 +78,13 @@ En clair :
 ---
 > “Quand ça arrive, appelle-moi ici.”
 
-### Le point clé
+#### Le point clé
 Tu ne maîtrises pas le déclenchement. Donc tu dois être prêt à gérer :
 - le **timing** (n’importe quand),
 - le **volume** (pics),
 - les **retries** et les **doublons** (très courant).
 
-### Les 4 sujets à traiter
+#### Les 4 sujets à traiter
 - **Authenticité** : prouver que l’émetteur est légitime (signature/secret).
 - **Robustesse** : encaisser des pointes sans tomber.
 - **Idempotence** : supporter les renvois sans traiter deux fois.
@@ -92,7 +92,7 @@ Tu ne maîtrises pas le déclenchement. Donc tu dois être prêt à gérer :
 
 ---
 
-## API vs webhook : la règle utile
+### API vs webhook : la règle utile
 
 - **Webhook** = “un événement vient d’arriver” (signal)
 - **API** = “je récupère les détails” (enrichissement)
@@ -105,17 +105,17 @@ Exemple :
 
 ---
 
-# Prérequis
+## Prérequis
 
 Avant d’attaquer le tuto, voilà ce qu’il te faut.
 
-## Ce qu’il te faut
+### Ce qu’il te faut
 - **Talaxie ESB** (V202511) — [Téléchargement](https://deilink.fr/#/download)
 - **Un runtime Talaxie/Talend (Karaf / Runtime_ESBSE)** — [Téléchargement](https://github.com/mbodetdata/BMDATA_Runtime_ESBSE_Talend-Talaxie)
 - **Un compte GitHub** et un repo de test (même vide)
 - **Caddy installé** (reverse proxy + HTTPS) — [Téléchargement](https://caddyserver.com/download)
 
-## Le setup que j’utilise (pour que tu aies le contexte)
+### Le setup que j’utilise (pour que tu aies le contexte)
 - Je déploie le runtime **Karaf** sur une **VM Ubuntu Server**.  
   > Ça marche aussi sur Windows, mais les chemins et quelques commandes changent.
 - J’utilise un DNS dynamique (**DuckDNS**) pour exposer un nom de domaine sans taper mon IP publique.
@@ -124,7 +124,7 @@ Avant d’attaquer le tuto, voilà ce qu’il te faut.
 
 ---
 
-# Le cas simple — un endpoint “Hello World” testable avec Postman
+## Le cas simple — un endpoint “Hello World” testable avec Postman
 
 On commence volontairement **très simple** : un mini endpoint que tu peux appeler depuis **Postman**.  
 C’est ton *hello world* version ESB : juste assez pour comprendre le trio gagnant :
@@ -137,12 +137,12 @@ Tout ça, sans te perdre dans un labyrinthe de config dès la première page.
 
 ---
 
-## Ouverture du Studio : 2 réglages à faire tout de suite (sinon tu vas perdre du temps)
+### Ouverture du Studio : 2 réglages à faire tout de suite (sinon tu vas perdre du temps)
 
 Tu as ouvert **Studio Talaxie ESB** ? Parfait. Avant d’ajouter le moindre composant, fais ces deux réglages.  
 Ce sont des “petits clics” qui évitent des “grands drames”.
 
-### 1) Activer la compatibilité **Java 17** (côté Studio)
+#### 1) Activer la compatibilité **Java 17** (côté Studio)
 
 Menu :
 **Fichier → Modifier les propriétés du projet → Construire → Version de Java**  
@@ -154,7 +154,7 @@ et coche **“Activer la compatibilité avec Java 17”**.
 > Activer la compatibilité Java 17 dans le Studio ne veut pas dire “je passe le runtime en 17”.  
 > Ça te permet surtout de **ne plus être bloqué en Java 8** côté projet et d’être compatible avec **Java 11+**.
 
-### 2) Désactiver Maven Offline
+#### 2) Désactiver Maven Offline
 
 Menu :
 **Fenêtre → Preferences → Maven**  
@@ -166,7 +166,7 @@ et **décoche** l’option **Offline**.
 
 ---
 
-## Développer ton premier endpoint (“Hello World”)
+### Développer ton premier endpoint (“Hello World”)
 
 Crée un **nouveau Job ESB**.  
 Dans mon exemple, je l’appelle `Exemple_webhook`.
@@ -175,7 +175,7 @@ Dans mon exemple, je l’appelle `Exemple_webhook`.
 
 ---
 
-### Étape 1 — Mets des logs tout de suite 
+#### Étape 1 — Mets des logs tout de suite 
 
 Un job ESB, dans Karaf, c’est souvent un service qui **tourne en continu**.  
 Donc si tu n’as pas de logs, tu vas vite te retrouver à fixer la console en espérant un miracle.
@@ -191,7 +191,7 @@ Pour ce lab, on fait minimal (mais utile) :
 
 ---
 
-### Étape 2 — Ajoute le composant d’entrée : `tRestRequest`
+#### Étape 2 — Ajoute le composant d’entrée : `tRestRequest`
 
 Si tu connais `tRestClient`, c’est normal : il sert à **appeler** une API.  
 Ici, tu veux **exposer** un endpoint : donc `tRestRequest`.
@@ -206,7 +206,7 @@ Ici, tu veux **exposer** un endpoint : donc `tRestRequest`.
 
 ---
 
-### Étape 3 — Crée la route `POST /services/webhook/test`
+#### Étape 3 — Crée la route `POST /services/webhook/test`
 
 Dans `tRestRequest`, clique sur le **+ vert** pour ajouter une route.
 
@@ -232,7 +232,7 @@ Paramètres de la route :
 
 ---
 
-### Étape 4 — Ajoute un minimum de “signal” dans la branche
+#### Étape 4 — Ajoute un minimum de “signal” dans la branche
 
 L’objectif ici est simple : **être sûr que la route déclenche bien quelque chose**.
 
@@ -247,7 +247,7 @@ Option pratique (et simple à maintenir) :
 
 ---
 
-### Étape 5 — Lance le job
+#### Étape 5 — Lance le job
 
 Lance le job dans le Studio.
 
@@ -258,7 +258,7 @@ Lance le job dans le Studio.
 
 ---
 
-### Étape 6 — Test Postman : le 404 “logique”
+#### Étape 6 — Test Postman : le 404 “logique”
 
 Appelle l’endpoint dans Postman.
 
@@ -286,12 +286,12 @@ Relance, puis reteste.
 
 ---
 
-## Déploiement dans le container Karaf (Runtime_ESB)
+### Déploiement dans le container Karaf (Runtime_ESB)
 
 Maintenant, on sort du Studio : on va faire tourner ton job **dans Karaf** (Runtime_ESBSE).  
 Objectif : que ton endpoint vive **dans le runtime**, pas uniquement dans ton IDE.
 
-### Prérequis
+#### Prérequis
 - Un **runtime Karaf / Runtime_ESBSE** installé
 - **Java 11** sur la machine qui exécute Karaf
 - **Caddy** si tu veux exposer ensuite en HTTPS
@@ -301,7 +301,7 @@ Objectif : que ton endpoint vive **dans le runtime**, pas uniquement dans ton ID
 
 ---
 
-### Étape 1 — Construire le job 
+#### Étape 1 — Construire le job 
 
 Pour déployer il faut d’abord **builder**.  
 Ici, ton job ESB est packagé en **bundle OSGi**,donc exploitable par Karaf.
@@ -310,7 +310,7 @@ Résultat attendu : un **.jar** prêt à être déployé.
 
 ---
 
-### Étape 2 — Déposer le JAR dans le dossier `deploy`
+#### Étape 2 — Déposer le JAR dans le dossier `deploy`
 
 Copie le JAR dans le dossier de déploiement automatique du runtime :
 
@@ -323,7 +323,7 @@ Exemple chez moi :
 
 ---
 
-### Étape 3 — Démarrer Karaf et vérifier l’installation
+#### Étape 3 — Démarrer Karaf et vérifier l’installation
 
 Démarre le runtime avec :
 
@@ -333,7 +333,7 @@ Puis surveille la console/logs.
 
 ![Instanciation de karaf]({{ '/assets/img/blog/10-esb-api-webhook/3-1-Karaf.webp' | relative_url }}){:alt="Instanciation de karaf" loading="lazy" decoding="async"}
 
-#### Si le bundle ne s’installe pas automatiquement
+##### Si le bundle ne s’installe pas automatiquement
 Installe-le à la main dans la console Karaf :
 
 ~~~sh
@@ -346,7 +346,7 @@ Exemple :
 bundle:install -s file:/home/usertest/Runtime_ESBSE_V8/container/deploy/Exemple_webhook-0.1.jar
 ~~~
 
-#### Vérifier la version Java utilisée par Karaf
+##### Vérifier la version Java utilisée par Karaf
 Dans la console Karaf :
 
 ~~~sh
@@ -358,7 +358,7 @@ system:property java.runtime.version
 
 ---
 
-## Configuration de Caddy
+### Configuration de Caddy
 
 Pour l’instant, ton job tourne dans Karaf mais il est souvent joignable **uniquement en local**.  
 Si tu veux recevoir des appels **depuis l’extérieur** (Postman, GitHub,etc), tu as besoin d’une porte d’entrée propre.
@@ -371,13 +371,13 @@ Caddy va faire le job :
 
 ---
 
-### DNS (DuckDNS) : optionnel, mais pratique
+#### DNS (DuckDNS) : optionnel, mais pratique
 
 Tu peux utiliser DuckDNS pour avoir un nom de domaine (ex. `tonlab.duckdns.org`) au lieu d’une IP.
 
 ---
 
-### Mise à jour automatique de l’IP (script + cron / tâche planifiée)
+#### Mise à jour automatique de l’IP (script + cron / tâche planifiée)
 
 Si ton IP change, ton domaine doit suivre.  
 Avec DuckDNS, un script exécuté régulièrement suffit.
@@ -388,7 +388,7 @@ Remplace :
 
 ![DuckDNS site]({{ '/assets/img/blog/10-esb-api-webhook/3-1-duckDNS.webp' | relative_url }}){:alt="Illustration de duck dns pour trouver le domaine et le token" loading="lazy" decoding="async"}
 
-#### Linux (bash)
+##### Linux (bash)
 
 ~~~sh
 #!/bin/bash
@@ -412,7 +412,7 @@ crontab -e
 */5 * * * * /bin/bash /chemin/vers/duckdns.sh >/dev/null 2>&1
 ~~~
 
-#### Windows (batch)
+##### Windows (batch)
 
 ~~~bat
 @echo off
@@ -435,7 +435,7 @@ curl https://www.duckdns.org/update?domains=%DOMAIN%^&token=%TOKEN%^&ip= -o "%LO
 
 ---
 
-## Créer le Caddyfile, le “plan de routage”
+### Créer le Caddyfile, le “plan de routage”
 
 Caddy se configure via un fichier : **`Caddyfile`** (souvent `/etc/caddy/Caddyfile` sur Ubuntu).
 
@@ -570,21 +570,21 @@ TON_DOMAINE.duckdns.org {
 
 ---
 
-## Valider, formatter, recharger
+### Valider, formatter, recharger
 
 Après modification du Caddyfile :
 
-### 1) Valider la config
+#### 1) Valider la config
 ~~~sh
 caddy validate --config /etc/caddy/Caddyfile
 ~~~
 
-### 2) Formatter (optionnel)
+#### 2) Formatter (optionnel)
 ~~~sh
 caddy fmt --overwrite /etc/caddy/Caddyfile
 ~~~
 
-### 3) Recharger ou redémarrer
+#### 3) Recharger ou redémarrer
 ~~~sh
 sudo systemctl reload caddy
 ~~~
@@ -593,7 +593,7 @@ sudo systemctl reload caddy
 sudo systemctl restart caddy
 ~~~
 
-### Vérifier que Caddy tourne et lire les logs
+#### Vérifier que Caddy tourne et lire les logs
 ~~~sh
 sudo systemctl status caddy --no-pager
 ~~~
@@ -604,17 +604,17 @@ sudo journalctl -u caddy -n 100 --no-pager
 
 ---
 
-## Test Postman (depuis l’extérieur)
+### Test Postman (depuis l’extérieur)
 
 URL publique (exemple) :  
 `https://testesb.duckdns.org/webhook/test`
 
-### Test 1 — Sans token (tu dois être refusé)
+#### Test 1 — Sans token (tu dois être refusé)
 Résultat attendu : **401 Unauthorized**.
 
 ![Unauthorized dans postman]({{ '/assets/img/blog/10-esb-api-webhook/3-1-postman.webp' | relative_url }}){:alt="Unauthorized dans postman" loading="lazy" decoding="async"}
 
-### Test 2 — Avec le token (tu dois passer)
+#### Test 2 — Avec le token (tu dois passer)
 Header :
 - `X-Webhook-Token: TON_SECRET_TRES_LONG`
 
@@ -635,19 +635,19 @@ La suite devient vraiment intéressante : **webhook GitHub + signature HMAC**, p
 
 ---
 
-# Le cas plus complexe — un webhook GitHub (Stars) avec signature HMAC
+## Le cas plus complexe — un webhook GitHub (Stars) avec signature HMAC
 
 Ici on passe du “webhook de test” à un cas réel : **GitHub** t’envoie une requête HTTP quand quelqu’un **ajoute** ou **retire** une étoile sur un repo.  
 L’objectif : Comprendre les mecanisme derriere le webhook, et comment ça s'implemente.
 
-## Prérequis
+### Prérequis
 - Avoir terminé le cas simple précédent
 - Un compte **GitHub**
 - Un repo (même vide)
 
 ---
 
-## Configurer le webhook côté GitHub
+### Configurer le webhook côté GitHub
 
 Dans **Settings → Webhooks** de ton repo, crée un webhook avec :
 
@@ -665,14 +665,14 @@ Dans **Settings → Webhooks** de ton repo, crée un webhook avec :
 
 ---
 
-## Modifier le job Talaxie : route GitHub + récupération du body brut
+### Modifier le job Talaxie : route GitHub + récupération du body brut
 
 On ajoute une **nouvelle branche** (comme `webhook_test`), mais avec une différence critique :  
 tu dois récupérer le **BODY en `byte[]`** (octets bruts), sans aucune transformation.
 
 ![Ajout d'une branche pour l'API Github]({{ '/assets/img/blog/10-esb-api-webhook/4-schema.webp' | relative_url }}){:alt="Ajout d'une branche pour l'API Github" loading="lazy" decoding="async"}
 
-### Pourquoi le body doit être en `byte[]` (et pas en String/JSON “joli”) ?
+#### Pourquoi le body doit être en `byte[]` (et pas en String/JSON “joli”) ?
 GitHub signe ses webhooks avec le header **`X-Hub-Signature-256`** : c’est un **HMAC SHA-256 calculé sur le body HTTP brut**.
 
 Donc côté serveur, tu dois :    
@@ -693,7 +693,7 @@ La suite logique :
 
 ---
 
-## Routine Java : `GitHubSig`
+### Routine Java : `GitHubSig`
 
 Pour vérifier un webhook GitHub correctement, il te faut une routine qui fait **exactement** ça :    
 1) reprendre le **body brut** (`byte[]`) tel qu’il a été reçu,
@@ -869,7 +869,7 @@ public class GitHubSig {
 
 ---
 
-## Vérifier la signature GitHub dans un `tJava`
+### Vérifier la signature GitHub dans un `tJava`
 
 Objectif : **refuser tout webhook dont la signature ne matche pas**.  
 Tu récupères le **body brut (`byte[]`)** + le header **`X-Hub-Signature-256`**, tu appelles `GitHubSig`, et tu poses un booléen `b_IsGithubTokenOk` pour piloter les branches.
@@ -945,7 +945,7 @@ System.out.println(
 
 ---
 
-## Variables de contexte + branchement sur la signature
+### Variables de contexte + branchement sur la signature
 
 Le `tJava` utilise deux variables de contexte :
 
@@ -959,7 +959,7 @@ Puis tu branches sur `b_IsGithubTokenOk` :
 
 ---
 
-## Cas `b_IsGithubTokenOk = true` (signature valide)
+### Cas `b_IsGithubTokenOk = true` (signature valide)
 
 Ici tu peux enfin lire le JSON.  
 On extrait quelques infos utiles :
@@ -968,7 +968,7 @@ On extrait quelques infos utiles :
 - `starred_at` : date/heure
 - `sender.login` : utilisateur GitHub
 
-### 1) Convertir le body brut en `String` 
+#### 1) Convertir le body brut en `String` 
 
 Ajoute un `tFixedFlowInput` avec une colonne `body` (String) et comme valeur :
 
@@ -978,13 +978,13 @@ new String(((byte[])globalMap.get("webhook_github.body")), "UTF-8")
 
 > Adapte la valeur `webhook_github` en fonction du nom de ta connexion main issue du tRestRequest ! 
 
-### 2) Extraire les champs (tExtractJSONFields)
+#### 2) Extraire les champs (tExtractJSONFields)
 
 Configure `tExtractJSONFields` sur la colonne `body`.
 
 ![Configuration du tExtractJSONFields]({{ '/assets/img/blog/10-esb-api-webhook/6-tExtractJSONFIelds.webp' | relative_url }}){:alt="Configuration du tExtractJSONFields" loading="lazy" decoding="async"}
 
-### 3) Observer + répondre 200
+#### 3) Observer + répondre 200
 
 - `tLogRow` après `tExtractJSONFields`
 - puis `tRestResponse` dans un sous-job qui renvoie **200 OK**
@@ -993,7 +993,7 @@ Configure `tExtractJSONFields` sur la colonne `body`.
 
 ---
 
-## Cas `b_IsGithubTokenOk = false` (signature invalide)
+### Cas `b_IsGithubTokenOk = false` (signature invalide)
 
 Ici, pas de débat : si la signature ne matche pas, tu rejettes.
 
@@ -1004,7 +1004,7 @@ Ici, pas de débat : si la signature ne matche pas, tu rejettes.
 
 ---
 
-## Modification du Caddyfile (ajout de la route GitHub)
+### Modification du Caddyfile (ajout de la route GitHub)
 
 Tu as déjà `/webhook/test`. Maintenant tu ajoutes `/webhook/github`.
 
@@ -1201,15 +1201,15 @@ TON_DOMAINE.duckdns.org {
 
 ---
 
-## Redéployer dans Karaf et mise à jour du bundle
+### Redéployer dans Karaf et mise à jour du bundle
 
 Tu as modifié ton job : rebuild + mise à jour du bundle.
 
-### Étape 1 — Rebuild + copie dans `deploy`
+#### Étape 1 — Rebuild + copie dans `deploy`
 - Rebuild le job (bundle OSGi)
 - Recopie le `.jar` dans `/container/deploy`
 
-### Étape 2 — Mettre à jour le bundle dans Karaf
+#### Étape 2 — Mettre à jour le bundle dans Karaf
 
 1) Récupère l’ID :
 ~~~sh
@@ -1230,12 +1230,12 @@ bundle:restart ID
 
 ---
 
-## Test (cette fois, c’est GitHub qui doit appeler)
+### Test (cette fois, c’est GitHub qui doit appeler)
 
 Postman ne suffit pas “tel quel” : GitHub ajoute la signature `X-Hub-Signature-256`.  
 Donc tu testes en déclenchant un vrai événement.
 
-### Test rapide    
+#### Test rapide    
 
 1) Mets une étoile sur ton repo    
 2) Retire l’étoile    
@@ -1247,18 +1247,18 @@ Donc tu testes en déclenchant un vrai événement.
 
 > Astuce : dans **Settings → Webhooks → Recent deliveries**, tu peux “redeliver” pour retester rapidement après un ajustement.
 
-### Si ça ne marche pas
+#### Si ça ne marche pas
 - **401 côté Caddy** : header `X-Hub-Signature-256` absent → secret non défini côté GitHub ou mauvaise route
 - **401 côté Talaxie** : signature invalide → secret différent, ou body modifié avant la vérif
 
 ---
 
-# Partie 2 ? 
+## Partie 2 ? 
 > ✅ **La partie 2 est en ligne : Webhook signé (HMAC) côté émetteur**  
 > Tu y apprends à **générer** la signature HMAC-SHA256, poser `X-Signature-256`, puis appeler ton endpoint Talaxie avec `tRESTClient`.  
 > 👉 [https://bmdata.fr/blog/API-et-Webhook-talaxie-esb-2/](https://bmdata.fr/blog/API-et-Webhook-talaxie-esb-2/)
 
-# Conclusion
+## Conclusion
 
 Tu as maintenant un chemin complet :
 - endpoint REST dans Talaxie (`tRESTRequest` / `tRESTResponse`)
@@ -1270,7 +1270,7 @@ Ce lab est un **POC pédagogique** : il montre la mécanique, pas une prod “in
 
 ---
 
-# FAQ
+## FAQ
 
 **1) “Un webhook, c’est une API ?”**  
 C’est du HTTP comme une API, mais la logique est inverse : **API = tu demandes**, **webhook = on te pousse l’info**.  
@@ -1344,9 +1344,9 @@ En POC, c’est utile pour valider ton code, mais le test “réel” reste GitH
 
 ---
 
-# Liens utiles 
+## Liens utiles 
 
-## Sources
+### Sources
 
 - [GitHub — Validating webhook deliveries](https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries)
 - [GitHub — Webhook events and payloads](https://docs.github.com/en/webhooks/webhook-events-and-payloads)
@@ -1355,7 +1355,7 @@ En POC, c’est utile pour valider ton code, mais le test “réel” reste GitH
 - [Caddy — rewrite](https://caddyserver.com/docs/caddyfile/directives/rewrite)
 - [Talend (Qlik Help) — ESB REST components](https://help.qlik.com/talend/en-US/components/8.0/esb-rest/esb-rest-component)
 
-## Liens pour le tuto : 
+### Liens pour le tuto : 
 - Le projet complet : [Téléchargement](https://github.com/mbodetdata/BMDATA_Blog-webhook)
 - Java (Zulu) : [Téléchargement](https://www.azul.com/downloads/?package=jdk#zulu)
 - Caddy : [Téléchargement](https://caddyserver.com/download)

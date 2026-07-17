@@ -92,6 +92,8 @@ Au-delà de la contrainte, le RGPD vous oblige à faire le ménage dans vos donn
 
 Ce nettoyage bénéficie directement à votre efficacité commerciale. Une base de données propre et à jour, c'est une meilleure base pour vos actions marketing et vos analyses — et souvent la condition préalable pour [commencer à exploiter sérieusement vos données](/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/).
 
+Quand les données concernées sont sensibles, cette rigueur devient structurante : l'étude de cas [migration de données médicales chez Eiffage](/portfolio/eiffage-migration-medicale.html) illustre les contrôles qu'impose ce type de contenu lors d'un changement de base.
+
 ---
 
 **Vous avez des questions sur la conformité RGPD de vos traitements data ?** C'est un aspect que j'aborde systématiquement dans mes missions d'accompagnement. Parlons-en lors d'un premier échange gratuit.

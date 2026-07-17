@@ -3,11 +3,19 @@
 {% assign temo = site.data.temoignages %}
 {% assign real = site.data.realisations %}
 
+{% comment %}— Note globale calculée dynamiquement depuis les témoignages —{% endcomment %}
+{% assign rating_count = temo.testimonials | size %}
+{% assign rating_sum = 0 %}
+{% for t in temo.testimonials %}{% assign rating_sum = rating_sum | plus: t.rating %}{% endfor %}
+{% if rating_count > 0 %}{% assign rating_avg = rating_sum | times: 1.0 | divided_by: rating_count | round: 1 %}{% else %}{% assign rating_avg = 0 %}{% endif %}
+
 {% comment %}— Type de page dynamique —{% endcomment %}
 {% if page.url contains '/a-propos' %}
   {% assign wp_type = "ProfilePage" %}
 {% elsif page.url contains '/contact' %}
   {% assign wp_type = "ContactPage" %}
+{% elsif page.layout == "post" %}
+  {% assign wp_type = "WebPage" %}
 {% elsif page.url contains '/realisations' %}
   {% assign wp_type = "CollectionPage" %}
 {% elsif page.url contains '/blog' %}
@@ -147,8 +155,8 @@
       "paymentAccepted": "Virement bancaire",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "1",
+        "ratingValue": "{{ rating_avg }}",
+        "reviewCount": "{{ rating_count }}",
         "bestRating": "5",
         "worstRating": "1"
       },
@@ -287,7 +295,15 @@
       "description": {{ page.description | default: site.description | strip_html | truncate: 200 | jsonify }},
       "inLanguage": "fr-FR",
       "isPartOf": { "@id": "{{ site.url }}/#website" },
+      {% if page.url contains '/a-propos' %}
+      "mainEntity": { "@id": "{{ site.url }}/#martial-bodet" },
+      "about": { "@id": "{{ site.url }}/#martial-bodet" },
+      {% elsif page.url contains '/contact' %}
+      "mainEntity": { "@id": "{{ site.url }}/#business" },
       "about": { "@id": "{{ site.url }}/#business" },
+      {% else %}
+      "about": { "@id": "{{ site.url }}/#business" },
+      {% endif %}
       "publisher": { "@id": "{{ site.url }}/#business" },
       "breadcrumb": { "@id": "{{ page.url | absolute_url }}#breadcrumb" }
     },
@@ -479,30 +495,6 @@
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
       ]
-    }
-    {% endif %}
-
-    {% if page.url contains '/a-propos' %},
-    {
-      "@type": "ProfilePage",
-      "@id": "{{ page.url | absolute_url }}#profilepage",
-      "name": "À propos — Martial Bodet, consultant data BM Data Agen",
-      "url": "{{ page.url | absolute_url }}",
-      "description": "Martial Bodet, consultant data indépendant basé à Agen. Découvrez son parcours, ses expertises (Talend, Power BI, ETL) et sa philosophie d'accompagnement pour les TPE et PME.",
-      "mainEntity": { "@id": "{{ site.url }}/#martial-bodet" },
-      "about": { "@id": "{{ site.url }}/#martial-bodet" }
-    }
-    {% endif %}
-
-    {% if page.url contains '/contact' %},
-    {
-      "@type": "ContactPage",
-      "@id": "{{ page.url | absolute_url }}#contactpage",
-      "name": "Contact — Prendre rendez-vous avec BM Data",
-      "url": "{{ page.url | absolute_url }}",
-      "description": "Contactez Martial Bodet, consultant data BM Data à Agen. Premier échange de 30 minutes gratuit et sans engagement pour analyser vos besoins en données.",
-      "mainEntity": { "@id": "{{ site.url }}/#business" },
-      "significantLink": "{{ site.url }}/services/"
     }
     {% endif %}
 

@@ -11,7 +11,7 @@ category_label: Glossaire
 image: "/assets/img/blog/13-les-termes-data/logo_1024.webp"
 ---
 
-# Introduction — Quand le vocabulaire bloque plus que la technique
+## Introduction — Quand le vocabulaire bloque plus que la technique
 
 Dans beaucoup d’entreprises, les projets data ne coincent pas d’abord sur l’outil.
 
@@ -35,7 +35,7 @@ Ici, on reste sur des mots utiles en entreprise :
 
 ---
 
-# Sommaire
+## Sommaire
 
 - Les fondamentaux à connaître avant de parler outil
 - Où les données sont stockées et comment elles se structurent
@@ -54,11 +54,11 @@ Ici, on reste sur des mots utiles en entreprise :
 
 ---
 
-# Les fondamentaux à connaître avant de parler outil
+## Les fondamentaux à connaître avant de parler outil
 
 Avant de parler Talend, SQL ou Power BI, il faut déjà comprendre ce qu’on manipule.
 
-## Donnée
+### Donnée
 
 Une **donnée** est une valeur brute : une date, un montant, un code client, un statut de commande.
 
@@ -68,7 +68,7 @@ Une **donnée** est une valeur brute : une date, un montant, un code client, un 
 
 **Confusion fréquente :** une donnée n’est pas encore une information utile. Tant qu’elle n’est pas replacée dans un contexte, elle reste brute.
 
-## Source de données
+### Source de données
 
 Une **source de données** est l’endroit d’où vient la donnée : ERP, CRM, API, fichier Excel, base SQL, outil métier, plateforme e-commerce.
 
@@ -78,7 +78,7 @@ Une **source de données** est l’endroit d’où vient la donnée : ERP, CRM, 
 
 **Nuance utile :** une source métier n’est pas forcément une bonne source pour le reporting direct. Elle est souvent faite pour faire tourner l’activité, pas pour analyser proprement.
 
-## Table, colonne, ligne
+### Table, colonne, ligne
 
 Ces trois mots reviennent partout, et ils méritent d’être posés proprement.
 
@@ -95,7 +95,7 @@ Ces trois mots reviennent partout, et ils méritent d’être posés proprement.
 
 **Confusion fréquente :** beaucoup de gens disent “base de données” alors qu’ils parlent en réalité d’une simple table ou d’un export Excel.
 
-## Schéma de données
+### Schéma de données
 
 Le **schéma de données** décrit la structure attendue des données : noms de colonnes, types, longueurs, format, règles de relation.
 
@@ -105,7 +105,7 @@ Le **schéma de données** décrit la structure attendue des données : noms de 
 
 **Confusion fréquente :** un schéma n’est pas le contenu. C’est la structure prévue du contenu.
 
-## Clé primaire et clé étrangère
+### Clé primaire et clé étrangère
 
 Ces deux notions sont simples sur le principe, mais très utiles pour comprendre pourquoi certains rapports donnent de mauvais résultats.
 
@@ -121,7 +121,7 @@ Ces deux notions sont simples sur le principe, mais très utiles pour comprendre
 
 **Confusion fréquente :** une clé primaire ne “décrit” pas un client ; elle sert d’abord à l’identifier sans ambiguïté.
 
-## Source de vérité
+### Source de vérité
 
 La **source de vérité** est l’endroit que l’on considère comme la référence la plus fiable pour une information donnée.
 
@@ -131,7 +131,7 @@ La **source de vérité** est l’endroit que l’on considère comme la référ
 
 **Confusion fréquente :** il n’existe pas forcément une source de vérité unique pour toute l’entreprise. En pratique, on parle souvent d’une source de vérité **par sujet** : clients, ventes, stocks, tickets, RH.
 
-## Historisation
+### Historisation
 
 L’**historisation** consiste à conserver les états successifs d’une donnée dans le temps, au lieu d’écraser la valeur précédente.
 
@@ -141,7 +141,7 @@ L’**historisation** consiste à conserver les états successifs d’une donné
 
 **Confusion fréquente :** garder seulement la dernière valeur ne permet pas de faire une vraie analyse temporelle.
 
-## Granularité
+### Granularité
 
 La **granularité** désigne le niveau de détail d’un jeu de données.
 
@@ -154,7 +154,7 @@ La **granularité** désigne le niveau de détail d’un jeu de données.
 
 **Confusion fréquente :** un tableau peut être détaillé visuellement sans que la donnée source ait la bonne granularité.
 
-## Batch et temps réel
+### Batch et temps réel
 
 Ces deux termes décrivent surtout **quand** les données sont traitées.
 
@@ -170,11 +170,11 @@ Ces deux termes décrivent surtout **quand** les données sont traitées.
 
 ---
 
-# Où les données sont stockées et comment elles se structurent
+## Où les données sont stockées et comment elles se structurent
 
 Une fois les bases posées, il faut distinguer les outils faits pour **enregistrer**, ceux faits pour **interroger**, et ceux faits pour **analyser**.
 
-## Base de données
+### Base de données
 
 Une **base de données** est un système de stockage organisé pour conserver et retrouver des informations de manière fiable.
 
@@ -184,7 +184,7 @@ Une **base de données** est un système de stockage organisé pour conserver et
 
 **Confusion fréquente :** un classeur Excel n’est pas une base de données, même s’il sert parfois comme tel par désespoir ou habitude.
 
-## SQL et requête
+### SQL et requête
 
 - **SQL** est le langage utilisé pour interroger et manipuler des bases relationnelles.
 - Une **requête** est l’instruction que l’on envoie à la base pour lire, filtrer, agréger ou transformer des données.
@@ -195,7 +195,7 @@ Une **base de données** est un système de stockage organisé pour conserver et
 
 **Confusion fréquente :** SQL n’est pas une base de données ; c’est le langage qui permet de dialoguer avec elle.
 
-## Vue
+### Vue
 
 Une **vue** est une couche logique qui présente les données sous une forme déjà préparée, sans forcément dupliquer physiquement les tables.
 
@@ -205,7 +205,7 @@ Une **vue** est une couche logique qui présente les données sous une forme dé
 
 **Confusion fréquente :** une vue peut ressembler à une table, mais ce n’est pas forcément une table stockée.
 
-## Data warehouse et data mart
+### Data warehouse et data mart
 
 Ces deux notions reviennent souvent dès qu’on veut fiabiliser la BI.
 
@@ -222,11 +222,11 @@ Ces deux notions reviennent souvent dès qu’on veut fiabiliser la BI.
 
 ---
 
-# Comment les données circulent entre fichiers, APIs et applications
+## Comment les données circulent entre fichiers, APIs et applications
 
 Dans les projets Talend et Talaxie, une grande partie du travail consiste à faire circuler des données entre des systèmes qui ne parlent pas naturellement le même langage.
 
-## API
+### API
 
 Une **API** est une interface qui permet à une application d’échanger des données ou des actions avec une autre de manière structurée.
 
@@ -238,7 +238,7 @@ Une **API** est une interface qui permet à une application d’échanger des do
 
 > ℹ️ Si ce sujet t’intéresse, tu peux compléter avec [API vs Webhook : comprendre la différence et implémenter un webhook sécurisé avec Talaxie](/blog/API-et-Webhook-talaxie-esb/).
 
-## Webhook
+### Webhook
 
 Un **webhook** est un mécanisme de notification automatique : au lieu d’aller interroger une API en boucle, tu reçois un appel quand un événement survient.
 
@@ -248,7 +248,7 @@ Un **webhook** est un mécanisme de notification automatique : au lieu d’aller
 
 **Confusion fréquente :** avec une API, c’est souvent toi qui viens chercher l’information ; avec un webhook, c’est l’événement qui vient te prévenir.
 
-## Mapping
+### Mapping
 
 Le **mapping** consiste à faire correspondre les champs d’une source avec les champs d’une cible.
 
@@ -258,7 +258,7 @@ Le **mapping** consiste à faire correspondre les champs d’une source avec les
 
 **Confusion fréquente :** un mapping n’est pas un simple copier-coller de colonnes. Il implique souvent des règles métier, des conversions et des exceptions.
 
-## Transformation
+### Transformation
 
 Une **transformation** modifie la donnée pour la rendre exploitable dans le système cible ou dans le reporting.
 
@@ -268,7 +268,7 @@ Une **transformation** modifie la donnée pour la rendre exploitable dans le sys
 
 **Confusion fréquente :** déplacer une donnée n’est pas encore la transformer.
 
-## Flux entrant et flux sortant
+### Flux entrant et flux sortant
 
 - **Flux entrant** : donnée qui arrive dans un système.
 - **Flux sortant** : donnée qui en part.
@@ -281,7 +281,7 @@ Une **transformation** modifie la donnée pour la rendre exploitable dans le sys
 
 **Confusion fréquente :** un même système peut avoir des flux entrants et sortants en parallèle.
 
-## Synchronisation
+### Synchronisation
 
 La **synchronisation** vise à maintenir des données cohérentes entre deux systèmes.
 
@@ -291,7 +291,7 @@ La **synchronisation** vise à maintenir des données cohérentes entre deux sys
 
 **Nuance utile :** synchroniser ne veut pas forcément dire “temps réel”. Une synchronisation nocturne peut suffire selon le besoin.
 
-## FTP et SFTP
+### FTP et SFTP
 
 Ces protocoles servent à transférer des fichiers entre systèmes.
 
@@ -304,7 +304,7 @@ Ces protocoles servent à transférer des fichiers entre systèmes.
 
 **Confusion fréquente :** dire “on a un flux fichier” sans préciser le protocole masque souvent un vrai sujet de sécurité ou d’exploitation.
 
-## CSV
+### CSV
 
 Le **CSV** est un format de fichier texte tabulaire, simple et très répandu.
 
@@ -314,7 +314,7 @@ Le **CSV** est un format de fichier texte tabulaire, simple et très répandu.
 
 **Confusion fréquente :** un CSV n’est pas toujours propre ni standardisé de la même manière selon les outils. Le séparateur, l’encodage et les guillemets changent vite le résultat.
 
-## Excel
+### Excel
 
 **Excel** est un outil incontournable en entreprise, souvent utilisé à la fois comme source, comme zone tampon et comme outil d’analyse.
 
@@ -324,7 +324,7 @@ Le **CSV** est un format de fichier texte tabulaire, simple et très répandu.
 
 **Confusion fréquente :** Excel est très utile, mais ce n’est pas une architecture data.
 
-## JSON
+### JSON
 
 Le **JSON** est un format texte structuré, très utilisé dans les APIs et les échanges applicatifs.
 
@@ -336,7 +336,7 @@ Le **JSON** est un format texte structuré, très utilisé dans les APIs et les 
 
 > ℹ️ Si tu manipules beaucoup de JSON avec Talend ou Talaxie, tu peux aussi lire [Talaxie : bien configurer tWriteJSONField et le JSON Tree](/blog/tWriteJSONField/).
 
-## XML
+### XML
 
 Le **XML** est un format texte structuré, plus verbeux que le JSON, mais encore très présent dans les échanges inter-applicatifs et certains environnements historiques.
 
@@ -346,7 +346,7 @@ Le **XML** est un format texte structuré, plus verbeux que le JSON, mais encore
 
 **Confusion fréquente :** XML n’est pas “vieux donc inutile”. Dans certains contextes, il reste parfaitement pertinent.
 
-## EDI
+### EDI
 
 L’**EDI** désigne les échanges de données informatisés entre entreprises selon des formats et règles convenus.
 
@@ -356,7 +356,7 @@ L’**EDI** désigne les échanges de données informatisés entre entreprises s
 
 **Confusion fréquente :** l’EDI n’est pas juste “un fichier qu’on s’envoie”. C’est un cadre d’échange structuré avec des conventions précises.
 
-## PDF structuré et PDF non structuré
+### PDF structuré et PDF non structuré
 
 Tous les PDFs ne se valent pas pour la data.
 
@@ -371,11 +371,11 @@ Tous les PDFs ne se valent pas pour la data.
 
 ---
 
-# ETL, pipelines et transformations : là où la donnée devient exploitable
+## ETL, pipelines et transformations : là où la donnée devient exploitable
 
 C’est ici qu’on passe d’une donnée dispersée à une donnée exploitable.
 
-## ETL et ELT
+### ETL et ELT
 
 Ces deux sigles décrivent deux façons d’enchaîner les mêmes grandes étapes.
 
@@ -388,7 +388,7 @@ Ces deux sigles décrivent deux façons d’enchaîner les mêmes grandes étape
 
 **Confusion fréquente :** le vrai sujet n’est pas de réciter le sigle. Le vrai sujet est de ne pas laisser la logique critique vivre en vrac dans le dashboard.
 
-## Pipeline de données
+### Pipeline de données
 
 Un **pipeline de données** est la chaîne complète qui fait circuler, transformer, contrôler et charger les données entre la source et la cible.
 
@@ -398,7 +398,7 @@ Un **pipeline de données** est la chaîne complète qui fait circuler, transfor
 
 **Confusion fréquente :** un pipeline n’est pas juste un script. C’est un processus complet avec dépendances, erreurs, reprise et exploitation.
 
-## Job
+### Job
 
 Dans l’univers Talend, un **job** est une unité de traitement qui exécute un flux donné.
 
@@ -410,7 +410,7 @@ Dans l’univers Talend, un **job** est une unité de traitement qui exécute un
 
 > ℹ️ Pour voir comment les jobs s’intègrent dans des flux concrets, tu peux lire [Talend/Talaxie : comment les entreprises automatisent leurs données sans infrastructure complexe](/blog/utilisation-talend/).
 
-## Orchestration
+### Orchestration
 
 L’**orchestration** consiste à organiser l’enchaînement des traitements : quel job démarre, dans quel ordre, sous quelles conditions et avec quelles dépendances.
 
@@ -420,7 +420,7 @@ L’**orchestration** consiste à organiser l’enchaînement des traitements : 
 
 **Confusion fréquente :** automatiser n’est pas orchestrer. On peut lancer des traitements automatiquement sans que l’enchaînement soit propre.
 
-## Nettoyage de données
+### Nettoyage de données
 
 Le **nettoyage de données** consiste à corriger ou écarter les valeurs inutilisables.
 
@@ -430,7 +430,7 @@ Le **nettoyage de données** consiste à corriger ou écarter les valeurs inutil
 
 **Confusion fréquente :** nettoyer la donnée une fois dans Excel ne règle pas le problème à la source.
 
-## Déduplication
+### Déduplication
 
 La **déduplication** vise à détecter et traiter des enregistrements en double.
 
@@ -440,7 +440,7 @@ La **déduplication** vise à détecter et traiter des enregistrements en double
 
 **Confusion fréquente :** un doublon parfait est facile à voir ; les quasi-doublons sont souvent le vrai sujet.
 
-## Jointure
+### Jointure
 
 Une **jointure** permet de relier des données issues de plusieurs tables à partir d’une clé commune.
 
@@ -450,7 +450,7 @@ Une **jointure** permet de relier des données issues de plusieurs tables à par
 
 **Confusion fréquente :** une mauvaise jointure ne plante pas toujours. Elle peut juste produire de mauvais chiffres, ce qui est plus sournois.
 
-## Agrégation
+### Agrégation
 
 L’**agrégation** consiste à résumer des données détaillées.
 
@@ -460,7 +460,7 @@ L’**agrégation** consiste à résumer des données détaillées.
 
 **Confusion fréquente :** agréger trop tôt peut faire perdre un niveau de détail utile pour l’analyse.
 
-## Contrôle de cohérence
+### Contrôle de cohérence
 
 Un **contrôle de cohérence** vérifie qu’une donnée respecte des règles attendues.
 
@@ -470,7 +470,7 @@ Un **contrôle de cohérence** vérifie qu’une donnée respecte des règles at
 
 **Confusion fréquente :** un fichier techniquement lisible peut rester métierement incohérent.
 
-## Rejet
+### Rejet
 
 Un **rejet** correspond à une donnée isolée parce qu’elle ne respecte pas les règles du traitement.
 
@@ -480,7 +480,7 @@ Un **rejet** correspond à une donnée isolée parce qu’elle ne respecte pas l
 
 **Confusion fréquente :** rejeter n’est pas perdre la donnée. Bien géré, un rejet améliore la qualité et la traçabilité.
 
-## Reprise sur incident
+### Reprise sur incident
 
 La **reprise sur incident** désigne la capacité à relancer un traitement proprement après une erreur.
 
@@ -492,11 +492,11 @@ La **reprise sur incident** désigne la capacité à relancer un traitement prop
 
 ---
 
-# Qualité de données : le sujet qu’on découvre souvent trop tard
+## Qualité de données : le sujet qu’on découvre souvent trop tard
 
 Un dashboard peut être rapide, beau, interactif… et totalement trompeur si la donnée est mauvaise.
 
-## Qualité de données
+### Qualité de données
 
 La **qualité de données** désigne le niveau de confiance que l’on peut accorder aux données utilisées.
 
@@ -506,7 +506,7 @@ La **qualité de données** désigne le niveau de confiance que l’on peut acco
 
 **Confusion fréquente :** la qualité n’est pas un sujet “après”. Elle commence dès la collecte.
 
-## Doublon
+### Doublon
 
 Un **doublon** est un enregistrement présent plusieurs fois, exactement ou presque.
 
@@ -516,7 +516,7 @@ Un **doublon** est un enregistrement présent plusieurs fois, exactement ou pres
 
 **Nuance utile :** tous les doublons ne sont pas strictement identiques. Les plus pénibles sont souvent les presque-doublons.
 
-## Valeur manquante
+### Valeur manquante
 
 Une **valeur manquante** est une information absente alors qu’elle est attendue.
 
@@ -526,7 +526,7 @@ Une **valeur manquante** est une information absente alors qu’elle est attendu
 
 **Confusion fréquente :** vide ne veut pas dire “sans importance”. Parfois, c’est précisément la colonne qui porte le sens métier.
 
-## Cohérence
+### Cohérence
 
 La **cohérence** vérifie que les données restent logiques entre elles.
 
@@ -536,7 +536,7 @@ La **cohérence** vérifie que les données restent logiques entre elles.
 
 **Confusion fréquente :** une donnée peut être présente et bien formatée, tout en restant incohérente sur le plan métier.
 
-## Fiabilité
+### Fiabilité
 
 La **fiabilité** correspond à la capacité d’une donnée à être utilisée sans provoquer de doute majeur.
 
@@ -546,7 +546,7 @@ La **fiabilité** correspond à la capacité d’une donnée à être utilisée 
 
 **Nuance utile :** la fiabilité dépend autant des règles de traitement que de la source d’origine.
 
-## Règle de qualité
+### Règle de qualité
 
 Une **règle de qualité** définit ce qu’une donnée doit respecter pour être considérée comme acceptable.
 
@@ -563,11 +563,11 @@ Une **règle de qualité** définit ce qu’une donnée doit respecter pour êtr
 
 ---
 
-# BI et modélisation : ce qui rend un reporting lisible
+## BI et modélisation : ce qui rend un reporting lisible
 
 Le reporting utile ne repose pas seulement sur de jolis visuels. Il repose d’abord sur une structure claire.
 
-## Reporting
+### Reporting
 
 Le **reporting** consiste à restituer des données et indicateurs pour suivre une activité.
 
@@ -577,7 +577,7 @@ Le **reporting** consiste à restituer des données et indicateurs pour suivre u
 
 **Confusion fréquente :** un reporting n’est pas automatiquement un bon outil d’aide à la décision. Il peut aussi noyer l’utilisateur sous les chiffres.
 
-## Tableau de bord
+### Tableau de bord
 
 Un **tableau de bord** est une interface de pilotage qui met en avant les indicateurs les plus utiles pour agir.
 
@@ -587,7 +587,7 @@ Un **tableau de bord** est une interface de pilotage qui met en avant les indica
 
 **Confusion fréquente :** un tableau de bord n’est pas un inventaire de tous les graphes possibles. Plus il montre tout, moins il aide souvent.
 
-## KPI et indicateur
+### KPI et indicateur
 
 Ces deux mots sont proches, mais pas totalement équivalents.
 
@@ -602,7 +602,7 @@ Ces deux mots sont proches, mais pas totalement équivalents.
 
 **Confusion fréquente :** tous les indicateurs ne sont pas des KPI. Le mot KPI est souvent utilisé un peu trop généreusement.
 
-## Modèle de données
+### Modèle de données
 
 Le **modèle de données** est la manière dont les tables sont organisées et reliées pour permettre l’analyse.
 
@@ -612,7 +612,7 @@ Le **modèle de données** est la manière dont les tables sont organisées et r
 
 **Confusion fréquente :** beaucoup de problèmes Power BI viennent d’un mauvais modèle, pas d’un mauvais graphique.
 
-## Table de faits et table de dimensions
+### Table de faits et table de dimensions
 
 Ces notions sont au cœur d’un modèle analytique propre.
 
@@ -626,7 +626,7 @@ Ces notions sont au cœur d’un modèle analytique propre.
 
 **Confusion fréquente :** on mélange souvent les attributs descriptifs et les faits numériques dans une même table, ce qui complique tout ensuite.
 
-## Mesure
+### Mesure
 
 Une **mesure** est un calcul utilisé dans l’analyse et le reporting.
 
@@ -638,11 +638,11 @@ Une **mesure** est un calcul utilisé dans l’analyse et le reporting.
 
 ---
 
-# Les termes Power BI vraiment utiles
+## Les termes Power BI vraiment utiles
 
 Power BI a son propre vocabulaire. Le comprendre évite beaucoup d’échanges flous avec un consultant ou une équipe BI.
 
-## Power BI
+### Power BI
 
 **Power BI** est la plateforme de Microsoft dédiée à la préparation, la modélisation, la visualisation et le partage de données.
 
@@ -652,7 +652,7 @@ Power BI a son propre vocabulaire. Le comprendre évite beaucoup d’échanges f
 
 **Confusion fréquente :** Power BI n’est pas seulement un outil de graphiques. Il inclut aussi la préparation, le modèle et le partage.
 
-## Power Query
+### Power Query
 
 **Power Query** est le moteur de connexion et de préparation des données utilisé notamment dans Power BI.
 
@@ -662,7 +662,7 @@ Power BI a son propre vocabulaire. Le comprendre évite beaucoup d’échanges f
 
 **Confusion fréquente :** Power Query prépare la donnée ; il ne remplace pas toujours un vrai ETL quand les flux deviennent nombreux, critiques ou industrialisés.
 
-## DAX
+### DAX
 
 **DAX** est le langage de formule utilisé dans Power BI pour créer des calculs analytiques.
 
@@ -672,7 +672,7 @@ Power BI a son propre vocabulaire. Le comprendre évite beaucoup d’échanges f
 
 **Confusion fréquente :** DAX n’est pas SQL. SQL va interroger des tables ; DAX travaille dans le modèle analytique.
 
-## Mesure DAX
+### Mesure DAX
 
 Une **mesure DAX** est un calcul dynamique évalué selon le contexte de filtre du rapport.
 
@@ -682,7 +682,7 @@ Une **mesure DAX** est un calcul dynamique évalué selon le contexte de filtre 
 
 **Confusion fréquente :** une mesure DAX ne stocke pas une valeur ligne par ligne comme une colonne.
 
-## Colonne calculée
+### Colonne calculée
 
 Une **colonne calculée** est une colonne créée dans le modèle à partir d’une formule DAX.
 
@@ -692,7 +692,7 @@ Une **colonne calculée** est une colonne créée dans le modèle à partir d’
 
 **Confusion fréquente :** on utilise souvent une colonne calculée là où une mesure serait plus adaptée, et inversement.
 
-## Rapport
+### Rapport
 
 Un **rapport** dans Power BI est l’ensemble des pages, visuels, filtres et interactions construits à partir d’un modèle.
 
@@ -702,7 +702,7 @@ Un **rapport** dans Power BI est l’ensemble des pages, visuels, filtres et int
 
 **Confusion fréquente :** le rapport n’est pas la donnée elle-même. Il s’appuie sur un modèle sous-jacent.
 
-## Workspace
+### Workspace
 
 Un **workspace** est l’espace de travail collaboratif dans lequel on organise et publie le contenu Power BI.
 
@@ -712,7 +712,7 @@ Un **workspace** est l’espace de travail collaboratif dans lequel on organise 
 
 **Confusion fréquente :** partager un rapport ne veut pas dire organiser correctement les contenus. Le workspace est aussi un sujet de gouvernance.
 
-## Actualisation
+### Actualisation
 
 L’**actualisation** correspond au rafraîchissement des données dans Power BI.
 
@@ -722,7 +722,7 @@ L’**actualisation** correspond au rafraîchissement des données dans Power BI
 
 **Confusion fréquente :** un rapport publié n’est pas vivant par magie. Sans actualisation bien gérée, il vieillit très vite.
 
-## DirectQuery
+### DirectQuery
 
 **DirectQuery** est un mode dans lequel Power BI interroge directement la source au lieu d’importer toutes les données dans le modèle.
 
@@ -732,7 +732,7 @@ L’**actualisation** correspond au rafraîchissement des données dans Power BI
 
 **Confusion fréquente :** DirectQuery n’est pas automatiquement “mieux” ou “plus moderne”. Il simplifie certains cas, mais il dépend aussi fortement des performances et de la structure de la source.
 
-## Passerelle
+### Passerelle
 
 La **passerelle** permet au service Power BI d’accéder à certaines sources, notamment locales ou non directement exposées au cloud.
 
@@ -746,11 +746,11 @@ La **passerelle** permet au service Power BI d’accéder à certaines sources, 
 
 ---
 
-# Exploitation, sécurité et gouvernance sans jargon
+## Exploitation, sécurité et gouvernance sans jargon
 
 Un flux utile n’est pas seulement un flux qui marche aujourd’hui. C’est un flux qu’on comprend, qu’on surveille et qu’on sécurise dans le temps.
 
-## Log
+### Log
 
 Un **log** est une trace technique produite pendant l’exécution d’un traitement.
 
@@ -760,7 +760,7 @@ Un **log** est une trace technique produite pendant l’exécution d’un traite
 
 **Confusion fréquente :** sans log, on finit souvent par diagnostiquer les problèmes au doigt mouillé. C’est rarement la meilleure méthode.
 
-## Monitoring
+### Monitoring
 
 Le **monitoring** consiste à surveiller l’état des flux et traitements dans la durée.
 
@@ -770,7 +770,7 @@ Le **monitoring** consiste à surveiller l’état des flux et traitements dans 
 
 **Confusion fréquente :** monitorer ne veut pas dire “ouvrir les logs quand ça casse”. C’est une surveillance continue.
 
-## Alerte
+### Alerte
 
 Une **alerte** est un signal envoyé lorsqu’un événement anormal est détecté.
 
@@ -780,7 +780,7 @@ Une **alerte** est un signal envoyé lorsqu’un événement anormal est détect
 
 **Confusion fréquente :** trop d’alertes tuent l’alerte. Il faut des alertes utiles, pas du bruit industriel.
 
-## Incident
+### Incident
 
 Un **incident** est un événement qui perturbe le fonctionnement attendu d’un flux, d’un rapport ou d’un service.
 
@@ -790,7 +790,7 @@ Un **incident** est un événement qui perturbe le fonctionnement attendu d’un
 
 **Confusion fréquente :** une anomalie technique n’est pas toujours un incident métier. L’impact réel compte.
 
-## SLA
+### SLA
 
 Un **SLA** définit un niveau de service attendu : délai, disponibilité, temps de traitement, engagement de qualité ou de support.
 
@@ -800,7 +800,7 @@ Un **SLA** définit un niveau de service attendu : délai, disponibilité, temps
 
 **Confusion fréquente :** un SLA n’est pas une promesse vague. Il doit être mesurable.
 
-## Gouvernance des données
+### Gouvernance des données
 
 La **gouvernance des données** désigne l’ensemble des règles et responsabilités qui permettent de savoir quelles données existent, d’où elles viennent, qui les utilise et selon quelles règles.
 
@@ -810,7 +810,7 @@ La **gouvernance des données** désigne l’ensemble des règles et responsabil
 
 **Confusion fréquente :** la gouvernance n’est pas réservée aux grands groupes. Même une PME gagne à poser quelques règles simples.
 
-## RGPD
+### RGPD
 
 Le **RGPD** encadre l’usage des données personnelles dans l’Union européenne.
 
@@ -820,7 +820,7 @@ Le **RGPD** encadre l’usage des données personnelles dans l’Union européen
 
 **Confusion fréquente :** RGPD ne veut pas dire “on ne peut rien faire”. Cela veut dire qu’il faut faire les choses proprement.
 
-## Authentification et autorisation
+### Authentification et autorisation
 
 Ces deux termes sont souvent mélangés.
 
@@ -833,7 +833,7 @@ Ces deux termes sont souvent mélangés.
 
 **Confusion fréquente :** être connecté ne veut pas dire être autorisé à tout voir.
 
-## Rôle et permission
+### Rôle et permission
 
 - **Rôle** : profil d’accès défini pour un ensemble d’utilisateurs
 - **Permission** : droit concret accordé sur un objet ou une action
@@ -844,7 +844,7 @@ Ces deux termes sont souvent mélangés.
 
 **Confusion fréquente :** un rôle regroupe souvent plusieurs permissions, mais les deux notions ne sont pas identiques.
 
-## Token
+### Token
 
 Un **token** est un jeton technique utilisé pour authentifier ou autoriser un accès applicatif.
 
@@ -858,7 +858,7 @@ Un **token** est un jeton technique utilisé pour authentifier ou autoriser un a
 
 ---
 
-# Conclusion — Un bon projet data commence rarement par un dashboard
+## Conclusion — Un bon projet data commence rarement par un dashboard
 
 Quand on parle data en entreprise, on pense souvent d’abord à l’outil.
 
@@ -885,7 +885,7 @@ Si tu veux aller plus loin, le prolongement naturel de ce glossaire se fait sur 
 
 ---
 
-# À retenir
+## À retenir
 
 - Une donnée brute n’est pas encore une information exploitable.
 - Beaucoup d’erreurs de reporting viennent d’un problème de granularité, de jointure ou de source de vérité.
@@ -896,7 +896,7 @@ Si tu veux aller plus loin, le prolongement naturel de ce glossaire se fait sur 
 
 ---
 
-# ℹ️ Aller plus loin sur BMData
+## ℹ️ Aller plus loin sur BMData
 
 Si tu veux relier ce glossaire à des cas concrets, tu peux continuer avec ces contenus :
 
@@ -912,9 +912,9 @@ Si tu veux relier ce glossaire à des cas concrets, tu peux continuer avec ces c
 
 ---
 
-# Sources
+## Sources
 
-## Sources officielles
+### Sources officielles
 
 - [Microsoft Learn — Qu’est-ce que Power Query ?](https://learn.microsoft.com/fr-fr/power-query/power-query-what-is-power-query)
 - [Microsoft Learn — Référence DAX](https://learn.microsoft.com/fr-fr/dax/)
@@ -940,7 +940,7 @@ Si tu veux relier ce glossaire à des cas concrets, tu peux continuer avec ces c
 - [CNIL — Identifier les données personnelles](https://www.cnil.fr/fr/identifier-les-donnees-personnelles)
 - [CNIL — L’anonymisation de données personnelles](https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles)
 
-## Sources BMData
+### Sources BMData
 
 - [BMData — Accueil](https://bmdata.fr/)
 - [BMData — Services Talend & Talaxie](https://bmdata.fr/services/)
@@ -954,7 +954,7 @@ Si tu veux relier ce glossaire à des cas concrets, tu peux continuer avec ces c
 
 ---
 
-# 5 titres alternatifs
+## 5 titres alternatifs
 
 1. **Glossaire data : 50 termes utiles pour mieux comprendre Talend, Power BI et la BI**
 2. **Les mots de la data expliqués simplement : API, ETL, KPI, DAX, qualité de données**
@@ -964,66 +964,66 @@ Si tu veux relier ce glossaire à des cas concrets, tu peux continuer avec ces c
 
 ---
 
-# 10 idées de posts LinkedIn à recycler
+## 10 idées de posts LinkedIn à recycler
 
-## 1) Le jargon qui ralentit les projets data
+### 1) Le jargon qui ralentit les projets data
 **Angle :** ce ne sont pas toujours les outils qui bloquent, mais les mots mal compris.  
 **Hook possible :**  
 > Beaucoup de projets data ne déraillent pas à cause de Power BI ou de Talend.  
 > Ils déraillent parce que tout le monde utilise les mêmes mots… sans parler de la même chose.
 
-## 2) Donnée vs information
+### 2) Donnée vs information
 **Angle :** montrer qu’une donnée brute ne vaut pas encore analyse.  
 **Hook possible :**  
 > Un montant, une date, un statut : ce sont des données.  
 > Tant qu’il manque le contexte, ce n’est pas encore une information utile.
 
-## 3) Pourquoi la granularité casse tant de KPI
+### 3) Pourquoi la granularité casse tant de KPI
 **Angle :** expliquer simplement l’impact du niveau de détail sur les indicateurs.  
 **Hook possible :**  
 > Beaucoup de KPI “faux” ne viennent pas d’un mauvais calcul.  
 > Ils viennent d’une mauvaise granularité.
 
-## 4) Clé primaire, clé étrangère : les notions simples qui évitent des dashboards faux
+### 4) Clé primaire, clé étrangère : les notions simples qui évitent des dashboards faux
 **Angle :** vulgarisation terrain des relations entre tables.  
 **Hook possible :**  
 > Une mauvaise relation entre tables ne crie pas forcément.  
 > Elle peut juste te donner un dashboard crédible… et faux.
 
-## 5) API vs webhook
+### 5) API vs webhook
 **Angle :** différencier logique de récupération et logique de notification.  
 **Hook possible :**  
 > Une API, tu la sollicites.  
 > Un webhook, il te prévient.  
 > Cette nuance change beaucoup de choses dans un pipeline.
 
-## 6) ETL vs ELT
+### 6) ETL vs ELT
 **Angle :** démystifier le débat.  
 **Hook possible :**  
 > ETL ou ELT ?  
 > Le plus gros problème n’est pas le sigle.  
 > Le vrai sujet, c’est l’endroit où tu laisses vivre la logique métier.
 
-## 7) Excel n’est pas le problème… jusqu’à un certain point
+### 7) Excel n’est pas le problème… jusqu’à un certain point
 **Angle :** posture nuancée et crédible.  
 **Hook possible :**  
 > Excel n’est pas l’ennemi.  
 > Mais quand il devient à la fois source, transformation, contrôle qualité et reporting, tu construis surtout une fragilité.
 
-## 8) KPI vs indicateur
+### 8) KPI vs indicateur
 **Angle :** clarifier une confusion très fréquente côté métier.  
 **Hook possible :**  
 > Tous les KPI sont des indicateurs.  
 > Tous les indicateurs ne sont pas des KPI.  
 > Et cette confusion pollue beaucoup de tableaux de bord.
 
-## 9) Mesure DAX vs colonne calculée
+### 9) Mesure DAX vs colonne calculée
 **Angle :** expliquer une confusion classique dans Power BI.  
 **Hook possible :**  
 > Dans Power BI, beaucoup de modèles deviennent lourds pour une raison simple :  
 > on met des colonnes calculées là où il faudrait des mesures.
 
-## 10) Un bon reporting commence avant Power BI
+### 10) Un bon reporting commence avant Power BI
 **Angle :** rappeler que le modèle et la qualité priment sur le visuel.  
 **Hook possible :**  
 > Un bon reporting ne commence pas avec un graphique.  

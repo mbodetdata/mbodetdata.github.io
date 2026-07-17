@@ -235,7 +235,7 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 
 .btn-primary {
   background: var(--color-gold);
-  color: var(--color-white);
+  color: var(--color-navy);
   box-shadow: var(--shadow-gold);
 }
 .btn-primary:hover {
@@ -246,7 +246,7 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 
 .btn-gold {
   background: var(--color-gold);
-  color: var(--color-white);
+  color: var(--color-navy);
   box-shadow: var(--shadow-gold);
 }
 .btn-gold:hover {
@@ -532,7 +532,7 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 
 .nav-link.nav-cta {
   background: linear-gradient(135deg, var(--color-gold) 0%, #22c47a 100%);
-  color: white !important;
+  color: var(--color-navy) !important;
   padding: 8px 20px;
   font-weight: 700;
   border-radius: 999px;
@@ -555,7 +555,7 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 .nav-link.nav-cta:hover {
   opacity: 1 !important;
   background: linear-gradient(135deg, var(--color-gold) 0%, #22c47a 100%) !important;
-  color: white !important;
+  color: var(--color-navy) !important;
   transform: translateY(-2px) scale(1.03) !important;
   box-shadow: 0 8px 28px rgba(43,212,143,.55);
 }
@@ -564,7 +564,7 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 .nav-link.nav-cta:focus {
   opacity: 1 !important;
   background: linear-gradient(135deg, var(--color-gold) 0%, #22c47a 100%) !important;
-  color: white !important;
+  color: var(--color-navy) !important;
 }
 /* Shine sweep */
 .nav-link.nav-cta::before {
@@ -1380,20 +1380,29 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 .testimonial-carousel__dots {
   display: flex;
   justify-content: center;
-  gap: var(--space-3);
+  gap: 0;
   margin-top: var(--space-6);
 }
+/* Zone cliquable de 24px (WCAG 2.2 — taille des cibles), point visuel de 8px */
 .testimonial-carousel__dot {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.testimonial-carousel__dot::before {
+  content: '';
   width: 8px;
   height: 8px;
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.5);
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
   transition: background 0.3s, border-color 0.3s, transform 0.3s;
 }
-.testimonial-carousel__dot.is-active {
+.testimonial-carousel__dot.is-active::before {
   background: white;
   border-color: white;
   transform: scale(1.25);
@@ -3634,7 +3643,7 @@ p { line-height: 1.75; color: var(--color-gray-600); }
     justify-content: center;
     margin-top: var(--space-4);
     background: linear-gradient(135deg, var(--color-gold) 0%, #22c47a 100%) !important;
-    color: white !important;
+    color: var(--color-navy) !important;
     border: none !important;
     box-shadow: 0 4px 20px rgba(43,212,143,.35) !important;
     font-weight: 700;
@@ -3667,7 +3676,7 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   #site-nav .nav-link.nav-cta:active,
   #site-nav .nav-link.nav-cta:focus {
     background: linear-gradient(135deg, var(--color-gold) 0%, #22c47a 100%) !important;
-    color: white !important;
+    color: var(--color-navy) !important;
     opacity: 1 !important;
     visibility: visible !important;
   }
@@ -4504,6 +4513,54 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   font-size: var(--text-xs);
   color: rgba(255,255,255,.45);
   line-height: 1.4;
+}
+
+/* ─── POUR ALLER PLUS LOIN ─── */
+.pc-block__icon-wrap--related {
+  background: rgba(102,119,255,.12);
+  border: 1px solid rgba(102,119,255,.2);
+  color: var(--color-blue-light);
+}
+.pc-related {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.pc-related__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius-lg);
+  color: rgba(255,255,255,.7);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  text-decoration: none;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+.pc-related__link:hover,
+.pc-related__link:focus-visible {
+  background: rgba(102,119,255,.06);
+  border-color: rgba(102,119,255,.28);
+  color: white;
+}
+.pc-related__arrow {
+  flex-shrink: 0;
+  opacity: .4;
+  transition: transform .2s ease, opacity .2s ease;
+}
+.pc-related__link:hover .pc-related__arrow,
+.pc-related__link:focus-visible .pc-related__arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pc-related__link,
+  .pc-related__arrow { transition: none; }
+  .pc-related__link:hover .pc-related__arrow { transform: none; }
 }
 
 /* ─── CITATION ─── */
@@ -6239,7 +6296,7 @@ mark.faq-hl {
 .ch-ctas { display: flex; gap: .875rem; flex-wrap: wrap; }
 .btn-cta-dark {
   display: inline-flex; align-items: center; gap: .55rem;
-  background: var(--color-gold); color: white;
+  background: var(--color-gold); color: var(--color-navy);
   padding: .92rem 1.85rem; border-radius: 100px;
   font-weight: 700; font-size: .875rem; text-decoration: none;
   box-shadow: var(--shadow-gold);
@@ -6531,7 +6588,7 @@ mark.faq-hl {
   width: 100%; display: flex; align-items: center; justify-content: center; gap: .6rem;
   padding: 1.05rem 2rem;
   background: var(--color-gold);
-  color: white; border: none; border-radius: 14px;
+  color: var(--color-navy); border: none; border-radius: 14px;
   font-size: .9rem; font-weight: 700; cursor: pointer;
   transition: background .25s ease, transform .2s ease, box-shadow .25s ease;
   box-shadow: var(--shadow-gold);
@@ -6592,7 +6649,7 @@ mark.faq-hl {
   display: inline-flex; align-items: center; gap: .6rem;
   padding: 1.05rem 2.2rem;
   background: var(--color-gold);
-  color: white; border-radius: 14px; font-weight: 700; font-size: .9rem;
+  color: var(--color-navy); border-radius: 14px; font-weight: 700; font-size: .9rem;
   border: none; cursor: pointer;
   transition: background .25s ease, transform .2s ease, box-shadow .25s ease;
   box-shadow: var(--shadow-gold);
@@ -7639,7 +7696,7 @@ mark.faq-hl {
   flex-shrink: 0;
   display: inline-flex; align-items: center; gap: .4rem;
   background: var(--color-gold);
-  color: white; font-size: .85rem; font-weight: 700;
+  color: var(--color-navy); font-size: .85rem; font-weight: 700;
   padding: .65rem 1.3rem; border-radius: var(--radius-full);
   text-decoration: none; white-space: nowrap;
   box-shadow: 0 3px 12px rgba(43,212,143,.28);

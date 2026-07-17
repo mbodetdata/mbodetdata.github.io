@@ -183,6 +183,36 @@
         </article>
         {% endif %}
 
+        <!-- ⑤ Pour aller plus loin (optionnel) -->
+        {% if p.related and p.related.size > 0 %}
+        <article class="pc-block pc-block--related">
+          <header class="pc-block__header">
+            <div class="pc-block__icon-wrap pc-block__icon-wrap--related" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+              </svg>
+            </div>
+            <div>
+              <p class="pc-block__eyebrow">04 — Pour aller plus loin</p>
+              <h2 class="pc-block__title">Sur le même sujet</h2>
+            </div>
+          </header>
+          <div class="pc-block__body">
+            <ul class="pc-related">
+              {%- for r in p.related -%}
+              <li class="pc-related__item">
+                <a class="pc-related__link" href="{{ r.url | relative_url }}">
+                  <span class="pc-related__label">{{ r.label }}</span>
+                  <svg class="pc-related__arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        </article>
+        {% endif %}
+
         <!-- Retour mobile -->
         <div class="pc-back-mobile">
           <a href="{{ '/realisations/' | relative_url }}" class="pc-back-link">

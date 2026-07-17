@@ -108,6 +108,8 @@ tout en apportant des mises à jour techniques (Java 17+, PostgreSQL 15, support
 Talend (et Talaxie) transforment les processus “artisanaux” en **chaînes de données robustes et pilotables**.  
 Pas besoin d’une plateforme cloud ou d’un service data dédié : un poste, un peu de méthode, et vos flux deviennent fiables.
 
+C’est la mécanique à l’œuvre dans l’étude de cas [flux EDI vers le TMS OneWorld]({{ '/portfolio/edi-tms-oneworld.html' | relative_url }}) : des échanges standardisés entre logiciels clients, automatisés avec Talend plutôt que repris à la main.
+
 ![Bénéfices Talend]({{ 'assets/img/blog/4-benefices_talend/blog-4-img-1.webp' | relative_url }}){:alt="Illustration des bénéfices Talend" loading="lazy" decoding="async"}
 
 ---

@@ -336,4 +336,6 @@ et tu la paieras en production.
 à un ETL **qui protège la PROD**.
 
 Et si ton pipeline doit produire du JSON après cette validation, [tWriteJSONField](/blog/tWriteJSONField/) est l’étape suivante naturelle — avec un guide complet pour maîtriser le JSON Tree sans se prendre les pieds dedans. Et si la sortie attendue est un document plutôt que du JSON, [produire un PDF avec tFileOutputPDF2](/blog/tFileOutputPDF2/) s’inscrit dans la même étape de sortie du pipeline.
+
+Ce type de contrôle prend tout son sens sur une reprise de données : l’étude de cas [migration applicative Media Participations](/portfolio/media-participations-migration.html) s’appuie sur cette validation pour conserver l’historique métier sans écart.
 ---

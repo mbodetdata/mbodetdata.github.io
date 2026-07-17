@@ -10,7 +10,7 @@ parent_category: data
 category_label: Architecture
 ---
 
-# Introduction — Le vrai problème n’est souvent pas le dashboard
+## Introduction — Le vrai problème n’est souvent pas le dashboard
 
 Dans beaucoup de PME, un projet BI démarre de manière très pragmatique.
 
@@ -42,7 +42,7 @@ L’objectif de cet article est simple : te montrer comment construire une **arc
 
 ---
 
-# Le problème classique des projets BI
+## Le problème classique des projets BI
 
 Pourquoi autant d’entreprises connectent-elles directement leurs dashboards aux sources ?
 
@@ -64,7 +64,7 @@ En pratique, ce modèle **déplace toute la complexité dans la dernière couche
 
 C’est précisément là que les **ennuis commencent**.
 
-## Pourquoi ce modèle casse vite
+### Pourquoi ce modèle casse vite
 
 Quand les transformations sont faites dans l’outil BI, la logique métier se disperse dans des requêtes, des colonnes calculées, des mesures ou des scripts de préparation difficiles à relire.
 
@@ -88,7 +88,7 @@ Et ce n’est pas le bon endroit pour ça.
 
 ---
 
-# L’architecture data recommandée
+## L’architecture data recommandée
 
 Pour une PME, une architecture robuste peut rester simple.
 
@@ -107,19 +107,19 @@ Cette architecture BI suit une logique claire :
 
 Tu cesses de bricoler des rapports “intelligents” pour construire un système data plus *lisible*, plus *stable* et plus *évolutif*.
 
-## Pourquoi cette approche fonctionne mieux
+### Pourquoi cette approche fonctionne mieux
 
 Elle apporte trois bénéfices immédiats.
 
-### 1) Fiabilité
+#### 1) Fiabilité
 
 Tu évites que chaque dashboard réinvente sa propre logique métier.
 
-### 2) Maintenabilité
+#### 2) Maintenabilité
 
 Quand une API change, quand un champ évolue ou quand une source devient instable, tu corriges le pipeline à un seul endroit.
 
-### 3) Évolutivité
+#### 3) Évolutivité
 
 Tu peux ajouter un nouvel indicateur, une nouvelle source ou un nouvel outil BI sans refaire toute la tuyauterie du projet.
 
@@ -127,9 +127,9 @@ Tu peux ajouter un nouvel indicateur, une nouvelle source ou un nouvel outil BI 
 
 ---
 
-# Les couches de l’architecture, une par une
+## Les couches de l’architecture, une par une
 
-## Les sources de données
+### Les sources de données
 
 Dans une PME, les sources les plus fréquentes sont généralement les suivantes :
 
@@ -151,7 +151,7 @@ La BI a besoin d’une donnée stable. Les systèmes métiers, eux, sont faits p
 
 > ℹ️ Et si tes flux manipulent beaucoup de JSON, tu peux aussi lire ce guide sur [la configuration de tWriteJSONField et du JSON Tree](/blog/tWriteJSONField/), particulièrement utile dès que les structures deviennent plus complexes.
 
-## Le rôle de l’ETL
+### Le rôle de l’ETL
 
 ETL signifie **Extraction, Transformation, Chargement**.
 
@@ -173,7 +173,7 @@ Concrètement, un ETL comme Talend ou Talaxie peut gérer :
 
 > ℹ️ Si tu utilises Talaxie ou Talend au quotidien, tu peux compléter avec ce retour d’expérience sur [la sécurisation de l’entrée du pipeline avec tSchemaComplianceCheck](/blog/tSchemaComplianceCheck/), très utile quand tu veux éviter que des données incohérentes polluent toute la chaîne.
 
-## Ce que l’ETL apporte vraiment
+### Ce que l’ETL apporte vraiment
 
 L’ETL ne sert pas juste à déplacer de la donnée.
 
@@ -181,31 +181,31 @@ Il sert à rendre la donnée **exploitable**.
 
 Dans un projet data, les transformations les plus utiles sont souvent les plus concrètes.
 
-### Nettoyage
+#### Nettoyage
 
 Supprimer ou corriger des valeurs nulles, des doublons, des libellés incohérents ou des formats incorrects.
 
-### Normalisation
+#### Normalisation
 
 Mettre toutes les dates, devises, statuts ou codes pays dans un format homogène.
 
-### Enrichissement
+#### Enrichissement
 
 Associer plusieurs sources pour construire une vision métier utile.
 
 Exemple : rapprocher un client CRM, une facture ERP et un paiement Stripe.
 
-### Gestion des erreurs
+#### Gestion des erreurs
 
 Isoler les lignes rejetées, tracer les anomalies, éviter qu’un lot entier tombe à cause de quelques enregistrements incorrects.
 
-### Historisation
+#### Historisation
 
 Conserver l’évolution d’un état dans le temps au lieu d’écraser systématiquement la valeur précédente.
 
 > ℹ️ Si tu hésites encore sur l’environnement à utiliser, tu peux lire aussi [Les différents Studios Talend : lequel choisir pour vos projets Data ?](/blog/talend-studios/).
 
-### ETL ou ELT ?
+#### ETL ou ELT ?
 
 La frontière entre ETL et ELT existe, mais pour une PME, ce n’est pas toujours le sujet principal.
 
@@ -215,7 +215,7 @@ Que tu transformes avant ou après chargement selon ton contexte technique, l’
 
 Et si tu es encore sur Talend Open Studio, le sujet de l’architecture se croise souvent avec celui de la pérennité de l’outillage. Dans ce cas, regarde aussi mon guide : [Migration de Talend Open Studio vers Talaxie : guide complet en 8 étapes](/blog/migration-talend-vers-talaxie/).
 
-## La base de données
+### La base de données
 
 Une fois les données extraites et transformées, tu as besoin d’un stockage central.
 
@@ -230,7 +230,7 @@ Tu n’as pas besoin d’un data warehouse “*enterprise*” pour commencer pro
 
 Dans beaucoup d'entreprise, une base relationnelle bien structurée suffit largement pour centraliser les données, stabiliser les modèles et alimenter la BI dans de bonnes conditions.
 
-## Pourquoi cette couche est indispensable
+### Pourquoi cette couche est indispensable
 
 Sans base centrale, tu n’as pas de source de vérité.
 
@@ -251,7 +251,7 @@ Ce découpage reste simple, mais il apporte une vraie lisibilité.
 
 Tu sais où la donnée arrive, où elle est transformée, et où la BI doit se brancher.
 
-## L’outil de BI
+### L’outil de BI
 
 L’outil BI est la dernière couche du système.
 
@@ -282,7 +282,7 @@ En revanche, il ne devrait pas :
 
 ---
 
-# Exemple concret
+## Exemple concret
 
 Prenons un cas simple.
 
@@ -297,7 +297,7 @@ L’architecture cible peut ressembler à ceci :
 
 ![Exemple d'une architecture ETL pour un cas concret]({{ '/assets/img/blog/12-architecture-data-pme/4-example-shopify.webp' | relative_url }}){:alt="Utilisation d'un ETL dans le cas concret d'un client dans le e-commerce" loading="lazy" decoding="async"}
 
-## Ce que fait le pipeline
+### Ce que fait le pipeline
 
 Le pipeline :
 
@@ -307,7 +307,7 @@ Le pipeline :
 - normalise les identifiants et les dates
 - charge le tout dans PostgreSQL
 
-## Ce que la BI peut ensuite produire
+### Ce que la BI peut ensuite produire
 
 Une fois les données centralisées, l’outil BI peut proposer des dashboards fiables sur :
 
@@ -331,33 +331,33 @@ Résultat :
 
 ---
 
-# Les erreurs les plus fréquentes
+## Les erreurs les plus fréquentes
 
 Voici les erreurs que l’on retrouve le plus souvent dans les projets d’architecture data et de BI en entreprise.
 
-## 1) Transformer les données dans l’outil BI
+### 1) Transformer les données dans l’outil BI
 
 C’est le raccourci le plus fréquent.
 
 Au départ, ça va vite. Ensuite, la logique métier se disperse, les performances se dégradent, et la maintenance devient pénible.
 
-## 2) Se connecter directement aux APIs
+### 2) Se connecter directement aux APIs
 
 Tu rends ton reporting dépendant de la disponibilité, de la latence, du quota et parfois du format de réponse de l’API.
 
 C’est pratique pour un test. C’est fragile pour un système de pilotage.
 
-## 3) Multiplier les fichiers Excel intermédiaires
+### 3) Multiplier les fichiers Excel intermédiaires
 
 Tu perds la traçabilité, tu crées des versions concurrentes et tu compliques la gouvernance de la donnée.
 
-## 4) Ne pas gérer les logs ETL
+### 4) Ne pas gérer les logs ETL
 
 Sans logs ni gestion d’erreurs, tu découvres les problèmes uniquement quand un utilisateur te dit que “les chiffres ont l’air bizarres”.
 
 Autant dire que ce n’est pas le meilleur système d’alerte du marché.
 
-## 5) Ne pas historiser les données
+### 5) Ne pas historiser les données
 
 Si tu écrases toujours l’état courant, tu perds la capacité d’expliquer une évolution dans le temps.
 
@@ -365,61 +365,61 @@ Et sans historique, beaucoup d’analyses métiers deviennent incomplètes.
 
 ---
 
-# Comment démarrer sans sur-ingénierie
+## Comment démarrer sans sur-ingénierie
 
 Tu n’as pas besoin de tout refaire d’un coup.
 
 Le plus efficace est souvent de procéder par étapes.
 
-### Étape 1 — Identifier les sources critiques
+#### Étape 1 — Identifier les sources critiques
 
 Commence par les 2 ou 3 sources qui alimentent les indicateurs les plus importants.
 
-### Étape 2 — Sortir les transformations du dashboard
+#### Étape 2 — Sortir les transformations du dashboard
 
 Tout ce qui relève du nettoyage, du rapprochement ou de la normalisation doit migrer vers le pipeline.
 
-### Étape 3 — Créer une base centrale simple
+#### Étape 3 — Créer une base centrale simple
 
 Même une base relationnelle bien structurée peut déjà faire une énorme différence.
 
-### Étape 4 — Brancher la BI sur des tables préparées
+#### Étape 4 — Brancher la BI sur des tables préparées
 
 Le dashboard doit lire des données déjà stabilisées, pas improviser leur préparation.
 
-### Étape 5 — Ajouter des logs et un minimum d’historique
+#### Étape 5 — Ajouter des logs et un minimum d’historique
 
 C’est souvent ce qui fait la différence entre un pipeline “qui marche aujourd’hui” et un pipeline maintenable.
 
 ---
 
-# FAQ — Architecture data, ETL et BI en PME
+## FAQ — Architecture data, ETL et BI en PME
 
-### Faut-il une architecture data complète dès le début ?
+#### Faut-il une architecture data complète dès le début ?
 
 Non. En PME, l’objectif n’est pas de construire une plateforme data complexe dès le départ. Le plus important est de poser une structure simple et saine : **sources → ETL → base de données → BI**.
 
 Tu peux très bien commencer avec quelques sources critiques, un pipeline clair et une base relationnelle bien structurée. Le vrai enjeu n’est pas la sophistication technique, mais la fiabilité de la donnée et la capacité à faire évoluer le système sans casser les dashboards.
 
-### Peut-on connecter directement Power BI ou Metabase aux sources ?
+#### Peut-on connecter directement Power BI ou Metabase aux sources ?
 
 Oui, techniquement, mais ce n’est généralement pas une bonne idée dès que le besoin devient un peu sérieux.
 
 Pour un prototype ou un test rapide, ça peut suffire. En revanche, dès que plusieurs sources, transformations métier ou indicateurs stratégiques entrent en jeu, ce modèle devient vite fragile : performances irrégulières, logique métier dispersée, maintenance difficile, absence de source de vérité.
 
-### Une PME a-t-elle vraiment besoin d’un ETL ?
+#### Une PME a-t-elle vraiment besoin d’un ETL ?
 
 Dans beaucoup de cas, oui.
 
 Dès que tu dois récupérer des données depuis plusieurs outils, nettoyer les formats, rapprocher des référentiels ou historiser des états, un ETL devient très utile. Il permet de sortir cette logique de l’outil BI et de la rendre plus stable, plus lisible et plus maintenable.
 
-### Quelle base de données choisir pour centraliser les données ?
+#### Quelle base de données choisir pour centraliser les données ?
 
 Pour une PME, une base relationnelle bien connue suffit souvent largement.
 
 PostgreSQL, SQL Server ou MySQL peuvent très bien faire le travail selon ton contexte, tes compétences internes et ton existant. Le point clé n’est pas d’avoir la technologie la plus “impressionnante”, mais d’avoir un stockage central propre, cohérent et exploitable par la BI.
 
-### Quelle différence entre ETL et ELT ?
+#### Quelle différence entre ETL et ELT ?
 
 La différence tient au moment où la transformation est faite.
 
@@ -428,7 +428,7 @@ La différence tient au moment où la transformation est faite.
 
 En pratique, pour une PME, le plus important n’est pas le sigle. Le vrai sujet est de ne pas laisser les transformations critiques vivre directement dans l’outil BI.
 
-### Quand faut-il passer d’un dashboard “rapide” à une vraie architecture BI ?
+#### Quand faut-il passer d’un dashboard “rapide” à une vraie architecture BI ?
 
 Dès que tu observes un ou plusieurs de ces signaux :
 
@@ -440,13 +440,13 @@ Dès que tu observes un ou plusieurs de ces signaux :
 
 À ce moment-là, tu n’as plus seulement un besoin de visualisation. Tu as un besoin d’architecture.
 
-### Quelle est l’erreur la plus fréquente dans un projet BI PME ?
+#### Quelle est l’erreur la plus fréquente dans un projet BI PME ?
 
 La plus fréquente, c’est de transformer l’outil BI en ETL caché.
 
 Au début, c’est rapide. Ensuite, tout devient plus dur : maintenance, performance, évolution, gouvernance, onboarding d’un nouveau collègue ou d’un prestataire. Une BI efficace consomme des données préparées, elle ne devrait pas être l’endroit où toute la logique de préparation est reconstruite.
 
-### Peut-on mettre en place une architecture data simple sans équipe data dédiée ?
+#### Peut-on mettre en place une architecture data simple sans équipe data dédiée ?
 
 Oui, à condition de rester pragmatique.
 
@@ -454,7 +454,7 @@ Une PME n’a pas forcément besoin d’un data engineer à temps plein ni d’u
 
 ---
 
-# ℹ️ Aller plus loin sur BMData
+## ℹ️ Aller plus loin sur BMData
 
 Si tu veux approfondir le sujet ou comparer cette approche avec d’autres cas concrets, voici quelques ressources utiles :
 
@@ -469,11 +469,13 @@ Si tu veux aller au-delà des concepts et structurer un cas réel :
 
 - [Services Talend & Talaxie](/services/)
 - [Services Power BI](/services/)
+- [UBA : centralisation Azure, automatisations Talend et pilotage Power BI](/portfolio/uba-data-automation.html) — la chaîne Sources → ETL → Base → BI de bout en bout
+- [SOFIPEL : interconnexion API KeplerVo vers une base MySQL](/portfolio/sofipel-interconnexion-keplervo.html) — consolider plusieurs systèmes en une vue unique
 - [Voir des réalisations concrètes](/realisations/)
 
 ---
 
-# Conclusion
+## Conclusion
 
 Une bonne architecture data n’a pas besoin d’être compliquée.
 
@@ -510,7 +512,7 @@ Tu peux aussi :
 
 ---
 
-# Sources
+## Sources
 
 - [Microsoft Learn — Architecture de solution BI dans le Centre d’excellence](https://learn.microsoft.com/fr-fr/power-bi/guidance/center-of-excellence-business-intelligence-solution-architecture)
 - [Microsoft Learn — Découvrez le schéma en étoile et son importance pour Power BI](https://learn.microsoft.com/fr-fr/power-bi/guidance/star-schema)

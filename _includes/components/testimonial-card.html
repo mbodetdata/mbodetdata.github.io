@@ -5,7 +5,7 @@
 {% assign t = include.testimonial %}
 
 <article class="testimonial-card fade-up">
-  <div class="testimonial-stars" aria-label="{{ t.rating }} étoiles sur 5">
+  <div class="testimonial-stars" role="img" aria-label="{{ t.rating }} étoiles sur 5">
     {% for i in (1..t.rating) %}
     <span aria-hidden="true">★</span>
     {% endfor %}

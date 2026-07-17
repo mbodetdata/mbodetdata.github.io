@@ -10,7 +10,7 @@ parent_category: data
 category_label: ESB
 ---
 
-# Introduction — Tu passes côté émetteur
+## Introduction — Tu passes côté émetteur
 
 Dans la **partie 1**, tu as mis en place la réception d’un webhook sécurisé :
 
@@ -31,14 +31,14 @@ La partie 2 s’appuie directement dessus : ici, tu vas **émettre** le webhook,
 
 ---
 
-# Générer et signer un webhook avec Talaxie
+## Générer et signer un webhook avec Talaxie
 
 Maintenant, tu changes de rôle.
 
 Jusqu’ici, tu **vérifiais** une signature côté serveur.  
 Ici, tu vas **la générer** côté émetteur.
 
-## Convention utilisée dans cet article
+### Convention utilisée dans cet article
 
 On utilise une convention simple (inspirée des webhooks “classiques”, mais adaptée à ton besoin) :
 
@@ -46,14 +46,14 @@ On utilise une convention simple (inspirée des webhooks “classiques”, mais 
 - **Format** : `sha256=<hex>`
 - **Signature** : HMAC-SHA256 calculée sur le **body brut (bytes)**
 
-## Ce que tu vas faire (pas à pas)
+### Ce que tu vas faire (pas à pas)
 
 - construire un JSON simple (`id`, `nom`, `prenom`, `date`)
 - calculer la signature HMAC sur le **body brut (bytes)**
 - ajouter le header `X-Signature-256: sha256=<hex>`
 - envoyer la requête via `tRESTClient`
 
-## Résultat
+### Résultat
 
 À la fin, tu as le cycle complet :
 
@@ -62,15 +62,15 @@ On utilise une convention simple (inspirée des webhooks “classiques”, mais 
 
 ---
 
-## Ce que tu vas construire
+### Ce que tu vas construire
 
 Tu vas créer **deux jobs** :
 
-### 1) Job `Receveur`
+#### 1) Job `Receveur`
 - duplication du job de la partie 1
 - version simplifiée pour ce lab : une route, un schéma minimal, et la vérification HMAC
 
-### 2) Job `Emetteur`
+#### 2) Job `Emetteur`
 C’est lui qui fabrique et envoie le webhook. Il va :
 
 - construire un JSON simple (`id`, `nom`, `prenom`, `date`)
@@ -80,21 +80,21 @@ C’est lui qui fabrique et envoie le webhook. Il va :
 
 ---
 
-## Rappel : ce que prouve HMAC (et ce que ça ne prouve pas)
+### Rappel : ce que prouve HMAC (et ce que ça ne prouve pas)
 
 [HMAC (RFC 2104)](https://datatracker.ietf.org/doc/html/rfc2104) est un mécanisme d’authentification basé sur un **secret partagé**.
 
-### HMAC garantit
+#### HMAC garantit
 - **Intégrité** : le message n’a pas été modifié
 - **Authenticité** : l’émetteur connaît le secret
 
-### HMAC ne garantit pas
+#### HMAC ne garantit pas
 - **Confidentialité** : ce n’est **pas** du chiffrement
 - **Anti-rejeu** : à lui seul, HMAC n’empêche pas qu’une requête valide soit rejouée (*replay*)
 
 ---
 
-## Architecture du lab
+### Architecture du lab
 
 **Flux cible :**
 
@@ -112,26 +112,26 @@ Tu peux exécuter les deux :
 
 ---
 
-## Prérequis
+### Prérequis
 
 Pour cette partie 2, tu vas réutiliser le principe de la partie 1, mais en ajoutant une routine plus **générique**, utilisable à la fois pour :
 
 - **générer** une signature HMAC côté `Emetteur`,
 - **vérifier** la signature côté `Receveur`.
 
-### Ce que tu fais
+#### Ce que tu fais
 
 1) Crée une nouvelle routine Talend nommée **`HmacSig`**  
 2) Copie-colle le code ci-dessous tel quel
 
-### Ce que cette routine apporte
+#### Ce que cette routine apporte
 
 - calcule une signature : `HMAC(algo, secret, raw_body_bytes)`
 - renvoie la signature en **hex lowercase**
 - gère le format avec préfixe, par exemple : `sha256=<hex>`
 - fournit une vérification avec comparaison **en temps constant**
 
-### Point critique à retenir (sinon ça ne marchera jamais)
+#### Point critique à retenir (sinon ça ne marchera jamais)
 
 Tu dois signer les **bytes bruts** du body envoyé.  
 Pas une version “reformatée” du JSON, pas un JSON re-sérialisé : **exactement** ce qui part sur l'endpoint.
@@ -279,11 +279,11 @@ public class HmacSig {
 
 ---
 
-# Créer un job `Receveur`
+## Créer un job `Receveur`
 
 L’objectif de ce job est simple : **recevoir** le webhook et **vérifier** la signature HMAC, comme en partie 1 — mais avec un setup minimal pour le lab.
 
-## Étape 1 — Dupliquer le job de la partie 1
+### Étape 1 — Dupliquer le job de la partie 1
 
 1) Duplique le job créé en partie 1.  
 2) Garde uniquement **une seule route / une seule branche**.  
@@ -291,7 +291,7 @@ L’objectif de ce job est simple : **recevoir** le webhook et **vérifier** la 
 
 ![tRestRequest - Une seule route]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/1-receveur-trestrequest.webp' | relative_url }}){:alt="tRESTRequest, une route, le webhook Talaxie" loading="lazy" decoding="async"}
 
-### Point important : le schéma du `tRESTRequest`
+#### Point important : le schéma du `tRESTRequest`
 
 Tu dois récupérer le **body brut** dans le flux.  
 Concrètement : ajoute une colonne **`body`** de type **tableau de bytes** (`byte[]`).
@@ -300,19 +300,19 @@ C’est indispensable, parce que la signature HMAC doit être calculée sur ces 
 
 ![tRestRequest - Une seule route]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/1-receveur-trestrequest-schema.webp' | relative_url }}){:alt="tRESTRequest, une route, le webhook Talaxie" loading="lazy" decoding="async"}
 
-## Étape 2 — Adapter le `tJava` (vérification de signature)
+### Étape 2 — Adapter le `tJava` (vérification de signature)
 
 Dans la partie 1, tu avais déjà une vérification HMAC côté serveur.  
 Ici, l’idée est simplement de **basculer sur la routine `HmacSig`**.
 
-### Objectif de cette étape
+#### Objectif de cette étape
 
 - lire la valeur du header **`X-Signature-256`**
 - récupérer le **body brut** (`byte[]`)
 - vérifier : `sha256=<hex>` correspond bien à `HMAC-SHA256(secret, bodyBytes)`
 - stocker le résultat dans `context.b_IsTokenOk` (pour router ensuite sur 200 / 401)
 
-### À faire
+#### À faire
 
 1) Ouvre ton composant `tJava` dans le job **`Receveur`**  
 2) Remplace le contenu par le code ci-dessous (copier-coller tel quel)
@@ -390,14 +390,14 @@ System.out.println(
 );
 ~~~
 
-## Étape 3 — Adapter le `tExtractJSONFields`
+### Étape 3 — Adapter le `tExtractJSONFields`
 
 Dernière étape côté `Receveur` : adapter l’extraction JSON.
 
 En partie 1, tu traitais un payload GitHub.  
 Ici, le payload vient de ton job `Emetteur`, donc les champs à extraire changent.
 
-### Objectif
+#### Objectif
 Extraire depuis le body JSON les 4 champs suivants :
 
 - `id`
@@ -405,7 +405,7 @@ Extraire depuis le body JSON les 4 champs suivants :
 - `prenom`
 - `date`
 
-### À faire
+#### À faire
 1) Ouvre le composant **`tExtractJSONFields`**  
 2) Modifie le mapping pour récupérer ces 4 champs.
 
@@ -415,13 +415,13 @@ Extraire depuis le body JSON les 4 champs suivants :
 
 ---
 
-# Créer un job `Emetteur`
+## Créer un job `Emetteur`
 
 Maintenant que `Receveur` est prêt, tu vas construire `Emetteur`.
 
 Son rôle est volontairement minimal : il **fabrique** une requête valide, la **signe**, puis l’**envoie**.
 
-## Ce que doit faire le job (et uniquement ça)
+### Ce que doit faire le job (et uniquement ça)
 
 1) Construire le JSON (payload)  
 2) Calculer la signature HMAC  
@@ -429,7 +429,7 @@ Son rôle est volontairement minimal : il **fabrique** une requête valide, la *
 
 ---
 
-## Étape 1 — Construire le JSON (payload)
+### Étape 1 — Construire le JSON (payload)
 
 On part sur un payload très simple, avec 4 champs :
 
@@ -438,12 +438,12 @@ On part sur un payload très simple, avec 4 champs :
 - `prenom`
 - `date`
 
-### 1) Créer les données d’entrée (`tFixedFlowInput`)
+#### 1) Créer les données d’entrée (`tFixedFlowInput`)
 Ajoute un **`tFixedFlowInput`** pour générer une ligne contenant ces valeurs.
 
 ![tFixedFlowInput - Création des données brutes]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-tfixedflowinput.webp' | relative_url }}){:alt="tFixedFlowInput - Création des données brutes" loading="lazy" decoding="async"}
 
-### 2) Générer le JSON (`tWriteJSONFields`)
+#### 2) Générer le JSON (`tWriteJSONFields`)
 Ensuite, utilise un **`tWriteJSONFields`** pour construire le JSON à partir de ces données.
 
 Objectif : obtenir un JSON qui sera envoyé **tel quel** au `Receveur`.
@@ -452,12 +452,12 @@ Objectif : obtenir un JSON qui sera envoyé **tel quel** au `Receveur`.
 
 ---
 
-## Étape 2 — Calculer la signature HMAC-SHA256
+### Étape 2 — Calculer la signature HMAC-SHA256
 
 Ici, tu signes le payload avant de l’envoyer.  
 La signature doit être calculée sur le **body brut (bytes)** : exactement ce qui sera envoyé au `Receveur`.
 
-### Rappel du principe
+#### Rappel du principe
 
 1) Convertir le JSON en **bytes UTF-8**  
 2) Calculer `HMAC-SHA256(secret, bodyBytes)`  
@@ -538,7 +538,7 @@ System.out.println("context.webhook_can_sign= "+context.webhook_can_sign);
 > Attention : Ici, je loggue le payload et la signature. C’est volontaire, parce que c’est un lab.  
 > En production, masque ou supprime ces éléments (payload, signature, secret).
 
-### Variables de contexte à créer
+#### Variables de contexte à créer
 
 Ce code s’appuie sur **5 variables de contexte**. Tu dois donc les créer (et les renseigner) :
 
@@ -550,15 +550,15 @@ Ce code s’appuie sur **5 variables de contexte**. Tu dois donc les créer (et 
 
 ---
 
-## Étape 3 — Appeler l’endpoint via `tRESTClient`
+### Étape 3 — Appeler l’endpoint via `tRESTClient`
 
 Dernière étape côté `Emetteur` : envoyer le webhook au job `Receveur`.
 
-### Objectif
+#### Objectif
 - envoyer le **payload JSON**
 - ajouter le header : **`X-Signature-256: sha256=<hex>`**
 
-### 1) Créer le sous-job d’envoi
+#### 1) Créer le sous-job d’envoi
 
 Crée un sous-job composé de :
 - un `tFixedFlowInput`
@@ -568,7 +568,7 @@ Le `tFixedFlowInput` sert uniquement à passer le payload au `tRESTClient` (dans
 
 ![tFixedFlowInput - Envoi du body au tRestClient]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-tfixedflowinput-2.webp' | relative_url }}){:alt="tFixedFlowInput - Envoi du body au tRestClient" loading="lazy" decoding="async"}
 
-### 2) Configuration “de base” du `tRESTClient`
+#### 2) Configuration “de base” du `tRESTClient`
 
 - **URL** : `http://localhost:8088/services/webhook/talaxie` (lab : `Receveur` + `Emetteur` dans le même Studio)
 - **Méthode** : `POST`
@@ -576,7 +576,7 @@ Le `tFixedFlowInput` sert uniquement à passer le payload au `tRESTClient` (dans
 
 ![tRestClient - Configuration basique (Methode, Type de données)]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-trestclient.webp' | relative_url }}){:alt="tRestClient - Configuration basique (Methode, Type de données)" loading="lazy" decoding="async"}
 
-### 3) Ajouter le header de signature (paramètres avancés)
+#### 3) Ajouter le header de signature (paramètres avancés)
 
 - `webhook_sig_header_name` : `X-Signature-256`
 - `webhook_sig` : `sha256=<hex>`
@@ -585,21 +585,21 @@ Le `tFixedFlowInput` sert uniquement à passer le payload au `tRESTClient` (dans
 
 ---
 
-## Réalisation des tests
+### Réalisation des tests
 
 Objectif : valider deux comportements simples.
 
 1) Si **secret + body** sont identiques côté `Emetteur` et `Receveur` → **200**  
 2) Si tu changes **le secret** ou **le moindre byte du body** → **401**
 
-### Comment lancer le lab
+#### Comment lancer le lab
 
 1) Lance d’abord le job **`Receveur`** (il doit être à l’écoute).  
 2) Ensuite, exécute le job **`Emetteur`** (il envoie le POST signé).
 
 ---
 
-### Test 1 — Secret correct
+#### Test 1 — Secret correct
 
 **Résultat attendu : `200`**
 
@@ -611,7 +611,7 @@ Côté `Receveur`, tu dois voir que la requête est acceptée et que le JSON est
 
 ---
 
-### Test 2 — Secret incorrect
+#### Test 2 — Secret incorrect
 
 **Résultat attendu : `401`**
 
@@ -629,7 +629,7 @@ Côté `Receveur`, tu dois voir le rejet :
 
 ---
 
-### Test 3 — JSON modifié (même “sens”, bytes différents)
+#### Test 3 — JSON modifié (même “sens”, bytes différents)
 
 **Résultat attendu : `401`**
 
@@ -652,19 +652,19 @@ Côté `Receveur`, tu dois voir le rejet :
 
 ---
 
-## Les pièges classiques
+### Les pièges classiques
 
 Voici les causes les plus fréquentes de **401** alors que “tout a l’air bon”.
 
-### 1) Encodage implicite (UTF-8)
+#### 1) Encodage implicite (UTF-8)
 Tu signes des **bytes** : la moindre différence d’encodage → signature différente.
 
-### 2) Tu signes un message… mais tu en envoies un autre
+#### 2) Tu signes un message… mais tu en envoies un autre
 JSON reformaté, ordre des champs, sérialisation différente : au final, les bytes changent → rejet.
 
 > Règle d’or : tu signes **exactement** ce qui est envoyé.
 
-### 3) Logs dangereux
+#### 3) Logs dangereux
 En prod, ne loggue jamais :
 - le secret
 - le payload complet (si sensible)
@@ -676,14 +676,14 @@ Log minimal recommandé :
   
 ---
 
-## Durcissement minimal (niveau au-dessus)
+### Durcissement minimal (niveau au-dessus)
 
 HMAC garantit l’intégrité + l’authenticité, mais **n’empêche pas le rejeu**.
 
 OWASP recommande d’ajouter une protection replay (nonce, timestamp, etc.) :  
 [https://scs.owasp.org/SCWE/SCSVS-COMM/SCWE-022/](https://scs.owasp.org/SCWE/SCSVS-COMM/SCWE-022/)
 
-### Pattern simple
+#### Pattern simple
 
 1) Ajouter :
 - `X-Timestamp`
@@ -698,7 +698,7 @@ OWASP recommande d’ajouter une protection replay (nonce, timestamp, etc.) :
 
 ---
 
-## Talaxie n’est pas forcément le meilleur endroit pour ça
+### Talaxie n’est pas forcément le meilleur endroit pour ça
 
 Ce lab montre une sécurisation simple (utile pour comprendre et tester).
 
@@ -712,7 +712,7 @@ Typiquement via : NGINX / OpenResty, API Gateway, reverse proxy.
 
 ---
 
-## Conclusion
+### Conclusion
 
 Tu as maintenant un cycle complet fonctionnel :
 
@@ -727,7 +727,7 @@ Tu sais :
 
 ---
 
-## Sources
+### Sources
 
 - [RFC 2104 — HMAC](https://datatracker.ietf.org/doc/html/rfc2104)
 - [GitHub — Webhook events and payloads](https://docs.github.com/en/webhooks/webhook-events-and-payloads) *(référence “industrie”, même si ici on utilise `X-Signature-256`)*

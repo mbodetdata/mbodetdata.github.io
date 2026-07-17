@@ -144,6 +144,8 @@ Avec ces **8 étapes**, vous sécurisez vos flux ETL tout en rejoignant une comm
 
 Reste ensuite à situer ces flux dans un ensemble cohérent : voir comment [structurer une architecture data de PME]({{ '/blog/architecture-data-PME/' | relative_url }}) autour de vos sources, de l’ETL et de vos outils de reporting.
 
+Pour voir ces étapes appliquées à un cas réel, l’étude de cas [migration Talend OSS vers Talaxie]({{ '/portfolio/migration-talend-oss-talaxie.html' | relative_url }}) détaille le cadrage et la reprise des flux chez un client.
+
 
 ➡️ Découvrez davantage sur [**Talaxie**](https://talaxie.deilink.fr/).
 

@@ -24,7 +24,12 @@
     ],
     "quote": null,
     "quote_author": null,
-    "tools": ["Talend", "Collecte multi-sources", "Tableau de bord temps réel"]
+    "tools": ["Talend", "Collecte multi-sources", "Tableau de bord temps réel"],
+    "related": [
+      { "url": "/blog/tableau-de-bord-et-pilotage-temps-reel/", "label": "Tableau de bord et pilotage en temps réel : ce que ça change" },
+      { "url": "/blog/tableau-de-bord-comment-piloter-son-activite/", "label": "Piloter son activité avec un tableau de bord" },
+      { "url": "/portfolio/reporting-change-itop.html", "label": "Reporting Change • iTop" }
+    ]
   },
   {
     "id": "edi-tms-oneworld",
@@ -51,7 +56,11 @@
     ],
     "quote": null,
     "quote_author": null,
-    "tools": ["Talend", "EDI", "TMS OneWorld"]
+    "tools": ["Talend", "EDI", "TMS OneWorld"],
+    "related": [
+      { "url": "/blog/utilisation-talend/", "label": "Automatiser ses données avec Talend, sans infrastructure complexe" },
+      { "url": "/portfolio/edi-wms-izypro.html", "label": "EDI • WMS IzyPro" }
+    ]
   },
   {
     "id": "edi-wms-izypro",
@@ -78,7 +87,12 @@
     ],
     "quote": null,
     "quote_author": null,
-    "tools": ["EDI", "WMS IzyPro", "Supervision continue"]
+    "tools": ["EDI", "WMS IzyPro", "Supervision continue"],
+    "related": [
+      { "url": "/blog/utilisation-talend/", "label": "Automatiser ses données avec Talend, sans infrastructure complexe" },
+      { "url": "/portfolio/edi-tms-oneworld.html", "label": "EDI • TMS OneWorld" },
+      { "url": "/portfolio/edi-wms-reflex.html", "label": "EDI • WMS Reflex" }
+    ]
   },
   {
     "id": "edi-wms-reflex",
@@ -105,7 +119,12 @@
     ],
     "quote": null,
     "quote_author": null,
-    "tools": ["EDI", "WMS Reflex"]
+    "tools": ["EDI", "WMS Reflex"],
+    "related": [
+      { "url": "/blog/utilisation-talend/", "label": "Automatiser ses données avec Talend, sans infrastructure complexe" },
+      { "url": "/portfolio/edi-wms-izypro.html", "label": "EDI • WMS IzyPro" },
+      { "url": "/portfolio/edi-tms-oneworld.html", "label": "EDI • TMS OneWorld" }
+    ]
   },
   {
     "id": "eiffage-migration-medicale",
@@ -132,7 +151,12 @@
     ],
     "quote": null,
     "quote_author": null,
-    "tools": ["Oracle", "MongoDB"]
+    "tools": ["Oracle", "MongoDB"],
+    "related": [
+      { "url": "/blog/rgpd-donnees-clients-guide-pme/", "label": "RGPD et données clients : le guide pour les PME" },
+      { "url": "/blog/changer-logiciel-sans-perdre-donnees-pme/", "label": "Changer de logiciel sans perdre ses données" },
+      { "url": "/portfolio/media-participations-migration.html", "label": "Media Participations • Migration applicative" }
+    ]
   },
   {
     "id": "frele-loup-migration-prestashop",
@@ -159,7 +183,11 @@
     ],
     "quote": null,
     "quote_author": null,
-    "tools": ["Talend", "API", "PrestaShop"]
+    "tools": ["Talend", "API", "PrestaShop"],
+    "related": [
+      { "url": "/blog/changer-logiciel-sans-perdre-donnees-pme/", "label": "Changer de logiciel sans perdre ses données" },
+      { "url": "/portfolio/media-participations-migration.html", "label": "Media Participations • Migration applicative" }
+    ]
   },
   {
     "id": "media-participations-migration",
@@ -186,7 +214,13 @@
     ],
     "quote": null,
     "quote_author": null,
-    "tools": ["Talend", "Contrôles qualité", "Migration applicative"]
+    "tools": ["Talend", "Contrôles qualité", "Migration applicative"],
+    "related": [
+      { "url": "/blog/changer-logiciel-sans-perdre-donnees-pme/", "label": "Changer de logiciel sans perdre ses données" },
+      { "url": "/blog/tSchemaComplianceCheck/", "label": "Sécuriser l'entrée du pipeline avec tSchemaComplianceCheck" },
+      { "url": "/portfolio/frele-loup-migration-prestashop.html", "label": "Frère-Loup • Migration e-commerce" },
+      { "url": "/portfolio/eiffage-migration-medicale.html", "label": "Eiffage • Migration de données médicales" }
+    ]
   },
   {
     "id": "migration-talend-oss-talaxie",
@@ -213,7 +247,12 @@
     ],
     "quote": null,
     "quote_author": null,
-    "tools": ["Talend OSS", "Talaxie"]
+    "tools": ["Talend OSS", "Talaxie"],
+    "related": [
+      { "url": "/blog/migration-talend-vers-talaxie/", "label": "Migrer de Talend Open Studio vers Talaxie : guide en 8 étapes" },
+      { "url": "/blog/talend-studios/", "label": "Les différents Studios Talend : lequel choisir ?" },
+      { "url": "/blog/architecture-data-PME/", "label": "Structurer une architecture data de PME" }
+    ]
   },
   {
     "id": "reporting-change-itop",
@@ -240,7 +279,12 @@
     ],
     "quote": null,
     "quote_author": null,
-    "tools": ["Power BI", "iTop"]
+    "tools": ["Power BI", "iTop"],
+    "related": [
+      { "url": "/blog/excel-vs-power-bi-lequel-choisir/", "label": "Excel ou Power BI : lequel choisir ?" },
+      { "url": "/blog/automatiser-ses-reportings-guide-pratique/", "label": "Automatiser ses reportings : guide pratique" },
+      { "url": "/portfolio/dashboardtv-operations.html", "label": "DashboardTV • Opérations temps réel" }
+    ]
   },
   {
     "id": "sofipel-interconnexion-keplervo",
@@ -267,7 +311,12 @@
     ],
     "quote": null,
     "quote_author": null,
-    "tools": ["API KeplerVo", "MySQL"]
+    "tools": ["API KeplerVo", "MySQL"],
+    "related": [
+      { "url": "/blog/architecture-data-PME/", "label": "Structurer une architecture data de PME" },
+      { "url": "/blog/API-et-Webhook-talaxie-esb/", "label": "API vs Webhook : comprendre la différence" },
+      { "url": "/portfolio/uba-data-automation.html", "label": "UBA • Data & Automatisation (Azure)" }
+    ]
   },
   {
     "id": "uba-data-automation",
@@ -294,6 +343,11 @@
     ],
     "quote": null,
     "quote_author": null,
-    "tools": ["Azure", "Talend", "Power BI"]
+    "tools": ["Azure", "Talend", "Power BI"],
+    "related": [
+      { "url": "/blog/architecture-data-PME/", "label": "Structurer une architecture data de PME" },
+      { "url": "/blog/ressaisies-tpe-pme-cout-cache/", "label": "Le coût caché des ressaisies en TPE/PME" },
+      { "url": "/blog/automatiser-ses-reportings-guide-pratique/", "label": "Automatiser ses reportings : guide pratique" }
+    ]
   }
 ]

@@ -277,6 +277,8 @@ Dans presque toutes les entreprises, le besoin est le même : faire en sorte que
 
 C’est exactement là que l’automatisation devient utile. Non pas pour compliquer votre quotidien, mais pour le simplifier.
 
+L’étude de cas [centralisation et automatisation des données UBA](/portfolio/uba-data-automation.html) en donne un ordre de grandeur : des données centralisées et un pilotage financier fiabilisé, une fois les doubles saisies supprimées.
+
 Vous voulez savoir où vous perdez du temps aujourd’hui, et quelle tâche serait la plus rentable à simplifier en premier ?
 
 → [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}

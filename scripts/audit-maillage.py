@@ -27,6 +27,9 @@ sidebar, fil d'Ariane, bloc auteur, bandeau de partage, CTA, et le bloc
   - Pages (layout page/home) : contenu = <main id="main-content">, moins les
     listings (`.card`, `.grid`, `.post-card`, `.section-footer`…) et tout
     nav/header/footer/aside.
+  - Études de cas (portfolio) : contenu = <main id="pc-main">, moins les liens
+    de retour (`.pc-back-mobile`, `.pc-back-link`). Le hero, le fil d'Ariane,
+    la sidebar (<aside>) et la bannière CTA sont hors de ce <main> → exclus.
 
 Le script NE MODIFIE RIEN. Il est relançable pour vérifier le travail.
 
@@ -51,6 +54,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE_DIR = ROOT / "_site"
 POSTS_DIR = ROOT / "_posts"
 PAGES_DIR = ROOT / "pages"
+PORTFOLIO_DIR = ROOT / "portfolio"
 NAV_FILE = ROOT / "_data" / "navigation.json"
 OUTPUT = ROOT / "maillage-audit.md"
 
@@ -61,6 +65,8 @@ SKIP_URL_RE = re.compile(r"^/(assets/|404\.html$|feed\.xml$|sitemap\.xml$"
                          r"|robots\.txt$|manifest\.json$|sw\.js$)")
 # Pagination du blog : /blog/page2/ … — navigationnel, pas contextuel
 PAGINATION_RE = re.compile(r"^/blog/page\d+/?$")
+# Études de cas : /portfolio/xxx.html — pages de contenu malgré l'extension
+PORTFOLIO_RE = re.compile(r"^/portfolio/[^/]+\.html$")
 
 # Éléments vides (ne pas empiler)
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link",
@@ -74,8 +80,13 @@ EXCLUDE_CLASSES = {
     "post-hero", "breadcrumb", "post-cta-wrap", "cta-banner",
     "post-card", "card", "grid", "section-footer", "section-header",
     "related", "swiper", "post-sidebar", "back-to-top", "reading-progress",
+    # études de cas : liens de retour « ← Retour aux réalisations »
+    "pc-back-mobile", "pc-back-link", "pc-breadcrumb", "pc-sidebar", "pc-card",
 }
 EXCLUDE_TAGS = {"nav", "header", "footer", "aside"}
+
+# <main> qui délimite la zone éditoriale selon le gabarit
+EDITORIAL_MAIN_IDS = {"main-content", "pc-main"}
 
 
 # ── Extraction des liens éditoriaux ────────────────────────────────────────
@@ -138,12 +149,12 @@ class EditorialLinkParser(HTMLParser):
                 return False
             if "post-content" in el["classes"]:
                 in_post_content = True
-            if el["tag"] == "main" and el["id"] == "main-content":
+            if el["tag"] == "main" and el["id"] in EDITORIAL_MAIN_IDS:
                 in_main = True
         # Article : impérativement dans .post-content
         if self.has_post_content:
             return in_post_content
-        # Page : dans <main id=main-content>
+        # Page ou étude de cas : dans <main id=main-content|pc-main>
         return in_main
 
 
@@ -195,6 +206,12 @@ def build_source_map() -> dict[str, str]:
         if not url.endswith("/"):
             url += "/"
         src[url] = f"pages/{html.name}"
+    # Études de cas : permalink explicite en `.html`, on le respecte tel quel
+    for html in sorted(PORTFOLIO_DIR.glob("*.html")):
+        m = re.search(r"^permalink:\s*(\S+)", html.read_text(encoding="utf-8",
+                      errors="ignore"), re.MULTILINE)
+        url = m.group(1) if m else f"/portfolio/{html.name}"
+        src[url] = f"portfolio/{html.name}"
     return src
 
 
@@ -207,6 +224,9 @@ def is_content_page(url: str) -> bool:
     """Page de contenu susceptible d'être orpheline (hors utilitaires/pagination)."""
     if url in UTILITY_URLS or PAGINATION_RE.match(url):
         return False
+    # Les études de cas sont du contenu, malgré leur permalink en `.html`
+    if PORTFOLIO_RE.match(url):
+        return True
     if url.endswith((".html", ".xml", ".txt", ".json", ".js")):
         return False
     return True
