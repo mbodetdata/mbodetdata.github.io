@@ -1361,6 +1361,18 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   font-size: var(--text-xs);
   color: var(--color-gray-400);
 }
+.testimonial-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--space-4);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-blue);
+  text-decoration: none;
+}
+.testimonial-source:hover { text-decoration: underline; }
+.testimonial-source span { font-size: 0.9em; }
 
 /* Testimonial carousel */
 .testimonial-carousel {

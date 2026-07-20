@@ -21,7 +21,14 @@
     </div>
     <div>
       <div class="testimonial-name">{{ t.author }}</div>
-      <div class="testimonial-role">{{ t.role }}, {{ t.company }}</div>
+      <div class="testimonial-role">{{ t.role }}{% if t.company %}, {{ t.company }}{% endif %}</div>
     </div>
   </div>
+
+  {% if t.source_url %}
+  <a class="testimonial-source" href="{{ t.source_url }}" target="_blank" rel="noopener nofollow">
+    <span aria-hidden="true">↗</span>
+    {{ t.source_label | default: "Voir la source" }}
+  </a>
+  {% endif %}
 </article>
