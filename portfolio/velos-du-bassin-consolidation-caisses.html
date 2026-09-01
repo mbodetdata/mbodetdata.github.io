@@ -1,0 +1,21 @@
+---
+layout: default
+title: "Les Vélos du Bassin • Consolidation des caisses (5 magasins) | BM Data"
+description: "Cas client location de vélos : job Talend quotidien qui collecte par FTP les exports de caisse de 5 magasins, les consolide et produit les fichiers comptables intégrables dans Sage."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisations/
+  - name: "Les Vélos du Bassin • Consolidation des caisses (5 magasins)"
+    url: /portfolio/velos-du-bassin-consolidation-caisses.html
+permalink: /portfolio/velos-du-bassin-consolidation-caisses.html
+project_link: "/portfolio/velos-du-bassin-consolidation-caisses.html"
+sector: "Location de vélos"
+---
+{% assign project = site.data.projets | where: "link", page.project_link | first %}
+{% include portfolio-case.html project=project sector=page.sector %}

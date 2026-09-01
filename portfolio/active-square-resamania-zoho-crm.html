@@ -1,0 +1,21 @@
+---
+layout: default
+title: "Active Square • Réservations et CRM synchronisés | BM Data"
+description: "Cas client sport & loisirs : synchronisation quotidienne de deux instances Résamania vers un CRM Zoho unique, sans ressaisie entre réservation et base client."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisations/
+  - name: "Active Square • Réservations et CRM synchronisés"
+    url: /portfolio/active-square-resamania-zoho-crm.html
+permalink: /portfolio/active-square-resamania-zoho-crm.html
+project_link: "/portfolio/active-square-resamania-zoho-crm.html"
+sector: "Sport & loisirs"
+---
+{% assign project = site.data.projets | where: "link", page.project_link | first %}
+{% include portfolio-case.html project=project sector=page.sector %}

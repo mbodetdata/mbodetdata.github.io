@@ -13,9 +13,98 @@
     "Migration",
     "Automatisation",
     "Tableau de bord",
-    "Connexion d'outils"
+    "Connexion d'outils",
+    "Formation"
   ],
   "projects": [
+    {
+      "id": "velos-du-bassin-consolidation-caisses",
+      "title": "Les Vélos du Bassin • Consolidation des caisses",
+      "client": "Les Vélos du Bassin",
+      "location": null,
+      "sector": "Location de vélos",
+      "category": "Automatisation",
+      "tags": ["Talend", "FTP", "Sage"],
+      "challenge": "Cinq magasins, cinq exports de caisse et plus aucune vue comptable consolidée depuis le mois de mars. Les fichiers ne pouvaient pas être intégrés en l'état par la comptabilité.",
+      "solution": "Un traitement quotidien qui récupère les exports des 5 caisses, les consolide et produit deux livrables : un fichier d'intégration comptable et un classeur de suivi par magasin.",
+      "results": [
+        { "value": "5 magasins", "label": "consolidés dans un traitement quotidien" },
+        { "value": "Vue comptable rétablie", "label": "après plusieurs mois d'interruption" },
+        { "value": "2 livrables", "label": "un export à intégrer dans Sage, un classeur de suivi" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["Talend", "FTP", "Sage"],
+      "featured": true,
+      "image": null,
+      "image_alt": "Consolidation quotidienne des caisses de 5 magasins avec Talend"
+    },
+    {
+      "id": "active-square-resamania-zoho-crm",
+      "title": "Active Square • Réservations et CRM synchronisés",
+      "client": "Active Square",
+      "location": null,
+      "sector": "Sport & loisirs",
+      "category": "Connexion d'outils",
+      "tags": ["Résamania", "Zoho DataPrep", "Zoho CRM"],
+      "challenge": "Deux sites, deux outils de réservation distincts, un seul CRM. Chaque nouveau client devait être recopié à la main de l'un vers l'autre.",
+      "solution": "Une synchronisation développée sous Zoho DataPrep qui fait converger les deux instances Résamania vers une base client et un CRM Zoho uniques.",
+      "results": [
+        { "value": "2 sites → 1 CRM", "label": "une vision unifiée des adhérents" },
+        { "value": "Inscription directe", "label": "le client arrive dans le CRM sans intervention" },
+        { "value": "Fin des copier-coller", "label": "des heures de saisie récupérées" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["Résamania", "FTP", "Zoho DataPrep", "Zoho CRM"],
+      "featured": false,
+      "image": null,
+      "image_alt": "Synchronisation de deux instances Résamania vers un CRM Zoho unique"
+    },
+    {
+      "id": "fonroche-formation-power-bi",
+      "title": "Fonroche Lighting • Formation Power BI",
+      "client": "Fonroche Lighting",
+      "location": null,
+      "sector": "Industrie",
+      "category": "Formation",
+      "tags": ["Power BI", "Power Query", "DAX"],
+      "challenge": "L'équipe devait reprendre la main sur des rapports Power BI développés par d'autres, sans en maîtriser la construction ni les choix de modélisation.",
+      "solution": "Un parcours de 21 heures en 6 demi-journées, construit sur un fil rouge unique qui suit la chaîne de production réelle d'un projet Power BI : préparer, modéliser, calculer, restituer, publier.",
+      "results": [
+        { "value": "21 heures", "label": "en 6 demi-journées, sur les données de l'entreprise" },
+        { "value": "Autonomie", "label": "sur les rapports déjà en production" },
+        { "value": "Diffusion sécurisée", "label": "publication, Apps et RLS maîtrisées" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["Power BI", "Power Query", "DAX", "Power BI Service"],
+      "featured": true,
+      "image": null,
+      "image_alt": "Formation Power BI de 21 heures pour l'équipe Fonroche Lighting"
+    },
+    {
+      "id": "declic-serrurerie-cadulis-pennylane",
+      "title": "Declic Serrurerie • Facturation automatisée",
+      "client": "Declic Serrurerie",
+      "location": null,
+      "sector": "Serrurerie & dépannage",
+      "category": "Connexion d'outils",
+      "tags": ["Cadulis", "Pennylane", "Webhook"],
+      "challenge": "Chaque intervention planifiée dans Cadulis était recopiée à la main dans l'outil de facturation. Une heure par jour, et le risque d'erreur de copier-coller qui va avec.",
+      "solution": "Une interconnexion entre Cadulis et Pennylane qui génère les brouillons de facture pré-remplis à partir des données réelles de l'intervention.",
+      "results": [
+        { "value": "1 h/jour → 15 min", "label": "de contrôle au lieu de saisie" },
+        { "value": "Zéro copier-coller", "label": "les erreurs de recopie disparaissent" },
+        { "value": "Facturation plus rapide", "label": "donc encaissée plus tôt" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["Cadulis", "Pennylane", "Webhook"],
+      "featured": false,
+      "image": null,
+      "image_alt": "Interconnexion Cadulis vers Pennylane déclenchée par webhook"
+    },
     {
       "id": "sofipel-interconnexion-keplervo",
       "title": "SOFIPEL • Pilotage multi-garages",
@@ -56,7 +145,7 @@
       "quote": null,
       "quote_author": null,
       "tools": ["Talend", "API", "PrestaShop"],
-      "featured": true,
+      "featured": false,
       "image": null,
       "image_alt": "Migration e-commerce PrestaShop avec Talend"
     },
@@ -261,7 +350,7 @@
   ],
   "cta": {
     "title": "Votre besoin ressemble à l'un de ces cas ?",
-    "subtitle": "Parlons de votre contexte. Je peux vous aider sur des sujets de migration, d'automatisation, de connexion d'outils ou de reporting — avec une approche concrète et adaptée à votre situation.",
+    "subtitle": "Parlons de votre contexte. Je peux vous aider sur des sujets de migration, d'automatisation, de connexion d'outils ou de reporting avec une approche concrète et adaptée à votre situation.",
     "primary": {
       "label": "Discuter de mon projet",
       "url": "/contact/"

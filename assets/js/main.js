@@ -140,9 +140,19 @@
       else { pill.classList.remove('visible'); }
     });
 
-    /* Position initiale sur le lien actif */
+    /* Position initiale sur le lien actif.
+       On attend que les polices soient appliquées : avec `display=swap`, les liens
+       sont d'abord rendus en police de repli, donc mesurés à la mauvaise largeur.
+       Sans ça le pill reste décalé jusqu'au rechargement suivant. */
     if (pinnedEl) {
-      setTimeout(function () { movePill(pinnedEl, true); }, 150);
+      var placePill = function () {
+        requestAnimationFrame(function () { movePill(pinnedEl, true); });
+      };
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(placePill).catch(placePill);
+      } else {
+        setTimeout(placePill, 150);
+      }
     }
 
     /* Repositionnement quand le nav se compacte au scroll */
@@ -332,11 +342,21 @@
       });
     });
 
-    /* Construction initiale après fonts/images chargées + délai pour la transition CSS du 1er item ouvert */
+    /* Construction initiale : images chargées (load) ET polices appliquées
+       (document.fonts.ready), sinon le tracé est calculé sur des positions
+       mesurées en police de repli. Le délai couvre la transition CSS du 1er item ouvert. */
+    var scheduleTimeline = function () {
+      var run = function () { setTimeout(buildTimelinePath, 450); };
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(run).catch(run);
+      } else {
+        run();
+      }
+    };
     if (document.readyState === 'complete') {
-      setTimeout(buildTimelinePath, 450);
+      scheduleTimeline();
     } else {
-      window.addEventListener('load', function () { setTimeout(buildTimelinePath, 450); });
+      window.addEventListener('load', scheduleTimeline);
     }
     window.addEventListener('resize', buildTimelinePath);
   }());

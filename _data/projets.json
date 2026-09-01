@@ -1,5 +1,41 @@
 [
   {
+    "id": "active-square-resamania-zoho-crm",
+    "link": "/portfolio/active-square-resamania-zoho-crm.html",
+    "title": "Active Square • Réservations et CRM synchronisés",
+    "client": "Active Square",
+    "sector": "Sport & loisirs",
+    "category": "Connexion d'outils",
+    "tags": ["Résamania", "Zoho DataPrep", "Zoho CRM"],
+    "featured": false,
+    "image": null,
+    "image_alt": "Synchronisation de deux instances Résamania vers un CRM Zoho unique",
+    "challenge": "Deux sites, deux outils de réservation distincts, un seul CRM. Chaque nouveau client devait être recopié à la main de l'un vers l'autre.",
+    "solution": "Une synchronisation développée sous Zoho DataPrep qui fait converger les deux instances Résamania vers une base client et un CRM Zoho uniques.",
+    "steps": [
+      "Collecte quotidienne des exports des deux instances Résamania déposés sur un serveur FTP",
+      "Développement des traitements de synchronisation sous Zoho DataPrep : mapping, normalisation, dédoublonnage sur l'adresse e-mail",
+      "Alimentation automatique de la base client et du CRM Zoho, sans manipulation de fichiers intermédiaires"
+    ],
+    "results": [
+      { "value": "2 sites → 1 CRM", "label": "une vision unifiée des adhérents" },
+      { "value": "Inscription directe", "label": "le client arrive dans le CRM sans intervention" },
+      { "value": "Fin des copier-coller", "label": "des heures de saisie récupérées" }
+    ],
+    "tech": [
+      "Chaque instance Résamania dépose un export complet au format CSV sur un serveur FTP, tous les jours à 21 h. Les traitements développés sous Zoho DataPrep alignent les deux structures sources sur un schéma commun : mapping des champs, normalisation des formats, puis dédoublonnent sur l'adresse e-mail, champ obligatoire et unique côté Résamania, avant écriture dans Zoho.",
+      "Le rapprochement se fait sur un export complet plutôt que sur un différentiel : à chaque exécution, le CRM reflète l'état réel de l'outil de réservation, corrections comprises. À ce jour, aucun cas de double inscription entre les deux sites n'a été rencontré."
+    ],
+    "quote": null,
+    "quote_author": null,
+    "tools": ["Résamania", "FTP", "Zoho DataPrep", "Zoho CRM"],
+    "related": [
+      { "url": "/blog/ressaisies-tpe-pme-cout-cache/", "label": "Le coût caché des ressaisies en TPE/PME" },
+      { "url": "/blog/architecture-data-PME/", "label": "Structurer une architecture data de PME" },
+      { "url": "/portfolio/sofipel-interconnexion-keplervo.html", "label": "SOFIPEL • Interconnexion KeplerVo" }
+    ]
+  },
+  {
     "id": "dashboardtv-operations",
     "link": "/portfolio/dashboardtv-operations.html",
     "title": "DashboardTV • Opérations temps réel",
@@ -29,6 +65,43 @@
       { "url": "/blog/tableau-de-bord-et-pilotage-temps-reel/", "label": "Tableau de bord et pilotage en temps réel : ce que ça change" },
       { "url": "/blog/tableau-de-bord-comment-piloter-son-activite/", "label": "Piloter son activité avec un tableau de bord" },
       { "url": "/portfolio/reporting-change-itop.html", "label": "Reporting Change • iTop" }
+    ]
+  },
+  {
+    "id": "declic-serrurerie-cadulis-pennylane",
+    "link": "/portfolio/declic-serrurerie-cadulis-pennylane.html",
+    "title": "Declic Serrurerie • Facturation automatisée",
+    "client": "Declic Serrurerie",
+    "sector": "Serrurerie & dépannage",
+    "category": "Connexion d'outils",
+    "tags": ["Cadulis", "Pennylane", "Webhook"],
+    "featured": false,
+    "image": null,
+    "image_alt": "Interconnexion Cadulis vers Pennylane déclenchée par webhook",
+    "challenge": "Chaque intervention planifiée dans Cadulis était recopiée à la main dans l'outil de facturation. Une heure par jour, et le risque d'erreur de copier-coller qui va avec.",
+    "solution": "Une interconnexion entre Cadulis et Pennylane qui génère les brouillons de facture pré-remplis à partir des données réelles de l'intervention.",
+    "steps": [
+      "Configuration de l'interconnexion depuis Cadulis, sans brique tierce à héberger",
+      "Cadrage des règles de correspondance entre données d'intervention et lignes de facture",
+      "Déclenchement par webhook et génération des brouillons de facture pré-remplis, laissés à la validation du dirigeant"
+    ],
+    "results": [
+      { "value": "1 h/jour → 15 min", "label": "de contrôle au lieu de saisie" },
+      { "value": "Zéro copier-coller", "label": "les erreurs de recopie disparaissent" },
+      { "value": "Facturation plus rapide", "label": "donc encaissée plus tôt" }
+    ],
+    "tech": [
+      "L'interconnexion est configurée directement dans Cadulis, via son connecteur intégré vers Pennylane : aucune brique tierce à héberger ni à maintenir. Sur une TPE sans informaticien, c'est un critère de conception à part entière, la solution la plus simple qui fait le travail est celle qui tiendra dans le temps.",
+      "Le déclenchement est événementiel : un webhook émis par Cadulis appelle Pennylane à la volée, sans traitement planifié ni fenêtre d'attente. Les variables de l'intervention, client, prestation réalisée, éléments facturables, sont mappées sur les lignes de facture attendues. Point de conception volontaire : le traitement crée un brouillon, jamais une facture émise. La validation reste humaine c'est ce qui rend l'automatisation acceptable sur un objet aussi sensible qu'une facture client."
+    ],
+    "quote": null,
+    "quote_author": null,
+    "tools": ["Cadulis", "Pennylane", "Webhook"],
+    "related": [
+      { "url": "/blog/ressaisies-tpe-pme-cout-cache/", "label": "Le coût caché des ressaisies en TPE/PME" },
+      { "url": "/blog/connecter-ses-logiciels-entre-eux/", "label": "Connecter ses logiciels entre eux sans tout changer" },
+      { "url": "/blog/facturation-electronique-2026-pme-integration-logiciels/", "label": "Facturation électronique 2026 : ce que les PME doivent préparer" },
+      { "url": "/portfolio/edi-tms-oneworld.html", "label": "Connexion logiciels • TMS OneWorld" }
     ]
   },
   {
@@ -159,6 +232,47 @@
     ]
   },
   {
+    "id": "fonroche-formation-power-bi",
+    "link": "/portfolio/fonroche-formation-power-bi.html",
+    "title": "Fonroche Lighting • Formation Power BI",
+    "client": "Fonroche Lighting",
+    "sector": "Industrie",
+    "category": "Formation",
+    "tags": ["Power BI", "Power Query", "DAX"],
+    "featured": true,
+    "image": null,
+    "image_alt": "Formation Power BI de 21 heures pour l'équipe Fonroche Lighting",
+    "challenge": "L'équipe devait reprendre la main sur des rapports Power BI développés par d'autres, sans en maîtriser la construction ni les choix de modélisation.",
+    "solution": "Un parcours de 21 heures en 6 demi-journées, construit sur un fil rouge unique qui suit la chaîne de production réelle d'un projet Power BI : préparer, modéliser, calculer, restituer, publier.",
+    "steps": [
+      "Connexion aux sources, fichiers, dossier, API et base de données, et préparation dans Power Query",
+      "Transformations avancées, gestion des types et des erreurs pour des requêtes ré-exécutables",
+      "Modélisation en schéma en étoile, relations, table Date et mesures DAX fondamentales",
+      "DAX avancé : Time Intelligence, variables et manipulation du contexte de filtre",
+      "Conception de rapports : visuels, thème d'entreprise, interactivité et navigation",
+      "Publication dans le service Power BI : espaces de travail, Apps, actualisation et sécurité au niveau des lignes"
+    ],
+    "results": [
+      { "value": "21 heures", "label": "en 6 demi-journées, sur les données de l'entreprise" },
+      { "value": "Autonomie", "label": "sur les rapports déjà en production" },
+      { "value": "Diffusion sécurisée", "label": "publication, Apps et RLS maîtrisées" }
+    ],
+    "tech": [
+      "21 heures réparties en 6 demi-journées de 3 h 30, sur un fil rouge unique : le fichier de travail s'enrichit de séance en séance jusqu'au rapport publié et sécurisé. Ingestion et préparation d'abord, connexion à des fichiers CSV et Excel, à un dossier, à une API et à une base PostgreSQL (Supabase) puis Power Query avancé : profilage des colonnes, dépivotement, colonnes personnalisées en langage M, gestion des erreurs (try / otherwise), Append et Merge avec fuzzy matching.",
+      "Vient ensuite la modélisation schéma en étoile, cardinalités, sens de filtrage, table Date dédiée puis le DAX : CALCULATE et FILTER, variables VAR / RETURN, RANKX, et Time Intelligence (SAMEPERIODLASTYEAR, DATESYTD, périodes glissantes). La restitution couvre le choix des visuels, le thème d'entreprise, le drill-down, le drillthrough, les signets et la navigation multi-pages. La dernière demi-journée est consacrée au service Power BI : publication, espaces de travail et Apps, actualisation automatique via passerelle, gestion des accès et sécurité au niveau des lignes (RLS statique et dynamique).",
+      "L'ordre n'est pas neutre : la modélisation et les mesures passent avant la création des rapports, parce qu'un rapport n'a de sens que s'il s'appuie sur un modèle relié et des mesures fiables. La RLS arrive en dernier parce qu'elle s'appuie sur les relations du modèle. Cet enchaînement évite de reconstruire ou republier les rapports en cours de formation."
+    ],
+    "quote": null,
+    "quote_author": null,
+    "tools": ["Power BI", "Power Query", "DAX", "Power BI Service"],
+    "related": [
+      { "url": "/blog/excel-vs-power-bi-lequel-choisir/", "label": "Excel ou Power BI : lequel choisir ?" },
+      { "url": "/blog/automatiser-ses-reportings-guide-pratique/", "label": "Automatiser ses reportings : guide pratique" },
+      { "url": "/blog/architecture-data-PME/", "label": "Structurer une architecture data de PME" },
+      { "url": "/portfolio/reporting-change-itop.html", "label": "Reporting Change • iTop" }
+    ]
+  },
+  {
     "id": "frele-loup-migration-prestashop",
     "link": "/portfolio/frele-loup-migration-prestashop.html",
     "title": "Frère-Loup • Migration e-commerce",
@@ -166,7 +280,7 @@
     "sector": "E-commerce",
     "category": "Migration",
     "tags": ["Migration", "Talend", "PrestaShop"],
-    "featured": true,
+    "featured": false,
     "image": null,
     "image_alt": "Migration e-commerce PrestaShop avec Talend",
     "challenge": "La migration de la boutique devait conserver l'intégralité des produits, des clients et des commandes sans perte de données.",
@@ -348,6 +462,43 @@
       { "url": "/blog/architecture-data-PME/", "label": "Structurer une architecture data de PME" },
       { "url": "/blog/ressaisies-tpe-pme-cout-cache/", "label": "Le coût caché des ressaisies en TPE/PME" },
       { "url": "/blog/automatiser-ses-reportings-guide-pratique/", "label": "Automatiser ses reportings : guide pratique" }
+    ]
+  },
+  {
+    "id": "velos-du-bassin-consolidation-caisses",
+    "link": "/portfolio/velos-du-bassin-consolidation-caisses.html",
+    "title": "Les Vélos du Bassin • Consolidation des caisses (5 magasins)",
+    "client": "Les Vélos du Bassin",
+    "sector": "Location de vélos",
+    "category": "Automatisation",
+    "tags": ["Talend", "FTP", "Sage"],
+    "featured": true,
+    "image": null,
+    "image_alt": "Consolidation quotidienne des caisses de 5 magasins avec Talend",
+    "challenge": "Cinq magasins, cinq exports de caisse et plus aucune vue comptable consolidée depuis le mois de mars. Les fichiers ne pouvaient pas être intégrés en l'état par la comptabilité.",
+    "solution": "Un traitement quotidien qui récupère les exports des 5 caisses, les consolide et produit deux livrables : un fichier d'intégration comptable et un classeur de suivi par magasin.",
+    "steps": [
+      "Récupération par FTP des exports de caisse des 5 magasins, tous les jours à 11 h",
+      "Contrôle de présence des fichiers, avec alerte et reprise sur erreur si un magasin n'a pas déposé le sien",
+      "Consolidation et comptabilisation des mouvements des 5 points de vente",
+      "Génération d'un export prêt à intégrer en comptabilité et d'un classeur de suivi à 5 onglets, envoyés automatiquement"
+    ],
+    "results": [
+      { "value": "5 magasins", "label": "consolidés dans un traitement quotidien" },
+      { "value": "Vue comptable rétablie", "label": "après plusieurs mois d'interruption" },
+      { "value": "2 livrables", "label": "un export à intégrer dans Sage, un classeur de suivi" }
+    ],
+    "tech": [
+      "Un job Talend s'exécute tous les jours à 11 h. Il récupère par FTP les exports de caisse au format CSV des cinq magasins et contrôle leur présence avant tout calcul : si un magasin n'a pas déposé son fichier, une alerte est levée et une reprise sur erreur est déclenchée. Un total faux est plus dangereux qu'un total absent c'est là que se joue la confiance dans le chiffre livré.",
+      "Deux livrables sont produits à chaque exécution : un export CSV consolidé listant l'ensemble des magasins et des mouvements d'argent, prêt à être intégré en comptabilité ; et un classeur Excel à cinq onglets, un par magasin, pour le suivi comptable au quotidien. Les deux partent automatiquement par mail."
+    ],
+    "quote": null,
+    "quote_author": null,
+    "tools": ["Talend", "FTP", "Sage"],
+    "related": [
+      { "url": "/blog/automatiser-ses-reportings-guide-pratique/", "label": "Automatiser ses reportings : guide pratique" },
+      { "url": "/blog/ressaisies-tpe-pme-cout-cache/", "label": "Le coût caché des ressaisies en TPE/PME" },
+      { "url": "/portfolio/uba-data-automation.html", "label": "UBA • Data & Automatisation (Azure)" }
     ]
   }
 ]

@@ -1,0 +1,21 @@
+---
+layout: default
+title: "Fonroche Lighting • Formation Power BI | BM Data"
+description: "Formation Power BI de 21 h en 6 demi-journées : Power Query avancé, modélisation en étoile, DAX et Time Intelligence, conception de rapports, publication et RLS."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisations/
+  - name: "Fonroche Lighting • Formation Power BI"
+    url: /portfolio/fonroche-formation-power-bi.html
+permalink: /portfolio/fonroche-formation-power-bi.html
+project_link: "/portfolio/fonroche-formation-power-bi.html"
+sector: "Industrie"
+---
+{% assign project = site.data.projets | where: "link", page.project_link | first %}
+{% include portfolio-case.html project=project sector=page.sector %}

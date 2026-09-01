@@ -4527,6 +4527,53 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   line-height: 1.4;
 }
 
+/* ─── SOUS LE CAPOT (bloc technique repliable) ─── */
+.pc-block__icon-wrap--tech {
+  background: rgba(102,119,255,.12);
+  border: 1px solid rgba(102,119,255,.2);
+  color: var(--color-blue-light);
+}
+/* Le padding passe sur <summary> / <details> pour que toute la barre soit cliquable */
+.pc-block--tech { padding: 0; }
+.pc-tech__summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-8);
+  cursor: pointer;
+  list-style: none;
+  border-radius: inherit;
+  transition: background-color var(--transition-fast);
+}
+.pc-tech__summary::-webkit-details-marker { display: none; }
+.pc-tech__summary:hover { background-color: rgba(255,255,255,.04); }
+.pc-tech__summary:focus-visible {
+  outline: 2px solid var(--color-blue-light);
+  outline-offset: -2px;
+}
+.pc-tech__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+}
+.pc-tech__heading .pc-block__eyebrow,
+.pc-tech__heading .pc-block__title { display: block; margin: 0; }
+.pc-tech__chevron {
+  flex-shrink: 0;
+  opacity: .4;
+  color: rgba(255,255,255,.7);
+  transition: transform .2s ease, opacity .2s ease;
+}
+.pc-tech__summary:hover .pc-tech__chevron { opacity: .85; }
+.pc-tech[open] .pc-tech__chevron { transform: rotate(180deg); }
+.pc-tech__body { padding: 0 var(--space-8) var(--space-8); }
+.pc-tech__body .pc-block__text + .pc-block__text { margin-top: var(--space-4); }
+@media (prefers-reduced-motion: reduce) {
+  .pc-tech__summary,
+  .pc-tech__chevron { transition: none; }
+}
+
 /* ─── POUR ALLER PLUS LOIN ─── */
 .pc-block__icon-wrap--related {
   background: rgba(102,119,255,.12);

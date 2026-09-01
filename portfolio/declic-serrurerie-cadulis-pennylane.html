@@ -1,0 +1,21 @@
+---
+layout: default
+title: "Declic Serrurerie • Facturation automatisée | BM Data"
+description: "Cas client artisanat : interconnexion Cadulis → Pennylane déclenchée par webhook pour générer les brouillons de facture. 1 h de saisie par jour ramenée à 15 min de contrôle."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisations/
+  - name: "Declic Serrurerie • Facturation automatisée"
+    url: /portfolio/declic-serrurerie-cadulis-pennylane.html
+permalink: /portfolio/declic-serrurerie-cadulis-pennylane.html
+project_link: "/portfolio/declic-serrurerie-cadulis-pennylane.html"
+sector: "Serrurerie & dépannage"
+---
+{% assign project = site.data.projets | where: "link", page.project_link | first %}
+{% include portfolio-case.html project=project sector=page.sector %}

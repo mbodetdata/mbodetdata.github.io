@@ -6,6 +6,9 @@
 {% assign p = include.project %}
 {% assign g = site.data.global %}
 
+{% comment %} Le bloc « Sous le capot » est optionnel : il décale « Pour aller plus loin » de 04 à 05. {% endcomment %}
+{% if p.tech and p.tech.size > 0 %}{% assign related_num = '05' %}{% else %}{% assign related_num = '04' %}{% endif %}
+
 {% if p == nil %}
 
 <section class="pc-notfound">
@@ -170,7 +173,35 @@
           </div>
         </article>
 
-        <!-- ④ Citation (optionnelle) -->
+        <!-- ④ Sous le capot — détail technique (optionnel, replié par défaut) -->
+        {% if p.tech and p.tech.size > 0 %}
+        <article class="pc-block pc-block--tech">
+          <details class="pc-tech">
+            <summary class="pc-tech__summary">
+              <span class="pc-block__icon-wrap pc-block__icon-wrap--tech" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"/>
+                  <polyline points="8 6 2 12 8 18"/>
+                </svg>
+              </span>
+              <span class="pc-tech__heading">
+                <span class="pc-block__eyebrow">04 — Sous le capot</span>
+                <span class="pc-block__title">Le détail technique</span>
+              </span>
+              <svg class="pc-tech__chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </summary>
+            <div class="pc-block__body pc-tech__body">
+              {%- for para in p.tech -%}
+              <p class="pc-block__text">{{ para }}</p>
+              {%- endfor -%}
+            </div>
+          </details>
+        </article>
+        {% endif %}
+
+        <!-- ⑤ Citation (optionnelle) -->
         {% if p.quote %}
         <article class="pc-block pc-block--quote">
           <blockquote class="pc-quote">
@@ -183,7 +214,7 @@
         </article>
         {% endif %}
 
-        <!-- ⑤ Pour aller plus loin (optionnel) -->
+        <!-- ⑥ Pour aller plus loin (optionnel) -->
         {% if p.related and p.related.size > 0 %}
         <article class="pc-block pc-block--related">
           <header class="pc-block__header">
@@ -194,7 +225,7 @@
               </svg>
             </div>
             <div>
-              <p class="pc-block__eyebrow">04 — Pour aller plus loin</p>
+              <p class="pc-block__eyebrow">{{ related_num }} — Pour aller plus loin</p>
               <h2 class="pc-block__title">Sur le même sujet</h2>
             </div>
           </header>
