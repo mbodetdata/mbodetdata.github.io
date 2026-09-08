@@ -65,8 +65,8 @@
       "title": "Power BI",
       "subtitle": "De la source de données au rapport publié et sécurisé",
       "description": "Le parcours suit l'ordre réel d'un projet : préparer, modéliser, calculer, restituer, publier. Cet ordre n'est pas neutre — la modélisation et les mesures passent avant la création des rapports, parce qu'un rapport n'a de sens que s'il s'appuie sur un modèle relié et des mesures fiables. C'est ce qui évite de tout reconstruire en cours de route.",
-      "duration": "21 h en 6 demi-journées",
-      "duration_note": "Format de référence, celui du parcours Fonroche. Ajustable selon le niveau de départ.",
+      "duration": "Format sur mesure",
+      "duration_note": "Le parcours complet couvre les cinq étapes ci-dessous. Rythme, profondeur et périmètre s'ajustent au niveau de départ de l'équipe.",
       "modules": [
         {
           "num": "01",
