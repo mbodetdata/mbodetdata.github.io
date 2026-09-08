@@ -7,7 +7,7 @@ categories: [reporting, pilotage]
 tags: [tableau de bord, reporting, PME, pilotage, aide à la décision]
 author: Martial Bodet
 excerpt: "75 % des TPE/PME exploitent déjà leurs données pour piloter leur activité. Mais la plupart s'arrêtent à un chiffre figé, sans jamais tester la décision qui doit suivre. Voici la différence que ça change."
-image: "/assets/img/blog/27-tableau-de-bord-pme-simuler-avant-decider/logo_1024.webp"
+image: "/assets/img/blog/28-tableau-de-bord-pme-simuler-avant-decider/logo_1024.webp"
 active: true
 parent_category: data
 category_label: Reporting

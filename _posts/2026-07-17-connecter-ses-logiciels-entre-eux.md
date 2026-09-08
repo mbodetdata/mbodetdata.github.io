@@ -7,6 +7,7 @@ categories: [interconnexion, automatisation]
 tags: [connecter logiciels, interoperabilite, faire communiquer ses outils, synchronisation, CRM facturation, API, no-code, integration logiciels, automatisation TPE PME, gain de temps]
 author: Martial Bodet
 excerpt: "Une commande arrive par mail, vous la saisissez dans votre logiciel de gestion, puis vous la recopiez dans votre facturation et dans un tableau Excel. Trois fois la même information. Le problème n’est pas votre organisation : ce sont vos outils qui ne se parlent pas."
+image: "/assets/img/blog/27-connecter-ses-logiciels-entre-eux/logo_1024.webp"
 active: true
 parent_category: data
 category_label: Automatisation
