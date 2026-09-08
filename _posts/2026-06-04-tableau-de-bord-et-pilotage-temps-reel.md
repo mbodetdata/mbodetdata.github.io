@@ -185,7 +185,7 @@ Un tableau de bord connecté ne transforme pas votre entreprise. Il vous rend vo
 
 Le Baromètre Bpifrance 2026 le confirme : la trésorerie et la visibilité sur l'activité restent les deux préoccupations majeures des dirigeants de TPE/PME [5]. Piloter avec les bons chiffres n'est plus un luxe, c'est ce qui sépare ceux qui subissent leur activité de ceux qui l'anticipent.
 
-La vraie question n'est pas "est-ce que j'en ai besoin ?", si vous avez lu jusqu'ici, vous avez probablement déjà la réponse. La vraie question, c'est : par où commencer sérieusement, avec les bons indicateurs, les bonnes sources, et la garantie que ça tienne dans le temps ?
+La vraie question n'est pas "est-ce que j'en ai besoin ?", si vous avez lu jusqu'ici, vous avez probablement déjà la réponse. La vraie question, c'est : par où commencer sérieusement, avec les bons indicateurs, les bonnes sources, et la garantie que ça tienne dans le temps ? C'est exactement le périmètre de la prestation [tableaux de bord de pilotage](/tableaux-de-bord/).
 
 À quoi ça ressemble une fois en place ? L'étude de cas [pilotage temps réel des opérations DashboardTV](/portfolio/dashboardtv-operations.html) montre une collecte multi-sources consolidée dans un tableau de bord suivi au quotidien, sans ressaisie.
 

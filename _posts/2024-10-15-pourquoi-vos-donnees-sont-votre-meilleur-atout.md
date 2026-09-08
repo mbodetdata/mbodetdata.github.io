@@ -69,6 +69,8 @@ Vous n'avez pas besoin d'une équipe data pour commencer. Vous n'avez pas besoin
 
 L'intuition reste précieuse — elle sera toujours au cœur de vos décisions. Mais les données viennent la confirmer, la challenger, ou vous montrer ce que vous n'auriez pas vu autrement.
 
+C'est aussi pour ça que l'ordre compte : brancher une IA sur des données qu'on n'a pas fiabilisées revient à [amplifier le désordre au lieu de le corriger](/blog/ia-la-cerise-sur-le-gateau/).
+
 ---
 
 **Vous voulez voir concrètement ce que vos données pourraient vous apprendre ?** Contactez-moi pour un premier échange de 30 minutes, entièrement gratuit.

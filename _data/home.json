@@ -56,14 +56,17 @@
     "title": "Comment BM Data peut vous aider",
     "subtitle": "Automatisation, migration de données et reporting : des solutions concrètes pour gagner du temps, fiabiliser vos informations et mieux piloter votre activité",
     "link_label": "Découvrir les services",
-    "link_url": "/services/"
+    "link_url": "/services/",
+    "alt_note": "Vous préférez que votre équipe apprenne à le faire elle-même ?",
+    "alt_label": "Découvrir la formation",
+    "alt_url": "/formation/"
   },
   "services_featured": [
   {
     "icon": "automatisation",
     "title": "Automatiser les tâches répétitives",
     "description": "Réduisez les copier-coller, les mises à jour manuelles et les risques d’erreur grâce à des automatisations simples et adaptées à votre fonctionnement.",
-    "url": "/services/#automatisation"
+    "url": "/services/#automatisations"
   },
   {
     "icon": "migration",

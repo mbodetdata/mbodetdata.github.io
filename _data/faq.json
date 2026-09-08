@@ -16,12 +16,12 @@
         {
           "id": "q1",
           "question": "À quoi sert concrètement un accompagnement en automatisation et visualisation de données ?",
-          "answer": "Mon rôle est de vous aider à mieux exploiter les données que vous avez déjà, sans complexifier votre quotidien. Concrètement, cela peut consister à automatiser des tâches répétitives, connecter plusieurs outils, fiabiliser des fichiers ou construire un tableau de bord clair pour suivre votre activité. Le but est simple : moins de manipulations manuelles, moins d'erreurs, et une meilleure lecture de vos chiffres."
+          "answer": "Mon rôle est de vous aider à mieux exploiter les données que vous avez déjà, sans complexifier votre quotidien. Concrètement, cela peut consister à automatiser des tâches répétitives, <a href=\"/blog/connecter-ses-logiciels-entre-eux/\">connecter plusieurs outils</a>, fiabiliser des fichiers ou <a href=\"/blog/tableau-de-bord-comment-piloter-son-activite/\">construire un tableau de bord clair</a> pour suivre votre activité. Le but est simple : moins de manipulations manuelles, moins d'erreurs, et une meilleure lecture de vos chiffres."
         },
         {
           "id": "q2",
           "question": "Est-ce que mes données sont suffisantes pour commencer ?",
-          "answer": "Dans la plupart des cas, oui. Beaucoup d'entreprises ont déjà de quoi avancer avec leurs exports Excel, leur ERP, leur CRM, leur logiciel de gestion, leurs fichiers CSV ou leurs données de caisse. L'objectif n'est pas de créer plus de données, mais de mieux utiliser celles qui existent déjà."
+          "answer": "Dans la plupart des cas, oui. Beaucoup d'entreprises ont déjà de quoi avancer avec leurs exports Excel, leur ERP, leur CRM, leur logiciel de gestion, leurs fichiers CSV ou leurs <a href=\"/portfolio/velos-du-bassin-consolidation-caisses.html\">données de caisse</a>. L'objectif n'est pas de créer plus de données, mais de mieux utiliser celles qui existent déjà."
         },
         {
           "id": "q3",
@@ -31,12 +31,12 @@
         {
           "id": "q4",
           "question": "À partir de quand une entreprise a-t-elle besoin d'automatiser ses données ?",
-          "answer": "En général, le besoin apparaît quand vous perdez du temps à refaire toujours les mêmes manipulations, quand les chiffres ne sont pas fiables, quand les données sont dispersées dans plusieurs outils ou quand le reporting devient trop lourd à produire. À ce moment-là, l'automatisation et une meilleure visualisation peuvent faire gagner un temps réel."
+          "answer": "En général, le besoin apparaît quand vous perdez du temps à refaire toujours les mêmes manipulations, quand les chiffres ne sont pas fiables, quand les données sont dispersées dans plusieurs outils ou quand le reporting devient trop lourd à produire. À ce moment-là, l'automatisation et une meilleure visualisation peuvent faire gagner un temps réel. Reste à viser le bon moment : <a href=\"/blog/automatisation-pme-bon-moment/\">ni trop tôt, ni trop tard</a>."
         },
         {
           "id": "q4b",
           "question": "Je suis une très petite structure (moins de 10 personnes). Est-ce vraiment adapté à ma taille ?",
-          "answer": "Oui. C'est même souvent là que l'impact est le plus visible. Une petite structure n'a pas de DSI, pas de service IT, et chaque heure gagnée ou chaque erreur évitée a un effet direct sur le quotidien. Je travaille justement avec des entreprises de toutes tailles, y compris des structures de 2 à 10 personnes qui veulent fiabiliser leurs données ou automatiser une tâche précise sans monter un projet lourd."
+          "answer": "Oui. C'est même souvent là que l'impact est le plus visible. Une petite structure n'a pas de DSI, pas de service IT, et <a href=\"/blog/heures-perdues-taches-repetitives/\">chaque heure gagnée</a> ou chaque erreur évitée a un effet direct sur le quotidien. Je travaille justement avec des entreprises de toutes tailles, y compris des structures de 2 à 10 personnes qui veulent fiabiliser leurs données ou automatiser une tâche précise sans monter un projet lourd."
         },
         {
           "id": "q4c",
@@ -52,7 +52,7 @@
         {
           "id": "q5",
           "question": "Quel est exactement votre métier ?",
-          "answer": "Mon cœur de métier, c'est l'automatisation des flux de données et la visualisation. J'interviens sur la récupération, la transformation, la circulation, la fiabilisation et la restitution des données, notamment avec des outils comme Talend, Talaxie, n8n, Node-RED, Timi, ClicData, Power BI, Metabase ou Looker Studio."
+          "answer": "Mon cœur de métier, c'est l'automatisation des flux de données et la visualisation. J'interviens sur la récupération, la transformation, la circulation, la fiabilisation et la restitution des données, notamment avec des outils comme <a href=\"/blog/talend-studios/\">Talend, Talaxie</a>, n8n, Node-RED, Timi, ClicData, Power BI, Metabase ou Looker Studio."
         },
         {
           "id": "q6",
@@ -83,22 +83,22 @@
         {
           "id": "q10",
           "question": "Pouvez-vous automatiser mes reportings Excel ?",
-          "answer": "Oui. C'est même un besoin très fréquent. Beaucoup d'entreprises passent encore du temps à copier-coller, consolider, nettoyer et reformater des données à la main. L'automatisation permet de réduire ces tâches répétitives et de produire un reporting plus régulier et plus fiable."
+          "answer": "Oui. C'est même un besoin très fréquent. Beaucoup d'entreprises passent encore du temps à copier-coller, consolider, nettoyer et reformater des données à la main. L'automatisation permet de réduire ces tâches répétitives et de produire un reporting plus régulier et plus fiable. La démarche est détaillée pas à pas dans le guide pour <a href=\"/blog/automatiser-ses-reportings-guide-pratique/\">automatiser ses reportings</a>."
         },
         {
           "id": "q11",
           "question": "Pouvez-vous connecter plusieurs outils entre eux ?",
-          "answer": "Oui. Une mission peut consister à faire circuler l'information entre plusieurs logiciels ou plusieurs fichiers, par exemple entre un ERP, un CRM, des exports CSV, Excel, une base de données ou un outil métier. L'objectif est d'éviter les ressaisies et de créer une chaîne de données plus fluide."
+          "answer": "Oui. Une mission peut consister à faire circuler l'information entre plusieurs logiciels ou plusieurs fichiers, par exemple entre un ERP, un CRM, des exports CSV, Excel, une base de données ou un outil métier. L'objectif est d'<a href=\"/blog/ressaisies-tpe-pme-cout-cache/\">éviter les ressaisies</a> et de créer une chaîne de données plus fluide."
         },
         {
           "id": "q12",
           "question": "Créez-vous aussi des tableaux de bord ?",
-          "answer": "Oui. Je conçois des tableaux de bord pour rendre les données plus lisibles et plus exploitables. Le but n'est pas d'afficher un maximum de graphiques, mais de vous donner une vue claire, utile et compréhensible de vos données."
+          "answer": "Oui. Je conçois des tableaux de bord pour rendre les données plus lisibles et plus exploitables. Le but n'est pas d'afficher un maximum de graphiques, mais de vous donner une vue claire, utile et compréhensible de vos données. Un bon tableau de bord doit d'ailleurs <a href=\"/blog/tableau-de-bord-et-pilotage-temps-reel/\">refléter l'activité en cours</a>, pas seulement le mois dernier."
         },
         {
           "id": "q13",
           "question": "Intervenez-vous sur des projets simples ou seulement sur des sujets techniques complexes ?",
-          "answer": "Les deux. Une mission peut être très simple, comme automatiser un export ou fiabiliser un reporting existant. Elle peut aussi être plus technique, avec plusieurs sources de données, des transformations, des règles métier ou une restitution dans un outil de BI. L'important est de garder une solution proportionnée à votre besoin."
+          "answer": "Les deux. Une mission peut être très simple, comme automatiser un export ou fiabiliser un reporting existant — par exemple <a href=\"/portfolio/declic-serrurerie-cadulis-pennylane.html\">générer les factures à partir des interventions déjà planifiées</a>. Elle peut aussi être plus technique, avec plusieurs sources de données, des transformations, des règles métier ou une restitution dans un outil de BI. L'important est de garder une solution proportionnée à votre besoin."
         }
       ]
     },
@@ -109,22 +109,22 @@
         {
           "id": "q14",
           "question": "Avec quels outils travaillez-vous ?",
-          "answer": "J'interviens notamment avec Talend, Talaxie, n8n, Node-RED, Timi, ClicData, Power BI, Metabase et Looker Studio. Le choix de l'outil dépend du contexte, de votre existant, de votre budget et du niveau de simplicité recherché."
+          "answer": "J'interviens notamment avec <a href=\"/blog/utilisation-talend/\">Talend, Talaxie</a>, n8n, Node-RED, Timi, ClicData, Power BI, Metabase et Looker Studio. Le choix de l'outil dépend du contexte, de votre existant, de votre budget et du niveau de simplicité recherché."
         },
         {
           "id": "q15",
           "question": "Devrai-je changer mes outils actuels ?",
-          "answer": "Pas forcément. Je commence toujours par regarder ce que vous utilisez déjà. Si votre existant peut être amélioré sans tout refaire, c'est souvent la meilleure option. Je ne pousse pas un nouvel outil pour le principe ; je le recommande seulement s'il apporte un vrai gain."
+          "answer": "Pas forcément. Je commence toujours par regarder ce que vous utilisez déjà. Si votre existant peut être amélioré sans tout refaire, c'est souvent la meilleure option. Je ne pousse pas un nouvel outil pour le principe ; je le recommande seulement s'il apporte un vrai gain. Et si un changement s'impose, tout l'enjeu est de <a href=\"/blog/changer-logiciel-sans-perdre-donnees-pme/\">changer de logiciel sans perdre vos données</a>."
         },
         {
           "id": "q16",
           "question": "Power BI, Metabase ou Looker Studio : est-ce adapté à une petite structure ?",
-          "answer": "Oui, à condition de choisir le bon outil pour le bon besoin. Une petite structure n'a pas besoin d'une usine à gaz. L'enjeu est d'avoir un tableau de bord simple à maintenir, lisible et utile au quotidien. Mon rôle est justement de vous orienter vers une solution cohérente avec votre niveau de maturité et vos moyens."
+          "answer": "Oui, à condition de choisir le bon outil pour le bon besoin. Une petite structure n'a pas besoin d'une usine à gaz. L'enjeu est d'avoir un tableau de bord simple à maintenir, lisible et utile au quotidien. Mon rôle est justement de vous orienter vers une solution cohérente avec <a href=\"/score-maturite-data/\">votre niveau de maturité</a> et vos moyens."
         },
         {
           "id": "q17",
           "question": "Peut-on garder Excel en complément ?",
-          "answer": "Oui, bien sûr. Excel reste souvent utile pour certaines saisies, certains contrôles ou certains exports. L'objectif n'est pas d'opposer Excel aux outils de BI, mais de donner à chaque outil le bon rôle dans votre organisation."
+          "answer": "Oui, bien sûr. Excel reste souvent utile pour certaines saisies, certains contrôles ou certains exports. L'objectif n'est pas d'<a href=\"/blog/excel-vs-power-bi-lequel-choisir/\">opposer Excel aux outils de BI</a>, mais de donner à chaque outil le bon rôle dans votre organisation."
         }
       ]
     },
@@ -140,12 +140,12 @@
         {
           "id": "q19",
           "question": "Peut-on commencer petit ?",
-          "answer": "Oui. C'est souvent la meilleure approche. On peut démarrer par un besoin précis : automatiser un fichier, connecter deux outils, fiabiliser un reporting ou créer un premier tableau de bord. Cela permet d'obtenir des résultats concrets rapidement, sans lancer un projet trop ambitieux dès le départ."
+          "answer": "Oui. C'est souvent la meilleure approche. On peut démarrer par un besoin précis : automatiser un fichier, <a href=\"/portfolio/active-square-resamania-zoho-crm.html\">connecter deux outils</a>, fiabiliser un reporting ou créer un premier tableau de bord. Cela permet d'obtenir des résultats concrets rapidement, sans lancer un projet trop ambitieux dès le départ."
         },
         {
           "id": "q19b",
           "question": "En combien de temps est-ce que je verrai des résultats concrets ?",
-          "answer": "Pour une intervention ciblée — automatiser un traitement récurrent ou fiabiliser un reporting existant — les premiers résultats sont visibles en quelques jours à quelques semaines. Pour un projet plus structuré avec plusieurs sources de données ou un tableau de bord connecté, le délai est plus long mais cadré dès le départ. Dans tous les cas, je préfère livrer quelque chose d'utile rapidement plutôt que de promettre un projet ambitieux qui tarde à produire de la valeur."
+          "answer": "Pour une intervention ciblée — automatiser un traitement récurrent ou fiabiliser un reporting existant — les premiers résultats sont visibles en quelques jours à quelques semaines. Pour un projet plus structuré avec plusieurs sources de données ou un tableau de bord connecté, le délai est plus long mais cadré dès le départ. Dans tous les cas, je préfère livrer quelque chose d'utile rapidement plutôt que de promettre un projet ambitieux qui tarde à produire de la valeur. Pour situer l'enjeu : <a href=\"/blog/heures-perdues-taches-repetitives/\">combien d'heures les tâches répétitives coûtent-elles réellement chaque semaine</a> ?"
         },
         {
           "id": "q20",
@@ -166,17 +166,17 @@
         {
           "id": "q22",
           "question": "Mes données seront-elles traitées de manière confidentielle ?",
-          "answer": "Oui. La confidentialité fait partie du cadre de travail. Les modalités d'accès, d'échange et de traitement des données doivent être définies clairement dès le départ. Si besoin, un accord de confidentialité peut être prévu."
+          "answer": "Oui. La confidentialité fait partie du cadre de travail. Les modalités d'accès, d'échange et de traitement des données doivent être définies clairement dès le départ. Si besoin, un accord de confidentialité peut être prévu. Côté technique, cela passe aussi par des pratiques concrètes, comme <a href=\"/blog/chiffrer-des-mots-de-passe-AES/\">ne jamais laisser un mot de passe en clair dans un traitement</a>."
         },
         {
           "id": "q23",
           "question": "Intervenez-vous sur le RGPD ou la conformité juridique ?",
-          "answer": "Je peux être attentif aux bonnes pratiques de traitement des données dans le cadre technique du projet, mais je ne me présente pas comme expert juridique ou DPO. Si vous avez un besoin spécifique en conformité RGPD ou en accompagnement juridique, je préfère vous orienter vers un spécialiste."
+          "answer": "Je peux être attentif aux bonnes pratiques de traitement des données dans le cadre technique du projet, mais je ne me présente pas comme expert juridique ou DPO. Si vous avez un besoin spécifique en <a href=\"/blog/rgpd-donnees-clients-guide-pme/\">conformité RGPD</a> ou en accompagnement juridique, je préfère vous orienter vers un spécialiste."
         },
         {
           "id": "q24",
           "question": "Que se passe-t-il après la fin de la mission ?",
-          "answer": "Je peux rester disponible pour un ajustement, une correction, une évolution ou un accompagnement léger selon le besoin. L'objectif est de vous livrer quelque chose d'utile et compréhensible, pas de vous rendre dépendant inutilement."
+          "answer": "Je peux rester disponible pour un ajustement, une correction, une évolution ou un accompagnement léger selon le besoin. L'objectif est de vous livrer quelque chose d'utile et compréhensible, pas de vous rendre dépendant inutilement. Quand l'autonomie de votre équipe est justement l'objectif, la <a href=\"/formation/\">formation</a> est parfois la meilleure suite."
         }
       ]
     },

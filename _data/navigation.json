@@ -12,6 +12,9 @@
   "footer_col1": [
     { "label": "Accueil",       "url": "/" },
     { "label": "Services",      "url": "/services/" },
+    { "label": "Interconnexion", "url": "/interconnexion-logiciels/" },
+    { "label": "Tableaux de bord", "url": "/tableaux-de-bord/" },
+    { "label": "Formation",     "url": "/formation/" },
     { "label": "Réalisations",  "url": "/realisations/" },
     { "label": "À propos",      "url": "/a-propos/" }
   ],

@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "title": "Connecter vos logiciels entre eux — TPE et PME",
+    "description": "Vos outils ne communiquent pas et vous ressaisissez les mêmes informations ? J'interconnecte vos logiciels métier, CRM, ERP et facturation — Talend, n8n, Power Automate, API ou webhook, selon votre existant. Devis gratuit sous 24 h."
+  },
+  "hero": {
+    "eyebrow": "Interconnexion de logiciels",
+    "title_lead": "Connecter vos logiciels",
+    "title_accent": "pour ne plus ressaisir deux fois la même information",
+    "subtitle": "Un devis dans un outil, une facture dans un autre, un fichier Excel pour recoller le tout : la même information circule à la main. Je fais communiquer vos outils entre eux, sans remplacer ce qui fonctionne déjà.",
+    "pills": [
+      "Sans changer vos outils",
+      "Sur votre existant",
+      "Agen et partout en France",
+      "Devis sous 24 h"
+    ]
+  },
+  "intro": {
+    "title": "Le problème n'est pas votre organisation, ce sont vos outils",
+    "text": "Dans la plupart des TPE et PME, chaque logiciel a été choisi pour une bonne raison, à un moment donné, pour résoudre un problème précis. Le souci n'est pas là. Le souci, c'est que personne ne les a jamais fait se parler — alors ce sont les personnes qui font le pont, à la main, tous les jours.",
+    "text2": "Une interconnexion, c'est simplement supprimer ce pont manuel. La donnée saisie une fois arrive toute seule là où elle doit aller."
+  },
+  "signs": {
+    "title": "Vous êtes concerné si",
+    "subtitle": "Quelques situations qui reviennent presque à chaque fois.",
+    "items": [
+      {
+        "icon": "database",
+        "title": "Vous saisissez deux fois la même chose",
+        "text": "Un client créé dans le logiciel de gestion, puis recréé dans la facturation. Une commande notée dans un outil, recopiée dans un autre."
+      },
+      {
+        "icon": "package",
+        "title": "Excel sert de pont entre deux outils",
+        "text": "On exporte d'un côté, on retraite le fichier, on réimporte de l'autre. Chaque semaine, parfois chaque jour, toujours par la même personne."
+      },
+      {
+        "icon": "clock",
+        "title": "Les chiffres diffèrent selon l'outil consulté",
+        "text": "Le CRM dit une chose, la comptabilité une autre. Personne ne sait vraiment lequel a raison, alors on retourne compter à la main."
+      },
+      {
+        "icon": "users",
+        "title": "Une absence bloque toute la chaîne",
+        "text": "Quand la personne qui fait la recopie est en congé, le flux s'arrête. C'est le signe qu'un processus repose sur quelqu'un plutôt que sur un système."
+      },
+      {
+        "icon": "building",
+        "title": "Votre logiciel métier n'a pas de connecteur",
+        "text": "Pas d'intégration native avec votre facturation ou votre CRM, et l'éditeur n'a rien prévu. C'est fréquent, et ce n'est presque jamais bloquant."
+      },
+      {
+        "icon": "map",
+        "title": "Les erreurs se découvrent trop tard",
+        "text": "Une ligne mal recopiée, un montant décalé, un client en double : on s'en aperçoit à la clôture, quand c'est le plus coûteux à corriger."
+      }
+    ]
+  },
+  "chain": {
+    "title": "Ce que veut dire « interconnecter », concrètement",
+    "subtitle": "Quatre étapes, toujours les mêmes, quels que soient les outils en jeu.",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Récupérer",
+        "description": "Aller chercher la donnée là où elle est : base de données, API, fichier déposé, export planifié, webhook. Y compris dans des logiciels qui n'avaient rien prévu pour ça."
+      },
+      {
+        "number": "2",
+        "title": "Transformer",
+        "description": "Les deux outils ne parlent pas la même langue. Codes articles, formats de date, taux de TVA, unités : les règles de correspondance sont posées une fois, puis appliquées à chaque passage."
+      },
+      {
+        "number": "3",
+        "title": "Mettre à disposition",
+        "description": "La donnée arrive dans l'outil cible au bon format : fiche client créée, brouillon de facture pré-rempli, ligne de commande intégrée, fichier prêt à charger."
+      },
+      {
+        "number": "4",
+        "title": "Surveiller",
+        "description": "Un flux sans surveillance finit par tomber sans que personne le voie. Les lignes rejetées sont tracées et les anomalies signalées, pour que le silence veuille dire que tout va bien."
+      }
+    ]
+  },
+  "tools": {
+    "eyebrow": "Sur votre existant",
+    "title": "Je m'adapte à vos outils, pas l'inverse",
+    "text": "Il n'existe pas un bon outil d'interconnexion. Il y a celui qui convient à votre existant, à votre budget et à ce que vous pourrez maintenir dans la durée. Selon les cas, ce sera un ETL, une plateforme d'automatisation, un appel d'API direct ou un simple dépôt de fichier planifié.",
+    "groups": [
+      {
+        "label": "ETL et intégration",
+        "items": [
+          "Talend",
+          "Talaxie",
+          "SQL",
+          "Python"
+        ]
+      },
+      {
+        "label": "Plateformes d'automatisation",
+        "items": [
+          "n8n",
+          "Power Automate",
+          "Zoho DataPrep",
+          "Node-RED"
+        ]
+      },
+      {
+        "label": "Modes d'échange",
+        "items": [
+          "API REST",
+          "Webhook",
+          "EDI",
+          "FTP / SFTP",
+          "Export planifié"
+        ]
+      }
+    ],
+    "note": "Et si votre logiciel métier n'offre aucune de ces portes d'entrée, il en reste presque toujours une : un export, une base de données, ou un fichier déposé quelque part."
+  },
+  "cases": {
+    "title": "Des interconnexions déjà en production",
+    "subtitle": "Six contextes différents, six piles techniques différentes. C'est le besoin qui décide, pas l'outil.",
+    "categories": [
+      "Connexion d'outils",
+      "Interconnexion",
+      "EDI"
+    ]
+  },
+  "process": {
+    "title": "Comment ça se passe",
+    "subtitle": "Pas de projet de six mois pour connecter deux outils.",
+    "steps": [
+      {
+        "number": "1",
+        "title": "On regarde ce qui circule à la main",
+        "description": "Un échange de 30 minutes suffit souvent à identifier le trajet exact de l'information et l'endroit où elle est recopiée."
+      },
+      {
+        "number": "2",
+        "title": "Je vous dis si c'est faisable, et à quel prix",
+        "description": "Je vérifie ce que vos outils permettent réellement. Si l'interconnexion n'est pas la bonne réponse, je vous le dis avant de faire un devis."
+      },
+      {
+        "number": "3",
+        "title": "Je construis et je teste sur vos données",
+        "description": "Le flux est développé puis rejoué sur vos données réelles, y compris les cas tordus, jusqu'à ce que le résultat soit celui attendu."
+      },
+      {
+        "number": "4",
+        "title": "Ça tourne, et vous êtes prévenu si ça coince",
+        "description": "Mise en production, surveillance des rejets, et une alerte si un jour le flux ne passe plus."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "items": [
+      {
+        "q": "Faut-il changer nos logiciels actuels ?",
+        "a": "Non, et c'est justement l'intérêt. Une interconnexion se construit autour de vos outils existants. Changer de logiciel est un autre chantier, plus lourd, qui ne se justifie que si l'outil lui-même ne convient plus."
+      },
+      {
+        "q": "Et si notre logiciel n'a pas d'API ?",
+        "a": "C'est le cas le plus fréquent en TPE et PME, et ce n'est presque jamais bloquant. Il reste en général un export programmable, une base de données accessible, ou un fichier déposé automatiquement quelque part. C'est suffisant pour construire un flux fiable."
+      },
+      {
+        "q": "Combien de temps pour connecter deux outils ?",
+        "a": "Une interconnexion simple entre deux logiciels se met en place en quelques jours. Ce qui allonge le délai, ce n'est presque jamais la technique : ce sont les règles métier à clarifier, les cas particuliers et les accès à obtenir."
+      },
+      {
+        "q": "Que se passe-t-il si le flux tombe en panne ?",
+        "a": "Un flux correctement construit trace ce qu'il rejette et signale ce qu'il ne sait pas traiter. Vous êtes prévenu, avec la ligne concernée et la raison. C'est la différence entre un flux qui tient dans la durée et un script qui marchait le premier mois."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Combien d'heures par semaine passent en recopie chez vous ?",
+    "subtitle": "Un échange de 30 minutes suffit à savoir si vos outils peuvent se parler, et ce que ça coûterait. Gratuit, sans engagement.",
+    "primary": {
+      "label": "Demander un devis",
+      "url": "/contact/?service=interconnexion"
+    },
+    "secondary": {
+      "label": "Voir toutes les prestations",
+      "url": "/services/"
+    }
+  }
+}

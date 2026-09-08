@@ -1,8 +1,15 @@
 ---
 layout: page
-title: "Services data pour TPE/PME"
-description: "Automatisez vos tâches répétitives, sécurisez votre changement d'outil ou mettez en place un reporting utile. BM Data accompagne les TPE et PME à Agen et partout en France."
+title: "Automatisation et reporting de données pour PME"
+description: "Automatisation des tâches répétitives, migration de données et tableaux de bord sur mesure pour TPE et PME. Consultant data indépendant à Agen, intervention partout en France. Devis gratuit sous 24 h."
 permalink: /services/
+# Anciennes URLs de la structure precedente, toujours positionnees et en 404 :
+# /services-talend-talaxie/ (450 impr., pos. 10,6), /services-powerbi/ (244 impr.),
+# /methodes/ (23 impr.).
+redirect_from:
+  - /services-talend-talaxie/
+  - /services-powerbi/
+  - /methodes/
 body_class: "page-services"
 ---
 
@@ -24,7 +31,7 @@ body_class: "page-services"
           <span>Services</span>
         </nav>
         <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
-        <h1 id="services-title" class="svc-hero__title">Des solutions simples pour <span class="svc-hero__accent">automatiser, migrer et mieux suivre vos chiffres</span></h1>
+        <h1 id="services-title" class="svc-hero__title">Des solutions simples pour <span class="svc-hero__accent">automatiser, connecter, migrer et mieux suivre vos chiffres</span></h1>
       </div>
       <div class="page-hero__right">
         <p class="svc-hero__sub">{{ d.hero.subtitle }}</p>
@@ -53,6 +60,7 @@ body_class: "page-services"
       <h2>{{ d.intro.title }}</h2>
       <p>{{ d.intro.text }}</p>
       <p>Envie de voir la démarche concrètement avant d'en discuter ? Le guide pour <a href="{{ '/blog/automatiser-ses-reportings-guide-pratique/' | relative_url }}">automatiser ses reportings pas à pas</a> détaille les cinq niveaux, du Power Query à l'automatisation complète des flux.</p>
+      <p>Certains besoins reviennent si souvent qu'ils ont leur propre page : <a href="{{ '/tableaux-de-bord/' | relative_url }}">construire un tableau de bord de pilotage</a>, ou <a href="{{ '/interconnexion-logiciels/' | relative_url }}">faire communiquer vos logiciels entre eux</a> pour que la même information cesse d'être saisie deux fois.</p>
       <p>Deux autres repères, selon l'endroit où vous en êtes : <a href="{{ '/blog/tableau-de-bord-comment-piloter-son-activite/' | relative_url }}">piloter son activité avec un tableau de bord</a> aide à choisir les bons indicateurs avant même de choisir l'outil, tandis que <a href="{{ '/blog/architecture-data-PME/' | relative_url }}">structurer une architecture data de PME</a> s'adresse à ceux dont les sources se multiplient et dont le reporting doit tenir dans la durée.</p>
     </div>
 
@@ -138,6 +146,13 @@ body_class: "page-services"
                 {{ s.cta.label }}
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
+
+              {% if s.detail_url %}
+              <a href="{{ s.detail_url | relative_url }}" class="svc-card__detail">
+                Voir le détail de la prestation
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              {% endif %}
             </div>
 
           </div>
@@ -171,6 +186,52 @@ body_class: "page-services"
 
       </article>
       {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     FORMATION — autre forme d'accompagnement
+     ══════════════════════════════════════════════ -->
+{% assign ft = d.formation_teaser %}
+<section class="section svc-formation-section" aria-labelledby="svc-formation-title">
+  <div class="container">
+    <div class="svc-formation fade-up">
+
+      <div class="svc-formation__main">
+        <span class="svc-formation__eyebrow">
+          <span class="svc-formation__icon" aria-hidden="true">
+            {% include icons/service-icon.html id='formation' %}
+          </span>
+          {{ ft.eyebrow }}
+        </span>
+        <h2 id="svc-formation-title" class="svc-formation__title">{{ ft.title }}</h2>
+        <p class="svc-formation__text">{{ ft.text }}</p>
+
+        <div class="svc-formation__actions">
+          <a href="{{ ft.cta.url | relative_url }}" class="btn btn-primary">
+            {{ ft.cta.label }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <p class="svc-formation__proof">
+            {{ ft.proof.text }} —
+            <a href="{{ ft.proof.url | relative_url }}">{{ ft.proof.label }}</a>
+          </p>
+        </div>
+      </div>
+
+      <ul class="svc-formation__list">
+        {% for item in ft.items %}
+        <li>
+          <span class="svc-formation__check" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <span>{{ item }}</span>
+        </li>
+        {% endfor %}
+      </ul>
 
     </div>
   </div>

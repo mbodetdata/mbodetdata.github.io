@@ -1,11 +1,11 @@
 {
   "meta": {
-    "title": "Services — Automatisation, migration et reporting pour TPE/PME | BM Data",
+    "title": "Services — Automatisation, interconnexion, migration et reporting pour TPE/PME | BM Data",
     "description": "Automatisez vos tâches répétitives, sécurisez votre changement d’outil ou mettez en place un reporting utile. BM Data accompagne les TPE et PME à Agen et partout en France."
   },
   "hero": {
     "eyebrow": "Services",
-    "title": "Des solutions simples pour automatiser, migrer et mieux suivre vos chiffres",
+    "title": "Des solutions simples pour automatiser, connecter, migrer et mieux suivre vos chiffres",
     "subtitle": "BM Data aide les TPE et PME à réduire les tâches manuelles, faciliter les changements d’outils et mettre en place des reportings clairs, sans jargon technique."
   },
   "intro": {
@@ -26,7 +26,13 @@
         "Gain de temps au quotidien",
         "Traitements plus réguliers et plus fiables"
       ],
-      "tools": ["Talend", "Talaxie", "Python", "Power Automate", "API"],
+      "tools": [
+        "Talend",
+        "Talaxie",
+        "Python",
+        "Power Automate",
+        "API"
+      ],
       "target": "TPE et PME qui veulent gagner du temps sur leurs tâches répétitives",
       "example": "Un gérant passait 2 h chaque lundi à copier ses chiffres de vente dans un fichier de suivi. Après automatisation : le récapitulatif arrive tout seul dans sa boîte mail le lundi matin à 8 h.",
       "cta": {
@@ -35,9 +41,37 @@
       }
     },
     {
+      "id": "interconnexion",
+      "icon": "interconnexion",
+      "number": "02",
+      "title": "Interconnexion de logiciels",
+      "subtitle": "Vos outils se parlent, vous arrêtez de recopier",
+      "description": "Un devis dans un outil, une facture dans un autre, un fichier Excel pour recoller le tout : la même information circule à la main. Je fais communiquer vos logiciels entre eux, sans remplacer ce qui fonctionne déjà.",
+      "benefits": [
+        "Fin des doubles saisies",
+        "Une information saisie une seule fois",
+        "Des chiffres cohérents d'un outil à l'autre",
+        "Aucun changement de logiciel imposé"
+      ],
+      "tools": [
+        "API",
+        "Webhook",
+        "Talend",
+        "n8n",
+        "Power Automate"
+      ],
+      "target": "TPE et PME dont les logiciels ne communiquent pas entre eux",
+      "example": "Chaque intervention planifiée était recopiée à la main dans l'outil de facturation : une heure par jour. Après interconnexion, les brouillons de facture arrivent pré-remplis, il ne reste qu'à contrôler.",
+      "detail_url": "/interconnexion-logiciels/",
+      "cta": {
+        "label": "Connecter mes outils",
+        "url": "/contact/?service=interconnexion"
+      }
+    },
+    {
       "id": "migration",
       "icon": "migration",
-      "number": "02",
+      "number": "03",
       "title": "Migration de données",
       "subtitle": "Changez d’outil sans perdre vos informations",
       "description": "Vous changez de logiciel, vous regroupez vos données ou vous souhaitez repartir sur une base plus propre ? Je vous accompagne pour transférer vos informations de façon sécurisée, claire et progressive, sans repartir de zéro.",
@@ -47,7 +81,12 @@
         "Moins de risques de perte ou d’erreur",
         "Transition plus fluide pour votre activité"
       ],
-      "tools": ["Talend", "Talaxie", "SQL", "API"],
+      "tools": [
+        "Talend",
+        "Talaxie",
+        "SQL",
+        "API"
+      ],
       "target": "TPE et PME qui changent d’outil ou veulent mieux organiser leurs données",
       "example": "Un artisan changeait de logiciel de facturation. Il craignait de perdre 4 ans d’historique clients. Résultat : toutes les fiches et commandes ont été reprises proprement, sans ressaisie, en quelques jours.",
       "cta": {
@@ -58,7 +97,7 @@
     {
       "id": "reporting",
       "icon": "dashboard",
-      "number": "03",
+      "number": "04",
       "title": "Reporting",
       "subtitle": "Des chiffres clairs, au bon endroit, au bon moment",
       "description": "Je mets en place des reportings simples et lisibles pour vous aider à retrouver rapidement les bonnes informations. Fini les fichiers dispersés et les rapports bricolés à la main : vous disposez d’une vue claire sur les chiffres importants pour votre activité.",
@@ -68,15 +107,40 @@
         "Mise à jour simplifiée des chiffres",
         "Meilleure visibilité sur l’activité"
       ],
-      "tools": ["Power BI", "Excel", "Talend", "Talaxie"],
+      "tools": [
+        "Power BI",
+        "Excel",
+        "Talend",
+        "Talaxie"
+      ],
       "target": "TPE et PME qui veulent suivre leur activité avec des reportings simples",
       "example": "Un responsable commercial cherchait ses chiffres dans 3 fichiers différents à chaque fin de semaine. Après : un tableau de bord actualisé automatiquement, avec les indicateurs qui comptent, lisible en 2 minutes.",
       "cta": {
         "label": "Mettre en place un reporting",
         "url": "/contact/?service=reporting"
-      }
+      },
+      "detail_url": "/tableaux-de-bord/"
     }
   ],
+  "formation_teaser": {
+    "eyebrow": "Autre forme d'accompagnement",
+    "title": "Ou apprendre à le faire vous-même",
+    "text": "Les quatre prestations ci-dessus, c'est « je le construis pour vous ». Il arrive qu'une équipe n'ait pas besoin de ça : elle a besoin de comprendre ses propres rapports et ses propres flux, pour les faire évoluer seule. Dans ce cas, je forme — en intra-entreprise, sur vos données.",
+    "items": [
+      "Power BI — de la source de données au rapport publié et sécurisé",
+      "Talend / Talaxie — construire des flux qu'on peut relancer sans crainte",
+      "À Agen en présentiel, partout en France à distance"
+    ],
+    "proof": {
+      "text": "Dernier parcours en date : 21 h chez Fonroche Lighting",
+      "url": "/portfolio/fonroche-formation-power-bi.html",
+      "label": "voir le cas"
+    },
+    "cta": {
+      "label": "Découvrir la formation",
+      "url": "/formation/"
+    }
+  },
   "process": {
     "title": "Comment se déroule un accompagnement ?",
     "subtitle": "Un cadre simple, en 4 étapes",

@@ -1,0 +1,263 @@
+---
+layout: page
+title: "Formation Power BI et Talend en entreprise"
+description: "Formation Power BI, Talend et Talaxie en intra-entreprise, construite sur vos propres données et vos flux réels. Format sur mesure, à Agen ou partout en France à distance."
+permalink: /formation/
+body_class: "page-formation"
+---
+
+{% assign d = site.data.formation %}
+
+
+<!-- ══════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════ -->
+<section class="page-hero frm-hero" aria-labelledby="formation-title">
+  <canvas class="hero-particles" aria-hidden="true"></canvas>
+  <div class="container">
+    <div class="page-hero__content">
+      <div class="page-hero__left">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <a href="{{ '/' | relative_url }}">Accueil</a>
+          <span class="breadcrumb-sep">›</span>
+          <span>Formation</span>
+        </nav>
+        <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
+        <h1 id="formation-title" class="frm-hero__title">{{ d.hero.title_lead }} <span class="frm-hero__accent">{{ d.hero.title_accent }}</span></h1>
+      </div>
+      <div class="page-hero__right">
+        <p class="frm-hero__sub">{{ d.hero.subtitle }}</p>
+        <ul class="frm-hero__pills" aria-label="Caractéristiques de la formation">
+          {% for p in d.hero.pills %}
+          <li class="frm-hero__pill">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>{{ p }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     INTRO — positionnement honnête
+     ══════════════════════════════════════════════ -->
+<section class="section frm-intro-section">
+  <div class="container">
+    <div class="frm-intro">
+      <h2>{{ d.intro.title }}</h2>
+      <p class="frm-intro__lead">{{ d.intro.text }}</p>
+      <p>{{ d.intro.text2 }}</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     FIT — formation ou mission ?
+     ══════════════════════════════════════════════ -->
+<section class="section frm-fit-section" aria-labelledby="frm-fit-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Bien choisir</span>
+      <h2 id="frm-fit-title">{{ d.fit.title }}</h2>
+      <p>{{ d.fit.subtitle }}</p>
+    </div>
+
+    <div class="frm-fit">
+
+      <div class="frm-fit__col frm-fit__col--yes fade-up">
+        <p class="frm-fit__label">
+          <span class="frm-fit__badge frm-fit__badge--yes" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          {{ d.fit.yes.label }}
+        </p>
+        <ul class="frm-fit__list">
+          {% for item in d.fit.yes.items %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="frm-fit__col frm-fit__col--no fade-up delay-1">
+        <p class="frm-fit__label">
+          <span class="frm-fit__badge frm-fit__badge--no" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          {{ d.fit.no.label }}
+        </p>
+        <ul class="frm-fit__list frm-fit__list--links">
+          {% for item in d.fit.no.items %}
+          <li>
+            {{ item.text }}
+            <a href="{{ item.url | relative_url }}" class="frm-fit__link">{{ item.label }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     PARCOURS
+     ══════════════════════════════════════════════ -->
+<section class="section frm-parcours-section" aria-labelledby="frm-parcours-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Programmes</span>
+      <h2 id="frm-parcours-title">{{ d.parcours_intro.title }}</h2>
+      <p>{{ d.parcours_intro.subtitle }}</p>
+    </div>
+
+    <div class="frm-parcours-list">
+      {% for p in d.parcours %}
+      <article id="{{ p.id }}" class="frm-parcours fade-up delay-{{ forloop.index }}" aria-labelledby="frm-parcours-{{ p.id }}">
+
+        <header class="frm-parcours__head">
+          <div class="frm-parcours__icon" aria-hidden="true">
+            {% include icons/service-icon.html id=p.icon %}
+          </div>
+          <div class="frm-parcours__head-text">
+            <span class="frm-parcours__eyebrow">Parcours {{ p.number }}</span>
+            <h3 id="frm-parcours-{{ p.id }}" class="frm-parcours__title">{{ p.title }}</h3>
+            <p class="frm-parcours__subtitle">{{ p.subtitle }}</p>
+          </div>
+          <div class="frm-parcours__duration">
+            <span class="frm-parcours__duration-value">{{ p.duration }}</span>
+            <span class="frm-parcours__duration-note">{{ p.duration_note }}</span>
+          </div>
+        </header>
+
+        <div class="frm-parcours__body">
+
+          <div class="frm-parcours__intro">
+            <p>{{ p.description }}</p>
+
+            <div class="frm-parcours__meta">
+              <p class="frm-parcours__meta-label">Prérequis</p>
+              <p class="frm-parcours__meta-text">{{ p.prerequis }}</p>
+            </div>
+
+            {% if p.tools %}
+            <div class="frm-parcours__tools" aria-label="Outils couverts">
+              {% for t in p.tools %}
+              <span class="svc-badge-tool">{{ t }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if p.links %}
+            <div class="frm-parcours__links">
+              <p class="frm-parcours__meta-label">Pour se faire une idée</p>
+              <ul>
+                {% for l in p.links %}
+                <li><a href="{{ l.url | relative_url }}">{{ l.label }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+          </div>
+
+          <ol class="frm-modules">
+            {% for m in p.modules %}
+            <li class="frm-module">
+              <span class="frm-module__num" aria-hidden="true">{{ m.num }}</span>
+              <div class="frm-module__text">
+                <p class="frm-module__title">{{ m.title }}</p>
+                <p class="frm-module__detail">{{ m.detail }}</p>
+              </div>
+            </li>
+            {% endfor %}
+          </ol>
+
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     FORMAT — modalités
+     ══════════════════════════════════════════════ -->
+<section class="section frm-format-section" aria-labelledby="frm-format-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Modalités</span>
+      <h2 id="frm-format-title">{{ d.format.title }}</h2>
+      <p>{{ d.format.subtitle }}</p>
+    </div>
+
+    <div class="frm-format-grid">
+      {% for item in d.format.items %}
+      <div class="frm-format-card fade-up delay-{{ forloop.index0 | modulo: 3 | plus: 1 }}">
+        <div class="frm-format-card__icon" aria-hidden="true">
+          {% include icons/formation-icon.html id=item.icon %}
+        </div>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="frm-aside">
+      <div class="frm-aside__block frm-aside__block--audience">
+        <p class="frm-aside__label">{{ d.audience.title }}</p>
+        <p>{{ d.audience.text }}</p>
+      </div>
+      <div class="frm-aside__block frm-aside__block--notice">
+        <p class="frm-aside__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          {{ d.notice.label }}
+        </p>
+        <p>{{ d.notice.text }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     PREUVE — cas Fonroche
+     ══════════════════════════════════════════════ -->
+<section class="section frm-proof-section" aria-labelledby="frm-proof-title">
+  <div class="container">
+    <div class="frm-proof fade-up">
+      <div class="frm-proof__text">
+        <span class="section-eyebrow">{{ d.proof.eyebrow }}</span>
+        <h2 id="frm-proof-title">{{ d.proof.title }}</h2>
+        <p>{{ d.proof.text }}</p>
+      </div>
+      <a href="{{ d.proof.cta_url | relative_url }}" class="btn btn-primary frm-proof__cta">
+        {{ d.proof.cta_label }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     CTA FINAL
+     ══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner cta-banner--gold">
+      <h2>{{ d.cta.title }}</h2>
+      <p>{{ d.cta.subtitle }}</p>
+      <div class="cta-actions">
+        <a href="{{ d.cta.primary.url | relative_url }}" class="btn btn-gold btn-lg">{{ d.cta.primary.label }}</a>
+        <a href="{{ d.cta.secondary.url | relative_url }}" class="btn btn-outline-white btn-lg">{{ d.cta.secondary.label }}</a>
+      </div>
+    </div>
+  </div>
+</section>

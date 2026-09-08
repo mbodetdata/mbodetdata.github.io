@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "title": "Tableaux de bord de pilotage pour TPE et PME",
+    "description": "Vos chiffres sont éparpillés entre Excel, votre logiciel de gestion et votre comptabilité ? Je construis des tableaux de bord clairs, mis à jour tout seuls, sur les indicateurs qui comptent vraiment pour votre activité. Devis sous 24 h."
+  },
+  "hero": {
+    "eyebrow": "Tableaux de bord et reporting",
+    "title_lead": "Un tableau de bord de pilotage",
+    "title_accent": "que vous ouvrez vraiment le lundi matin",
+    "subtitle": "La plupart des tableaux de bord finissent abandonnés : trop de graphiques, une mise à jour à la main, et des réponses à des questions que personne ne se posait. Je construis l'inverse.",
+    "pills": [
+      "Mis à jour tout seul",
+      "Sur vos données réelles",
+      "Agen et partout en France",
+      "Devis sous 24 h"
+    ]
+  },
+  "intro": {
+    "title": "Le problème n'est presque jamais l'outil",
+    "text": "Excel, Power BI, Looker Studio : tous savent afficher un graphique. Ce qui sépare un tableau de bord utile d'un tableau de bord abandonné, ce n'est pas la technologie — c'est d'avoir clarifié, avant de construire, quelles décisions il doit aider à prendre.",
+    "text2": "Un bon tableau de bord tient sur une page, se met à jour sans que personne y touche, et donne le même chiffre à tout le monde."
+  },
+  "signs": {
+    "title": "Vous êtes concerné si",
+    "subtitle": "Les situations qui reviennent le plus souvent avant une mission de ce type.",
+    "items": [
+      {
+        "icon": "clock",
+        "title": "Vous consolidez vos chiffres à la main",
+        "text": "Un export ici, un copier-coller là, et une demi-journée qui disparaît à chaque clôture. Tous les mois, la même manipulation."
+      },
+      {
+        "icon": "database",
+        "title": "Les chiffres ne concordent pas d'un service à l'autre",
+        "text": "Le commercial annonce un montant, la comptabilité un autre. Personne n'a tort : ce sont deux façons de compter qui n'ont jamais été mises d'accord."
+      },
+      {
+        "icon": "map",
+        "title": "Vous voyez les problèmes trop tard",
+        "text": "Une marge qui s'érode, un client qui décroche, un poste de coût qui dérape : visible à la clôture trimestrielle, quand il n'y a plus grand-chose à faire."
+      },
+      {
+        "icon": "users",
+        "title": "Le reporting dépend d'une seule personne",
+        "text": "Le fichier est sur son poste, les formules dans sa tête. Quand elle est absente, il n'y a plus de chiffres."
+      },
+      {
+        "icon": "package",
+        "title": "Le tableau de bord existe, mais personne ne l'ouvre",
+        "text": "Vingt graphiques et aucune réponse. C'est le symptôme d'indicateurs choisis avant qu'on ait posé les questions."
+      },
+      {
+        "icon": "building",
+        "title": "Vous pilotez à l'instinct, faute de mieux",
+        "text": "L'intuition d'un dirigeant qui connaît son métier est précieuse. Elle est simplement meilleure quand un chiffre juste vient la confirmer ou la contredire."
+      }
+    ]
+  },
+  "chain": {
+    "title": "Ce qu'on fait, et dans cet ordre",
+    "subtitle": "L'ordre compte plus que l'outil : commencer par les données plutôt que par les décisions est la façon la plus sûre de produire un tableau que personne n'ouvrira.",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Partir des décisions",
+        "description": "Quelles questions devez-vous pouvoir trancher chaque semaine ? Ce sont elles qui déterminent les indicateurs, pas l'inverse. Cette étape prend une réunion et évite des mois de travail à côté du sujet."
+      },
+      {
+        "number": "2",
+        "title": "Aller chercher les chiffres à la source",
+        "description": "Logiciel de gestion, caisse, comptabilité, CRM, fichiers Excel : la donnée est récupérée là où elle est produite, jamais ressaisie."
+      },
+      {
+        "number": "3",
+        "title": "Poser les règles de calcul une seule fois",
+        "description": "Marge, chiffre d'affaires, encours, taux de remplissage : chaque indicateur est défini une fois, écrit noir sur blanc, et calculé de la même façon pour tout le monde."
+      },
+      {
+        "number": "4",
+        "title": "Rendre la mise à jour automatique",
+        "description": "Le tableau se rafraîchit seul, à la fréquence utile. Un tableau de bord qu'il faut alimenter à la main est un tableau de bord qui sera abandonné dans les trois mois."
+      }
+    ]
+  },
+  "tools": {
+    "eyebrow": "Sur votre existant",
+    "title": "L'outil vient après la question",
+    "text": "Power BI n'est pas toujours la bonne réponse, et Excel n'est pas toujours la mauvaise. Le choix dépend du nombre de sources à croiser, du nombre de personnes qui consulteront, de votre budget, et surtout de ce que vous pourrez faire évoluer sans moi.",
+    "groups": [
+      {
+        "label": "Préparation des données",
+        "items": ["Talend", "Talaxie", "Power Query", "SQL", "Python"]
+      },
+      {
+        "label": "Restitution",
+        "items": ["Power BI", "Looker Studio", "Metabase", "Excel"]
+      },
+      {
+        "label": "Sources courantes",
+        "items": ["ERP", "CRM", "Caisse", "Comptabilité", "API", "Fichiers CSV"]
+      }
+    ],
+    "note": "Si un classeur Excel bien construit et alimenté automatiquement répond à votre besoin, je vous le dirai plutôt que de vous faire payer une licence de plus."
+  },
+  "cases": {
+    "title": "Des tableaux de bord en production",
+    "subtitle": "Du suivi opérationnel temps réel à la consolidation comptable de cinq magasins.",
+    "ids": [
+      "reporting-change-itop",
+      "dashboardtv-operations",
+      "uba-data-automation",
+      "velos-du-bassin-consolidation-caisses"
+    ]
+  },
+  "process": {
+    "title": "Comment ça se passe",
+    "subtitle": "Vous voyez quelque chose de concret vite, pas au bout de trois mois.",
+    "steps": [
+      {
+        "number": "1",
+        "title": "On liste les décisions à éclairer",
+        "description": "Un échange de 30 minutes pour comprendre votre activité et ce que vous aimeriez pouvoir trancher plus vite."
+      },
+      {
+        "number": "2",
+        "title": "Je vous montre une première version",
+        "description": "Une maquette sur un échantillon de vos données réelles. C'est en la voyant que l'on repère ce qui manque et ce qui ne sert à rien."
+      },
+      {
+        "number": "3",
+        "title": "On ajuste sur vos vrais chiffres",
+        "description": "Branchement de toutes les sources, validation des règles de calcul, contrôle que les totaux tombent juste face à vos références."
+      },
+      {
+        "number": "4",
+        "title": "Ça tourne, et vous savez le faire vivre",
+        "description": "Mise en production, actualisation automatique, et prise en main pour que vous puissiez ajuster un filtre ou ajouter un indicateur sans redemander un devis."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "items": [
+      {
+        "q": "Power BI ou Excel : lequel choisir ?",
+        "a": "Cela dépend surtout du nombre de sources à croiser et du nombre de personnes qui consultent. Excel reste très bien pour un besoin isolé et une poignée d'utilisateurs. Power BI prend l'avantage dès qu'il faut croiser plusieurs sources, rafraîchir automatiquement et diffuser à plusieurs personnes avec des droits différents."
+      },
+      {
+        "q": "Faut-il que nos données soient propres avant de commencer ?",
+        "a": "Non, et si c'était la condition, personne ne commencerait jamais. Le nettoyage fait partie du travail. En revanche, la construction d'un tableau de bord fait remonter les incohérences existantes : c'est souvent la première fois qu'on voit noir sur blanc les doublons ou les libellés fantaisistes."
+      },
+      {
+        "q": "Combien de temps pour avoir un premier tableau de bord ?",
+        "a": "Une première version exploitable se voit en quelques jours quand les données sont accessibles. Ce qui allonge le délai, ce n'est presque jamais la construction : ce sont les accès à obtenir et les règles de calcul à trancher entre les personnes concernées."
+      },
+      {
+        "q": "Qui pourra le faire évoluer ensuite ?",
+        "a": "Vous, si vous le souhaitez. Je remets le fichier construit ensemble et je montre comment ajouter un indicateur ou modifier un filtre. Si votre équipe veut aller plus loin et reprendre entièrement la main, c'est l'objet d'une formation dédiée."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Quelle décision aimeriez-vous pouvoir prendre plus vite ?",
+    "subtitle": "Un échange de 30 minutes suffit à identifier les trois ou quatre indicateurs qui changeraient vraiment quelque chose pour vous. Gratuit, sans engagement.",
+    "primary": {
+      "label": "Demander un devis",
+      "url": "/contact/?service=tableau-de-bord"
+    },
+    "secondary": {
+      "label": "Voir toutes les prestations",
+      "url": "/services/"
+    }
+  }
+}

@@ -2,6 +2,9 @@
 {% assign svc = site.data.services %}
 {% assign temo = site.data.temoignages %}
 {% assign real = site.data.realisations %}
+{% assign form = site.data.formation %}
+{% assign itc = site.data.interconnexion %}
+{% assign tdb = site.data['tableaux-de-bord'] %}
 
 {% comment %}— Note globale calculée dynamiquement depuis les témoignages —{% endcomment %}
 {% assign rating_count = temo.testimonials | size %}
@@ -109,7 +112,7 @@
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Services data pour TPE/PME",
-        "numberOfItems": {{ svc.services | size }},
+        "numberOfItems": {{ svc.services | size | plus: 1 }},
         "itemListElement": [
           {% for service in svc.services %}
           {
@@ -124,8 +127,21 @@
               "serviceType": {{ service.title | jsonify }},
               "provider": { "@id": "{{ site.url }}/#business" }
             }
-          }{% unless forloop.last %},{% endunless %}
+          },
           {% endfor %}
+          {
+            "@type": "Offer",
+            "name": "Formation",
+            "description": {{ form.hero.subtitle | strip_html | truncate: 200 | jsonify }},
+            "url": "{{ site.url }}/formation/",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "{{ site.url }}/formation/#service",
+              "name": "Formation Power BI et Talend en entreprise",
+              "serviceType": "Formation",
+              "provider": { "@id": "{{ site.url }}/#business" }
+            }
+          }
         ]
       },
       "knowsAbout": [
@@ -406,7 +422,7 @@
       "@type": "ItemList",
       "@id": "{{ page.url | absolute_url }}#services-list",
       "name": "Services data pour TPE/PME — BM Data Agen",
-      "description": "Tableaux de bord, analyse de données, automatisation des reportings, stratégie data, formation et migration : les 6 services de BM Data pour les TPE et PME.",
+      "description": "Automatisation des tâches répétitives, migration de données et reporting : les trois services de BM Data pour les TPE et PME, complétés par une offre de formation Power BI et Talend.",
       "numberOfItems": {{ svc.services | size }},
       "itemListElement": [
         {% for service in svc.services %}
@@ -431,6 +447,86 @@
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
       ]
+    }
+    {% endif %}
+
+    {% if page.url == '/tableaux-de-bord/' %},
+    {
+      "@type": "Service",
+      "@id": "{{ site.url }}/tableaux-de-bord/#service",
+      "name": "Tableaux de bord de pilotage pour TPE et PME",
+      "serviceType": "Conception de tableaux de bord et reporting",
+      "description": {{ tdb.meta.description | strip_html | jsonify }},
+      "url": "{{ site.url }}/tableaux-de-bord/",
+      "provider": { "@id": "{{ site.url }}/#business" },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Lot-et-Garonne" },
+        { "@type": "AdministrativeArea", "name": "Nouvelle-Aquitaine" },
+        { "@type": "Country", "name": "France" }
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "name": "TPE et PME"
+      }
+    }
+    {% endif %}
+
+    {% if page.url == '/interconnexion-logiciels/' %},
+    {
+      "@type": "Service",
+      "@id": "{{ site.url }}/interconnexion-logiciels/#service",
+      "name": "Interconnexion de logiciels pour TPE et PME",
+      "serviceType": "Intégration et interconnexion de logiciels",
+      "description": {{ itc.meta.description | strip_html | jsonify }},
+      "url": "{{ site.url }}/interconnexion-logiciels/",
+      "provider": { "@id": "{{ site.url }}/#business" },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Lot-et-Garonne" },
+        { "@type": "AdministrativeArea", "name": "Nouvelle-Aquitaine" },
+        { "@type": "Country", "name": "France" }
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "name": "TPE et PME"
+      }
+    }
+    {% endif %}
+
+    {% comment %}— Page Formation : égalité stricte, sinon la fiche projet
+       /portfolio/fonroche-formation-power-bi.html déclencherait ce bloc —{% endcomment %}
+    {% if page.url == '/formation/' %},
+    {
+      "@type": "Service",
+      "@id": "{{ site.url }}/formation/#service",
+      "name": "Formation Power BI et Talend en entreprise",
+      "serviceType": "Formation",
+      "description": {{ form.meta.description | strip_html | jsonify }},
+      "url": "{{ site.url }}/formation/",
+      "provider": { "@id": "{{ site.url }}/#business" },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Lot-et-Garonne" },
+        { "@type": "AdministrativeArea", "name": "Nouvelle-Aquitaine" },
+        { "@type": "Country", "name": "France" }
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "name": "TPE et PME"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Parcours de formation",
+        "numberOfItems": {{ form.parcours | size }},
+        "itemListElement": [
+          {% for p in form.parcours %}
+          {
+            "@type": "Offer",
+            "name": {{ p.title | jsonify }},
+            "description": {{ p.subtitle | strip_html | jsonify }},
+            "url": "{{ site.url }}/formation/#{{ p.id }}"
+          }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      }
     }
     {% endif %}
 

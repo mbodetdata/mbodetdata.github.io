@@ -165,6 +165,8 @@ Vous n’avez pas besoin de tout remplacer, ni d’un service informatique, ni d
 
 Le vrai gain n’est d’ailleurs pas le temps économisé, même s’il est réel. C’est d’arrêter de se demander quelle version de l’information est la bonne.
 
+Si vous préférez déléguer plutôt que de vous y mettre seul, c’est l’objet de la prestation d’[interconnexion de logiciels](/interconnexion-logiciels/) : même démarche, mais construite et surveillée pour vous.
+
 Vous voulez savoir par quel flux commencer dans votre cas ?
 
 → [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}

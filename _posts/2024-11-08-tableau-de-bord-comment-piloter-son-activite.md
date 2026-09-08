@@ -95,4 +95,4 @@ Identifiez la décision la plus importante que vous prenez chaque semaine. Quell
 
 ---
 
-**Vous voulez construire un tableau de bord adapté à votre activité ?** Je vous accompagne de l'identification des bons KPI jusqu'à la mise en production. Contactez-moi pour en discuter.
+**Vous voulez construire un tableau de bord adapté à votre activité ?** Je vous accompagne de l'identification des bons KPI jusqu'à la mise en production : c'est l'objet de la prestation [tableaux de bord de pilotage](/tableaux-de-bord/). Contactez-moi pour en discuter.

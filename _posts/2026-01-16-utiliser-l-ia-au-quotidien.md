@@ -507,6 +507,8 @@ Tu payes pour gagner :
 > Et si ton IA te contredit de temps en temps, ce n’est pas qu’elle “t’embête”.  
 > C’est qu’elle fait enfin son vrai boulot : t’aider à mieux penser.
 
+Une dernière chose, et elle pèse plus lourd que la méthode : une IA ne vaut que ce que valent les données qu’on lui donne. C’est tout le sujet de [l’IA adoptée sans fondations data](/blog/ia-la-cerise-sur-le-gateau/).
+
 ---
 
 ## À retenir

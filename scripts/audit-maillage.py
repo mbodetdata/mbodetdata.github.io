@@ -220,6 +220,24 @@ UTILITY_URLS = {"/mentions-legales/", "/politique-de-confidentialite/",
                 "/temoignages/", "/blog/"}
 
 
+REDIRECT_STUB_RE = re.compile(
+    r'<meta http-equiv="refresh"[^>]*url=', re.IGNORECASE
+)
+
+
+def is_redirect_stub(path: Path) -> bool:
+    """Vrai pour un stub jekyll-redirect-from (ancienne URL → page actuelle).
+
+    Ces fichiers font une dizaine de lignes, sont en `noindex` et ne portent
+    aucun contenu éditorial : les compter fausserait le décompte d'orphelines.
+    """
+    try:
+        head = path.read_text(encoding="utf-8", errors="ignore")[:1200]
+    except OSError:
+        return False
+    return bool(REDIRECT_STUB_RE.search(head)) and 'name="robots"' in head
+
+
 def is_content_page(url: str) -> bool:
     """Page de contenu susceptible d'être orpheline (hors utilitaires/pagination)."""
     if url in UTILITY_URLS or PAGINATION_RE.match(url):
@@ -249,6 +267,12 @@ def main() -> int:
     for html in SITE_DIR.rglob("*.html"):
         url = url_for_site_file(html)
         if SKIP_URL_RE.match(url) or url == "/404.html":
+            continue
+        # Les stubs générés par jekyll-redirect-from (anciennes URLs encore
+        # positionnées dans Google) ne sont pas des pages de contenu : ils sont
+        # en noindex et n'ont pas de corps éditorial. Sans ce filtre, ils
+        # apparaîtraient comme autant de fausses pages orphelines.
+        if is_redirect_stub(html):
             continue
         pages[url] = html
 

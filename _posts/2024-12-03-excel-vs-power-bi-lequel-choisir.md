@@ -86,7 +86,7 @@ La technologie est au service du besoin, pas l'inverse.
 
 C'est normal. Si vous n'êtes pas sûr de ce dont vous avez besoin, c'est souvent le signe qu'il faut d'abord clarifier vos objectifs avant de choisir un outil.
 
-La question "quel outil ?" vient après la question "que veux-je pouvoir faire ?" C'est justement ce type de cadrage que je fais lors des premières missions d'accompagnement.
+La question "quel outil ?" vient après la question "que veux-je pouvoir faire ?" C'est justement ce type de cadrage que je fais lors des premières missions d'accompagnement. Et si votre équipe doit ensuite tenir l'outil elle-même, c'est une [formation Power BI sur vos propres données](/formation/) qu'il faut viser plutôt qu'une mission.
 
 Un exemple de ce que ça donne une fois le besoin clarifié : l'étude de cas [reporting Change sur iTop](/portfolio/reporting-change-itop.html), où un tableau de bord Power BI connecté à l'outil de ticketing a remplacé les extractions manuelles pour suivre les SLA.
 

@@ -1,0 +1,207 @@
+{
+  "meta": {
+    "title": "Formation Power BI et Talend en entreprise | BM Data — Agen",
+    "description": "Formation Power BI, Talend et Talaxie en intra-entreprise, construite sur vos propres données et vos flux réels. Format sur mesure, à Agen ou partout en France à distance."
+  },
+  "hero": {
+    "eyebrow": "Formation",
+    "title_lead": "Reprendre la main sur",
+    "title_accent": "vos propres outils data",
+    "subtitle": "Power BI, Talend, Talaxie : des parcours construits sur vos données et vos flux réels, pour que votre équipe tienne l'outil dans la durée sans dépendre d'un prestataire.",
+    "pills": [
+      "En intra-entreprise",
+      "Sur vos données",
+      "Agen ou à distance",
+      "Format sur mesure"
+    ]
+  },
+  "intro": {
+    "title": "Une prestation complémentaire, pas un catalogue",
+    "text": "La formation n'est pas mon cœur de métier : je construis des automatisations, des migrations et des reportings. Mais il arrive qu'une équipe n'ait pas besoin qu'on fasse à sa place — elle a besoin de comprendre ce qui a été fait, et de pouvoir le faire évoluer seule. Quand c'est le cas, je forme.",
+    "text2": "C'est exactement la situation rencontrée chez Fonroche Lighting : l'équipe héritait de rapports Power BI développés par d'autres, sans en maîtriser ni la construction ni les choix de modélisation. Vingt-et-une heures plus tard, elle les tenait."
+  },
+  "fit": {
+    "title": "La formation, ou une mission classique ?",
+    "subtitle": "Les deux se valent. Ce qui compte, c'est de choisir la bonne pour votre situation.",
+    "yes": {
+      "label": "La formation est la bonne réponse",
+      "items": [
+        "Vous héritez de rapports ou de flux développés par d'autres, et plus personne ne sait comment ils sont construits.",
+        "L'outil est déjà en place : c'est la compétence interne qui manque.",
+        "Quelqu'un de l'équipe est déjà à l'aise sur Excel et doit passer à l'échelle supérieure.",
+        "Vous voulez faire évoluer vos tableaux de bord sans redemander un devis à chaque changement."
+      ]
+    },
+    "no": {
+      "label": "Mieux vaut une mission",
+      "items": [
+        {
+          "text": "Le besoin est ponctuel et technique : une automatisation livrée clé en main ira plus vite.",
+          "url": "/services/#automatisations",
+          "label": "Automatisations"
+        },
+        {
+          "text": "Vous changez d'outil et l'enjeu est de ne rien perdre en route : c'est une migration.",
+          "url": "/services/#migration",
+          "label": "Migration de données"
+        },
+        {
+          "text": "Personne n'a de temps à dégager dans les prochains mois : un reporting prêt à l'emploi est plus réaliste.",
+          "url": "/services/#reporting",
+          "label": "Reporting"
+        }
+      ]
+    }
+  },
+  "parcours_intro": {
+    "title": "Deux parcours",
+    "subtitle": "Construits sur la chaîne de production réelle d'un projet data, pas sur un sommaire théorique."
+  },
+  "parcours": [
+    {
+      "id": "power-bi",
+      "number": "01",
+      "icon": "dashboard",
+      "title": "Power BI",
+      "subtitle": "De la source de données au rapport publié et sécurisé",
+      "description": "Le parcours suit l'ordre réel d'un projet : préparer, modéliser, calculer, restituer, publier. Cet ordre n'est pas neutre — la modélisation et les mesures passent avant la création des rapports, parce qu'un rapport n'a de sens que s'il s'appuie sur un modèle relié et des mesures fiables. C'est ce qui évite de tout reconstruire en cours de route.",
+      "duration": "21 h en 6 demi-journées",
+      "duration_note": "Format de référence, celui du parcours Fonroche. Ajustable selon le niveau de départ.",
+      "modules": [
+        {
+          "num": "01",
+          "title": "Se connecter et préparer",
+          "detail": "Fichiers CSV et Excel, dossier complet, API, base de données. Power Query : profilage des colonnes, dépivotement, colonnes personnalisées en langage M, gestion des erreurs, Append et Merge."
+        },
+        {
+          "num": "02",
+          "title": "Modéliser",
+          "detail": "Schéma en étoile, relations et cardinalités, sens de filtrage, table Date dédiée. Le socle sur lequel tout le reste repose."
+        },
+        {
+          "num": "03",
+          "title": "Calculer en DAX",
+          "detail": "CALCULATE et FILTER, variables VAR / RETURN, RANKX, et Time Intelligence : comparaison N-1, cumul annuel, périodes glissantes."
+        },
+        {
+          "num": "04",
+          "title": "Restituer",
+          "detail": "Choix des visuels, thème d'entreprise, drill-down, drillthrough, signets et navigation multi-pages."
+        },
+        {
+          "num": "05",
+          "title": "Publier et sécuriser",
+          "detail": "Espaces de travail et Apps, actualisation automatique via passerelle, gestion des accès et sécurité au niveau des lignes (RLS statique et dynamique)."
+        }
+      ],
+      "tools": ["Power BI Desktop", "Power Query", "DAX", "Power BI Service"],
+      "prerequis": "Être à l'aise avec Excel (formules, tableaux croisés dynamiques). Aucune connaissance préalable de Power BI n'est nécessaire.",
+      "links": [
+        { "url": "/blog/excel-vs-power-bi-lequel-choisir/", "label": "Excel ou Power BI : lequel choisir ?" },
+        { "url": "/blog/tableau-de-bord-comment-piloter-son-activite/", "label": "Choisir les bons indicateurs avant l'outil" }
+      ]
+    },
+    {
+      "id": "talend",
+      "number": "02",
+      "icon": "automatisation",
+      "title": "Talend / Talaxie",
+      "subtitle": "Construire des flux de données qu'on peut relancer sans crainte",
+      "description": "Un job qui tourne une fois ne vaut pas grand-chose. Ce parcours porte sur ce qui fait la différence en production : le contrôle de ce qui entre, le traitement des lignes non conformes, le paramétrage par environnement et la capacité à relancer un traitement sans tout casser.",
+      "duration": "Durée fixée après cadrage",
+      "duration_note": "Selon le niveau de départ et le nombre de flux à couvrir.",
+      "modules": [
+        {
+          "num": "01",
+          "title": "Prendre en main le studio",
+          "detail": "Repository et métadonnées, contextes, exécution et lecture des logs, organisation d'un projet qui reste lisible à plusieurs."
+        },
+        {
+          "num": "02",
+          "title": "Construire un job fiable",
+          "detail": "Composants d'entrée et de sortie, tMap, jointures, et surtout gestion des rejets plutôt que des plantages."
+        },
+        {
+          "num": "03",
+          "title": "Contrôler la qualité en entrée",
+          "detail": "tSchemaComplianceCheck, typage, séparation des lignes conformes et rejetées, journalisation réellement exploitable."
+        },
+        {
+          "num": "04",
+          "title": "Industrialiser",
+          "detail": "Contextes multi-environnements, paramétrage, ordonnancement, reprise sur erreur, et gestion des identifiants sans mot de passe en clair."
+        }
+      ],
+      "tools": ["Talend Open Studio", "Talaxie", "SQL", "API REST"],
+      "prerequis": "Savoir lire une requête SQL simple et comprendre la logique d'un fichier de données. Aucun développement préalable requis.",
+      "links": [
+        { "url": "/blog/talend-studios/", "label": "Les différents Studios Talend" },
+        { "url": "/blog/tSchemaComplianceCheck/", "label": "Sécuriser le pipeline avec tSchemaComplianceCheck" },
+        { "url": "/blog/architecture-data-PME/", "label": "Structurer une architecture data de PME" }
+      ]
+    }
+  ],
+  "format": {
+    "title": "Comment ça se passe",
+    "subtitle": "Un cadre simple, adapté à la taille des équipes de TPE et PME.",
+    "items": [
+      {
+        "icon": "building",
+        "title": "En intra-entreprise",
+        "text": "Une seule équipe, la vôtre. Pas de session inter-entreprises, donc aucun temps perdu sur des cas qui ne vous concernent pas."
+      },
+      {
+        "icon": "database",
+        "title": "Sur vos données",
+        "text": "Le fil rouge du parcours, c'est votre fichier, vos sources, vos rapports. Pas un jeu de données de démonstration."
+      },
+      {
+        "icon": "clock",
+        "title": "Par demi-journées",
+        "text": "Des séances de 3 h 30 espacées, pour laisser le temps de pratiquer entre deux. Le fichier de travail s'enrichit de séance en séance."
+      },
+      {
+        "icon": "map",
+        "title": "Sur place ou à distance",
+        "text": "En présentiel à Agen et dans le Lot-et-Garonne, à distance partout en France."
+      },
+      {
+        "icon": "users",
+        "title": "En petit groupe",
+        "text": "De une à six personnes. Au-delà, chacun ne pratique plus assez pour que la formation serve à quelque chose."
+      },
+      {
+        "icon": "package",
+        "title": "Un livrable qui reste",
+        "text": "À la fin, le fichier construit ensemble reste chez vous : vos données, votre modèle, vos mesures. Pas seulement des diapositives."
+      }
+    ]
+  },
+  "audience": {
+    "title": "Pour qui",
+    "text": "Les personnes qui, dans une TPE ou une PME, produisent ou maintiennent les tableaux de bord et les flux de données : contrôleur de gestion, responsable administratif, chargé de reporting, informaticien polyvalent, ou dirigeant qui veut rester maître de ses chiffres."
+  },
+  "notice": {
+    "label": "Bon à savoir",
+    "text": "BM Data n'est pas, à ce jour, un organisme de formation enregistré. Ces parcours sont facturés comme des prestations d'accompagnement : ils ne peuvent pas faire l'objet d'une prise en charge OPCO ou CPF. Une demande d'enregistrement est en cours."
+  },
+  "proof": {
+    "eyebrow": "Cas concret",
+    "title": "Fonroche Lighting • 21 h de formation Power BI",
+    "text": "Une équipe qui héritait de rapports développés par d'autres, six demi-journées sur ses propres données, et à l'arrivée : l'autonomie sur les rapports déjà en production, jusqu'à la publication et la sécurité au niveau des lignes.",
+    "cta_label": "Lire le cas complet",
+    "cta_url": "/portfolio/fonroche-formation-power-bi.html"
+  },
+  "cta": {
+    "title": "Votre équipe doit-elle apprendre, ou faut-il d'abord construire ?",
+    "subtitle": "Un échange de 30 minutes suffit à trancher. Et si c'est une mission classique qu'il vous faut plutôt qu'une formation, je vous le dirai.",
+    "primary": {
+      "label": "Parler de mon besoin",
+      "url": "/contact/?service=formation"
+    },
+    "secondary": {
+      "label": "Voir les trois services",
+      "url": "/services/"
+    }
+  }
+}

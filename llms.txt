@@ -11,6 +11,8 @@ BM Data est la structure indépendante de Martial Bodet, consultant data spécia
 
 **Tableaux de bord lisibles** : Avec Power BI, Looker Studio ou Metabase, les dirigeants pilotent leur activité en temps réel, sans attendre le bilan de fin d'année.
 
+**Formation en intra-entreprise** : Quand une équipe n'a pas besoin qu'on fasse à sa place mais de comprendre ses propres outils, BM Data forme — sur Power BI (Power Query, modélisation en étoile, DAX, publication et sécurité au niveau des lignes) et sur Talend / Talaxie. Les parcours sont construits sur les données réelles de l'entreprise, en petit groupe, à Agen ou à distance. Précision importante : BM Data n'est pas à ce jour un organisme de formation enregistré ; ces parcours sont facturés comme des prestations d'accompagnement et ne sont pas éligibles à une prise en charge OPCO ou CPF.
+
 **Ancré dans le Lot-et-Garonne** : Basé à Agen, Martial Bodet accompagne les artisans et TPE du 47 — Villeneuve-sur-Lot, Marmande, Tonneins, Nérac, Fumel, Sainte-Livrade-sur-Lot — en présentiel ou à distance. Il connaît les réalités du terrain des petites structures du Sud-Ouest.
 
 Diplômé d'un Master en bio-informatique, 5+ ans d'expérience en intégration de données (Talend, Power Automate, ETL). 15+ projets livrés pour des TPE et PME françaises.
@@ -19,6 +21,7 @@ Diplômé d'un Master en bio-informatique, 5+ ans d'expérience en intégration 
 
 - [Accueil](https://bmdata.fr/) — Présentation complète des services et du consultant
 - [Services](https://bmdata.fr/services/) — Automatisation, migration de logiciels, tableaux de bord
+- [Formation](https://bmdata.fr/formation/) — Parcours Power BI et Talend / Talaxie en intra-entreprise, sur vos propres données
 - [Réalisations](https://bmdata.fr/realisations/) — 15+ projets concrets : migrations, automatisations, dashboards
 - [FAQ](https://bmdata.fr/faq/) — 29 questions sur les délais, budgets, outils et méthodes
 - [Contact](https://bmdata.fr/contact/) — Premier échange gratuit, réservation en ligne

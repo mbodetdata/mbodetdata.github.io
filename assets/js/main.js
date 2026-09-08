@@ -461,13 +461,23 @@
   const params = new URLSearchParams(window.location.search);
   const serviceParam = params.get('service');
   const serviceSelect = document.getElementById('service');
+  // On compare des formes normalisées : sans cette étape, ?service=tableau-de-bord
+  // ne retrouvait pas l'option value="tableau-de-bord" (tirets contre espaces),
+  // et ?service=automatisations ratait value="automatisation" (pluriel).
+  const normService = s => (s || '').toLowerCase().replace(/[-_]+/g, ' ').trim();
+  // Certains CTA du site emploient un libellé absent tel quel de la liste.
+  const serviceAlias = { 'reporting': 'tableau de bord', 'automatisations': 'automatisation' };
+
   if (serviceParam && serviceSelect) {
-    const options = serviceSelect.querySelectorAll('option');
-    options.forEach(opt => {
-      if (opt.value.toLowerCase().includes(serviceParam.replace(/-/g, ' '))) {
-        opt.selected = true;
-      }
-    });
+    const wanted = serviceAlias[normService(serviceParam)] || normService(serviceParam);
+    const options = Array.from(serviceSelect.querySelectorAll('option'));
+    const match =
+      options.find(opt => normService(opt.value) === wanted) ||
+      options.find(opt => {
+        const v = normService(opt.value);
+        return v && (v.includes(wanted) || wanted.includes(v));
+      });
+    if (match) { match.selected = true; }
   }
   const auditParam = params.get('audit');
   if (auditParam === '1' && serviceSelect) {

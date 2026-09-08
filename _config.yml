@@ -59,6 +59,10 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  # Redirige les URLs de l'ancienne structure encore positionnées dans Google
+  # (voir les clés `redirect_from` dans pages/services.html, a-propos.html,
+  # realisations.html). Rappel : le .htaccess du repo est inerte sur GitHub Pages.
+  - jekyll-redirect-from
 
 # Collections
 collections:

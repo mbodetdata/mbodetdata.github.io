@@ -109,11 +109,11 @@ Construire un rapport qui permet de tester des décisions, pas seulement de les 
 
 **Vos règles de calcul sont spécifiques à votre activité.** Marges variables par famille de produits, remises par palier, saisonnalité marquée : un modèle générique ne reflétera jamais correctement votre réalité si les hypothèses ne sont pas cadrées avec vous.
 
-**Plusieurs sources de données alimentent le même rapport.** Caisse, gestion commerciale, comptabilité : dès qu'il faut connecter plusieurs outils pour obtenir la bonne donnée au bon endroit, la fiabilité du résultat en dépend directement.
+**Plusieurs sources de données alimentent le même rapport.** Caisse, gestion commerciale, comptabilité : dès qu'il faut [connecter plusieurs outils](/blog/connecter-ses-logiciels-entre-eux/) pour obtenir la bonne donnée au bon endroit, la fiabilité du résultat en dépend directement.
 
 **Vous voulez que ça reste fiable dans le temps.** Un rapport qui fonctionne le premier mois puis dérive après une évolution de votre activité ou de vos outils ne sert plus à grand-chose.
 
-**Vous n'avez personne en interne pour le maintenir.** Démarrer seul, c'est facile. Tenir dans le temps, c'est un autre sujet surtout si personne n'est formé pour ajuster les règles quand votre activité évolue.
+**Vous n'avez personne en interne pour le maintenir.** Démarrer seul, c'est facile. Tenir dans le temps, c'est un autre sujet surtout si personne n'est formé pour ajuster les règles quand votre activité évolue. C'est exactement ce que vise une [formation construite sur vos propres rapports](/formation/).
 
 ## À retenir
 
@@ -146,7 +146,7 @@ Non. Ce type de fonctionnalité se construit généralement à partir de vos don
 
 ### Quelle différence avec un fichier Excel avec des formules ?
 
-Un Excel bien construit peut effectivement simuler un scénario. La différence apparaît dans la durée : qui maintient les formules quand une règle change, qui garantit que tout le monde utilise la même version, et ce qui se passe le jour où la personne qui l'a créé n'est plus disponible.
+Un Excel bien construit peut effectivement simuler un scénario, et [la comparaison entre Excel et Power BI](/blog/excel-vs-power-bi-lequel-choisir/) montre jusqu'où chacun va. La différence apparaît dans la durée : qui maintient les formules quand une règle change, qui garantit que tout le monde utilise la même version, et ce qui se passe le jour où la personne qui l'a créé n'est plus disponible.
 
 ## Conclusion
 
