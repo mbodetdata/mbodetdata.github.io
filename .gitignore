@@ -1,19 +1,41 @@
+# Secrets & données sensibles
+.env
+.env.local
+.env.*.local
+secrets.json
+credentials.json
+*.key
+*.pem
+
 # Claude Code
 .claude/
 
-# Jekyll build output
+# Gems & dépendances
+Gemfile.lock
 _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
 
-# Node
-node_modules/
-
 # OS
 .DS_Store
 Thumbs.db
+*.swp
+*.swo
+*~
 
 # IDE
 .vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node (si applicable)
+node_modules/
+npm-debug.log
+
+# Fichiers temporaires
+temp/
+tmp/
+*.log
+*.tar.gz

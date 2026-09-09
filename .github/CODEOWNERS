@@ -1,0 +1,7 @@
+# Protection globale du repo
+* @mbodetdata
+
+# Protection des fichiers sensibles
+/LICENSE.md @mbodetdata
+/.github/ @mbodetdata
+/_config.yml @mbodetdata
