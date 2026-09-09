@@ -1,0 +1,241 @@
+---
+layout: page
+title: "Automatiser les tâches répétitives en TPE et PME"
+description: "Vous refaites les mêmes manipulations chaque semaine : exports, consolidations, mises en forme, envois. J'automatise ces traitements pour qu'ils tournent seuls, à l'heure, sans erreur de recopie. Devis sous 24 h."
+permalink: /automatisation-donnees/
+body_class: "page-automatisation"
+---
+
+{% comment %}Nom de fichier avec tirets : notation entre crochets obligatoire,
+la forme pointée serait interprétée comme une soustraction par Liquid.{% endcomment %}
+{% assign d = site.data['automatisation-donnees'] %}
+
+
+<!-- ══════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════ -->
+<section class="page-hero" aria-labelledby="auto-title">
+  <canvas class="hero-particles" aria-hidden="true"></canvas>
+  <div class="container">
+    <div class="page-hero__content">
+      <div class="page-hero__left">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <a href="{{ '/' | relative_url }}">Accueil</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="{{ '/services/' | relative_url }}">Services</a>
+          <span class="breadcrumb-sep">›</span>
+          <span>Automatisation</span>
+        </nav>
+        <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
+        <h1 id="auto-title" class="svc-hero__title">{{ d.hero.title_lead }} <span class="svc-hero__accent">{{ d.hero.title_accent }}</span></h1>
+      </div>
+      <div class="page-hero__right">
+        <p class="svc-hero__sub">{{ d.hero.subtitle }}</p>
+        <ul class="frm-hero__pills" aria-label="Points clés">
+          {% for p in d.hero.pills %}
+          <li class="frm-hero__pill">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>{{ p }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     INTRO
+     ══════════════════════════════════════════════ -->
+<section class="section frm-intro-section">
+  <div class="container">
+    <div class="frm-intro">
+      <h2>{{ d.intro.title }}</h2>
+      <p class="frm-intro__lead">{{ d.intro.text }}</p>
+      <p>{{ d.intro.text2 }} Deux repères avant d'en discuter : <a href="{{ '/blog/heures-perdues-taches-repetitives/' | relative_url }}">combien d'heures les tâches répétitives coûtent réellement</a> aide à chiffrer l'enjeu, et <a href="{{ '/blog/automatiser-ses-reportings-guide-pratique/' | relative_url }}">le guide pour automatiser ses reportings</a> détaille les cinq niveaux, du Power Query à l'automatisation complète des flux.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     SIGNES
+     ══════════════════════════════════════════════ -->
+<section class="section frm-format-section" aria-labelledby="auto-signs">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Diagnostic rapide</span>
+      <h2 id="auto-signs">{{ d.signs.title }}</h2>
+      <p>{{ d.signs.subtitle }}</p>
+    </div>
+
+    <div class="frm-format-grid">
+      {% for item in d.signs.items %}
+      <div class="frm-format-card fade-up delay-{{ forloop.index0 | modulo: 3 | plus: 1 }}">
+        <div class="frm-format-card__icon" aria-hidden="true">
+          {% include icons/formation-icon.html id=item.icon %}
+        </div>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     LA MÉTHODE — 4 étapes
+     ══════════════════════════════════════════════ -->
+<section class="section svc-process-section" aria-labelledby="auto-chain">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">La méthode</span>
+      <h2 id="auto-chain">{{ d.chain.title }}</h2>
+      <p>{{ d.chain.subtitle }}</p>
+    </div>
+
+    <div class="svc-process">
+      {% for step in d.chain.steps %}
+      <div class="svc-process__step fade-up delay-{{ forloop.index }}">
+        <div class="svc-process__num" aria-hidden="true">{{ step.number }}</div>
+        <h3 class="svc-process__title">{{ step.title }}</h3>
+        <p class="svc-process__desc">{{ step.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     OUTILS
+     ══════════════════════════════════════════════ -->
+<section class="section lp-tools-section" aria-labelledby="auto-tools">
+  <div class="container">
+    <div class="lp-tools fade-up">
+      <div class="lp-tools__intro">
+        <span class="section-eyebrow">{{ d.tools.eyebrow }}</span>
+        <h2 id="auto-tools">{{ d.tools.title }}</h2>
+        <p>{{ d.tools.text }}</p>
+        <p class="lp-tools__note">{{ d.tools.note }}</p>
+      </div>
+
+      <div class="lp-tools__groups">
+        {% for g in d.tools.groups %}
+        <div class="lp-tools__group">
+          <p class="lp-tools__label">{{ g.label }}</p>
+          <ul class="lp-tools__list">
+            {% for t in g.items %}
+            <li>{{ t }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     CAS CONCRETS
+     ══════════════════════════════════════════════ -->
+<section class="section lp-cases-section" aria-labelledby="auto-cases">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Réalisations</span>
+      <h2 id="auto-cases">{{ d.cases.title }}</h2>
+      <p>{{ d.cases.subtitle }}</p>
+    </div>
+
+    <div class="lp-cases">
+      {% for id in d.cases.ids %}
+        {% assign p = site.data.projets | where: "id", id | first %}
+        {% if p %}
+        <article class="lp-case fade-up">
+          <div class="lp-case__head">
+            <span class="lp-case__cat">{{ p.category }}</span>
+            {% if p.sector %}<span class="lp-case__sector">{{ p.sector }}</span>{% endif %}
+          </div>
+          <h3 class="lp-case__title">
+            <a href="{{ p.link | relative_url }}">{{ p.title }}</a>
+          </h3>
+          <p class="lp-case__desc">{{ p.solution }}</p>
+          {% if p.tools %}
+          <div class="lp-case__tools">
+            {% for t in p.tools %}<span>{{ t }}</span>{% endfor %}
+          </div>
+          {% endif %}
+        </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     PROCESS
+     ══════════════════════════════════════════════ -->
+<section class="section frm-fit-section" aria-labelledby="auto-process">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Déroulé</span>
+      <h2 id="auto-process">{{ d.process.title }}</h2>
+      <p>{{ d.process.subtitle }}</p>
+    </div>
+
+    <div class="svc-process">
+      {% for step in d.process.steps %}
+      <div class="svc-process__step fade-up delay-{{ forloop.index }}">
+        <div class="svc-process__num" aria-hidden="true">{{ step.number }}</div>
+        <h3 class="svc-process__title">{{ step.title }}</h3>
+        <p class="svc-process__desc">{{ step.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     FAQ
+     ══════════════════════════════════════════════ -->
+<section class="section lp-faq-section" aria-labelledby="auto-faq">
+  <div class="container">
+    <div class="lp-faq">
+      <h2 id="auto-faq">{{ d.faq.title }}</h2>
+      <dl class="lp-faq__list">
+        {% for item in d.faq.items %}
+        <div class="lp-faq__item">
+          <dt>{{ item.q }}</dt>
+          <dd>{{ item.a }}</dd>
+        </div>
+        {% endfor %}
+      </dl>
+      <p class="lp-faq__more">
+        Le traitement doit faire circuler l'information entre deux logiciels ?
+        C'est l'objet de <a href="{{ '/interconnexion-logiciels/' | relative_url }}">l'interconnexion de logiciels</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     CTA FINAL
+     ══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner cta-banner--gold">
+      <h2>{{ d.cta.title }}</h2>
+      <p>{{ d.cta.subtitle }}</p>
+      <div class="cta-actions">
+        <a href="{{ d.cta.primary.url | relative_url }}" class="btn btn-gold btn-lg">{{ d.cta.primary.label }}</a>
+        <a href="{{ d.cta.secondary.url | relative_url }}" class="btn btn-outline-white btn-lg">{{ d.cta.secondary.label }}</a>
+      </div>
+    </div>
+  </div>
+</section>

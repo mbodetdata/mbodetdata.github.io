@@ -59,9 +59,26 @@ body_class: "page-services"
     <div class="svc-intro-header">
       <h2>{{ d.intro.title }}</h2>
       <p>{{ d.intro.text }}</p>
-      <p>Envie de voir la démarche concrètement avant d'en discuter ? Le guide pour <a href="{{ '/blog/automatiser-ses-reportings-guide-pratique/' | relative_url }}">automatiser ses reportings pas à pas</a> détaille les cinq niveaux, du Power Query à l'automatisation complète des flux.</p>
-      <p>Certains besoins reviennent si souvent qu'ils ont leur propre page : <a href="{{ '/tableaux-de-bord/' | relative_url }}">construire un tableau de bord de pilotage</a>, ou <a href="{{ '/interconnexion-logiciels/' | relative_url }}">faire communiquer vos logiciels entre eux</a> pour que la même information cesse d'être saisie deux fois.</p>
-      <p>Deux autres repères, selon l'endroit où vous en êtes : <a href="{{ '/blog/tableau-de-bord-comment-piloter-son-activite/' | relative_url }}">piloter son activité avec un tableau de bord</a> aide à choisir les bons indicateurs avant même de choisir l'outil, tandis que <a href="{{ '/blog/architecture-data-PME/' | relative_url }}">structurer une architecture data de PME</a> s'adresse à ceux dont les sources se multiplient et dont le reporting doit tenir dans la durée.</p>
+    </div>
+
+    <!-- Passerelle vers les pages de prestation : ancre = requête cible.
+         Remplace un paragraphe qui empilait les quatre liens dans une phrase. -->
+    <div class="svc-needs">
+      <p class="svc-needs__title">{{ d.intro.needs_title }}</p>
+      <ul class="svc-needs__list">
+        {% for n in d.intro.needs %}
+        <li>
+          <a href="{{ n.url | relative_url }}" class="svc-need">
+            <span class="svc-need__label">
+              {{ n.label }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+            <span class="svc-need__text">{{ n.text }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      <p class="svc-needs__more">Pour approfondir avant d'en discuter : le guide pour <a href="{{ '/blog/automatiser-ses-reportings-guide-pratique/' | relative_url }}">automatiser ses reportings pas à pas</a> détaille les cinq niveaux, du Power Query à l'automatisation complète des flux. Côté pilotage, <a href="{{ '/blog/tableau-de-bord-comment-piloter-son-activite/' | relative_url }}">choisir les bons indicateurs</a> vient avant le choix de l'outil, et <a href="{{ '/blog/architecture-data-PME/' | relative_url }}">structurer une architecture data de PME</a> s'adresse à ceux dont les sources se multiplient.</p>
     </div>
 
     <div class="svc-value-grid">

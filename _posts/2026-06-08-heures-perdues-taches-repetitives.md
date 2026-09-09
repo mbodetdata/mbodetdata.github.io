@@ -213,6 +213,8 @@ Ce cadrage demande du recul, de la méthode, et souvent un regard extérieur à 
 
 ---
 
+Si le calcul penche du bon côté, l'étape suivante est concrète : c'est l'objet de la prestation [automatisation de traitements](/automatisation-donnees/), qui transforme une manipulation hebdomadaire en traitement qui tourne seul.
+
 ## Sources
 
 [1] Sage France — *142 jours perdus dans les tâches administratives* : [https://www.sage.com/fr-fr/blog/temps-perdu-taches-administratives-142-jours/](https://www.sage.com/fr-fr/blog/temps-perdu-taches-administratives-142-jours/) — 6 heures perdues par semaine et par PME en tâches administratives sans valeur ajoutée

@@ -10,7 +10,30 @@
   },
   "intro": {
     "title": "Des services pensés pour les TPE et PME",
-    "text": "Chaque entreprise a ses habitudes, ses outils et ses contraintes. Mon rôle est de proposer des solutions concrètes, adaptées à votre fonctionnement, pour vous faire gagner du temps, fiabiliser vos informations et simplifier votre quotidien."
+    "text": "Chaque entreprise a ses habitudes, ses outils et ses contraintes. Mon rôle est de proposer des solutions concrètes, adaptées à votre fonctionnement, pour vous faire gagner du temps, fiabiliser vos informations et simplifier votre quotidien.",
+    "needs_title": "Certains besoins reviennent si souvent qu'ils ont leur propre page",
+    "needs": [
+      {
+        "url": "/automatisation-donnees/",
+        "label": "Automatiser un traitement répétitif",
+        "text": "Le même export, le même nettoyage, le même envoi — toutes les semaines."
+      },
+      {
+        "url": "/interconnexion-logiciels/",
+        "label": "Faire communiquer vos logiciels",
+        "text": "La même information ressaisie à la main d'un outil à l'autre."
+      },
+      {
+        "url": "/migration-donnees/",
+        "label": "Reprendre vos données lors d'un changement de logiciel",
+        "text": "Un nouvel outil, et des années d'historique à ne pas perdre."
+      },
+      {
+        "url": "/tableaux-de-bord/",
+        "label": "Construire un tableau de bord de pilotage",
+        "text": "Des chiffres éparpillés dans plusieurs fichiers, jamais à jour en même temps."
+      }
+    ]
   },
   "services": [
     {
@@ -38,7 +61,8 @@
       "cta": {
         "label": "Automatiser mes tâches",
         "url": "/contact/?service=automatisations"
-      }
+      },
+      "detail_url": "/automatisation-donnees/"
     },
     {
       "id": "interconnexion",
@@ -92,7 +116,8 @@
       "cta": {
         "label": "Parler de ma migration",
         "url": "/contact/?service=migration"
-      }
+      },
+      "detail_url": "/migration-donnees/"
     },
     {
       "id": "reporting",

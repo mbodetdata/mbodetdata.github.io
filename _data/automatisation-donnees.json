@@ -1,0 +1,175 @@
+{
+  "meta": {
+    "title": "Automatiser les tâches répétitives en TPE et PME",
+    "description": "Vous refaites les mêmes manipulations chaque semaine : exports, consolidations, mises en forme, envois. J'automatise ces traitements pour qu'ils tournent seuls, à l'heure, sans erreur de recopie. Devis sous 24 h.",
+    "og_hint": "automatisation, tâches répétitives, gain de temps, TPE PME"
+  },
+  "hero": {
+    "eyebrow": "Automatisation de traitements",
+    "title_lead": "Automatiser ce que vous refaites",
+    "title_accent": "chaque semaine à la main",
+    "subtitle": "Un export à récupérer, un fichier à nettoyer, des chiffres à recoller, un envoi à faire : la même séquence, tous les lundis. Je la transforme en traitement qui tourne seul.",
+    "pills": [
+      "Ça tourne à l'heure dite",
+      "Vous êtes prévenu si ça coince",
+      "Agen et partout en France",
+      "Devis sous 24 h"
+    ]
+  },
+  "intro": {
+    "title": "Le temps perdu ne se voit pas sur une facture",
+    "text": "Deux heures chaque lundi, ce sont quatre-vingt-dix heures par an. Elles n'apparaissent nulle part dans vos comptes, elles sont juste prises sur autre chose. Et comme la manipulation est toujours faite par la même personne, elle finit par devenir un point de fragilité autant qu'un coût.",
+    "text2": "Automatiser, ce n'est pas remplacer quelqu'un. C'est lui rendre le temps qu'il passait à faire ce qu'une machine fait mieux : la même chose, dans le même ordre, sans se tromper."
+  },
+  "signs": {
+    "title": "Vous êtes concerné si",
+    "subtitle": "Les traitements que j'automatise le plus souvent commencent tous par une de ces phrases.",
+    "items": [
+      {
+        "icon": "clock",
+        "title": "« Tous les lundis, je refais la même chose »",
+        "text": "Un export, un tri, un copier-coller, une mise en forme, un envoi. La séquence est toujours identique — c'est précisément ce qui la rend automatisable."
+      },
+      {
+        "icon": "package",
+        "title": "Vous assemblez des fichiers à la main",
+        "text": "Plusieurs exports à consolider, des colonnes à aligner, des totaux à recalculer avant de pouvoir transmettre quoi que ce soit."
+      },
+      {
+        "icon": "database",
+        "title": "Vos traitements Excel deviennent fragiles",
+        "text": "Des formules empilées au fil des années, une macro que plus personne n'ose modifier, et un fichier qui casse dès qu'une colonne bouge."
+      },
+      {
+        "icon": "users",
+        "title": "Une seule personne sait faire",
+        "text": "La procédure n'est écrite nulle part. Quand cette personne est absente, le traitement n'est pas fait — ou il est fait autrement."
+      },
+      {
+        "icon": "map",
+        "title": "Les erreurs de recopie coûtent cher",
+        "text": "Un chiffre décalé d'une ligne, une TVA oubliée, un montant collé au mauvais endroit. Ça se rattrape, mais toujours plus tard et toujours dans l'urgence."
+      },
+      {
+        "icon": "building",
+        "title": "Le traitement est fait en retard, ou pas du tout",
+        "text": "Quand la semaine est chargée, le reporting saute. Ce qui dépend de la disponibilité de quelqu'un finit toujours par être irrégulier."
+      }
+    ]
+  },
+  "chain": {
+    "title": "Ce qu'on fait, et dans cet ordre",
+    "subtitle": "Automatiser un mauvais processus ne fait qu'accélérer le problème : on commence donc par le regarder.",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Décrire la séquence réelle",
+        "description": "Pas la procédure théorique : ce que la personne fait vraiment, y compris les corrections manuelles qu'elle applique sans y penser. C'est souvent là que se cachent les règles métier."
+      },
+      {
+        "number": "2",
+        "title": "Simplifier avant d'automatiser",
+        "description": "Certaines étapes n'existent que pour compenser un problème en amont. Les supprimer coûte moins cher que de les automatiser."
+      },
+      {
+        "number": "3",
+        "title": "Construire le traitement",
+        "description": "Récupération des sources, transformations, contrôles, production du livrable. Les lignes qui ne passent pas sont écartées et tracées plutôt que de faire tomber l'ensemble."
+      },
+      {
+        "number": "4",
+        "title": "Planifier et surveiller",
+        "description": "Le traitement tourne à l'heure convenue. S'il échoue ou rencontre des données inattendues, vous êtes prévenu — pour que l'absence de nouvelle veuille dire que tout va bien."
+      }
+    ]
+  },
+  "tools": {
+    "eyebrow": "Sur votre existant",
+    "title": "L'automatisation la plus simple qui fait le travail",
+    "text": "Un traitement automatisé doit tenir des années sans vous. Ce critère élimine plus d'options qu'un comparatif de fonctionnalités : mieux vaut un mécanisme modeste que vous comprenez qu'une usine à gaz dont vous dépendez.",
+    "groups": [
+      {
+        "label": "Traitements et flux",
+        "items": ["Talend", "Talaxie", "Python", "SQL", "Power Query"]
+      },
+      {
+        "label": "Orchestration",
+        "items": ["n8n", "Power Automate", "Node-RED", "Tâches planifiées"]
+      },
+      {
+        "label": "Entrées et sorties",
+        "items": ["API REST", "Webhook", "FTP / SFTP", "E-mail", "Excel", "CSV"]
+      }
+    ],
+    "note": "Il arrive qu'une fonction native de votre logiciel fasse déjà le travail, ou qu'un export programmé suffise. Quand c'est le cas, je vous le dis : ça ne me fait pas de mission, mais ça vous fait une dépendance de moins."
+  },
+  "cases": {
+    "title": "Des traitements qui tournent seuls",
+    "subtitle": "Consolidation quotidienne, facturation, supervision de flux : le même principe appliqué à des contextes très différents.",
+    "ids": [
+      "velos-du-bassin-consolidation-caisses",
+      "declic-serrurerie-cadulis-pennylane",
+      "uba-data-automation",
+      "edi-wms-izypro"
+    ]
+  },
+  "process": {
+    "title": "Comment ça se passe",
+    "subtitle": "On commence petit, sur un traitement précis, et on mesure.",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Vous me montrez la manipulation",
+        "description": "Un partage d'écran de trente minutes vaut mieux qu'un cahier des charges. Je vois les fichiers réels et les cas particuliers."
+      },
+      {
+        "number": "2",
+        "title": "Je chiffre le traitement, pas le projet",
+        "description": "Un périmètre précis, un prix annoncé. Si le gain de temps ne justifie pas le coût, je vous le dis avant de commencer."
+      },
+      {
+        "number": "3",
+        "title": "Construction et vérification côte à côte",
+        "description": "Le traitement automatisé est comparé au résultat produit à la main, sur plusieurs périodes, jusqu'à ce que les deux coïncident exactement."
+      },
+      {
+        "number": "4",
+        "title": "Mise en production et surveillance",
+        "description": "Le traitement est planifié, les erreurs sont tracées et signalées. Vous récupérez le temps, pas un nouveau sujet de préoccupation."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "items": [
+      {
+        "q": "Faut-il automatiser dès maintenant ?",
+        "a": "Pas forcément. Un processus qui change encore tous les mois n'est pas prêt à être figé dans un traitement. En revanche, une manipulation stable depuis un an et répétée chaque semaine est mûre : le calcul est vite fait entre le temps qu'elle coûte et ce qu'elle coûterait à automatiser."
+      },
+      {
+        "q": "Est-ce que ça remplace quelqu'un ?",
+        "a": "Dans les TPE et PME que j'accompagne, jamais. Ce sont des heures rendues à des personnes qui ont déjà trop de travail, pas des postes supprimés. Ce qui disparaît, c'est la partie de leur métier qu'elles n'aiment pas faire."
+      },
+      {
+        "q": "Que se passe-t-il si le traitement plante ?",
+        "a": "Il est conçu pour signaler plutôt que pour échouer en silence. Les lignes inattendues sont écartées et tracées, et vous recevez une alerte avec la raison. Un traitement qui plante sans prévenir est un traitement mal construit."
+      },
+      {
+        "q": "Sommes-nous dépendants de vous ensuite ?",
+        "a": "L'objectif est l'inverse. Le traitement est documenté, les règles sont écrites, et je privilégie les mécanismes les plus simples possibles pour que quelqu'un d'autre puisse reprendre la main. Si votre équipe veut le maintenir elle-même, c'est l'objet d'une formation."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Quelle manipulation refaites-vous toutes les semaines ?",
+    "subtitle": "Un échange de 30 minutes suffit à savoir si elle est automatisable et ce que ça coûterait. Gratuit, sans engagement.",
+    "primary": {
+      "label": "Demander un devis",
+      "url": "/contact/?service=automatisations"
+    },
+    "secondary": {
+      "label": "Voir toutes les prestations",
+      "url": "/services/"
+    }
+  }
+}

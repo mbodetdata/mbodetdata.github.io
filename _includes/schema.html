@@ -5,6 +5,8 @@
 {% assign form = site.data.formation %}
 {% assign itc = site.data.interconnexion %}
 {% assign tdb = site.data['tableaux-de-bord'] %}
+{% assign mig = site.data['migration-donnees'] %}
+{% assign aut = site.data['automatisation-donnees'] %}
 
 {% comment %}— Note globale calculée dynamiquement depuis les témoignages —{% endcomment %}
 {% assign rating_count = temo.testimonials | size %}
@@ -447,6 +449,42 @@
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
       ]
+    }
+    {% endif %}
+
+{% if page.url == '/automatisation-donnees/' %},
+    {
+      "@type": "Service",
+      "@id": "{{ site.url }}/automatisation-donnees/#service",
+      "name": "Automatisation de traitements pour TPE et PME",
+      "serviceType": "Automatisation de traitements de données",
+      "description": {{ aut.meta.description | strip_html | jsonify }},
+      "url": "{{ site.url }}/automatisation-donnees/",
+      "provider": { "@id": "{{ site.url }}/#business" },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Lot-et-Garonne" },
+        { "@type": "AdministrativeArea", "name": "Nouvelle-Aquitaine" },
+        { "@type": "Country", "name": "France" }
+      ],
+      "audience": { "@type": "BusinessAudience", "name": "TPE et PME" }
+    }
+    {% endif %}
+
+    {% if page.url == '/migration-donnees/' %},
+    {
+      "@type": "Service",
+      "@id": "{{ site.url }}/migration-donnees/#service",
+      "name": "Migration de données pour TPE et PME",
+      "serviceType": "Migration et reprise de données",
+      "description": {{ mig.meta.description | strip_html | jsonify }},
+      "url": "{{ site.url }}/migration-donnees/",
+      "provider": { "@id": "{{ site.url }}/#business" },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Lot-et-Garonne" },
+        { "@type": "AdministrativeArea", "name": "Nouvelle-Aquitaine" },
+        { "@type": "Country", "name": "France" }
+      ],
+      "audience": { "@type": "BusinessAudience", "name": "TPE et PME" }
     }
     {% endif %}
 

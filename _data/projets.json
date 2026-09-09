@@ -167,6 +167,7 @@
     "quote_author": null,
     "tools": ["EDI", "WMS IzyPro", "Supervision continue"],
     "related": [
+      { "url": "/automatisation-donnees/", "label": "Automatisation de traitements : la prestation" },
       { "url": "/interconnexion-logiciels/", "label": "Interconnexion de logiciels : la prestation" },
       { "url": "/blog/utilisation-talend/", "label": "Automatiser ses données avec Talend, sans infrastructure complexe" },
       { "url": "/portfolio/edi-tms-oneworld.html", "label": "EDI • TMS OneWorld" },
@@ -233,6 +234,7 @@
     "quote_author": null,
     "tools": ["Oracle", "MongoDB"],
     "related": [
+      { "url": "/migration-donnees/", "label": "Migration de données : la prestation" },
       { "url": "/blog/rgpd-donnees-clients-guide-pme/", "label": "RGPD et données clients : le guide pour les PME" },
       { "url": "/blog/changer-logiciel-sans-perdre-donnees-pme/", "label": "Changer de logiciel sans perdre ses données" },
       { "url": "/portfolio/media-participations-migration.html", "label": "Media Participations • Migration applicative" }
@@ -307,6 +309,7 @@
     "quote_author": null,
     "tools": ["Talend", "API", "PrestaShop"],
     "related": [
+      { "url": "/migration-donnees/", "label": "Migration de données : la prestation" },
       { "url": "/blog/changer-logiciel-sans-perdre-donnees-pme/", "label": "Changer de logiciel sans perdre ses données" },
       { "url": "/portfolio/media-participations-migration.html", "label": "Media Participations • Migration applicative" }
     ]
@@ -338,6 +341,7 @@
     "quote_author": null,
     "tools": ["Talend", "Contrôles qualité", "Migration applicative"],
     "related": [
+      { "url": "/migration-donnees/", "label": "Migration de données : la prestation" },
       { "url": "/blog/changer-logiciel-sans-perdre-donnees-pme/", "label": "Changer de logiciel sans perdre ses données" },
       { "url": "/blog/tSchemaComplianceCheck/", "label": "Sécuriser l'entrée du pipeline avec tSchemaComplianceCheck" },
       { "url": "/portfolio/frele-loup-migration-prestashop.html", "label": "Frère-Loup • Migration e-commerce" },
@@ -371,6 +375,7 @@
     "quote_author": null,
     "tools": ["Talend OSS", "Talaxie"],
     "related": [
+      { "url": "/migration-donnees/", "label": "Migration de données : la prestation" },
       { "url": "/blog/migration-talend-vers-talaxie/", "label": "Migrer de Talend Open Studio vers Talaxie : guide en 8 étapes" },
       { "url": "/blog/talend-studios/", "label": "Les différents Studios Talend : lequel choisir ?" },
       { "url": "/blog/architecture-data-PME/", "label": "Structurer une architecture data de PME" }
@@ -471,6 +476,7 @@
     "quote_author": null,
     "tools": ["Azure", "Talend", "Power BI"],
     "related": [
+      { "url": "/automatisation-donnees/", "label": "Automatisation de traitements : la prestation" },
       { "url": "/tableaux-de-bord/", "label": "Tableaux de bord de pilotage : la prestation" },
       { "url": "/blog/architecture-data-PME/", "label": "Structurer une architecture data de PME" },
       { "url": "/blog/ressaisies-tpe-pme-cout-cache/", "label": "Le coût caché des ressaisies en TPE/PME" },
@@ -510,6 +516,7 @@
     "quote_author": null,
     "tools": ["Talend", "FTP", "Sage"],
     "related": [
+      { "url": "/automatisation-donnees/", "label": "Automatisation de traitements : la prestation" },
       { "url": "/tableaux-de-bord/", "label": "Tableaux de bord de pilotage : la prestation" },
       { "url": "/blog/automatiser-ses-reportings-guide-pratique/", "label": "Automatiser ses reportings : guide pratique" },
       { "url": "/blog/ressaisies-tpe-pme-cout-cache/", "label": "Le coût caché des ressaisies en TPE/PME" },

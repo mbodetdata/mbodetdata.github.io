@@ -151,6 +151,8 @@ Pour voir ces étapes appliquées à un cas réel, l’étude de cas [migration 
 
 ---
 
+Cette trajectoire s'inscrit dans une démarche plus large de [migration de données](/migration-donnees/), où l'enjeu reste le même quel que soit l'outil : ne rien perdre entre l'ancien système et le nouveau.
+
 ## ✅ Checklist de migration
 
 | Étape | Action | Statut |

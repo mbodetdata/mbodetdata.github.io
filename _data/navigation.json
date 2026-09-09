@@ -14,6 +14,8 @@
     { "label": "Services",      "url": "/services/" },
     { "label": "Interconnexion", "url": "/interconnexion-logiciels/" },
     { "label": "Tableaux de bord", "url": "/tableaux-de-bord/" },
+    { "label": "Migration de données", "url": "/migration-donnees/" },
+    { "label": "Automatisation", "url": "/automatisation-donnees/" },
     { "label": "Formation",     "url": "/formation/" },
     { "label": "Réalisations",  "url": "/realisations/" },
     { "label": "À propos",      "url": "/a-propos/" }

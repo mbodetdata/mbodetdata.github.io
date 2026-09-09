@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "title": "Migration de données sans perte pour TPE et PME",
+    "description": "Vous changez de logiciel et vous craignez de perdre votre historique ? Je reprends vos données de l'ancien outil vers le nouveau : inventaire, transposition, contrôles et bascule maîtrisée. Devis sous 24 h."
+  },
+  "hero": {
+    "eyebrow": "Migration de données",
+    "title_lead": "Changer de logiciel",
+    "title_accent": "sans laisser vos données derrière vous",
+    "subtitle": "Le nouvel outil vous plaît, c'est la reprise de l'existant qui bloque. Historique client, factures, catalogue, champs maison : je m'occupe du transfert, des contrôles et de la bascule.",
+    "pills": [
+      "Historique conservé",
+      "Rejouée à blanc avant la bascule",
+      "Agen et partout en France",
+      "Devis sous 24 h"
+    ]
+  },
+  "intro": {
+    "title": "Ce qui coûte cher, ce n'est pas le nouvel outil",
+    "text": "Une entreprise reporte rarement un changement de logiciel parce que le nouveau ne lui convient pas. Elle le reporte parce que personne ne sait ce que deviendront quatre ans d'historique, et parce que la reprise proposée par l'éditeur s'arrête aux champs standards.",
+    "text2": "Une migration, c'est d'abord un travail d'inventaire et de contrôle. La partie technique vient après, et c'est la plus simple."
+  },
+  "signs": {
+    "title": "Vous êtes concerné si",
+    "subtitle": "Les situations qui déclenchent le plus souvent une mission de reprise.",
+    "items": [
+      {
+        "icon": "clock",
+        "title": "Votre éditeur annonce une fin de support",
+        "text": "La date approche, la nouvelle solution est choisie, et la question de la reprise reste entière. C'est le scénario le plus fréquent, et le plus contraint par le calendrier."
+      },
+      {
+        "icon": "package",
+        "title": "Le devis de reprise vous a refroidi",
+        "text": "L'éditeur du nouvel outil sait importer un fichier standard. Dès qu'il s'agit de vos champs personnalisés ou de votre historique, le devis grimpe ou la réponse devient floue."
+      },
+      {
+        "icon": "database",
+        "title": "Vous craignez de perdre votre historique",
+        "text": "Quatre ans de fiches clients, de devis et de commandes. Personne ne veut être celui qui appuie sur le bouton sans savoir ce qui sera repris."
+      },
+      {
+        "icon": "building",
+        "title": "Le nouvel outil n'accepte pas vos fichiers",
+        "text": "Les exports de l'ancien système ne rentrent pas dans le format d'import du nouveau. Il manque une étape de transformation que personne n'avait budgétée."
+      },
+      {
+        "icon": "map",
+        "title": "Personne ne sait ce qu'il y a dans l'ancienne base",
+        "text": "Des champs remplis à moitié, des doublons, des libellés inventés au fil des années. Ça se découvre pendant la migration, ou ça se découvre avant."
+      },
+      {
+        "icon": "users",
+        "title": "Vous repoussez le changement depuis deux ans",
+        "text": "L'outil actuel ne convient plus, mais le risque perçu de la bascule dépasse la gêne quotidienne. C'est exactement ce que la préparation fait tomber."
+      }
+    ]
+  },
+  "chain": {
+    "title": "Ce qu'on fait, et dans cet ordre",
+    "subtitle": "Une migration réussie se joue avant la bascule, pas pendant.",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Inventorier l'existant",
+        "description": "Ce qu'il y a réellement dans l'ancien système : volumes, champs effectivement utilisés, doublons, données mortes. C'est souvent la première fois que quelqu'un regarde vraiment."
+      },
+      {
+        "number": "2",
+        "title": "Décider ce qui part",
+        "description": "Tout reprendre coûte cher et transporte les erreurs existantes. On tranche ensemble ce qui a une valeur métier et ce qui peut rester dans un export d'archive consultable."
+      },
+      {
+        "number": "3",
+        "title": "Transposer et rejouer",
+        "description": "Les règles de correspondance entre l'ancien et le nouveau modèle sont écrites, puis rejouées autant de fois qu'il le faut. Une migration se répète à blanc avant d'être faite pour de vrai."
+      },
+      {
+        "number": "4",
+        "title": "Contrôler, puis basculer",
+        "description": "Comptages, totaux, échantillons vérifiés un par un face à l'ancien système. On bascule quand les chiffres tombent juste, pas quand le planning le dit."
+      }
+    ]
+  },
+  "tools": {
+    "eyebrow": "Sur votre existant",
+    "title": "La reprise s'adapte à vos deux outils",
+    "text": "Une migration dépend de ce que l'ancien système accepte de rendre et de ce que le nouveau accepte de recevoir. Entre les deux, tout est affaire de transformation : c'est là que se trouve le vrai travail, et il ne dépend pas d'une technologie en particulier.",
+    "groups": [
+      {
+        "label": "Extraction et transformation",
+        "items": ["Talend", "Talaxie", "SQL", "Python", "Scripts sur mesure"]
+      },
+      {
+        "label": "Bases et formats",
+        "items": ["Oracle", "MySQL", "PostgreSQL", "MongoDB", "CSV", "XML", "JSON"]
+      },
+      {
+        "label": "Reprise applicative",
+        "items": ["API REST", "Imports natifs", "Connecteurs éditeur", "EDI"]
+      }
+    ],
+    "note": "L'éditeur de votre nouvel outil propose souvent une reprise standard. Quand elle suffit, je vous le dis. Mon travail commence là où elle s'arrête : les champs personnalisés, l'historique complet, et tout ce qui n'entre pas dans son modèle d'import."
+  },
+  "cases": {
+    "title": "Des migrations déjà menées",
+    "subtitle": "Bases de données, boutique en ligne, applicatif métier : le contexte change, la méthode reste la même.",
+    "ids": [
+      "frele-loup-migration-prestashop",
+      "eiffage-migration-medicale",
+      "media-participations-migration",
+      "migration-talend-oss-talaxie"
+    ]
+  },
+  "process": {
+    "title": "Comment ça se passe",
+    "subtitle": "Vous savez ce qui sera repris avant que quoi que ce soit ne bouge.",
+    "steps": [
+      {
+        "number": "1",
+        "title": "On regarde l'ancien système",
+        "description": "Un accès en lecture ou un export suffit pour dresser l'inventaire et vous dire ce qui est récupérable, et à quel coût."
+      },
+      {
+        "number": "2",
+        "title": "Je vous remets un périmètre écrit",
+        "description": "Ce qui est repris, ce qui est archivé, ce qui est abandonné. Validé par vous avant que le développement commence."
+      },
+      {
+        "number": "3",
+        "title": "Migration à blanc",
+        "description": "Une première reprise complète dans un environnement de test. Vous vérifiez vos propres dossiers dans le nouvel outil, avant la vraie bascule."
+      },
+      {
+        "number": "4",
+        "title": "Bascule et filet de sécurité",
+        "description": "La migration finale se fait sur un créneau convenu, l'ancien système reste consultable le temps nécessaire, et les écarts éventuels sont corrigés à chaud."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "items": [
+      {
+        "q": "Combien de temps dure une migration ?",
+        "a": "De quelques jours pour une reprise simple à plusieurs semaines quand les modèles de données diffèrent beaucoup ou que l'historique est volumineux. Ce qui allonge le délai, ce n'est presque jamais le transfert lui-même : ce sont les décisions à prendre sur les cas particuliers."
+      },
+      {
+        "q": "Peut-on continuer à travailler pendant la migration ?",
+        "a": "Oui. Le travail de préparation et les migrations à blanc se font sans toucher à votre système en production. Seule la bascule finale demande un créneau, généralement en fin de semaine ou en période creuse."
+      },
+      {
+        "q": "Que deviennent les données qu'on ne migre pas ?",
+        "a": "Elles ne disparaissent pas. On les sort dans un format lisible et durable, consultable en cas de besoin ou de contrôle. Reprendre dix ans d'historique dans un outil de production coûte souvent plus cher que de l'archiver proprement."
+      },
+      {
+        "q": "Et si la bascule se passe mal ?",
+        "a": "C'est justement le rôle des migrations à blanc : au moment de la vraie bascule, l'opération a déjà été jouée plusieurs fois. L'ancien système reste par ailleurs accessible en lecture le temps que vous ayez confiance dans le nouveau."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Qu'est-ce qui vous retient de changer d'outil ?",
+    "subtitle": "Un échange de 30 minutes suffit à savoir ce qui est récupérable dans votre ancien système, et à quel coût. Gratuit, sans engagement.",
+    "primary": {
+      "label": "Demander un devis",
+      "url": "/contact/?service=migration"
+    },
+    "secondary": {
+      "label": "Voir toutes les prestations",
+      "url": "/services/"
+    }
+  }
+}

@@ -100,4 +100,4 @@ Le retour sur investissement a été total en moins d'un mois.
 
 ---
 
-**Vous en avez marre de préparer vos reportings à la main ?** Décrivez-moi votre situation et je vous dirai quelle approche serait la plus adaptée. Premier échange gratuit et sans engagement.
+**Vous en avez marre de préparer vos reportings à la main ?** Décrivez-moi votre situation et je vous dirai quelle approche serait la plus adaptée. Vous préférez déléguer plutôt que de monter les cinq niveaux vous-même ? C'est le périmètre de la prestation [automatisation de traitements](/automatisation-donnees/). Premier échange gratuit et sans engagement.

@@ -211,6 +211,8 @@ Un cas concret : l’étude de cas [migration e-commerce Frère-Loup](/portfolio
 
 ---
 
+Si vous préférez déléguer la reprise plutôt que de la mener en interne, c'est l'objet de la prestation [migration de données](/migration-donnees/) : inventaire, transposition, migration à blanc et contrôles avant la bascule.
+
 ## Sources
 
 Les éléments présentés dans cet article sont basés sur des pratiques terrain observées dans des projets de migration (ERP/CRM).
