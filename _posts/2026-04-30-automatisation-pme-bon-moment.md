@@ -188,7 +188,6 @@ Le reste l'outil, la technique, le flux lui-même c'est la partie faisable. Ce q
 
 *"Vous voulez juste que ça marche, sans devenir informaticien. C'est exactement mon métier."*
 
-→ [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}
 
 ---
 

@@ -21,7 +21,7 @@ Le plus embarrassant, c'est que mon métier consiste précisément à supprimer 
 
 Le résultat tient en une phrase : je photographie une carte depuis mon téléphone, et trois secondes plus tard la fiche existe dans Zoho, remplie, avec les photos d'origine attachées.
 
-Cet article détaille la construction, nœud par nœud, avec les arbitrages que j'ai faits et ceux que j'ai écartés.
+Cet article détaille la construction, les étapes clefs, avec les arbitrages que j'ai faits et ceux que j'ai écartés.
 
 ---
 
@@ -232,4 +232,3 @@ Vous avez sûrement, vous aussi, une pile quelque part. Des bons de livraison, d
 
 *"Vous voulez juste que ça marche, sans devenir informaticien. C'est exactement mon métier."*
 
-→ [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}

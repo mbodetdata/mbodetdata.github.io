@@ -207,7 +207,6 @@ Et c’est précisément ce qui fait la différence.
 
 Un cas concret : l’étude de cas [migration e-commerce Frère-Loup](/portfolio/frele-loup-migration-prestashop.html) montre comment produits, clients et commandes ont été repris sans perte lors d’un changement de plateforme.
 
-→ [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}
 
 ---
 

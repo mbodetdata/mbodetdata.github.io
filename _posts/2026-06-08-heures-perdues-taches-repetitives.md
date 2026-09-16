@@ -155,7 +155,7 @@ L'automatisation de processus simples et bien isolés peut parfaitement être ex
 
 **L'envie de ne pas dépendre d'une seule personne.** Une automatisation durable, c'est une automatisation que plusieurs personnes dans votre équipe comprennent et peuvent maintenir.
 
-→ [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}
+{% include components/cta-diagnostic.html %}
 
 ---
 
@@ -209,7 +209,6 @@ Ce type de cas n'est pas réservé aux grandes entreprises. Je le retrouve chez 
 
 Ce cadrage demande du recul, de la méthode, et souvent un regard extérieur à votre quotidien.
 
-→ [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}
 
 ---
 

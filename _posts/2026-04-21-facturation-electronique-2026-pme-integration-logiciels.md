@@ -110,7 +110,7 @@ Certaines situations se gèrent seul avec l'aide de son expert-comptable. D'autr
 
 **Vous avez besoin que ça tienne dans la durée.** Un flux de facturation qui fonctionne en septembre et qui casse en novembre, c'est pire que de ne pas avoir commencé. La fiabilité à long terme se construit dès la conception, pas en hotfix.
 
-→ [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}
+{% include components/cta-diagnostic.html %}
 
 ## À retenir
 
@@ -153,7 +153,6 @@ Ce que cette réforme révèle, c'est souvent une réalité que les dirigeants c
 
 Les PME qui s'y prennent maintenant gèrent ça comme un projet, avec du temps pour tester et corriger. Celles qui attendent le géreront comme une urgence à la fois plus coûteux et plus risqué.
 
-→ [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}
 
 ## Sources
 

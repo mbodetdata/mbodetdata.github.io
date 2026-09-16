@@ -281,7 +281,6 @@ L’étude de cas [centralisation et automatisation des données UBA](/portfolio
 
 Vous voulez savoir où vous perdez du temps aujourd’hui, et quelle tâche serait la plus rentable à simplifier en premier ?
 
-→ [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}
 
 En 15 questions simples, vous obtenez un score et des pistes concrètes pour repérer les points à améliorer. C’est rapide, gratuit, et beaucoup plus utile qu’un énième fichier “version finale V2”.
 

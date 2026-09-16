@@ -1,0 +1,39 @@
+{% comment %}
+  CTA Diagnostic — bloc de conversion de fin d'article.
+  Usage : {% include components/cta-diagnostic.html %}
+  Paramètres optionnels (pour adapter l'accroche à l'article) :
+    title  — titre du bloc
+    sub    — phrase de contexte
+    label  — libellé du bouton
+{% endcomment %}
+<aside class="cta-diag" aria-label="Diagnostic data gratuit">
+  <div class="cta-diag__bg" aria-hidden="true">
+    <span class="cta-diag__orb cta-diag__orb--1"></span>
+    <span class="cta-diag__orb cta-diag__orb--2"></span>
+  </div>
+
+  <div class="cta-diag__inner">
+    <p class="cta-diag__eyebrow">Diagnostic gratuit</p>
+
+    <p class="cta-diag__title">
+      {{ include.title | default: "Où en êtes-vous vraiment sur vos données ?" }}
+    </p>
+
+    <p class="cta-diag__sub">
+      {{ include.sub | default: "15 questions simples pour situer votre maturité data, repérer ce qui vous fait perdre du temps et savoir par quoi commencer." }}
+    </p>
+
+    <a href="{{ '/score-maturite-data/' | relative_url }}" class="cta-diag__btn">
+      <span>{{ include.label | default: "Faire mon diagnostic gratuit" }}</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6"/>
+      </svg>
+    </a>
+
+    <p class="cta-diag__reassure">
+      <span>Résultat en 3 minutes</span>
+      <span>Gratuit et sans jargon</span>
+      <span>Conseils concrets inclus</span>
+    </p>
+  </div>
+</aside>

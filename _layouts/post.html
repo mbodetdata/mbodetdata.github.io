@@ -47,7 +47,9 @@ layout: default
 
         <div class="post-hero__footer">
           <div class="post-hero__author">
-            <div class="post-hero__avatar" aria-hidden="true">MB</div>
+            <div class="post-hero__avatar" aria-hidden="true">
+              <img src="{{ '/assets/img/Photo_profil-960.webp' | relative_url }}" alt="" width="44" height="44" decoding="async">
+            </div>
             <div class="post-hero__author-info">
               <span class="post-hero__author-name">{{ page.author | default: g.author.name }}</span>
               <time class="post-hero__date" datetime="{{ page.date | date_to_xmlschema }}">
@@ -131,6 +133,11 @@ layout: default
       <div class="post-content" id="postContent">
 
         {{ content }}
+
+        <!-- CTA Diagnostic — affiché en fin de chaque article -->
+        {% unless page.cta == false %}
+        {% include components/cta-diagnostic.html title=page.cta_title sub=page.cta_sub label=page.cta_label %}
+        {% endunless %}
 
         <!-- Tags -->
         {% if page.tags.size > 0 %}

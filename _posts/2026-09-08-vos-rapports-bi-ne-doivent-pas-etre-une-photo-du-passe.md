@@ -154,7 +154,6 @@ Un Excel bien construit peut effectivement simuler un scénario, et [la comparai
 
 La bonne nouvelle, c'est que la donnée est déjà là dans la plupart des PME. Ce qui manque souvent, ce n'est pas la donnée. C'est d'avoir clarifié, une fois, les règles métier qui permettront de tester une décision avant de la prendre et de les poser correctement dans le rapport, pour que ça tourne ensuite tout seul, toujours de la même façon.
 
-→ [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}
 
 Si vous passez encore vos soirées à refaire le même calcul à la main, la première étape n'est pas de choisir un outil. C'est de clarifier ce que vous voulez vraiment pouvoir tester.
 

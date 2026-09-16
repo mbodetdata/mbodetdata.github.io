@@ -234,7 +234,6 @@ Construire le gâteau, données fiables, outils connectés, process documentés,
 
 L'outil n'est jamais la difficulté. La difficulté, c'est de savoir dans quel ordre avancer — et d'avoir quelqu'un qui comprend votre métier pour poser les bonnes fondations.
 
-→ [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}
 
 ---
 

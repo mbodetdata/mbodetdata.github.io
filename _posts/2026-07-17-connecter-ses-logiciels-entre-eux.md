@@ -169,7 +169,6 @@ Si vous préférez déléguer plutôt que de vous y mettre seul, c’est l’obj
 
 Vous voulez savoir par quel flux commencer dans votre cas ?
 
-→ [Faire mon diagnostic gratuit](/score-maturite-data/){: .btn-inline}
 
 En 15 questions simples, vous obtenez un score et des pistes concrètes sur ce qui mérite d’être connecté ou automatisé en premier.
 
