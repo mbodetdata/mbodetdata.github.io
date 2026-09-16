@@ -1471,7 +1471,7 @@ if (document.getElementById('postArticle')) {
     }
 
     setupCopy(document.getElementById('copyLinkBtn'),  'Copier le lien');
-    setupCopy(document.getElementById('copyLinkBtn2'), false);
+    setupCopy(document.getElementById('copyLinkBtn2'), 'Copier le lien');
 
     /* ─── Native share ─── */
     function setupNativeShare(btn) {
