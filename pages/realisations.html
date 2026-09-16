@@ -33,29 +33,44 @@ body_class: "page-realisations"
   </div>
 </section>
 
-<!-- FILTRES -->
-<section class="section section--light" style="padding-top:2rem;padding-bottom:2rem;">
+<!-- FILTRES + GRILLE PROJETS -->
+{% assign total_projects = d.projects | size %}
+<section class="section rz-section" aria-label="Projets réalisés">
   <div class="container">
-    <div style="display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;" role="group" aria-label="Filtrer les projets">
-      {% for f in d.filters %}
-      <button class="btn btn-sm filter-btn {% if forloop.first %}active btn-primary{% else %}btn-outline{% endif %}"
-              data-filter="{{ f | downcase | replace: ' ', '-' }}"
-              style="{% unless forloop.first %}border-color:var(--color-gray-200);{% endunless %}">
-        {{ f }}
-      </button>
-      {% endfor %}
-    </div>
-  </div>
-</section>
 
-<!-- GRILLE PROJETS -->
-<section class="section">
-  <div class="container">
-    <div class="grid grid-auto">
+    <div class="rz-toolbar">
+      <div class="rz-filters" role="group" aria-label="Filtrer les projets par type">
+        {% for f in d.filters %}
+          {% if forloop.first %}
+            {% assign f_count = total_projects %}
+          {% else %}
+            {% assign f_count = d.projects | where: "category", f | size %}
+          {% endif %}
+          <button type="button"
+                  class="rz-filter{% if forloop.first %} is-active{% endif %}"
+                  data-filter="{{ f | downcase | replace: ' ', '-' }}"
+                  aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
+            {{ f }}
+            <span class="rz-filter__count">{{ f_count }}</span>
+          </button>
+        {% endfor %}
+      </div>
+
+      <p class="rz-result" role="status" aria-live="polite">
+        <span id="rzCount">{{ total_projects }}</span> projets
+      </p>
+    </div>
+
+    <div class="grid grid-auto rz-grid">
       {% for project in d.projects %}
         {% include components/realisation-card.html project=project %}
       {% endfor %}
     </div>
+
+    <p class="rz-empty" id="rzEmpty" hidden>
+      Aucun projet dans cette catégorie pour le moment.
+    </p>
+
   </div>
 </section>
 

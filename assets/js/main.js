@@ -382,20 +382,36 @@
   }
 
   /* ─── Filtres Réalisations ─── */
-  const filterBtns = document.querySelectorAll('.filter-btn');
+  const filterBtns = document.querySelectorAll('.rz-filter');
   const projectCards = document.querySelectorAll('.realisation-card[data-category]');
   if (filterBtns.length > 0) {
+    const countEl = document.getElementById('rzCount');
+    const emptyEl = document.getElementById('rzEmpty');
+
+    const applyFilter = (filter) => {
+      let shown = 0;
+      projectCards.forEach(card => {
+        const match = filter === 'tous' || card.dataset.category === filter;
+        card.classList.toggle('is-hidden', !match);
+        if (match) shown++;
+      });
+
+      if (countEl) {
+        countEl.textContent = shown;
+        const label = countEl.parentNode;
+        if (label) label.lastChild.textContent = shown > 1 ? ' projets' : ' projet';
+      }
+      if (emptyEl) emptyEl.hidden = shown > 0;
+    };
+
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        const filter = btn.dataset.filter;
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        projectCards.forEach(card => {
-          const match = filter === 'tous' || card.dataset.category === filter;
-          card.style.display = match ? '' : 'none';
-          card.style.opacity = match ? '1' : '0';
+        filterBtns.forEach(b => {
+          const isActive = b === btn;
+          b.classList.toggle('is-active', isActive);
+          b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
         });
+        applyFilter(btn.dataset.filter);
       });
     });
   }
