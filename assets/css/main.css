@@ -1649,57 +1649,84 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 .process-step p { font-size: var(--text-sm); color: var(--color-gray-500); }
 
 /* ─── CTA BANNERS ─── */
+/* ══════════════════════════════════════════════════════════
+   CTA BANNER — bloc de pré-footer, présent sur toutes les pages
+   Mise en page en 2 colonnes obtenue par grid-template-areas :
+   le markup reste plat (h2 + p + .cta-actions), aucune page à modifier.
+   ══════════════════════════════════════════════════════════ */
 .cta-banner {
-  background: linear-gradient(145deg, #0e1a2e 0%, #111f38 55%, #0d1828 100%);
-  border-radius: var(--radius-2xl);
-  padding: var(--space-16) var(--space-12);
-  text-align: center;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(102,119,255,.18);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "title   actions"
+    "text    actions";
+  align-items: center;
+  column-gap: var(--space-12);
+  row-gap: var(--space-3);
+  padding: var(--space-12);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-2xl);
+  background: var(--color-white);
+  text-align: left;
 }
+/* Filet d'accent : seule couleur de marque du bloc */
 .cta-banner::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 90% at 10% 110%, rgba(102,119,255,.25), transparent 60%),
-    radial-gradient(ellipse 60% 80% at 90% 110%, rgba(43,212,143,.22), transparent 58%),
-    radial-gradient(ellipse 50% 60% at 50% -20%, rgba(29,185,154,.1), transparent 65%);
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradient-brand-h);
+  z-index: 2;
 }
+.cta-banner::after { content: none; }
+
 .cta-banner * { position: relative; z-index: 1; }
-.cta-banner h2 { color: white; margin-bottom: var(--space-4); font-size: clamp(var(--text-2xl), 3vw, var(--text-4xl)); }
-.cta-banner p  { color: rgba(255,255,255,.7); font-size: var(--text-lg); max-width: 580px; margin: 0 auto var(--space-8); }
+
+.cta-banner h2 {
+  grid-area: title;
+  margin: 0;
+  font-size: clamp(var(--text-xl), 2.6vw, var(--text-3xl));
+  line-height: 1.22;
+  color: var(--color-gray-900);
+  text-wrap: balance;
+}
+.cta-banner p {
+  grid-area: text;
+  max-width: 52ch;
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--color-gray-500);
+}
 .cta-actions {
+  grid-area: actions;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
+  align-items: center;
 }
 
-/* CTA accent — dark premium cohérent avec le reste du site */
+/* Variante accent vert (pages prestations) */
 .cta-banner--gold {
-  background: linear-gradient(145deg, #0e1a2e 0%, #111f38 55%, #0d1828 100%);
-  border-color: rgba(102,119,255,.22);
+  border-color: rgba(43, 212, 143, .3);
 }
 .cta-banner--gold::before {
-  background:
-    radial-gradient(ellipse 65% 80% at  8%  50%, rgba(102,119,255,.18), transparent 58%),
-    radial-gradient(ellipse 55% 70% at 92%  50%, rgba(43,212,143,.12),  transparent 55%),
-    radial-gradient(ellipse 40% 50% at 50% 110%, rgba(29,185,154,.08),  transparent 62%);
+  background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-teal) 55%, var(--color-blue) 100%);
 }
-/* Ligne lumineuse en haut de la bannière */
-.cta-banner--gold::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg,
-    transparent 5%,
-    rgba(102,119,255,.55) 30%,
-    rgba(43,212,143,.4) 65%,
-    transparent 95%);
-  z-index: 2;
+
+@media (max-width: 900px) {
+  .cta-banner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "text"
+      "actions";
+    row-gap: var(--space-5);
+    padding: var(--space-10) var(--space-8);
+  }
+  .cta-banner p { max-width: none; }
 }
 
 /* ─── BLOG ─── */
@@ -4116,30 +4143,6 @@ p { line-height: 1.75; color: var(--color-gray-600); }
 }
 
 /* ─── (skill-tag hover rules now consolidated in skills-bento block above) ─── */
-
-/* ─── CTA BANNER — SHIMMER DE FOND ─── */
-@media (prefers-reduced-motion: no-preference) {
-  .cta-banner::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      135deg,
-      transparent 0%,
-      rgba(255,255,255,.03) 50%,
-      transparent 100%
-    );
-    background-size: 200% 200%;
-    animation: ctaShimmer 6s ease infinite;
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 0;
-  }
-  @keyframes ctaShimmer {
-    0%   { background-position: 200% 200%; }
-    100% { background-position: -200% -200%; }
-  }
-}
 
 /* ─── TIMELINE — DOT + ANNEAU ANIMÉS ─── */
 @media (prefers-reduced-motion: no-preference) {
@@ -9441,40 +9444,4 @@ mark.faq-hl {
 .post-content a.btn-inline:focus-visible {
   background: #22c47a; color: var(--color-navy);
   text-decoration: none;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   Bloc de clôture d'article — version claire (blog uniquement)
-   Scopé à .post-cta-wrap : les .cta-banner du reste du site
-   conservent leur traitement sombre.
-   ═══════════════════════════════════════════════════════════ */
-.post-cta-wrap .cta-banner {
-  padding: var(--space-12) var(--space-8);
-  border: 1px solid var(--color-gray-200);
-  border-radius: var(--radius-xl);
-  background: var(--color-gray-50);
-}
-/* neutralise halos radiaux et shimmer animé hérités du bloc sombre */
-.post-cta-wrap .cta-banner::before,
-.post-cta-wrap .cta-banner::after {
-  content: none;
-  background: none;
-  animation: none;
-}
-.post-cta-wrap .cta-banner h2 {
-  margin-bottom: var(--space-3);
-  font-size: clamp(var(--text-xl), 2.4vw, var(--text-3xl));
-  line-height: 1.25;
-  color: var(--color-gray-900);
-  text-wrap: balance;
-}
-.post-cta-wrap .cta-banner p {
-  max-width: 48ch;
-  margin: 0 auto var(--space-7);
-  font-size: var(--text-base); line-height: 1.65;
-  color: var(--color-gray-500);
-}
-
-@media (max-width: 768px) {
-  .post-cta-wrap .cta-banner { padding: var(--space-10) var(--space-6); }
 }
