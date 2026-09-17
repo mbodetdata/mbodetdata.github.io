@@ -125,79 +125,61 @@ window.QUIZ_DATA = { axes: [
       {% endfor %}
 
       <!-- ── ÉTAPE 7 : Coordonnées ── -->
-      <div class="quiz-step" id="step-7" data-step="7" role="group" aria-labelledby="step7-title">
-        <div class="quiz-step__header">
-          <div class="quiz-step__axe">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            Dernière étape
-          </div>
-          <h2 class="quiz-step__title" id="step7-title">Où envoyer votre résultat&nbsp;?</h2>
-          <p class="quiz-step__sub">Indiquez juste votre email — on vous envoie votre score en pourcentage avec des conseils concrets adaptés à votre situation. Pas de jargon, pas de blabla.</p>
-        </div>
+      <div class="pf-row">
 
-        <div class="quiz-error" id="quiz-error" role="alert"></div>
+  <div class="pf-group">
+    <label class="pf-label" for="quiz-first-name">
+      Prénom
+      <span class="req" aria-label="obligatoire">*</span>
+    </label>
 
-        <form id="quiz-form" novalidate aria-label="Formulaire de contact pour le score de maturité data">
+    <input
+      type="text"
+      id="quiz-first-name"
+      name="first_name"
+      class="pf-input"
+      placeholder="Jean"
+      required
+      aria-required="true"
+      autocomplete="given-name">
+  </div>
 
-          <div class="pf-row">
-            <div class="pf-group">
-              <label class="pf-label" for="quiz-name">Nom et prénom <span class="req" aria-label="obligatoire">*</span></label>
-              <input type="text" id="quiz-name" name="name" class="pf-input" placeholder="Jean Dupont" required aria-required="true" autocomplete="name">
-            </div>
-            <div class="pf-group">
-              <label class="pf-label" for="quiz-company">Entreprise</label>
-              <input type="text" id="quiz-company" name="company" class="pf-input" placeholder="Votre société (facultatif)" autocomplete="organization">
-            </div>
-          </div>
-          <div class="pf-row">
-            <div class="pf-group">
-              <label class="pf-label" for="quiz-email">Adresse email <span class="req" aria-label="obligatoire">*</span></label>
-              <input type="email" id="quiz-email" name="email" class="pf-input" placeholder="jean@exemple.fr" required aria-required="true" autocomplete="email">
-            </div>
-            <div class="pf-group">
-              <label class="pf-label" for="quiz-sector">Secteur d'activité</label>
-              <select id="quiz-sector" name="sector" class="pf-select">
-                <option value="">— Choisir —</option>
-                <option value="industrie">Industrie / Production</option>
-                <option value="commerce">Commerce / Distribution</option>
-                <option value="services">Services aux entreprises</option>
-                <option value="sante">Santé / Médico-social</option>
-                <option value="batiment">Bâtiment / BTP</option>
-                <option value="logistique">Transport / Logistique</option>
-                <option value="agroalimentaire">Agroalimentaire</option>
-                <option value="autre">Autre</option>
-              </select>
-            </div>
-          </div>
-          <div class="pf-group">
-            <label class="pf-label" for="quiz-size">Taille de votre entreprise</label>
-            <select id="quiz-size" name="company_size" class="pf-select">
-              <option value="">— Choisir —</option>
-              <option value="1-5">1 à 5 salariés</option>
-              <option value="6-20">6 à 20 salariés</option>
-              <option value="21-50">21 à 50 salariés</option>
-              <option value="51-200">51 à 200 salariés</option>
-              <option value="200+">Plus de 200 salariés</option>
-            </select>
-          </div>
+  <div class="pf-group">
+    <label class="pf-label" for="quiz-last-name">
+      Nom
+      <span class="req" aria-label="obligatoire">*</span>
+    </label>
 
-          <label class="quiz-consent">
-            <input type="checkbox" id="quiz-consent" name="consent" required aria-required="true">
-            <span>J'accepte que BM Data utilise mes coordonnées pour m'envoyer mon score et me recontacter. <a href="{{ '/politique-de-confidentialite/' | relative_url }}" target="_blank">Politique de confidentialité</a>.</span>
-          </label>
+    <input
+      type="text"
+      id="quiz-last-name"
+      name="last_name"
+      class="pf-input"
+      placeholder="Dupont"
+      required
+      aria-required="true"
+      autocomplete="family-name">
+  </div>
 
-          <div class="quiz-nav quiz-nav--submit">
-            <button class="btn-quiz-prev" data-prev="6" type="button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-              Précédent
-            </button>
-            <button type="submit" class="btn-quiz-submit" id="quiz-submit">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-              Obtenir mon score
-            </button>
-          </div>
-        </form>
-      </div>
+</div>
+
+<div class="pf-row">
+
+  <div class="pf-group">
+    <label class="pf-label" for="quiz-company">
+      Entreprise
+    </label>
+
+    <input
+      type="text"
+      id="quiz-company"
+      name="company"
+      class="pf-input"
+      placeholder="Votre société"
+      autocomplete="organization">
+  </div>
+
+</div>
 
       <!-- ── RÉSULTATS ── -->
       <div class="quiz-step" id="step-results" data-step="results" role="region" aria-labelledby="qr-level-name">
