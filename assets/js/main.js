@@ -1927,11 +1927,11 @@ if (document.getElementById('postArticle')) {
       var submitBtn = document.getElementById('quiz-submit');
       if (errorEl) errorEl.style.display = 'none';
 
-      var nameVal    = quizForm.querySelector('[name="name"]').value.trim();
-      var emailVal   = quizForm.querySelector('[name="email"]').value.trim();
+    var firstnameVal = quizForm.querySelector('[name="firstname"]').value.trim();
+    var lastnameVal  = quizForm.querySelector('[name="lastname"]').value.trim();      var emailVal   = quizForm.querySelector('[name="email"]').value.trim();
       var consentVal = quizForm.querySelector('[name="consent"]').checked;
 
-      if (!nameVal || !emailVal || !consentVal) {
+      if (!firstnameVal || !lastnameVal || !emailVal || !consentVal) {
         if (errorEl) {
           errorEl.textContent = 'Veuillez remplir les champs obligatoires et cocher la case de consentement.';
           errorEl.style.display = 'block';
