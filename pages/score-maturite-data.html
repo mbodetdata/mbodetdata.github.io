@@ -140,60 +140,19 @@ window.QUIZ_DATA = { axes: [
         <form id="quiz-form" novalidate aria-label="Formulaire de contact pour le score de maturité data">
 
           <div class="pf-row">
-
-  <div class="pf-group">
-    <label class="pf-label" for="quiz-first-name">
-      Prénom
-      <span class="req" aria-label="obligatoire">*</span>
-    </label>
-
-    <input
-      type="text"
-      id="quiz-first-name"
-      name="first_name"
-      class="pf-input"
-      placeholder="Jean"
-      required
-      aria-required="true"
-      autocomplete="given-name">
-  </div>
-
-  <div class="pf-group">
-    <label class="pf-label" for="quiz-last-name">
-      Nom
-      <span class="req" aria-label="obligatoire">*</span>
-    </label>
-
-    <input
-      type="text"
-      id="quiz-last-name"
-      name="last_name"
-      class="pf-input"
-      placeholder="Dupont"
-      required
-      aria-required="true"
-      autocomplete="family-name">
-  </div>
-
-</div>
-
-<div class="pf-row">
-
-  <div class="pf-group">
-    <label class="pf-label" for="quiz-company">
-      Entreprise
-    </label>
-
-    <input
-      type="text"
-      id="quiz-company"
-      name="company"
-      class="pf-input"
-      placeholder="Votre société"
-      autocomplete="organization">
-  </div>
-
-</div>
+            <div class="pf-group">
+              <label class="pf-label" for="quiz-firstname">Prénom <span class="req" aria-label="obligatoire">*</span></label>
+              <input type="text" id="quiz-firstname" name="firstname" class="pf-input" placeholder="Jean" required aria-required="true" autocomplete="given-name">
+            </div>
+            <div class="pf-group">
+              <label class="pf-label" for="quiz-name">Nom <span class="req" aria-label="obligatoire">*</span></label>
+              <input type="text" id="quiz-name" name="lastname" class="pf-input" placeholder="Dupont" required aria-required="true" autocomplete="family-name">
+            </div>
+            <div class="pf-group">
+              <label class="pf-label" for="quiz-company">Entreprise</label>
+              <input type="text" id="quiz-company" name="company" class="pf-input" placeholder="Votre société (facultatif)" autocomplete="organization">
+            </div>
+          </div>
           <div class="pf-row">
             <div class="pf-group">
               <label class="pf-label" for="quiz-email">Adresse email <span class="req" aria-label="obligatoire">*</span></label>

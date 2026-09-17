@@ -1919,162 +1919,75 @@ if (document.getElementById('postArticle')) {
   }
 
   /* ── Soumission du formulaire ── */
+  var quizForm = document.getElementById('quiz-form');
+  if (quizForm) {
+    quizForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var errorEl   = document.getElementById('quiz-error');
+      var submitBtn = document.getElementById('quiz-submit');
+      if (errorEl) errorEl.style.display = 'none';
 
-var quizForm = document.getElementById('quiz-form');
+      var nameVal    = quizForm.querySelector('[name="name"]').value.trim();
+      var emailVal   = quizForm.querySelector('[name="email"]').value.trim();
+      var consentVal = quizForm.querySelector('[name="consent"]').checked;
 
-if (quizForm) {
-
-  quizForm.addEventListener('submit', function (e) {
-
-    e.preventDefault();
-
-    var errorEl = document.getElementById('quiz-error');
-    var submitBtn = document.getElementById('quiz-submit');
-
-    if (errorEl) errorEl.style.display = 'none';
-
-    var fullName = quizForm.querySelector('[name="name"]').value.trim();
-    var emailVal = quizForm.querySelector('[name="email"]').value.trim();
-    var consentVal = quizForm.querySelector('[name="consent"]').checked;
-
-    if (!fullName || !emailVal || !consentVal) {
-
-      if (errorEl) {
-        errorEl.textContent = 'Veuillez remplir les champs obligatoires et cocher la case de consentement.';
-        errorEl.style.display = 'block';
+      if (!nameVal || !emailVal || !consentVal) {
+        if (errorEl) {
+          errorEl.textContent = 'Veuillez remplir les champs obligatoires et cocher la case de consentement.';
+          errorEl.style.display = 'block';
+        }
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+        if (errorEl) {
+          errorEl.textContent = 'Adresse email invalide.';
+          errorEl.style.display = 'block';
+        }
+        return;
       }
 
-      return;
-    }
+      var scores  = calcScores();
+      var level   = getLevel(scores.total);
+      var webhook = window.QUIZ_CONFIG && window.QUIZ_CONFIG.webhook;
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Calcul en cours…';
 
-      if (errorEl) {
-        errorEl.textContent = 'Adresse email invalide.';
-        errorEl.style.display = 'block';
+      var payload = {
+        firstname:    quizForm.querySelector('[name="firstname"]').value.trim(),
+        lastname:     quizForm.querySelector('[name="lastname"]').value.trim(),
+        email:          emailVal,
+        company:        quizForm.querySelector('[name="company"]').value.trim(),
+        sector:         quizForm.querySelector('[name="sector"]').value,
+        company_size:   quizForm.querySelector('[name="company_size"]').value,
+        total_score:    scores.total,
+        max_score:    100,
+        level_badge:  level.badge,
+        level_name:   level.name,
+        axes: scores.axeScores.map(function (s, i) {
+          return { name: AXES_LABELS[i], score: s, max: 100, level: getAxisLevel(s).label };
+        }),
+        recommendations: level.reco,
+        submitted_at: new Date().toISOString(),
+        source:       window.location.href
+      };
+
+      function finish() { displayResults(scores); }
+
+      if (webhook) {
+        fetch(webhook, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload)
+        }).then(finish).catch(function (err) {
+          console.warn('Quiz webhook error:', err);
+          finish();
+        });
+      } else {
+        finish();
       }
-
-      return;
-    }
-
-    /* ── Séparation prénom / nom ── */
-
-    var parts = fullName.split(/\s+/);
-
-    var firstName = '';
-    var lastName = '';
-
-    if (parts.length === 1) {
-
-      lastName = parts[0];
-
-    } else {
-
-      firstName = parts.slice(0, -1).join(' ');
-      lastName = parts.slice(-1)[0];
-
-    }
-
-    var companyVal =
-      quizForm.querySelector('[name="company"]').value.trim() ||
-      'Non renseigné';
-
-    var scores = calcScores();
-    var level = getLevel(scores.total);
-
-    var webhook =
-      window.QUIZ_CONFIG &&
-      window.QUIZ_CONFIG.webhook;
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Calcul en cours…';
-
-    var payload = {
-
-      /* ===== Zoho CRM ===== */
-
-      first_name: firstName,
-      last_name: lastName,
-      email: emailVal,
-      company: companyVal,
-
-      lead_source: 'Diagnostic Maturité Data',
-
-      /* ===== Formulaire ===== */
-
-      full_name: fullName,
-
-      sector: quizForm.querySelector('[name="sector"]').value,
-
-      company_size:
-        quizForm.querySelector('[name="company_size"]').value,
-
-      /* ===== Résultats ===== */
-
-      total_score: scores.total,
-      max_score: 100,
-
-      level_badge: level.badge,
-      level_name: level.name,
-
-      axes: scores.axeScores.map(function (s, i) {
-
-        return {
-          name: AXES_LABELS[i],
-          score: s,
-          max: 100,
-          level: getAxisLevel(s).label
-        };
-
-      }),
-
-      recommendations: level.reco,
-
-      /* ===== Métadonnées ===== */
-
-      submitted_at: new Date().toISOString(),
-
-      source: window.location.href
-
-    };
-
-    function finish() {
-      displayResults(scores);
-    }
-
-    if (webhook) {
-
-      fetch(webhook, {
-
-        method: 'POST',
-
-        headers: {
-          'Content-Type': 'application/json'
-        },
-
-        body: JSON.stringify(payload)
-
-      })
-      .then(function () {
-        finish();
-      })
-      .catch(function (err) {
-
-        console.warn('Quiz webhook error:', err);
-
-        finish();
-
-      });
-
-    } else {
-
-      finish();
-
-    }
-
-  });
-
-}
+    });
+  }
 
   /* ── Refaire le diagnostic ── */
   var restartBtn = document.getElementById('btn-restart');
