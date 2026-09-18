@@ -6803,10 +6803,6 @@ mark.faq-hl {
 @keyframes successPop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
 .pf-success h4 { font-size: 1.25rem; color: var(--color-navy); margin-bottom: .5rem; }
 .pf-success p { color: var(--color-gray-500); font-size: .875rem; line-height: 1.65; }
-.pf-success-ref {
-  margin-top: .75rem; font-size: .75rem !important;
-  color: var(--color-gray-400) !important; letter-spacing: .02em;
-}
 
 /* ── BOOKING PANEL ── */
 .booking-panel {

@@ -1136,15 +1136,9 @@ if (document.querySelector('.page-contact')) {
 
     function showSuccess(data) {
       var textEl = document.getElementById('pf-success-text');
-      var refEl  = document.getElementById('pf-success-ref');
       var custom = confirmedBy(data) ? (data.user_message || data.message) : '';
-      var ref    = data.reference || data.lead_id || data.id;
 
       if (custom && textEl) textEl.textContent = custom;
-      if (ref && refEl) {
-        refEl.textContent = 'Référence de votre demande : ' + ref;
-        refEl.hidden = false;
-      }
 
       form.style.display = 'none';
       successEl.style.display = 'block';
