@@ -6726,6 +6726,15 @@ mark.faq-hl {
   color: var(--color-navy); margin-bottom: .45rem; letter-spacing: .02em;
 }
 .pf-label .req { color: #ef4444; margin-left: 2px; }
+.pf-label .pf-opt {
+  color: var(--color-gray-400); font-weight: 500; font-size: .7rem;
+  text-transform: lowercase; letter-spacing: 0; margin-left: 4px;
+}
+/* Piège à robots : invisible à l'œil et hors du flux de tabulation. */
+.pf-hp {
+  position: absolute; left: -9999px; width: 1px; height: 1px;
+  overflow: hidden; opacity: 0; pointer-events: none;
+}
 .pf-input, .pf-select, .pf-textarea {
   width: 100%; padding: .85rem 1rem;
   border: 1.5px solid #e8eaf6; border-radius: 12px;
@@ -6766,6 +6775,9 @@ mark.faq-hl {
 }
 .pf-submit:hover { transform: translateY(-2px); background: #22c47a; box-shadow: 0 10px 32px rgba(43,212,143,.45); }
 .pf-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+.pf-submit.is-sending::after { display: none; }
+.pf-submit.is-sending svg { animation: pfPulse 1s ease-in-out infinite; }
+@keyframes pfPulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 .pf-privacy { font-size: .7rem; color: var(--color-gray-400); margin-top: .9rem; line-height: 1.6; text-align: center; }
 .pf-privacy a { color: var(--color-blue); text-decoration: underline; }
 .pf-error {
@@ -6773,7 +6785,9 @@ mark.faq-hl {
   border-radius: 10px; padding: .875rem 1rem;
   font-size: .8rem; color: #dc2626; margin-bottom: 1rem;
 }
+.pf-error a { color: #b91c1c; font-weight: 600; text-decoration: underline; }
 .pf-input.field-error,
+.pf-select.field-error,
 .pf-textarea.field-error {
   border-color: #dc2626 !important;
   box-shadow: 0 0 0 3px rgba(220,38,38,.12) !important;
@@ -6789,6 +6803,10 @@ mark.faq-hl {
 @keyframes successPop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
 .pf-success h4 { font-size: 1.25rem; color: var(--color-navy); margin-bottom: .5rem; }
 .pf-success p { color: var(--color-gray-500); font-size: .875rem; line-height: 1.65; }
+.pf-success-ref {
+  margin-top: .75rem; font-size: .75rem !important;
+  color: var(--color-gray-400) !important; letter-spacing: .02em;
+}
 
 /* ── BOOKING PANEL ── */
 .booking-panel {

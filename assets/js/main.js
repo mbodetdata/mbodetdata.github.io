@@ -422,7 +422,10 @@
   }
 
   /* ─── Formulaire contact ─── */
-  const contactForm = document.getElementById('contact-form');
+  /* La page contact possède son propre gestionnaire (envoi vers le webhook n8n).
+     Sans cette exclusion, les deux écouteurs se déclenchent et celui-ci masque
+     le formulaire avant même la réponse du webhook. */
+  const contactForm = document.querySelector('.page-contact') ? null : document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -1094,64 +1097,196 @@ if (document.querySelector('.page-contact')) {
     var successEl = document.getElementById('pf-success');
     var errorEl   = document.getElementById('pf-error');
     var submitBtn = document.getElementById('pf-submit');
+    var submitLbl = submitBtn.querySelector('.pf-submit-label');
+    var idleLabel = submitLbl ? submitLbl.textContent : 'Envoyer ma demande';
+
+    /* URL du webhook n8n : pilotée par l'attribut action du formulaire. */
+    var WEBHOOK_URL = form.getAttribute('action');
+    var REQUEST_TIMEOUT = 15000;
+    var sending = false;
+
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    /* Le message renvoyé par n8n est inséré en HTML : on l'échappe. */
+    function escHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function showError(html) {
+      errorEl.innerHTML = html;
+      errorEl.style.display = 'block';
+      errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    /* Corps de la réponse n8n, tolérant : un webhook muet ou non-JSON
+       ne doit pas faire passer un envoi réussi pour un échec. */
+    function readBody(res) {
+      var type = res.headers.get('content-type') || '';
+      if (type.indexOf('json') === -1) return Promise.resolve({});
+      return res.json().catch(function () { return {}; });
+    }
+
+    /* n8n ne confirme que s'il renvoie explicitement ok/success à true.
+       La réponse par défaut ("Workflow was started") n'affiche donc rien. */
+    function confirmedBy(data) {
+      return data.ok === true || data.success === true;
+    }
+
+    function showSuccess(data) {
+      var textEl = document.getElementById('pf-success-text');
+      var refEl  = document.getElementById('pf-success-ref');
+      var custom = confirmedBy(data) ? (data.user_message || data.message) : '';
+      var ref    = data.reference || data.lead_id || data.id;
+
+      if (custom && textEl) textEl.textContent = custom;
+      if (ref && refEl) {
+        refEl.textContent = 'Référence de votre demande : ' + ref;
+        refEl.hidden = false;
+      }
+
+      form.style.display = 'none';
+      successEl.style.display = 'block';
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'generate_lead', { event_category: 'contact', method: 'formulaire' });
+      }
+    }
+
+    function selectedOption(select) {
+      return select.selectedIndex > -1 ? select.options[select.selectedIndex] : null;
+    }
+
+    function selectedLabel(select) {
+      var opt = selectedOption(select);
+      return (select.value && opt) ? opt.textContent.trim() : '';
+    }
+
+    function setSending(on) {
+      sending = on;
+      submitBtn.disabled = on;
+      submitBtn.classList.toggle('is-sending', on);
+      if (submitLbl) submitLbl.textContent = on ? 'Envoi en cours…' : idleLabel;
+    }
+
+    /* Repli si le webhook est injoignable : on propose l'email pré-rempli. */
+    function mailtoFallback(payload) {
+      var subject = 'Demande de contact BM Data — ' + payload.full_name;
+      var body =
+        'Nom : ' + payload.full_name + '\n' +
+        'Email : ' + payload.email + '\n' +
+        (payload.phone ? 'Téléphone : ' + payload.phone + '\n' : '') +
+        (payload.company ? 'Entreprise : ' + payload.company + '\n' : '') +
+        (payload.company_size_label ? 'Taille : ' + payload.company_size_label + '\n' : '') +
+        (payload.subject_label ? 'Sujet : ' + payload.subject_label + '\n' : '') +
+        '\nDemande :\n' + (payload.message || '(non précisée)');
+      return 'mailto:contact@bmdata.fr?subject=' + encodeURIComponent(subject) +
+             '&body=' + encodeURIComponent(body);
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (sending) return;
 
-      var nameEl    = form.querySelector('#name');
-      var emailEl   = form.querySelector('#email');
-      var messageEl = form.querySelector('#message');
-      var name      = nameEl.value.trim();
+      var firstEl = form.querySelector('#firstname');
+      var lastEl  = form.querySelector('#lastname');
+      var emailEl = form.querySelector('#email');
+      var sizeEl  = form.querySelector('#company_size');
+      var servEl  = form.querySelector('#service');
+
+      var firstname = firstEl.value.trim();
+      var lastname  = lastEl.value.trim();
       var email     = emailEl.value.trim();
-      var message   = messageEl.value.trim();
-      var company   = form.querySelector('#company').value.trim();
       var phone     = form.querySelector('#phone').value.trim();
-      var service   = form.querySelector('#service').value;
+      var company   = form.querySelector('#company').value.trim();
+      var message   = form.querySelector('#message').value.trim();
+      var honeypot  = form.querySelector('#website').value.trim();
 
       /* Réinitialiser les erreurs visuelles */
-      [nameEl, emailEl, messageEl].forEach(function (el) { el.classList.remove('field-error'); });
+      [firstEl, lastEl, emailEl].forEach(function (el) { el.classList.remove('field-error'); });
       errorEl.style.display = 'none';
 
-      /* Validation */
+      /* Validation : seuls prénom, nom et email sont obligatoires. */
       var errors = [];
-      if (!name)    { nameEl.classList.add('field-error');    errors.push('nom'); }
-      if (!email)   { emailEl.classList.add('field-error');   errors.push('email'); }
-      if (!message) { messageEl.classList.add('field-error'); errors.push('message'); }
+      if (!firstname) { firstEl.classList.add('field-error'); errors.push('prénom'); }
+      if (!lastname)  { lastEl.classList.add('field-error');  errors.push('nom'); }
+      if (!email || !EMAIL_RE.test(email)) {
+        emailEl.classList.add('field-error');
+        errors.push(email ? 'email (format invalide)' : 'email');
+      }
 
       if (errors.length) {
-        errorEl.textContent = 'Merci de remplir les champs obligatoires : ' + errors.join(', ') + '.';
-        errorEl.style.display = 'block';
-        errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        showError('Merci de vérifier les champs suivants : ' + errors.join(', ') + '.');
         return;
       }
 
-      /* ── ENVOI VIA MAILTO ──
-         Quand n8n sera prêt, remplacer ce bloc par un fetch POST vers le webhook n8n.
-         Exemple :
-           fetch('https://votre-n8n.fr/webhook/contact', {
-             method: 'POST',
-             headers: { 'Content-Type': 'application/json' },
-             body: JSON.stringify({ name, email, company, phone, service, message })
-           }).then(...);
-      */
-      var serviceLabel = service ? form.querySelector('#service option:checked').textContent : 'Non précisé';
-      var subject = encodeURIComponent('Demande de contact BM Data — ' + (service ? serviceLabel : name));
-      var body = encodeURIComponent(
-        'Nom : ' + name + '\n' +
-        'Email : ' + email + '\n' +
-        (phone   ? 'Téléphone : ' + phone + '\n' : '') +
-        (company ? 'Entreprise : ' + company + '\n' : '') +
-        'Sujet : ' + serviceLabel + '\n\n' +
-        'Message :\n' + message
-      );
+      var sizeOpt = sizeEl.value ? selectedOption(sizeEl) : null;
 
-      window.location.href = 'mailto:contact@bmdata.fr?subject=' + subject + '&body=' + body;
+      var payload = {
+        first_name:         firstname,
+        last_name:          lastname,
+        full_name:          firstname + ' ' + lastname,
+        email:              email,
+        phone:              phone,
+        company:            company,
+        company_size:       sizeEl.value,
+        company_size_label: selectedLabel(sizeEl),
+        employees:          sizeOpt ? Number(sizeOpt.getAttribute('data-employees')) : null,
+        subject:            servEl.value,
+        subject_label:      selectedLabel(servEl),
+        message:            message,
+        lead_source:        'Site web bmdata.fr',
+        page_url:           window.location.href,
+        referrer:           document.referrer || '',
+        submitted_at:       new Date().toISOString()
+      };
 
-      /* Afficher la confirmation après ouverture du client mail */
-      setTimeout(function () {
+      /* Robot : on simule un succès sans rien envoyer. */
+      if (honeypot) {
         form.style.display = 'none';
         successEl.style.display = 'block';
-      }, 500);
+        return;
+      }
+
+      setSending(true);
+
+      var controller = ('AbortController' in window) ? new AbortController() : null;
+      var timer = controller ? setTimeout(function () { controller.abort(); }, REQUEST_TIMEOUT) : null;
+
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: controller ? controller.signal : undefined
+      })
+        .then(function (res) {
+          return readBody(res).then(function (data) {
+            /* n8n peut répondre 200 tout en signalant un échec applicatif
+               (Zoho injoignable, doublon refusé…) : on respecte son verdict. */
+            var rejected = data.ok === false || data.success === false || !!data.error;
+            if (!res.ok || rejected) {
+              var err = new Error('Webhook ' + res.status);
+              err.userMessage = data.user_message || data.message ||
+                                (typeof data.error === 'string' ? data.error : '');
+              throw err;
+            }
+            showSuccess(data);
+          });
+        })
+        .catch(function (err) {
+          var detail = (err && err.userMessage) ? escHtml(err.userMessage) :
+                       'L\'envoi a échoué.';
+          showError(
+            detail + ' Merci de réessayer dans un instant, ou de ' +
+            '<a href="' + mailtoFallback(payload) + '">m\'écrire directement par email</a>.'
+          );
+        })
+        .then(function () {
+          if (timer) clearTimeout(timer);
+          setSending(false);
+        });
     });
 
     /* ── SCROLL ANIMATIONS ── */

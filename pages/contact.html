@@ -220,17 +220,18 @@ body_class: "page-contact"
               </svg>
             </div>
             <h4>Message envoyé !</h4>
-            <p>{{ d.form.success_message }}</p>
+            <p id="pf-success-text">{{ d.form.success_message }}</p>
+            <p class="pf-success-ref" id="pf-success-ref" hidden></p>
           </div>
-          <form id="contact-form" action="#" method="POST" novalidate aria-label="Formulaire de contact BM Data">
+          <form id="contact-form" action="https://n8n.bmdata.fr/webhook/formulaire-contact" method="POST" novalidate aria-label="Formulaire de contact BM Data">
             <div class="pf-row">
               <div>
-                <label class="pf-label" for="name">Nom et prénom <span class="req" aria-label="obligatoire">*</span></label>
-                <input type="text" id="name" name="name" class="pf-input" placeholder="Jean Dupont" required aria-required="true" autocomplete="name">
+                <label class="pf-label" for="firstname">Prénom <span class="req" aria-label="obligatoire">*</span></label>
+                <input type="text" id="firstname" name="firstname" class="pf-input" placeholder="Jean" required aria-required="true" autocomplete="given-name">
               </div>
               <div>
-                <label class="pf-label" for="company">Entreprise</label>
-                <input type="text" id="company" name="company" class="pf-input" placeholder="Votre société (facultatif)" autocomplete="organization">
+                <label class="pf-label" for="lastname">Nom <span class="req" aria-label="obligatoire">*</span></label>
+                <input type="text" id="lastname" name="lastname" class="pf-input" placeholder="Dupont" required aria-required="true" autocomplete="family-name">
               </div>
             </div>
             <div class="pf-row">
@@ -239,12 +240,29 @@ body_class: "page-contact"
                 <input type="email" id="email" name="email" class="pf-input" placeholder="jean@exemple.fr" required aria-required="true" autocomplete="email">
               </div>
               <div>
-                <label class="pf-label" for="phone">Téléphone</label>
+                <label class="pf-label" for="phone">Téléphone <span class="pf-opt">facultatif</span></label>
                 <input type="tel" id="phone" name="phone" class="pf-input" placeholder="06 XX XX XX XX" autocomplete="tel">
               </div>
             </div>
+            <div class="pf-row">
+              <div>
+                <label class="pf-label" for="company">Entreprise <span class="pf-opt">facultatif</span></label>
+                <input type="text" id="company" name="company" class="pf-input" placeholder="Votre société" autocomplete="organization">
+              </div>
+              <div>
+                <label class="pf-label" for="company_size">Taille de l'entreprise <span class="pf-opt">facultatif</span></label>
+                <select id="company_size" name="company_size" class="pf-select">
+                  <option value="">— Choisir —</option>
+                  <option value="1" data-employees="1">Indépendant / 1 personne</option>
+                  <option value="2-9" data-employees="5">2 à 9 salariés</option>
+                  <option value="10-49" data-employees="25">10 à 49 salariés</option>
+                  <option value="50-249" data-employees="100">50 à 249 salariés</option>
+                  <option value="250+" data-employees="250">250 salariés et plus</option>
+                </select>
+              </div>
+            </div>
             <div class="pf-group">
-              <label class="pf-label" for="service">Sujet de votre demande</label>
+              <label class="pf-label" for="service">Sujet de votre demande <span class="pf-opt">facultatif</span></label>
               <select id="service" name="service" class="pf-select">
                 <option value="">— Choisir un sujet —</option>
                 <option value="tableau-de-bord">Tableau de bord de pilotage</option>
@@ -259,15 +277,20 @@ body_class: "page-contact"
               </select>
             </div>
             <div class="pf-group">
-              <label class="pf-label" for="message">Votre message <span class="req" aria-label="obligatoire">*</span></label>
-              <textarea id="message" name="message" class="pf-textarea" placeholder="Décrivez brièvement votre situation ou votre question…" required aria-required="true"></textarea>
+              <label class="pf-label" for="message">Votre demande <span class="pf-opt">facultatif</span></label>
+              <textarea id="message" name="message" class="pf-textarea" placeholder="Décrivez brièvement votre situation ou votre question…"></textarea>
+            </div>
+            <!-- Piège à robots : un humain ne voit pas ce champ et ne le remplit jamais. -->
+            <div class="pf-hp" aria-hidden="true">
+              <label for="website">Ne pas remplir ce champ</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
             </div>
             <button type="submit" class="pf-submit" id="pf-submit">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
                 <line x1="22" y1="2" x2="11" y2="13"/>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"/>
               </svg>
-              {{ d.form.submit_label }}
+              <span class="pf-submit-label">{{ d.form.submit_label }}</span>
             </button>
             <p class="pf-privacy">{{ d.form.privacy_notice }}</p>
           </form>
