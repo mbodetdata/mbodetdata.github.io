@@ -1107,6 +1107,54 @@ if (document.querySelector('.page-contact')) {
 
     var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+    /* ── ANTISPAM ────────────────────────────────────────────
+       Trois signaux sont calculés ici, mais c'est n8n qui juge :
+         · honeypot : le champ #website, hors écran, qu'un humain ne voit
+                      pas et n'atteint pas au clavier ;
+         · rythme   : temps passé sur la page, durée de saisie et nombre
+                      d'interactions réelles avec le formulaire ;
+         · jeton    : empreinte du timestamp de chargement, qu'un POST
+                      envoyé directement sur l'URL du webhook n'a pas.
+       Rien n'est supprimé dans le navigateur : la décision appartient au
+       workflow. Sinon un remplissage automatique malheureux ferait
+       disparaître un vrai message sans que personne le sache. */
+    var HP_SECRET    = 'bmdata-contact-v1';
+    var hpField      = form.querySelector('#website');
+    var loadedAt     = Date.now();
+    var typingFrom   = 0;
+    var interactions = 0;
+
+    /* FNV-1a 32 bits : quelques lignes à reproduire à l'identique dans n8n. */
+    function hpToken(ts) {
+      var s = HP_SECRET + ':' + ts;
+      var h = 0x811c9dc5;
+      for (var i = 0; i < s.length; i++) {
+        h = Math.imul(h ^ s.charCodeAt(i), 0x01000193) >>> 0;
+      }
+      return h.toString(36);
+    }
+
+    /* Un robot qui affecte .value ne déclenche aucun de ces événements. */
+    ['keydown', 'pointerdown', 'paste', 'input', 'change'].forEach(function (type) {
+      form.addEventListener(type, function (ev) {
+        if (ev.target === hpField) return;
+        if (!typingFrom) typingFrom = Date.now();
+        if (interactions < 500) interactions++;
+      }, true);
+    });
+
+    function antispamSignals() {
+      var now = Date.now();
+      return {
+        hp:           hpField ? hpField.value.trim() : '',
+        ts:           loadedAt,
+        token:        hpToken(loadedAt),
+        page_ms:      now - loadedAt,
+        typing_ms:    typingFrom ? now - typingFrom : 0,
+        interactions: interactions
+      };
+    }
+
     /* Le message renvoyé par n8n est inséré en HTML : on l'échappe. */
     function escHtml(str) {
       return String(str)
@@ -1180,81 +1228,26 @@ if (document.querySelector('.page-contact')) {
              '&body=' + encodeURIComponent(body);
     }
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (sending) return;
-
-      var firstEl = form.querySelector('#firstname');
-      var lastEl  = form.querySelector('#lastname');
-      var emailEl = form.querySelector('#email');
-      var sizeEl  = form.querySelector('#company_size');
-      var servEl  = form.querySelector('#service');
-
-      var firstname = firstEl.value.trim();
-      var lastname  = lastEl.value.trim();
-      var email     = emailEl.value.trim();
-      var phone     = form.querySelector('#phone').value.trim();
-      var company   = form.querySelector('#company').value.trim();
-      var message   = form.querySelector('#message').value.trim();
-      var honeypot  = form.querySelector('#website').value.trim();
-
-      /* Réinitialiser les erreurs visuelles */
-      [firstEl, lastEl, emailEl].forEach(function (el) { el.classList.remove('field-error'); });
-      errorEl.style.display = 'none';
-
-      /* Validation : seuls prénom, nom et email sont obligatoires. */
-      var errors = [];
-      if (!firstname) { firstEl.classList.add('field-error'); errors.push('prénom'); }
-      if (!lastname)  { lastEl.classList.add('field-error');  errors.push('nom'); }
-      if (!email || !EMAIL_RE.test(email)) {
-        emailEl.classList.add('field-error');
-        errors.push(email ? 'email (format invalide)' : 'email');
-      }
-
-      if (errors.length) {
-        showError('Merci de vérifier les champs suivants : ' + errors.join(', ') + '.');
-        return;
-      }
-
-      var sizeOpt = sizeEl.value ? selectedOption(sizeEl) : null;
-
-      var payload = {
-        first_name:         firstname,
-        last_name:          lastname,
-        full_name:          firstname + ' ' + lastname,
-        email:              email,
-        phone:              phone,
-        company:            company,
-        company_size:       sizeEl.value,
-        company_size_label: selectedLabel(sizeEl),
-        employees:          sizeOpt ? Number(sizeOpt.getAttribute('data-employees')) : null,
-        subject:            servEl.value,
-        subject_label:      selectedLabel(servEl),
-        message:            message,
-        lead_source:        'Site web bmdata.fr',
-        page_url:           window.location.href,
-        referrer:           document.referrer || '',
-        submitted_at:       new Date().toISOString()
-      };
-
-      /* Robot : on simule un succès sans rien envoyer. */
-      if (honeypot) {
-        form.style.display = 'none';
-        successEl.style.display = 'block';
-        return;
-      }
-
-      setSending(true);
-
+    /* Envoi vers n8n. `silent` : soumission piégée, on poste quand même
+       pour que le workflow puisse la classer, mais sans rien attendre ni
+       afficher de différent. */
+    function sendPayload(payload, silent) {
       var controller = ('AbortController' in window) ? new AbortController() : null;
       var timer = controller ? setTimeout(function () { controller.abort(); }, REQUEST_TIMEOUT) : null;
 
-      fetch(WEBHOOK_URL, {
+      var req = fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
         signal: controller ? controller.signal : undefined
-      })
+      });
+
+      if (silent) {
+        req.catch(function () {}).then(function () { if (timer) clearTimeout(timer); });
+        return;
+      }
+
+      req
         .then(function (res) {
           return readBody(res).then(function (data) {
             /* n8n peut répondre 200 tout en signalant un échec applicatif
@@ -1281,6 +1274,81 @@ if (document.querySelector('.page-contact')) {
           if (timer) clearTimeout(timer);
           setSending(false);
         });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (sending) return;
+
+      var firstEl = form.querySelector('#firstname');
+      var lastEl  = form.querySelector('#lastname');
+      var emailEl = form.querySelector('#email');
+      var sizeEl  = form.querySelector('#company_size');
+      var servEl  = form.querySelector('#service');
+
+      var firstname = firstEl.value.trim();
+      var lastname  = lastEl.value.trim();
+      var email     = emailEl.value.trim();
+      var phone     = form.querySelector('#phone').value.trim();
+      var company   = form.querySelector('#company').value.trim();
+      var message   = form.querySelector('#message').value.trim();
+
+      var sizeOpt = sizeEl.value ? selectedOption(sizeEl) : null;
+      var signals = antispamSignals();
+
+      var payload = {
+        first_name:         firstname,
+        last_name:          lastname,
+        full_name:          firstname + ' ' + lastname,
+        email:              email,
+        phone:              phone,
+        company:            company,
+        company_size:       sizeEl.value,
+        company_size_label: selectedLabel(sizeEl),
+        employees:          sizeOpt ? Number(sizeOpt.getAttribute('data-employees')) : null,
+        subject:            servEl.value,
+        subject_label:      selectedLabel(servEl),
+        message:            message,
+        lead_source:        'Site web bmdata.fr',
+        page_url:           window.location.href,
+        referrer:           document.referrer || '',
+        submitted_at:       new Date().toISOString(),
+        antispam:           signals
+      };
+
+      /* Piège rempli : ce n'est pas un humain. On affiche le même écran de
+         succès, pour que le robot n'ait rien à apprendre, et on transmet
+         quand même à n8n, qui le mettra en quarantaine. Un visiteur victime
+         du remplissage automatique de son navigateur n'est donc pas perdu :
+         son message arrive, simplement signalé. Aucune validation avant ce
+         test, pour ne pas renvoyer d'erreur exploitable au robot. */
+      if (signals.hp) {
+        sendPayload(payload, true);
+        form.style.display = 'none';
+        successEl.style.display = 'block';
+        return;
+      }
+
+      /* Réinitialiser les erreurs visuelles */
+      [firstEl, lastEl, emailEl].forEach(function (el) { el.classList.remove('field-error'); });
+      errorEl.style.display = 'none';
+
+      /* Validation : seuls prénom, nom et email sont obligatoires. */
+      var errors = [];
+      if (!firstname) { firstEl.classList.add('field-error'); errors.push('prénom'); }
+      if (!lastname)  { lastEl.classList.add('field-error');  errors.push('nom'); }
+      if (!email || !EMAIL_RE.test(email)) {
+        emailEl.classList.add('field-error');
+        errors.push(email ? 'email (format invalide)' : 'email');
+      }
+
+      if (errors.length) {
+        showError('Merci de vérifier les champs suivants : ' + errors.join(', ') + '.');
+        return;
+      }
+
+      setSending(true);
+      sendPayload(payload, false);
     });
 
     /* ── SCROLL ANIMATIONS ── */
