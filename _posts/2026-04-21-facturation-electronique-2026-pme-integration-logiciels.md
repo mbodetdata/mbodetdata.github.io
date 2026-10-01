@@ -1,112 +1,132 @@
 ---
 layout: post
-title: "Facturation électronique 2026 : ce que toutes les PME doivent faire avant septembre"
-description: "Toutes les entreprises doivent recevoir des factures électroniques en septembre 2026. Ce qui change, les pièges à éviter et comment anticiper sereinement."
+title: "Facturation électronique : calendrier 2026-2027 et ce que votre PME doit faire maintenant"
+seo_title: "Facturation électronique PME : calendrier 2026-2027"
+description: "Depuis septembre 2026, toute entreprise doit recevoir des factures électroniques. En septembre 2027, les PME devront les émettre. Que faire maintenant ?"
 date: 2026-04-21
+last_modified_at: 2026-10-01
 categories: [interconnexion, facturation]
-tags: [facturation electronique 2026, PME, integration logiciels, conformite, obligation legale]
+tags: [facturation electronique 2026, facturation electronique 2027, calendrier, plateforme agréée, PME, integration logiciels, conformite, obligation legale]
 author: Martial Bodet
-excerpt: "Septembre 2026, c'est dans 5 mois. Toutes les entreprises sans exception doivent être capables de recevoir des factures électroniques. Ce n'est pas juste un problème de compta : c'est l'obligation de faire dialoguer vos logiciels."
+excerpt: "Le 1er septembre 2026 est passé : toutes les entreprises doivent désormais recevoir des factures électroniques. La prochaine marche, c'est septembre 2027, quand les PME devront les émettre. Et c'est celle-là qui demande le plus de préparation."
 image: "/assets/img/blog/22-facturation-electronique-2026-pme-integration-logiciels/logo_1024.webp"
 active: true
 parent_category: data
 category_label: Automatisation
 ---
 
-**Septembre 2026, c'est dans moins de 5 mois.** Et cette date concerne toutes les entreprises françaises, quelle que soit leur taille : TPE, PME, artisans, indépendants. Pas seulement les grands groupes.
+*Article mis à jour le 1er octobre 2026, un mois après l'entrée en vigueur de l'obligation de réception.*
 
-L'obligation qui entre en vigueur le 1er septembre 2026 ne porte pas sur l'émission de vos factures ça, les PME ont jusqu'en 2027. Elle porte sur la **réception**. Dès septembre 2026, vous devez être capables de recevoir des factures électroniques de vos fournisseurs, dans un format structuré, via une plateforme agréée.
+**Le 1er septembre 2026, c'est passé.** Depuis cette date, toutes les entreprises françaises, quelle que soit leur taille, doivent être capables de recevoir des factures électroniques. TPE, PME, artisans, indépendants : tout le monde est concerné.
 
-Et c'est là que le piège se referme sur beaucoup de dirigeants : ils ont entendu "2027" pour les PME et se sont dit qu'ils avaient le temps. Mais l'obligation de recevoir, elle, n'attend pas 2027. Elle arrive en septembre 2026 pour tout le monde.
+Si vous l'avez fait, tant mieux : la première marche est franchie. Si vous ne l'avez pas encore fait, vous n'êtes pas seul, et il est encore temps de régulariser sans drame. Mais dans les deux cas, le plus gros reste devant vous.
 
-La bonne nouvelle, c'est qu'il n'est pas trop tard pour se préparer sereinement. La mauvaise, c'est que "se préparer" ne veut pas dire "télécharger un plug-in". Ça veut dire vérifier comment vos données circulent aujourd'hui et colmater les brèches avant que la contrainte légale ne vous y force en urgence.
+Parce que la prochaine échéance, c'est le **1er septembre 2027**. Ce jour-là, les PME et micro-entreprises devront **émettre** leurs factures en électronique et transmettre leurs données de transaction à l'administration. Recevoir, c'était brancher un tuyau. Émettre, c'est s'assurer que ce qui sort de vos outils est propre, complet et conforme. Ce n'est pas du tout le même travail.
 
-## Septembre 2026 : l'échéance que tout le monde a dans 5 mois
+## Le calendrier : où on en est, ce qui arrive
 
 Voici le calendrier officiel, tel que publié par le ministère de l'Économie [1] :
 
-**1er septembre 2026 obligation pour toutes les entreprises :**
-- Recevoir des factures électroniques de vos fournisseurs (via plateforme agréée)
-- Pour les grandes entreprises et les ETI : également obligation d'émettre
+**1er septembre 2026 (en vigueur) :**
+- Toutes les entreprises doivent pouvoir **recevoir** des factures électroniques, via une plateforme agréée
+- Les grandes entreprises et les ETI doivent également **émettre** leurs factures en électronique et transmettre leurs données (e-reporting)
 
-**1er septembre 2027 obligation pour les PME et micro-entreprises :**
-- Émettre des factures électroniques à destination de leurs clients professionnels
+**1er septembre 2027 (dans 11 mois) :**
+- Les PME et micro-entreprises doivent **émettre** leurs factures électroniques à destination de leurs clients professionnels
+- Elles doivent aussi transmettre leurs données de transaction et de paiement (e-reporting), y compris pour leurs ventes aux particuliers
 
-La lecture rapide "c'est pour 2027" est fausse pour une raison simple : la réception, c'est maintenant. Si l'un de vos fournisseurs est une grande entreprise ou une ETI, il devra vous envoyer des factures électroniques dès septembre 2026. Et vous devrez être équipé pour les recevoir.
+Et sur le terrain ? Le démarrage a été plus rapide que prévu. Fin septembre, plus de 8 millions de factures électroniques avaient déjà circulé [3]. Selon le périmètre retenu, entre la moitié et 70 % des entreprises avaient désigné leur plateforme de réception [2][3]. Autrement dit : une part importante des entreprises n'avait toujours pas fait le premier pas, un mois après l'échéance.
 
-Même une entreprise qui n'émet pas de factures un prestataire de service qui travaille uniquement B2C par exemple est concernée si elle achète des fournitures ou des services auprès d'une grande entreprise.
-
-**La question à vous poser dès aujourd'hui : avez-vous un canal pour recevoir des factures électroniques via une plateforme agréée ? Si la réponse est "je ne sais pas", vous avez 5 mois pour le découvrir.**
+**La question à vous poser aujourd'hui : savez-vous par quelle plateforme agréée vous recevez vos factures ? Si la réponse est "je ne sais pas", c'est la première chose à régler.**
 
 ## Ce que "recevoir une facture électronique" veut dire concrètement
 
-Ce n'est pas recevoir un PDF dans votre boîte mail. C'est recevoir un fichier structuré au format XML standardisé via une plateforme d'échange agréée par l'État. Ce fichier contient des données lisibles automatiquement par votre logiciel comptable.
+Ce n'est pas recevoir un PDF dans votre boîte mail. C'est recevoir un fichier structuré, dans un format standardisé, via une plateforme agréée par l'État. Ce fichier contient des données lisibles automatiquement par votre logiciel comptable.
 
-Si votre comptabilité sait lire ce format et l'intégrer sans ressaisie, vous êtes prêt. Si votre logiciel de compta est ancien, que vos factures fournisseurs sont saisies manuellement ou que vous travaillez encore sur tableur, vous avez un travail de mise à niveau à faire.
+Pour que vos fournisseurs sachent où vous envoyer leurs factures, il existe un **annuaire national**, géré par le portail public de facturation (PPF). Attention, ce portail n'est pas une plateforme de facturation : on ne peut pas y envoyer ni y recevoir de factures. Il sert d'annuaire et transmet les données à l'administration fiscale. Concrètement, votre SIREN y est rattaché à la plateforme agréée que vous avez choisie [5].
+
+Si votre comptabilité sait lire ce format et l'intégrer sans ressaisie, vous êtes prêt. Si vos factures fournisseurs sont encore téléchargées puis saisies à la main, vous êtes "conforme" sur le papier, mais vous passez à côté du seul vrai bénéfice de la réforme : ne plus rien recopier.
 
 Et c'est souvent à ce moment-là que les dirigeants réalisent ce que [les ressaisies leur coûtent réellement](/blog/ressaisies-tpe-pme-cout-cache/). La facturation électronique force à traiter un problème que beaucoup repoussaient : les données qui ne circulent pas automatiquement entre les outils.
 
-## Pourquoi c'est plus qu'un problème de comptabilité
+## Vous n'avez pas encore de plateforme : par où commencer cette semaine
 
-Ici réside le malentendu le plus fréquent : "c'est la compta qui gère ça". Or, pour que vos factures fournisseurs arrivent et s'intègrent correctement, il faut que [vos outils se parlent](/blog/architecture-data-PME/).
+Pas de panique, mais pas d'attente non plus. Quatre étapes, dans cet ordre :
 
-Prenez une PME type dans l'Agenais : factures fournisseurs reçues par mail, saisies manuellement dans la compta, données clients dans un autre logiciel. Dès septembre 2026, l'un de ses fournisseurs disons un grossiste ou un prestataire informatique va envoyer une facture électronique via une plateforme agréée. Si personne dans l'entreprise ne sait comment la récupérer et l'intégrer, elle va atterrir nulle part, ou être imprimée et ressaisie à la main. Non conforme.
+1. **Interrogez votre logiciel de comptabilité ou de facturation.** Beaucoup sont eux-mêmes plateformes agréées, ou partenaires de l'une d'elles. On en compte aujourd'hui plus de 130 [5]. Souvent, la solution est déjà sous votre nez.
+2. **Parlez-en à votre expert-comptable.** Il a vu passer la question des dizaines de fois ces dernières semaines. Il saura vous dire ce que ses autres clients ont choisi.
+3. **Vérifiez votre inscription dans l'annuaire.** Une fois la plateforme choisie, c'est elle qui vous y inscrit. Demandez-lui une confirmation : une erreur d'adressage, et les factures de vos fournisseurs partent dans le vide.
+4. **Décidez où vos factures atterrissent.** Reçues sur la plateforme, d'accord. Mais ensuite ? Intégrées automatiquement en comptabilité, ou téléchargées à la main ? C'est là que se joue le temps gagné, ou perdu.
 
-La vraie question n'est pas "avez-vous un logiciel comptable ?" c'est "comment vos données circulent-elles entre vos outils aujourd'hui, et est-ce que ce circuit est compatible avec les nouvelles exigences ?"
+## Septembre 2027 : la vraie échéance des PME
+
+Recevoir, c'est passif : vous choisissez une plateforme, elle reçoit pour vous. Émettre, c'est une autre histoire. Ce sont **vos** données qui sortent, et la plateforme les refusera si elles sont incomplètes.
+
+Or la réforme ajoute quatre mentions obligatoires sur les factures [7] :
+- le **numéro SIREN de votre client**
+- l'**adresse de livraison**, si elle diffère de l'adresse de facturation
+- la **nature de l'opération** : livraison de biens, prestation de services, ou les deux
+- l'**option pour le paiement de la TVA d'après les débits**, si vous l'avez choisie
+
+Lisez cette liste et posez-vous une question simple : ces informations existent-elles aujourd'hui, proprement, dans vos outils ? Le SIREN de chacun de vos clients pros est-il renseigné ? Le même client n'existe-t-il pas sous trois noms différents ?
+
+C'est exactement là que les premières semaines ont coincé chez les grandes entreprises : **factures rejetées pour données manquantes, erreurs d'adressage dans l'annuaire, inscriptions incomplètes** sur les plateformes [4]. Des entreprises qui avaient pourtant des équipes dédiées. Une PME qui s'y prend en juillet 2027 aura les mêmes problèmes, sans l'équipe.
 
 > **Vous voulez savoir où vous en êtes ?** [Faites le diagnostic gratuit en ligne](/score-maturite-data/){: .btn-inline} 5 minutes, sans engagement.
 
-## Les PME qui anticipent vs celles qui subissent
+## Pourquoi c'est plus qu'un problème de comptabilité
 
-Il y a deux types de PME face à cette réforme.
+Ici réside le malentendu le plus fréquent : "c'est la compta qui gère ça". Or, pour que vos factures sortent complètes et conformes, il faut que [vos outils se parlent](/blog/architecture-data-PME/).
 
-**Celles qui anticipent** se posent la question maintenant, identifient leur situation, et ajustent leur outillage sur un projet bien cadré. Elles testent leur connexion à une plateforme agréée avant septembre, corrigent les incohérences de leurs données au calme, et ne seront pas surprises le 2 septembre 2026.
+Prenez une PME type dans l'Agenais : devis faits dans un logiciel, fiches clients dans un autre, factures éditées depuis la gestion commerciale, comptabilité chez l'expert-comptable. Le SIREN du client ? Il est peut-être dans le devis, peut-être pas. L'adresse de livraison ? Dans un mail. En septembre 2027, la plateforme agréée attendra tout ça au bon endroit, au bon format. Si l'information n'existe pas dans l'outil qui émet la facture, la facture est rejetée. Et c'est votre encaissement qui attend.
 
-**Celles qui subissent** attendent. Elles liront un mail de leur expert-comptable en juillet 2026 et réaliseront qu'elles ne sont pas équipées. À ce moment-là, les prestataires seront débordés, les délais impossibles à tenir, et les projets faits en urgence coûteront deux à trois fois plus cher avec des erreurs découvertes en production plutôt qu'en test.
-
-Le scénario du retard n'est pas une hypothèse : c'est exactement ce qui s'est passé avec le RGPD en 2018. Les entreprises qui avaient traité le sujet sérieusement en avance ont absorbé la mise en conformité sans trauma. Les autres ont vécu des semaines de stress et dépensé beaucoup plus.
-
-Si vous êtes curieux de savoir comment les PME gèrent leur conformité data en général, l'article sur [RGPD et données clients](/blog/rgpd-donnees-clients-guide-pme/) donne un bon aperçu des bonnes pratiques applicables ici aussi.
+La vraie question n'est pas "avez-vous un logiciel de facturation ?" mais "comment vos données circulent-elles entre vos outils aujourd'hui, et est-ce que ce circuit tiendra quand chaque facture sera contrôlée automatiquement ?"
 
 ## Les trois erreurs classiques dans ce virage
 
-**Erreur 1 : Penser qu'un "simple export" suffira.** La plateforme agréée exige un format structuré avec des champs obligatoires précis. Si votre données interne est incohérente client enregistré sous trois variantes de nom, codes articles non harmonisés, numérotation non conforme aucun outil ne corrigera ça automatiquement. C'est du travail métier qui doit précéder l'implémentation.
+**Erreur 1 : Penser que c'est réglé parce que la réception fonctionne.** Vous avez choisi une plateforme en septembre, les factures fournisseurs arrivent : bravo. Mais la réception ne vous a demandé aucun effort sur vos propres données. L'émission, si. Considérer le sujet comme "fait", c'est se retrouver en août 2027 avec le vrai travail encore devant soi.
 
-**Erreur 2 : Déléguer à l'informaticien sans lui expliquer les règles métier.** Votre responsable compta sait comment vous fonctionnez : quand une facture est numérotée, quels fournisseurs entrent dans quel circuit, quelles mentions sont obligatoires. L'informaticien fera ce qu'on lui dit. Si on ne lui explique pas vos règles, le système sera techniquement fonctionnel mais métier-faux et vous le découvrirez une fois en production.
+**Erreur 2 : Déléguer à l'informaticien sans lui expliquer les règles métier.** Votre responsable compta sait comment vous fonctionnez : quand une facture est numérotée, quels clients sont facturés comment, quelles mentions sont obligatoires. L'informaticien fera ce qu'on lui dit. Si on ne lui explique pas vos règles, le système sera techniquement fonctionnel mais métier-faux, et vous le découvrirez une fois en production.
 
-**Erreur 3 : Sous-estimer l'impact sur vos processus internes.** La facturation électronique ne change pas juste votre outil : elle change votre flux. Si vous [automatisez déjà une partie de vos reportings](/blog/automatiser-ses-reportings-guide-pratique/), vous savez que chaque maillon du circuit doit être fiable. Un flux de facturation, c'est pareil : si un maillon casse en silence, vous ne le voyez pas jusqu'à ce que l'anomalie remonte dans vos comptes.
+**Erreur 3 : Sous-estimer l'impact sur vos processus internes.** La facturation électronique ne change pas juste votre outil : elle change votre flux. Si vous [automatisez déjà une partie de vos reportings](/blog/automatiser-ses-reportings-guide-pratique/), vous savez que chaque maillon du circuit doit être fiable. Un flux de facturation, c'est pareil : si un maillon casse en silence, vous ne le voyez pas jusqu'à ce qu'un client vous appelle parce qu'il n'a jamais reçu sa facture.
 
-## Ce qui se joue en coulisses (que beaucoup sous-estiment)
+## Ce que vous risquez vraiment
 
-Le vrai risque d'un projet bâclé, ce n'est pas l'amende. C'est de construire un système qui marche 3 mois, puis qui casse silencieusement.
+Parlons des sanctions, puisque c'est la question qu'on me pose le plus. La loi de finances 2026 les a renforcées [6] :
 
-Vous connectez votre compta à une plateforme agréée. Au début, ça fonctionne. Puis, quelques semaines plus tard, certaines factures fournisseurs n'arrivent pas, ou arrivent avec des champs manquants. Vous cherchez : code analytique mal mappé, format de date non conforme, règle métier non prise en compte. Vous avez maintenant trois outils à modifier et une seule personne qui "sait comment ça marche". Dès qu'elle est absente, tout s'arrête.
+- **Pas de plateforme agréée pour recevoir ou émettre** : mise en demeure, puis 500 € si rien n'est fait sous 3 mois, puis 1 000 € par trimestre supplémentaire
+- **Facture non émise en électronique** quand elle aurait dû l'être : 50 € par facture, dans la limite de 15 000 € par an
+- **Données de transaction non transmises** (e-reporting) : 500 € par transmission manquante
 
-C'est exactement le genre de situation que [les données bien structurées permettent d'éviter](/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/) mais qui demande un cadrage sérieux en amont, pas un bricolage de dernière minute.
+Il existe un droit à l'erreur : une première infraction régularisée spontanément, ou dans les 30 jours suivant la demande de l'administration, n'est pas sanctionnée [6]. Et pour cette première année, le ministère a indiqué qu'aucune sanction financière ne serait appliquée en 2026 aux entreprises qui montrent leur bonne foi [4]. Gardez donc une trace de vos démarches : choix de la plateforme, échanges avec votre éditeur, incidents rencontrés.
+
+Mais soyons honnêtes : **le vrai risque n'est pas l'amende**. C'est de construire un système qui marche trois mois, puis qui casse silencieusement. Des factures rejetées que personne ne voit, des clients qui ne paient pas parce qu'ils n'ont rien reçu, une seule personne dans l'entreprise qui "sait comment ça marche". Dès qu'elle est absente, tout s'arrête.
+
+C'est exactement le genre de situation que [les données bien structurées permettent d'éviter](/blog/pourquoi-vos-donnees-sont-votre-meilleur-atout/), mais qui demande un cadrage sérieux en amont, pas un bricolage de dernière minute.
 
 *L'outil n'est jamais la difficulté. C'est la manière dont vos règles métier s'y branchent.*
 
-## Test rapide êtes-vous prêt pour septembre 2026 ?
+## Test rapide : êtes-vous prêt pour septembre 2027 ?
 
-Si vous répondez oui à au moins 3 de ces questions, votre situation mérite un point rapide avant l'été :
+Si vous répondez oui à au moins 3 de ces questions, votre situation mérite un point rapide, tant que vous avez encore le temps :
 
-1. Vos factures fournisseurs arrivent-elles encore par mail en PDF et sont-elles ressaisies manuellement en comptabilité ?
-2. Avez-vous plusieurs outils qui gèrent partiellement vos données (logiciel de gestion, comptabilité, tableur) sans qu'ils se synchronisent automatiquement ?
-3. Une seule personne dans l'équipe "sait" comment les données passent d'un outil à l'autre ?
-4. Votre logiciel comptable a-t-il plus de 5 ans et n'a pas eu de mise à jour majeure récente ?
-5. Vous n'avez pas encore identifié quelle plateforme agréée vous allez utiliser pour recevoir les factures de vos fournisseurs ?
+1. Vous ne savez pas avec certitude par quelle plateforme agréée vous recevez vos factures fournisseurs ?
+2. Vos factures reçues sont-elles encore ressaisies ou téléchargées manuellement en comptabilité ?
+3. Le SIREN de vos clients professionnels n'est-il pas systématiquement renseigné dans votre outil de facturation ?
+4. Vos devis, vos fiches clients et vos factures vivent-ils dans des outils différents qui ne se synchronisent pas ?
+5. Une seule personne dans l'équipe "sait" comment les données passent d'un outil à l'autre ?
 
-**3 oui ou plus ?** [Prenons 30 minutes ensemble](/score-maturite-data/){: .btn-inline} c'est gratuit, et ça vous évitera de mauvaises surprises en août.
+**3 oui ou plus ?** [Prenons 30 minutes ensemble](/score-maturite-data/){: .btn-inline} c'est gratuit, et ça vous évitera de mauvaises surprises à l'été 2027.
 
 ## Quand se faire accompagner ?
 
 Certaines situations se gèrent seul avec l'aide de son expert-comptable. D'autres demandent un regard extérieur sur les flux de données. Voici les signaux qui indiquent qu'un accompagnement vaut l'investissement :
 
-**Vous avez plusieurs outils à faire dialoguer.** Si vos données viennent d'un logiciel de devis, d'un CRM, d'une gestion commerciale et d'une comptabilité, relier tout ça de façon fiable demande quelqu'un qui voit le flux entier. Les erreurs se cachent aux interfaces entre les outils.
+**Vous avez plusieurs outils à faire dialoguer.** Si vos données viennent d'un logiciel de devis, d'un CRM, d'une gestion commerciale et d'une comptabilité, [relier tout ça de façon fiable](/interconnexion-logiciels/) demande quelqu'un qui voit le flux entier. Les erreurs se cachent aux interfaces entre les outils.
 
-**Vos règles métier sont spécifiques.** Remises variables par client, numérotation multi-sites, facturation partielle, conditions de paiement hétérogènes. Plus vos processus sont singuliers, plus vous avez besoin d'un expert qui comprend votre métier pas juste la facturation électronique générique.
+**Vos règles métier sont spécifiques.** Remises variables par client, numérotation multi-sites, facturation partielle, conditions de paiement hétérogènes. Plus vos processus sont singuliers, plus vous avez besoin d'un expert qui comprend votre métier, pas juste la facturation électronique générique.
 
-**Personne en interne ne maîtrise les flux de données.** La mise en conformité touche à la fois la compta, l'IT et les processus métier. Si ces trois domaines appartiennent à des personnes différentes qui ne se parlent pas, quelqu'un doit coordonner. C'est souvent la mission où un regard externe apporte le plus de valeur en peu de temps.
+**Vos données clients ont besoin d'un sérieux nettoyage.** Doublons, SIREN manquants, adresses incomplètes : c'est un travail ingrat, mais c'est lui qui décide si vos factures passeront ou seront rejetées. Et il se fait bien mieux au calme qu'en urgence.
 
 **Vous avez besoin que ça tienne dans la durée.** Un flux de facturation qui fonctionne en septembre et qui casse en novembre, c'est pire que de ne pas avoir commencé. La fiabilité à long terme se construit dès la conception, pas en hotfix.
 
@@ -114,50 +134,59 @@ Certaines situations se gèrent seul avec l'aide de son expert-comptable. D'autr
 
 ## À retenir
 
-- **Septembre 2026 concerne tout le monde** : obligation de recevoir des factures électroniques pour toutes les entreprises, quelle que soit leur taille. Vous avez 5 mois.
-- **Septembre 2027 pour l'émission** : c'est la date à laquelle les PME et micro-entreprises devront émettre leurs factures via plateforme agréée mais ne pas préparer la réception aujourd'hui, c'est se retrouver en urgence dans 5 mois.
+- **Depuis le 1er septembre 2026, tout le monde doit pouvoir recevoir** des factures électroniques via une plateforme agréée. Si ce n'est pas fait, c'est la priorité.
+- **Le 1er septembre 2027, les PME devront émettre** leurs factures en électronique et transmettre leurs données. C'est dans 11 mois, et c'est la marche la plus haute.
+- **Émettre demande des données propres** : SIREN des clients, adresse de livraison, nature de l'opération. Si elles n'existent pas dans vos outils, vos factures seront rejetées.
 - **Ce n'est pas juste un problème comptable** : c'est l'obligation de faire circuler vos données sans rupture entre vos outils et une plateforme externe.
-- **Anticiper coûte deux à trois fois moins cher que gérer en urgence** : un projet cadré maintenant vs une implémentation en panique en juillet-août 2026.
+- **Anticiper coûte bien moins cher que gérer en urgence** : les PME qui s'y mettent cet hiver auront le temps de tester. Celles qui attendront l'été 2027 trouveront des prestataires débordés.
 
 ## FAQ
 
-### Septembre 2026, c'est vraiment pour tout le monde ou juste les grandes entreprises ?
+### Septembre 2026 est passé et je n'ai rien fait. Qu'est-ce que je risque ?
 
-Tout le monde. L'obligation de **recevoir** des factures électroniques entre en vigueur le 1er septembre 2026 pour toutes les entreprises, sans condition de taille. Même une micro-entreprise doit être capable de recevoir une facture électronique si son fournisseur est une grande entreprise ou une ETI déjà soumise à l'obligation d'émettre.
+Dans l'immédiat, surtout de ne pas recevoir correctement les factures de vos fournisseurs déjà passés à l'électronique. Côté sanction, le ministère a indiqué qu'aucune amende ne serait appliquée en 2026 aux entreprises de bonne foi [4]. Ensuite, l'administration commence par une mise en demeure : vous avez 3 mois pour choisir une plateforme agréée avant l'amende de 500 €. Le plus simple reste de régulariser maintenant, en commençant par interroger votre logiciel comptable et votre expert-comptable.
 
-### La plateforme agréée par l'État, c'est laquelle ?
+### Est-ce que je peux encore recevoir des factures en PDF par mail ?
 
-Il n'y a pas une plateforme unique imposée. L'État a agréé une centaine d'opérateurs de dématérialisation partenaires (ODP). Votre logiciel comptable en intègre souvent une par défaut. Si ce n'est pas le cas, votre expert-comptable ou un prestataire technique peut vous orienter. C'est un choix à faire avant septembre 2026.
+Oui, pour un temps. Vos fournisseurs PME et micro-entreprises n'ont l'obligation d'émettre en électronique qu'à partir de septembre 2027. D'ici là, vous recevrez un mélange de factures électroniques (des grandes entreprises et ETI) et de PDF classiques. Votre organisation doit gérer les deux pendant un an.
+
+### La plateforme agréée, c'est laquelle ?
+
+Il n'y a pas une plateforme unique imposée. L'État en a immatriculé plus de 130 [5], dont beaucoup sont des éditeurs de logiciels de comptabilité ou de facturation que vous connaissez déjà. Votre logiciel actuel en est peut-être une, ou en intègre une. Le portail public (PPF), lui, ne sert que d'annuaire : il ne permet ni d'envoyer ni de recevoir des factures.
 
 ### Mon expert-comptable gère tout ça à ma place, non ?
 
-Il peut vous conseiller et choisir avec vous la plateforme. Mais il ne peut pas, à votre place, vérifier que vos outils internes savent lire et intégrer un flux structuré. C'est un point technique et métier qui doit être traité en interne ou avec un spécialiste des flux de données.
-
-### Et si l'un de mes fournisseurs m'envoie une facture électronique et que je ne suis pas équipé ?
-
-La facture existe légalement, mais vous n'êtes pas en mesure de la traiter automatiquement. Vous devrez la ressaisir manuellement ce qui crée un risque d'erreur et une non-conformité de facto sur votre processus de réception. Et vous exposez votre fournisseur à une incertitude sur l'acquittement de sa facture.
+Il peut vous conseiller et choisir avec vous la plateforme. Mais il ne peut pas, à votre place, vérifier que vos outils internes produisent des factures complètes ou savent intégrer un flux structuré. C'est un point technique et métier qui doit être traité en interne ou avec un spécialiste des flux de données.
 
 ### Ça va me coûter très cher ?
 
-Ça dépend de votre situation. Si votre logiciel comptable est récent et qu'un connecteur vers une plateforme agréée existe déjà, c'est souvent un paramétrage. Si vous avez plusieurs outils hétérogènes à relier, c'est un projet de quelques jours à quelques semaines. D'où l'intérêt d'un diagnostic rapide maintenant, plutôt que de le découvrir en août.
+Ça dépend de votre situation. Si votre logiciel de facturation est récent, qu'il est relié à une plateforme agréée et que vos fiches clients sont propres, c'est souvent un paramétrage. Si vous avez plusieurs outils hétérogènes à relier, ou des données clients à remettre d'aplomb, c'est un projet de quelques jours à quelques semaines. D'où l'intérêt de le cadrer maintenant, plutôt que de le découvrir en août 2027.
 
 ### Je ne facture qu'à des particuliers (B2C). Suis-je concerné ?
 
-L'obligation de facturation électronique porte sur les transactions B2B (entre professionnels). Si vous ne facturez qu'à des particuliers, vous n'avez pas d'obligation d'émettre en électronique. Mais si vous achetez des fournitures ou services auprès de grandes entreprises, vous restez concerné pour la **réception**.
+Oui, de deux façons. Pour la **réception** dès maintenant, comme toutes les entreprises qui achètent à des professionnels. Et pour l'**e-reporting** en septembre 2027 : vous n'aurez pas à émettre de factures électroniques à vos clients particuliers, mais vous devrez transmettre les données de vos ventes à l'administration via votre plateforme agréée.
 
 ## Conclusion
 
-La réforme de la facturation électronique n'est pas un sujet à remettre à l'automne. L'échéance de septembre 2026 obligation de recevoir pour toutes les entreprises est dans 5 mois. C'est demain à l'échelle d'un projet d'intégration.
+Septembre 2026 était la première marche, et elle a été franchie plus vite que prévu par une majorité d'entreprises. Tant mieux. Mais elle ne demandait presque rien sur vos propres données.
 
-Ce que cette réforme révèle, c'est souvent une réalité que les dirigeants connaissent mais n'ont jamais eu le temps de traiter : leurs données ne circulent pas aussi bien qu'ils le pensent entre leurs outils. La facturation électronique rend cette réalité non-optionnelle.
+Septembre 2027 en demandera beaucoup plus. Ce que cette réforme révèle, c'est une réalité que les dirigeants connaissent mais n'ont jamais eu le temps de traiter : leurs données ne circulent pas aussi bien qu'ils le pensent entre leurs outils. La facturation électronique rend cette réalité non-optionnelle.
 
-Les PME qui s'y prennent maintenant gèrent ça comme un projet, avec du temps pour tester et corriger. Celles qui attendent le géreront comme une urgence à la fois plus coûteux et plus risqué.
+Onze mois, c'est confortable pour un projet bien cadré. C'est très court pour un projet qu'on commence en juin. Les PME qui s'y mettent cet automne le géreront comme un projet, avec du temps pour tester et corriger. Celles qui attendent le géreront comme une urgence, à la fois plus coûteuse et plus risquée.
 
 
 ## Sources
 
-[1] [Ministère de l'Économie – Tout savoir sur la facturation électronique](https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises) Calendrier officiel : 1er sept. 2026 (obligation de recevoir pour toutes les entreprises + émettre pour grandes entreprises/ETI) ; 1er sept. 2027 (obligation d'émettre pour PME et micro-entreprises).
+[1] [Ministère de l'Économie – Tout savoir sur la facturation électronique](https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises) Calendrier officiel : 1er sept. 2026 (obligation de recevoir pour toutes les entreprises + émettre pour grandes entreprises/ETI) ; 1er sept. 2027 (obligation d'émettre pour PME et micro-entreprises), nouvelles mentions obligatoires.
 
-[2] [Impots.gouv.fr – La facturation électronique](https://www.impots.gouv.fr/professionnels/la-facturation-electronique) Source officielle de l'administration fiscale française, cadre légal et modalités de mise en conformité.
+[2] [Compta Online – Facturation électronique : les premiers retours des cabinets](https://www.compta-online.com/facturation-electronique-premiers-retours-des-cabinets-ao8913) (27 septembre 2026) 70 % des entreprises redevables de la TVA ont désigné leur solution de réception, 5 millions de factures échangées.
 
-[3] [France Num – Accompagnement numérique des TPE/PME](https://www.francenum.gouv.fr/) Ressources publiques pour aider les entreprises dans leur transition numérique et réglementaire.
+[3] [Daf-Mag – Facturation électronique : quel état des lieux après la phase de démarrage ?](https://www.daf-mag.fr/bi-1244/transformation-processus-2133/facturation-electronique-quel-etat-des-lieux-peut-on-faire-apres-la-phase-de-demarrage-27484) (29 septembre 2026) 8,4 millions de factures transmises, 50 % des 11,4 millions d'unités légales inscrites pour la réception.
+
+[4] [Yad – Facturation électronique : le bilan 15 jours après](https://www.yad.fr/facturation-electronique-bilan-15-jours/) Premiers points de friction : factures rejetées pour données manquantes, erreurs d'adressage dans l'annuaire, inscriptions incomplètes. Position du ministère : pas de sanction financière en 2026 pour les entreprises de bonne foi.
+
+[5] [Pennylane – Liste des plateformes agréées (PA, ex-PDP) immatriculées](https://www.pennylane.com/fr/fiches-pratiques/facture-electronique/liste-des-pdp) et [Dougs – Le rôle du portail public de facturation](https://www.dougs.fr/blog/portail-public-de-facturation/) Plateformes immatriculées par l'État, fonctionnement de l'annuaire.
+
+[6] [Legifiscal – Facturation électronique : le risque de sanction](https://www.legifiscal.fr/actualites-fiscales/4538-facturation-electronique-risque-sanction.html) et [Indy – Mise à jour des amendes 2026](https://www.indy.fr/guide/facturation/electronique/augmentation-penalites-non-conformite/) Sanctions issues de l'article 123 de la loi de finances 2026.
+
+[7] [Tiime – Les nouvelles mentions obligatoires de la facture électronique](https://blog.tiime.fr/nouvelles-mentions-obligatoires-facturation-electronique) SIREN du client, adresse de livraison, nature de l'opération, option pour la TVA sur les débits : obligatoires pour les PME à partir du 1er septembre 2027.
