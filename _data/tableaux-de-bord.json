@@ -146,6 +146,14 @@
         "a": "Cela dépend surtout du nombre de sources à croiser et du nombre de personnes qui consultent. Excel reste très bien pour un besoin isolé et une poignée d'utilisateurs. Power BI prend l'avantage dès qu'il faut croiser plusieurs sources, rafraîchir automatiquement et diffuser à plusieurs personnes avec des droits différents."
       },
       {
+        "q": "Vous êtes intégrateur ou revendeur Power BI ?",
+        "a": "Intégrateur, oui : je vous aide à choisir la bonne formule, je connecte vos sources, je construis les rapports et je les mets en production. Revendeur, non : les licences Power BI s'achètent directement auprès de Microsoft, au tarif public, sans intermédiaire. Mon rôle est de vous éviter de payer ce dont vous n'avez pas besoin. Power BI Desktop, l'outil de conception, est gratuit, et tant qu'une seule personne consulte les chiffres, il suffit souvent pour démarrer."
+      },
+      {
+        "q": "Intervenez-vous en dehors d'Agen ?",
+        "a": "Oui. Je suis basé à Agen, mais un projet de tableau de bord se mène très bien à distance : accès sécurisé à vos sources, points réguliers en visio, maquette partagée en ligne. J'accompagne des TPE et PME partout en France."
+      },
+      {
         "q": "Faut-il que nos données soient propres avant de commencer ?",
         "a": "Non, et si c'était la condition, personne ne commencerait jamais. Le nettoyage fait partie du travail. En revanche, la construction d'un tableau de bord fait remonter les incohérences existantes : c'est souvent la première fois qu'on voit noir sur blanc les doublons ou les libellés fantaisistes."
       },
