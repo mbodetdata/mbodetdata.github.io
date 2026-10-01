@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Piloter son entreprise en temps réel, le tableau de bord que les dirigeants PME auraient dû avoir depuis longtemps"
-description: "Décisions trop tardives, chiffres éparpillés, Excel qui ment : découvrez comment un tableau de bord connecté redonne le cap aux dirigeants PME."
+seo_title: "Piloter son entreprise en temps réel sans multiplier les outils"
+description: "Chiffres éparpillés, Excel qui ment, décisions trop tardives : comment un tableau de bord connecté permet de piloter sa PME en temps réel."
 date: 2026-05-29
 categories: [reporting, pilotage]
 tags: [tableau de bord, PME, reporting, pilotage, données]

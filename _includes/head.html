@@ -1,5 +1,6 @@
 {% assign g = site.data.global %}
-{% assign page_title    = page.title | default: g.site_name %}
+{% comment %} seo_title : titre court pour Google (balise title + partages), sans toucher au H1 {% endcomment %}
+{% assign page_title    = page.seo_title | default: page.title | default: g.site_name %}
 {% assign page_desc     = page.description | default: site.description %}
 {% assign page_image    = page.og_image | default: page.image | default: site.og_image %}
 {% assign canonical_url = page.url | absolute_url %}
@@ -12,6 +13,8 @@
 <!-- Title -->
 {% if page.url == "/" %}
 <title>{{ g.site_name }} — {{ g.baseline }}</title>
+{% elsif page.layout == "post" %}
+<title>{{ page_title }}</title>
 {% else %}
 <title>{{ page_title }} | {{ g.site_name }}</title>
 {% endif %}

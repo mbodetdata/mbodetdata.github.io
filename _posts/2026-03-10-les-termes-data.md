@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Glossaire data : les termes essentiels pour Talend, Power BI et la BI"
-description: "Un glossaire data clair et concret pour comprendre les termes utiles en intégration de données, qualité, reporting et Power BI."
+seo_title: "Glossaire data expliqué simplement (API, ETL, KPI…)"
+description: "API, ETL, KPI, tableau de bord, qualité des données : les termes data expliqués simplement, avec des exemples concrets pour les TPE et PME."
 categories: blog
 tags: [Glossaire Data, Talend, Talaxie, Power BI, ETL, BI, Qualité des données, PME]
 image: ""

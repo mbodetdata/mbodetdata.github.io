@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Automatisation en PME : pourquoi ne pas se lancer trop tôt... mais surtout ne pas attendre"
-description: "Automatiser trop tôt amplifie le désordre. Mais ne pas automatiser a aussi un coût réel. Voici comment savoir si vous êtes prêt et ce que vous gagnez vraiment."
+seo_title: "Automatiser en PME : quand se lancer, quand attendre"
+description: "Automatiser les tâches répétitives trop tôt amplifie le désordre, trop tard coûte cher. Les signes que votre PME est prête et ce que vous y gagnez."
 date: 2026-04-30
 categories: [automatisation, conseils-dirigeants]
 tags: [automatisation, taches repetitives, PME, productivite, flux automatises]

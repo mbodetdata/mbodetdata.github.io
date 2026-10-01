@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Double saisie en TPE/PME : 7 signes que vous perdez du temps sans le voir"
-description: "Vous recopiez encore les mêmes informations dans plusieurs fichiers ou logiciels ? Voici 7 signes qu’il est temps de simplifier vos outils."
+seo_title: "Double saisie en PME : 7 signes et comment la supprimer"
+description: "Vous recopiez les mêmes informations dans plusieurs fichiers ou logiciels ? 7 signes, leur coût réel et comment supprimer la double saisie."
 date: 2026-04-06
 categories: [automatisation, productivite]
 tags: [double saisie, ressaisie, copier coller, automatisation TPE PME, fichiers Excel, gain de temps, erreurs de saisie, outils de gestion, digitalisation PME, tableau de suivi]

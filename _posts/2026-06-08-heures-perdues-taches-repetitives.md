@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Tâches répétitives en PME : combien d'heures et d'argent perdez-vous vraiment chaque semaine ?"
+seo_title: "Tâches répétitives en PME : combien vous coûtent-elles ?"
 description: "Ressaisies, relances manuelles, exports Excel : une PME de 10 personnes perd jusqu'à 28 000€/an. Voici comment mesurer et réduire cette hémorragie silencieuse."
 date: 2026-06-05
 categories: [automatisation, productivite]

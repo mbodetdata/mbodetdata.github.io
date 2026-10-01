@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Excel vs Power BI : lequel choisir pour votre PME ?"
-description: "Excel ou Power BI ? C'est la question que me posent souvent les dirigeants. Voici une comparaison honnête pour vous aider à choisir l'outil adapté à votre situation réelle."
+seo_title: "Excel ou Power BI en PME : quand passer le cap ?"
+description: "Excel ou Power BI pour votre PME ? Une comparaison honnête : ce qu'Excel fait bien, quand il ne suffit plus et à quel moment passer à Power BI."
 date: 2024-12-03
 author: "Martial Bodet"
 category: "Outils"

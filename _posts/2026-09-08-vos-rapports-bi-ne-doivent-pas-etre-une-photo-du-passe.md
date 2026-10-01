@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Un tableau de bord ne devrait pas seulement vous dire ce qui s'est passé — mais ce qui va se passer si vous décidez"
-description: "Remise, marge, produit à retirer du catalogue : combien de décisions prenez-vous encore sans savoir précisément ce qu'elles vont vous coûter ou vous rapporter ?"
+seo_title: "Tableau de bord PME : simuler une décision avant de la prendre"
+description: "Remise, marge, produit à retirer du catalogue : combien de décisions prenez-vous encore sans savoir ce qu'elles vont vous coûter ou vous rapporter ?"
 date: 2026-09-07
 categories: [reporting, pilotage]
 tags: [tableau de bord, reporting, PME, pilotage, aide à la décision]
