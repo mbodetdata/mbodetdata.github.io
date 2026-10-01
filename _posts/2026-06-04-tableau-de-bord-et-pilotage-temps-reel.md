@@ -85,7 +85,7 @@ Le bon tableau de bord d'un dirigeant PME tient généralement sur 10 à 15 indi
 
 **Le niveau opérationnel** : selon votre métier, taux de service ou délai de livraison, productivité par équipe ou chantier, taux de transformation commercial, retours ou litiges. Ce sont les indicateurs qui expliquent pourquoi ça va bien (ou pas).
 
-**Le niveau prévisionnel** : commandes à venir, pipeline commercial, besoins en trésorerie sur 60 jours. Ce sont les indicateurs qui vous permettent d'agir avant que le problème arrive.
+**Le niveau prévisionnel** : commandes à venir, pipeline commercial, besoins en trésorerie sur 60 jours. Ce sont les indicateurs qui vous permettent d'agir avant que le problème arrive. Et on peut aller plus loin : [simuler l'impact d'une décision avant de la prendre](/blog/vos-rapports-bi-ne-doivent-pas-etre-une-photo-du-passe/).
 
 France Num résume bien l'enjeu : les indicateurs de performance sont des "instruments de bord qui permettent de piloter l'activité avec précision, d'anticiper les virages et d'éviter les sorties de route" [3]. Encore faut-il choisir les bons, pas les plus nombreux.
 

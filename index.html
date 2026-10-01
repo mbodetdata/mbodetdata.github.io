@@ -97,6 +97,7 @@ Moins de tâches manuelles<br>plus <span class="accent">de temps pour votre acti
         </div>
         <h3>{{ item.title }}</h3>
         <p>{{ item.description }}</p>
+        {% if item.link_url %}<p><a href="{{ item.link_url | relative_url }}">{{ item.link_label }} →</a></p>{% endif %}
       </div>
       {% endfor %}
     </div>

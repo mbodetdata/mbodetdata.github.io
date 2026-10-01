@@ -32,22 +32,30 @@
       {
         "icon": "table",
         "title": "Vos informations sont éparpillées",
-        "description": "Entre Excel, votre CRM, votre comptabilité ou vos fichiers internes, il devient difficile d'avoir une base claire et fiable."
+        "description": "Entre Excel, votre CRM, votre comptabilité ou vos fichiers internes, il devient difficile d'avoir une base claire et fiable.",
+        "link_label": "Connecter ses outils entre eux",
+        "link_url": "/blog/connecter-ses-logiciels-entre-eux/"
       },
       {
         "icon": "clock",
         "title": "Vous passez trop de temps sur des tâches répétitives",
-        "description": "Certaines opérations reviennent tous les jours, toutes les semaines ou tous les mois, et mobilisent du temps qui pourrait être consacré à votre activité."
+        "description": "Certaines opérations reviennent tous les jours, toutes les semaines ou tous les mois, et mobilisent du temps qui pourrait être consacré à votre activité.",
+        "link_label": "Supprimer la double saisie",
+        "link_url": "/blog/ressaisies-tpe-pme-cout-cache/"
       },
       {
         "icon": "puzzle",
         "title": "Vous voulez changer d'outil sans savoir par où commencer",
-        "description": "La migration des données peut vite devenir un frein quand on manque de méthode, de temps ou de visibilité."
+        "description": "La migration des données peut vite devenir un frein quand on manque de méthode, de temps ou de visibilité.",
+        "link_label": "Changer de logiciel sans perdre ses données",
+        "link_url": "/blog/changer-logiciel-sans-perdre-donnees-pme/"
       },
       {
         "icon": "question",
         "title": "Vous manquez de visibilité pour décider",
-        "description": "Sans reporting clair et à jour, il est plus difficile de suivre les bons indicateurs et de prendre des décisions avec confiance."
+        "description": "Sans reporting clair et à jour, il est plus difficile de suivre les bons indicateurs et de prendre des décisions avec confiance.",
+        "link_label": "Piloter son entreprise en temps réel",
+        "link_url": "/blog/tableau-de-bord-et-pilotage-temps-reel/"
       }
     ]
   },

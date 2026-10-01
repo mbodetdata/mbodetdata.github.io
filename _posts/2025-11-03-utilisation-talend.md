@@ -32,6 +32,8 @@ Grâce à ses **connecteurs prêts à l’emploi**, il peut :
 
 Chaque connexion est un **composant visuel** glissé dans un flux (“job”) : aucune ligne de code à écrire, mais un paramétrage clair et documenté.
 
+Vous êtes dirigeant et vous voulez d’abord comprendre le principe, sans entrer dans l’outil ? Voici [comment connecter ses outils entre eux sans tout changer](/blog/connecter-ses-logiciels-entre-eux/).
+
 > **Exemple client — SOFIPEL (interconnexion KeplerVo)**  
 > **Contexte :** données éparses issues de plusieurs garages et applications métiers.  
 > **Mise en place :** collecte via **API KeplerVo**, intégration dans **MySQL** et modélisation analytique.  
@@ -42,7 +44,7 @@ Chaque connexion est un **composant visuel** glissé dans un flux (“job”) : 
 ## 2. Automatiser les tâches récurrentes
 
 Une fois les flux définis, ils deviennent des **tâches planifiées**.  
-Talend exécute ces jobs de manière régulière (toutes les nuits, chaque heure, ou sur détection d’un nouveau fichier).
+Talend exécute ces jobs de manière régulière (toutes les nuits, chaque heure, ou sur détection d’un nouveau fichier). C’est la réponse la plus directe à [la double saisie entre logiciels](/blog/ressaisies-tpe-pme-cout-cache/).
 
 > **Exemple client — UBA (Data & automatisations Azure)**  
 > **Contexte :** pilotage financier dispersé entre plusieurs systèmes et fichiers Excel.  
