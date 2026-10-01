@@ -257,3 +257,48 @@ window.QUIZ_DATA = { axes: [
     </div><!-- .quiz-wrapper -->
   </div>
 </section>
+
+
+<!-- ═══════════════════════ CE QUE MESURE LE DIAGNOSTIC ═══════════════════════ -->
+<section class="section frm-intro-section" aria-labelledby="diag-about">
+  <div class="container">
+    <div class="frm-intro">
+      <h2 id="diag-about">Un diagnostic data, c'est quoi&nbsp;?</h2>
+      <p class="frm-intro__lead">C'est un état des lieux rapide de la façon dont votre entreprise gère ses informations : où elles sont saisies, comment elles circulent entre vos outils, combien de temps elles vous coûtent, et à quel point vous pouvez vous fier à vos chiffres.</p>
+      <p>Pas besoin d'être technique pour y répondre : les questions portent sur votre quotidien, pas sur vos logiciels. Le diagnostic couvre six thèmes&nbsp;:</p>
+      <ul>
+        {% for axe in quiz_data.axes %}<li>{{ axe.label }}</li>
+        {% endfor %}
+      </ul>
+      <p>À la fin, vous obtenez un score global, votre niveau sur chaque thème et des recommandations concrètes pour gagner du temps. Si vous voulez creuser un point en particulier, ces articles vont plus loin&nbsp;: <a href="{{ '/blog/ressaisies-tpe-pme-cout-cache/' | relative_url }}">les signes de la double saisie</a>, <a href="{{ '/blog/heures-perdues-taches-repetitives/' | relative_url }}">le coût réel des tâches répétitives</a> et <a href="{{ '/blog/connecter-ses-logiciels-entre-eux/' | relative_url }}">connecter ses outils entre eux</a>.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ FAQ DIAGNOSTIC ═══════════════════════ -->
+<section class="section lp-faq-section" aria-labelledby="diag-faq">
+  <div class="container">
+    <div class="lp-faq">
+      <h2 id="diag-faq">Questions fréquentes sur le diagnostic</h2>
+      <dl class="lp-faq__list">
+        <div class="lp-faq__item">
+          <dt>À qui s'adresse ce diagnostic&nbsp;?</dt>
+          <dd>Aux dirigeants et équipes de TPE et PME qui ont le sentiment de passer trop de temps sur leurs fichiers, leurs exports ou leurs ressaisies, sans savoir par où commencer pour améliorer les choses.</dd>
+        </div>
+        <div class="lp-faq__item">
+          <dt>Est-ce vraiment gratuit&nbsp;?</dt>
+          <dd>Oui, gratuit et sans engagement. À la dernière étape, je vous demande simplement votre nom et votre adresse email : votre résultat s'affiche à l'écran et vous le recevez aussi par email, avec des conseils adaptés à votre situation.</dd>
+        </div>
+        <div class="lp-faq__item">
+          <dt>Combien de temps faut-il pour le remplir&nbsp;?</dt>
+          <dd>Environ 3 minutes. Les 15 questions sont à choix multiple et portent sur des situations concrètes de votre quotidien.</dd>
+        </div>
+        <div class="lp-faq__item">
+          <dt>Que faire de mon résultat&nbsp;?</dt>
+          <dd>Le score vous montre les thèmes où vous perdez le plus de temps. Vous pouvez avancer seul avec les recommandations, ou en parler 30 minutes avec moi pour voir ce qui serait le plus rentable à traiter en premier. Pour les questions plus générales, la <a href="{{ '/faq/' | relative_url }}">FAQ</a> répond à l'essentiel.</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
