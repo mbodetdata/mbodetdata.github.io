@@ -81,15 +81,15 @@ Pour aller plus loin : [Excel ou Power BI, quand passer le cap](/blog/excel-vs-p
 
 ### 4. Changer de logiciel sans perdre son historique
 
-Un logiciel vieillissant, un ERP à remplacer, une boutique en ligne à migrer : le moment du changement est aussi celui où l'on risque de perdre des années de données. Chez [Frère-Loup](/portfolio/frele-loup-migration-prestashop.html), produits, clients et commandes ont été repris intégralement lors du changement de plateforme e-commerce.
+Un logiciel vieillissant, un ERP à remplacer, une boutique en ligne à migrer : le moment du changement est aussi celui où l'on risque de perdre des années de données. Avant de fonder BM Data, j'ai mené plusieurs migrations de ce type, sur des boutiques en ligne comme sur des applications métier : la règle est toujours la même, rien ne bascule tant que les contrôles ne tombent pas juste.
 
 Pour aller plus loin : [changer de logiciel sans perdre ses données](/blog/changer-logiciel-sans-perdre-donnees-pme/).
 
 ## Un exemple concret : des données qui existaient déjà
 
-[SOFIPEL](/portfolio/sofipel-interconnexion-keplervo.html) gère un parc réparti sur plusieurs garages. Les informations nécessaires pour piloter l'ensemble existaient déjà : elles étaient enregistrées chaque jour dans KeplerVo, le logiciel métier des garages. Ce qui manquait, ce n'était pas la donnée, c'était une vue d'ensemble.
+[Active Square](/portfolio/active-square-resamania-zoho-crm.html) accueille ses adhérents sur deux sites, chacun équipé de son propre outil de réservation. Les informations sur les clients existaient déjà, et en double : une partie dans chaque outil de réservation, une autre dans le CRM. Chaque nouveau client devait être recopié à la main de l'un vers l'autre.
 
-Le travail a consisté à connecter KeplerVo à une base centralisée par son API, puis à poser les règles de transformation propres au métier, pour que les chiffres de chaque garage se lisent de la même façon. Résultat : une lecture globale de l'activité de tout le parc, au même endroit, sans rien ressaisir.
+Le travail a consisté à faire converger les deux outils de réservation vers une base client et un CRM uniques. Chaque jour, les données des deux sites sont récupérées, harmonisées, dédoublonnées sur l'adresse email, puis envoyées dans le CRM. Résultat : une vision unifiée des adhérents, un nouveau client qui arrive dans le CRM sans intervention, et la fin des copier-coller.
 
 Aucune nouvelle donnée n'a été collectée. Tout était déjà là, dispersé. Et c'est très souvent le cas dans une PME.
 

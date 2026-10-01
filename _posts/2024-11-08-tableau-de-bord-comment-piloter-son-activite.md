@@ -101,9 +101,9 @@ Les grands indicateurs se retrouvent partout, mais chaque métier a ses priorit�
 
 **Artisans et entreprises du bâtiment :** taux de transformation des devis, marge par chantier (prévue contre réalisée), heures passées par chantier, encours clients. Pour beaucoup d'artisans, l'encours et la trésorerie à 30 jours sont plus vitaux que le chiffre d'affaires.
 
-**Services et prestations :** taux d'occupation des équipes, chiffre d'affaires par client, délai de facturation après intervention, délai moyen de paiement.
+**Services et prestations :** taux d'occupation des équipes, chiffre d'affaires par client, délai de facturation après intervention, délai moyen de paiement. Chez [UBA](/portfolio/uba-data-automation.html), dans les services financiers, l'indicateur central était la trésorerie : elle se lit désormais dans une vue consolidée, alimentée automatiquement plutôt que reconstituée à partir de plusieurs fichiers Excel.
 
-**Logistique, support et opérations :** volumes traités, délais, taux de service, tickets en retard. C'est typiquement ce qu'on suit en direct sur un écran, comme dans le projet [DashboardTV](/portfolio/dashboardtv-operations.html) ou dans le [reporting des SLA sur iTop](/portfolio/reporting-change-itop.html).
+**Logistique, support et opérations :** volumes traités, délais, taux de service, tickets en retard. C'est typiquement ce qu'on affiche en direct sur un écran, pour réagir dans l'heure plutôt qu'à la fin du mois.
 
 ## Les 3 erreurs les plus fréquentes
 

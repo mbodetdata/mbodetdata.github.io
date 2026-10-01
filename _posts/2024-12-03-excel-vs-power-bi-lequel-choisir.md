@@ -117,7 +117,7 @@ Si vous avez décidé de franchir le pas, voici l'ordre qui évite les mauvaises
 5. **Automatisez la mise à jour.** Un tableau de bord qu'il faut alimenter à la main sera abandonné dans les trois mois.
 6. **Formez ceux qui vont le faire vivre.** Ajouter un filtre ou un indicateur ne doit pas demander un nouveau devis.
 
-Un exemple de ce que ça donne une fois le besoin clarifié : l'étude de cas [reporting Change sur iTop](/portfolio/reporting-change-itop.html), où un tableau de bord Power BI connecté à l'outil de ticketing a remplacé les extractions manuelles pour suivre les SLA.
+Un exemple de ce que ça donne une fois le besoin clarifié : chez [UBA](/portfolio/uba-data-automation.html), le pilotage financier était dispersé entre plusieurs systèmes et fichiers Excel. Les données sont aujourd'hui centralisées et alimentées automatiquement, avec une vision de trésorerie consolidée dans Power BI.
 
 ## Le piège à éviter
 

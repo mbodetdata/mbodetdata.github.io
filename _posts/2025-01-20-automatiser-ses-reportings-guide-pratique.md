@@ -54,7 +54,7 @@ Pour les répétitions d'actions dans Excel (mise en forme, export en PDF, déco
 **Gain : jusqu'à -90 % du temps**
 
 ### Niveau 4 : Un outil de BI connecté aux sources
-Power BI ou Looker Studio peuvent se connecter directement à vos sources de données (base de données, CRM, ERP, logiciel de caisse) et rafraîchir automatiquement les rapports. Vous ouvrez votre tableau de bord le matin : tout est à jour. C'est ce qui a été mis en place pour [suivre les SLA d'un service support sur iTop](/portfolio/reporting-change-itop.html), à la place des extractions manuelles.
+Power BI ou Looker Studio peuvent se connecter directement à vos sources de données (base de données, CRM, ERP, logiciel de caisse) et rafraîchir automatiquement les rapports. Vous ouvrez votre tableau de bord le matin : tout est à jour. C'est ce qui a été mis en place chez [UBA](/portfolio/uba-data-automation.html) : les données financières, autrefois dispersées entre plusieurs systèmes et fichiers Excel, sont centralisées et alimentent un tableau de bord Power BI avec une vision de trésorerie consolidée.
 
 **Durée estimée : quelques jours à quelques semaines selon le nombre de sources**
 **Gain : reporting à jour en permanence, plus aucune préparation**
