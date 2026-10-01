@@ -24,7 +24,7 @@ Le problème, ce n’est donc pas seulement le jargon.
 
 Le problème, c’est qu’un terme mal compris au départ peut produire un flux mal conçu, une mauvaise jointure, un KPI contesté ou un dashboard qui donne confiance… à tort.
 
-L’objectif de ce glossaire est simple : t’aider à comprendre les termes qui ont **vraiment** du sens dans un projet Talend, Talaxie ou Power BI, sans te noyer dans un dictionnaire de labo.
+L’objectif de ce glossaire est simple : t’aider à comprendre les termes qui ont **vraiment** du sens dans un projet data, que tu sois dirigeant, en charge de la gestion ou dans une équipe technique, sans te noyer dans un dictionnaire de labo.
 
 Ici, on reste sur des mots utiles en entreprise :
 
@@ -34,32 +34,31 @@ Ici, on reste sur des mots utiles en entreprise :
 
 > ℹ️ Si tu veux voir comment ces notions s’articulent dans une architecture simple, tu peux aussi lire [Architecture data simple pour PME : structurer un pipeline entre les sources, l’ETL et la BI](/blog/architecture-data-PME/).
 
+> **Tu débutes ? Commence par ces 8 termes.** Ce sont ceux qui reviennent dans toutes les discussions avec un prestataire ou un éditeur de logiciel :
+> [donnée](#donnee) · [base de données](#base-de-donnees) · [API](#api) · [webhook](#webhook) · [synchronisation](#synchronisation) · [ETL](#etl) · [tableau de bord](#tableau-de-bord) · [KPI](#kpi)
+
 ---
 
 ## Sommaire
 
-- Les fondamentaux à connaître avant de parler outil
-- Où les données sont stockées et comment elles se structurent
-- Comment les données circulent entre fichiers, APIs et applications
-- ETL, pipelines et transformations : là où la donnée devient exploitable
-- Qualité de données : le sujet qu’on découvre souvent trop tard
-- BI et modélisation : ce qui rend un reporting lisible
-- Les termes Power BI vraiment utiles
-- Exploitation, sécurité et gouvernance sans jargon
-- Conclusion
-- À retenir
-- Aller plus loin sur BMData
-- Sources
-- 5 titres alternatifs
-- 10 idées de posts LinkedIn à recycler
+- [Les fondamentaux à connaître avant de parler outil](#fondamentaux)
+- [Où les données sont stockées et comment elles se structurent](#stockage)
+- [Comment les données circulent entre fichiers, APIs et applications](#circulation)
+- [ETL, pipelines et transformations : là où la donnée devient exploitable](#etl-pipelines)
+- [Qualité de données : le sujet qu’on découvre souvent trop tard](#qualite)
+- [BI et modélisation : ce qui rend un reporting lisible](#bi-modelisation)
+- [Les termes Power BI vraiment utiles](#power-bi)
+- [Exploitation, sécurité et gouvernance sans jargon](#exploitation)
 
 ---
 
 ## Les fondamentaux à connaître avant de parler outil
+{: #fondamentaux}
 
 Avant de parler Talend, SQL ou Power BI, il faut déjà comprendre ce qu’on manipule.
 
 ### Donnée
+{: #donnee}
 
 Une **donnée** est une valeur brute : une date, un montant, un code client, un statut de commande.
 
@@ -172,10 +171,12 @@ Ces deux termes décrivent surtout **quand** les données sont traitées.
 ---
 
 ## Où les données sont stockées et comment elles se structurent
+{: #stockage}
 
 Une fois les bases posées, il faut distinguer les outils faits pour **enregistrer**, ceux faits pour **interroger**, et ceux faits pour **analyser**.
 
 ### Base de données
+{: #base-de-donnees}
 
 Une **base de données** est un système de stockage organisé pour conserver et retrouver des informations de manière fiable.
 
@@ -224,10 +225,12 @@ Ces deux notions reviennent souvent dès qu’on veut fiabiliser la BI.
 ---
 
 ## Comment les données circulent entre fichiers, APIs et applications
+{: #circulation}
 
 Dans les projets Talend et Talaxie, une grande partie du travail consiste à faire circuler des données entre des systèmes qui ne parlent pas naturellement le même langage.
 
 ### API
+{: #api}
 
 Une **API** est une interface qui permet à une application d’échanger des données ou des actions avec une autre de manière structurée.
 
@@ -237,9 +240,12 @@ Une **API** est une interface qui permet à une application d’échanger des do
 
 **Confusion fréquente :** une API n’est pas “la donnée”. C’est le moyen d’accès à cette donnée.
 
+C’est grâce aux API que l’on peut [connecter ses outils entre eux](/blog/connecter-ses-logiciels-entre-eux/) sans tout changer.
+
 > ℹ️ Si ce sujet t’intéresse, tu peux compléter avec [API vs Webhook : comprendre la différence et implémenter un webhook sécurisé avec Talaxie](/blog/API-et-Webhook-talaxie-esb/).
 
 ### Webhook
+{: #webhook}
 
 Un **webhook** est un mécanisme de notification automatique : au lieu d’aller interroger une API en boucle, tu reçois un appel quand un événement survient.
 
@@ -283,6 +289,7 @@ Une **transformation** modifie la donnée pour la rendre exploitable dans le sys
 **Confusion fréquente :** un même système peut avoir des flux entrants et sortants en parallèle.
 
 ### Synchronisation
+{: #synchronisation}
 
 La **synchronisation** vise à maintenir des données cohérentes entre deux systèmes.
 
@@ -316,6 +323,7 @@ Le **CSV** est un format de fichier texte tabulaire, simple et très répandu.
 **Confusion fréquente :** un CSV n’est pas toujours propre ni standardisé de la même manière selon les outils. Le séparateur, l’encodage et les guillemets changent vite le résultat.
 
 ### Excel
+{: #excel}
 
 **Excel** est un outil incontournable en entreprise, souvent utilisé à la fois comme source, comme zone tampon et comme outil d’analyse.
 
@@ -373,10 +381,12 @@ Tous les PDFs ne se valent pas pour la data.
 ---
 
 ## ETL, pipelines et transformations : là où la donnée devient exploitable
+{: #etl-pipelines}
 
 C’est ici qu’on passe d’une donnée dispersée à une donnée exploitable.
 
 ### ETL et ELT
+{: #etl}
 
 Ces deux sigles décrivent deux façons d’enchaîner les mêmes grandes étapes.
 
@@ -494,6 +504,7 @@ La **reprise sur incident** désigne la capacité à relancer un traitement prop
 ---
 
 ## Qualité de données : le sujet qu’on découvre souvent trop tard
+{: #qualite}
 
 Un dashboard peut être rapide, beau, interactif… et totalement trompeur si la donnée est mauvaise.
 
@@ -508,6 +519,7 @@ La **qualité de données** désigne le niveau de confiance que l’on peut acco
 **Confusion fréquente :** la qualité n’est pas un sujet “après”. Elle commence dès la collecte.
 
 ### Doublon
+{: #doublon}
 
 Un **doublon** est un enregistrement présent plusieurs fois, exactement ou presque.
 
@@ -565,6 +577,7 @@ Une **règle de qualité** définit ce qu’une donnée doit respecter pour êtr
 ---
 
 ## BI et modélisation : ce qui rend un reporting lisible
+{: #bi-modelisation}
 
 Le reporting utile ne repose pas seulement sur de jolis visuels. Il repose d’abord sur une structure claire.
 
@@ -579,6 +592,7 @@ Le **reporting** consiste à restituer des données et indicateurs pour suivre u
 **Confusion fréquente :** un reporting n’est pas automatiquement un bon outil d’aide à la décision. Il peut aussi noyer l’utilisateur sous les chiffres.
 
 ### Tableau de bord
+{: #tableau-de-bord}
 
 Un **tableau de bord** est une interface de pilotage qui met en avant les indicateurs les plus utiles pour agir.
 
@@ -588,7 +602,10 @@ Un **tableau de bord** est une interface de pilotage qui met en avant les indica
 
 **Confusion fréquente :** un tableau de bord n’est pas un inventaire de tous les graphes possibles. Plus il montre tout, moins il aide souvent.
 
+Pour aller plus loin : [piloter son entreprise en temps réel sans multiplier les outils](/blog/tableau-de-bord-et-pilotage-temps-reel/).
+
 ### KPI et indicateur
+{: #kpi}
 
 Ces deux mots sont proches, mais pas totalement équivalents.
 
@@ -602,6 +619,8 @@ Ces deux mots sont proches, mais pas totalement équivalents.
 - KPI : taux de service, marge, délai moyen de traitement, taux de conversion
 
 **Confusion fréquente :** tous les indicateurs ne sont pas des KPI. Le mot KPI est souvent utilisé un peu trop généreusement.
+
+Pour choisir les bons : [comment construire un tableau de bord vraiment utile](/blog/tableau-de-bord-comment-piloter-son-activite/).
 
 ### Modèle de données
 
@@ -640,6 +659,7 @@ Une **mesure** est un calcul utilisé dans l’analyse et le reporting.
 ---
 
 ## Les termes Power BI vraiment utiles
+{: #power-bi}
 
 Power BI a son propre vocabulaire. Le comprendre évite beaucoup d’échanges flous avec un consultant ou une équipe BI.
 
@@ -748,6 +768,7 @@ La **passerelle** permet au service Power BI d’accéder à certaines sources, 
 ---
 
 ## Exploitation, sécurité et gouvernance sans jargon
+{: #exploitation}
 
 Un flux utile n’est pas seulement un flux qui marche aujourd’hui. C’est un flux qu’on comprend, qu’on surveille et qu’on sécurise dans le temps.
 
@@ -812,6 +833,7 @@ La **gouvernance des données** désigne l’ensemble des règles et responsabil
 **Confusion fréquente :** la gouvernance n’est pas réservée aux grands groupes. Même une PME gagne à poser quelques règles simples.
 
 ### RGPD
+{: #rgpd}
 
 Le **RGPD** encadre l’usage des données personnelles dans l’Union européenne.
 
@@ -907,8 +929,15 @@ Si tu veux relier ce glossaire à des cas concrets, tu peux continuer avec ces c
 - [Talaxie : sécuriser l’entrée du pipeline avec tSchemaComplianceCheck](/blog/tSchemaComplianceCheck/)
 - [Talaxie : bien configurer tWriteJSONField et le JSON Tree](/blog/tWriteJSONField/)
 - [Migration de Talend Open Studio vers Talaxie : guide complet en 8 étapes](/blog/migration-talend-vers-talaxie/)
-- [Services Talend & Talaxie](/services/)
-- [Services Power BI](/services/)
+
+Et côté entreprise, sans jargon :
+
+- [Connecter ses outils et logiciels entre eux](/blog/connecter-ses-logiciels-entre-eux/)
+- [Double saisie en PME : 7 signes et comment la supprimer](/blog/ressaisies-tpe-pme-cout-cache/)
+- [Excel ou Power BI : quand une PME doit-elle passer le cap ?](/blog/excel-vs-power-bi-lequel-choisir/)
+- [Faire construire un tableau de bord de pilotage](/tableaux-de-bord/)
+- [Faire connecter ses logiciels](/interconnexion-logiciels/)
+- [Toutes les prestations](/services/)
 - [Réalisations data & automatisation](/realisations/)
 
 ---
@@ -944,90 +973,10 @@ Si tu veux relier ce glossaire à des cas concrets, tu peux continuer avec ces c
 ### Sources BMData
 
 - [BMData — Accueil](https://bmdata.fr/)
-- [BMData — Services Talend & Talaxie](https://bmdata.fr/services/)
-- [BMData — Services Power BI](https://bmdata.fr/services/)
+- [BMData — Prestations](https://bmdata.fr/services/)
 - [BMData — Réalisations data & automatisation](https://bmdata.fr/realisations/)
 - [BMData — Talend/Talaxie : comment les entreprises automatisent leurs données sans infrastructure complexe](https://bmdata.fr/blog/utilisation-talend/)
 - [BMData — API vs Webhook : comprendre la différence et implémenter un webhook sécurisé avec Talaxie](https://bmdata.fr/blog/API-et-Webhook-talaxie-esb/)
 - [BMData — Talaxie : sécuriser l’entrée du pipeline avec tSchemaComplianceCheck](https://bmdata.fr/blog/tSchemaComplianceCheck/)
 - [BMData — Talaxie : bien configurer tWriteJSONField et le JSON Tree](https://bmdata.fr/blog/tWriteJSONField/)
 - [BMData — Migration de Talend Open Studio vers Talaxie : guide complet en 8 étapes](https://bmdata.fr/blog/migration-talend-vers-talaxie/)
-
----
-
-## 5 titres alternatifs
-
-1. **Glossaire data : 50 termes utiles pour mieux comprendre Talend, Power BI et la BI**
-2. **Les mots de la data expliqués simplement : API, ETL, KPI, DAX, qualité de données**
-3. **Comprendre le vocabulaire data en entreprise : le glossaire utile pour la BI et l’intégration**
-4. **Glossaire Talend / Power BI : les termes à connaître pour fiabiliser tes flux et tes reportings**
-5. **De l’API au KPI : le glossaire data concret pour les PME et les équipes métier**
-
----
-
-## 10 idées de posts LinkedIn à recycler
-
-### 1) Le jargon qui ralentit les projets data
-**Angle :** ce ne sont pas toujours les outils qui bloquent, mais les mots mal compris.  
-**Hook possible :**  
-> Beaucoup de projets data ne déraillent pas à cause de Power BI ou de Talend.  
-> Ils déraillent parce que tout le monde utilise les mêmes mots… sans parler de la même chose.
-
-### 2) Donnée vs information
-**Angle :** montrer qu’une donnée brute ne vaut pas encore analyse.  
-**Hook possible :**  
-> Un montant, une date, un statut : ce sont des données.  
-> Tant qu’il manque le contexte, ce n’est pas encore une information utile.
-
-### 3) Pourquoi la granularité casse tant de KPI
-**Angle :** expliquer simplement l’impact du niveau de détail sur les indicateurs.  
-**Hook possible :**  
-> Beaucoup de KPI “faux” ne viennent pas d’un mauvais calcul.  
-> Ils viennent d’une mauvaise granularité.
-
-### 4) Clé primaire, clé étrangère : les notions simples qui évitent des dashboards faux
-**Angle :** vulgarisation terrain des relations entre tables.  
-**Hook possible :**  
-> Une mauvaise relation entre tables ne crie pas forcément.  
-> Elle peut juste te donner un dashboard crédible… et faux.
-
-### 5) API vs webhook
-**Angle :** différencier logique de récupération et logique de notification.  
-**Hook possible :**  
-> Une API, tu la sollicites.  
-> Un webhook, il te prévient.  
-> Cette nuance change beaucoup de choses dans un pipeline.
-
-### 6) ETL vs ELT
-**Angle :** démystifier le débat.  
-**Hook possible :**  
-> ETL ou ELT ?  
-> Le plus gros problème n’est pas le sigle.  
-> Le vrai sujet, c’est l’endroit où tu laisses vivre la logique métier.
-
-### 7) Excel n’est pas le problème… jusqu’à un certain point
-**Angle :** posture nuancée et crédible.  
-**Hook possible :**  
-> Excel n’est pas l’ennemi.  
-> Mais quand il devient à la fois source, transformation, contrôle qualité et reporting, tu construis surtout une fragilité.
-
-### 8) KPI vs indicateur
-**Angle :** clarifier une confusion très fréquente côté métier.  
-**Hook possible :**  
-> Tous les KPI sont des indicateurs.  
-> Tous les indicateurs ne sont pas des KPI.  
-> Et cette confusion pollue beaucoup de tableaux de bord.
-
-### 9) Mesure DAX vs colonne calculée
-**Angle :** expliquer une confusion classique dans Power BI.  
-**Hook possible :**  
-> Dans Power BI, beaucoup de modèles deviennent lourds pour une raison simple :  
-> on met des colonnes calculées là où il faudrait des mesures.
-
-### 10) Un bon reporting commence avant Power BI
-**Angle :** rappeler que le modèle et la qualité priment sur le visuel.  
-**Hook possible :**  
-> Un bon reporting ne commence pas avec un graphique.  
-> Il commence avec une donnée propre, une structure claire et des définitions partagées.
-
----
