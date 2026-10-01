@@ -470,7 +470,7 @@ Si tu veux aller au-delà des concepts et structurer un cas réel :
 - [Services Talend & Talaxie](/services/)
 - [Services Power BI](/services/)
 - [UBA : centralisation Azure, automatisations Talend et pilotage Power BI](/portfolio/uba-data-automation.html) — la chaîne Sources → ETL → Base → BI de bout en bout
-- [SOFIPEL : interconnexion API KeplerVo vers une base MySQL](/portfolio/sofipel-interconnexion-keplervo.html) — consolider plusieurs systèmes en une vue unique
+- [SOFIPEL : interconnexion API KeplerVo vers une base MySQL](/portfolio/sofipel-interconnexion-keplervo.html) — consolider plusieurs systèmes en une vue unique (expérience antérieure à BM Data)
 - [Voir des réalisations concrètes](/realisations/)
 
 ---

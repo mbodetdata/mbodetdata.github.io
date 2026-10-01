@@ -34,7 +34,7 @@ Chaque connexion est un **composant visuel** glissé dans un flux (“job”) : 
 
 Vous êtes dirigeant et vous voulez d’abord comprendre le principe, sans entrer dans l’outil ? Voici [comment connecter ses outils entre eux sans tout changer](/blog/connecter-ses-logiciels-entre-eux/).
 
-> **Exemple client — SOFIPEL (interconnexion KeplerVo)**  
+> **Expérience antérieure, avant BM Data — SOFIPEL (interconnexion KeplerVo)**  
 > **Contexte :** données éparses issues de plusieurs garages et applications métiers.  
 > **Mise en place :** collecte via **API KeplerVo**, intégration dans **MySQL** et modélisation analytique.  
 > **Résultat :** une **vue consolidée du parc automobile**, un suivi précis des coûts et une aide à la décision fiable.
@@ -62,7 +62,7 @@ Talend permet de :
 - Les **transformer** pour correspondre à la structure du nouveau système.  
 - Et les **charger** en toute sécurité, avec un contrôle des lignes rejetées.
 
-> **Exemple client — Frère-Loup (migration e-commerce)**  
+> **Expérience antérieure, avant BM Data — Frère-Loup (migration e-commerce)**  
 > **Contexte :** changement de site PrestaShop avec conservation intégrale des produits, commandes et clients.  
 > **Mise en place :** audit des données clés, transformation et alimentation automatisée via **API PrestaShop**.  
 > **Résultat :** **migration fluide et sans perte**, mise en production rapide et continuité d’activité e-commerce assurée.
@@ -75,7 +75,7 @@ Talend ne se contente pas d’automatiser : il **trace** tout ce qu’il exécut
 Chaque job produit des **logs détaillés**, exploitables dans des **tableaux de bord** pour détecter anomalies ou ralentissements.  
 Les entreprises gagnent ainsi en **proactivité** et en fiabilité opérationnelle.
 
-> **Exemple client — ACSEP (supervision EDI & interfaçage WMS/TMS)**  
+> **Expérience antérieure, avant BM Data — ACSEP (supervision EDI & interfaçage WMS/TMS)**  
 > **Contexte :** flux critiques entre systèmes Reflex, IzyPro et TMS OneWorld à fiabiliser.  
 > **Mise en place :** intégrations EDI standardisées, **alertes automatiques** et supervision centralisée des échanges.  
 > **Résultat :** diminution des incidents, **interopérabilité renforcée** et meilleure réactivité des équipes support.
@@ -90,7 +90,7 @@ La communauté a pris le relais à travers **Talaxie**, qui prolonge l’hérita
 Talaxie conserve la logique visuelle, les composants et la compatibilité des anciens jobs,  
 tout en apportant des mises à jour techniques (Java 17+, PostgreSQL 15, support REST modernisé). Si vous souhaitez comprendre les différents studios disponibles et leurs cas d'usage, [cet article fait le tour des studios Talend/Talaxie](/blog/talend-studios/).
 
-> **Exemple client — ACSEP (migration Talend OS → Talaxie)**  
+> **Expérience antérieure, avant BM Data — ACSEP (migration Talend OS → Talaxie)**  
 > **Contexte :** sécuriser le socle d’intégration interne face à l’arrêt de Talend Open Source.  
 > **Mise en place :** cadrage de l’architecture cible, analyse des dépendances et migration progressive vers **Talaxie**.  
 > **Résultat :** **continuité garantie**, réduction du risque d’obsolescence et plateforme d’intégration durable.
@@ -110,7 +110,7 @@ tout en apportant des mises à jour techniques (Java 17+, PostgreSQL 15, support
 Talend (et Talaxie) transforment les processus “artisanaux” en **chaînes de données robustes et pilotables**.  
 Pas besoin d’une plateforme cloud ou d’un service data dédié : un poste, un peu de méthode, et vos flux deviennent fiables.
 
-C’est la mécanique à l’œuvre dans l’étude de cas [flux EDI vers le TMS OneWorld]({{ '/portfolio/edi-tms-oneworld.html' | relative_url }}) : des échanges standardisés entre logiciels clients, automatisés avec Talend plutôt que repris à la main.
+C’est la mécanique à l’œuvre dans l’étude de cas, antérieure à BM Data, [flux EDI vers le TMS OneWorld]({{ '/portfolio/edi-tms-oneworld.html' | relative_url }}) : des échanges standardisés entre logiciels clients, automatisés avec Talend plutôt que repris à la main.
 
 ![Bénéfices Talend]({{ 'assets/img/blog/4-benefices_talend/blog-4-img-1.webp' | relative_url }}){:alt="Illustration des bénéfices Talend" loading="lazy" decoding="async"}
 

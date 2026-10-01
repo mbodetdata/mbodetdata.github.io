@@ -188,7 +188,7 @@ Le Baromètre Bpifrance 2026 le confirme : la trésorerie et la visibilité sur 
 
 La vraie question n'est pas "est-ce que j'en ai besoin ?", si vous avez lu jusqu'ici, vous avez probablement déjà la réponse. La vraie question, c'est : par où commencer sérieusement, avec les bons indicateurs, les bonnes sources, et la garantie que ça tienne dans le temps ? C'est exactement le périmètre de la prestation [tableaux de bord de pilotage](/tableaux-de-bord/).
 
-À quoi ça ressemble une fois en place ? L'étude de cas [pilotage temps réel des opérations DashboardTV](/portfolio/dashboardtv-operations.html) montre une collecte multi-sources consolidée dans un tableau de bord suivi au quotidien, sans ressaisie.
+À quoi ça ressemble une fois en place ? L'étude de cas [pilotage temps réel des opérations DashboardTV](/portfolio/dashboardtv-operations.html), réalisée avant la création de BM Data, montre une collecte multi-sources consolidée dans un tableau de bord suivi au quotidien, sans ressaisie.
 
 
 ---

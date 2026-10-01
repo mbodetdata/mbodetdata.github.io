@@ -124,11 +124,15 @@ La vraie question n’est pas « est-ce que ça va casser » mais « est-ce que 
 
 ## À quoi ça ressemble une fois en place
 
-Trois exemples concrets, tirés de missions réelles.
+Quatre exemples concrets, tirés de projets réels.
 
-Chez SOFIPEL, le pilotage d’un parc multi-garages supposait d’avoir une vue d’ensemble à partir de systèmes qui ne communiquaient pas. L’[interconnexion API KeplerVo vers une base MySQL](/portfolio/sofipel-interconnexion-keplervo.html) a permis de consolider tout ça en une vision unique.
+Chez [Declic Serrurerie](/portfolio/declic-serrurerie-cadulis-pennylane.html), chaque intervention planifiée dans le logiciel métier était recopiée à la main dans l’outil de facturation : une heure par jour. Les deux logiciels sont désormais connectés, et chaque intervention génère un brouillon de facture pré-rempli, que le dirigeant n’a plus qu’à valider. Il reste un quart d’heure de contrôle au lieu d’une heure de saisie.
 
-Pour un client transport, il fallait que les logiciels de ses propres clients puissent parler à son TMS de façon fiable, sans intervention manuelle. Ce sont des [flux EDI et des automatisations Talend](/portfolio/edi-tms-oneworld.html) qui ont pris le relais des échanges à la main.
+Chez [Active Square](/portfolio/active-square-resamania-zoho-crm.html), deux sites avaient chacun leur outil de réservation, mais un seul CRM. Chaque nouveau client était recopié de l’un à l’autre. Une synchronisation quotidienne alimente maintenant le CRM automatiquement, sans doublon : le client inscrit sur l’un des sites y arrive sans intervention.
+
+Avant de fonder BM Data, j’ai aussi traité ce type de sujet en tant que salarié. Chez SOFIPEL, le pilotage d’un parc multi-garages supposait d’avoir une vue d’ensemble à partir de systèmes qui ne communiquaient pas. L’[interconnexion API KeplerVo vers une base MySQL](/portfolio/sofipel-interconnexion-keplervo.html) a permis de consolider tout ça en une vision unique.
+
+Pour un acteur du transport, il fallait que les logiciels de ses propres clients puissent parler à son TMS de façon fiable, sans intervention manuelle. Ce sont des [flux EDI et des automatisations Talend](/portfolio/edi-tms-oneworld.html) qui ont pris le relais des échanges à la main.
 
 Et parfois, la conclusion de l’analyse est qu’il ne faut pas connecter, mais changer d’outil. C’est un choix légitime — à condition de le faire proprement, ce qui est le sujet de l’article sur [comment changer de logiciel sans perdre ses données](/blog/changer-logiciel-sans-perdre-donnees-pme/).
 
