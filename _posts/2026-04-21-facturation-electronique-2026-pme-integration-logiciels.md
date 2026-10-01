@@ -98,7 +98,7 @@ Parlons des sanctions, puisque c'est la question qu'on me pose le plus. La loi d
 - **Facture non émise en électronique** quand elle aurait dû l'être : 50 € par facture, dans la limite de 15 000 € par an
 - **Données de transaction non transmises** (e-reporting) : 500 € par transmission manquante
 
-Il existe un droit à l'erreur : une première infraction régularisée spontanément, ou dans les 30 jours suivant la demande de l'administration, n'est pas sanctionnée [6]. Et pour cette première année, le ministère a indiqué qu'aucune sanction financière ne serait appliquée en 2026 aux entreprises qui montrent leur bonne foi [4]. Gardez donc une trace de vos démarches : choix de la plateforme, échanges avec votre éditeur, incidents rencontrés.
+Il existe un droit à l'erreur : une première infraction régularisée spontanément, ou dans les 30 jours suivant la demande de l'administration, n'est pas sanctionnée [6].
 
 Mais soyons honnêtes : **le vrai risque n'est pas l'amende**. C'est de construire un système qui marche trois mois, puis qui casse silencieusement. Des factures rejetées que personne ne voit, des clients qui ne paient pas parce qu'ils n'ont rien reçu, une seule personne dans l'entreprise qui "sait comment ça marche". Dès qu'elle est absente, tout s'arrête.
 
@@ -144,7 +144,7 @@ Certaines situations se gèrent seul avec l'aide de son expert-comptable. D'autr
 
 ### Septembre 2026 est passé et je n'ai rien fait. Qu'est-ce que je risque ?
 
-Dans l'immédiat, surtout de ne pas recevoir correctement les factures de vos fournisseurs déjà passés à l'électronique. Côté sanction, le ministère a indiqué qu'aucune amende ne serait appliquée en 2026 aux entreprises de bonne foi [4]. Ensuite, l'administration commence par une mise en demeure : vous avez 3 mois pour choisir une plateforme agréée avant l'amende de 500 €. Le plus simple reste de régulariser maintenant, en commençant par interroger votre logiciel comptable et votre expert-comptable.
+Dans l'immédiat, surtout de ne pas recevoir correctement les factures de vos fournisseurs déjà passés à l'électronique. Côté sanction, l'administration commence par une mise en demeure : vous avez 3 mois pour choisir une plateforme agréée avant l'amende de 500 €. Le plus simple reste de régulariser maintenant, en commençant par interroger votre logiciel comptable et votre expert-comptable.
 
 ### Est-ce que je peux encore recevoir des factures en PDF par mail ?
 
@@ -183,7 +183,7 @@ Onze mois, c'est confortable pour un projet bien cadré. C'est très court pour 
 
 [3] [Daf-Mag – Facturation électronique : quel état des lieux après la phase de démarrage ?](https://www.daf-mag.fr/bi-1244/transformation-processus-2133/facturation-electronique-quel-etat-des-lieux-peut-on-faire-apres-la-phase-de-demarrage-27484) (29 septembre 2026) 8,4 millions de factures transmises, 50 % des 11,4 millions d'unités légales inscrites pour la réception.
 
-[4] [Yad – Facturation électronique : le bilan 15 jours après](https://www.yad.fr/facturation-electronique-bilan-15-jours/) Premiers points de friction : factures rejetées pour données manquantes, erreurs d'adressage dans l'annuaire, inscriptions incomplètes. Position du ministère : pas de sanction financière en 2026 pour les entreprises de bonne foi.
+[4] [Yad – Facturation électronique : le bilan 15 jours après](https://www.yad.fr/facturation-electronique-bilan-15-jours/) Premiers points de friction : factures rejetées pour données manquantes, erreurs d'adressage dans l'annuaire, inscriptions incomplètes.
 
 [5] [Pennylane – Liste des plateformes agréées (PA, ex-PDP) immatriculées](https://www.pennylane.com/fr/fiches-pratiques/facture-electronique/liste-des-pdp) et [Dougs – Le rôle du portail public de facturation](https://www.dougs.fr/blog/portail-public-de-facturation/) Plateformes immatriculées par l'État, fonctionnement de l'annuaire.
 
