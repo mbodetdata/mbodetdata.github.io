@@ -176,12 +176,44 @@ Commence large, resserre ensuite :
 
 ## 7. Vérifier le site après modification
 
+Le verdict ci-dessus existe en une seule copie dans le dépôt,
+`scripts/antispam-verdict.js`, dont les deux suites de tests se servent. **Quand
+tu modifies une règle, modifie ce fichier et ce document ensemble** — les tests
+suivront tout seuls.
+
 ```bash
-npm install jsdom          # une seule fois ; node_modules/ est déjà ignoré par git
-node scripts/test-contact-form.js
+cd scripts
+npm install                 # jsdom + playwright, confinés à scripts/node_modules
+npx playwright install chromium
+npm test                    # les deux suites
 ```
 
-36 vérifications : parcours d'un visiteur, robot qui tombe dans le piège, robot
-qui l'évite, POST direct, jeton forgé, jeton rejoué, panne du webhook, validation
-des champs. Le fichier contient aussi une copie du verdict n8n ci-dessus : si tu
-modifies l'un, modifie l'autre.
+**`npm run test:form`** — 36 vérifications sous jsdom : parcours d'un visiteur,
+robot qui tombe dans le piège, robot qui l'évite, POST direct, jeton forgé, jeton
+rejoué, panne du webhook, validation des champs. Rapide, aucune dépendance
+navigateur.
+
+**`npm run test:attaque`** — six robots réels contre la vraie page, dans Chromium,
+avec le webhook redirigé vers un serveur local (rien ne part vers n8n) :
+
+| Effort | Méthode | Attendu | Ce qui l'arrête |
+|---|---|---|---|
+| Nul | Envoi direct sur l'URL du webhook | bloqué | le jeton |
+| Très faible | `.value` écrit par un script dans la page | bloqué | piège + rythme |
+| Faible | Navigateur piloté, remplit tout, envoie aussitôt | bloqué | piège + rythme |
+| Moyen | Champs visibles seulement, envoi immédiat | bloqué | le rythme seul (~1,2 s) |
+| Élevé | Remplit tout, mais patiente 5 s | bloqué | **le piège seul** |
+| Maximal | Évite le piège, frappe touche par touche, patiente | **passe** | rien |
+
+La dernière ligne passe volontairement : c'est la limite assumée, pas une
+régression. Le test échoue si un robot tombe ailleurs que prévu.
+
+### Deux constats à ne pas défaire
+
+- **Le champ piège doit rester déplacé hors écran** (`left: -9999px` dans `.pf-hp`),
+  jamais `display: none` ni `visibility: hidden`. Les outils d'automatisation
+  refusent d'interagir avec un élément masqué : le piège cesserait alors d'attraper
+  quoi que ce soit. Le test le contrôle et le signale.
+- **Le seuil de 3 s est mince.** Le robot « moyen » est bloqué à 1,2 s ; deux
+  secondes d'attente de plus lui suffiraient. Ce contrôle écarte les envois
+  instantanés, rien de plus, et c'est tout ce qu'on lui demande.

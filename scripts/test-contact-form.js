@@ -2,7 +2,7 @@
    Charge le vrai pages/contact.html et le vrai assets/js/main.js.
 
    Usage :  npm install jsdom  puis  node scripts/test-contact-form.js .
-   Le verdict n8n reproduit ici doit rester aligne sur scripts/antispam-n8n.md. */
+   Le verdict n8n vient de scripts/antispam-verdict.js, copie de reference unique. */
 const fs = require('fs');
 const path = require('path');
 let jsdom;
@@ -32,26 +32,10 @@ function check(name, cond, detail) {
   console.log((cond ? 'OK   ' : 'FAIL ') + name + (detail ? '  — ' + detail : ''));
 }
 
-/* --- Verdict n8n : copie conforme du noeud Code documente --- */
-const HP_SECRET = 'bmdata-contact-v1';
-function n8nToken(ts) {
-  const s = HP_SECRET + ':' + ts;
-  let h = 0x811c9dc5;
-  for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 0x01000193) >>> 0;
-  return h.toString(36);
-}
-function n8nVerdict(body) {
-  const a = body.antispam || {};
-  const reasons = [];
-  if (a.hp) reasons.push('honeypot');
-  if (!a.ts || !a.token || n8nToken(a.ts) !== a.token) reasons.push('jeton absent ou invalide');
-  else if (Math.abs(Date.now() - Number(a.ts)) > 7 * 24 * 3600 * 1000) reasons.push('jeton perime');
-  if (!(Number(a.page_ms) >= 3000)) reasons.push('formulaire rempli trop vite');
-  if (!(Number(a.interactions) >= 3)) reasons.push('aucune interaction reelle');
-  if (!body.email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(body.email)) reasons.push('email invalide');
-  if (!body.first_name || !body.last_name) reasons.push('identite incomplete');
-  return { spam: reasons.length > 0, reasons };
-}
+/* --- Verdict n8n : copie de reference partagee avec le noeud Code --- */
+const { HP_SECRET, hpToken, verdict } = require('./antispam-verdict');
+const n8nToken = hpToken;
+const n8nVerdict = body => { const v = verdict(body); return { spam: v.spam, reasons: v.spam_reasons }; };
 
 function boot() {
   const vc = new VirtualConsole();
@@ -142,7 +126,7 @@ const tick = () => new Promise(r => setTimeout(r, 30));
     check('2. transmis a n8n pour quarantaine', calls.length === 1);
     const v = calls[0] && n8nVerdict(calls[0].body);
     check('2. n8n classe en spam', v && v.spam, v && v.reasons.join(', '));
-    check('2. motif honeypot remonte', v && v.reasons.indexOf('honeypot') !== -1);
+    check('2. motif honeypot remonte', v && v.reasons.some(r => r.startsWith('honeypot')), v && v.reasons.join(', '));
     check('2. bouton jamais bloque', !d.getElementById('pf-submit').disabled);
     /* Le robot ne doit rien apprendre : meme rendu qu un envoi reussi */
     calls[0].reject(new Error('n8n indisponible'));

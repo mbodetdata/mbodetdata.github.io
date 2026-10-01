@@ -1,0 +1,16 @@
+{
+  "name": "bmdata-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Outils de test internes du site bmdata.fr (non publies : le dossier scripts est exclu du build Jekyll).",
+  "scripts": {
+    "test": "node test-contact-form.js .. && node test-contact-attaque.js ..",
+    "test:form": "node test-contact-form.js ..",
+    "test:attaque": "node test-contact-attaque.js ..",
+    "postinstall-hint": "echo 'Pour l attaque : npx playwright install chromium'"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1",
+    "playwright": "^1.60.0"
+  }
+}
