@@ -1,0 +1,111 @@
+---
+layout: page
+title: "Plan du site"
+seo_title: "Plan du site : services, articles et réalisations"
+description: "Toutes les pages de bmdata.fr : services pour TPE et PME, articles du blog classés par thème, réalisations et ressources. Mis à jour automatiquement."
+permalink: /plan-du-site/
+body_class: "page-sitemap"
+---
+
+{% comment %}
+  Plan du site généré à chaque build :
+  - pages : depuis _data/navigation.json (menu, sous-menu, pied de page), sans doublon ;
+  - articles : site.posts, classés comme sur /blog/ (parent_category « talend… » = technique) ;
+  - réalisations : _data/projets.json, clients BM Data puis expériences antérieures.
+  Un nouvel article, une nouvelle page de menu ou un nouveau projet y apparaît sans rien toucher ici.
+{% endcomment %}
+{% assign nav = site.data.navigation %}
+{% assign tech_posts = site.posts | where_exp: "p", "p.parent_category contains 'talend'" %}
+{% assign pme_count  = site.posts.size | minus: tech_posts.size %}
+{% assign bm_projects    = site.data.projets | where_exp: "p", "p.anterieur != true" %}
+{% assign prior_projects = site.data.projets | where_exp: "p", "p.anterieur == true" %}
+
+<section class="page-hero" style="padding-bottom:3rem;" aria-labelledby="sm-title">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="{{ '/' | relative_url }}">Accueil</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Plan du site</span>
+    </nav>
+    <h1 id="sm-title" style="font-size:var(--text-3xl);">Plan du site</h1>
+    <p style="color:rgba(255,255,255,.7);">Toutes les pages de bmdata.fr : {{ site.posts.size }} articles, {{ site.data.projets.size }} réalisations et l'ensemble des services.</p>
+  </div>
+</section>
+
+<section class="section sm-section">
+  <div class="container">
+    <div class="sm-grid">
+
+      <!-- Services -->
+      <div class="sm-block">
+        <h2 class="sm-title">Services</h2>
+        <ul class="sm-list">
+          {% for item in nav.main %}{% if item.children %}
+            {% for c in item.children %}
+            <li><a href="{{ c.url | relative_url }}">{{ c.label }}</a>{% if c.desc %}<span class="sm-desc">{{ c.desc }}</span>{% endif %}</li>
+            {% endfor %}
+          {% endif %}{% endfor %}
+        </ul>
+      </div>
+
+      <!-- Pages du site (menu + pied de page, sans doublon) -->
+      <div class="sm-block">
+        <h2 class="sm-title">Pages</h2>
+        {% assign seen = "|" %}
+        {% for item in nav.main %}{% for c in item.children %}{% assign seen = seen | append: c.url | append: "|" %}{% endfor %}{% endfor %}
+        <ul class="sm-list">
+          {% assign all_links = nav.main | concat: nav.footer_col1 | concat: nav.footer_col2 | concat: nav.footer_col3 %}
+          {% for item in all_links %}
+            {% assign key = "|" | append: item.url | append: "|" %}
+            {% unless seen contains key or item.url == page.url %}
+              {% assign seen = seen | append: item.url | append: "|" %}
+              <li><a href="{{ item.url | relative_url }}">{{ item.label }}</a></li>
+            {% endunless %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Articles TPE / PME -->
+      <div class="sm-block sm-block--wide">
+        <h2 class="sm-title">Articles : conseils pour les TPE et PME <span class="sm-count">{{ pme_count }}</span></h2>
+        <ul class="sm-list sm-list--cols">
+          {% for post in site.posts %}{% if post.parent_category contains 'talend' %}{% continue %}{% endif %}
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a><span class="sm-date">{{ post.date | date: "%m/%Y" }}</span></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Articles Talend / Talaxie -->
+      <div class="sm-block sm-block--wide">
+        <h2 class="sm-title">Articles : Talend et Talaxie <span class="sm-count">{{ tech_posts.size }}</span></h2>
+        <ul class="sm-list sm-list--cols">
+          {% for post in tech_posts %}
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a><span class="sm-date">{{ post.date | date: "%m/%Y" }}</span></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Réalisations BM Data -->
+      <div class="sm-block">
+        <h2 class="sm-title">Réalisations BM Data <span class="sm-count">{{ bm_projects.size }}</span></h2>
+        <ul class="sm-list">
+          {% for p in bm_projects %}
+          <li><a href="{{ p.link | relative_url }}">{{ p.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Expériences antérieures -->
+      <div class="sm-block">
+        <h2 class="sm-title">Expériences antérieures <span class="sm-count">{{ prior_projects.size }}</span></h2>
+        <p class="sm-note">Projets réalisés en tant que salarié, avant la création de BM Data.</p>
+        <ul class="sm-list">
+          {% for p in prior_projects %}
+          <li><a href="{{ p.link | relative_url }}">{{ p.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>

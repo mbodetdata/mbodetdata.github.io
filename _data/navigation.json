@@ -34,7 +34,8 @@
     { "label": "Témoignages",               "url": "/temoignages/" },
     { "label": "FAQ",                        "url": "/faq/" },
     { "label": "Diagnostic data",           "url": "/score-maturite-data/" },
-    { "label": "Contact",                    "url": "/contact/" }
+    { "label": "Contact",                    "url": "/contact/" },
+    { "label": "Plan du site",               "url": "/plan-du-site/" }
   ],
   "footer_col3": [
     { "label": "Mentions légales",            "url": "/mentions-legales/" },

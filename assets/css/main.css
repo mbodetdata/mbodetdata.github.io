@@ -9700,3 +9700,60 @@ mark.faq-hl {
   .site-nav.nav-open .nav-sub__link--all { border-top-color: rgba(255,255,255,.08); }
   .site-nav.nav-open .nav-sub__link--all .nav-sub__label { color: #a5b4fc; }
 }
+
+/* ── Pied de page : colonne « Derniers articles » (5 colonnes en desktop) ── */
+@media (min-width: 1025px) {
+  .footer-grid {
+    grid-template-columns: 1.55fr .9fr 1.35fr .85fr .75fr;
+    gap: var(--space-8);
+  }
+}
+.footer-col--posts a { display: inline; line-height: 1.5; }
+.footer-col--posts a::before { display: none; }
+.footer-col a.footer-col__more { color: #a5b4fc; font-weight: 600; }
+.footer-col a.footer-col__more::after { content: ' →'; }
+
+/* ════════════════════════════════════════
+   PLAN DU SITE (/plan-du-site/)
+   ════════════════════════════════════════ */
+.sm-section { padding-top: var(--space-12); }
+.sm-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-10) var(--space-12);
+}
+.sm-block--wide { grid-column: 1 / -1; }
+.sm-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-lg);
+  margin: 0 0 var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+.sm-count {
+  font-size: .7rem;
+  font-weight: 700;
+  padding: .15rem .55rem;
+  border-radius: var(--radius-full);
+  background: rgba(102,119,255,.1);
+  color: #4a5bdf;
+}
+.sm-note { font-size: var(--text-sm); color: var(--color-gray-500); margin: 0 0 var(--space-3); }
+.sm-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.sm-list--cols { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-10); }
+.sm-list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--space-2); line-height: 1.5; }
+.sm-list a {
+  color: #4a5bdf;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgba(74,91,223,.25);
+  text-underline-offset: 3px;
+}
+.sm-list a:hover { color: var(--color-navy); text-decoration-color: currentColor; }
+.sm-desc, .sm-date { font-size: .78rem; color: var(--color-gray-500); }
+.sm-desc { flex-basis: 100%; }
+@media (max-width: 768px) {
+  .sm-grid, .sm-list--cols { grid-template-columns: 1fr; }
+}
