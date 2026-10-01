@@ -58,6 +58,7 @@
         {{ p.sector }}
       </span>
       <span class="pc-badge pc-badge--category">{{ p.category }}</span>
+      {% if p.anterieur %}<span class="pc-badge pc-badge--prior">Expérience antérieure</span>{% endif %}
       {% if p.featured %}
       <span class="pc-badge pc-badge--featured">
         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -68,6 +69,7 @@
 
     <!-- Titre -->
     <h1 class="pc-hero__title">{{ p.title }}</h1>
+    {% if p.anterieur %}<p class="pc-hero__prior">Projet réalisé en tant que salarié, avant la création de BM Data. Je le présente pour illustrer mon expérience, pas comme une mission de BM Data.</p>{% endif %}
 
     <!-- Stack technique -->
     {% if p.tools %}

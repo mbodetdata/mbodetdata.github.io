@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "Réalisations — Automatisation, migration et reporting pour TPE/PME | BM Data",
-    "description": "Projets concrets de BM Data pour des TPE et PME : automatisation des tâches répétitives, migration de données, tableaux de bord et connexion d'outils."
+    "description": "Projets data menés par Martial Bodet pour des TPE, PME et grands comptes : automatisation, migration de données, tableaux de bord et connexion d'outils, avec BM Data ou en expérience antérieure."
   },
   "hero": {
     "eyebrow": "Réalisations",
     "title": "Des réalisations concrètes en automatisation, migration et reporting",
-    "subtitle": "Des projets menés pour des TPE et PME sur des enjeux concrets : supprimer les ressaisies, sécuriser un changement d'outil, fiabiliser les données et mieux piloter l'activité."
+    "subtitle": "Des projets menés pour des TPE et PME sur des enjeux concrets : supprimer les ressaisies, sécuriser un changement d'outil, fiabiliser les données et mieux piloter l'activité. Les projets marqués « Avant BM Data » ont été réalisés en tant que salarié, avant la création de BM Data : je les présente pour illustrer mon expérience."
   },
   "filters": [
     "Tous",
@@ -101,12 +101,13 @@
       "quote": null,
       "quote_author": null,
       "tools": ["Cadulis", "Pennylane", "Webhook"],
-      "featured": false,
+      "featured": true,
       "image": null,
       "image_alt": "Interconnexion Cadulis vers Pennylane déclenchée par webhook"
     },
     {
       "id": "sofipel-interconnexion-keplervo",
+      "anterieur": true,
       "title": "SOFIPEL • Pilotage multi-garages",
       "client": "SOFIPEL",
       "location": null,
@@ -123,12 +124,13 @@
       "quote": null,
       "quote_author": null,
       "tools": ["API KeplerVo", "MySQL"],
-      "featured": true,
+      "featured": false,
       "image": null,
       "image_alt": "Pilotage consolidé multi-garages pour SOFIPEL"
     },
     {
       "id": "frele-loup-migration-prestashop",
+      "anterieur": true,
       "title": "Frère-Loup • Migration e-commerce",
       "client": "Frère-Loup",
       "location": null,
@@ -173,6 +175,7 @@
     },
     {
       "id": "reporting-change-itop",
+      "anterieur": true,
       "title": "Reporting • Pilotage support & SLA",
       "client": "Client support IT",
       "location": null,
@@ -195,6 +198,7 @@
     },
     {
       "id": "dashboardtv-operations",
+      "anterieur": true,
       "title": "DashboardTV • Opérations temps réel",
       "client": "DashboardTV",
       "location": null,
@@ -217,6 +221,7 @@
     },
     {
       "id": "eiffage-migration-medicale",
+      "anterieur": true,
       "title": "Eiffage • Migration données médicales",
       "client": "Eiffage",
       "location": null,
@@ -239,6 +244,7 @@
     },
     {
       "id": "media-participations-migration",
+      "anterieur": true,
       "title": "Media Participations • Migration applicative",
       "client": "Media Participations",
       "location": null,
@@ -261,6 +267,7 @@
     },
     {
       "id": "migration-talend-oss-talaxie",
+      "anterieur": true,
       "title": "Migration plateforme ETL • Talend → Talaxie",
       "client": "Client IT interne",
       "location": null,
@@ -283,6 +290,7 @@
     },
     {
       "id": "edi-tms-oneworld",
+      "anterieur": true,
       "title": "Connexion logiciels • TMS OneWorld",
       "client": "Client transport",
       "location": null,
@@ -305,6 +313,7 @@
     },
     {
       "id": "edi-wms-izypro",
+      "anterieur": true,
       "title": "Connexion logiciels • WMS IzyPro",
       "client": "Client supply chain",
       "location": null,
@@ -327,6 +336,7 @@
     },
     {
       "id": "edi-wms-reflex",
+      "anterieur": true,
       "title": "Connexion logiciels • WMS Reflex",
       "client": "Client logistique",
       "location": null,

@@ -31,6 +31,7 @@
   <div class="rc-head">
     <div class="rc-head__meta">
       <span class="rc-cat">{{ p.category }}</span>
+      {% if p.anterieur %}<span class="rc-prior" title="Projet réalisé en tant que salarié, avant la création de BM Data">Avant BM Data</span>{% endif %}
       {% if p.featured %}
       <span class="rc-star">
         <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

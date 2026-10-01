@@ -155,6 +155,7 @@ body_class: "page-interconnexion"
           <div class="lp-case__head">
             <span class="lp-case__cat">{{ p.category }}</span>
             {% if p.sector %}<span class="lp-case__sector">{{ p.sector }}</span>{% endif %}
+            {% if p.anterieur %}<span class="lp-case__sector" title="Projet réalisé en tant que salarié, avant la création de BM Data">Avant BM Data</span>{% endif %}
           </div>
           <h3 class="lp-case__title">
             <a href="{{ p.link | relative_url }}">{{ p.title }}</a>

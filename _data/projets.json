@@ -38,6 +38,7 @@
   },
   {
     "id": "dashboardtv-operations",
+    "anterieur": true,
     "link": "/portfolio/dashboardtv-operations.html",
     "title": "DashboardTV • Opérations temps réel",
     "client": "DashboardTV",
@@ -77,7 +78,7 @@
     "sector": "Serrurerie & dépannage",
     "category": "Connexion d'outils",
     "tags": ["Cadulis", "Pennylane", "Webhook"],
-    "featured": false,
+    "featured": true,
     "image": null,
     "image_alt": "Interconnexion Cadulis vers Pennylane déclenchée par webhook",
     "challenge": "Chaque intervention planifiée dans Cadulis était recopiée à la main dans l'outil de facturation. Une heure par jour, et le risque d'erreur de copier-coller qui va avec.",
@@ -109,6 +110,7 @@
   },
   {
     "id": "edi-tms-oneworld",
+    "anterieur": true,
     "link": "/portfolio/edi-tms-oneworld.html",
     "title": "EDI • TMS OneWorld",
     "client": "Client transport",
@@ -142,6 +144,7 @@
   },
   {
     "id": "edi-wms-izypro",
+    "anterieur": true,
     "link": "/portfolio/edi-wms-izypro.html",
     "title": "EDI • WMS IzyPro",
     "client": "Client supply chain",
@@ -176,6 +179,7 @@
   },
   {
     "id": "edi-wms-reflex",
+    "anterieur": true,
     "link": "/portfolio/edi-wms-reflex.html",
     "title": "EDI • WMS Reflex",
     "client": "Client logistique",
@@ -209,6 +213,7 @@
   },
   {
     "id": "eiffage-migration-medicale",
+    "anterieur": true,
     "link": "/portfolio/eiffage-migration-medicale.html",
     "title": "Eiffage • Migration données médicales",
     "client": "Eiffage",
@@ -284,6 +289,7 @@
   },
   {
     "id": "frele-loup-migration-prestashop",
+    "anterieur": true,
     "link": "/portfolio/frele-loup-migration-prestashop.html",
     "title": "Frère-Loup • Migration e-commerce",
     "client": "Frère-Loup",
@@ -316,6 +322,7 @@
   },
   {
     "id": "media-participations-migration",
+    "anterieur": true,
     "link": "/portfolio/media-participations-migration.html",
     "title": "Media Participations • Migration applicative",
     "client": "Media Participations",
@@ -350,6 +357,7 @@
   },
   {
     "id": "migration-talend-oss-talaxie",
+    "anterieur": true,
     "link": "/portfolio/migration-talend-oss-talaxie.html",
     "title": "Migration Talend OSS → Talaxie",
     "client": "Client IT interne",
@@ -383,6 +391,7 @@
   },
   {
     "id": "reporting-change-itop",
+    "anterieur": true,
     "link": "/portfolio/reporting-change-itop.html",
     "title": "Reporting Change • iTop",
     "client": "Client support IT",
@@ -417,13 +426,14 @@
   },
   {
     "id": "sofipel-interconnexion-keplervo",
+    "anterieur": true,
     "link": "/portfolio/sofipel-interconnexion-keplervo.html",
     "title": "SOFIPEL • Interconnexion KeplerVo",
     "client": "SOFIPEL",
     "sector": "Automobile & services",
     "category": "Interconnexion",
     "tags": ["API", "MySQL", "KeplerVo"],
-    "featured": true,
+    "featured": false,
     "image": null,
     "image_alt": "Interconnexion API KeplerVo et base MySQL pour SOFIPEL",
     "challenge": "Le pilotage d'un parc multi-garages nécessitait une vue consolidée à partir d'une interconnexion fiable entre les systèmes.",
