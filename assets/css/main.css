@@ -9514,3 +9514,35 @@ mark.faq-hl {
   text-transform: uppercase;
   white-space: nowrap;
 }
+
+/* ── Liens dans les blocs de texte hors articles ──
+   La règle globale `a { color: inherit; text-decoration: none; }` rendait ces
+   liens indiscernables du texte (FAQ, intros de landing pages, cartes accueil).
+   Bleu foncé plutôt que --color-blue : contraste ≥ 4,5:1 sur fond clair. */
+.faq-card__answer-inner a,
+.lp-faq__item dd a,
+.frm-intro p a,
+.problem-card p a {
+  color: var(--color-blue-dark, #4a5bdf);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(74,91,223,.35);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+.faq-card__answer-inner a:hover,
+.lp-faq__item dd a:hover,
+.frm-intro p a:hover,
+.problem-card p a:hover {
+  color: var(--color-navy);
+  text-decoration-color: currentColor;
+}
+.faq-card__answer-inner a:focus-visible,
+.lp-faq__item dd a:focus-visible,
+.frm-intro p a:focus-visible,
+.problem-card p a:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
