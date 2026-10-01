@@ -1,7 +1,16 @@
 {
   "main": [
     { "label": "Accueil",       "url": "/",             "active_path": "/",             "icon": "home" },
-    { "label": "Services",      "url": "/services/",    "active_path": "/services/",    "icon": "layers" },
+    { "label": "Services",      "url": "/services/",    "active_path": "/services/",    "icon": "layers",
+      "children": [
+        { "label": "Automatiser les tâches répétitives", "desc": "Exports, consolidations, envois qui tournent seuls", "url": "/automatisation-donnees/" },
+        { "label": "Connecter vos logiciels",            "desc": "Fini la double saisie entre vos outils",            "url": "/interconnexion-logiciels/" },
+        { "label": "Migration de données",               "desc": "Changer de logiciel sans perdre votre historique",  "url": "/migration-donnees/" },
+        { "label": "Tableaux de bord de pilotage",       "desc": "Vos chiffres clés, à jour automatiquement",         "url": "/tableaux-de-bord/" },
+        { "label": "Formation Power BI et Talend",       "desc": "Sur vos propres données, en entreprise",            "url": "/formation/" },
+        { "label": "Voir tous les services",             "url": "/services/", "all": true }
+      ]
+    },
     { "label": "Réalisations",  "url": "/realisations/","active_path": "/realisations/","icon": "grid" },
     { "label": "À propos",      "url": "/a-propos/",    "active_path": "/a-propos/",    "icon": "user" },
     { "label": "Blog",          "url": "/blog/",        "active_path": "/blog/",        "icon": "edit" },
@@ -12,11 +21,11 @@
   "footer_col1": [
     { "label": "Accueil",       "url": "/" },
     { "label": "Services",      "url": "/services/" },
-    { "label": "Interconnexion", "url": "/interconnexion-logiciels/" },
-    { "label": "Tableaux de bord", "url": "/tableaux-de-bord/" },
+    { "label": "Connecter vos logiciels", "url": "/interconnexion-logiciels/" },
+    { "label": "Tableaux de bord de pilotage", "url": "/tableaux-de-bord/" },
     { "label": "Migration de données", "url": "/migration-donnees/" },
-    { "label": "Automatisation", "url": "/automatisation-donnees/" },
-    { "label": "Formation",     "url": "/formation/" },
+    { "label": "Automatiser les tâches répétitives", "url": "/automatisation-donnees/" },
+    { "label": "Formation Power BI et Talend", "url": "/formation/" },
     { "label": "Réalisations",  "url": "/realisations/" },
     { "label": "À propos",      "url": "/a-propos/" }
   ],

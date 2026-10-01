@@ -53,7 +53,7 @@
     });
 
     // Fermer en cliquant sur un lien
-    siteNav.querySelectorAll('.nav-link, .nav-mobile-hub').forEach(link => {
+    siteNav.querySelectorAll('.nav-link, .nav-sub__link, .nav-mobile-hub').forEach(link => {
       link.addEventListener('click', closeNav);
     });
 
@@ -89,6 +89,52 @@
       }
     });
   }
+
+  /* ─── Menu déroulant « Services » ───
+     Le chevron ouvre/ferme le sous-menu (clic, clavier, tactile). Sur desktop,
+     le survol et :focus-within l'ouvrent aussi en CSS ; ici on gère l'état
+     explicite (.open + aria-expanded), le clic extérieur et Échap. */
+  (function () {
+    var dropdowns = Array.from(document.querySelectorAll('.nav-dropdown'));
+    if (!dropdowns.length) return;
+
+    function setOpen(dd, open) {
+      dd.classList.toggle('open', open);
+      var btn = dd.querySelector('.nav-dropdown__toggle');
+      if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    function closeAll(except) {
+      dropdowns.forEach(function (dd) { if (dd !== except) setOpen(dd, false); });
+    }
+
+    dropdowns.forEach(function (dd) {
+      var btn = dd.querySelector('.nav-dropdown__toggle');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var willOpen = !dd.classList.contains('open');
+        closeAll(dd);
+        setOpen(dd, willOpen);
+      });
+      // Desktop : un sous-menu ouvert au clic se referme quand la souris s'en va
+      dd.addEventListener('mouseleave', function () {
+        if (window.innerWidth > 768) setOpen(dd, false);
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav-dropdown')) closeAll();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var opened = dropdowns.find(function (dd) { return dd.classList.contains('open'); });
+      if (opened) {
+        setOpen(opened, false);
+        var btn = opened.querySelector('.nav-dropdown__toggle');
+        if (btn) btn.focus();
+      }
+    });
+  }());
 
   /* ─── Active nav link ─── */
   const currentPath = window.location.pathname;
