@@ -64,7 +64,7 @@ Vous hésitez entre rester sur Excel et passer à un outil de BI ? [Excel ou Pow
 ### Niveau 5 : Automatisation complète des flux
 Pour aller encore plus loin, des outils d'automatisation (Power Automate, n8n, Talend) peuvent prendre en charge toute la chaîne : récupération des fichiers ou des données, transformation, consolidation, puis envoi du rapport par email au bon moment au bon destinataire, ou dépôt dans votre logiciel comptable.
 
-Chez [Les Vélos du Bassin](/portfolio/velos-du-bassin-consolidation-caisses.html), c'est exactement ce qui tourne chaque jour : les exports des 5 caisses sont récupérés et consolidés automatiquement, puis transformés en deux livrables, un fichier à intégrer dans le logiciel comptable et un classeur de suivi par magasin.
+C'est ce niveau qui est en place dans l'exemple ci-dessous.
 
 **Durée estimée : quelques semaines selon le nombre d'outils impliqués**
 **Gain : zéro intervention humaine sur le reporting**
@@ -88,19 +88,15 @@ Une automatisation que vous seul savez faire fonctionner tombe en panne dès que
 
 ## Un exemple réel
 
-Un de mes clients (directeur commercial d'une PME de négoce) passait 4 heures chaque lundi à consolider les données de 6 commerciaux depuis leurs fichiers Excel individuels.
+[Les Vélos du Bassin](/portfolio/velos-du-bassin-consolidation-caisses.html), c'est cinq magasins de location de vélos, avec chacun sa caisse et son export. Au départ, ces cinq fichiers ne pouvaient pas être intégrés en l'état par la comptabilité, et il n'y avait **plus aucune vue comptable consolidée depuis plusieurs mois**.
 
-**Ce qu'on a fait :**
-1. Standardisation des fichiers Excel des commerciaux (1 journée)
-2. Mise en place d'un Power Query qui consolide automatiquement les 6 fichiers (2 jours)
-3. Création d'un tableau de bord Power BI actualisé chaque nuit (3 jours)
+**Ce qu'on a mis en place :**
+1. Chaque jour à 11 h, un traitement automatique récupère les exports de caisse des 5 magasins
+2. Avant tout calcul, il vérifie que chaque magasin a bien déposé son fichier. S'il en manque un, une alerte est levée et une reprise sur erreur est déclenchée
+3. Les mouvements des 5 points de vente sont consolidés
+4. Deux livrables partent automatiquement par mail : un fichier prêt à intégrer dans le logiciel comptable, et un classeur de suivi avec un onglet par magasin
 
-**Résultat :** 0 heure de préparation manuelle le lundi. Les données sont disponibles 24h/24, actualisées chaque matin. Le directeur commercial passe maintenant son lundi à analyser et décider, pas à copier des chiffres.
-
-**Coût total de la mise en place : environ 5 jours de travail.**
-**Temps récupéré : 4 heures × 50 semaines = 200 heures/an.**
-
-Le retour sur investissement a été total en moins d'un mois.
+**Résultat :** la vue comptable est rétablie, et plus personne ne rassemble les chiffres à la main. Le contrôle de présence des fichiers n'est pas un détail : un total faux est plus dangereux qu'un total absent. C'est ce qui fait qu'on peut faire confiance au chiffre livré chaque matin.
 
 ## Ce qui freine souvent les projets d'automatisation
 

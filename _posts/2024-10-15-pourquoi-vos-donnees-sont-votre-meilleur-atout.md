@@ -85,15 +85,13 @@ Un logiciel vieillissant, un ERP à remplacer, une boutique en ligne à migrer :
 
 Pour aller plus loin : [changer de logiciel sans perdre ses données](/blog/changer-logiciel-sans-perdre-donnees-pme/).
 
-## Un exemple concret
+## Un exemple concret : des données qui existaient déjà
 
-L'une de mes clientes, gérante d'un commerce de détail à Villeneuve-sur-Lot, pensait que ses données de caisse ne servaient "qu'à la comptabilité". En analysant 3 ans de transactions, on a découvert :
+[SOFIPEL](/portfolio/sofipel-interconnexion-keplervo.html) gère un parc réparti sur plusieurs garages. Les informations nécessaires pour piloter l'ensemble existaient déjà : elles étaient enregistrées chaque jour dans KeplerVo, le logiciel métier des garages. Ce qui manquait, ce n'était pas la donnée, c'était une vue d'ensemble.
 
-- Que 20 % de ses clients généraient 65 % de son chiffre d'affaires
-- Que certains produits vendus "de longue date" étaient devenus déficitaires
-- Qu'elle avait un pic d'activité prévisible chaque année qu'elle ne pilotait pas
+Le travail a consisté à connecter KeplerVo à une base centralisée par son API, puis à poser les règles de transformation propres au métier, pour que les chiffres de chaque garage se lisent de la même façon. Résultat : une lecture globale de l'activité de tout le parc, au même endroit, sans rien ressaisir.
 
-**Résultat : +22 % de panier moyen sur les 6 mois suivants, simplement en réorientant ses efforts commerciaux.**
+Aucune nouvelle donnée n'a été collectée. Tout était déjà là, dispersé. Et c'est très souvent le cas dans une PME.
 
 ## Test rapide : par quel chantier commencer ?
 
