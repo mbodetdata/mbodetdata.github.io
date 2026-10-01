@@ -118,7 +118,7 @@
       });
       // Desktop : un sous-menu ouvert au clic se referme quand la souris s'en va
       dd.addEventListener('mouseleave', function () {
-        if (window.innerWidth > 768) setOpen(dd, false);
+        if (window.innerWidth > 1100) setOpen(dd, false);
       });
     });
 

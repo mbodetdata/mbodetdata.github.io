@@ -3590,10 +3590,9 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   .process-steps::before { display: none; }
 }
 
-@media (max-width: 768px) {
-  :root { --header-height: 64px; }
-  .container { padding: 0 var(--space-4); }
-
+/* Menu burger jusqu'à 1100px : entre 769 et ~1100px, les 8 entrées du menu
+   ne tiennent pas sur une ligne et le bouton Contact sortait de l'écran. */
+@media (max-width: 1100px) {
   .site-nav { display: none; }
   .nav-hub   { display: none; }
   .nav-toggle { display: flex; }
@@ -3785,6 +3784,12 @@ p { line-height: 1.75; color: var(--color-gray-600); }
     background: rgba(99,102,241,.1);
     transform: scale(1.1);
   }
+}
+
+@media (max-width: 768px) {
+  :root { --header-height: 64px; }
+  .container { padding: 0 var(--space-4); }
+
 
   .hero-content { padding: var(--space-12) 0; grid-template-columns: 1fr; gap: var(--space-8); }
   .hero-right { padding-left: 0; border-left: none; }
@@ -9646,7 +9651,7 @@ mark.faq-hl {
 }
 
 /* ── Tiroir mobile : sous-menu dépliable sous « Services » ── */
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .site-nav.nav-open .nav-dropdown {
     display: block;
     position: relative;
