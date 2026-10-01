@@ -46,6 +46,52 @@
       ]
     },
     {
+      "id": "quotidien",
+      "label": "Vos questions du quotidien",
+      "questions": [
+        {
+          "id": "q30",
+          "question": "Comment supprimer la double saisie entre mes logiciels ?",
+          "answer": "En faisant en sorte que l'information ne soit saisie qu'une seule fois, à un seul endroit, puis transmise automatiquement aux autres outils. La première étape consiste à repérer où vous recopiez : devis vers facturation, commandes vers comptabilité, fichiers clients en double. Voici <a href=\"/blog/ressaisies-tpe-pme-cout-cache/\">7 signes qui montrent que la double saisie vous coûte cher</a>, et ce que donne une <a href=\"/interconnexion-logiciels/\">interconnexion de logiciels</a> une fois en place."
+        },
+        {
+          "id": "q31",
+          "question": "Comment connecter mes outils entre eux sans tout changer ?",
+          "answer": "La plupart des logiciels du marché savent déjà échanger des données, par API, par export automatique ou par un outil d'automatisation comme n8n ou Power Automate. Il est rarement nécessaire de remplacer vos outils : il suffit souvent de les faire se parler. J'explique les trois façons de faire dans <a href=\"/blog/connecter-ses-logiciels-entre-eux/\">connecter ses outils et logiciels entre eux</a>."
+        },
+        {
+          "id": "q32",
+          "question": "C'est quoi, concrètement, un tableau de bord ?",
+          "answer": "C'est une page unique qui affiche les quelques chiffres dont vous avez besoin pour décider : chiffre d'affaires, marge, trésorerie, retards, selon votre métier. Un bon tableau de bord se met à jour tout seul et donne le même chiffre à tout le monde. Pour voir à quoi cela ressemble en pratique : <a href=\"/blog/tableau-de-bord-et-pilotage-temps-reel/\">piloter son entreprise en temps réel sans multiplier les outils</a>."
+        },
+        {
+          "id": "q33",
+          "question": "Excel suffit-il, ou faut-il passer à Power BI ?",
+          "answer": "Excel suffit tant que vos données viennent d'une ou deux sources, qu'une seule personne consulte les chiffres et que la mise à jour ne vous prend pas des heures. Power BI devient utile quand les sources se multiplient et que plusieurs personnes doivent voir les mêmes chiffres. Les signes qui ne trompent pas sont dans <a href=\"/blog/excel-vs-power-bi-lequel-choisir/\">Excel ou Power BI : quand passer le cap ?</a>"
+        },
+        {
+          "id": "q34",
+          "question": "Combien coûte Power BI pour une PME ?",
+          "answer": "Power BI Desktop, l'outil qui sert à construire les rapports, est gratuit. Pour partager un rapport en ligne, chaque personne qui le consulte a besoin d'une licence Power BI Pro, à 12,10 € HT par mois et par utilisateur. L'essentiel du budget n'est pas dans les licences mais dans la préparation des données : c'est ce que je chiffre lors d'un <a href=\"/tableaux-de-bord/\">projet de tableau de bord</a>."
+        },
+        {
+          "id": "q35",
+          "question": "Je change de logiciel : comment ne pas perdre mes données ?",
+          "answer": "En traitant la reprise des données comme un projet à part entière, et pas comme un simple export de dernière minute : inventaire de ce qui existe, correspondance entre l'ancien et le nouvel outil, nettoyage, puis contrôle des totaux avant la bascule. Les erreurs les plus courantes sont détaillées dans <a href=\"/blog/changer-logiciel-sans-perdre-donnees-pme/\">changer de logiciel sans perdre ses données</a>, et la méthode complète sur la page <a href=\"/migration-donnees/\">migration de données</a>."
+        },
+        {
+          "id": "q36",
+          "question": "Facturation électronique : que doit faire une PME avant septembre 2027 ?",
+          "answer": "Depuis septembre 2026, vous devez déjà pouvoir recevoir des factures électroniques via une plateforme agréée. En septembre 2027, il faudra aussi les émettre, avec de nouvelles mentions obligatoires comme le SIREN de vos clients. Le vrai travail consiste à vérifier que ces informations existent, proprement, dans vos outils. Tout est détaillé dans <a href=\"/blog/facturation-electronique-2026-pme-integration-logiciels/\">facturation électronique : calendrier 2026-2027</a>."
+        },
+        {
+          "id": "q37",
+          "question": "Comment savoir où en est mon entreprise avec ses données ?",
+          "answer": "Le plus simple est de commencer par un état des lieux : où sont vos données, combien de temps vous passez à les manipuler, et à quel point vous leur faites confiance. Le <a href=\"/score-maturite-data/\">diagnostic data gratuit</a> vous donne un premier résultat en 3 minutes, avec des conseils concrets, sans jargon."
+        }
+      ]
+    },
+    {
       "id": "expertise",
       "label": "Expertise & périmètre",
       "questions": [

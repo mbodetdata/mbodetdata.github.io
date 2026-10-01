@@ -23,7 +23,7 @@ Diplômé d'un Master en bio-informatique, 5+ ans d'expérience en intégration 
 - [Services](https://bmdata.fr/services/) — Automatisation, migration de logiciels, tableaux de bord
 - [Formation](https://bmdata.fr/formation/) — Parcours Power BI et Talend / Talaxie en intra-entreprise, sur vos propres données
 - [Réalisations](https://bmdata.fr/realisations/) — 15+ projets concrets : migrations, automatisations, dashboards
-- [FAQ](https://bmdata.fr/faq/) — 29 questions sur les délais, budgets, outils et méthodes
+- [FAQ](https://bmdata.fr/faq/) — 37 questions sur les délais, budgets, outils, méthodes et les questions du quotidien (double saisie, Excel ou Power BI, facturation électronique)
 - [Contact](https://bmdata.fr/contact/) — Premier échange gratuit, réservation en ligne
 
 ## Pour les artisans et TPE du Lot-et-Garonne
