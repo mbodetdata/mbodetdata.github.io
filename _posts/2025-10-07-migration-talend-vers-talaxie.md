@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Migration de Talend Open Studio vers Talaxie : guide complet en 8 étapes"
+seo_title: "Migration Talend vers Talaxie : guide complet en 8 étapes"
 description: "Guide complet et pratique pour migrer vos projets Talend Open Studio vers Talaxie en toute sécurité. Étapes, bonnes pratiques et conseils techniques."
 categories: blog
 tags: [Talend, Talaxie, Migration, ETL, Open Source, Data Integration]

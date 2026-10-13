@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "OCR de cartes de visite avec n8n : la saisie dans le CRM en trois secondes"
+seo_title: "OCR de cartes de visite avec n8n : saisie CRM en 3 secondes"
 description: "Deux photos, trois secondes, une fiche créée dans Zoho. Le workflow n8n détaillé nœud par nœud : formulaire, OCR, structuration par IA, création du prospect."
 date: 2026-09-16
 categories: [automatisation, interconnexion]

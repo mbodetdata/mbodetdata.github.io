@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "IA au quotidien : méthode et prompts pour la rendre vraiment utile"
+seo_title: "IA au quotidien : méthode et prompts pour la rendre utile"
 description: "Retour d’expérience concret sur l’utilisation de l’IA au quotidien : règles d’or, mise en pratique pas à pas, prompts réels et méthode pour faire de l’IA un vrai challenger."
 categories: blog
 tags: [IA, ChatGPT, Productivité, Prompt engineering, Bonnes pratiques, Méthodologie]

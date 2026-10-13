@@ -365,7 +365,7 @@
     {
       "@type": "BlogPosting",
       "@id": "{{ page.url | absolute_url }}#article",
-      "headline": {{ page.title | strip_html | jsonify }},
+      "headline": {{ page.seo_title | default: page.title | strip_html | jsonify }},
       "name": {{ page.title | strip_html | jsonify }},
       "description": {{ page.description | default: page.excerpt | strip_html | truncate: 200 | jsonify }},
       "datePublished": "{{ page.date | date_to_xmlschema }}",
