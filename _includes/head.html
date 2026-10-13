@@ -73,12 +73,8 @@
 <!-- Manifest -->
 <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
 
-<!-- Preconnect -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<!-- Fonts : auto-hébergées (@font-face dans main.css), préchargement de la police principale -->
+<link rel="preload" href="{{ '/assets/fonts/inter-latin-var.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
 <!-- CSS -->
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
