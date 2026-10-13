@@ -2,7 +2,7 @@
 layout: post
 title: "Changer de logiciel sans perdre ses données : les erreurs que font beaucoup de PME"
 seo_title: "Changer de logiciel sans perdre ses données : pièges des PME"
-description: "Migration de données : évitez les pièges courants et sécurisez votre projet avec une vraie méthode."
+description: "Changer de logiciel sans perdre vos données : les erreurs qui coûtent cher aux PME et la méthode simple pour migrer sereinement, sans arrêter l'activité."
 date: 2026-04-24
 categories: [migration-donnees, conseils-dirigeants]
 tags: [migration données, changement logiciel, PME, ERP, CRM]
