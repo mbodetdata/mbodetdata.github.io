@@ -58,9 +58,11 @@ def main():
     for md in sorted((ROOT / "_posts").glob("*.md")):
         text = io.open(md, encoding="utf-8", newline="").read()
         new = IMG_RE.sub(lambda m: fix(m, stats), text)
-        cover = re.search(r'^image:\s*"?([^"\r\n]+?)"?\s*$', text, re.M)
-        if cover and cover.group(1).strip():
-            url = "/" + cover.group(1).strip().lstrip("/")
+        # front matter : en cas de clé `image:` en double, YAML retient la dernière
+        front = text.split("---", 2)[1] if text.startswith("---") else ""
+        covers_fm = re.findall(r'^image:\s*"?([^"\r\n]*?)"?\s*$', front, re.M)
+        if covers_fm and covers_fm[-1].strip():
+            url = "/" + covers_fm[-1].strip().lstrip("/")
             covers[url] = list(dims(url))
         if new != text:
             print(f"  {md.name}")

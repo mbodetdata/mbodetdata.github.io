@@ -375,12 +375,12 @@
       "mainEntityOfPage": { "@id": "{{ page.url | absolute_url }}#webpage" },
       "isPartOf": { "@id": "{{ site.url }}/#website" },
       "inLanguage": "fr-FR"
-      {% if page.image %},
+      {% if page.image %}{% assign img_key = page.image | prepend: '/' | replace: '//', '/' %}{% assign img_dim = site.data['image-dimensions'][img_key] %},
       "image": {
         "@type": "ImageObject",
-        "url": "{{ site.url }}{{ page.image }}",
-        "width": 1024,
-        "height": 1024
+        "url": "{{ site.url }}{{ img_key }}"{% if img_dim %},
+        "width": {{ img_dim[0] }},
+        "height": {{ img_dim[1] }}{% endif %}
       }
       {% endif %}
       {% if page.tags %},
