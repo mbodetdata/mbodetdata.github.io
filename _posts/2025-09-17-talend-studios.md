@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Les différents Studios Talend : lequel choisir pour vos projets Data ?"
+seo_title: "Studios Talend : lequel choisir pour vos projets data ?"
 description: "Comparatif des studios Talend (TOS DI, TOS BD, TOS ESB, Data Preparation, Data Quality) et leurs cas d’usage, avec une ouverture sur Talaxie."
 categories: blog
 tags: [Talend, ETL, "Data Integration", "Big Data", ESB, "Data Preparation", "Data Quality", "Talaxie"]

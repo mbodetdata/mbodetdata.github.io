@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "OCR de cartes de visite avec n8n : la saisie dans le CRM en trois secondes"
+seo_title: "OCR de cartes de visite avec n8n : saisie CRM en 3 secondes"
 description: "Deux photos, trois secondes, une fiche créée dans Zoho. Le workflow n8n détaillé nœud par nœud : formulaire, OCR, structuration par IA, création du prospect."
 date: 2026-09-16
 categories: [automatisation, interconnexion]
@@ -35,7 +36,7 @@ Cinq étapes, toutes dans n8n :
 4. La création du prospect dans le CRM
 5. Le rattachement des photos d'origine à la fiche créée
 
-![Vue d'ensemble du workflow n8n]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/1-workflow-complet.webp' | relative_url }}){:alt="Workflow n8n complet : formulaire, lecture, structuration, création CRM, pièces jointes" loading="lazy" decoding="async"}
+![Vue d'ensemble du workflow n8n]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/1-workflow-complet.webp' | relative_url }}){: alt="Workflow n8n complet : formulaire, lecture, structuration, création CRM, pièces jointes" loading="lazy" decoding="async" width="1496" height="300"}
 
 > 📸 *Le flux complet dans n8n : cinq étapes, du formulaire à la fiche CRM.*
 
@@ -59,7 +60,7 @@ Ma configuration :
 | Verso de la carte | Fichier | Non |
 | Code d'accès | Mot de passe | Oui |
 
-![Configuration du nœud On form submission]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/2-form-trigger-config.webp' | relative_url }}){:alt="Configuration des champs du nœud On form submission dans n8n" loading="lazy" decoding="async"}
+![Configuration du nœud On form submission]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/2-form-trigger-config.webp' | relative_url }}){: alt="Configuration des champs du nœud On form submission dans n8n" loading="lazy" decoding="async" width="646" height="814"}
 
 > 📸 *Les trois champs du On form submission, côté configuration n8n.*
 
@@ -71,7 +72,7 @@ Le **code d'accès** mérite une explication. L'URL d'un On form submission est 
 
 Je garde l'URL en favori sur l'écran d'accueil de mon téléphone. En sortie d'événement, je vide mes poches directement dans le formulaire.
 
-![Le formulaire vu depuis un téléphone]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/3-formulaire-mobile.webp' | relative_url }}){:alt="Le formulaire n8n affiché sur un téléphone mobile" loading="lazy" decoding="async"}
+![Le formulaire vu depuis un téléphone]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/3-formulaire-mobile.webp' | relative_url }}){: alt="Le formulaire n8n affiché sur un téléphone mobile" loading="lazy" decoding="async" width="462" height="577"}
 
 > 📸 *Le formulaire tel qu'il s'affiche sur le téléphone, en sortie d'événement.*
 
@@ -87,7 +88,7 @@ C'est aussi la brique que je compte remplacer par un modèle hébergé chez **In
 
 > 💡 Un flux bien découpé se ré-arbitre brique par brique. Changer le moteur de lecture ne touche ni le formulaire, ni la structuration, ni le CRM : c'est un seul nœud à remplacer.
 
-![Texte brut remonté par la lecture automatique]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/4-texte-brut-ocr.webp' | relative_url }}){:alt="Panneau de sortie n8n montrant le texte brut extrait de la carte de visite" loading="lazy" decoding="async"}
+![Texte brut remonté par la lecture automatique]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/4-texte-brut-ocr.webp' | relative_url }}){: alt="Panneau de sortie n8n montrant le texte brut extrait de la carte de visite" loading="lazy" decoding="async" width="512" height="798"}
 
 > 📸 *Ce que remonte la lecture : du texte, dans le désordre.*
 
@@ -125,7 +126,7 @@ Le schéma que j'impose :
 }
 ```
 
-![JSON structuré en sortie du modèle]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/5-json-structure.webp' | relative_url }}){:alt="Panneau de sortie n8n montrant le JSON structuré produit par le modèle" loading="lazy" decoding="async"}
+![JSON structuré en sortie du modèle]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/5-json-structure.webp' | relative_url }}){: alt="Panneau de sortie n8n montrant le JSON structuré produit par le modèle" loading="lazy" decoding="async" width="584" height="528"}
 
 > 📸 *Le même contenu, une étape plus loin : exploitable.*
 
@@ -143,11 +144,11 @@ Deux points de configuration qui comptent :
 
 **Le workflow renvoie une confirmation** à l'écran, avec le nom du prospect et son identifiant Zoho. Un flux qui tourne en silence est un flux dont on ne sait pas s'il a fonctionné. Une confirmation visible évite le doublon créé par acquit de conscience.
 
-![Mapping des champs du nœud Zoho]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/6-zoho-mapping.webp' | relative_url }}){:alt="Mapping des champs du nœud Zoho CRM dans n8n" loading="lazy" decoding="async"}
+![Mapping des champs du nœud Zoho]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/6-zoho-mapping.webp' | relative_url }}){: alt="Mapping des champs du nœud Zoho CRM dans n8n" loading="lazy" decoding="async" width="1254" height="671"}
 
 > 📸 *Le mapping vers le module Prospects, avec l'origine forcée.*
 
-![Écran de confirmation après soumission]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/7-confirmation.webp' | relative_url }}){:alt="Écran de confirmation affiché après la création du prospect" loading="lazy" decoding="async"}
+![Écran de confirmation après soumission]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/7-confirmation.webp' | relative_url }}){: alt="Écran de confirmation affiché après la création du prospect" loading="lazy" decoding="async" width="470" height="638"}
 
 > 📸 *La confirmation renvoyée à l'écran : nom du prospect et identifiant Zoho.*
 
@@ -166,7 +167,7 @@ La question pertinente n'est donc pas « comment éliminer l'erreur », parce qu
 - **Sans les photos** : fouiller la pile de cartes sur le bureau, à condition de l'avoir gardée, à condition de retrouver la bonne. Autant dire que la correction n'aura jamais lieu.
 - **Avec les photos attachées** : ouvrir la fiche, regarder l'image, corriger. Dix secondes.
 
-![Fiche Zoho avec les photos en pièces jointes]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/8-fiche-zoho-pieces-jointes.webp' | relative_url }}){:alt="Fiche prospect Zoho affichant les deux photos de la carte en pièces jointes" loading="lazy" decoding="async"}
+![Fiche Zoho avec les photos en pièces jointes]({{ '/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/8-fiche-zoho-pieces-jointes.webp' | relative_url }}){: alt="Fiche prospect Zoho affichant les deux photos de la carte en pièces jointes" loading="lazy" decoding="async" width="607" height="483"}
 
 > 📸 *La fiche créée, avec le recto et le verso attachés. Le contrôle prend dix secondes.*
 

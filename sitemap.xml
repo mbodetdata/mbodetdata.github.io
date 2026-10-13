@@ -2,14 +2,16 @@
 layout: null
 sitemap: false
 ---
-<?xml version="1.0" encoding="UTF-8"?>
+{% comment %} lastmod : date du dernier commit Git du fichier source, précalculée dans _data/lastmod.json
+   par scripts/generate-lastmod.py (GitHub Pages ne peut pas lire Git pendant le build). {% endcomment %}<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{% for page in site.pages %}{% assign u = page.url %}{% assign seg = u | split: '/' | last %}{% assign has_dot = false %}{% if seg contains "." %}{% assign has_dot = true %}{% endif %}{% if page.sitemap != false and u != "/404.html" %}{% unless u contains "/blog/page" %}{% if u contains ".html" or has_dot == false %}  <url>
+{% for page in site.pages %}{% assign u = page.url %}{% assign seg = u | split: '/' | last %}{% assign has_dot = false %}{% if seg contains "." %}{% assign has_dot = true %}{% endif %}{% if page.sitemap != false and u != "/404.html" %}{% unless u contains "/blog/page" %}{% if u contains ".html" or has_dot == false %}{% assign lm = site.data.lastmod[page.path] | default: page.last_modified_at %}  <url>
     <loc>{{ u | replace: "/index.html", "/" | absolute_url }}</loc>
-  </url>
-{% endif %}{% endunless %}{% endif %}{% endfor %}{% for post in site.posts %}  <url>
+{% if lm %}    <lastmod>{{ lm | date_to_xmlschema }}</lastmod>
+{% endif %}  </url>
+{% endif %}{% endunless %}{% endif %}{% endfor %}{% for post in site.posts %}{% assign lm = site.data.lastmod[post.path] | default: post.last_modified_at | default: post.date %}  <url>
     <loc>{{ post.url | absolute_url }}</loc>
-    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+    <lastmod>{{ lm | date_to_xmlschema }}</lastmod>
   </url>
 {% endfor %}{% for file in site.static_files %}{% if file.extname == ".html" and file.name != "404.html" %}  <url>
     <loc>{{ file.path | absolute_url }}</loc>

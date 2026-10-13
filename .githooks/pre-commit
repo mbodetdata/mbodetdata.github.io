@@ -1,0 +1,4 @@
+#!/bin/sh
+# Met à jour _data/lastmod.json (dates <lastmod> du sitemap) à chaque commit.
+# Activation, une fois par poste : git config core.hooksPath .githooks
+python scripts/generate-lastmod.py --staged >/dev/null && git add _data/lastmod.json

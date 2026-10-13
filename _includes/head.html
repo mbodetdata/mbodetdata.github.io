@@ -4,6 +4,10 @@
 {% assign page_desc     = page.description | default: site.description %}
 {% assign page_image    = page.og_image | default: page.image | default: site.og_image %}
 {% assign canonical_url = page.url | absolute_url %}
+{% comment %} Les fiches portfolio (et la 404) finissent déjà par « BM Data » : on n'ajoute pas le suffixe une seconde fois {% endcomment %}
+{% assign brand_len     = g.site_name | size %}
+{% assign brand_start  = 0 | minus: brand_len %}
+{% assign title_end     = page_title | slice: brand_start, brand_len %}
 
 <!-- Charset & Viewport -->
 <meta charset="UTF-8">
@@ -13,7 +17,7 @@
 <!-- Title -->
 {% if page.url == "/" %}
 <title>{{ g.site_name }} — {{ g.baseline }}</title>
-{% elsif page.layout == "post" %}
+{% elsif page.layout == "post" or title_end == g.site_name %}
 <title>{{ page_title }}</title>
 {% else %}
 <title>{{ page_title }} | {{ g.site_name }}</title>
@@ -69,12 +73,8 @@
 <!-- Manifest -->
 <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
 
-<!-- Preconnect -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<!-- Fonts : auto-hébergées (@font-face dans main.css), préchargement de la police principale -->
+<link rel="preload" href="{{ '/assets/fonts/inter-latin-var.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
 <!-- CSS -->
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Talend/Talaxie : automatiser vos données sans infrastructure complexe"
+seo_title: "Talend/Talaxie : automatiser vos données sans infra complexe"
 description: "Comment Talend et Talaxie automatisent vos flux de donnees sans equipe IT, avec exemples concrets et astuces debutant."
 categories: blog
 tags: [Talend, Talaxie, ETL, Automatisation, Entreprises, Data, Intégration]
@@ -112,7 +113,7 @@ Pas besoin d’une plateforme cloud ou d’un service data dédié : un poste, u
 
 C’est la mécanique à l’œuvre dans l’étude de cas, antérieure à BM Data, [flux EDI vers le TMS OneWorld]({{ '/portfolio/edi-tms-oneworld.html' | relative_url }}) : des échanges standardisés entre logiciels clients, automatisés avec Talend plutôt que repris à la main.
 
-![Bénéfices Talend]({{ 'assets/img/blog/4-benefices_talend/blog-4-img-1.webp' | relative_url }}){:alt="Illustration des bénéfices Talend" loading="lazy" decoding="async"}
+![Bénéfices Talend]({{ 'assets/img/blog/4-benefices_talend/blog-4-img-1.webp' | relative_url }}){: alt="Illustration des bénéfices Talend" loading="lazy" decoding="async" width="1536" height="1024"}
 
 ---
 
