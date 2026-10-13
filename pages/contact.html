@@ -183,7 +183,7 @@ body_class: "page-contact"
                 <circle cx="16" cy="15" r="1" fill="currentColor"/>
               </svg>
             </div>
-            <h3>Choisissez votre créneau</h3>
+            <h2>Choisissez votre créneau</h2>
             <p>Réservez directement dans mon agenda en ligne. Échange de 30 minutes, visio ou téléphone, à votre convenance.</p>
             <button class="btn-book open-booking" type="button" data-track="click-calendly">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -219,7 +219,7 @@ body_class: "page-contact"
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
             </div>
-            <h4>Message envoyé !</h4>
+            <div class="pf-success__title">Message envoyé !</div>
             <p id="pf-success-text">{{ d.form.success_message }}</p>
           </div>
           <form id="contact-form" action="https://n8n.bmdata.fr/webhook/formulaire-contact" method="POST" novalidate aria-label="Formulaire de contact BM Data">

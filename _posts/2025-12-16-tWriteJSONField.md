@@ -34,7 +34,7 @@ Sources utiles :
 
 ---
 
-### Sommaire
+<div class="post-toc-label">Sommaire</div>
 
 - [1. À quoi sert vraiment tWriteJSONField ?](#1-à-quoi-sert-vraiment-twritejsonfield-)
 - [2. Comprendre le JSON Tree](#2-comprendre-le-json-tree-et-ce-quil-représente-vraiment)

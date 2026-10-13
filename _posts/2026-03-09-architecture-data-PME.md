@@ -371,23 +371,28 @@ Tu n’as pas besoin de tout refaire d’un coup.
 
 Le plus efficace est souvent de procéder par étapes.
 
-#### Étape 1 — Identifier les sources critiques
+### Étape 1 — Identifier les sources critiques
+{: .post-h4}
 
 Commence par les 2 ou 3 sources qui alimentent les indicateurs les plus importants.
 
-#### Étape 2 — Sortir les transformations du dashboard
+### Étape 2 — Sortir les transformations du dashboard
+{: .post-h4}
 
 Tout ce qui relève du nettoyage, du rapprochement ou de la normalisation doit migrer vers le pipeline.
 
-#### Étape 3 — Créer une base centrale simple
+### Étape 3 — Créer une base centrale simple
+{: .post-h4}
 
 Même une base relationnelle bien structurée peut déjà faire une énorme différence.
 
-#### Étape 4 — Brancher la BI sur des tables préparées
+### Étape 4 — Brancher la BI sur des tables préparées
+{: .post-h4}
 
 Le dashboard doit lire des données déjà stabilisées, pas improviser leur préparation.
 
-#### Étape 5 — Ajouter des logs et un minimum d’historique
+### Étape 5 — Ajouter des logs et un minimum d’historique
+{: .post-h4}
 
 C’est souvent ce qui fait la différence entre un pipeline “qui marche aujourd’hui” et un pipeline maintenable.
 
@@ -395,31 +400,36 @@ C’est souvent ce qui fait la différence entre un pipeline “qui marche aujou
 
 ## FAQ — Architecture data, ETL et BI en PME
 
-#### Faut-il une architecture data complète dès le début ?
+### Faut-il une architecture data complète dès le début ?
+{: .post-h4}
 
 Non. En PME, l’objectif n’est pas de construire une plateforme data complexe dès le départ. Le plus important est de poser une structure simple et saine : **sources → ETL → base de données → BI**.
 
 Tu peux très bien commencer avec quelques sources critiques, un pipeline clair et une base relationnelle bien structurée. Le vrai enjeu n’est pas la sophistication technique, mais la fiabilité de la donnée et la capacité à faire évoluer le système sans casser les dashboards.
 
-#### Peut-on connecter directement Power BI ou Metabase aux sources ?
+### Peut-on connecter directement Power BI ou Metabase aux sources ?
+{: .post-h4}
 
 Oui, techniquement, mais ce n’est généralement pas une bonne idée dès que le besoin devient un peu sérieux.
 
 Pour un prototype ou un test rapide, ça peut suffire. En revanche, dès que plusieurs sources, transformations métier ou indicateurs stratégiques entrent en jeu, ce modèle devient vite fragile : performances irrégulières, logique métier dispersée, maintenance difficile, absence de source de vérité.
 
-#### Une PME a-t-elle vraiment besoin d’un ETL ?
+### Une PME a-t-elle vraiment besoin d’un ETL ?
+{: .post-h4}
 
 Dans beaucoup de cas, oui.
 
 Dès que tu dois récupérer des données depuis plusieurs outils, nettoyer les formats, rapprocher des référentiels ou historiser des états, un ETL devient très utile. Il permet de sortir cette logique de l’outil BI et de la rendre plus stable, plus lisible et plus maintenable.
 
-#### Quelle base de données choisir pour centraliser les données ?
+### Quelle base de données choisir pour centraliser les données ?
+{: .post-h4}
 
 Pour une PME, une base relationnelle bien connue suffit souvent largement.
 
 PostgreSQL, SQL Server ou MySQL peuvent très bien faire le travail selon ton contexte, tes compétences internes et ton existant. Le point clé n’est pas d’avoir la technologie la plus “impressionnante”, mais d’avoir un stockage central propre, cohérent et exploitable par la BI.
 
-#### Quelle différence entre ETL et ELT ?
+### Quelle différence entre ETL et ELT ?
+{: .post-h4}
 
 La différence tient au moment où la transformation est faite.
 
@@ -428,7 +438,8 @@ La différence tient au moment où la transformation est faite.
 
 En pratique, pour une PME, le plus important n’est pas le sigle. Le vrai sujet est de ne pas laisser les transformations critiques vivre directement dans l’outil BI.
 
-#### Quand faut-il passer d’un dashboard “rapide” à une vraie architecture BI ?
+### Quand faut-il passer d’un dashboard “rapide” à une vraie architecture BI ?
+{: .post-h4}
 
 Dès que tu observes un ou plusieurs de ces signaux :
 
@@ -440,13 +451,15 @@ Dès que tu observes un ou plusieurs de ces signaux :
 
 À ce moment-là, tu n’as plus seulement un besoin de visualisation. Tu as un besoin d’architecture.
 
-#### Quelle est l’erreur la plus fréquente dans un projet BI PME ?
+### Quelle est l’erreur la plus fréquente dans un projet BI PME ?
+{: .post-h4}
 
 La plus fréquente, c’est de transformer l’outil BI en ETL caché.
 
 Au début, c’est rapide. Ensuite, tout devient plus dur : maintenance, performance, évolution, gouvernance, onboarding d’un nouveau collègue ou d’un prestataire. Une BI efficace consomme des données préparées, elle ne devrait pas être l’endroit où toute la logique de préparation est reconstruite.
 
-#### Peut-on mettre en place une architecture data simple sans équipe data dédiée ?
+### Peut-on mettre en place une architecture data simple sans équipe data dédiée ?
+{: .post-h4}
 
 Oui, à condition de rester pragmatique.
 

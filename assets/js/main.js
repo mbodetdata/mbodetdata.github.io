@@ -1624,7 +1624,8 @@ if (document.getElementById('postArticle')) {
     var tocList = document.getElementById('postTocList');
 
     if (content && tocList) {
-      var headings = content.querySelectorAll('h2, h3');
+      /* .post-h4 : h3 au rendu de h4 (hiérarchie Hn), exclus du sommaire comme les h4 */
+      var headings = content.querySelectorAll('h2, h3:not(.post-h4)');
 
       if (headings.length >= 2) {
         tocEl.classList.remove('post-toc--hidden');
@@ -1693,7 +1694,7 @@ if (document.getElementById('postArticle')) {
       /* auto-reveal post content children */
       if (content) {
         var revealEls = content.querySelectorAll(
-          'h2, h3, p, ul, ol, blockquote, pre, img, table, .post-tags, .post-share-banner, .post-author-card'
+          'h2, h3:not(.post-h4), .post-toc-label, p, ul, ol, blockquote, pre, img, table, .post-tags, .post-share-banner, .post-author-card'
         );
         revealEls.forEach(function (el) {
           el.classList.add('reveal');

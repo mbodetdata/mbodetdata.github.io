@@ -75,6 +75,7 @@ Mais si tu veux être **prévenu** dès qu’une star est ajoutée
 Un webhook, c’est l’inverse : tu exposes une URL, et un service externe **t’envoie** une requête HTTP quand un événement se produit.
 
 En clair :
+
 ---
 > “Quand ça arrive, appelle-moi ici.”
 

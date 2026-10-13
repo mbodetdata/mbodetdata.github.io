@@ -63,7 +63,7 @@ body_class: "page-realisations"
 
     <div class="grid grid-auto rz-grid">
       {% for project in d.projects %}
-        {% include components/realisation-card.html project=project %}
+        {% include components/realisation-card.html project=project heading_level=2 %}
       {% endfor %}
     </div>
 

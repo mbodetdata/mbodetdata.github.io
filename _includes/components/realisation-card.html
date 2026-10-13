@@ -1,6 +1,8 @@
 {% comment %}
   Carte projet — page Réalisations.
   Usage : {% include components/realisation-card.html project=project %}
+  heading_level (optionnel, 3 par défaut) : 2 sur /realisations/, où la
+  grille suit directement le h1.
 
   Le résultat chiffré (results[0]) sert d'accroche visuelle : c'est
   l'information la plus utile du listing, et elle différencie chaque
@@ -9,6 +11,7 @@
 
 {% assign p = include.project %}
 {% assign kpi = p.results | first %}
+{% assign rc_h = include.heading_level | default: 3 %}
 
 {% assign proj_detail = site.data.projets | where: "id", p.id | first %}
 {% if proj_detail %}
@@ -51,7 +54,7 @@
   <!-- ── CORPS ── -->
   <div class="rc-body">
     <p class="rc-eyebrow">{{ p.sector }}</p>
-    <h3 class="rc-title">{{ p.title }}</h3>
+    <h{{ rc_h }} class="rc-title">{{ p.title }}</h{{ rc_h }}>
     <p class="rc-desc">{{ p.challenge | truncate: 115 }}</p>
 
     {% if p.tools %}
