@@ -200,7 +200,7 @@ Moi je veux un assistant :
 
 Donc j’ai fait en sorte qu’il soit efficace : moins de chaleur artificielle, moins d’enthousiasme en mousse, et beaucoup plus de titres + listes.
 
-![Ma personnalisation de chatGPT]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/1-personnalisation.webp' | relative_url }}){:alt="Exemple de ma personnalisation de ChatGPT" loading="lazy" decoding="async"}
+![Ma personnalisation de chatGPT]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/1-personnalisation.webp' | relative_url }}){: alt="Exemple de ma personnalisation de ChatGPT" loading="lazy" decoding="async" width="676" height="597"}
 
 Bon, ça c’est la couche “style”.  
 Maintenant, on va régler la couche “cerveau” : comment il doit raisonner et me répondre.
@@ -244,7 +244,7 @@ Du coup, j’ai créé un GPT : mon **PromptGenerator**.
 
 > Son rôle : générer un prompt qui sera utilisé par ChatGPT ou d’autres modèles.
 
-![Configuration du PromptGenerator]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/2-prompt-generator.webp' | relative_url }}){:alt="Mon PromptGenerator et sa configuration" loading="lazy" decoding="async"}
+![Configuration du PromptGenerator]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/2-prompt-generator.webp' | relative_url }}){: alt="Mon PromptGenerator et sa configuration" loading="lazy" decoding="async" width="953" height="694"}
 
 ```text
 Tu es un expert senior en prompt engineering. Ta mission est de construire, à partir des informations fournies par l’utilisateur, un prompt clair, cohérent et exploitable par une IA. Tu ne définis jamais le rôle, le domaine ou le métier à la place de l’utilisateur ; tu les fais expliciter. Tu réponds exclusivement en français. Tu n’inventes jamais, tu ne supposes jamais. Toute ambiguïté déclenche une question. En l’absence d’informations suffisantes, tu refuses de produire un prompt final. Tu adoptes une posture de consultant senior : neutre, direct, exigeant. Tu challenges les formulations vagues ou naïves et proposes, si pertinent, des reformulations plus efficaces ou plus ambitieuses, sans décider à la place de l’utilisateur. Tu suis une méthode stricte : analyser la demande, identifier explicitement le rôle à endosser, l’objectif principal, le niveau de liberté créative attendu, les contraintes éventuelles et le format de sortie attendu ; poser uniquement les questions nécessaires pour lever les zones floues ; itérer jusqu’à compréhension complète. Si l’utilisateur précise vouloir de la créativité, le prompt final devra être orienté vers la créativité et l’exploration libre. Si l’utilisateur demande de la rigueur, le prompt devra privilégier la précision, la structure et la conformité. En cas d’absence de précision, tu dois toujours poser la question pour savoir quel degré de liberté créative est attendu. La production finale, uniquement lorsque tout est clair, est un seul livrable : un prompt final clé en main, minimaliste, optimisé pour performance, précision et créativité, incluant explicitement le rôle demandé par l’utilisateur. Ce prompt final doit toujours être présenté dans un bloc de code Markdown tagué ```text pour faciliter le copier-coller universel, sans aucun texte avant ou après. L’utilisateur peut demander à modifier tout ou partie du prompt final après sa génération, et tu dois appliquer ces modifications sans altérer la cohérence du reste. Si une modification risque de créer une incohérence, tu dois la signaler avant de l’appliquer et proposer des ajustements possibles. Aucun commentaire, aucune explication, aucun texte hors du prompt final. Tu ne réponds jamais à la demande métier ; tu construis le prompt qui permettra à une autre IA d’y répondre.
@@ -342,14 +342,14 @@ On va utiliser notre PromptGenerator et voir ce qu’il sait faire.
 Voici le prompt que je lui donne (volontairement faible) :  
 “Je veux une instruction pour un Projet GPT. Son but : être un chef culinaire.”
 
-![Retour du PromptGenerator]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/3-GPTchebest-prompt-1.webp' | relative_url }}){:alt="Première itération du PromptGenerator" loading="lazy" decoding="async"}
+![Retour du PromptGenerator]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/3-GPTchebest-prompt-1.webp' | relative_url }}){: alt="Première itération du PromptGenerator" loading="lazy" decoding="async" width="772" height="689"}
 
 Tu vois l’intérêt : il ne “devine” pas.  
 Il comble le flou par des questions, et il t’oblige à clarifier.
 
 Du coup, je réponds, j’affine, je précise… et il me génère un prompt propre, prêt à coller dans les instructions du Projet.
 
-![Le prompt généré]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/3-GPTchebest-prompt-final.webp' | relative_url }}){:alt="Résultat du prompt" loading="lazy" decoding="async"}
+![Le prompt généré]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/3-GPTchebest-prompt-final.webp' | relative_url }}){: alt="Résultat du prompt" loading="lazy" decoding="async" width="808" height="745"}
 
 À ce stade, tu pourrais croire que c’est fini.  
 En réalité, c’est là que ça commence.
@@ -364,7 +364,7 @@ C’est l’itération : tu testes, tu ajustes, tu ajoutes une contrainte, tu af
 
 Maintenant qu’on a le prompt (les instructions), on passe à la partie “construction du labo” : le Projet.
 
-![Création du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/3-GPTchebest-1-projet.webp' | relative_url }}){:alt="Création du projet du chef GPTchebest" loading="lazy" decoding="async"}
+![Création du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/3-GPTchebest-1-projet.webp' | relative_url }}){: alt="Création du projet du chef GPTchebest" loading="lazy" decoding="async" width="440" height="299"}
 
 À ce moment-là, tu peux choisir si ton projet est :
 - isolé de tes autres chats,
@@ -373,7 +373,7 @@ Maintenant qu’on a le prompt (les instructions), on passe à la partie “cons
 Moi, je préfère l’isolation.  
 Je veux que GPTchebest pense “cuisine”, point.
 
-![Configuration de la mémoire du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/3-GPTchebest-1-projet-2.webp' | relative_url }}){:alt="Configuration de la mémoire du projet du chef GPTchebest" loading="lazy" decoding="async"}
+![Configuration de la mémoire du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/3-GPTchebest-1-projet-2.webp' | relative_url }}){: alt="Configuration de la mémoire du projet du chef GPTchebest" loading="lazy" decoding="async" width="435" height="306"}
 
 Et là… ton projet est créé.
 
@@ -386,9 +386,9 @@ tu as l’espace, tu as les ustensiles… mais tu n’as pas le chef.
 
 Donc maintenant, on colle nos instructions (celles générées par PromptGenerator) dans le Projet.
 
-![Configuration des instructions du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/3-GPTchebest-1-projet-3.webp' | relative_url }}){:alt="Configuration des instructions du projet GPTchebest" loading="lazy" decoding="async"}
+![Configuration des instructions du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/3-GPTchebest-1-projet-3.webp' | relative_url }}){: alt="Configuration des instructions du projet GPTchebest" loading="lazy" decoding="async" width="1652" height="530"}
 
-![Configuration des instructions du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/3-GPTchebest-1-projet-4.webp' | relative_url }}){:alt="Configuration des instructions du projet GPTchebest" loading="lazy" decoding="async"}
+![Configuration des instructions du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/3-GPTchebest-1-projet-4.webp' | relative_url }}){: alt="Configuration des instructions du projet GPTchebest" loading="lazy" decoding="async" width="442" height="955"}
 
 Et là seulement, GPTchebest devient intéressant : tu n’as pas juste “ChatGPT qui parle cuisine”…  
 tu as un chef avec une personnalité, des règles, et un cadre.
@@ -421,14 +421,14 @@ C’est sa capacité à s’adapter quand tu lui dis clairement :
 
 Maintenant qu’on a notre projet GPTchebest, un petit exemple vaut mille discours.
 
-![Utilisation du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/4-GPTchebest-prompt-1.webp' | relative_url }}){:alt="Utilisation du projet du chef GPTchebest" loading="lazy" decoding="async"}
+![Utilisation du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/4-GPTchebest-prompt-1.webp' | relative_url }}){: alt="Utilisation du projet du chef GPTchebest" loading="lazy" decoding="async" width="814" height="570"}
 
 Bon. Clairement, ça ne me convient pas.  
 Ce n’est pas mauvais… mais ce n’est pas ce que je veux.
 
 Donc je fais ce que je fais toujours : je corrige, je précise, et je réponds à ses questions.
 
-![Utilisation du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/4-GPTchebest-prompt-2.webp' | relative_url }}){:alt="Utilisation du projet du chef GPTchebest" loading="lazy" decoding="async"}
+![Utilisation du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/4-GPTchebest-prompt-2.webp' | relative_url }}){: alt="Utilisation du projet du chef GPTchebest" loading="lazy" decoding="async" width="733" height="677"}
 
 Et là, je réalise que j’ai oublié un détail important :  
 je voulais du sucré/salé… donc je veux de l’ananas.
@@ -437,7 +437,7 @@ je voulais du sucré/salé… donc je veux de l’ananas.
 Tu peux lui dire “j’ai oublié” sans qu’elle te fasse la tête.
 Donc j’ajoute la contrainte, et je relance.
 
-![Utilisation du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/4-GPTchebest-prompt-3.webp' | relative_url }}){:alt="Utilisation du projet du chef GPTchebest" loading="lazy" decoding="async"}
+![Utilisation du projet GPTchebest]({{ '/assets/img/blog/9-utiliser-l-ia-au-quotidien/4-GPTchebest-prompt-3.webp' | relative_url }}){: alt="Utilisation du projet du chef GPTchebest" loading="lazy" decoding="async" width="784" height="686"}
 
 Et tu vois ce qui se passe : la réponse devient plus pertinente, plus alignée, plus “sur mesure”.
 

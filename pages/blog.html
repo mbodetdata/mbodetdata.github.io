@@ -102,7 +102,10 @@ body_class: "page-blog"
     <div class="fade-up" style="background:white;border-radius:var(--radius-2xl);border:var(--border-card);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:4rem;box-shadow:var(--shadow-card);">
       <div style="background:linear-gradient(135deg,var(--color-navy-mid),var(--color-navy));min-height:300px;display:flex;align-items:center;justify-content:center;">
         {% if featured.image %}
-        <img src="{{ featured.image | relative_url }}" alt="{{ featured.image_alt | default: featured.title }}" style="width:100%;height:100%;object-fit:cover;" loading="eager">
+        {% comment %} Dimensions réelles : _data/image-dimensions.json (scripts/add-img-dimensions.py) {% endcomment %}
+        {% assign featured_key = featured.image | prepend: '/' | replace: '//', '/' %}
+        {% assign featured_dim = site.data['image-dimensions'][featured_key] %}
+        <img src="{{ featured.image | relative_url }}" alt="{{ featured.image_alt | default: featured.title }}"{% if featured_dim %} width="{{ featured_dim[0] }}" height="{{ featured_dim[1] }}"{% endif %} style="width:100%;height:100%;object-fit:cover;" loading="eager">
         {% else %}
         <span style="font-size:4rem;opacity:.15;" aria-hidden="true">📝</span>
         {% endif %}

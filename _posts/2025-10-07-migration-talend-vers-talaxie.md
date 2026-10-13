@@ -45,7 +45,7 @@ Avant toute migration, réalisez un inventaire complet :
 - Les **librairies personnalisées** (drivers JDBC, JARs spécifiques).  
 - Les **composants additionnels** éventuels.  
 
-![Audit Talend]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/1-job talend.webp' | relative_url }}){:alt="Audit des projets Talend avant migration" loading="lazy" decoding="async"}
+![Audit Talend]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/1-job talend.webp' | relative_url }}){: alt="Audit des projets Talend avant migration" loading="lazy" decoding="async" width="898" height="635"}
 
 ---
 
@@ -57,8 +57,8 @@ Dans Talend :
 3. Choisissez un répertoire d’archive.  
 4. Cochez **Inclure les dépendances**.  
 
-![Export Talend]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/2-Export_Talend-1.webp' | relative_url }}){:alt="Export du projet Talend"}  
-![Export Talend]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/2-Export_Talend-2.webp' | relative_url }}){:alt="Sélection des dépendances à exporter"}  
+![Export Talend]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/2-Export_Talend-1.webp' | relative_url }}){: alt="Export du projet Talend" width="586" height="489" loading="lazy" decoding="async"}  
+![Export Talend]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/2-Export_Talend-2.webp' | relative_url }}){: alt="Sélection des dépendances à exporter" width="849" height="658" loading="lazy" decoding="async"}  
 
 ⚠️ **Attention :** si vous avez des métadonnées, schémas, routines ou dépendances externes, assurez-vous de les inclure lors de l’export.
 
@@ -71,10 +71,10 @@ Dans Talend :
 3. Donnez un nom à votre projet.  
 4. Cliquez sur **Finish**, puis **Ouvrir**.  
 
-![Import projet Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/3-import_talaxie-1.webp' | relative_url }}){:alt="Import d’un projet Talend dans Talaxie"}  
-![Import projet Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/3-import_talaxie-2.webp' | relative_url }}){:alt="Nommer le projet dans Talaxie"}  
-![Import projet Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/3-import_talaxie-3.webp' | relative_url }}){:alt="Confirmation d’importation"}  
-![Import projet Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/3-import_talaxie-4.webp' | relative_url }}){:alt="Ouverture du projet importé"}  
+![Import projet Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/3-import_talaxie-1.webp' | relative_url }}){: alt="Import d’un projet Talend dans Talaxie" width="940" height="502" loading="lazy" decoding="async"}  
+![Import projet Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/3-import_talaxie-2.webp' | relative_url }}){: alt="Nommer le projet dans Talaxie" width="846" height="838" loading="lazy" decoding="async"}  
+![Import projet Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/3-import_talaxie-3.webp' | relative_url }}){: alt="Confirmation d’importation" width="844" height="223" loading="lazy" decoding="async"}  
+![Import projet Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/3-import_talaxie-4.webp' | relative_url }}){: alt="Ouverture du projet importé" width="943" height="502" loading="lazy" decoding="async"}  
 
 ---
 
@@ -82,7 +82,7 @@ Dans Talend :
 
 Lors de l’ouverture, Talaxie détecte automatiquement que le projet provient d’une version antérieure de Talend :  
 
-![Migration projet Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-1.webp' | relative_url }}){:alt="Avertissement de migration du projet"}  
+![Migration projet Talaxie]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-1.webp' | relative_url }}){: alt="Avertissement de migration du projet" width="861" height="388" loading="lazy" decoding="async"}  
 
 Cliquez sur **OK** pour lancer la conversion.  
 
@@ -90,8 +90,8 @@ Ensuite, activez la **compatibilité Java 17** (recommandée) :
 - Une notification apparaît en bas à droite.  
 - Cliquez dessus pour choisir **Java 17** comme runtime par défaut.  
 
-![Compatibilité Java 17]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-3.webp' | relative_url }}){:alt="Activation de la compatibilité Java 17 dans Talaxie"}  
-![Compatibilité Java 17]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-4.webp' | relative_url }}){:alt="Configuration du runtime Java 17 dans Talaxie"}  
+![Compatibilité Java 17]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-3.webp' | relative_url }}){: alt="Activation de la compatibilité Java 17 dans Talaxie" width="417" height="298" loading="lazy" decoding="async"}  
+![Compatibilité Java 17]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-4.webp' | relative_url }}){: alt="Configuration du runtime Java 17 dans Talaxie" width="1042" height="195" loading="lazy" decoding="async"}  
 
 ⚠️ **Vérifiez que Java 17 est bien installé** sur votre poste (via la variable `JAVA_HOME` ou les scripts de build).  
 La distribution recommandée est **Zulu JDK** : [Télécharger ici](https://www.azul.com/downloads/?package=jdk#zulu).
@@ -106,7 +106,7 @@ Assurez-vous que tous les éléments du projet ont bien été repris :
 - API REST / SOAP.  
 - Variables et contextes globaux.  
 
-![Vérification référentiel]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-2.webp' | relative_url }}){:alt="Vérification du référentiel après import"}  
+![Vérification référentiel]({{ '/assets/img/blog/2-Migration_Talend_Talaxie/4-migration_talaxie-2.webp' | relative_url }}){: alt="Vérification du référentiel après import" width="579" height="688" loading="lazy" decoding="async"}  
 
 ---
 

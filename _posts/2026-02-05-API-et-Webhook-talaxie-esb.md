@@ -149,7 +149,7 @@ Menu :
 **Fichier → Modifier les propriétés du projet → Construire → Version de Java**  
 et coche **“Activer la compatibilité avec Java 17”**.
 
-![Activer la compatibilité Java 17]({{ '/assets/img/blog/10-esb-api-webhook/1-compatibilite-java-17.webp' | relative_url }}){:alt="Activer la compatibilité Java 17" loading="lazy" decoding="async"}
+![Activer la compatibilité Java 17]({{ '/assets/img/blog/10-esb-api-webhook/1-compatibilite-java-17.webp' | relative_url }}){: alt="Activer la compatibilité Java 17" loading="lazy" decoding="async" width="1576" height="668"}
 
 > ⚠️ Important : **ton runtime reste en Java 11.**  
 > Activer la compatibilité Java 17 dans le Studio ne veut pas dire “je passe le runtime en 17”.  
@@ -161,7 +161,7 @@ Menu :
 **Fenêtre → Preferences → Maven**  
 et **décoche** l’option **Offline**.
 
-![Décoche Maven Offline]({{ '/assets/img/blog/10-esb-api-webhook/1-maven-offline.webp' | relative_url }}){:alt="Décoche l'option offline de maven" loading="lazy" decoding="async"}
+![Décoche Maven Offline]({{ '/assets/img/blog/10-esb-api-webhook/1-maven-offline.webp' | relative_url }}){: alt="Décoche l'option offline de maven" loading="lazy" decoding="async" width="645" height="539"}
 
 > Sinon, tôt ou tard : dépendances qui manquent, et Karaf qui deviens capricieux !
 
@@ -172,7 +172,7 @@ et **décoche** l’option **Offline**.
 Crée un **nouveau Job ESB**.  
 Dans mon exemple, je l’appelle `Exemple_webhook`.
 
-![Création d'un nouveau job]({{ '/assets/img/blog/10-esb-api-webhook/2-creation-job.webp' | relative_url }}){:alt="Creation d'un nouveau job" loading="lazy" decoding="async"}
+![Création d'un nouveau job]({{ '/assets/img/blog/10-esb-api-webhook/2-creation-job.webp' | relative_url }}){: alt="Creation d'un nouveau job" loading="lazy" decoding="async" width="509" height="442"}
 
 ---
 
@@ -185,7 +185,7 @@ Pour ce lab, on fait minimal (mais utile) :
 - `tPreJob` + `tWarn` : “le job démarre”
 - `tLogCatcher` + `tLogRow` : voir passer les messages
 
-![Instanciation des logs]({{ '/assets/img/blog/10-esb-api-webhook/2-logs.webp' | relative_url }}){:alt="Instanciation des logs" loading="lazy" decoding="async"}
+![Instanciation des logs]({{ '/assets/img/blog/10-esb-api-webhook/2-logs.webp' | relative_url }}){: alt="Instanciation des logs" loading="lazy" decoding="async" width="779" height="756"}
 
 > En prod, tu feras mieux (logs persistés, corrélation, niveaux, contextes).  
 > Ici, objectif : **comprendre le flux**, pas bâtir un projet.
@@ -197,7 +197,7 @@ Pour ce lab, on fait minimal (mais utile) :
 Si tu connais `tRestClient`, c’est normal : il sert à **appeler** une API.  
 Ici, tu veux **exposer** un endpoint : donc `tRestRequest`.
 
-![Ajout du tRestRequest]({{ '/assets/img/blog/10-esb-api-webhook/2-trestrequest-1.webp' | relative_url }}){:alt="Ajout du tRestRequest" loading="lazy" decoding="async"}
+![Ajout du tRestRequest]({{ '/assets/img/blog/10-esb-api-webhook/2-trestrequest-1.webp' | relative_url }}){: alt="Ajout du tRestRequest" loading="lazy" decoding="async" width="1579" height="924"}
 
 ` tRestRequest ` = la **porte d’entrée HTTP** de ton job.
 
@@ -211,15 +211,15 @@ Ici, tu veux **exposer** un endpoint : donc `tRestRequest`.
 
 Dans `tRestRequest`, clique sur le **+ vert** pour ajouter une route.
 
-![Ajout de notre premiere route]({{ '/assets/img/blog/10-esb-api-webhook/2-1-trestrequest-ajout-route.webp' | relative_url }}){:alt="Ajout de notre premiere route" loading="lazy" decoding="async"}
+![Ajout de notre premiere route]({{ '/assets/img/blog/10-esb-api-webhook/2-1-trestrequest-ajout-route.webp' | relative_url }}){: alt="Ajout de notre premiere route" loading="lazy" decoding="async" width="1573" height="235"}
 
 Donne-lui un nom (ex. `webhook_test`) via les **3 petits points** du flux.
 
-![Nommage de notre premiere route]({{ '/assets/img/blog/10-esb-api-webhook/2-1-trestrequest-ajout-route-flux1.webp' | relative_url }}){:alt="Nommage de notre premiere route" loading="lazy" decoding="async"}
+![Nommage de notre premiere route]({{ '/assets/img/blog/10-esb-api-webhook/2-1-trestrequest-ajout-route-flux1.webp' | relative_url }}){: alt="Nommage de notre premiere route" loading="lazy" decoding="async" width="1565" height="235"}
 
 Pour ce lab, tu peux laisser le schéma vide.
 
-![On laisse le schéma vide]({{ '/assets/img/blog/10-esb-api-webhook/2-1-trestrequest-ajout-route-flux1-shema.webp' | relative_url }}){:alt="On laisse le schéma vide" loading="lazy" decoding="async"}
+![On laisse le schéma vide]({{ '/assets/img/blog/10-esb-api-webhook/2-1-trestrequest-ajout-route-flux1-shema.webp' | relative_url }}){: alt="On laisse le schéma vide" loading="lazy" decoding="async" width="534" height="389"}
 
 Paramètres de la route :
 - **Verbe** : `POST`
@@ -227,7 +227,7 @@ Paramètres de la route :
 - **Consume** : JSON
 - **Produce** : JSON
 
-![Configuration du flux]({{ '/assets/img/blog/10-esb-api-webhook/2-1-trestrequest-ajout-route-flux1-conf.webp' | relative_url }}){:alt="Configuration du flux" loading="lazy" decoding="async"}
+![Configuration du flux]({{ '/assets/img/blog/10-esb-api-webhook/2-1-trestrequest-ajout-route-flux1-conf.webp' | relative_url }}){: alt="Configuration du flux" loading="lazy" decoding="async" width="1561" height="239"}
 
 > Ton endpoint local devient : **POST** `http://localhost:8088/services/webhook/test`
 
@@ -242,9 +242,9 @@ Option pratique (et simple à maintenir) :
 - `tJava` (si tu veux piloter via `OnComponentOk`)
 - un `tWarn` pour confirmer l’exécution
 
-![Suite de la configuration du flux]({{ '/assets/img/blog/10-esb-api-webhook/2-1-suite-flux.webp' | relative_url }}){:alt="Suite de la configuration du flux" loading="lazy" decoding="async"}
+![Suite de la configuration du flux]({{ '/assets/img/blog/10-esb-api-webhook/2-1-suite-flux.webp' | relative_url }}){: alt="Suite de la configuration du flux" loading="lazy" decoding="async" width="1107" height="609"}
 
-![Ajout d'un tWarn]({{ '/assets/img/blog/10-esb-api-webhook/2-1-suite-flux-twarn.webp' | relative_url }}){:alt="Ajout d'un tWarn pour logguer le flux." loading="lazy" decoding="async"}
+![Ajout d'un tWarn]({{ '/assets/img/blog/10-esb-api-webhook/2-1-suite-flux-twarn.webp' | relative_url }}){: alt="Ajout d'un tWarn pour logguer le flux." loading="lazy" decoding="async" width="775" height="742"}
 
 ---
 
@@ -252,7 +252,7 @@ Option pratique (et simple à maintenir) :
 
 Lance le job dans le Studio.
 
-![Exécution du job dans Talaxie]({{ '/assets/img/blog/10-esb-api-webhook/2-1-execution.webp' | relative_url }}){:alt="Exécution du job dans Talaxie" loading="lazy" decoding="async"}
+![Exécution du job dans Talaxie]({{ '/assets/img/blog/10-esb-api-webhook/2-1-execution.webp' | relative_url }}){: alt="Exécution du job dans Talaxie" loading="lazy" decoding="async" width="1632" height="920"}
 
 > S’il ne s’arrête pas : c’est normal.  
 > Un job ESB exposant une API tourne **en continu**, contrairement à un job DI batch.
@@ -263,7 +263,7 @@ Lance le job dans le Studio.
 
 Appelle l’endpoint dans Postman.
 
-![Résultat dans postman]({{ '/assets/img/blog/10-esb-api-webhook/2-1-execution-postman.webp' | relative_url }}){:alt="Résultat dans postman" loading="lazy" decoding="async"}
+![Résultat dans postman]({{ '/assets/img/blog/10-esb-api-webhook/2-1-execution-postman.webp' | relative_url }}){: alt="Résultat dans postman" loading="lazy" decoding="async" width="1479" height="427"}
 
 Tu obtiens un **404** ? Ce n’est pas (forcément) que ta route n’existe pas.  
 C’est souvent plus simple : tu ne renvoies **aucune réponse**.
@@ -275,11 +275,11 @@ Ajoute :
 - `tFixedFlowInput` (ex. message `"Hello World !"`)
 - puis `tRestResponse` connecté en **main**
 
-![Ajout du tRestResponse]({{ '/assets/img/blog/10-esb-api-webhook/2-1-execution-trestresponse.webp' | relative_url }}){:alt="Ajout d'un composant de reponse, le tRestResponse" loading="lazy" decoding="async"}
+![Ajout du tRestResponse]({{ '/assets/img/blog/10-esb-api-webhook/2-1-execution-trestresponse.webp' | relative_url }}){: alt="Ajout d'un composant de reponse, le tRestResponse" loading="lazy" decoding="async" width="1104" height="770"}
 
 Relance, puis reteste.
 
-![Retest avec postman]({{ '/assets/img/blog/10-esb-api-webhook/2-1-execution-trestresponse-postman.webp' | relative_url }}){:alt="Retest avec postman" loading="lazy" decoding="async"}
+![Retest avec postman]({{ '/assets/img/blog/10-esb-api-webhook/2-1-execution-trestresponse-postman.webp' | relative_url }}){: alt="Retest avec postman" loading="lazy" decoding="async" width="1473" height="409"}
 
 ✅ Tu as maintenant un endpoint qui répond : ton “Hello World” est prêt.
 
@@ -332,7 +332,7 @@ Démarre le runtime avec :
 
 Puis surveille la console/logs.
 
-![Instanciation de karaf]({{ '/assets/img/blog/10-esb-api-webhook/3-1-Karaf.webp' | relative_url }}){:alt="Instanciation de karaf" loading="lazy" decoding="async"}
+![Instanciation de karaf]({{ '/assets/img/blog/10-esb-api-webhook/3-1-Karaf.webp' | relative_url }}){: alt="Instanciation de karaf" loading="lazy" decoding="async" width="941" height="432"}
 
 ##### Si le bundle ne s’installe pas automatiquement
 Installe-le à la main dans la console Karaf :
@@ -387,7 +387,7 @@ Remplace :
 - `TON_NOM_DE_DOMAINE`
 - `TON_TOKEN`
 
-![DuckDNS site]({{ '/assets/img/blog/10-esb-api-webhook/3-1-duckDNS.webp' | relative_url }}){:alt="Illustration de duck dns pour trouver le domaine et le token" loading="lazy" decoding="async"}
+![DuckDNS site]({{ '/assets/img/blog/10-esb-api-webhook/3-1-duckDNS.webp' | relative_url }}){: alt="Illustration de duck dns pour trouver le domaine et le token" loading="lazy" decoding="async" width="1253" height="863"}
 
 ##### Linux (bash)
 
@@ -613,7 +613,7 @@ URL publique (exemple) :
 #### Test 1 — Sans token (tu dois être refusé)
 Résultat attendu : **401 Unauthorized**.
 
-![Unauthorized dans postman]({{ '/assets/img/blog/10-esb-api-webhook/3-1-postman.webp' | relative_url }}){:alt="Unauthorized dans postman" loading="lazy" decoding="async"}
+![Unauthorized dans postman]({{ '/assets/img/blog/10-esb-api-webhook/3-1-postman.webp' | relative_url }}){: alt="Unauthorized dans postman" loading="lazy" decoding="async" width="1481" height="505"}
 
 #### Test 2 — Avec le token (tu dois passer)
 Header :
@@ -621,7 +621,7 @@ Header :
 
 Résultat attendu : **200 OK**.
 
-![200 - OK Postman]({{ '/assets/img/blog/10-esb-api-webhook/3-1-postman-ok.webp' | relative_url }}){:alt="200 - OK Postman" loading="lazy" decoding="async"}
+![200 - OK Postman]({{ '/assets/img/blog/10-esb-api-webhook/3-1-postman-ok.webp' | relative_url }}){: alt="200 - OK Postman" loading="lazy" decoding="async" width="1484" height="504"}
 
 ✅ Si tu as ça, ton webservice de test est fonctionnel et Caddy filtre déjà un minimum.
 
@@ -658,9 +658,9 @@ Dans **Settings → Webhooks** de ton repo, crée un webhook avec :
 - **Secret** : `TON_SECRET_TRES_LONG_POUR_GITHUB`
 - **Événements** : sélectionne **Stars** (événement `star`, actions `created` / `deleted`)
 
-![Configuration 1/2 github]({{ '/assets/img/blog/10-esb-api-webhook/5-github-1.webp' | relative_url }}){:alt="Configuration 1/2 github" loading="lazy" decoding="async"}
+![Configuration 1/2 github]({{ '/assets/img/blog/10-esb-api-webhook/5-github-1.webp' | relative_url }}){: alt="Configuration 1/2 github" loading="lazy" decoding="async" width="1422" height="877"}
 
-![Configuration 2/2 github]({{ '/assets/img/blog/10-esb-api-webhook/5-github-2.webp' | relative_url }}){:alt="Configuration 2/2 github" loading="lazy" decoding="async"}
+![Configuration 2/2 github]({{ '/assets/img/blog/10-esb-api-webhook/5-github-2.webp' | relative_url }}){: alt="Configuration 2/2 github" loading="lazy" decoding="async" width="823" height="602"}
 
 > ⚠️ Le **secret**, c’est ton mot de passe partagé avec GitHub : ne le hardcode pas n’importe où, et ne le loggue jamais.
 
@@ -671,7 +671,7 @@ Dans **Settings → Webhooks** de ton repo, crée un webhook avec :
 On ajoute une **nouvelle branche** (comme `webhook_test`), mais avec une différence critique :  
 tu dois récupérer le **BODY en `byte[]`** (octets bruts), sans aucune transformation.
 
-![Ajout d'une branche pour l'API Github]({{ '/assets/img/blog/10-esb-api-webhook/4-schema.webp' | relative_url }}){:alt="Ajout d'une branche pour l'API Github" loading="lazy" decoding="async"}
+![Ajout d'une branche pour l'API Github]({{ '/assets/img/blog/10-esb-api-webhook/4-schema.webp' | relative_url }}){: alt="Ajout d'une branche pour l'API Github" loading="lazy" decoding="async" width="1700" height="664"}
 
 #### Pourquoi le body doit être en `byte[]` (et pas en String/JSON “joli”) ?
 GitHub signe ses webhooks avec le header **`X-Hub-Signature-256`** : c’est un **HMAC SHA-256 calculé sur le body HTTP brut**.
@@ -983,14 +983,14 @@ new String(((byte[])globalMap.get("webhook_github.body")), "UTF-8")
 
 Configure `tExtractJSONFields` sur la colonne `body`.
 
-![Configuration du tExtractJSONFields]({{ '/assets/img/blog/10-esb-api-webhook/6-tExtractJSONFIelds.webp' | relative_url }}){:alt="Configuration du tExtractJSONFields" loading="lazy" decoding="async"}
+![Configuration du tExtractJSONFields]({{ '/assets/img/blog/10-esb-api-webhook/6-tExtractJSONFIelds.webp' | relative_url }}){: alt="Configuration du tExtractJSONFields" loading="lazy" decoding="async" width="1149" height="791"}
 
 #### 3) Observer + répondre 200
 
 - `tLogRow` après `tExtractJSONFields`
 - puis `tRestResponse` dans un sous-job qui renvoie **200 OK**
 
-![Affichage du resultat, et renvoi d'un code 200]({{ '/assets/img/blog/10-esb-api-webhook/6-tExtractJSONFIelds-2.webp' | relative_url }}){:alt="Affichage du resultat, et renvoi d'un code 200" loading="lazy" decoding="async"}
+![Affichage du resultat, et renvoi d'un code 200]({{ '/assets/img/blog/10-esb-api-webhook/6-tExtractJSONFIelds-2.webp' | relative_url }}){: alt="Affichage du resultat, et renvoi d'un code 200" loading="lazy" decoding="async" width="771" height="258"}
 
 ---
 
@@ -1001,7 +1001,7 @@ Ici, pas de débat : si la signature ne matche pas, tu rejettes.
 - Log minimal via `tWarn`, juste pour indiquer que tu es passé dans cette branche.
 - `tRestResponse` avec **401 Unauthorized**
 
-![Gestion des erreurs, et renvoi d'un code 401]({{ '/assets/img/blog/10-esb-api-webhook/7-gestion-erreurs.webp' | relative_url }}){:alt="Gestion des erreurs, et renvoi d'un code 401" loading="lazy" decoding="async"}
+![Gestion des erreurs, et renvoi d'un code 401]({{ '/assets/img/blog/10-esb-api-webhook/7-gestion-erreurs.webp' | relative_url }}){: alt="Gestion des erreurs, et renvoi d'un code 401" loading="lazy" decoding="async" width="700" height="386"}
 
 ---
 
@@ -1227,7 +1227,7 @@ bundle:refresh ID
 bundle:restart ID
 ~~~
 
-![Redéploiement dans le container Karaf (Runtime_ESBSE)]({{ '/assets/img/blog/10-esb-api-webhook/8-deploiement-karaf.webp' | relative_url }}){:alt="Redeploiement dans le container Karaf (Runtime_ESBSE)" loading="lazy" decoding="async"}
+![Redéploiement dans le container Karaf (Runtime_ESBSE)]({{ '/assets/img/blog/10-esb-api-webhook/8-deploiement-karaf.webp' | relative_url }}){: alt="Redeploiement dans le container Karaf (Runtime_ESBSE)" loading="lazy" decoding="async" width="961" height="776"}
 
 ---
 
@@ -1242,9 +1242,9 @@ Donc tu testes en déclenchant un vrai événement.
 2) Retire l’étoile    
 3) Regarde les logs côté Karaf : `action = created` puis `deleted`    
 
-![Ajouter une étoile sur GitHub]({{ '/assets/img/blog/10-esb-api-webhook/9-test-github.webp' | relative_url }}){:alt="Ajouter une etoile sur github" loading="lazy" decoding="async"}
+![Ajouter une étoile sur GitHub]({{ '/assets/img/blog/10-esb-api-webhook/9-test-github.webp' | relative_url }}){: alt="Ajouter une etoile sur github" loading="lazy" decoding="async" width="1868" height="239"}
 
-![Résultat du webhook côté Karaf]({{ '/assets/img/blog/10-esb-api-webhook/9-resultats.webp' | relative_url }}){:alt="Resultat du webhook" loading="lazy" decoding="async"}
+![Résultat du webhook côté Karaf]({{ '/assets/img/blog/10-esb-api-webhook/9-resultats.webp' | relative_url }}){: alt="Resultat du webhook" loading="lazy" decoding="async" width="960" height="791"}
 
 > Astuce : dans **Settings → Webhooks → Recent deliveries**, tu peux “redeliver” pour retester rapidement après un ajustement.
 

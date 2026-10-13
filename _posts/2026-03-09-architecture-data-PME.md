@@ -84,7 +84,7 @@ Tu as un **pipeline de données caché dans la BI**.
 
 Et ce n’est pas le bon endroit pour ça.
 
-![Une architecture rapide, mais peu fiable]({{ '/assets/img/blog/12-architecture-data-pme/1-pb-chemin-court.webp' | relative_url }}){:alt="Brancher directement ses sources sur un outil de BI" loading="lazy" decoding="async"}
+![Une architecture rapide, mais peu fiable]({{ '/assets/img/blog/12-architecture-data-pme/1-pb-chemin-court.webp' | relative_url }}){: alt="Brancher directement ses sources sur un outil de BI" loading="lazy" decoding="async" width="1408" height="768"}
 
 ---
 
@@ -94,7 +94,7 @@ Pour une PME, une architecture robuste peut rester simple.
 
 L’idée n’est pas de reproduire une plateforme data de grand groupe. L’idée est de séparer proprement les responsabilités.
 
-![Une architecture fiable]({{ '/assets/img/blog/12-architecture-data-pme/2-architecture-fiable.webp' | relative_url }}){:alt="Brancher un ETL/ELT sur ses sources, âsser par une BDD, et brancher sa BI aprés" loading="lazy" decoding="async"}
+![Une architecture fiable]({{ '/assets/img/blog/12-architecture-data-pme/2-architecture-fiable.webp' | relative_url }}){: alt="Brancher un ETL/ELT sur ses sources, âsser par une BDD, et brancher sa BI aprés" loading="lazy" decoding="async" width="1408" height="768"}
 
 Cette architecture BI suit une logique claire :
 
@@ -245,7 +245,7 @@ Avec une base de données centrale, tu peux structurer :
 - des tables historisées pour suivre les évolutions
 
 
-![Illustration de la couche ETL]({{ '/assets/img/blog/12-architecture-data-pme/3-illustration-couche-ETL.webp' | relative_url }}){:alt="La couche ETL, le moteur de vos données" loading="lazy" decoding="async"}
+![Illustration de la couche ETL]({{ '/assets/img/blog/12-architecture-data-pme/3-illustration-couche-ETL.webp' | relative_url }}){: alt="La couche ETL, le moteur de vos données" loading="lazy" decoding="async" width="1380" height="752"}
 
 Ce découpage reste simple, mais il apporte une vraie lisibilité.
 
@@ -295,7 +295,7 @@ Une PME e-commerce travaille avec trois sources principales :
 L’architecture cible peut ressembler à ceci :
 
 
-![Exemple d'une architecture ETL pour un cas concret]({{ '/assets/img/blog/12-architecture-data-pme/4-example-shopify.webp' | relative_url }}){:alt="Utilisation d'un ETL dans le cas concret d'un client dans le e-commerce" loading="lazy" decoding="async"}
+![Exemple d'une architecture ETL pour un cas concret]({{ '/assets/img/blog/12-architecture-data-pme/4-example-shopify.webp' | relative_url }}){: alt="Utilisation d'un ETL dans le cas concret d'un client dans le e-commerce" loading="lazy" decoding="async" width="1408" height="768"}
 
 ### Ce que fait le pipeline
 

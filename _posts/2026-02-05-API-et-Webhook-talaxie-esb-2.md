@@ -289,7 +289,7 @@ L’objectif de ce job est simple : **recevoir** le webhook et **vérifier** la 
 2) Garde uniquement **une seule route / une seule branche**.  
 3) Renomme le job en **`Receveur`**.
 
-![tRestRequest - Une seule route]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/1-receveur-trestrequest.webp' | relative_url }}){:alt="tRESTRequest, une route, le webhook Talaxie" loading="lazy" decoding="async"}
+![tRestRequest - Une seule route]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/1-receveur-trestrequest.webp' | relative_url }}){: alt="tRESTRequest, une route, le webhook Talaxie" loading="lazy" decoding="async" width="1613" height="921"}
 
 #### Point important : le schéma du `tRESTRequest`
 
@@ -298,7 +298,7 @@ Concrètement : ajoute une colonne **`body`** de type **tableau de bytes** (`byt
 
 C’est indispensable, parce que la signature HMAC doit être calculée sur ces **bytes exacts**.
 
-![tRestRequest - Une seule route]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/1-receveur-trestrequest-schema.webp' | relative_url }}){:alt="tRESTRequest, une route, le webhook Talaxie" loading="lazy" decoding="async"}
+![tRestRequest - Une seule route]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/1-receveur-trestrequest-schema.webp' | relative_url }}){: alt="tRESTRequest, une route, le webhook Talaxie" loading="lazy" decoding="async" width="532" height="391"}
 
 ### Étape 2 — Adapter le `tJava` (vérification de signature)
 
@@ -409,7 +409,7 @@ Extraire depuis le body JSON les 4 champs suivants :
 1) Ouvre le composant **`tExtractJSONFields`**  
 2) Modifie le mapping pour récupérer ces 4 champs.
 
-![tExtractJSONFields - Modification des champs a recuperer]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/1-textractjsonfield.webp' | relative_url }}){:alt="tExtractJSONFields - Modification des champs a recuperer" loading="lazy" decoding="async"}
+![tExtractJSONFields - Modification des champs a recuperer]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/1-textractjsonfield.webp' | relative_url }}){: alt="tExtractJSONFields - Modification des champs a recuperer" loading="lazy" decoding="async" width="1602" height="936"}
 
 > À ce stade, ton job `Receveur` est prêt : il reçoit un POST, vérifie `X-Signature-256`, puis parse le JSON si la signature est valide.
 
@@ -441,14 +441,14 @@ On part sur un payload très simple, avec 4 champs :
 #### 1) Créer les données d’entrée (`tFixedFlowInput`)
 Ajoute un **`tFixedFlowInput`** pour générer une ligne contenant ces valeurs.
 
-![tFixedFlowInput - Création des données brutes]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-tfixedflowinput.webp' | relative_url }}){:alt="tFixedFlowInput - Création des données brutes" loading="lazy" decoding="async"}
+![tFixedFlowInput - Création des données brutes]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-tfixedflowinput.webp' | relative_url }}){: alt="tFixedFlowInput - Création des données brutes" loading="lazy" decoding="async" width="1617" height="926"}
 
 #### 2) Générer le JSON (`tWriteJSONFields`)
 Ensuite, utilise un **`tWriteJSONFields`** pour construire le JSON à partir de ces données.
 
 Objectif : obtenir un JSON qui sera envoyé **tel quel** au `Receveur`.
 
-![tWriteJSONFields - Création du JSON]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-twritejsonfields.webp' | relative_url }}){:alt="tWriteJSONFields - Création du JSON" loading="lazy" decoding="async"}
+![tWriteJSONFields - Création du JSON]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-twritejsonfields.webp' | relative_url }}){: alt="tWriteJSONFields - Création du JSON" loading="lazy" decoding="async" width="1605" height="921"}
 
 ---
 
@@ -566,7 +566,7 @@ Crée un sous-job composé de :
 
 Le `tFixedFlowInput` sert uniquement à passer le payload au `tRESTClient` (dans la colonne de type `String`).
 
-![tFixedFlowInput - Envoi du body au tRestClient]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-tfixedflowinput-2.webp' | relative_url }}){:alt="tFixedFlowInput - Envoi du body au tRestClient" loading="lazy" decoding="async"}
+![tFixedFlowInput - Envoi du body au tRestClient]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-tfixedflowinput-2.webp' | relative_url }}){: alt="tFixedFlowInput - Envoi du body au tRestClient" loading="lazy" decoding="async" width="1593" height="916"}
 
 #### 2) Configuration “de base” du `tRESTClient`
 
@@ -574,14 +574,14 @@ Le `tFixedFlowInput` sert uniquement à passer le payload au `tRESTClient` (dans
 - **Méthode** : `POST`
 - **Content-Type** : `application/json`
 
-![tRestClient - Configuration basique (Methode, Type de données)]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-trestclient.webp' | relative_url }}){:alt="tRestClient - Configuration basique (Methode, Type de données)" loading="lazy" decoding="async"}
+![tRestClient - Configuration basique (Methode, Type de données)]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-trestclient.webp' | relative_url }}){: alt="tRestClient - Configuration basique (Methode, Type de données)" loading="lazy" decoding="async" width="1236" height="718"}
 
 #### 3) Ajouter le header de signature (paramètres avancés)
 
 - `webhook_sig_header_name` : `X-Signature-256`
 - `webhook_sig` : `sha256=<hex>`
 
-![tRestClient - Configuration avancée, ajout du Header]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-trestclient-2.webp' | relative_url }}){:alt="tRestClient - Configuration avancée, ajout du Header" loading="lazy" decoding="async"}
+![tRestClient - Configuration avancée, ajout du Header]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/2-trestclient-2.webp' | relative_url }}){: alt="tRestClient - Configuration avancée, ajout du Header" loading="lazy" decoding="async" width="1604" height="532"}
 
 ---
 
@@ -603,11 +603,11 @@ Objectif : valider deux comportements simples.
 
 **Résultat attendu : `200`**
 
-![test 1 - Secret correct : Emetteur]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-1-emetteur.webp' | relative_url }}){:alt="test 1 - Secret correct : Emetteur" loading="lazy" decoding="async"}
+![test 1 - Secret correct : Emetteur]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-1-emetteur.webp' | relative_url }}){: alt="test 1 - Secret correct : Emetteur" loading="lazy" decoding="async" width="1259" height="328"}
 
 Côté `Receveur`, tu dois voir que la requête est acceptée et que le JSON est parsé.
 
-![test 1 - Secret correct : Receveur]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-1-receveur.webp' | relative_url }}){:alt="test 1 - Secret correct : Receveur" loading="lazy" decoding="async"}
+![test 1 - Secret correct : Receveur]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-1-receveur.webp' | relative_url }}){: alt="test 1 - Secret correct : Receveur" loading="lazy" decoding="async" width="1263" height="441"}
 
 ---
 
@@ -617,15 +617,15 @@ Côté `Receveur`, tu dois voir que la requête est acceptée et que le JSON est
 
 Modifie uniquement le secret côté `Emetteur` (ex : ajoute `_test`), puis relance.
 
-![test 2 - Secret incorrect : Emetteur]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-2-emetteur.webp' | relative_url }}){:alt="test 2 - Secret incorrect : Emetteur" loading="lazy" decoding="async"}
+![test 2 - Secret incorrect : Emetteur]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-2-emetteur.webp' | relative_url }}){: alt="test 2 - Secret incorrect : Emetteur" loading="lazy" decoding="async" width="927" height="271"}
 
-![test 2 - Secret incorrect : Emetteur - 401]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-2-emetteur-401.webp' | relative_url }}){:alt="test 2 - Secret incorrect : Emetteur - 401" loading="lazy" decoding="async"}
+![test 2 - Secret incorrect : Emetteur - 401]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-2-emetteur-401.webp' | relative_url }}){: alt="test 2 - Secret incorrect : Emetteur - 401" loading="lazy" decoding="async" width="1256" height="444"}
 
 > Normal : si le secret diffère, la signature ne peut pas matcher → **401**.
 
 Côté `Receveur`, tu dois voir le rejet :
 
-![test 2 - Secret incorrect : Receveur - 401]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-2-receveur-401.webp' | relative_url }}){:alt="test 2 - Secret incorrect : Receveur - 401" loading="lazy" decoding="async"}
+![test 2 - Secret incorrect : Receveur - 401]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-2-receveur-401.webp' | relative_url }}){: alt="test 2 - Secret incorrect : Receveur - 401" loading="lazy" decoding="async" width="1282" height="917"}
 
 ---
 
@@ -640,13 +640,13 @@ Côté `Receveur`, tu dois voir le rejet :
 
 3) Rejoue la requête avec Postman (body + header inchangés) : **200**.
 
-![test 3 - Postman - Header]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-3-emetteur-postman-header.webp' | relative_url }}){:alt="test 3 - Postman - Header" loading="lazy" decoding="async"}
+![test 3 - Postman - Header]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-3-emetteur-postman-header.webp' | relative_url }}){: alt="test 3 - Postman - Header" loading="lazy" decoding="async" width="1493" height="546"}
 
-![test 3 - Postman - Body]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-3-emetteur-postman.webp' | relative_url }}){:alt="test 3 - Postman - Body" loading="lazy" decoding="async"}
+![test 3 - Postman - Body]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-3-emetteur-postman.webp' | relative_url }}){: alt="test 3 - Postman - Body" loading="lazy" decoding="async" width="716" height="374"}
 
 4) Modifie le JSON **sans recalculer la signature** (ex : change l’ordre de `nom` et `prenom`) → **401**.
 
-![test 3 - Postman - Body modifié]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-3-emetteur-postman-body-modifie.webp' | relative_url }}){:alt="test 3 - Postman - Body modifié" loading="lazy" decoding="async"}
+![test 3 - Postman - Body modifié]({{ '/assets/img/blog/11-esb-api-webhook-partie-2/test-3-emetteur-postman-body-modifie.webp' | relative_url }}){: alt="test 3 - Postman - Body modifié" loading="lazy" decoding="async" width="1512" height="567"}
 
 > Normal : la signature protège les **bytes**. Si le body change, la signature devient invalide.
 

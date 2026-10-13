@@ -74,7 +74,7 @@ Dans les **Basic settings**, retiens surtout :
 
 👉 En clair : dis où écrire, comment structurer, si tu regroupes, et si tu gardes la racine. Le reste n’est que conséquences.
 
-![Basic settings]({{ '/assets/img/blog/7-twritejsonfield/1-basic_param.webp' | relative_url }}){:alt="Basic settings du composant tWriteJSONField" loading="lazy" decoding="async"}
+![Basic settings]({{ '/assets/img/blog/7-twritejsonfield/1-basic_param.webp' | relative_url }}){: alt="Basic settings du composant tWriteJSONField" loading="lazy" decoding="async" width="1048" height="330"}
 
 ---
 
@@ -86,7 +86,7 @@ Dans les **Basic settings**, retiens surtout :
 
 > ⚠️ Attention : ces options “forcent” le résultat. Sur une API stricte ou un index NoSQL, cela peut casser la validation. À activer seulement si tu sais pourquoi.
 
-![Advanced settings]({{ '/assets/img/blog/7-twritejsonfield/1-advanced_param.webp' | relative_url }}){:alt="Advanced settings du composant tWriteJSONField" loading="lazy" decoding="async"}
+![Advanced settings]({{ '/assets/img/blog/7-twritejsonfield/1-advanced_param.webp' | relative_url }}){: alt="Advanced settings du composant tWriteJSONField" loading="lazy" decoding="async" width="1047" height="332"}
 
 ---
 
@@ -111,7 +111,7 @@ Quand tu cliques sur **Configurer la structure JSON**, tu ouvres le **JSON Tree*
   - `type` → forcer le type de valeur (`integer`, `number`, `float`, `boolean`),  
   - `class` → décrire la structure (`array` ou `object`).
 
-![Le JSON Tree]({{ '/assets/img/blog/7-twritejsonfield/2-jsontree.webp' | relative_url }}){:alt="Un exemple de JSON Tree" loading="lazy" decoding="async"}
+![Le JSON Tree]({{ '/assets/img/blog/7-twritejsonfield/2-jsontree.webp' | relative_url }}){: alt="Un exemple de JSON Tree" loading="lazy" decoding="async" width="1128" height="587"}
 
 ### Le point clé à retenir
 
@@ -209,7 +209,7 @@ Ici, j’ai choisi un **JSON global** pour montrer les tableaux imbriqués et le
 - tableau `personnes` (loop principal),  
 - pour chaque personne : ses champs + tableau `adresses` (loop imbriquée).
 
-![Structure cible (arbre)]({{ '/assets/img/blog/7-twritejsonfield/4-3-structure_cible_json.webp' | relative_url }}){:alt="Structure JSON cible" loading="lazy" decoding="async"}
+![Structure cible (arbre)]({{ '/assets/img/blog/7-twritejsonfield/4-3-structure_cible_json.webp' | relative_url }}){: alt="Structure JSON cible" loading="lazy" decoding="async" width="394" height="747"}
 
 ### La bonne stratégie
 
@@ -239,7 +239,7 @@ Personnes :
 | 2 | Nom 2 | Prenom 2 | 0123456789 | 30 | false |
 | 3 | Nom 3 | Prenom 3 | 0506070809 | 40 | true |
 
-![tFixedFlowInput - Personnes]({{ '/assets/img/blog/7-twritejsonfield/4-structure_personnes.webp' | relative_url }}){:alt="Données personnes" loading="lazy" decoding="async"}
+![tFixedFlowInput - Personnes]({{ '/assets/img/blog/7-twritejsonfield/4-structure_personnes.webp' | relative_url }}){: alt="Données personnes" loading="lazy" decoding="async" width="1026" height="282"}
 
 Adresses :
 
@@ -250,7 +250,7 @@ Adresses :
 | 3 | 1 | 3 | Rue 3 | Bordeaux | 44.841225 | -0.5800364 | false |
 | 4 | 1 | 4 | Rue 4 | Lyon | 45.7578137 | 4.8320114 | true |
 
-![tFixedFlowInput - Adresses]({{ '/assets/img/blog/7-twritejsonfield/4-structure_adresses.webp' | relative_url }}){:alt="Données adresses" loading="lazy" decoding="async"}
+![tFixedFlowInput - Adresses]({{ '/assets/img/blog/7-twritejsonfield/4-structure_adresses.webp' | relative_url }}){: alt="Données adresses" loading="lazy" decoding="async" width="1031" height="314"}
 
 ---
 
@@ -262,14 +262,14 @@ Objectif : à partir du flux **Adresses**, regrouper par personne pour obtenir `
 
 Vérifie : présence de `personnes_id`, types corrects, au moins une personne avec plusieurs adresses.
 
-![Données Adresses]({{ '/assets/img/blog/7-twritejsonfield/4-A1-adresses_data.webp' | relative_url }}){:alt="Exécution du job avec Adresses" loading="lazy" decoding="async"}
+![Données Adresses]({{ '/assets/img/blog/7-twritejsonfield/4-A1-adresses_data.webp' | relative_url }}){: alt="Exécution du job avec Adresses" loading="lazy" decoding="async" width="743" height="404"}
 
 #### 4.5.2 Ajouter un `tWriteJSONField` dédié
 
 - Schéma de sortie : ajoute `json_adresses` (String) et garde `personnes_id`.
 - **Output Column** : `json_adresses`.
 
-![Schéma sortie tWriteJSONField]({{ '/assets/img/blog/7-twritejsonfield/4-A2-twritejsonfield_schema.webp' | relative_url }}){:alt="Schéma de sortie du tWriteJSONField" loading="lazy" decoding="async"}
+![Schéma sortie tWriteJSONField]({{ '/assets/img/blog/7-twritejsonfield/4-A2-twritejsonfield_schema.webp' | relative_url }}){: alt="Schéma de sortie du tWriteJSONField" loading="lazy" decoding="async" width="1192" height="386"}
 
 #### 4.5.3 Régler le Group by
 
@@ -279,7 +279,7 @@ Dans **Basic settings** > **Group by** :
 
 Traduction : pour chaque `personnes_id`, un seul résultat avec les lignes agrégées.
 
-![Group by personnes_id]({{ '/assets/img/blog/7-twritejsonfield/4-A3-twritejsonfield_groupby.webp' | relative_url }}){:alt="Group by sur personnes_id" loading="lazy" decoding="async"}
+![Group by personnes_id]({{ '/assets/img/blog/7-twritejsonfield/4-A3-twritejsonfield_groupby.webp' | relative_url }}){: alt="Group by sur personnes_id" loading="lazy" decoding="async" width="1526" height="315"}
 
 👉 Ce `Group by` est le cœur de l’étape A. Sans lui, tu ne fabriques pas un tableau d’adresses par personne mais autant de JSON qu’il y a de lignes.  
 C’est ici que tu choisis la granularité de sortie.
@@ -288,7 +288,7 @@ C’est ici que tu choisis la granularité de sortie.
 
 Structure voulue : nœud racine (temporaire) → `adresses` (class=array) → `adresse` (loop, class=object) → champs.
 
-![JSON Tree]({{ '/assets/img/blog/7-twritejsonfield/4-A4-twritejsonfield_jsontree.webp' | relative_url }}){:alt="JSON Tree du tWriteJSONField (Adresses)" loading="lazy" decoding="async"}
+![JSON Tree]({{ '/assets/img/blog/7-twritejsonfield/4-A4-twritejsonfield_jsontree.webp' | relative_url }}){: alt="JSON Tree du tWriteJSONField (Adresses)" loading="lazy" decoding="async" width="785" height="589"}
 
 Champs sous `adresse` : `_id`, `numero`, `rue`, `ville`, `latitude`, `longitude`, `actif`.  
 > Ne mets pas `personnes_id` : il sert au regroupement, pas à la structure.
@@ -301,7 +301,7 @@ Lance : `tFixedFlowInput (Adresses)` → `tWriteJSONField` → `tLogRow`.
 
 - Le nombre de lignes doit correspondre au nombre de `personnes_id` distincts.  
 
-![Erreur de tri]({{ '/assets/img/blog/7-twritejsonfield/4-A5-twritejsonfield_erreur.webp' | relative_url }}){:alt="Les données ne sont pas bien regroupées" loading="lazy" decoding="async"}
+![Erreur de tri]({{ '/assets/img/blog/7-twritejsonfield/4-A5-twritejsonfield_erreur.webp' | relative_url }}){: alt="Les données ne sont pas bien regroupées" loading="lazy" decoding="async" width="574" height="335"}
 
 > On voit ici un piège classique : trois lignes, séquence 1,2,1.  
 > Le `Group by` de `tWriteJSONField` (et d’autres composants) ne trie rien. Il regroupe uniquement les lignes consécutives. Si les données arrivent dans le désordre, le regroupement est faux.
@@ -309,13 +309,13 @@ Lance : `tFixedFlowInput (Adresses)` → `tWriteJSONField` → `tLogRow`.
 On corrige donc : ajoute un `tSortRow` avant, tri ascendant sur `personnes_id`.  
 Après relance, chaque personne a son tableau d’adresses.
 
-![Tri préalable des données]({{ '/assets/img/blog/7-twritejsonfield/4-A5-tsortrow.webp' | relative_url }}){:alt="Tri préalable avec tSortRow" loading="lazy" decoding="async"}
+![Tri préalable des données]({{ '/assets/img/blog/7-twritejsonfield/4-A5-tsortrow.webp' | relative_url }}){: alt="Tri préalable avec tSortRow" loading="lazy" decoding="async" width="1520" height="372"}
 
-![Résultat d'éxécution]({{ '/assets/img/blog/7-twritejsonfield/4-A5-exec.webp' | relative_url }}){:alt="Exécution corrigée aprés tri" loading="lazy" decoding="async"}
+![Résultat d'éxécution]({{ '/assets/img/blog/7-twritejsonfield/4-A5-exec.webp' | relative_url }}){: alt="Exécution corrigée aprés tri" loading="lazy" decoding="async" width="1153" height="318"}
 
 Contrôle la colonne `json_adresses` : tableau valide, bons champs, types cohérents. Pour affiner, coche **Supprimer le nœud racine** et, si besoin, mets `class=object` sur `rue` pour éviter des tableaux vides.
 
-![JSON corrigé]({{ '/assets/img/blog/7-twritejsonfield/4-A5-corrections_resultat.webp' | relative_url }}){:alt="JSON corrigé" loading="lazy" decoding="async"}
+![JSON corrigé]({{ '/assets/img/blog/7-twritejsonfield/4-A5-corrections_resultat.webp' | relative_url }}){: alt="JSON corrigé" loading="lazy" decoding="async" width="360" height="443"}
 
 > ✅ Étape A validée : JSON Tree structuré, Group by maîtrisé, bloc `adresses[]` prêt à être réutilisé.
 
@@ -337,7 +337,7 @@ Objectif : repartir du flux **Personnes**, y rattacher `json_adresses`, et sorti
 - clé : `personnes._id` = `adresses.personnes_id`  
 - jointure : **LEFT OUTER** pour garder les personnes sans adresse.
 
-![tMap - jointure LEFT]({{ '/assets/img/blog/7-twritejsonfield/5-B2-tmap-join.webp' | relative_url }}){:alt="Configuration tMap LEFT JOIN" loading="lazy" decoding="async"}
+![tMap - jointure LEFT]({{ '/assets/img/blog/7-twritejsonfield/5-B2-tmap-join.webp' | relative_url }}){: alt="Configuration tMap LEFT JOIN" loading="lazy" decoding="async" width="1919" height="497"}
 
 👉 Ici, le `LEFT JOIN` est non négociable : si tu passes en `INNER`, tu perds les personnes sans adresse et ton JSON final ne reflète plus la réalité métier.  
 Toujours valider la cardinalité attendue avant de mapper.
@@ -347,7 +347,7 @@ Toujours valider la cardinalité attendue avant de mapper.
 Ressors : `_id`, `nom`, `prenom`, `telephone`, `age`, `actif`, `json_adresses`.  
 ⚠️ Inutile de ressortir `personnes_id` du lookup : `_id` suffit.
 
-![Sortie tMap - schema]({{ '/assets/img/blog/7-twritejsonfield/5-B3-tmap-schema.webp' | relative_url }}){:alt="Schéma sortie Personne + json_adresses" loading="lazy" decoding="async"}
+![Sortie tMap - schema]({{ '/assets/img/blog/7-twritejsonfield/5-B3-tmap-schema.webp' | relative_url }}){: alt="Schéma sortie Personne + json_adresses" loading="lazy" decoding="async" width="1919" height="497"}
 
 #### 4.6.4 Gérer “aucune adresse”
 
@@ -361,7 +361,7 @@ Dans notre cas, ça tombe bien : `tWriteJSONField` peut interpréter une chaîne
 - chaque `_id` apparaît une seule fois,  
 - `json_adresses` contient plusieurs éléments pour `_id=1`, un seul pour `_id=2`, vide pour `_id=3`.
 
-![Étape B - exécution]({{ '/assets/img/blog/7-twritejsonfield/5-B5-execution.webp' | relative_url }}){:alt="Exécution étape B" loading="lazy" decoding="async"}
+![Étape B - exécution]({{ '/assets/img/blog/7-twritejsonfield/5-B5-execution.webp' | relative_url }}){: alt="Exécution étape B" loading="lazy" decoding="async" width="1532" height="463"}
 
 ---
 
@@ -377,7 +377,7 @@ Flux en entrée : 1 ligne = 1 personne, avec champs Personnes + `json_adresses`.
 
 Pour forcer un unique regroupement : ajoute `grp_json = "x"` dans le `tMap`, puis groupe dessus.
 
-![Ajout grp_json]({{ '/assets/img/blog/7-twritejsonfield/6-C2-ajout-grp.webp' | relative_url }}){:alt="Ajout de la colonne grp_json constante" loading="lazy" decoding="async"}
+![Ajout grp_json]({{ '/assets/img/blog/7-twritejsonfield/6-C2-ajout-grp.webp' | relative_url }}){: alt="Ajout de la colonne grp_json constante" loading="lazy" decoding="async" width="651" height="274"}
 
 Pourquoi une constante ? Parce que le `Group by` ne produit qu’une sortie par valeur. En mettant la même valeur partout, tu garantis un seul document global sans logique métier cachée.
 
@@ -385,7 +385,7 @@ Pourquoi une constante ? Parce que le `Group by` ne produit qu’une sortie par 
 
 `tSortRow` sur `_id` pour un JSON ordonné et reproductible.
 
-![Tri _id]({{ '/assets/img/blog/7-twritejsonfield/6-C3-tsortrow.webp' | relative_url }}){:alt="Tri ascendant par _id" loading="lazy" decoding="async"}
+![Tri _id]({{ '/assets/img/blog/7-twritejsonfield/6-C3-tsortrow.webp' | relative_url }}){: alt="Tri ascendant par _id" loading="lazy" decoding="async" width="1577" height="756"}
 
 #### 4.7.4 `tWriteJSONField` final
 
@@ -400,13 +400,13 @@ Dans **Basic settings** > **Group by** :
 
 Résultat : un seul JSON global.
 
-![Group by grp_json]({{ '/assets/img/blog/7-twritejsonfield/6-C5-groupby.webp' | relative_url }}){:alt="Group by sur grp_json" loading="lazy" decoding="async"}
+![Group by grp_json]({{ '/assets/img/blog/7-twritejsonfield/6-C5-groupby.webp' | relative_url }}){: alt="Group by sur grp_json" loading="lazy" decoding="async" width="1588" height="892"}
 
 #### 4.7.6 Configurer le JSON Tree final
 
 Structure attendue : racine → `personnes` (class=array) → `personne` (loop, class=object) → champs + `adresses` (mappée depuis `json_adresses`).
 
-![JSON Tree structure final]({{ '/assets/img/blog/7-twritejsonfield/6-C6-mapping-adresses.webp' | relative_url }}){:alt="Structure du JSON Tree final" loading="lazy" decoding="async"}
+![JSON Tree structure final]({{ '/assets/img/blog/7-twritejsonfield/6-C6-mapping-adresses.webp' | relative_url }}){: alt="Structure du JSON Tree final" loading="lazy" decoding="async" width="776" height="587"}
 
 #### 4.7.7 Vérifier le résultat
 
@@ -415,13 +415,13 @@ Structure attendue : racine → `personnes` (class=array) → `personne` (loop, 
 - `json_final` rempli,  
 - `personnes` avec tous les enregistrements, `adresses` tableau (vide si besoin).
 
-![Résultat final]({{ '/assets/img/blog/7-twritejsonfield/6-C7-resultat.webp' | relative_url }}){:alt="Résultat final : une ligne avec json_final" loading="lazy" decoding="async"}
+![Résultat final]({{ '/assets/img/blog/7-twritejsonfield/6-C7-resultat.webp' | relative_url }}){: alt="Résultat final : une ligne avec json_final" loading="lazy" decoding="async" width="1580" height="884"}
 
 #### 4.7.8 Écrire le fichier JSON
 
 Ajoute un `tFileOutputRaw` et écris uniquement `json_final` (filtre la colonne `grp_json` avant avec le composant `tFilterColumn`).
 
-![Écriture fichier]({{ '/assets/img/blog/7-twritejsonfield/6-C8-fileoutput.webp' | relative_url }}){:alt="Écriture du JSON global dans un fichier" loading="lazy" decoding="async"}
+![Écriture fichier]({{ '/assets/img/blog/7-twritejsonfield/6-C8-fileoutput.webp' | relative_url }}){: alt="Écriture du JSON global dans un fichier" loading="lazy" decoding="async" width="578" height="821"}
 
 ---
 

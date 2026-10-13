@@ -52,11 +52,11 @@ Le composant est disponible ici :
 Décompressez le contenu dans un dossier, par exemple :  
 `C:\Studios\Talend\Composants_additionnels`
 
-![Extraction du composant]({{ '/assets/img/blog/3-tFileOutputPDF2/1-Extract_zip.webp' | relative_url }}){:alt="Extraction de l'archive du composant tFileOutputPDF2" loading="lazy" decoding="async"}
+![Extraction du composant]({{ '/assets/img/blog/3-tFileOutputPDF2/1-Extract_zip.webp' | relative_url }}){: alt="Extraction de l'archive du composant tFileOutputPDF2" loading="lazy" decoding="async" width="650" height="498"}
 
 Vérifiez que le dossier contient bien tous les fichiers nécessaires :  
 
-![Contenu du dossier]({{ '/assets/img/blog/3-tFileOutputPDF2/1-Extract_zip_2.webp' | relative_url }}){:alt="Contenu du dossier du composant tFileOutputPDF2" loading="lazy" decoding="async"}
+![Contenu du dossier]({{ '/assets/img/blog/3-tFileOutputPDF2/1-Extract_zip_2.webp' | relative_url }}){: alt="Contenu du dossier du composant tFileOutputPDF2" loading="lazy" decoding="async" width="771" height="358"}
 
 ---
 
@@ -68,7 +68,7 @@ Dans Talend, ouvrez :
 Renseignez ensuite le chemin du dossier :  
 `C:\Studios\Talend\Composants_additionnels`
 
-![Préférences Talend]({{ '/assets/img/blog/3-tFileOutputPDF2/2-preferences_talend.webp' | relative_url }}){:alt="Configuration du dossier des composants utilisateur dans Talend" loading="lazy" decoding="async"}
+![Préférences Talend]({{ '/assets/img/blog/3-tFileOutputPDF2/2-preferences_talend.webp' | relative_url }}){: alt="Configuration du dossier des composants utilisateur dans Talend" loading="lazy" decoding="async" width="1394" height="771"}
 
 > 💡 **Astuce**  
 > Si le composant n’apparaît pas dans la palette, **redémarrez** Talend : il sera automatiquement détecté au prochain lancement.
@@ -94,7 +94,7 @@ Ajoutez un **tRowGenerator** et définissez le schéma suivant :
 
 Générez une vingtaine de lignes pour tester.
 
-![Configuration du tRowGenerator]({{ '/assets/img/blog/3-tFileOutputPDF2/3-tRowGenerator.webp' | relative_url }}){:alt="Configuration du composant tRowGenerator pour générer des données de test" loading="lazy" decoding="async"}
+![Configuration du tRowGenerator]({{ '/assets/img/blog/3-tFileOutputPDF2/3-tRowGenerator.webp' | relative_url }}){: alt="Configuration du composant tRowGenerator pour générer des données de test" loading="lazy" decoding="async" width="1317" height="500"}
 
 ---
 
@@ -110,7 +110,7 @@ Créez deux nouvelles colonnes calculées :
 
 Cette étape rend le jeu de données plus proche d’un cas métier réel.
 
-![Configuration du tMap]({{ '/assets/img/blog/3-tFileOutputPDF2/3-tMap.webp' | relative_url }}){:alt="tMap enrichissant les données avant export PDF" loading="lazy" decoding="async"}
+![Configuration du tMap]({{ '/assets/img/blog/3-tFileOutputPDF2/3-tMap.webp' | relative_url }}){: alt="tMap enrichissant les données avant export PDF" loading="lazy" decoding="async" width="1913" height="536"}
 
 ---
 
@@ -119,7 +119,7 @@ Cette étape rend le jeu de données plus proche d’un cas métier réel.
 Dans la palette Talend, cherchez **tFileOutputPDF2** dans la catégorie  
 **Fichier → Écriture**, puis reliez-le à la sortie du `tMap`.
 
-![Palette Talend]({{ '/assets/img/blog/3-tFileOutputPDF2/3-palette.webp' | relative_url }}){:alt="Palette Talend affichant le composant tFileOutputPDF2" loading="lazy" decoding="async"}
+![Palette Talend]({{ '/assets/img/blog/3-tFileOutputPDF2/3-palette.webp' | relative_url }}){: alt="Palette Talend affichant le composant tFileOutputPDF2" loading="lazy" decoding="async" width="402" height="448"}
 
 Le composant est maintenant prêt à être configuré.
 
@@ -139,7 +139,7 @@ Dans les **Paramètres simples**, on gère la structure du document :
 
 Cochez la case **Aspect** sur chaque section (Titre, Sous-titre, etc.) pour débloquer les options de style.
 
-![Configuration basique du tFileOutputPDF2]({{ '/assets/img/blog/3-tFileOutputPDF2/4-tFileOutputPDF2_basic.webp' | relative_url }}){:alt="Exemple de configuration basique du tFileOutputPDF2" loading="lazy" decoding="async"}
+![Configuration basique du tFileOutputPDF2]({{ '/assets/img/blog/3-tFileOutputPDF2/4-tFileOutputPDF2_basic.webp' | relative_url }}){: alt="Exemple de configuration basique du tFileOutputPDF2" loading="lazy" decoding="async" width="1851" height="880"}
 
 ---
 
@@ -153,7 +153,7 @@ Les **Paramètres avancés** contrôlent le corps du tableau :
 - Couleurs alternées pour les lignes,  
 - Personnalisation du rendu texte.
 
-![Configuration avancée du tFileOutputPDF2]({{ '/assets/img/blog/3-tFileOutputPDF2/4-tFileOutputPDF2_advanced.webp' | relative_url }}){:alt="Configuration avancée du composant tFileOutputPDF2" loading="lazy" decoding="async"}
+![Configuration avancée du tFileOutputPDF2]({{ '/assets/img/blog/3-tFileOutputPDF2/4-tFileOutputPDF2_advanced.webp' | relative_url }}){: alt="Configuration avancée du composant tFileOutputPDF2" loading="lazy" decoding="async" width="1855" height="478"}
 
 > 💡 **Astuce**  
 > Pour un rendu professionnel : police sobre (Arial, Calibri, Roboto), titres gras, logo léger et fond clair.  
@@ -170,7 +170,7 @@ Lancez votre job : Talend génère un **PDF complet** comprenant :
 - Des lignes alternées,  
 - Une ligne de total en bas de page.
 
-![PDF final généré avec Talend]({{ '/assets/img/blog/3-tFileOutputPDF2/4-resultat.webp' | relative_url }}){:alt="Exemple de fichier PDF généré par Talend avec tFileOutputPDF2" loading="lazy" decoding="async"}
+![PDF final généré avec Talend]({{ '/assets/img/blog/3-tFileOutputPDF2/4-resultat.webp' | relative_url }}){: alt="Exemple de fichier PDF généré par Talend avec tFileOutputPDF2" loading="lazy" decoding="async" width="786" height="859"}
 
 Ce type de rapport peut être utilisé dans des contextes variés : reporting interne, exports client, suivi qualité, etc.
 

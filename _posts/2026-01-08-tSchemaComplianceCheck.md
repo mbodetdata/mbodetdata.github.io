@@ -205,13 +205,13 @@ Résultat :
 
 On va créer un schéma d’entrée **tolérant** (tout en String).
 
-![Schéma permissif personne]({{ '/assets/img/blog/8-tschemacompliancecheck/1-schema-personne-string.webp' | relative_url }}){:alt="Schéma permissif de personne" loading="lazy" decoding="async"}
+![Schéma permissif personne]({{ '/assets/img/blog/8-tschemacompliancecheck/1-schema-personne-string.webp' | relative_url }}){: alt="Schéma permissif de personne" loading="lazy" decoding="async" width="776" height="384"}
 
 > Ce schéma est utilisé pour la lecture dans le `tFileInputDelimited`.
 
 On va également construire un schéma de contrôle, beaucoup plus strict : **le contrat métier**.
 
-![Schéma strict personne]({{ '/assets/img/blog/8-tschemacompliancecheck/2-schema-personne-strict.webp' | relative_url }}){:alt="Schéma strict de personne" loading="lazy" decoding="async"}
+![Schéma strict personne]({{ '/assets/img/blog/8-tschemacompliancecheck/2-schema-personne-strict.webp' | relative_url }}){: alt="Schéma strict de personne" loading="lazy" decoding="async" width="800" height="432"}
 
 > Ce schéma est utilisé pour le contrôle et pour les traitements aval.
 
@@ -221,11 +221,11 @@ On applique exactement la même logique que pour `personnes.csv`.
 
 Schéma d’entrée tolérant (tout en String) :
 
-![Schéma permissif adresse]({{ '/assets/img/blog/8-tschemacompliancecheck/1-schema-adresse-string.webp' | relative_url }}){:alt="Schéma permissif d'adresse" loading="lazy" decoding="async"}
+![Schéma permissif adresse]({{ '/assets/img/blog/8-tschemacompliancecheck/1-schema-adresse-string.webp' | relative_url }}){: alt="Schéma permissif d'adresse" loading="lazy" decoding="async" width="786" height="366"}
 
 Schéma strict (contrat métier) :
 
-![Schéma strict adresse]({{ '/assets/img/blog/8-tschemacompliancecheck/2-schema-adresse-strict.webp' | relative_url }}){:alt="Schéma strict d'adresse" loading="lazy" decoding="async"}
+![Schéma strict adresse]({{ '/assets/img/blog/8-tschemacompliancecheck/2-schema-adresse-strict.webp' | relative_url }}){: alt="Schéma strict d'adresse" loading="lazy" decoding="async" width="800" height="375"}
 
 ---
 
@@ -243,7 +243,7 @@ Effectue exactement la même configuration que pour l’étape 1, mais avec le f
 
 Normalement, tu devrais obtenir quelque chose qui ressemble à ceci :
 
-![Visualisation du job]({{ '/assets/img/blog/8-tschemacompliancecheck/3-exemple_1-execution.webp' | relative_url }}){:alt="Visualisation du job Talend" loading="lazy" decoding="async"}
+![Visualisation du job]({{ '/assets/img/blog/8-tschemacompliancecheck/3-exemple_1-execution.webp' | relative_url }}){: alt="Visualisation du job Talend" loading="lazy" decoding="async" width="1188" height="919"}
 
 ---
 
@@ -259,7 +259,7 @@ Pour tes deux sous-jobs, ajoute `tSchemaComplianceCheck` :
 
 Configuration exemple (personnes) :
 
-![Configuration tSchemaComplianceCheck]({{ '/assets/img/blog/8-tschemacompliancecheck/4-tSchemaComplianceCheck-personne.webp' | relative_url }}){:alt="Configuration tSchemaComplianceCheck" loading="lazy" decoding="async"}
+![Configuration tSchemaComplianceCheck]({{ '/assets/img/blog/8-tschemacompliancecheck/4-tSchemaComplianceCheck-personne.webp' | relative_url }}){: alt="Configuration tSchemaComplianceCheck" loading="lazy" decoding="async" width="930" height="622"}
 
 > ⚠️ **Important** :  
 > `tSchemaComplianceCheck` **ne convertit pas les types**.  
@@ -268,12 +268,12 @@ Configuration exemple (personnes) :
 
 Conversion du schéma Main vers le schéma strict :
 
-![tConvertType]({{ '/assets/img/blog/8-tschemacompliancecheck/4-tConvertType-personne.webp' | relative_url }}){:alt="tConvertType" loading="lazy" decoding="async"}
+![tConvertType]({{ '/assets/img/blog/8-tschemacompliancecheck/4-tConvertType-personne.webp' | relative_url }}){: alt="tConvertType" loading="lazy" decoding="async" width="1252" height="961"}
 
 Pour le flux Reject, reste en **Built-in** :  
 `errorCode` et `errorMessage` sont ajoutés automatiquement par le composant `tSchemaComplianceCheck`.
 
-![Schéma Reject]({{ '/assets/img/blog/8-tschemacompliancecheck/4-tSchemaComplianceCheck-personne-rejects.webp' | relative_url }}){:alt="Schéma Reject" loading="lazy" decoding="async"}
+![Schéma Reject]({{ '/assets/img/blog/8-tschemacompliancecheck/4-tSchemaComplianceCheck-personne-rejects.webp' | relative_url }}){: alt="Schéma Reject" loading="lazy" decoding="async" width="997" height="583"}
 
 > Cette configuration est un exemple.  
 > **Il n’existe pas de configuration universelle** : le contrat dépend toujours du pipeline aval.
