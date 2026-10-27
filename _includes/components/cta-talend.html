@@ -1,0 +1,33 @@
+{% comment %}
+  CTA Talend — bloc de conversion de fin d'article, catégorie talend-talaxie.
+  Reprend les classes de cta-diagnostic.html (aucun CSS dédié).
+  Usage : {% include components/cta-talend.html %}
+  Paramètres optionnels (surchargeables depuis le front matter d'un article) :
+    title  — titre du bloc
+    sub    — phrase de contexte
+    label  — libellé du bouton principal
+{% endcomment %}
+<aside class="cta-diag" aria-label="Accompagnement Talend / Talaxie">
+  <div class="cta-diag__text">
+    <p class="cta-diag__eyebrow">Talend / Talaxie</p>
+
+    <p class="cta-diag__title">
+      {{ include.title | default: "Un flux Talend à migrer, à reprendre ou à fiabiliser ?" }}
+    </p>
+
+    <p class="cta-diag__sub">
+      {{ include.sub | default: "J'accompagne les équipes qui passent de Talend Open Studio à Talaxie, et je forme sur vos propres jobs." }}
+    </p>
+  </div>
+
+  <div class="cta-diag__action">
+    <a href="{{ '/portfolio/migration-talend-oss-talaxie.html' | relative_url }}" class="cta-diag__btn" data-track="cta-talend-cas">
+      <span>{{ include.label | default: "Voir un cas de migration" }}</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6"/>
+      </svg>
+    </a>
+    <p class="cta-diag__reassure"><a href="{{ '/formation/#talend' | relative_url }}" data-track="cta-talend-formation">La formation Talend / Talaxie</a></p>
+    <p class="cta-diag__reassure"><a href="{{ '/contact/' | relative_url }}" data-track="cta-talend-contact">Me parler de votre projet</a></p>
+  </div>
+</aside>

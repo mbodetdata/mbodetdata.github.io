@@ -134,9 +134,13 @@ layout: default
 
         {{ content }}
 
-        <!-- CTA Diagnostic — affiché en fin de chaque article -->
+        <!-- CTA de fin d'article : Talend pour la catégorie talend-talaxie, Diagnostic sinon -->
         {% unless page.cta == false %}
+        {% if page.parent_category == "talend-talaxie" %}
+        {% include components/cta-talend.html title=page.cta_title sub=page.cta_sub label=page.cta_label %}
+        {% else %}
         {% include components/cta-diagnostic.html title=page.cta_title sub=page.cta_sub label=page.cta_label %}
+        {% endif %}
         {% endunless %}
 
         <!-- Tags -->
