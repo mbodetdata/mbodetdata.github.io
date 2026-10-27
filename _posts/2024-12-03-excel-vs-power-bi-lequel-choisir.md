@@ -4,14 +4,18 @@ title: "Excel ou Power BI : quand une PME doit-elle passer le cap ?"
 seo_title: "Excel ou Power BI en PME : quand passer le cap ?"
 description: "Excel ou Power BI pour votre PME ? Ce qu'Excel fait bien, les signes qu'il ne suffit plus, le coût réel de Power BI et comment passer de l'un à l'autre."
 date: 2024-12-03
-last_modified_at: 2026-10-01
-author: "Martial Bodet"
-category: "Outils"
+categories: [reporting]
 tags: ["Excel", "Power BI", "passer d'Excel à Power BI", "tableau de bord", "outils", "comparaison", "PME"]
-read_time: "8 min"
-image: "/assets/img/blog/16-excel-vs-power-bi-lequel-choisir/logo_1024.webp"
-image_alt: "Comparaison Excel et Power BI pour une PME"
+author: "Martial Bodet"
 excerpt: "Excel ou Power BI ? C'est la question que me posent le plus souvent les dirigeants. Voici une comparaison honnête : ce qu'Excel fait bien, quand il ne suffit plus, ce que coûte vraiment Power BI et comment passer de l'un à l'autre sans tout casser."
+image: "/assets/img/blog/16-excel-vs-power-bi-lequel-choisir/logo_1024.webp"
+active: true
+parent_category: data
+category_label: "Outils"
+last_modified_at: 2026-10-01
+category: "Outils"
+read_time: "8 min"
+image_alt: "Comparaison Excel et Power BI pour une PME"
 ---
 
 *Article mis à jour le 1er octobre 2026 : tarifs actualisés, signes d'alerte, coût réel et étapes pour passer d'Excel à Power BI.*

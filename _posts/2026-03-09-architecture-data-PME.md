@@ -3,8 +3,11 @@ layout: post
 title: "Architecture data PME : structurer un pipeline entre sources, ETL et BI"
 seo_title: "Architecture data PME : relier sources, ETL et outil BI"
 description: "Tu veux des dashboards fiables sans usine à gaz ? Voici une architecture data simple et robuste pour PME, avec sources, ETL, base centralisée et outil BI."
-categories: blog
+date: 2026-03-09
+categories: [data, reporting]
 tags: [Architecture Data, Pipeline de données, ETL, Talend, Talaxie, Power BI, BI, PME]
+author: "Martial Bodet"
+excerpt: "Dans beaucoup de PME, un projet BI démarre de manière très pragmatique. Tu connectes Power BI, Metabase ou un autre outil directement à un CRM, un ERP, quelques fichiers Excel, parfois une API SaaS, et tu obtiens rapidement un premier tableau de bord."
 image: "/assets/img/blog/12-architecture-data-pme/logo_1024.webp"
 active: true
 parent_category: data

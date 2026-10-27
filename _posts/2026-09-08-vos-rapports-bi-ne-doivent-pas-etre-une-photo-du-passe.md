@@ -1,12 +1,12 @@
 ---
 layout: post
 title: "Un tableau de bord ne devrait pas seulement vous dire ce qui s'est passé — mais ce qui va se passer si vous décidez"
-seo_title: "Tableau de bord PME : simuler une décision avant de la prendre"
+seo_title: "Tableau de bord PME : simuler une décision avant d'agir"
 description: "Remise, marge, produit à retirer du catalogue : combien de décisions prenez-vous encore sans savoir ce qu'elles vont vous coûter ou vous rapporter ?"
 date: 2026-09-07
 categories: [reporting, pilotage]
 tags: [tableau de bord, reporting, PME, pilotage, aide à la décision]
-author: Martial Bodet
+author: "Martial Bodet"
 excerpt: "75 % des TPE/PME exploitent déjà leurs données pour piloter leur activité. Mais la plupart s'arrêtent à un chiffre figé, sans jamais tester la décision qui doit suivre. Voici la différence que ça change."
 image: "/assets/img/blog/28-tableau-de-bord-pme-simuler-avant-decider/logo_1024.webp"
 active: true

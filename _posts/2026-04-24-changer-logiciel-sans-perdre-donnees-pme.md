@@ -6,7 +6,7 @@ description: "Changer de logiciel sans perdre vos données : les erreurs qui co�
 date: 2026-04-24
 categories: [migration-donnees, conseils-dirigeants]
 tags: [migration données, changement logiciel, PME, ERP, CRM]
-author: Martial Bodet
+author: "Martial Bodet"
 excerpt: "Vous changez de logiciel ? Découvrez les erreurs fréquentes des PME et comment les éviter pour garder des données fiables."
 image: "/assets/img/blog/23-changer-logiciel-sans-perdre-donnees-pme/logo_1024.webp"
 active: true

@@ -6,7 +6,7 @@ description: "Deux photos, trois secondes, une fiche créée dans Zoho. Le workf
 date: 2026-09-16
 categories: [automatisation, interconnexion]
 tags: [n8n, automatisation, OCR, Google Vision, CRM, Zoho, IA, Mistral, Infomaniak, workflow, gain de temps, traçabilité]
-author: Martial Bodet
+author: "Martial Bodet"
 excerpt: "Après quelques événements de networking, j'avais une pile de cartes de visite sur le coin du bureau. Et la promesse, renouvelée chaque vendredi, de tout saisir dans mon CRM le week-end venu. Le week-end est arrivé. Il est reparti. La pile est restée."
 image: "/assets/img/blog/29-ocr-cartes-de-visite-n8n-zoho/logo_1024.webp"
 active: true

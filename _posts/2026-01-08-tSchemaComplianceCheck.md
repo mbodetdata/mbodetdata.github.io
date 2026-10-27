@@ -1,9 +1,13 @@
 ---
 layout: post
 title: "Talaxie : sécuriser le pipeline avec tSchemaComplianceCheck"
-description: "Comment utiliser tSchemaComplianceCheck pour imposer un contrat métier dès l’entrée, rejeter les données hors-format et protéger la production : schéma de test, Main/Reject et bonnes pratiques."
-categories: blog
+seo_title: "Talaxie : sécuriser le pipeline avec tSchemaComplianceCheck"
+description: "Utiliser tSchemaComplianceCheck dans Talaxie pour imposer un contrat métier dès l’entrée, rejeter les données hors-format et protéger la production."
+date: 2026-01-08
+categories: [talend-talaxie, data]
 tags: [Talend, Talaxie, Qualité des données, Schéma, tSchemaComplianceCheck, ETL, Bonnes pratiques]
+author: "Martial Bodet"
+excerpt: "Dans un projet data, le vrai problème n’est pas la donnée manquante."
 image: "/assets/img/blog/8-tschemacompliancecheck/logo_1024.webp"
 active: true
 parent_category: talend-talaxie

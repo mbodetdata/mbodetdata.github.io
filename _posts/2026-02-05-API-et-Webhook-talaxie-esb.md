@@ -3,11 +3,14 @@ layout: post
 title: "API vs Webhook Talaxie : comprendre et implémenter un webhook sécurisé"
 seo_title: "API vs Webhook Talaxie : implémenter un webhook sécurisé"
 description: "Comprendre API vs webhook et mettre en place un endpoint webhook en Talaxie ESB, le tester avec Postman et le sécuriser avec une signature HMAC."
-categories: blog
+date: 2026-02-05
+categories: [talend-talaxie, interconnexion]
 tags: [API, Webhook, Talaxie ESB,Karaf, Sécurité, HMAC, GitHub, Reverse proxy, Caddy]
+author: "Martial Bodet"
+excerpt: "Quand tu débutes, tu mets souvent API et webhook dans le même sac : “un truc HTTP”. Sauf que la différence n’est pas un détail : c’est une question de direction."
 image: "/assets/img/blog/10-esb-api-webhook/logo_1024.webp"
 active: true
-parent_category: data
+parent_category: talend-talaxie
 category_label: ESB
 ---
 

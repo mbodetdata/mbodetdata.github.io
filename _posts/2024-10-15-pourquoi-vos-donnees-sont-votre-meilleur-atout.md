@@ -4,14 +4,18 @@ title: "Données en TPE/PME : par où commencer quand on n'est pas technique ?"
 seo_title: "Données en TPE/PME : par où commencer ?"
 description: "Vous avez déjà des données utiles sans le savoir. Ce qu'une TPE ou PME peut en tirer, les 4 chantiers les plus rentables et par où commencer, sans jargon."
 date: 2024-10-15
-last_modified_at: 2026-10-01
-author: "Martial Bodet"
-category: "Stratégie data"
+categories: [data, conseils-dirigeants]
 tags: ["données", "data PME", "data TPE PME", "TPE/PME", "stratégie", "décision"]
-read_time: "8 min"
-image: "/assets/img/blog/18-donnees-meilleur-atout/logo_1024.webp"
-image_alt: "Un dirigeant de PME devant un tableau de bord de données"
+author: "Martial Bodet"
 excerpt: "Les données ne sont pas réservées aux grandes entreprises. Chaque TPE et PME dispose déjà d'informations précieuses qui dorment dans ses outils. Voici par où commencer, sans jargon et sans gros budget."
+image: "/assets/img/blog/18-donnees-meilleur-atout/logo_1024.webp"
+active: true
+parent_category: data
+category_label: "Stratégie data"
+last_modified_at: 2026-10-01
+category: "Stratégie data"
+read_time: "8 min"
+image_alt: "Un dirigeant de PME devant un tableau de bord de données"
 ---
 
 *Article mis à jour le 1er octobre 2026 : les 4 chantiers par lesquels commencer, avec des exemples réels, et une FAQ.*

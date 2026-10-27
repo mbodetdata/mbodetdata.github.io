@@ -4,14 +4,18 @@ title: "Automatiser ses reportings : récupérer des heures chaque semaine"
 seo_title: "Automatiser ses reportings Excel : guide pour PME"
 description: "Arrêtez de préparer vos rapports à la main. Les 5 niveaux d'automatisation, d'Excel à l'automatisation complète, par où commencer et ce que ça rapporte."
 date: 2025-01-20
-last_modified_at: 2026-10-01
-author: "Martial Bodet"
-category: "Automatisation"
+categories: [automatisation, reporting]
 tags: ["automatisation", "reporting", "automatiser Excel", "productivité", "Power Query", "Power Automate", "n8n"]
-read_time: "10 min"
-image: "/assets/img/blog/15-automatiser-ses-reportings-guide-pratique/logo_1024.webp"
-image_alt: "Automatisation des reportings dans une PME"
+author: "Martial Bodet"
 excerpt: "Comment arrêter de passer des heures à préparer vos rapports à la main ? Les 5 niveaux d'automatisation, d'Excel à l'automatisation complète, et la méthode pour choisir le bon dans une TPE ou PME."
+image: "/assets/img/blog/15-automatiser-ses-reportings-guide-pratique/logo_1024.webp"
+active: true
+parent_category: data
+category_label: "Automatisation"
+last_modified_at: 2026-10-01
+category: "Automatisation"
+read_time: "10 min"
+image_alt: "Automatisation des reportings dans une PME"
 ---
 
 *Article mis à jour le 1er octobre 2026 : calcul du temps perdu, exemples réels, outils d'automatisation actuels et FAQ.*

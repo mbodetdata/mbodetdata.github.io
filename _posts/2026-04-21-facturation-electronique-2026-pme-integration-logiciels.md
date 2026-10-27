@@ -4,15 +4,15 @@ title: "Facturation électronique : calendrier 2026-2027 et ce que votre PME doi
 seo_title: "Facturation électronique PME : calendrier 2026-2027"
 description: "Depuis septembre 2026, toute entreprise doit recevoir des factures électroniques. En septembre 2027, les PME devront les émettre. Que faire maintenant ?"
 date: 2026-04-21
-last_modified_at: 2026-10-01
 categories: [interconnexion, facturation]
 tags: [facturation electronique 2026, facturation electronique 2027, calendrier, plateforme agréée, PME, integration logiciels, conformite, obligation legale]
-author: Martial Bodet
+author: "Martial Bodet"
 excerpt: "Le 1er septembre 2026 est passé : toutes les entreprises doivent désormais recevoir des factures électroniques. La prochaine marche, c'est septembre 2027, quand les PME devront les émettre. Et c'est celle-là qui demande le plus de préparation."
 image: "/assets/img/blog/22-facturation-electronique-2026-pme-integration-logiciels/logo_1024.webp"
 active: true
 parent_category: data
 category_label: Automatisation
+last_modified_at: 2026-10-01
 ---
 
 *Article mis à jour le 1er octobre 2026, un mois après l'entrée en vigueur de l'obligation de réception.*

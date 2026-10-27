@@ -6,7 +6,7 @@ description: "Automatiser les tâches répétitives trop tôt amplifie le désor
 date: 2026-04-30
 categories: [automatisation, conseils-dirigeants]
 tags: [automatisation, taches repetitives, PME, productivite, flux automatises]
-author: Martial Bodet
+author: "Martial Bodet"
 excerpt: "Automatiser trop tôt peut coûter cher. Mais attendre aussi. Voici les signaux concrets pour trouver le bon moment et ce que vous gagnez vraiment."
 image: "/assets/img/blog/24-automatisation-pme-bon-moment/logo_1024.webp"
 active: true

@@ -3,8 +3,11 @@ layout: post
 title: "Talaxie : bien configurer tWriteJSONField et le JSON Tree (type, class, array, object)"
 seo_title: "tWriteJSONField Talaxie : configurer le JSON Tree pas à pas"
 description: "Comprendre enfin comment configurer tWriteJSONField et son JSON Tree (loop, attributs type/class, array/object) dans Talaxie sans s’arracher les cheveux."
-categories: blog
+date: 2025-12-16
+categories: [talend-talaxie, interconnexion]
 tags: [Talend, Talaxie, JSON, tWriteJSONField, ETL, Bonnes pratiques]
+author: "Martial Bodet"
+excerpt: "Le JSON est partout : NoSQL, API, événements, configs. Et dès que les structures se corsent (objets imbriqués, tableaux, types non-string), tWriteJSONField peut vite te faire transpirer."
 image: "/assets/img/blog/7-twritejsonfield/logo_1024.webp"
 active: true
 parent_category: talend-talaxie

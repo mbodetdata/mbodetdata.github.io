@@ -3,11 +3,14 @@ layout: post
 title: "Talend/Talaxie : automatiser vos données sans infrastructure complexe"
 seo_title: "Talend/Talaxie : automatiser vos données sans infra complexe"
 description: "Comment Talend et Talaxie automatisent vos flux de donnees sans equipe IT, avec exemples concrets et astuces debutant."
-categories: blog
+date: 2025-11-03
+categories: [talend-talaxie, automatisation]
 tags: [Talend, Talaxie, ETL, Automatisation, Entreprises, Data, Intégration]
+author: "Martial Bodet"
+excerpt: "Les Entreprises manipulent chaque jour des volumes croissants de données : ventes, stocks, RH, facturation, e-commerce… Mais ces informations sont souvent éparpillées entre plusieurs outils : ERP, CRM, fichiers Excel, plateformes cloud."
 image: "/assets/img/blog/4-benefices_talend/logo.webp"
 active: true
-parent_category: avantages
+parent_category: talend-talaxie
 category_label: Talend
 ---
 

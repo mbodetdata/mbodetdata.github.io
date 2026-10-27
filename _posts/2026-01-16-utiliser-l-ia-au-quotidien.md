@@ -2,9 +2,11 @@
 layout: post
 title: "IA au quotidien : méthode et prompts pour la rendre vraiment utile"
 seo_title: "IA au quotidien : méthode et prompts pour la rendre utile"
-description: "Retour d’expérience concret sur l’utilisation de l’IA au quotidien : règles d’or, mise en pratique pas à pas, prompts réels et méthode pour faire de l’IA un vrai challenger."
-categories: blog
+description: "Retour d’expérience sur l’IA au quotidien : règles d’or, mise en pratique pas à pas, prompts réels et méthode pour faire de l’IA un vrai challenger."
+date: 2026-01-16
+categories: [ia, productivite]
 tags: [IA, ChatGPT, Productivité, Prompt engineering, Bonnes pratiques, Méthodologie]
+author: "Martial Bodet"
 image: "/assets/img/blog/9-utiliser-l-ia-au-quotidien/logo_1024.webp"
 active: true
 parent_category: ia

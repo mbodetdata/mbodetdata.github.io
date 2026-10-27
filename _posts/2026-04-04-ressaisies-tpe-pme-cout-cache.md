@@ -6,7 +6,7 @@ description: "Vous recopiez les mêmes informations dans plusieurs fichiers ou l
 date: 2026-04-06
 categories: [automatisation, productivite]
 tags: [double saisie, ressaisie, copier coller, automatisation TPE PME, fichiers Excel, gain de temps, erreurs de saisie, outils de gestion, digitalisation PME, tableau de suivi]
-author: Martial Bodet
+author: "Martial Bodet"
 excerpt: "Si vous retapez encore les mêmes informations dans plusieurs fichiers ou logiciels, ce n’est pas un détail. C’est souvent le signe que votre entreprise perd du temps, crée des erreurs et ralentit ses décisions."
 image: "/assets/img/blog/19-ressaisie/logo_1024.webp"
 active: true

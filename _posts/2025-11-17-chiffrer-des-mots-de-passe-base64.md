@@ -3,11 +3,13 @@ layout: post
 title: "Sécuriser Talend & Talaxie : ne plus stocker les mots de passe en clair"
 seo_title: "Talend & Talaxie : ne plus stocker de mots de passe en clair"
 description: "Comment ne plus stocker de mots de passe en clair dans vos jobs Talend/Talaxie, avec un chiffrement simple et robuste à mettre en place rapidement."
-categories: blog
+date: 2025-11-17
+categories: [talend-talaxie, securite]
 tags: [Talend, Talaxie, Sécurité, Chiffrement, ETL, Bonnes pratiques]
+author: "Martial Bodet"
 image: "/assets/img/blog/5-chiffrement_base_64/logo_1024.webp"
 active: true
-parent_category: talend-securite
+parent_category: talend-talaxie
 category_label: Sécurité
 ---
 

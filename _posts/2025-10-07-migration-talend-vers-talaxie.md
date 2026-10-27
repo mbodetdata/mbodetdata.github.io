@@ -3,8 +3,11 @@ layout: post
 title: "Migration de Talend Open Studio vers Talaxie : guide complet en 8 étapes"
 seo_title: "Migration Talend vers Talaxie : guide complet en 8 étapes"
 description: "Guide complet et pratique pour migrer vos projets Talend Open Studio vers Talaxie en toute sécurité. Étapes, bonnes pratiques et conseils techniques."
-categories: blog
+date: 2025-10-07
+categories: [talend-talaxie, migration-donnees]
 tags: [Talend, Talaxie, Migration, ETL, Open Source, Data Integration]
+author: "Martial Bodet"
+excerpt: "Depuis janvier 2024, la version open source de Talend Open Studio (TOS) n’évolue plus. Cela ne signifie pas que vos flux existants cessent de fonctionner : ils continuent d’exécuter leurs traitements comme avant."
 image: "/assets/img/blog/2-Migration_Talend_Talaxie/migration-talend-talaxie.webp"
 active: true
 parent_category: talend-talaxie

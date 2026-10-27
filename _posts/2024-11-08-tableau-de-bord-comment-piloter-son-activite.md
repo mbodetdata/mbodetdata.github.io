@@ -4,14 +4,18 @@ title: "Indicateurs clés d'une PME : lesquels suivre dans votre tableau de bord
 seo_title: "Indicateurs clés (KPI) d'une PME : lesquels suivre ?"
 description: "Quels indicateurs suivre dans le tableau de bord d'une PME ? Les KPI essentiels par domaine, comment les calculer et comment choisir les 5 qui comptent."
 date: 2024-11-08
-last_modified_at: 2026-10-01
-author: "Martial Bodet"
-category: "Tableaux de bord"
+categories: [reporting, pilotage]
 tags: ["indicateurs clés", "KPI", "tableau de bord", "tableau de bord PME", "pilotage", "Power BI"]
-read_time: "10 min"
-image: "/assets/img/blog/17-tableau-de-bord-pilotage/logo_1024.webp"
-image_alt: "Tableau de bord de pilotage d'activité sur écran"
+author: "Martial Bodet"
 excerpt: "Quels indicateurs suivre quand on dirige une PME ? Les KPI essentiels par domaine, comment les calculer simplement, et la méthode pour garder seulement ceux qui vous aident à décider."
+image: "/assets/img/blog/17-tableau-de-bord-pilotage/logo_1024.webp"
+active: true
+parent_category: data
+category_label: "Tableaux de bord"
+last_modified_at: 2026-10-01
+category: "Tableaux de bord"
+read_time: "10 min"
+image_alt: "Tableau de bord de pilotage d'activité sur écran"
 ---
 
 *Article mis à jour le 1er octobre 2026 : liste des indicateurs clés par domaine, formules de calcul et indicateurs par type d'activité.*

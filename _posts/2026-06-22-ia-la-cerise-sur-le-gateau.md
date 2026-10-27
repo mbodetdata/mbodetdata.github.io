@@ -2,13 +2,13 @@
 layout: post
 title: "L'IA dans votre PME, pourquoi l'adopter sans fondations, c'est l'erreur la plus coûteuse de 2026"
 seo_title: "IA en PME : sans fondations data, l'erreur la plus coûteuse"
-description: "34 % des TPE-PME françaises ont adopté l'IA en 20251 triplement en un an. Le problème : 19 % de leurs données sont erronées. L'IA amplifie le chaos autant que la performance."
+description: "34 % des TPE-PME ont adopté l'IA en 2025, trois fois plus en un an. Mais 19 % de leurs données sont erronées : l'IA amplifie le chaos comme la performance."
 date: 2026-06-19
 categories: [data, ia]
 tags: [intelligence artificielle, PME, données, fondations data, pilotage]
-author: Martial Bodet
+author: "Martial Bodet"
 excerpt: "95 % des PME ne sont pas prêtes pour l'IA. Pas à cause d'un manque de budget, à cause de fondations data absentes. L'IA amplifie ce qu'elle trouve : le bon comme le mauvais."
-image: "assets/img/blog/26-ia-la-cerise-sur-le-gateau/logo_1024.webp"
+image: "/assets/img/blog/26-ia-la-cerise-sur-le-gateau/logo_1024.webp"
 active: true
 parent_category: data
 category_label: Intelligence Artificielle

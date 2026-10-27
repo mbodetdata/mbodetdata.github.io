@@ -6,7 +6,7 @@ description: "Ressaisies, relances manuelles, exports Excel : une PME de 10 pers
 date: 2026-06-05
 categories: [automatisation, productivite]
 tags: [tâches répétitives, automatisation PME, gain de temps, ressaisie, flux de données]
-author: Martial Bodet
+author: "Martial Bodet"
 excerpt: "Plus d'une heure chaque jour. C'est ce que coûtait à un client de Nouvelle-Aquitaine le croisement manuel de ses données avant automatisation. Aujourd'hui : 5 minutes de contrôle. Ce type de cas se retrouve dans la plupart des PME. La différence, c'est qu'on ne le mesure jamais."
 image: "/assets/img/blog/25-heures-perdues-taches-repetitives-pme/logo_1024.webp"
 active: true

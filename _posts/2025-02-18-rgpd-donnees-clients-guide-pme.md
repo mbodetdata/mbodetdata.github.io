@@ -4,14 +4,18 @@ title: "RGPD et fichier clients : ce que toute PME doit savoir (sans panique)"
 seo_title: "RGPD en PME : fichier clients, registre, durées"
 description: "RGPD en PME sans jargon : ce que vous pouvez garder dans votre fichier clients, combien de temps, le registre, les droits des personnes et les vrais risques."
 date: 2025-02-18
-last_modified_at: 2026-10-01
-author: "Martial Bodet"
-category: "Stratégie data"
+categories: [data, conseils-dirigeants]
 tags: ["RGPD", "RGPD PME", "fichier clients", "conformité", "données clients", "PME"]
-read_time: "9 min"
-image: "/assets/img/blog/14-rgpd-donnees-clients-guide-pme/logo_1024.webp"
-image_alt: "Guide RGPD pour les PME - protection des données clients"
+author: "Martial Bodet"
 excerpt: "Le RGPD effraie encore beaucoup de dirigeants de PME. Pourtant, se mettre en conformité n'est pas si compliqué quand on sait par où commencer. Ce que vous pouvez garder dans votre fichier clients, combien de temps, et ce que vous risquez vraiment."
+image: "/assets/img/blog/14-rgpd-donnees-clients-guide-pme/logo_1024.webp"
+active: true
+parent_category: data
+category_label: "Stratégie data"
+last_modified_at: 2026-10-01
+category: "Stratégie data"
+read_time: "9 min"
+image_alt: "Guide RGPD pour les PME - protection des données clients"
 ---
 
 *Article mis à jour le 1er octobre 2026 : fichier clients et durées de conservation, sanctions de la CNIL envers les petites entreprises, FAQ.*
